@@ -28,10 +28,10 @@ const MainPage = () => {
 
 
 	return (
-		<div className='max-w-[1280px] bg-pink-500 bg-opacity-80 mx-auto ' >
+		<div className='max-w-[1280px] mx-auto ' >
 
 			<div
-				className='w-full p-3 mx-auto bg-pink-500 flex justify-center  border-y-4'
+				className='w-full p-3 mx-auto bg-gray-500 flex justify-center  border-y-4'
 
 			>Панель быстрого доступа</div>
 
@@ -41,6 +41,9 @@ const MainPage = () => {
 				</div>
 				<div className='w-1/2 m-4 border flex justify-center p-3  bg-blue-500 text-white text-md'>
 					Попросить снять
+				</div>
+				<div className='w-1/2 m-4 border flex justify-center p-3  bg-teal-500 text-white text-md'>
+					Принести на кассу
 				</div>
 			</div>
 

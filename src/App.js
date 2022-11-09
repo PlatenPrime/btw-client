@@ -23,6 +23,9 @@ import { useDispatch } from "react-redux";
 import { getMe } from "./redux/features/auth/authSlice";
 import { useEffect } from "react";
 import AddRowPage from "./pages/Row/AddRowPage";
+import ArtFindPage from "./pages/Art/ArtFindPage";
+import ArtPage from "./pages/Art/ArtPage";
+import ArtsZonesLoadingPage from "./pages/Art/ArtsZonesLoadingPage";
 
 
 
@@ -58,6 +61,11 @@ function App() {
 				<Route path="rows" element={<RowsPage />} />
 				<Route path="rows/:id" element={<RowPage />} />
 				<Route path="rows/new" element={<AddRowPage />} />
+
+
+				<Route path="artfind" element={<ArtFindPage />} />
+				<Route path="arts/:id" element={<ArtPage />} />
+				<Route path="artszones" element={<ArtsZonesLoadingPage />} />
 
 
 			</Routes>
