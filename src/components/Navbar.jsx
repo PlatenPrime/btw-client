@@ -20,36 +20,15 @@ const Navbar = () => {
 
 
 
-	const activeStyles = {
-		color: "white",
-	}
-
-
 	return (
 		<div className='flex py-4 px-1 justify-between items-center bg-gray-500 bg-opacity-50 w-full'>
 
-
-			<div className='flex  '>
-				{isAuth &&
-					(<ul className='flex gap-8 '>
-						<li><NavLink to={"/"} className='text-lg text-black hover:text-white' style={({ isActive }) => isActive ? activeStyles : undefined} >Главная</NavLink></li>
-						<li><NavLink to={"rows"} className='text-lg text-black hover:text-white' style={({ isActive }) => isActive ? activeStyles : undefined}>Запасы</NavLink></li>
-
-
-					</ul>)
-				}
-			</div>
+			<button>Левое меню</button>
+			Правое меню
 
 
 
 
-
-			<div className='flex justify-center items-center bg-gray-600 text-xs text-white rounded-md px-4 py-2' >
-				{isAuth ?
-					<button onClick={logoutHandler} >Выйти</button> :
-					<Link to={"/login"}>Войти</Link>
-				}
-			</div>
 
 
 		</div>
