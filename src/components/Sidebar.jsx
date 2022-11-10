@@ -24,21 +24,21 @@ const Sidebar = () => {
 
 
 	return (
-		<div className='flex w-40  bg-gray-500 bg-opacity-50  h-full  p-4 '>
+		<div className='hidden w-40  bg-gray-500 bg-opacity-50  h-full  p-4  md:flex'>
 			{isAuth &&
 				(<ul className='flex gap-8 flex-col'>
 
 					<li><NavLink to={"/"} className='text-lg text-black hover:text-white' style={({ isActive }) => isActive ? activeStyles : undefined} >Главная</NavLink></li>
-					
+
 					<li><NavLink to={"rows"} className='text-lg text-black hover:text-white' style={({ isActive }) => isActive ? activeStyles : undefined}>Запасы</NavLink></li>
 
 
 					<div className='flex justify-center items-center bg-gray-600 text-xs text-white rounded-md px-4 py-2' >
-				{isAuth ?
-					<button onClick={logoutHandler} >Выйти</button> :
-					<Link to={"/login"}>Войти</Link>
-				}
-			</div>
+						{isAuth ?
+							<button onClick={logoutHandler} >Выйти</button> :
+							<Link to={"/login"}>Войти</Link>
+						}
+					</div>
 
 				</ul>)
 			}
