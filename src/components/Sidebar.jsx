@@ -29,16 +29,18 @@ const Sidebar = () => {
 				(<ul className='flex gap-8 flex-col'>
 
 					<li><NavLink to={"/"} className='text-lg text-black hover:text-white' style={({ isActive }) => isActive ? activeStyles : undefined} >Главная</NavLink></li>
-					
+
 					<li><NavLink to={"rows"} className='text-lg text-black hover:text-white' style={({ isActive }) => isActive ? activeStyles : undefined}>Запасы</NavLink></li>
+
+					<li><NavLink to={"artszones"} className='text-lg text-black hover:text-white' style={({ isActive }) => isActive ? activeStyles : undefined}>Загрузка зон</NavLink></li>
 
 
 					<div className='flex justify-center items-center bg-gray-600 text-xs text-white rounded-md px-4 py-2' >
-				{isAuth ?
-					<button onClick={logoutHandler} >Выйти</button> :
-					<Link to={"/login"}>Войти</Link>
-				}
-			</div>
+						{isAuth ?
+							<button onClick={logoutHandler} >Выйти</button> :
+							<Link to={"/login"}>Войти</Link>
+						}
+					</div>
 
 				</ul>)
 			}
