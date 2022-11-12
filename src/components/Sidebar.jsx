@@ -24,7 +24,7 @@ const Sidebar = () => {
 
 
 	return (
-		<div className='flex w-40  bg-gray-500 bg-opacity-50  h-full  p-4 '>
+		<div className='hidden w-40  bg-gray-500 bg-opacity-50  h-full  p-4  md:flex'>
 			{isAuth &&
 				(<ul className='flex gap-8 flex-col'>
 
