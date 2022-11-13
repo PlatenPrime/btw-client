@@ -1,30 +1,24 @@
 import React from 'react';
-import Navbar from './Navbar';
-import Sidebar from './Sidebar';
-import Drawbar from './Drawbar';
+
+
+
 import { useState } from 'react';
+import NavbarBTW from './NavbarBTW';
+
 
 const Layout = ({ children }) => {
-
-	const [openDraw, setOpenDraw] = useState(false);
 
 
 
 
 	return (
 		<>
-			<div className='container mx-auto flex flex-col w-full'>
+			<div >
 
-				<Navbar setOpenDraw={setOpenDraw} />
+				<NavbarBTW />
 
+				{children}
 
-				<div className="w-full flex flex-row">
-
-					<Sidebar />
-
-					{children}
-
-				</div>
 
 			</div>
 

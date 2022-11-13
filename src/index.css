@@ -8,14 +8,8 @@
 body {
 	
 	font-family: 'Poppins', sans-serif;
-	
+	background-color: rgb(224 242 254);
 
-
-
-	
-background: #175dff;  /* fallback for old browsers */
-background: -webkit-linear-gradient(to bottom, #373F51, #7fd4ff);  /* Chrome 10-25, Safari 5.1-6 */
-background: linear-gradient(to bottom, #155bff, #002436); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 
       
     min-height: 101vh;

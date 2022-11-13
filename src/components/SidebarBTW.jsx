@@ -4,6 +4,7 @@ import { Link, NavLink } from "react-router-dom";
 import { checkIsAuth, logout } from '../redux/features/auth/authSlice';
 import { toast } from 'react-toastify';
 
+
 const Sidebar = () => {
 
 
@@ -11,7 +12,7 @@ const Sidebar = () => {
 	const dispatch = useDispatch();
 
 	const activeStyles = {
-		color: "white",
+		color: "gray",
 	}
 
 
@@ -45,6 +46,10 @@ const Sidebar = () => {
 				</ul>)
 			}
 		</div>
+
+
+
+
 	);
 };
 

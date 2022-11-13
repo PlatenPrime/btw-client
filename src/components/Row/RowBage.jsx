@@ -27,7 +27,7 @@ const RowBage = ({ row }) => {
 			<Link to={`${row._id}`} className='' >
 
 				<div
-					className='p-2 flex justify-center   text-white   
+					className='p-2 flex justify-center   text-black   
 					border-x-8 border-x-slate-400
 					border-y-4 border-y-orange-500'>
 
