@@ -32,34 +32,44 @@ const RowTitle = ({ title, setTitle, isRowEditing }) => {
 
 	return (
 
-		<div 
-		className='text-lg  
-		w-2/3  
-		mx-auto 
-		border border-red-600
+		<div
+			className='
+			relative
+		text-3xl  
+		w-full  h-16
+		bg-sky-500
+		hover:bg-sky-400
+		transition ease-out duration-300
+		border-y-4
+		border-y-orange-400
+
 		'>
 
-			{isEditingTitle ?
+			{isEditingTitle
 
-				<div className='flex justify-between w-full  '>
+				?
+
+				<div className='h-full flex justify-center items-center '>
 
 					<input
-						className=' outline-none  '
+						className=' outline-none text-xl bg-sky-100 rounded'
 						type="text"
 						value={newTitle}
 						placeholder='Название...'
 						onChange={e => setNewTitle(e.target.value)} />
 
 
-					{isRowEditing && <button
-						className=  '  '
-						onClick={handlerSaveTitle}
-
-					>
-						<SaveIcon />
-
-
-					</button>}
+					{isRowEditing &&
+						<button
+							className=' 
+						absolute top-1 right-1 text-gray-600
+						hover:text-gray-200
+						transition ease-out duration-300
+						'
+							onClick={handlerSaveTitle}
+						>
+							<SaveIcon />
+						</button>}
 
 				</div>
 
@@ -67,38 +77,35 @@ const RowTitle = ({ title, setTitle, isRowEditing }) => {
 				:
 
 
-				<div className='flex w-full justify-left '>
-
+				<div className='h-full flex justify-center items-center  '>
 
 					{title && <h2
-						className='flex items-center   '
+						className='flex    '
 					>{newTitle}</h2>}
 
 
-					{title ?
+					{
+						title ?
+							isRowEditing && <button
+								className=' 
+								absolute top-1 right-1 text-gray-600
+								hover:text-gray-200
+								transition ease-out duration-300
+								'
+								onClick={handlerEditTitle}
+							>
+								<EditIcon />
+							</button>
 
-						isRowEditing && <button
-							className='  '
-							onClick={handlerEditTitle}
+							:
 
-						>
-
-
-							<EditIcon />
-
-
-						</button>
-
-						:
-
-						isRowEditing && <button
-							className=' text-lg flex justify-center   w-full'
-							onClick={handlerEditTitle}
-
-						>Добавить название</button>
-
+							isRowEditing && <button
+								className=' text-lg flex justify-center  w-full'
+								onClick={handlerEditTitle}
+							>
+								Добавить название
+							</button>
 					}
-
 
 				</div>
 

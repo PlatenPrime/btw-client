@@ -29,7 +29,7 @@ const RowItem = (
 
 	return (
 		<div
-			className='p-5 space-y-10 my-10 
+			className='space-y-10 my-10 
 		border border-red-500
 		
 		
