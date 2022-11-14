@@ -1,6 +1,10 @@
 import { Navbar } from 'flowbite-react';
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { Link, NavLink } from "react-router-dom";
+import { checkIsAuth, logout } from '../redux/features/auth/authSlice';
+import { toast } from 'react-toastify';
+
 
 import BTWsvg from "../assets/images/BTW.svg";
 
@@ -10,12 +14,21 @@ import DrawIcon from "./Icons/DrawIcon";
 
 const NavbarBTW = () => {
 
+	const isAuth = useSelector(checkIsAuth);
+	const dispatch = useDispatch();
+
 
 	const activeStyles = {
 		color: "black",
-		
+
 	}
 
+
+	const logoutHandler = () => {
+		dispatch(logout())
+		window.localStorage.removeItem('token')
+		toast('Вы вышли из системы')
+	}
 
 
 	return (
@@ -45,34 +58,40 @@ const NavbarBTW = () => {
 
 				<Navbar.Toggle />
 				<Navbar.Collapse>
-					<Navbar.Link
-					>
+
+
+					<Navbar.Link>
 						<NavLink
-							to={"/"}
-							className="text-gray-500"
+							to={"rows"}
 							style={({ isActive }) => isActive ? activeStyles : undefined}
-
-						>Главная</NavLink>
-
+						>
+							Запасы
+						</NavLink>
 					</Navbar.Link>
 
 
+					<Navbar.Link>
+						<NavLink
+							to={"artszones"}
+							style={({ isActive }) => isActive ? activeStyles : undefined}
+						>
+							Установка зон
+						</NavLink>
+					</Navbar.Link>
 
 
 					<Navbar.Link>
 
-						<NavLink
-							to={"rows"}
-							style={({ isActive }) => isActive ? activeStyles : undefined}
-
-						>
-
-							Запасы
-
-
-						</NavLink>
+						{isAuth ?
+							<button
+							className="text-red-600"
+							onClick={logoutHandler} >Выйти</button> :
+							<Link to={"/login"}>Войти</Link>
+						}
 
 					</Navbar.Link>
+
+
 
 
 

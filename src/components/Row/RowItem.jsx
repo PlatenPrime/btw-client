@@ -14,7 +14,7 @@ const RowItem = (
 		title,
 		setTitle,
 		pallets,
-	
+
 
 	}
 
@@ -28,7 +28,12 @@ const RowItem = (
 
 
 	return (
-		<div className='p-5 space-y-10'>
+		<div
+			className='p-5 space-y-10 my-10 
+		border border-red-500
+		
+		
+		'>
 
 			<RowTitle
 				isRowEditing={isRowEditing}

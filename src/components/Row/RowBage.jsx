@@ -28,10 +28,22 @@ const RowBage = ({ row }) => {
 
 				<div
 					className='p-2 flex justify-center   text-black   
+					bg-slate-500 hover:bg-slate-400 transition ease-out duration-300
 					border-x-8 border-x-slate-400
-					border-y-4 border-y-orange-500'>
+					border-y-4 border-y-orange-500 hover:border-y-orange-400
+					hover:shadow-lg
+					hover:rounded
+					'>
 
-					<span className='flex  items-center text-xl '>{row.title}</span>
+					<span 
+					className='flex p-1 bg-white items-center text-xl
+					transition ease-out duration-300
+					rounded
+					'
+					
+					
+					
+					>{row.title}</span>
 
 				</div>
 
