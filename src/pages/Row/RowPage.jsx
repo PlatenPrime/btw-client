@@ -14,6 +14,7 @@ import { removeRow, updateRow } from "../../redux/features//row/rowSlice";
 import { checkIsAuth } from '../../redux/features/auth/authSlice';
 
 import RowItem from "../../components/Row/RowItem";
+import { Spinner } from 'flowbite-react';
 
 
 
@@ -177,16 +178,15 @@ const RowPage = () => {
 		<div className='mx-auto w-4/5  shadow-lg shadow-slate-400 rounded-b-md'>
 
 
+				<RowItem
+					isRowEditing={isRowEditing}
+					title={title}
+					setTitle={setTitle}
+					pallets={pallets}
+				/>
 
-			<RowItem
-				isRowEditing={isRowEditing}
-				title={title}
-				setTitle={setTitle}
-				pallets={pallets}
+				
 
-
-
-			/>
 
 
 			{isRowEditing &&

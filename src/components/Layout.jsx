@@ -1,3 +1,4 @@
+import { Spinner } from 'flowbite-react';
 import React from 'react';
 
 
@@ -16,6 +17,8 @@ const Layout = ({ children }) => {
 			<div >
 
 				<NavbarBTW />
+
+
 
 				{children}
 
