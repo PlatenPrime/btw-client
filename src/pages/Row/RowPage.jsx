@@ -15,6 +15,8 @@ import { checkIsAuth } from '../../redux/features/auth/authSlice';
 
 import RowItem from "../../components/Row/RowItem";
 import { Spinner } from 'flowbite-react';
+import ButtonGroupBTW from '../../components/UI/ButtonGroupBTW';
+import LayoutBTW from '../../components/UI/LayoutBTW';
 
 
 
@@ -175,17 +177,17 @@ const RowPage = () => {
 	return (
 
 
-		<div className='mx-auto w-4/5  shadow-lg shadow-slate-400 rounded-b-md'>
+		<LayoutBTW className=''>
 
 
-				<RowItem
-					isRowEditing={isRowEditing}
-					title={title}
-					setTitle={setTitle}
-					pallets={pallets}
-				/>
+			<RowItem
+				isRowEditing={isRowEditing}
+				title={title}
+				setTitle={setTitle}
+				pallets={pallets}
+			/>
 
-				
+
 
 
 
@@ -197,11 +199,11 @@ const RowPage = () => {
 						isPalletCreate ?
 
 
-							<div className='w-5/6 flex mx-auto flex-col items-center'>
+							<div className=''>
 
 
 								<input
-									className='text-white rounded-md pl-2 py-3 bg-slate-600 bg-opacity-80 outline-none w-5/6 my-3 flex justify-center'
+									className=''
 									type="text"
 									value={palletTitle}
 									placeholder='Название...'
@@ -212,15 +214,15 @@ const RowPage = () => {
 
 
 
-								<div className='flex justify-between w-5/6'>
+								<div className=''>
 									<button
 										onClick={handlerCreatePallet}
-										className=' flex justify-center text-md text-white p-1 rounded-lg  my-1  bg-green-600'
+										className=' '
 									>
 										Добавить
 									</button>
 									<button
-										className=' flex justify-center text-md text-red-600 p-1 rounded-lg  my-1  bg-white'
+										className=' '
 										onClick={() => setIsPalletCreate(false)}
 									>Отменить</button>
 								</div>
@@ -229,7 +231,7 @@ const RowPage = () => {
 							</div>
 							:
 							<button
-								className=' flex justify-center text-lg text-white p-1 rounded-lg  my-1 mx-auto  bg-orange-400'
+								className=' '
 								onClick={() => setIsPalletCreate(true)}
 							>Добавить паллету</button>
 
@@ -245,18 +247,18 @@ const RowPage = () => {
 
 
 
-			<div className='flex justify-center  w-full mt-10  my-3'>
+			<ButtonGroupBTW className=''>
 
 
 
 				{isRowEditing ?
 
-					<div className='p-1'>
+					<div className=''>
 
 
 
 						<button
-							className='w-full text-lg text-white p-2 rounded-lg  my-1  bg-red-600'
+							className=' '
 							onClick={handlerCancelRowEditing}
 
 						>
@@ -265,7 +267,7 @@ const RowPage = () => {
 						</button>
 
 						<button
-							className='w-full text-lg text-white p-2 rounded-lg   my-1  bg-green-600'
+							className=' '
 							onClick={handlerRowSave}
 
 						>
@@ -275,13 +277,8 @@ const RowPage = () => {
 
 
 
-
-
-
-
-
 						<button
-							className='w-full text-lg font-bold  text-red-600 p-2 rounded-lg  my-1 border '
+							className='   '
 							onClick={handlerRowRemove}
 						>
 							Удалить ряд
@@ -294,14 +291,13 @@ const RowPage = () => {
 
 
 
-
-
-
 					:
 
-					<div className='w-full p-1' >
+
+
+					<div className='' >
 						<button
-							className=' w-full text-xl text-white p-2 rounded-lg  my-1   bg-blue-500'
+							className='  '
 							onClick={handlerRowEdit}
 						>Редактировать</button>
 
@@ -311,10 +307,10 @@ const RowPage = () => {
 
 
 
-			</div>
+			</ButtonGroupBTW>
 
 
-		</div>
+		</LayoutBTW>
 
 
 

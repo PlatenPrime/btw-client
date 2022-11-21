@@ -40,7 +40,7 @@ const PalletPositions = ({ positions, setPositions, isPalletEditing }) => {
 
 			{newPositions &&
 
-				<div className='border rounded-md'>
+				<div className=''>
 
 					{
 						newPositions.map((position) => {

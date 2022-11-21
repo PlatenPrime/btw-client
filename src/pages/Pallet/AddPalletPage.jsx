@@ -69,11 +69,11 @@ const AddPalletPage = () => {
 
 
 	return (
-		<div className='border p-5'>
+		<div className=''>
 
-			<h1 className='my-5 text-white'>Введи название паллеты  и позиции на ней </h1>
+			<h1 className=''>Введи название паллеты  и позиции на ней </h1>
 
-			<div className='mx-auto w-3/4  shadow-lg shadow-slate-400 rounded-b-md' >
+			<div className='' >
 
 
 
@@ -88,16 +88,16 @@ const AddPalletPage = () => {
 				/>
 
 
-				<div className='flex my-3'>
+				<div className=''>
 
 					<button
-						className='bg-green-500 p-3 rounded-lg mx-auto block text-white'
+						className=''
 						onClick={handlerSubmit}
 					>Сохранить паллету в базу данных</button>
 
 
 					<button
-						className='bg-red-300 p-3 rounded-lg mx-auto block text-white'
+						className=''
 						onClick={handlerClearForm}
 					>Очистить форму</button>
 

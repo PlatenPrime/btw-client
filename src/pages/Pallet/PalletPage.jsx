@@ -123,7 +123,7 @@ const PalletPage = () => {
 
 
 	return (
-		<div className='mx-auto w-4/5  shadow-lg shadow-slate-400 rounded-b-md'>
+		<div className=''>
 
 
 
@@ -143,17 +143,17 @@ const PalletPage = () => {
 
 
 
-			<div className='flex justify-center  w-full  my-3'>
+			<div className=''>
 
 
 
 				{isPalletEditing ?
 
-					<div className='p-1'>
+					<div className=''>
 
 
 						<button
-							className='w-full text-lg text-red-600 p-2 rounded-lg  my-1  bg-white'
+							className=''
 							onClick={handlerCancelPalletEditing}
 
 						>
@@ -162,7 +162,7 @@ const PalletPage = () => {
 						</button>
 
 						<button
-							className='w-full text-lg text-white p-2 rounded-lg   my-1  bg-green-600'
+							className=''
 							onClick={handlerPalletSave}
 
 						>

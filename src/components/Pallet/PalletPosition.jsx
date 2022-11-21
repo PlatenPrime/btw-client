@@ -79,24 +79,24 @@ const PalletPosition = ({ positions, setPositions, isPalletEditing, art, pieces,
 
 
 
-		<div className="text-white text-lg flex border m-1 justify-between">
+		<div className="">
 
 
 
 			{isPalletEditing && isPositionEditing ?
 
 
-				<div className='w-2/3 flex p-1'>
+				<div className=''>
 
 					<input type="text"
-						className='text-black rounded-md pl-1 bg-white bg-opacity-50 p-1  outline-none mx-1 w-1/2'
+						className=''
 						value={newArt}
 						onChange={(e) => setNewArt(e.target.value)}
 
 					/>
 
 					<input type="number"
-						className='text-black rounded-md pl-1 bg-white bg-opacity-50 p-1   outline-none mx-1 w-1/2'
+						className=''
 						value={newPieces}
 						onChange={(e) => setNewPieces(e.target.value)}
 					/>
@@ -106,7 +106,7 @@ const PalletPosition = ({ positions, setPositions, isPalletEditing, art, pieces,
 
 				:
 				<h1
-					className='m-2'
+					className=''
 				>
 					{newArt} : {newPieces}
 
@@ -117,22 +117,22 @@ const PalletPosition = ({ positions, setPositions, isPalletEditing, art, pieces,
 
 			{isPalletEditing &&
 
-				<div className='w-1/3'>
+				<div className=''>
 
 
 					{isPositionEditing ?
 
-						<div className='flex  justify-end p-1 '>
+						<div className=''>
 
 							<button
-								className='   bg-red-600 text-white p-1 rounded-lg mr-1 '
+								className='   '
 								onClick={() => handlerPositionDelete(id)}
 							>
 								<DeleteIcon />
 							</button>
 
 							<button
-								className='   bg-green-600 text-white p-1 rounded-lg ml-1 '
+								className='   '
 								onClick={() => handlerPositionSave(id)}
 							>
 								<SaveIcon />
@@ -149,10 +149,10 @@ const PalletPosition = ({ positions, setPositions, isPalletEditing, art, pieces,
 
 
 
-						<div className='flex justify-end'>
+						<div className=''>
 
 							<button
-								className='text-white flex justify-end  rounded-md p-1  '
+								className='  '
 								onClick={() => handlerPositionEdit(id)}
 							>
 								<EditIcon />

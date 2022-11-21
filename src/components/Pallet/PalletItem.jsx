@@ -44,7 +44,7 @@ const PalletItem = ({
 			/>
 
 
-			{isPalletEditing && <div className='flex justify-center'>
+			{isPalletEditing && <div className=''>
 
 				<PalletPositionAdd
 					isPalletEditing={isPalletEditing}

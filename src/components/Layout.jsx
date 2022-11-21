@@ -4,7 +4,7 @@ import React from 'react';
 
 
 import { useState } from 'react';
-import NavbarBTW from './NavbarBTW';
+import NavbarBTW from './UI/NavbarBTW';
 
 
 const Layout = ({ children }) => {
@@ -14,13 +14,15 @@ const Layout = ({ children }) => {
 
 	return (
 		<>
-			<div >
+			<div className=''>
 
 				<NavbarBTW />
 
+			
+					{children}
+				
 
 
-				{children}
 
 
 			</div>
@@ -30,3 +32,8 @@ const Layout = ({ children }) => {
 };
 
 export default Layout;
+
+
+
+
+/// Нам надо чтобы был вертикальный общий лейаут, но внутри респонсив лейаут

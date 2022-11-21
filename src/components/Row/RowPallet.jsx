@@ -15,7 +15,7 @@ const RowPallet = ({ title, id }) => {
 
 	return (
 
-		<div className='text-white bg-blue-600 text-lg flex justify-center m-2'>
+		<div className=''>
 
 			<Link to={`/pallets/${id}`}>{title}</Link>
 

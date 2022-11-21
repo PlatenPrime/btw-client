@@ -38,21 +38,21 @@ const RowsPage = () => {
 
 
 
-		<div className='max-w-[900px] mx-auto py-10 w-full'  >
+		<div className=''  >
 
 			<Link to="new"
 
-			><button className='text-xl text-white p-2 rounded-lg  block mx-auto w-full bg-green-600' >Создать новый ряд</button></Link>
+			><button className='' >Создать новый ряд</button></Link>
 
 			{!rows.length ?
 
-				<div className='text-xl text-center text-white py-10'>
+				<div className=''>
 					В базе данных нет ни одного ряда.
 				</div>
 				:
 
-				<div className='mx-auto  w-3/4'>
-					<h2 className='text-xl text-white my-6'>В базе данных на текущий момент есть такие ряды:</h2>
+				<div className=''>
+					<h2 className=''>В базе данных на текущий момент есть такие ряды:</h2>
 					{rows?.map((row, idx) => (
 						<RowBage key={idx} row={row} />
 					))}

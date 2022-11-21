@@ -2,15 +2,15 @@ import { Navbar } from 'flowbite-react';
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, NavLink } from "react-router-dom";
-import { checkIsAuth, logout } from '../redux/features/auth/authSlice';
+import { checkIsAuth, logout } from '../../redux/features/auth/authSlice';
 import { toast } from 'react-toastify';
 
 
-import BTWsvg from "../assets/images/BTW.svg";
+import BTWsvg from "../../assets/images/BTW.svg";
 
 
-import BurgerIcon from "./Icons/BurgerIcon";
-import DrawIcon from "./Icons/DrawIcon";
+import BurgerIcon from "../Icons/BurgerIcon";
+import DrawIcon from "../Icons/DrawIcon";
 
 const NavbarBTW = () => {
 
@@ -84,8 +84,8 @@ const NavbarBTW = () => {
 
 						{isAuth ?
 							<button
-							className="text-red-600"
-							onClick={logoutHandler} >Выйти</button> :
+								className="text-red-600"
+								onClick={logoutHandler} >Выйти</button> :
 							<Link to={"/login"}>Войти</Link>
 						}
 

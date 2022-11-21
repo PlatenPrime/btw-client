@@ -6,23 +6,23 @@ const PalletBage = ({ pallet }) => {
 
 	if (!pallet) {
 		return (
-			<div className='text-xl text-center text-white py-10'>
+			<div className=''>
 				Загрузка...
 			</div>
 		)
 	}
 
 	return (
-		<div className='flex flex-col justify-center my-5 ' >
+		<div className=' ' >
 
 
 
 
-			<Link to={`${pallet._id}`} className='my-1 mx-1 p-1 rounded-md' >
+			<Link to={`${pallet._id}`} className='' >
 
-				<div className='p-2 flex justify-between bg-blue-400 text-white shadow-lg shadow-slate-400 rounded-md'>
+				<div className=''>
 
-					<span className='flex items-center text-lg'>Паллета {pallet.title}</span>
+					<span className=''>Паллета {pallet.title}</span>
 				</div>
 
 			</Link>

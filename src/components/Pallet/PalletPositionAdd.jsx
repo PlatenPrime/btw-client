@@ -58,23 +58,23 @@ const PalletPositionAdd = ({ positions, setPositions }) => {
 
 	return (
 
-		<div className='w-full'>
+		<div className=''>
 
 
 
 			{isPositionAdding ?
 
-				<div className='flex justify-between p-2 my-3'>
+				<div className=''>
 
 
 
 
 					<div
-						className='w-2/3 flex p-1'
+						className=''
 					>
 
 						<input type="text"
-							className='text-black rounded-md pl-1 bg-white bg-opacity-50 p-1  outline-none mx-1 w-1/2'
+							className=''
 							value={art}
 							onChange={(e) => setArt(e.target.value)}
 							placeholder="Артикул"
@@ -82,7 +82,7 @@ const PalletPositionAdd = ({ positions, setPositions }) => {
 						/>
 
 						<input type="number"
-							className='text-black rounded-md pl-1 bg-white bg-opacity-50 p-1   outline-none mx-1 w-1/2'
+							className=''
 							value={pieces}
 							onChange={(e) => setPieces(e.target.value)}
 							placeholder="Количество"
@@ -94,10 +94,10 @@ const PalletPositionAdd = ({ positions, setPositions }) => {
 					</div>
 
 
-					<div className='w-1/3 flex  justify-center p-1 mx-auto' >
+					<div className='' >
 
 						<button
-							className='   bg-green-600 text-white p-1 rounded-lg mr-1 '
+							className='    '
 							onClick={handlerPositionAddSave}
 						>
 							<SaveIcon />
@@ -106,7 +106,7 @@ const PalletPositionAdd = ({ positions, setPositions }) => {
 
 
 						<button
-							className='   bg-white text-red-600 p-1 rounded-lg ml-1'
+							className='  '
 							onClick={handlerPositionAddCancel}
 						>
 							<CancelIcon />

@@ -31,22 +31,11 @@ const MainPage = () => {
 		<div className='max-w-[1280px] mx-auto ' >
 
 			<div
-				className='w-full p-3 mx-auto bg-gray-500 flex justify-center  border-y-4'
+				className=''
 
 			>Панель быстрого доступа</div>
 
-			<div className='flex min-h-40 py-4'>
-				<div className='w-1/2 m-4 border flex justify-center p-3 bg-green-500 text-white text-md'>
-					Найти артикул
-				</div>
-				<div className='w-1/2 m-4 border flex justify-center p-3  bg-blue-500 text-white text-md'>
-					Попросить снять
-				</div>
-				<div className='w-1/2 m-4 border flex justify-center p-3  bg-teal-500 text-white text-md'>
-					Принести на кассу
-				</div>
-			</div>
-
+		
 		</div>
 	);
 };

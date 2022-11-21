@@ -75,11 +75,11 @@ const AddRowPage = () => {
 
 	return (
 
-		<div className='border p-5'>
+		<div className=''>
 
-			<h1 className='my-1 text-white flex justify-center'>Введи название ряда</h1>
+			<h1 className=''>Введи название ряда</h1>
 
-			<div className='mx-auto w-3/4  shadow-lg shadow-slate-400 rounded-b-md' >
+			<div className='' >
 
 
 
@@ -93,16 +93,16 @@ const AddRowPage = () => {
 				/>
 
 
-				<div className='flex flex-col my-3 items-center'>
+				<div className=''>
 
 
 					<button
-						className='bg-white p-2 rounded-lg mx-auto my-1 mx-1 block text-red-600 w-5/6 flex justify-center'
+						className=''
 						onClick={handlerClearForm}
 					>Очистить форму</button>
 
 					<button
-						className='bg-green-500 p-2 rounded-lg mx-auto my-1 mx-1 block text-white w-5/6'
+						className=''
 						onClick={handlerSubmit}
 					>Сохранить ряд в БД</button>
 

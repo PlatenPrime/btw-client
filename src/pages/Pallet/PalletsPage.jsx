@@ -31,10 +31,10 @@ const PalletsPage = () => {
 
 	return (
 
-		<div className='max-w-[900px] mx-auto py-10 w-full'  >
+		<div className=''  >
 
 			<Link to="new">
-				<button className='text-xl text-white p-2 rounded-lg  block mx-auto w-full bg-green-600' >
+				<button className='' >
 					Создать новую паллету
 				</button>
 			</Link>
@@ -42,13 +42,13 @@ const PalletsPage = () => {
 
 			{!pallets.length ?
 
-				<div className='text-xl text-center text-white py-10'>
+				<div className=''>
 					В базе данных нет ни одной паллеты.
 				</div>
 				:
 
-				<div className='mx-auto  w-3/4'>
-					<h2 className='text-xl my-6'>В базе данных на текущий момент есть такие паллеты:</h2>
+				<div className=''>
+					<h2 className=''>В базе данных на текущий момент есть такие паллеты:</h2>
 					{pallets?.map((pallet, idx) => (
 						<PalletBage key={idx} pallet={pallet} />
 					))}

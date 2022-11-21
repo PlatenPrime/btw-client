@@ -29,10 +29,10 @@ const RowItem = (
 
 	return (
 		<div
-			className='space-y-10 my-10 
+			className='
+			w-full p-5
 		border border-red-500
-		
-		
+	
 		'>
 
 			<RowTitle
