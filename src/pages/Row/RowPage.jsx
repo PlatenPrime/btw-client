@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react';
+import React, { useCallback, useLayoutEffect } from 'react';
 import { useEffect } from 'react';
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
@@ -51,7 +51,7 @@ const RowPage = () => {
 	const isAuth = useSelector(checkIsAuth)
 
 
-	useEffect(() => {
+	useLayoutEffect(() => {
 		if (status) {
 			toast(status)
 		}

@@ -5,6 +5,7 @@ import React from 'react';
 
 import { useState } from 'react';
 import NavbarBTW from './UI/NavbarBTW';
+import SidebarBTW from './UI/SidebarBTW';
 
 
 const Layout = ({ children }) => {
@@ -18,9 +19,13 @@ const Layout = ({ children }) => {
 
 				<NavbarBTW />
 
-			
-					{children}
+				<div className='flex'>
+					<SidebarBTW/>
+					
+				{children}
+				</div>
 				
+
 
 
 
