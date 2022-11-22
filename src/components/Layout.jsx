@@ -20,7 +20,7 @@ const Layout = ({ children }) => {
 				<NavbarBTW />
 
 				<div className='flex'>
-					<SidebarBTW/>
+				
 					
 				{children}
 				</div>
