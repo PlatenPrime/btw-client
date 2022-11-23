@@ -1,3 +1,4 @@
+import { Card } from 'flowbite-react';
 import React, { useEffect, useState } from 'react';
 import RowPallet from "./RowPallet";
 
@@ -26,7 +27,7 @@ const RowPallets = ({ pallets }) => {
 	return (
 
 
-		<div>
+		<Card className='mx-auto'>
 
 			{newPallets &&
 
@@ -57,7 +58,7 @@ const RowPallets = ({ pallets }) => {
 			}
 
 
-		</div>
+		</Card>
 
 
 	);

@@ -1,3 +1,4 @@
+import { Card } from 'flowbite-react';
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 
@@ -20,7 +21,7 @@ const RowBage = ({ row }) => {
 
 
 	return (
-		<div className=' ' >
+		<Card className='my-2 flex justify-center mx-auto ' >
 
 
 
@@ -30,13 +31,7 @@ const RowBage = ({ row }) => {
 					className='
 					'>
 
-					<span
-						className='
-					'
-
-
-
-					>{row.title}</span>
+					{row.title}
 
 				</div>
 
@@ -45,7 +40,7 @@ const RowBage = ({ row }) => {
 
 
 
-		</div>
+		</Card>
 	);
 };
 

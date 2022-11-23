@@ -1,6 +1,7 @@
 import React from 'react';
 import RowTitle from './RowTitle';
 import RowPallets from "./RowPallets";
+import { Card } from 'flowbite-react';
 
 
 
@@ -28,10 +29,9 @@ const RowItem = (
 
 
 	return (
-		<div
+		<Card
 			className='
-			w-full p-5
-		border border-red-500
+			mx-auto
 	
 		'>
 
@@ -55,7 +55,7 @@ const RowItem = (
 
 
 
-		</div>
+		</Card>
 	);
 };
 

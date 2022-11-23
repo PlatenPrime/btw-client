@@ -11,6 +11,7 @@ import { getAllRows } from '../../redux/features/row/rowSlice';
 
 
 import RowBage from "../../components/Row/RowBage";
+import { Button, Card } from 'flowbite-react';
 
 
 
@@ -38,11 +39,11 @@ const RowsPage = () => {
 
 
 
-		<div className=''  >
+		<Card className='mx-auto my-5'  >
 
 			<Link to="new"
 
-			><button className='' >Создать новый ряд</button></Link>
+			><Button className='w-full' >Создать новый ряд</Button></Link>
 
 			{!rows.length ?
 
@@ -52,7 +53,7 @@ const RowsPage = () => {
 				:
 
 				<div className=''>
-					<h2 className=''>В базе данных на текущий момент есть такие ряды:</h2>
+					<h2 className='text-xl'>В базе данных на текущий момент есть такие ряды:</h2>
 					{rows?.map((row, idx) => (
 						<RowBage key={idx} row={row} />
 					))}
@@ -61,7 +62,7 @@ const RowsPage = () => {
 
 			}
 
-		</div >
+		</Card >
 
 
 	);

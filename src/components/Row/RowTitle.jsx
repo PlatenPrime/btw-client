@@ -1,3 +1,4 @@
+import { Button } from 'flowbite-react';
 import React, { useEffect, useState } from 'react';
 import TitleBTW from '../UI/TitleBTW';
 
@@ -50,14 +51,14 @@ const RowTitle = ({ title, setTitle, isRowEditing }) => {
 							placeholder='Название...'
 							onChange={e => setNewTitle(e.target.value)} />
 						{isRowEditing &&
-							<button
+							<Button
 								className='
 							
 							'
 								onClick={handlerSaveTitle}
 							>
 								<SaveIcon />
-							</button>}
+							</Button>}
 					</div>
 					:
 					<div className='  '>
@@ -66,21 +67,21 @@ const RowTitle = ({ title, setTitle, isRowEditing }) => {
 						>{newTitle}</h2>}
 						{
 							title ?
-								isRowEditing && <button
+								isRowEditing && <Button
 									className='
 									
 									'
 									onClick={handlerEditTitle}
 								>
 									<EditIcon />
-								</button>
+								</Button>
 								:
-								isRowEditing && <button
+								isRowEditing && <Button
 									className=' '
 									onClick={handlerEditTitle}
 								>
 									Добавить название
-								</button>
+								</Button>
 						}
 					</div>
 				}

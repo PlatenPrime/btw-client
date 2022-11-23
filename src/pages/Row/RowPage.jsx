@@ -14,7 +14,7 @@ import { removeRow, updateRow } from "../../redux/features//row/rowSlice";
 import { checkIsAuth } from '../../redux/features/auth/authSlice';
 
 import RowItem from "../../components/Row/RowItem";
-import { Spinner } from 'flowbite-react';
+import { Button, Card, Spinner } from 'flowbite-react';
 import ButtonGroupBTW from '../../components/UI/ButtonGroupBTW';
 import LayoutBTW from '../../components/UI/LayoutBTW';
 
@@ -177,7 +177,7 @@ const RowPage = () => {
 	return (
 
 
-		<LayoutBTW className=''>
+		<Card className='mx-auto my-5'>
 
 
 			<RowItem
@@ -230,10 +230,10 @@ const RowPage = () => {
 
 							</div>
 							:
-							<button
-								className=' '
+							<Button
+								className=' mx-auto'
 								onClick={() => setIsPalletCreate(true)}
-							>Добавить паллету</button>
+							>Добавить паллету</Button>
 
 
 					}
@@ -257,33 +257,34 @@ const RowPage = () => {
 
 
 
-						<button
-							className=' '
+						<Button
+							className='w-full my-1 '
 							onClick={handlerCancelRowEditing}
-
+							color="light"
 						>
 							Отмена
 
-						</button>
+						</Button>
 
-						<button
-							className=' '
+						<Button
+							className='w-full my-1 '
 							onClick={handlerRowSave}
-
+							color="success"
 						>
 							Сохранить
 
-						</button>
+						</Button>
 
 
 
-						<button
-							className='   '
+						<Button
+							className='w-full  my-1 '
 							onClick={handlerRowRemove}
+							color="failure"
 						>
 							Удалить ряд
 
-						</button>
+						</Button>
 
 
 
@@ -296,10 +297,10 @@ const RowPage = () => {
 
 
 					<div className='' >
-						<button
+						<Button
 							className='  '
 							onClick={handlerRowEdit}
-						>Редактировать</button>
+						>Редактировать</Button>
 
 					</div>
 				}
@@ -310,7 +311,7 @@ const RowPage = () => {
 			</ButtonGroupBTW>
 
 
-		</LayoutBTW>
+		</Card>
 
 
 
