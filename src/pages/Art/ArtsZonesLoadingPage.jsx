@@ -1,5 +1,8 @@
 import { Button, Label, Spinner, Textarea, Tooltip } from 'flowbite-react';
-import React, { useState } from 'react';
+import React, { useLayoutEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+import { checkIsAuth } from '../../redux/features/auth/authSlice';
 
 import axios from '../../utils/axios';
 
@@ -10,8 +13,15 @@ const ArtsZonesLoadingPage = () => {
 	const [artsZones, setArtsZones] = useState([]);
 	const [isLoading, setIsLoading] = useState(false);
 
+	const navigate = useNavigate()
+	const isAuth = useSelector(checkIsAuth)
 
-	console.log(artsZones)
+
+	useLayoutEffect(() => {
+
+		if (!isAuth) navigate('/login')
+	}, [isAuth, navigate])
+
 
 
 

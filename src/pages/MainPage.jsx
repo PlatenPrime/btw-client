@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useLayoutEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { checkIsAuth } from '../redux/features/auth/authSlice';
@@ -17,7 +17,7 @@ const MainPage = () => {
 	const isAuth = useSelector(checkIsAuth)
 
 
-	useEffect(() => {
+	useLayoutEffect(() => {
 
 		if (!isAuth) navigate('/login')
 	}, [isAuth, navigate])
