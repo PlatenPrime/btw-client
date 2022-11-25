@@ -38,6 +38,7 @@ const NavbarBTW = () => {
 			<Navbar
 				fluid={true}
 				rounded={true}
+				className="bg-sky-300"
 			>
 
 				<NavLink to={"/"}  >

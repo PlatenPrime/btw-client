@@ -19,12 +19,12 @@ const Layout = ({ children }) => {
 
 				<NavbarBTW />
 
-				<div className='flex'>
-				
-					
-				{children}
+				<div className='flex justify-center'>
+
+
+					{children}
 				</div>
-				
+
 
 
 

@@ -12,6 +12,7 @@ import { getAllRows } from '../../redux/features/row/rowSlice';
 
 import RowBage from "../../components/Row/RowBage";
 import { Button, Card } from 'flowbite-react';
+import CardBTW from '../../components/UI/CardBTW';
 
 
 
@@ -39,7 +40,7 @@ const RowsPage = () => {
 
 
 
-		<Card className='mx-auto my-5'  >
+		<CardBTW className='mx-auto my-5'  >
 
 			<Link to="new"
 
@@ -62,7 +63,7 @@ const RowsPage = () => {
 
 			}
 
-		</Card >
+		</CardBTW >
 
 
 	);
