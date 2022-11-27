@@ -34,9 +34,6 @@ const ArtsZonesLoadingPage = () => {
 		} catch (error) {
 			console.log(error)
 		}
-		await axios.post(`arts/zones`)
-
-
 
 	}
 

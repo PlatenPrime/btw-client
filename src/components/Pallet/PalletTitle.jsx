@@ -32,81 +32,81 @@ const PalletTitle = ({ title, setTitle, isPalletEditing }) => {
 	return (
 
 
-		<TitleBTW>
 
-			<div className='   '>
 
-				{isEditingTitle ?
+		<div className='   '>
 
-					<div className=''>
+			{isEditingTitle ?
 
-						<input
+				<div className=''>
+
+					<input
+						className=''
+						type="text"
+						value={newTitle}
+						placeholder='Название...'
+						onChange={e => setNewTitle(e.target.value)} />
+
+
+					{isPalletEditing && <button
+						className=''
+						onClick={handlerSaveTitle}
+
+					>
+						<SaveIcon />
+
+
+					</button>}
+
+				</div>
+
+
+				:
+
+
+				<div className=''>
+
+
+					{title && <h2
+						className=' '
+					>{newTitle}</h2>}
+
+
+					{title ?
+
+						isPalletEditing && <button
 							className=''
-							type="text"
-							value={newTitle}
-							placeholder='Название...'
-							onChange={e => setNewTitle(e.target.value)} />
-
-
-						{isPalletEditing && <button
-							className=''
-							onClick={handlerSaveTitle}
+							onClick={handlerEditTitle}
 
 						>
-							<SaveIcon />
 
 
-						</button>}
-
-					</div>
+							<EditIcon />
 
 
-					:
+						</button>
+
+						:
+
+						isPalletEditing && <button
+							className=''
+							onClick={handlerEditTitle}
+
+						>Добавить название</button>
+
+					}
 
 
-					<div className=''>
+				</div>
 
-
-						{title && <h2
-							className=' '
-						>{newTitle}</h2>}
-
-
-						{title ?
-
-							isPalletEditing && <button
-								className=''
-								onClick={handlerEditTitle}
-
-							>
-
-
-								<EditIcon />
-
-
-							</button>
-
-							:
-
-							isPalletEditing && <button
-								className=''
-								onClick={handlerEditTitle}
-
-							>Добавить название</button>
-
-						}
-
-
-					</div>
-
-				}
+			}
 
 
 
 
 
-			</div>
-		</TitleBTW>
+		</div>
+
 	);
 };
 
