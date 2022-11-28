@@ -6,38 +6,45 @@ const ArtFindPage = () => {
 	const artInput = useRef("");
 
 
-	const [dan, setDan] = useState("")
+
+
+	const [arts, setArts] = useState("")
 
 
 
 
 	useEffect(() => {
-		console.log(dan)
-	}, [dan])
+		console.log(arts)
+	}, [arts])
 
 
 
-	const fetchArt = async () => {
+	const fetchArts = async () => {
 
 		try {
 
-			const title = artInput.current.value;
-		
 
-			const data = await axios.get(`arts/title`, { title });
+
+			const { data } = await axios.get('arts');
 
 			console.log(data)
-			setDan(data)
+			setArts(data.arts)
 		} catch (error) {
 			console.log(error)
 		}
 
 	}
 
-	const handlerSubmit = () => {
-		fetchArt();
-	}
 
+
+
+
+
+
+
+	const handlerSubmit = () => {
+		fetchArts();
+	}
 
 
 
@@ -49,6 +56,8 @@ const ArtFindPage = () => {
 
 			<input type="text" ref={artInput} />
 			<button className='bg-blue-600 m-5 p-2 text-white rounded-sm' onClick={handlerSubmit} >Найти артикул</button>
+
+
 
 
 		</div>
