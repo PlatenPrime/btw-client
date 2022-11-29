@@ -36,22 +36,6 @@ const MainPage = () => {
 
 
 
-	const handlerGetArts = async () => {
-		try {
-
-
-			setIsLoading(true);
-			const { data } = await axios.get(`arts`);
-			console.log(data.arts)
-			setArts(data.arts)
-			setIsLoading(false);
-
-		} catch (error) {
-			console.log(error)
-		}
-	}
-
-
 	const handlerGetArtById = async () => {
 		try {
 
@@ -109,10 +93,7 @@ const MainPage = () => {
 
 			<TitleBTW />
 
-			<button
-				onClick={handlerGetArts}
 
-			>Получить артикулы</button>
 			<h1>Количество загруженных артикулов с базы данных: {arts.length}</h1>
 
 
