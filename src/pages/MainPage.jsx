@@ -16,7 +16,9 @@ import TitleBTW from '../components/UI/TitleBTW';
 
 const MainPage = () => {
 
-	const [article, setArticle] = useState("");
+	const [artItem, setArtItem] = useState('')
+
+	const [arts, setArts] = useState("");
 	const [pallets, setPallets] = useState("");
 	const [isLoading, setIsLoading] = useState("");
 
@@ -34,14 +36,14 @@ const MainPage = () => {
 
 
 
-	const handlerGetArtByTitle = async () => {
+	const handlerGetArts = async () => {
 		try {
 
-			const title = ""
 
 			setIsLoading(true);
-			const art = await axios.get(`arts/title`, { "title": title });
-			setArticle(art)
+			const { data } = await axios.get(`arts`);
+			console.log(data.arts)
+			setArts(data.arts)
 			setIsLoading(false);
 
 		} catch (error) {
@@ -56,7 +58,7 @@ const MainPage = () => {
 
 			setIsLoading(true);
 			const art = await axios.get(`arts/:id`);
-			setArticle(art)
+			setArtItem(art)
 			setIsLoading(false);
 
 		} catch (error) {
@@ -106,6 +108,12 @@ const MainPage = () => {
 			</CardBTW>
 
 			<TitleBTW />
+
+			<button
+				onClick={handlerGetArts}
+
+			>Получить артикулы</button>
+			<h1>Количество загруженных артикулов с базы данных: {arts.length}</h1>
 
 
 		</div>
