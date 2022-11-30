@@ -2,8 +2,9 @@ import React, { useEffect, useLayoutEffect, useRef, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
 import CardBTW from '../../components/UI/CardBTW';
+import PhotoArtBTW from '../../components/UI/PhotoArtBTW';
 import { checkIsAuth } from '../../redux/features/auth/authSlice';
-import axios from "../../utils/axios"
+import axios from "../../utils/axios";
 
 const ArtFindPage = () => {
 
@@ -63,17 +64,6 @@ const ArtFindPage = () => {
 
 
 
-	/* onClick = { navigate(`arts/${artItem._id}`)}
- */
-
-	{/* <img
-			src={photo}
-			alt="Здесь должно быть изображение артикула"
-			width="200px"
-
-		></img>
- */}
-
 
 	return (
 
@@ -88,15 +78,15 @@ const ArtFindPage = () => {
 
 
 			<div
-				onClick={navigate(`arts/${artItem._id}`)}
+				onClick={() => navigate(`/arts/${artItem._id}`)}
 			>
 				{artCardDisplay &&
 					<CardBTW
-
 					>
 						<h1>{artItem.title}</h1>
 						<h1>{artItem.name}</h1>
 						<h1>{artItem.zone}</h1>
+						<PhotoArtBTW title={artItem.title} />
 
 					</CardBTW >
 				}

@@ -82,6 +82,17 @@ const NavbarBTW = () => {
 
 
 					<Navbar.Link>
+						<NavLink
+							to={"artfind"}
+							style={({ isActive }) => isActive ? activeStyles : undefined}
+						>
+							Поиск артикула
+						</NavLink>
+					</Navbar.Link>
+
+
+
+					<Navbar.Link>
 
 						{isAuth ?
 							<button

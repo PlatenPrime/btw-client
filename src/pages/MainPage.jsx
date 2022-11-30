@@ -59,7 +59,7 @@ const MainPage = () => {
 
 			setIsLoading(true);
 
-			const pallets = await axios.get(`pallets/art`, { "art": art });
+			const pallets = await axios.get(`pallets/art/:id`);
 
 			setPallets(pallets)
 
