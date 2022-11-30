@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import { checkIsAuth } from '../../redux/features/auth/authSlice';
 
 import axios from '../../utils/axios';
+import { excelToJSON } from '../../utils/excel';
 
 
 
@@ -113,6 +114,19 @@ const ArtsZonesLoadingPage = () => {
 		<div className='flex flex-col justify-center items-center min-w-full'>
 
 			<h1>Здесь будут загружаться зоны</h1>
+
+			<form>
+				<label htmlFor="upload">Upload File</label>
+				<input
+					type="file"
+					name="upload"
+					id="upload"
+					onChange={excelToJSON}
+				/>
+			</form>
+
+
+
 
 			<div id="textarea">
 				<div className="mb-2 block">

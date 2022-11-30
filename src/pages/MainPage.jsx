@@ -4,6 +4,8 @@ import { useNavigate } from 'react-router-dom';
 import { checkIsAuth } from '../redux/features/auth/authSlice';
 import axios from "../utils/axios";
 
+import * as xlsx from "xlsx";
+
 import CardBTW from "../components/UI/CardBTW";
 import TitleBTW from '../components/UI/TitleBTW';
 
@@ -16,57 +18,34 @@ import TitleBTW from '../components/UI/TitleBTW';
 
 const MainPage = () => {
 
-	const [artItem, setArtItem] = useState('')
 
-	const [arts, setArts] = useState("");
-	const [pallets, setPallets] = useState("");
-	const [isLoading, setIsLoading] = useState("");
 
 
 	const navigate = useNavigate()
 	const isAuth = useSelector(checkIsAuth)
 
 
-	useLayoutEffect(() => {
+	/* useLayoutEffect(() => {
 
 		if (!isAuth) navigate('/login')
 	}, [isAuth, navigate])
+ */
 
 
 
-
-
-	const handlerGetArtById = async () => {
-		try {
-
-
-			setIsLoading(true);
-			const art = await axios.get(`arts/:id`);
-			setArtItem(art)
-			setIsLoading(false);
-
-		} catch (error) {
-			console.log(error)
-		}
-	}
-
-
-
-	const handlerGetPalletsIncludesArt = async () => {
-		try {
-
-			const art = "XXXX-XXXX"
-
-			setIsLoading(true);
-
-			const pallets = await axios.get(`pallets/art/:id`);
-
-			setPallets(pallets)
-
-			setIsLoading(false);
-
-		} catch (error) {
-			console.log(error)
+	const readUploadFile = (e) => {
+		e.preventDefault();
+		if (e.target.files) {
+			const reader = new FileReader();
+			reader.onload = (e) => {
+				const data = e.target.result;
+				const workbook = xlsx.read(data, { type: "array" });
+				const sheetName = workbook.SheetNames[0];
+				const worksheet = workbook.Sheets[sheetName];
+				const json = xlsx.utils.sheet_to_json(worksheet);
+				console.log(json);
+			};
+			reader.readAsArrayBuffer(e.target.files[0]);
 		}
 	}
 
@@ -91,10 +70,18 @@ const MainPage = () => {
 				Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde voluptatem laboriosam quis error commodi esse architecto voluptatibus similique suscipit vero, enim distinctio cum doloremque facilis pariatur! Neque harum aut ducimus.
 			</CardBTW>
 
-			<TitleBTW />
+			<form>
+				<label htmlFor="upload">Upload File</label>
+				<input
+					type="file"
+					name="upload"
+					id="upload"
+					onChange={readUploadFile}
+				/>
+			</form>
 
 
-			<h1>Количество загруженных артикулов с базы данных: {arts.length}</h1>
+
 
 
 		</div>
