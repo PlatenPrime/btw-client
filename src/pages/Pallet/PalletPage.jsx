@@ -11,6 +11,9 @@ import { removePallet, updatePallet } from '../../redux/features/pallet/palletSl
 import { checkIsAuth } from '../../redux/features/auth/authSlice';
 
 import PalletItem from '../../components/Pallet/PalletItem';
+import PageBTW from '../../components/UI/PageBTW';
+import ControlBTW from '../../components/UI/ControlBTW';
+import MainBTW from '../../components/UI/MainBTW';
 
 
 
@@ -123,27 +126,27 @@ const PalletPage = () => {
 
 
 	return (
-		<div className=''>
+		<PageBTW >
+
+			<MainBTW>
+
+				<PalletItem
+					isPalletEditing={isPalletEditing}
+					title={title}
+					setTitle={setTitle}
+					positions={positions}
+					setPositions={setPositions}
+
+
+				/>
+
+
+			</MainBTW>
 
 
 
-			<PalletItem
-				isPalletEditing={isPalletEditing}
-				title={title}
-				setTitle={setTitle}
-				positions={positions}
-				setPositions={setPositions}
 
-
-			/>
-
-
-
-
-
-
-
-			<div className=''>
+			<ControlBTW>
 
 
 
@@ -208,10 +211,10 @@ const PalletPage = () => {
 
 
 
-			</div>
+			</ControlBTW>
 
 
-		</div>
+		</PageBTW>
 	);
 };
 

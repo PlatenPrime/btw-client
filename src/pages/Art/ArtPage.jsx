@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import CardBTW from '../../components/UI/CardBTW';
+import ControlBTW from '../../components/UI/ControlBTW';
+import MainBTW from '../../components/UI/MainBTW';
+import PageBTW from '../../components/UI/PageBTW';
 import PhotoArtBTW from '../../components/UI/PhotoArtBTW';
 
 import axios from "../../utils/axios"
@@ -75,47 +78,52 @@ const ArtPage = () => {
 
 
 	return (
-		<div >
-
-			<CardBTW
-			>
-				<h1
-					className='text-2xl '
-				>Артикул {art.title}</h1>
-
-				<h1 className='text-xl ' >{art.name}</h1>
-
-				<PhotoArtBTW title={art.title} />
-
-				<h1 className='text-xl'  > Зона: {art.zone}</h1>
+		<PageBTW >
 
 
-				{pallets && <h1 className='text-xl ' >
+			<MainBTW>
 
-					Артикул {art.title} находится на следующих паллетах:
-					{pallets.map((pallet) => {
+				<CardBTW>
 
-						const box = pallet.positions.find(item => item.art == art.title)
+					<h1
+						className='text-2xl '
+					>Артикул {art.title}</h1>
 
-						return <p className='text-lg '
+					<h1 className='text-xl ' >{art.name}</h1>
 
-						>{pallet.title} : {box.pieces}</p>
-					}
+					<PhotoArtBTW title={art.title} />
 
-					)
-
-					}
-
-				</h1>}
-
-			</CardBTW >
+					<h1 className='text-xl'  > Зона: {art.zone}</h1>
 
 
+					{pallets && <h1 className='text-xl ' >
+
+						Артикул {art.title} находится на следующих паллетах:
+						{pallets.map((pallet) => {
+
+							const box = pallet.positions.find(item => item.art == art.title)
+
+							return <p className='text-lg '
+
+							>{pallet.title} : {box.pieces}</p>
+						}
+
+						)
+
+						}
+
+					</h1>}
+
+				</CardBTW>
+
+			</MainBTW>
 
 
+			<ControlBTW>
 
+			</ControlBTW>
 
-		</div>
+		</PageBTW>
 	);
 };
 

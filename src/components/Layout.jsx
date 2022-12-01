@@ -1,10 +1,8 @@
-import { Spinner } from 'flowbite-react';
 import React from 'react';
-
-
-
 import { useState } from 'react';
+
 import NavbarBTW from './UI/NavbarBTW';
+import PageBTW from './UI/PageBTW';
 import SidebarBTW from './UI/SidebarBTW';
 
 
@@ -14,25 +12,25 @@ const Layout = ({ children }) => {
 
 
 	return (
-		<>
-			<div className=''>
 
-				<NavbarBTW />
+		<div className='min-h-screen min-w-screen'>
 
-				<div className='flex justify-center'>
+			<NavbarBTW />
 
+			<div className='flex w-full justify-center'>
+				<SidebarBTW />
 
-					{children}
-				</div>
-
-
+				{children}
 
 
 
 
 			</div>
 
-		</>
+
+		</div>
+
+
 	);
 };
 

@@ -2,6 +2,7 @@ import { Button, Label, Spinner, Textarea, Tooltip } from 'flowbite-react';
 import React, { useLayoutEffect, useRef, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+import PageBTW from '../../components/UI/PageBTW';
 import { checkIsAuth } from '../../redux/features/auth/authSlice';
 
 import axios from '../../utils/axios';
@@ -111,7 +112,7 @@ const ArtsZonesLoadingPage = () => {
 
 
 	return (
-		<div className='flex flex-col justify-center items-center min-w-full'>
+		<PageBTW>
 
 			<h1>Здесь будут загружаться зоны</h1>
 
@@ -188,7 +189,7 @@ const ArtsZonesLoadingPage = () => {
 			<h1>{arts.length}</h1>
 
 
-		</div>
+		</PageBTW>
 	);
 };
 

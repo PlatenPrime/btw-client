@@ -4,6 +4,9 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 
 import PalletBage from '../../components/Pallet/PalletBage';
+import ControlBTW from '../../components/UI/ControlBTW';
+import MainBTW from '../../components/UI/MainBTW';
+import PageBTW from '../../components/UI/PageBTW';
 
 import { getAllPallets } from '../../redux/features/pallet/palletSlice';
 
@@ -31,37 +34,41 @@ const PalletsPage = () => {
 
 	return (
 
-		<div className=''  >
+		<PageBTW  >
 
-			<Link to="new">
-				<button className='' >
-					Создать новую паллету
-				</button>
-			</Link>
+			<MainBTW>
 
 
-			{!pallets.length ?
+				{!pallets.length ?
 
-				<div className=''>
-					В базе данных нет ни одной паллеты.
-				</div>
-				:
+					<div className=''>
+						В базе данных нет ни одной паллеты.
+					</div>
+					:
 
-				<div className=''>
-					<h2 className=''>В базе данных на текущий момент есть такие паллеты:</h2>
-					{pallets?.map((pallet, idx) => (
-						<PalletBage key={idx} pallet={pallet} />
-					))}
-				</div>
-
-
-			}
+					<div className=''>
+						<h2 className=''>В базе данных на текущий момент есть такие паллеты:</h2>
+						{pallets?.map((pallet, idx) => (
+							<PalletBage key={idx} pallet={pallet} />
+						))}
+					</div>
 
 
+				}
 
+			</MainBTW>
 
+			<ControlBTW>
 
-		</div >
+				<Link to="new">
+					<button className='' >
+						Создать новую паллету
+					</button>
+				</Link>
+
+			</ControlBTW>
+
+		</PageBTW >
 	);
 };
 

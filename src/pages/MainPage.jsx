@@ -8,6 +8,9 @@ import * as xlsx from "xlsx";
 
 import CardBTW from "../components/UI/CardBTW";
 import TitleBTW from '../components/UI/TitleBTW';
+import PageBTW from '../components/UI/PageBTW';
+import MainBTW from '../components/UI/MainBTW';
+import ControlBTW from '../components/UI/ControlBTW';
 
 
 
@@ -59,32 +62,24 @@ const MainPage = () => {
 
 
 	return (
-		<div className='max-w-[1280px] mx-auto ' >
+		<PageBTW >
 
-			<div
-				className=''
+			<MainBTW>
+				<h1>Панель быстрого доступа</h1>
 
-			>Панель быстрого доступа</div>
-
-			<CardBTW>
-				Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde voluptatem laboriosam quis error commodi esse architecto voluptatibus similique suscipit vero, enim distinctio cum doloremque facilis pariatur! Neque harum aut ducimus.
-			</CardBTW>
-
-			<form>
-				<label htmlFor="upload">Upload File</label>
-				<input
-					type="file"
-					name="upload"
-					id="upload"
-					onChange={readUploadFile}
-				/>
-			</form>
+				<CardBTW>
+					Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde voluptatem laboriosam quis error commodi esse architecto voluptatibus similique suscipit vero, enim distinctio cum doloremque facilis pariatur! Neque harum aut ducimus.
+				</CardBTW>
 
 
 
+			</MainBTW>
 
+			<ControlBTW>
+				Asidebar
+			</ControlBTW>
 
-		</div>
+		</PageBTW>
 	);
 };
 

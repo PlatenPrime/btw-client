@@ -13,6 +13,9 @@ import { getAllRows } from '../../redux/features/row/rowSlice';
 import RowBage from "../../components/Row/RowBage";
 import { Button, Card } from 'flowbite-react';
 import CardBTW from '../../components/UI/CardBTW';
+import PageBTW from '../../components/UI/PageBTW';
+import ControlBTW from '../../components/UI/ControlBTW';
+import MainBTW from '../../components/UI/MainBTW';
 
 
 
@@ -40,30 +43,34 @@ const RowsPage = () => {
 
 
 
-		<CardBTW className='mx-auto my-5'  >
-
-			<Link to="new"
-
-			><Button className='w-full' >Создать новый ряд</Button></Link>
-
-			{!rows.length ?
-
-				<div className=''>
-					В базе данных нет ни одного ряда.
-				</div>
-				:
-
-				<div className=''>
-					<h2 className='text-xl'>В базе данных на текущий момент есть такие ряды:</h2>
-					{rows?.map((row, idx) => (
-						<RowBage key={idx} row={row} />
-					))}
-				</div>
+		<PageBTW  >
 
 
-			}
 
-		</CardBTW >
+			<MainBTW>
+				{!rows.length ?
+					<div className=''>
+						В базе данных нет ни одного ряда.
+					</div>
+					:
+					<div className=''>
+						<h2 className='text-xl'>В базе данных на текущий момент есть такие ряды:</h2>
+						{rows?.map((row, idx) => (
+							<RowBage key={idx} row={row} />
+						))}
+					</div>
+				}
+			</MainBTW>
+
+
+
+			<ControlBTW>
+				<Link to="new"	>
+					<Button className='w-full' >Создать новый ряд</Button>
+				</Link>
+			</ControlBTW>
+
+		</PageBTW >
 
 
 	);

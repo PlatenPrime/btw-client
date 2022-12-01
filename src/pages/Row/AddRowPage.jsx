@@ -9,6 +9,9 @@ import { checkIsAuth } from '../../redux/features/auth/authSlice';
 
 
 import RowItem from '../../components/Row/RowItem';
+import PageBTW from '../../components/UI/PageBTW';
+import MainBTW from '../../components/UI/MainBTW';
+import ControlBTW from '../../components/UI/ControlBTW';
 
 
 
@@ -34,13 +37,13 @@ const AddRowPage = () => {
 	const isAuth = useSelector(checkIsAuth)
 
 
-/* 	useEffect(() => {
-		if (status) {
-			toast(status)
-		}
-		if (!isAuth) navigate('/login')
-	}, [status, isAuth, navigate])
- */
+	/* 	useEffect(() => {
+			if (status) {
+				toast(status)
+			}
+			if (!isAuth) navigate('/login')
+		}, [status, isAuth, navigate])
+	 */
 
 
 
@@ -75,11 +78,11 @@ const AddRowPage = () => {
 
 	return (
 
-		<div className=''>
+		<PageBTW>
 
-			<h1 className=''>Введи название ряда</h1>
 
-			<div className='' >
+
+			<MainBTW >
 
 
 
@@ -88,35 +91,35 @@ const AddRowPage = () => {
 					title={title}
 					setTitle={setTitle}
 
-
-
 				/>
 
-
-				<div className=''>
-
-
-					<button
-						className=''
-						onClick={handlerClearForm}
-					>Очистить форму</button>
-
-					<button
-						className=''
-						onClick={handlerSubmit}
-					>Сохранить ряд в БД</button>
+			</MainBTW>
 
 
 
-				</div>
+
+			<ControlBTW >
+
+
+				<button
+					className=''
+					onClick={handlerClearForm}
+				>Очистить форму</button>
+
+				<button
+					className=''
+					onClick={handlerSubmit}
+				>Сохранить ряд в БД</button>
 
 
 
-			</div>
+			</ControlBTW>
 
 
 
-		</div>
+
+
+		</PageBTW>
 
 	);
 };

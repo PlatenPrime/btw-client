@@ -8,6 +8,9 @@ import { createPallet } from '../../redux/features/pallet/palletSlice';
 import { checkIsAuth } from '../../redux/features/auth/authSlice';
 
 import PalletItem from '../../components/Pallet/PalletItem';
+import PageBTW from '../../components/UI/PageBTW';
+import ControlBTW from '../../components/UI/ControlBTW';
+import MainBTW from '../../components/UI/MainBTW';
 
 
 
@@ -69,13 +72,11 @@ const AddPalletPage = () => {
 
 
 	return (
-		<div className=''>
-
-			<h1 className=''>Введи название паллеты  и позиции на ней </h1>
-
-			<div className='' >
+		<PageBTW >
 
 
+
+			<MainBTW>
 
 				<PalletItem
 					isPalletEditing={isPalletEditing}
@@ -83,33 +84,37 @@ const AddPalletPage = () => {
 					setTitle={setTitle}
 					positions={positions}
 					setPositions={setPositions}
-
-
 				/>
 
-
-				<div className=''>
-
-					<button
-						className=''
-						onClick={handlerSubmit}
-					>Сохранить паллету в базу данных</button>
-
-
-					<button
-						className=''
-						onClick={handlerClearForm}
-					>Очистить форму</button>
-
-				</div>
+			</MainBTW>
 
 
 
-			</div>
+			<ControlBTW>
+
+				<button
+					className=''
+					onClick={handlerSubmit}
+				>
+					Сохранить паллету в базу данных
+				</button>
+
+
+				<button
+					className=''
+					onClick={handlerClearForm}
+				>
+					Очистить форму
+				</button>
+
+			</ControlBTW>
 
 
 
-		</div>
+
+
+
+		</PageBTW>
 
 
 

@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { checkIsAuth, loginUser } from '../../redux/features/auth/authSlice'
 import { toast } from 'react-toastify'
 import { Button, Label, TextInput } from 'flowbite-react'
+import PageBTW from '../../components/UI/PageBTW'
 
 export const LoginPage = () => {
 	const [username, setUsername] = useState('')
@@ -35,7 +36,7 @@ export const LoginPage = () => {
 
 
 	return (
-		<>
+		<PageBTW>
 
 			<form
 				onSubmit={(e) => e.preventDefault()}
@@ -84,6 +85,9 @@ export const LoginPage = () => {
 				</Button>
 			</form>
 
-		</>
+
+
+
+		</PageBTW>
 	)
 }

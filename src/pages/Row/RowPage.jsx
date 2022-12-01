@@ -17,6 +17,9 @@ import RowItem from "../../components/Row/RowItem";
 import { Button, Card, Spinner } from 'flowbite-react';
 import ButtonGroupBTW from '../../components/UI/ButtonGroupBTW';
 import LayoutBTW from '../../components/UI/LayoutBTW';
+import PageBTW from '../../components/UI/PageBTW';
+import ControlBTW from '../../components/UI/ControlBTW';
+import MainBTW from '../../components/UI/MainBTW';
 
 
 
@@ -51,12 +54,12 @@ const RowPage = () => {
 	const isAuth = useSelector(checkIsAuth)
 
 
-/* 	useLayoutEffect(() => {
-		if (status) {
-			toast(status)
-		}
-		if (!isAuth) navigate('/login')
-	}, [status, isAuth, navigate]) */
+	/* 	useLayoutEffect(() => {
+			if (status) {
+				toast(status)
+			}
+			if (!isAuth) navigate('/login')
+		}, [status, isAuth, navigate]) */
 
 
 	const fetchRow = useCallback(async () => {
@@ -177,77 +180,76 @@ const RowPage = () => {
 	return (
 
 
-		<Card className='mx-auto my-5'>
+		<PageBTW >
 
+			<MainBTW>
 
-			<RowItem
-				isRowEditing={isRowEditing}
-				title={title}
-				setTitle={setTitle}
-				pallets={pallets}
-			/>
-
-
-
-
-
-			{isRowEditing &&
-
-				<div>
-
-					{
-						isPalletCreate ?
-
-
-							<div className=''>
-
-
-								<input
-									className=''
-									type="text"
-									value={palletTitle}
-									placeholder='Название...'
-									onChange={e => setPalletTitle(e.target.value)} />
+				<RowItem
+					isRowEditing={isRowEditing}
+					title={title}
+					setTitle={setTitle}
+					pallets={pallets}
+				/>
 
 
 
+				{isRowEditing &&
 
+					<div>
+
+						{
+							isPalletCreate ?
 
 
 								<div className=''>
-									<button
-										onClick={handlerCreatePallet}
-										className=' '
-									>
-										Добавить
-									</button>
-									<button
-										className=' '
-										onClick={() => setIsPalletCreate(false)}
-									>Отменить</button>
+
+
+									<input
+										className=''
+										type="text"
+										value={palletTitle}
+										placeholder='Название...'
+										onChange={e => setPalletTitle(e.target.value)} />
+
+
+
+
+
+
+									<div className=''>
+										<button
+											onClick={handlerCreatePallet}
+											className=' '
+										>
+											Добавить
+										</button>
+										<button
+											className=' '
+											onClick={() => setIsPalletCreate(false)}
+										>Отменить</button>
+									</div>
+
+
 								</div>
+								:
+								<Button
+									className=' mx-auto'
+									onClick={() => setIsPalletCreate(true)}
+								>Добавить паллету</Button>
 
 
-							</div>
-							:
-							<Button
-								className=' mx-auto'
-								onClick={() => setIsPalletCreate(true)}
-							>Добавить паллету</Button>
-
-
-					}
+						}
 
 
 
-				</div>
+					</div>
 
-			}
+				}
+
+			</MainBTW>
 
 
-
-
-			<ButtonGroupBTW className=''>
+			<ControlBTW className=''>
 
 
 
@@ -308,10 +310,10 @@ const RowPage = () => {
 
 
 
-			</ButtonGroupBTW>
+			</ControlBTW>
 
 
-		</Card>
+		</PageBTW>
 
 
 
