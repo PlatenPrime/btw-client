@@ -46,7 +46,7 @@ const PalletsPage = () => {
 					</div>
 					:
 
-					<div className=''>
+					<div className='space-y-8'>
 						<h2 className=''>В базе данных на текущий момент есть такие паллеты:</h2>
 						{pallets?.map((pallet, idx) => (
 							<PalletBage key={idx} pallet={pallet} />
