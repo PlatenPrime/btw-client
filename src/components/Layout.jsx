@@ -13,7 +13,7 @@ const Layout = ({ children }) => {
 
 	return (
 
-		<div className='min-h-screen min-w-screen'>
+		<div className='container mx-auto '>
 
 			<NavbarBTW />
 
