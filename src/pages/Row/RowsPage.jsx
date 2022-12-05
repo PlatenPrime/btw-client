@@ -16,6 +16,9 @@ import CardBTW from '../../components/UI/CardBTW';
 import PageBTW from '../../components/UI/PageBTW';
 import ControlBTW from '../../components/UI/ControlBTW';
 import MainBTW from '../../components/UI/MainBTW';
+import EditButton from '../../components/UI/Buttons/EditButton';
+import CreateButton from '../../components/UI/Buttons/CreateButton';
+import HeaderPageBTW from '../../components/UI/HeaderPageBTW';
 
 
 
@@ -48,13 +51,20 @@ const RowsPage = () => {
 
 
 			<MainBTW>
+
+				<HeaderPageBTW>
+
+					Ряды
+
+				</HeaderPageBTW>
+
 				{!rows.length ?
 					<div className=''>
 						В базе данных нет ни одного ряда.
 					</div>
 					:
 					<div className=''>
-						<h2 className='text-xl'>В базе данных на текущий момент есть такие ряды:</h2>
+
 						{rows?.map((row, idx) => (
 							<RowBage key={idx} row={row} />
 						))}
@@ -66,7 +76,7 @@ const RowsPage = () => {
 
 			<ControlBTW>
 				<Link to="new"	>
-					<Button className='w-full' >Создать новый ряд</Button>
+					<CreateButton >Создать новый ряд</CreateButton>
 				</Link>
 			</ControlBTW>
 

@@ -12,7 +12,8 @@ import RowItem from '../../components/Row/RowItem';
 import PageBTW from '../../components/UI/PageBTW';
 import MainBTW from '../../components/UI/MainBTW';
 import ControlBTW from '../../components/UI/ControlBTW';
-
+import CancelButton from '../../components/UI/Buttons/CancelButton';
+import SaveButton from '../../components/UI/Buttons/SaveButton';
 
 
 
@@ -37,13 +38,13 @@ const AddRowPage = () => {
 	const isAuth = useSelector(checkIsAuth)
 
 
-	/* 	useEffect(() => {
-			if (status) {
-				toast(status)
-			}
-			if (!isAuth) navigate('/login')
-		}, [status, isAuth, navigate])
-	 */
+	useEffect(() => {
+		if (status) {
+			toast(status)
+		}
+		if (!isAuth) navigate('/login')
+	}, [status, isAuth, navigate])
+
 
 
 
@@ -101,15 +102,17 @@ const AddRowPage = () => {
 			<ControlBTW >
 
 
-				<button
-					className=''
+				<CancelButton
 					onClick={handlerClearForm}
-				>Очистить форму</button>
+				>
+					Очистить форму
+				</CancelButton>
 
-				<button
-					className=''
+				<SaveButton
 					onClick={handlerSubmit}
-				>Сохранить ряд в БД</button>
+				>
+					Сохранить ряд в БД
+				</SaveButton>
 
 
 

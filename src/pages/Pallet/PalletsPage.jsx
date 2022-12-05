@@ -7,6 +7,7 @@ import PalletBage from '../../components/Pallet/PalletBage';
 import ControlBTW from '../../components/UI/ControlBTW';
 import MainBTW from '../../components/UI/MainBTW';
 import PageBTW from '../../components/UI/PageBTW';
+import CreateButton from "../../components/UI/Buttons/CreateButton";
 
 import { getAllPallets } from '../../redux/features/pallet/palletSlice';
 
@@ -61,9 +62,9 @@ const PalletsPage = () => {
 			<ControlBTW>
 
 				<Link to="new">
-					<button className='' >
+					<CreateButton >
 						Создать новую паллету
-					</button>
+					</CreateButton>
 				</Link>
 
 			</ControlBTW>

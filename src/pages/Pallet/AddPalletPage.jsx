@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useLayoutEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 
@@ -11,6 +11,11 @@ import PalletItem from '../../components/Pallet/PalletItem';
 import PageBTW from '../../components/UI/PageBTW';
 import ControlBTW from '../../components/UI/ControlBTW';
 import MainBTW from '../../components/UI/MainBTW';
+import EditButton from '../../components/UI/Buttons/EditButton';
+import CancelButton from '../../components/UI/Buttons/CancelButton';
+import SaveButton from '../../components/UI/Buttons/SaveButton';
+import DeleteButton from '../../components/UI/Buttons/DeleteButton';
+import AddButton from '../../components/UI/Buttons/AddButton';
 
 
 
@@ -33,7 +38,7 @@ const AddPalletPage = () => {
 	const isAuth = useSelector(checkIsAuth)
 
 
-	useEffect(() => {
+	useLayoutEffect(() => {
 		if (status) {
 			toast(status)
 		}
@@ -92,20 +97,21 @@ const AddPalletPage = () => {
 
 			<ControlBTW>
 
-				<button
-					className=''
-					onClick={handlerSubmit}
-				>
-					Сохранить паллету в базу данных
-				</button>
-
-
-				<button
-					className=''
+				<CancelButton
 					onClick={handlerClearForm}
 				>
 					Очистить форму
-				</button>
+				</CancelButton>
+
+
+				<SaveButton
+					onClick={handlerSubmit}
+				>
+					Создать
+				</SaveButton>
+
+
+
 
 			</ControlBTW>
 

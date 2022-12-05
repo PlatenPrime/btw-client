@@ -14,7 +14,11 @@ import PalletItem from '../../components/Pallet/PalletItem';
 import PageBTW from '../../components/UI/PageBTW';
 import ControlBTW from '../../components/UI/ControlBTW';
 import MainBTW from '../../components/UI/MainBTW';
-
+import EditButton from '../../components/UI/Buttons/EditButton';
+import CancelButton from '../../components/UI/Buttons/CancelButton';
+import SaveButton from '../../components/UI/Buttons/SaveButton';
+import DeleteButton from '../../components/UI/Buttons/DeleteButton';
+import AddButton from '../../components/UI/Buttons/AddButton';
 
 
 
@@ -47,13 +51,13 @@ const PalletPage = () => {
 	const isAuth = useSelector(checkIsAuth)
 
 
-	/* useLayoutEffect(() => {
+	useEffect(() => {
 		if (status) {
 			toast(status)
 		}
 		if (!isAuth) navigate('/login')
 	}, [status, isAuth, navigate])
- */
+
 
 
 	const fetchPallet = useCallback(async () => {
@@ -155,38 +159,26 @@ const PalletPage = () => {
 					<div className=''>
 
 
-						<button
-							className=''
+						<CancelButton
 							onClick={handlerCancelPalletEditing}
-
 						>
 							Отмена
+						</CancelButton>
 
-						</button>
 
-						<button
-							className=''
+						<SaveButton
 							onClick={handlerPalletSave}
-
 						>
 							Сохранить
-
-						</button>
-
+						</SaveButton>
 
 
 
-
-
-
-
-						<button
-							className='w-full text-lg font-bold  text-red-600 p-2 rounded-lg  my-1  '
+						<DeleteButton
 							onClick={handlerPalletRemove}
 						>
 							Удалить паллету
-
-						</button>
+						</DeleteButton>
 
 
 
@@ -199,13 +191,14 @@ const PalletPage = () => {
 
 					:
 
-					<div className='w-full p-1' >
-						<button
-							className=' w-full text-xl text-white p-2 rounded-lg  my-1   bg-blue-500'
-							onClick={handlerPalletEdit}
-						>Редактировать</button>
 
-					</div>
+					<EditButton
+						onClick={handlerPalletEdit}
+					>
+						Редактировать
+					</EditButton>
+
+
 				}
 
 

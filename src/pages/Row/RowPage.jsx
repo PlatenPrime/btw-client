@@ -19,6 +19,11 @@ import RowItem from "../../components/Row/RowItem";
 import PageBTW from '../../components/UI/PageBTW';
 import ControlBTW from '../../components/UI/ControlBTW';
 import MainBTW from '../../components/UI/MainBTW';
+import EditButton from '../../components/UI/Buttons/EditButton';
+import CancelButton from '../../components/UI/Buttons/CancelButton';
+import SaveButton from '../../components/UI/Buttons/SaveButton';
+import DeleteButton from '../../components/UI/Buttons/DeleteButton';
+import AddButton from '../../components/UI/Buttons/AddButton';
 
 
 
@@ -217,19 +222,19 @@ const RowPage = () => {
 
 									<div className=''>
 
-										<button
+										<SaveButton
 											onClick={handlerCreatePallet}
-											className=' '
-										>
-											Добавить
-										</button>
 
-										<button
-											className=' '
+										>
+											Сохранить паллету
+										</SaveButton>
+
+										<CancelButton
+
 											onClick={() => setIsPalletCreate(false)}
 										>
-											Отменить
-										</button>
+											Не создавать
+										</CancelButton>
 
 									</div>
 
@@ -240,12 +245,11 @@ const RowPage = () => {
 								:
 
 
-								<button
-									className=' mx-auto'
+								<AddButton
 									onClick={() => setIsPalletCreate(true)}
 								>
 									Добавить паллету
-								</button>
+								</AddButton>
 
 
 						}
@@ -259,42 +263,44 @@ const RowPage = () => {
 			</MainBTW>
 
 
-			<ControlBTW className=''>
+
+
+			<ControlBTW >
 
 
 
 				{isRowEditing ?
 
-					<div className=''>
+					<div >
 
+						<CancelButton
 
-
-						<button
-							className='w-full my-1 '
 							onClick={handlerCancelRowEditing}
 
 						>
 							Отмена
+						</CancelButton>
 
-						</button>
 
-						<button
-							className='w-full my-1 '
+
+						<SaveButton
+
 							onClick={handlerRowSave}
 
 						>
 							Сохранить
-						</button>
+						</SaveButton>
 
 
 
-						<button
-							className='w-full  my-1 '
+
+						<DeleteButton
+
 							onClick={handlerRowRemove}
 
 						>
 							Удалить ряд
-						</button>
+						</DeleteButton>
 
 
 
@@ -306,15 +312,13 @@ const RowPage = () => {
 
 
 
-					<div className='' >
+					<EditButton
+						onClick={handlerRowEdit}
+					>
+						Редактировать
+					</EditButton>
 
-						<button
-							className='  '
-							onClick={handlerRowEdit}
-						>Редактировать
-						</button>
 
-					</div>
 				}
 
 
