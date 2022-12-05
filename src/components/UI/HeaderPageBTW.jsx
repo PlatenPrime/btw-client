@@ -2,7 +2,7 @@ import React from 'react';
 
 const HeaderPageBTW = ({ children }) => {
 	return (
-		<div className='w-full h-10 bg-sky-400'>
+		<div className='w-full h-16 flex justify-center items-center    bg-sky-400'>
 			{children}
 		</div>
 	);
