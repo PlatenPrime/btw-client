@@ -1,5 +1,6 @@
 import { Card } from 'flowbite-react';
 import React, { useEffect, useState } from 'react';
+import CardBTW from '../UI/CardBTW';
 import RowPallet from "./RowPallet";
 
 
@@ -27,7 +28,7 @@ const RowPallets = ({ pallets }) => {
 	return (
 
 
-		<Card className='mx-auto'>
+		<div className='mx-auto'>
 
 			{newPallets &&
 
@@ -58,7 +59,7 @@ const RowPallets = ({ pallets }) => {
 			}
 
 
-		</Card>
+		</div>
 
 
 	);

@@ -1,8 +1,8 @@
 import React from 'react';
-import { useState } from 'react';
+
 
 import NavbarBTW from './UI/NavbarBTW';
-import PageBTW from './UI/PageBTW';
+
 import SidebarBTW from './UI/SidebarBTW';
 
 
@@ -13,7 +13,7 @@ const Layout = ({ children }) => {
 
 	return (
 
-		<div className='container mx-auto '>
+		<div className='container mx-auto max-h-screen'>
 
 			<NavbarBTW />
 
@@ -39,4 +39,3 @@ export default Layout;
 
 
 
-/// Нам надо чтобы был вертикальный общий лейаут, но внутри респонсив лейаут

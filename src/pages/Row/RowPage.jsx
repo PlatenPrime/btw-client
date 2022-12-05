@@ -14,9 +14,8 @@ import { removeRow, updateRow } from "../../redux/features//row/rowSlice";
 import { checkIsAuth } from '../../redux/features/auth/authSlice';
 
 import RowItem from "../../components/Row/RowItem";
-import { Button, Card, Spinner } from 'flowbite-react';
-import ButtonGroupBTW from '../../components/UI/ButtonGroupBTW';
-import LayoutBTW from '../../components/UI/LayoutBTW';
+
+
 import PageBTW from '../../components/UI/PageBTW';
 import ControlBTW from '../../components/UI/ControlBTW';
 import MainBTW from '../../components/UI/MainBTW';
@@ -54,12 +53,12 @@ const RowPage = () => {
 	const isAuth = useSelector(checkIsAuth)
 
 
-	/* 	useLayoutEffect(() => {
-			if (status) {
-				toast(status)
-			}
-			if (!isAuth) navigate('/login')
-		}, [status, isAuth, navigate]) */
+	useLayoutEffect(() => {
+		if (status) {
+			toast(status)
+		}
+		if (!isAuth) navigate('/login')
+	}, [status, isAuth, navigate])
 
 
 	const fetchRow = useCallback(async () => {
@@ -217,25 +216,36 @@ const RowPage = () => {
 
 
 									<div className=''>
+
 										<button
 											onClick={handlerCreatePallet}
 											className=' '
 										>
 											Добавить
 										</button>
+
 										<button
 											className=' '
 											onClick={() => setIsPalletCreate(false)}
-										>Отменить</button>
+										>
+											Отменить
+										</button>
+
 									</div>
 
 
 								</div>
+
+
 								:
-								<Button
+
+
+								<button
 									className=' mx-auto'
 									onClick={() => setIsPalletCreate(true)}
-								>Добавить паллету</Button>
+								>
+									Добавить паллету
+								</button>
 
 
 						}
@@ -259,34 +269,32 @@ const RowPage = () => {
 
 
 
-						<Button
+						<button
 							className='w-full my-1 '
 							onClick={handlerCancelRowEditing}
-							color="light"
+
 						>
 							Отмена
 
-						</Button>
+						</button>
 
-						<Button
+						<button
 							className='w-full my-1 '
 							onClick={handlerRowSave}
-							color="success"
+
 						>
 							Сохранить
-
-						</Button>
-
+						</button>
 
 
-						<Button
+
+						<button
 							className='w-full  my-1 '
 							onClick={handlerRowRemove}
-							color="failure"
+
 						>
 							Удалить ряд
-
-						</Button>
+						</button>
 
 
 
@@ -299,10 +307,12 @@ const RowPage = () => {
 
 
 					<div className='' >
-						<Button
+
+						<button
 							className='  '
 							onClick={handlerRowEdit}
-						>Редактировать</Button>
+						>Редактировать
+						</button>
 
 					</div>
 				}

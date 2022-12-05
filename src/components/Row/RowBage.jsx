@@ -1,6 +1,6 @@
-import { Card } from 'flowbite-react';
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import CardBTW from '../UI/CardBTW';
 
 
 
@@ -21,15 +21,14 @@ const RowBage = ({ row }) => {
 
 
 	return (
-		<Card className='my-2 flex justify-center mx-auto ' >
+		<CardBTW className='my-2 flex justify-center mx-auto ' >
 
 
 
-			<Link to={`${row._id}`} className='' >
+			<Link to={`${row._id}`} className='w-full mx-auto flex justify-center' >
 
 				<div
-					className='
-					'>
+					className='w-full mx-auto flex justify-center border-2 border-red-500'>
 
 					{row.title}
 
@@ -40,7 +39,7 @@ const RowBage = ({ row }) => {
 
 
 
-		</Card>
+		</CardBTW>
 	);
 };
 

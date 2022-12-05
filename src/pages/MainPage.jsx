@@ -7,7 +7,7 @@ import axios from "../utils/axios";
 import * as xlsx from "xlsx";
 
 import CardBTW from "../components/UI/CardBTW";
-import TitleBTW from '../components/UI/TitleBTW';
+
 import PageBTW from '../components/UI/PageBTW';
 import MainBTW from '../components/UI/MainBTW';
 import ControlBTW from '../components/UI/ControlBTW';
