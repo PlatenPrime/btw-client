@@ -18,7 +18,8 @@ import ControlBTW from '../../components/UI/ControlBTW';
 import MainBTW from '../../components/UI/MainBTW';
 import EditButton from '../../components/UI/Buttons/EditButton';
 import CreateButton from '../../components/UI/Buttons/CreateButton';
-import HeaderPageBTW from '../../components/UI/HeaderPageBTW';
+import HeaderPageBTW from '../../components/UI/Header/HeaderMainBTW';
+import TitleHeaderMain from '../../components/UI/Header/TitleHeaderMain';
 
 
 
@@ -53,9 +54,9 @@ const RowsPage = () => {
 			<MainBTW>
 
 				<HeaderPageBTW>
-
-					Ряды
-
+					<TitleHeaderMain>
+						Ряды
+					</TitleHeaderMain>
 				</HeaderPageBTW>
 
 				{!rows.length ?

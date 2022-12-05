@@ -10,6 +10,8 @@ import PageBTW from '../../components/UI/PageBTW';
 import CreateButton from "../../components/UI/Buttons/CreateButton";
 
 import { getAllPallets } from '../../redux/features/pallet/palletSlice';
+import HeaderMainBTW from '../../components/UI/Header/HeaderMainBTW';
+import TitleHeaderMain from '../../components/UI/Header/TitleHeaderMain';
 
 
 
@@ -38,6 +40,12 @@ const PalletsPage = () => {
 		<PageBTW  >
 
 			<MainBTW>
+
+				<HeaderMainBTW>
+					<TitleHeaderMain>
+						Паллеты
+					</TitleHeaderMain>
+				</HeaderMainBTW>
 
 
 				{!pallets.length ?

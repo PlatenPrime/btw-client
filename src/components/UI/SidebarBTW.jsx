@@ -1,10 +1,12 @@
 import { Sidebar } from 'flowbite-react';
 import React from 'react';
 
-const SidebarBTW = () => {
+const SidebarBTW = ({ children }) => {
 	return (
-		<div className="hidden md:block w-1/6  min-h-screen max-h-screen p-5">
-			<h1>Sidebar</h1>
+		<div className=' h-16 w-1/6
+		flex justify-center items-center   
+		 bg-slate-400'>
+			{children}
 		</div>
 	);
 };

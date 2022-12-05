@@ -14,6 +14,8 @@ import MainBTW from '../../components/UI/MainBTW';
 import ControlBTW from '../../components/UI/ControlBTW';
 import CancelButton from '../../components/UI/Buttons/CancelButton';
 import SaveButton from '../../components/UI/Buttons/SaveButton';
+import HeaderMainBTW from '../../components/UI/Header/HeaderMainBTW';
+import TitleHeaderMain from '../../components/UI/Header/TitleHeaderMain';
 
 
 
@@ -85,6 +87,11 @@ const AddRowPage = () => {
 
 			<MainBTW >
 
+				<HeaderMainBTW>
+					<TitleHeaderMain>
+						Создание ряда
+					</TitleHeaderMain>
+				</HeaderMainBTW>
 
 
 				<RowItem

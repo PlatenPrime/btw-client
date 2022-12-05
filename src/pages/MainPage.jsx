@@ -11,6 +11,8 @@ import CardBTW from "../components/UI/CardBTW";
 import PageBTW from '../components/UI/PageBTW';
 import MainBTW from '../components/UI/MainBTW';
 import ControlBTW from '../components/UI/ControlBTW';
+import HeaderPageBTW from '../components/UI/Header/HeaderMainBTW';
+import TitleHeaderMain from '../components/UI/Header/TitleHeaderMain';
 
 
 
@@ -65,7 +67,13 @@ const MainPage = () => {
 		<PageBTW >
 
 			<MainBTW>
-				<h1>Панель быстрого доступа</h1>
+				<HeaderPageBTW>
+					<TitleHeaderMain
+						className='text-2xl'
+					>
+						Панель быстрого доступа
+					</TitleHeaderMain>
+				</HeaderPageBTW>
 
 				<CardBTW>
 					Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde voluptatem laboriosam quis error commodi esse architecto voluptatibus similique suscipit vero, enim distinctio cum doloremque facilis pariatur! Neque harum aut ducimus.
@@ -76,7 +84,7 @@ const MainPage = () => {
 			</MainBTW>
 
 			<ControlBTW>
-				Asidebar
+
 			</ControlBTW>
 
 		</PageBTW>

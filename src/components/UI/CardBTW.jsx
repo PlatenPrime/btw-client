@@ -7,6 +7,7 @@ const CardBTW = ({ children }) => {
 
 	return (
 		<div className={`bg-white m-4 p-4 rounded-lg
+		flex flex-col justify-center items-center
 		shadow-md hover:shadow-md hover:shadow-sky-300
 		transition ease-in-out duration-200
 		`}

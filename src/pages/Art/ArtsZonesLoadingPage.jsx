@@ -2,6 +2,13 @@ import { Button, Label, Spinner, Textarea, Tooltip } from 'flowbite-react';
 import React, { useLayoutEffect, useRef, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+import CreateButton from '../../components/UI/Buttons/CreateButton';
+import DeleteButton from '../../components/UI/Buttons/DeleteButton';
+import SaveButton from '../../components/UI/Buttons/SaveButton';
+import ControlBTW from '../../components/UI/ControlBTW';
+import HeaderMainBTW from '../../components/UI/Header/HeaderMainBTW';
+import TitleHeaderMain from '../../components/UI/Header/TitleHeaderMain';
+import MainBTW from '../../components/UI/MainBTW';
 import PageBTW from '../../components/UI/PageBTW';
 import { checkIsAuth } from '../../redux/features/auth/authSlice';
 
@@ -114,79 +121,97 @@ const ArtsZonesLoadingPage = () => {
 	return (
 		<PageBTW>
 
-			<h1>Здесь будут загружаться зоны</h1>
+			<MainBTW>
 
-			<form>
-				<label htmlFor="upload">Upload File</label>
-				<input
-					type="file"
-					name="upload"
-					id="upload"
-					onChange={excelToJSON}
-				/>
-			</form>
+				<HeaderMainBTW>
+					<TitleHeaderMain>
+						Установка зон
+					</TitleHeaderMain>
+				</HeaderMainBTW>
 
 
 
+				<form>
+					<label htmlFor="upload">Upload File</label>
+					<input
+						type="file"
+						name="upload"
+						id="upload"
+						onChange={excelToJSON}
+					/>
+				</form>
 
-			<div id="textarea">
-				<div className="mb-2 block">
-					<Label
-						htmlFor="comment"
-						value="Поле для вставки JSON списка"
+
+
+
+				<div id="textarea">
+					<div className="mb-2 block">
+						<Label
+							htmlFor="comment"
+							value="Поле для вставки JSON списка"
+						/>
+					</div>
+					<textarea
+						className='w-full'
+						id="comment"
+						placeholder="Leave a comment..."
+						required={true}
+						rows={4}
+						ref={artsInput}
 					/>
 				</div>
-				<textarea
-					className='w-full'
-					id="comment"
-					placeholder="Leave a comment..."
-					required={true}
-					rows={4}
-					ref={artsInput}
-				/>
-			</div>
-
-			<div className='flex flex-col m-5 space-x-2 space-y-2 items-center'>
 
 
 
-				<button
-					className='bg-blue-300 p-2'
+
+			</MainBTW>
+
+
+
+
+
+
+			<ControlBTW>
+
+
+
+				<SaveButton
+
 					onClick={handlerSave}
 
 				>
 					{isLoading && <Spinner aria-label="Default status example" />}
 					Сохранить
-				</button>
+				</SaveButton>
 
 
 
 
-				<button
+				<CreateButton
 					onClick={handlerUpload}
 					className='bg-green-300 p-2'
 					disabled={!arts}
 				>
 					{isLoading && <Spinner aria-label="Default status example" />}
 					Выгрузить артикулы
-				</button>
+				</CreateButton>
 
 
 
 
-				<button
+				<DeleteButton
 					className='bg-red-300 p-2'
 					onClick={handlerRemove}
 				>
 					{isLoading && <Spinner aria-label="Default status example" />}
 					Удалить
-				</button>
+				</DeleteButton>
 
 
-			</div>
 
-			<h1>{count}</h1>
-			<h1>{arts.length}</h1>
+			</ControlBTW>
+
+
 
 
 		</PageBTW>

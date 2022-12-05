@@ -18,7 +18,7 @@ const Layout = ({ children }) => {
 			<NavbarBTW />
 
 			<div className='flex w-full justify-center'>
-				<SidebarBTW />
+			
 
 				{children}
 

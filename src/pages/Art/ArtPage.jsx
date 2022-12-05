@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import CardBTW from '../../components/UI/CardBTW';
 import ControlBTW from '../../components/UI/ControlBTW';
+import HeaderMainBTW from '../../components/UI/Header/HeaderMainBTW';
+import TitleHeaderMain from '../../components/UI/Header/TitleHeaderMain';
 import MainBTW from '../../components/UI/MainBTW';
 import PageBTW from '../../components/UI/PageBTW';
 import PhotoArtBTW from '../../components/UI/PhotoArtBTW';
@@ -82,6 +84,13 @@ const ArtPage = () => {
 
 
 			<MainBTW>
+
+				<HeaderMainBTW>
+					<TitleHeaderMain>
+						{art.title}
+					</TitleHeaderMain>
+				</HeaderMainBTW>
+
 
 				<CardBTW>
 

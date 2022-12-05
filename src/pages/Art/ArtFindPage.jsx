@@ -1,8 +1,11 @@
 import React, { useEffect, useLayoutEffect, useRef, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
+import SaveButton from '../../components/UI/Buttons/SaveButton';
 import CardBTW from '../../components/UI/CardBTW';
 import ControlBTW from '../../components/UI/ControlBTW';
+import HeaderMainBTW from '../../components/UI/Header/HeaderMainBTW';
+import TitleHeaderMain from '../../components/UI/Header/TitleHeaderMain';
 import MainBTW from '../../components/UI/MainBTW';
 import PageBTW from '../../components/UI/PageBTW';
 import PhotoArtBTW from '../../components/UI/PhotoArtBTW';
@@ -77,18 +80,49 @@ const ArtFindPage = () => {
 
 
 			<MainBTW>
+
+				<HeaderMainBTW>
+					<TitleHeaderMain>
+						Поиск артикула
+					</TitleHeaderMain>
+				</HeaderMainBTW>
+
+				<div className='flex p-4 space-x-5'>
+					<input className='w-1/2' type="text" ref={artInput} />
+
+					<div className='w-1/2'>
+						<SaveButton className='bg-blue-600 m-5 p-2 text-white rounded-sm' onClick={handlerArtFind} >Найти артикул</SaveButton>
+					</div>
+
+				</div>
+
+
 				<div
+					className='cursor-pointer shadow-sm border-5 bg-slate-300'
 					onClick={() => navigate(`/arts/${artItem._id}`)}
 				>
 					{artCardDisplay &&
-						<CardBTW
-						>
-							<h1>{artItem.title}</h1>
-							<h1>{artItem.name}</h1>
-							<h1>{artItem.zone}</h1>
-							<PhotoArtBTW title={artItem.title} />
+						<div className='flex'>
 
-						</CardBTW >
+							<div className='w-1/2'>
+								<CardBTW >
+
+									<PhotoArtBTW title={artItem.title} />
+
+								</CardBTW >
+							</div>
+
+
+
+							<div className='w-1/2 flex flex-col justify-center items-center text-xl'>
+								<h1>{artItem.title}</h1>
+								<h1>{artItem.name}</h1>
+
+							</div>
+
+						</div>
+
+
 					}
 				</div>
 
@@ -96,9 +130,8 @@ const ArtFindPage = () => {
 
 			<ControlBTW>
 
-				<input type="text" ref={artInput} />
-				<button className='bg-blue-600 m-5 p-2 text-white rounded-sm' onClick={handlerArtFind} >Найти артикул</button>
-				
+
+
 			</ControlBTW>
 
 

@@ -19,6 +19,8 @@ import CancelButton from '../../components/UI/Buttons/CancelButton';
 import SaveButton from '../../components/UI/Buttons/SaveButton';
 import DeleteButton from '../../components/UI/Buttons/DeleteButton';
 import AddButton from '../../components/UI/Buttons/AddButton';
+import HeaderMainBTW from '../../components/UI/Header/HeaderMainBTW';
+import TitleHeaderMain from '../../components/UI/Header/TitleHeaderMain';
 
 
 
@@ -133,6 +135,12 @@ const PalletPage = () => {
 		<PageBTW >
 
 			<MainBTW>
+
+				<HeaderMainBTW>
+					<TitleHeaderMain>
+						Паллета {title}
+					</TitleHeaderMain>
+				</HeaderMainBTW>
 
 				<PalletItem
 					isPalletEditing={isPalletEditing}
