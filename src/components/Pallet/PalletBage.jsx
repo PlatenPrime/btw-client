@@ -13,29 +13,15 @@ const PalletBage = ({ pallet }) => {
 	}
 
 	return (
-		<div className=' ' >
 
 
+		<Link to={`${pallet._id}`} className='' >
+
+			<span className=''>Паллета {pallet.title}</span>
+
+		</Link>
 
 
-			<Link to={`${pallet._id}`} className='' >
-
-				<div className=''>
-
-					<span className=''>Паллета {pallet.title}</span>
-				</div>
-
-			</Link>
-
-
-
-
-
-
-
-
-
-		</div>
 	);
 };
 

@@ -21,25 +21,34 @@ const RowBage = ({ row }) => {
 
 
 	return (
-		<CardBTW className='my-2 flex justify-center mx-auto ' >
 
 
 
-			<Link to={`${row._id}`} className='w-full mx-auto flex justify-center' >
+		<Link
 
-				<div
-					className='w-full mx-auto flex justify-center border-2 border-red-500'>
-
-					{row.title}
-
-				</div>
-
-			</Link>
+			to={`${row._id}`}
 
 
+			className=' flex justify-center
+			bg-slate-500 hover:bg-slate-400
+			border-2 border-orange-400  hover:border-orange-300
+			rounded transition ease-in-out duration-300
+			w-full p-2
+			shadow-sm hover:shadow-lg
+			text-gray-800 hover:text-white
+			
+			'
+		>
 
 
-		</CardBTW>
+			{row.title}
+
+
+
+		</Link>
+
+
+
 	);
 };
 

@@ -30,7 +30,7 @@ const RowItem = (
 
 
 	return (
-		<CardBTW
+		<div
 			className='
 			mx-auto
 	
@@ -56,7 +56,7 @@ const RowItem = (
 
 
 
-		</CardBTW>
+		</div>
 	);
 };
 

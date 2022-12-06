@@ -28,11 +28,11 @@ const RowPallets = ({ pallets }) => {
 	return (
 
 
-		<div className='mx-auto'>
+		<CardBTW >
 
 			{newPallets &&
 
-				<div className=''>
+				<div className='space-y-4 w-full'>
 
 					{
 						newPallets.map((pallet) => {
@@ -41,7 +41,6 @@ const RowPallets = ({ pallets }) => {
 								<RowPallet
 
 									title={pallet.title}
-
 									id={pallet._id}
 									key={pallet._id}
 
@@ -59,7 +58,7 @@ const RowPallets = ({ pallets }) => {
 			}
 
 
-		</div>
+		</CardBTW>
 
 
 	);

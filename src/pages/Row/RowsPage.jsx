@@ -64,7 +64,7 @@ const RowsPage = () => {
 						В базе данных нет ни одного ряда.
 					</div>
 					:
-					<div className=''>
+					<div className=' space-y-4 w-full my-2'>
 
 						{rows?.map((row, idx) => (
 							<RowBage key={idx} row={row} />

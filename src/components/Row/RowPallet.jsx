@@ -17,12 +17,26 @@ const RowPallet = ({ title, id }) => {
 
 	return (
 
-		<CardBTW className='my-1 bg-slate-400 w-full mx-auto '>
-
-			<Link className=' flex justify-center' to={`/pallets/${id}`}>{title}</Link>
 
 
-		</CardBTW>
+		<Link
+			className=' flex justify-center
+			bg-amber-500 hover:bg-amber-400
+			rounded transition ease-in-out duration-300
+			w-full p-2
+			shadow-md hover:shadow-xl
+			text-gray-800 hover:text-white
+			
+			'
+
+
+			to={`/pallets/${id}`}
+		>
+			{title}
+		</Link>
+
+
+
 	);
 };
 
