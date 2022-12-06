@@ -53,12 +53,12 @@ const PalletPage = () => {
 	const isAuth = useSelector(checkIsAuth)
 
 
-	useEffect(() => {
+/* 	useEffect(() => {
 		if (status) {
 			toast(status)
 		}
 		if (!isAuth) navigate('/login')
-	}, [status, isAuth, navigate])
+	}, [status, isAuth, navigate]) */
 
 
 

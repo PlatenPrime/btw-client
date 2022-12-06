@@ -30,10 +30,10 @@ const MainPage = () => {
 	const isAuth = useSelector(checkIsAuth)
 
 
-	useLayoutEffect(() => {
+/* 	useLayoutEffect(() => {
 
 		if (!isAuth) navigate('/login')
-	}, [isAuth, navigate])
+	}, [isAuth, navigate]) */
 
 
 
