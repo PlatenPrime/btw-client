@@ -13,12 +13,12 @@ const Layout = ({ children }) => {
 
 	return (
 
-		<div className='container mx-auto max-h-screen'>
+		<div className='container mx-auto min-h-screen max-h-screen'>
 
 			<NavbarBTW />
 
 			<div className='flex w-full justify-center'>
-			
+
 
 				{children}
 
