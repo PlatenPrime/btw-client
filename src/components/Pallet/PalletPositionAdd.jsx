@@ -6,6 +6,8 @@ import CancelIcon from "../Icons/CancelIcon";
 import SaveIcon from "../Icons/SaveIcon";
 
 
+import AddButton from "../UI/Buttons/AddButton";
+
 
 
 
@@ -127,15 +129,15 @@ const PalletPositionAdd = ({ positions, setPositions }) => {
 
 
 
-				<div className='p-2 my-3 w-full flex justify-center'>
-					<button
-						className=' w-1/2 bg-green-600 bg-opacity-50 border text-white p-2 rounded-lg mx-auto flex justify-center '
-						onClick={handlerPositionAddAdd}
-					>
-						<AddIcon />
 
-					</button>
-				</div>
+				<AddButton
+
+					onClick={handlerPositionAddAdd}
+				>
+					<AddIcon />
+
+				</AddButton>
+
 
 
 

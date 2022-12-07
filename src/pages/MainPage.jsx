@@ -6,6 +6,11 @@ import axios from "../utils/axios";
 
 import * as xlsx from "xlsx";
 
+import { Vortex } from 'react-loader-spinner'
+
+
+
+
 import CardBTW from "../components/UI/CardBTW";
 
 import PageBTW from '../components/UI/PageBTW';
@@ -30,10 +35,10 @@ const MainPage = () => {
 	const isAuth = useSelector(checkIsAuth)
 
 
-/* 	useLayoutEffect(() => {
-
-		if (!isAuth) navigate('/login')
-	}, [isAuth, navigate]) */
+	/* 	useLayoutEffect(() => {
+	
+			if (!isAuth) navigate('/login')
+		}, [isAuth, navigate]) */
 
 
 
@@ -78,6 +83,8 @@ const MainPage = () => {
 				<CardBTW>
 					Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde voluptatem laboriosam quis error commodi esse architecto voluptatibus similique suscipit vero, enim distinctio cum doloremque facilis pariatur! Neque harum aut ducimus.
 				</CardBTW>
+
+
 
 
 

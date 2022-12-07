@@ -11,6 +11,7 @@ import BTWsvg from "../../assets/images/BTW.svg";
 
 import BurgerIcon from "../Icons/BurgerIcon";
 import DrawIcon from "../Icons/DrawIcon";
+import { Vortex } from 'react-loader-spinner';
 
 const NavbarBTW = () => {
 
@@ -44,11 +45,23 @@ const NavbarBTW = () => {
 				<NavLink to={"/"}  >
 
 					<Navbar.Brand >
-						<img
+						{/* <img
 							src={BTWsvg}
 							className="mr-3 h-6 sm:h-9"
 							alt="BTW Logo"
+						/> */}
+
+						<Vortex
+							visible={true}
+							height="50"
+							width="50"
+							ariaLabel="vortex-loading"
+							wrapperStyle={{}}
+							wrapperClass="vortex-wrapper"
+							colors={['blue', 'yellow', "blue", 'yellow', 'yellow', 'blue']}
 						/>
+
+
 						<span className="self-center whitespace-nowrap text-xl font-semibold dark:text-white">
 							BTW
 						</span>

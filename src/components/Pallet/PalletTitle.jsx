@@ -4,6 +4,13 @@ import React, { useEffect, useState } from 'react';
 import EditIcon from "./../Icons/EditIcon"
 import SaveIcon from "./../Icons/SaveIcon"
 
+
+import AddButton from '../UI/Buttons/AddButton';
+import EditButton from '../UI/Buttons/EditButton';
+
+
+
+
 const PalletTitle = ({ title, setTitle, isPalletEditing }) => {
 
 	const [isEditingTitle, setIsEditingTitle] = useState(false);
@@ -38,7 +45,7 @@ const PalletTitle = ({ title, setTitle, isPalletEditing }) => {
 
 			{isEditingTitle ?
 
-				<div className=''>
+				<div className='w-full'>
 
 					<input
 						className=''
@@ -48,15 +55,16 @@ const PalletTitle = ({ title, setTitle, isPalletEditing }) => {
 						onChange={e => setNewTitle(e.target.value)} />
 
 
-					{isPalletEditing && <button
-						className=''
-						onClick={handlerSaveTitle}
+					{isPalletEditing &&
+						<button
+							className=''
+							onClick={handlerSaveTitle}
 
-					>
-						<SaveIcon />
+						>
+							<SaveIcon />
 
 
-					</button>}
+						</button>}
 
 				</div>
 
@@ -67,32 +75,33 @@ const PalletTitle = ({ title, setTitle, isPalletEditing }) => {
 				<div className=''>
 
 
-					{title && <h2
-						className=' '
-					>{newTitle}</h2>}
-
 
 					{title ?
 
-						isPalletEditing && <button
+						isPalletEditing &&
+						<EditButton
 							className=''
 							onClick={handlerEditTitle}
 
 						>
 
+							{newTitle}
 
 							<EditIcon />
 
 
-						</button>
+						</EditButton>
 
 						:
 
-						isPalletEditing && <button
-							className=''
-							onClick={handlerEditTitle}
+						isPalletEditing &&
 
-						>Добавить название</button>
+						<EditButton
+
+							onClick={handlerEditTitle}
+						>
+							Добавить название
+						</EditButton>
 
 					}
 

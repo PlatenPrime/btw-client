@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import CardBTW from '../../components/UI/CardBTW';
 import ControlBTW from '../../components/UI/ControlBTW';
 import HeaderMainBTW from '../../components/UI/Header/HeaderMainBTW';
@@ -94,9 +94,7 @@ const ArtPage = () => {
 
 				<CardBTW>
 
-					<h1
-						className='text-2xl '
-					>Артикул {art.title}</h1>
+
 
 					<h1 className='text-xl ' >{art.name}</h1>
 
@@ -112,9 +110,20 @@ const ArtPage = () => {
 
 							const box = pallet.positions.find(item => item.art == art.title)
 
-							return <p className='text-lg '
+							return (
+								<Link
+									to={`/pallets/${pallet._id}`}
 
-							>{pallet.title} : {box.pieces}</p>
+
+								>
+									<p className='text-lg my-1 p-1
+									bg-amber-100 hover:bg-amber-500
+									rounded transition ease-in-out duration-300' >
+										{pallet.title} : {box.pieces} шт
+									</p>
+
+								</Link>
+							)
 						}
 
 						)
