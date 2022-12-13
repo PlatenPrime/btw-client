@@ -39,49 +39,69 @@ const RowTitle = ({ title, setTitle, isRowEditing }) => {
 		<div className=''>
 
 			{isEditingTitle
+
 				?
-				<div className='  '>
+
+				<div className=' h-16 flex justify-center items-center space-x-8 '>
+
+					<span className=' text-lg '>Новое название ряда</span>
+
 					<input
-						className=' '
+						className='text-lg '
 						type="text"
 						value={newTitle}
 						placeholder='Название...'
 						onChange={e => setNewTitle(e.target.value)} />
+
 					{isRowEditing &&
+
 						<button
-							className='
-							
-							'
+							className=''
 							onClick={handlerSaveTitle}
 						>
 							<SaveIcon />
 						</button>}
+
 				</div>
+
 				:
-				<div className='  '>
-					{title && <h2
-						className='  '
-					>{newTitle}</h2>}
+
+				<div className='h-16 flex justify-center items-center  space-x-8 '>
+
+					{title && isRowEditing &&
+						<h2 className=' text-lg '>
+							Название ряда: {newTitle}
+						</h2>}
+
+
 					{
-						title ?
-							isRowEditing && <button
-								className='
-									
-									'
+						title
+							?
+							isRowEditing &&
+
+							<button
+								className=''
 								onClick={handlerEditTitle}
 							>
 								<EditIcon />
 							</button>
+
 							:
-							isRowEditing && <button
+
+							isRowEditing &&
+							<button
 								className=' '
 								onClick={handlerEditTitle}
 							>
 								Добавить название
 							</button>
 					}
+
+
 				</div>
 			}
+
+
 		</div>
 
 

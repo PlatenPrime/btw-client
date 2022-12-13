@@ -1,8 +1,6 @@
 import React from 'react';
 
 
-import NavbarBTW from './UI/NavbarBTW';
-
 import SidebarBTW from './UI/SidebarBTW';
 
 
@@ -15,10 +13,10 @@ const Layout = ({ children }) => {
 
 		<div className='container mx-auto min-h-screen max-h-screen'>
 
-			<NavbarBTW />
 
-			<div className='flex w-full justify-center'>
+			<div className='flex h-full w-full justify-center'>
 
+				<SidebarBTW />
 
 				{children}
 
