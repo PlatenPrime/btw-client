@@ -11,7 +11,7 @@ const Layout = ({ children }) => {
 
 	return (
 
-		<div className='container mx-auto min-h-screen max-h-screen'>
+		<div className='container mx-auto min-h-screen max-h-screen shadow-sm'>
 
 
 			<div className='flex h-full w-full justify-center'>

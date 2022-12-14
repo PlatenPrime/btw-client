@@ -4,7 +4,7 @@ const HeaderMainBTW = ({ children }) => {
 	return (
 		<div className='w-full h-16
 		flex justify-center items-center   
-		 bg-sky-200'>
+		 bg-sky-300'>
 			{children}
 		</div>
 	);

@@ -29,9 +29,9 @@ const SidebarBTW = () => {
 
 
 	return (
-		<div className='hidden sm:flex   sm:min-h-screen sm:min-w-fit md:w-1/6 
+		<div className='hidden md:flex   md:min-h-screen md:min-w-fit w-1/6 
 		 flex-col justify-start items-center space-y-8
-		 bg-sky-200'>
+		 bg-sky-100'>
 
 
 			<NavLink
