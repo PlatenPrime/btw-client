@@ -63,8 +63,11 @@ const ArtFindPage = () => {
 
 		const art = arts.find(item => item.title == artInput.current.value)
 
-		setArtItem(art)
-		setArtCartDisplay(true)
+		
+			setArtItem(art) 
+			 setArtCartDisplay(true)
+
+
 
 	}
 
@@ -87,43 +90,64 @@ const ArtFindPage = () => {
 					</TitleHeaderMain>
 				</HeaderMainBTW>
 
-				<div className='flex p-4 space-x-5'>
-					<input className='w-1/2' type="text" ref={artInput} />
+				<div className='flex flex-col items-center md:flex-row p-4 space-x-5'>
 
-					<div className='w-1/2'>
-						<SaveButton className='bg-blue-600 m-5 p-2 text-white rounded-sm' onClick={handlerArtFind} >Найти артикул</SaveButton>
+					<input className='md:w-1/2' type="text" ref={artInput} />
+
+					<div className='md:w-1/2'>
+						<SaveButton className='bg-blue-600 my-5 p-2 text-white rounded-sm' onClick={handlerArtFind} >Найти артикул</SaveButton>
 					</div>
 
 				</div>
 
 
 				<div
-					className='cursor-pointer shadow-sm border-5 bg-slate-300'
+					className='cursor-pointer shadow-md border-5 hover:shadow-green-300 m-2'
 					onClick={() => navigate(`/arts/${artItem._id}`)}
 				>
-					{artCardDisplay &&
-						<div className='flex'>
+
+					{!artItem ? "Такого артикула нет" :
+
+						artCardDisplay &&
+
+						<div className='flex flex-col items-center md:flex-row'>
+
+							<div className='w-1/2 flex flex-col justify-center items-center '>
+
+								<h1 className='text-5xl' >{artItem.title}</h1>
+
+
+							</div>
 
 							<div className='w-1/2'>
 								<CardBTW >
 
 									<PhotoArtBTW title={artItem.title} />
 
+									<h1>{artItem.name}</h1>
+
 								</CardBTW >
 							</div>
 
 
 
-							<div className='w-1/2 flex flex-col justify-center items-center text-xl'>
-								<h1>{artItem.title}</h1>
-								<h1>{artItem.name}</h1>
 
-							</div>
 
 						</div>
 
-
 					}
+
+
+
+
+
+
+
+
+
+
+
+
 				</div>
 
 			</MainBTW>
