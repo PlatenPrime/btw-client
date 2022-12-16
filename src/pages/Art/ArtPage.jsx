@@ -80,8 +80,6 @@ const ArtPage = () => {
 
 
 
-
-
 	return (
 		<PageBTW >
 
@@ -106,9 +104,12 @@ const ArtPage = () => {
 					<h1 className='text-xl'  > Зона: {art.zone}</h1>
 
 
-					{pallets && <h1 className='text-xl ' >
+					{pallets.length ? <h1 className='text-xl ' >
+
+
 
 						Артикул {art.title} находится на следующих паллетах:
+
 						{pallets.map((pallet) => {
 
 							const box = pallet.positions.find(item => item.art == art.title)
@@ -133,7 +134,12 @@ const ArtPage = () => {
 
 						}
 
-					</h1>}
+					</h1>
+						:
+						<p className='text-xl ' >Артикула на запасах нет</p>
+
+
+					}
 
 				</CardBTW>
 
