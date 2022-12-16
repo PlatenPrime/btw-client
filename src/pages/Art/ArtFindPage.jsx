@@ -18,22 +18,9 @@ const ArtFindPage = () => {
 	const isAuth = useSelector(checkIsAuth)
 
 
-	/* useLayoutEffect(() => {
 
-		if (!isAuth) navigate('/login')
-	}, [isAuth, navigate]) */
 
 	const [arts, setArts] = useState("");
-
-
-	const artInput = useRef("");
-
-	const [artItem, setArtItem] = useState('')
-	const [artCardDisplay, setArtCartDisplay] = useState(false)
-
-	const photo = `https://sharik.ua/images/elements_big/${artItem.title}_m1.jpg`;
-
-
 
 	const fetchArts = async () => {
 		try {
@@ -59,20 +46,43 @@ const ArtFindPage = () => {
 
 
 
+
+	/* useLayoutEffect(() => {
+
+		if (!isAuth) navigate('/login')
+	}, [isAuth, navigate]) */
+
+
+
+
+	const artInput = useRef("");
+
+	const [artItem, setArtItem] = useState('')
+	const [artCardDisplay, setArtCartDisplay] = useState(false)
+
+
+
 	const handlerArtFind = () => {
 
-		const art = arts.find(item => item.title == artInput.current.value)
+		const art = arts.find(item => item.title === artInput.current.value)
 
-		
-			setArtItem(art) 
-			 setArtCartDisplay(true)
+
+
+		if (art != undefined) {
+			setArtItem(art)
+			setArtCartDisplay(true)
+		} else {
+			window.alert("Такого артикула нет")
+		}
+
+
 
 
 
 	}
 
 
-
+	const photo = `https://sharik.ua/images/elements_big/${artItem.title}_m1.jpg`;
 
 	return (
 
@@ -90,15 +100,30 @@ const ArtFindPage = () => {
 					</TitleHeaderMain>
 				</HeaderMainBTW>
 
+
+
+
+
+
 				<div className='flex flex-col items-center md:flex-row p-4 space-x-5'>
 
 					<input className='md:w-1/2' type="text" ref={artInput} />
 
 					<div className='md:w-1/2'>
-						<SaveButton className='bg-blue-600 my-5 p-2 text-white rounded-sm' onClick={handlerArtFind} >Найти артикул</SaveButton>
+
+						<SaveButton
+							className='bg-blue-600 my-5 p-2 text-white rounded-sm'
+							onClick={handlerArtFind}
+						>
+							Найти артикул
+						</SaveButton>
+
 					</div>
 
 				</div>
+
+
+
 
 
 				<div
@@ -106,20 +131,27 @@ const ArtFindPage = () => {
 					onClick={() => navigate(`/arts/${artItem._id}`)}
 				>
 
-					{!artItem ? "Такого артикула нет" :
+
+
+
+					{artItem &&
 
 						artCardDisplay &&
 
 						<div className='flex flex-col items-center md:flex-row'>
 
-							<div className='w-1/2 flex flex-col justify-center items-center '>
+
+
+							<div className='md:w-1/2 flex flex-col justify-center items-center '>
 
 								<h1 className='text-5xl' >{artItem.title}</h1>
 
-
 							</div>
 
-							<div className='w-1/2'>
+
+
+							<div className='md:w-1/2'>
+
 								<CardBTW >
 
 									<PhotoArtBTW title={artItem.title} />
@@ -127,25 +159,13 @@ const ArtFindPage = () => {
 									<h1>{artItem.name}</h1>
 
 								</CardBTW >
+
 							</div>
-
-
-
 
 
 						</div>
 
 					}
-
-
-
-
-
-
-
-
-
-
 
 
 				</div>

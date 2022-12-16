@@ -20,9 +20,9 @@ const ArtPage = () => {
 
 	const [isLoading, setIsLoading] = useState("");
 	const [art, setArt] = useState("")
-	const [pallets, setPallets] = useState("")
+	const [pallets, setPallets] = useState([])
 
-	console.log(typeof pallets)
+
 
 	useEffect(() => {
 		console.log("Загружен такой артикул: ", art)
@@ -79,6 +79,9 @@ const ArtPage = () => {
 
 
 
+
+
+
 	return (
 		<PageBTW >
 
@@ -114,8 +117,8 @@ const ArtPage = () => {
 								<Link
 									to={`/pallets/${pallet._id}`}
 
-
 								>
+
 									<p className='text-lg my-1 p-1
 									bg-amber-100 hover:bg-amber-500
 									rounded transition ease-in-out duration-300' >
