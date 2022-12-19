@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 import { toast } from 'react-toastify';
 
@@ -11,20 +11,34 @@ import { getAllRows } from '../../redux/features/row/rowSlice';
 
 
 import RowBage from "../../components/Row/RowBage";
-import { Button, Card } from 'flowbite-react';
-import CardBTW from '../../components/UI/CardBTW';
+
 import PageBTW from '../../components/UI/PageBTW';
 import ControlBTW from '../../components/UI/ControlBTW';
 import MainBTW from '../../components/UI/MainBTW';
-import EditButton from '../../components/UI/Buttons/EditButton';
+
 import CreateButton from '../../components/UI/Buttons/CreateButton';
 import HeaderPageBTW from '../../components/UI/Header/HeaderMainBTW';
 import TitleHeaderMain from '../../components/UI/Header/TitleHeaderMain';
+import { checkIsAuth } from '../../redux/features/auth/authSlice';
 
 
 
 
 const RowsPage = () => {
+
+
+	const isAuth = useSelector(checkIsAuth)
+	const navigate = useNavigate()
+
+
+	useEffect(() => {
+
+		if (!isAuth) navigate('/login')
+
+	}, [isAuth, navigate])
+
+
+
 
 	// State
 
@@ -59,18 +73,23 @@ const RowsPage = () => {
 					</TitleHeaderMain>
 				</HeaderPageBTW>
 
-				{!rows.length ?
-					<div className=''>
-						В базе данных нет ни одного ряда.
-					</div>
-					:
-					<div className=' space-y-4 w-full my-2'>
+				{
+					!rows.length ?
 
-						{rows?.map((row, idx) => (
-							<RowBage key={idx} row={row} />
-						))}
-					</div>
+						<div className=''>
+							В базе данных нет ни одного ряда.
+						</div>
+
+						:
+						<div className=' space-y-4 w-full my-2'>
+
+							{rows?.map((row, idx) => (
+								<RowBage key={idx} row={row} />
+							))}
+						</div>
+
 				}
+
 			</MainBTW>
 
 

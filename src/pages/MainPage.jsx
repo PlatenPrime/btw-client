@@ -1,12 +1,12 @@
 import React, { useEffect, useLayoutEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
-import { checkIsAuth } from '../redux/features/auth/authSlice';
+import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { checkIsAuth } from "../redux/features/auth/authSlice";
+
 import axios from "../utils/axios";
 
 import * as xlsx from "xlsx";
 
-import { Vortex } from 'react-loader-spinner'
 
 
 
@@ -28,17 +28,19 @@ import TitleHeaderMain from '../components/UI/Header/TitleHeaderMain';
 
 const MainPage = () => {
 
-
-
-
-	const navigate = useNavigate()
 	const isAuth = useSelector(checkIsAuth)
+	const navigate = useNavigate()
 
 
-	/* 	useLayoutEffect(() => {
-	
-			if (!isAuth) navigate('/login')
-		}, [isAuth, navigate]) */
+	useEffect(() => {
+
+		if (!isAuth) navigate('/login')
+
+	}, [isAuth, navigate])
+
+
+
+
 
 
 

@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import { Link, useParams } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 import CardBTW from '../../components/UI/CardBTW';
 import ControlBTW from '../../components/UI/ControlBTW';
 import HeaderMainBTW from '../../components/UI/Header/HeaderMainBTW';
@@ -7,6 +8,7 @@ import TitleHeaderMain from '../../components/UI/Header/TitleHeaderMain';
 import MainBTW from '../../components/UI/MainBTW';
 import PageBTW from '../../components/UI/PageBTW';
 import PhotoArtBTW from '../../components/UI/PhotoArtBTW';
+import { checkIsAuth } from '../../redux/features/auth/authSlice';
 
 import axios from "../../utils/axios"
 
@@ -15,6 +17,21 @@ import axios from "../../utils/axios"
 
 
 const ArtPage = () => {
+
+
+
+	const isAuth = useSelector(checkIsAuth)
+	const navigate = useNavigate()
+
+
+	useEffect(() => {
+
+		if (!isAuth) navigate('/login')
+
+	}, [isAuth, navigate])
+
+
+
 
 	const params = useParams()
 

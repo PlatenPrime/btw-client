@@ -1,4 +1,4 @@
-import React, { useEffect, useLayoutEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
 import SaveButton from '../../components/UI/Buttons/SaveButton';
@@ -17,7 +17,10 @@ const ArtFindPage = () => {
 	const navigate = useNavigate()
 	const isAuth = useSelector(checkIsAuth)
 
+	useEffect(() => {
 
+		if (!isAuth) navigate('/login')
+	}, [isAuth, navigate])
 
 
 	const [arts, setArts] = useState("");
@@ -47,10 +50,7 @@ const ArtFindPage = () => {
 
 
 
-	/* useLayoutEffect(() => {
 
-		if (!isAuth) navigate('/login')
-	}, [isAuth, navigate]) */
 
 
 
