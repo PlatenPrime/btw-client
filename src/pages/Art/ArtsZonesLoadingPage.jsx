@@ -1,5 +1,5 @@
 import { Button, Label, Spinner, Textarea, Tooltip } from 'flowbite-react';
-import React, { useLayoutEffect, useRef, useState } from 'react';
+import React, { useEffect, useLayoutEffect, useRef, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import CreateButton from '../../components/UI/Buttons/CreateButton';
@@ -23,12 +23,11 @@ const ArtsZonesLoadingPage = () => {
 	const isAuth = useSelector(checkIsAuth)
 
 
-	/* useLayoutEffect(() => {
+	useEffect(() => {
 
 		if (!isAuth) navigate('/login')
-	}, [isAuth, navigate])
 
- */
+	}, [isAuth, navigate])
 
 
 

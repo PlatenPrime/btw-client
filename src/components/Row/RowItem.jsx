@@ -31,10 +31,7 @@ const RowItem = (
 
 	return (
 		<div
-			className='
-			mx-auto
-	
-		'>
+			className=' mx-auto '>
 
 			<RowTitle
 				isRowEditing={isRowEditing}

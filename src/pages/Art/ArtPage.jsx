@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import { Link, useParams } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 import CardBTW from '../../components/UI/CardBTW';
 import ControlBTW from '../../components/UI/ControlBTW';
 import HeaderMainBTW from '../../components/UI/Header/HeaderMainBTW';
@@ -7,6 +8,7 @@ import TitleHeaderMain from '../../components/UI/Header/TitleHeaderMain';
 import MainBTW from '../../components/UI/MainBTW';
 import PageBTW from '../../components/UI/PageBTW';
 import PhotoArtBTW from '../../components/UI/PhotoArtBTW';
+import { checkIsAuth } from '../../redux/features/auth/authSlice';
 
 import axios from "../../utils/axios"
 
@@ -16,13 +18,28 @@ import axios from "../../utils/axios"
 
 const ArtPage = () => {
 
+
+
+	const isAuth = useSelector(checkIsAuth)
+	const navigate = useNavigate()
+
+
+	useEffect(() => {
+
+		if (!isAuth) navigate('/login')
+
+	}, [isAuth, navigate])
+
+
+
+
 	const params = useParams()
 
 	const [isLoading, setIsLoading] = useState("");
 	const [art, setArt] = useState("")
-	const [pallets, setPallets] = useState("")
+	const [pallets, setPallets] = useState([])
 
-	console.log(typeof pallets)
+
 
 	useEffect(() => {
 		console.log("Загружен такой артикул: ", art)
@@ -79,6 +96,7 @@ const ArtPage = () => {
 
 
 
+
 	return (
 		<PageBTW >
 
@@ -103,9 +121,12 @@ const ArtPage = () => {
 					<h1 className='text-xl'  > Зона: {art.zone}</h1>
 
 
-					{pallets && <h1 className='text-xl ' >
+					{pallets.length ? <h1 className='text-xl ' >
+
+
 
 						Артикул {art.title} находится на следующих паллетах:
+
 						{pallets.map((pallet) => {
 
 							const box = pallet.positions.find(item => item.art == art.title)
@@ -114,8 +135,8 @@ const ArtPage = () => {
 								<Link
 									to={`/pallets/${pallet._id}`}
 
-
 								>
+
 									<p className='text-lg my-1 p-1
 									bg-amber-100 hover:bg-amber-500
 									rounded transition ease-in-out duration-300' >
@@ -130,7 +151,12 @@ const ArtPage = () => {
 
 						}
 
-					</h1>}
+					</h1>
+						:
+						<p className='text-xl ' >Артикула на запасах нет</p>
+
+
+					}
 
 				</CardBTW>
 

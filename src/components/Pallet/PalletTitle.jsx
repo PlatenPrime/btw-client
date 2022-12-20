@@ -47,6 +47,8 @@ const PalletTitle = ({ title, setTitle, isPalletEditing }) => {
 
 				<div className='w-full'>
 
+					<span>Новое название паллеты</span>
+
 					<input
 						className=''
 						type="text"
@@ -85,7 +87,7 @@ const PalletTitle = ({ title, setTitle, isPalletEditing }) => {
 
 						>
 
-							{newTitle}
+							Название паллеты: 	{newTitle}
 
 							<EditIcon />
 
