@@ -29,9 +29,9 @@ const SidebarBTW = () => {
 
 
 	return (
-		<div className='fixed top-0 left-0  md:static flex   min-h-screen md:min-w-fit w-1/2 md:w-1/6 
-		 flex-col justify-start items-center space-y-8
-		 bg-sky-200 bg-opacity-80 '>
+		<div className='hidden  min-h-screen md:min-w-fit md:w-1/6 
+		md:flex flex-col justify-start items-center space-y-8
+		 bg-sky-200 '>
 
 
 			<NavLink
@@ -41,20 +41,7 @@ const SidebarBTW = () => {
 
 				<div className='flex items-center h-16'>
 
-
-					<Vortex
-						visible={true}
-						height="50"
-						width="50"
-						ariaLabel="vortex-loading"
-						wrapperStyle={{}}
-						wrapperClass="vortex-wrapper"
-						colors={['blue', 'yellow', "blue", 'yellow', 'yellow', 'blue']}
-					/>
-
-					<span>
-						BTW
-					</span>
+					BTW
 
 				</div>
 
