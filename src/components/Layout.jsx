@@ -20,7 +20,7 @@ const Layout = ({ children }) => {
 
 		<div className='container mx-auto min-h-screen max-h-screen shadow-sm relative'>
 
-			{mobileSide && <SidebarMobileBTW />}
+			{mobileSide && <SidebarMobileBTW onClose={handlerMobileSide} />}
 
 			<NavbarBTW onClickSide={handlerMobileSide} />
 
