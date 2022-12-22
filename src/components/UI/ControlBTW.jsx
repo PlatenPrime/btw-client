@@ -1,19 +1,22 @@
 
 import React from 'react';
-import HeaderControlBTW from './Header/HeaderControlBTW';
+import { ControlContext } from '../Layout';
 
 
 const ControlBTW = ({ children }) => {
+
+	const display = React.useContext(ControlContext);
+
 	return (
-		<div className="w-full min-h-fit max-h-screen 
-		md:w-1/4  md:min-h-full 
+		<div className="w-full fixed bottom-0 left-0 min-h-fit max-h-screen 
+		md:w-1/4  md:min-h-full  md:static
 		
 		bg-sky-100 ">
 
-			<div className='w-full md:flex flex-col items-center justify-start mt-16'>
-				{children}
-			</div>
-
+			{display &&
+				<div className='w-full md:flex flex-col items-center justify-start md:mt-16'>
+					{children}
+				</div>}
 
 
 		</div>
