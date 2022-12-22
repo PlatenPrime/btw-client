@@ -31,6 +31,8 @@ const RowsPage = () => {
 	const navigate = useNavigate()
 
 
+
+
 	useEffect(() => {
 
 		if (!isAuth) navigate('/login')

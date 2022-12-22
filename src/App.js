@@ -21,7 +21,7 @@ import { LoginPage } from "./pages/Auth/LoginPage";
 import { RegisterPage } from "./pages/Auth/RegisterPage";
 import { useDispatch } from "react-redux";
 import { getMe } from "./redux/features/auth/authSlice";
-import { useEffect } from "react";
+import { useEffect, useLayoutEffect } from "react";
 import AddRowPage from "./pages/Row/AddRowPage";
 import ArtFindPage from "./pages/Art/ArtFindPage";
 import ArtPage from "./pages/Art/ArtPage";
