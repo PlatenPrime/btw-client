@@ -31,14 +31,18 @@ const MainPage = () => {
 	const isAuth = useSelector(checkIsAuth)
 	const navigate = useNavigate()
 
+	useEffect(() => {
+
+		console.log(isAuth)
+
+	}, [isAuth])
+
 
 	useEffect(() => {
 
 		if (!isAuth) navigate('/login')
 
 	}, [isAuth, navigate])
-
-
 
 
 
