@@ -33,12 +33,14 @@ const RowsPage = () => {
 
 
 
-	useEffect(() => {
+	 useEffect(() => {
 
 		if (!isAuth) navigate('/login')
 
-	}, [isAuth, navigate])
+	}, [isAuth, navigate]) 
 
+
+	
 
 
 
