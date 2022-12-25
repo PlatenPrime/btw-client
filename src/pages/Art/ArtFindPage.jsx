@@ -17,10 +17,6 @@ const ArtFindPage = () => {
 	const navigate = useNavigate()
 	const isAuth = useSelector(checkIsAuth)
 
-	useEffect(() => {
-
-		if (!isAuth) navigate('/login')
-	}, [isAuth, navigate])
 
 
 	const [arts, setArts] = useState("");

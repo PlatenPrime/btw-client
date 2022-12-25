@@ -24,11 +24,7 @@ const ArtPage = () => {
 	const navigate = useNavigate()
 
 
-	useEffect(() => {
 
-		if (!isAuth) navigate('/login')
-
-	}, [isAuth, navigate])
 
 
 

@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+
 import NavbarBTW from './UI/NavbarBTW';
 
 
@@ -10,6 +11,8 @@ export const ControlContext = React.createContext();
 
 
 const Layout = ({ children }) => {
+
+	
 
 	const [mobileSide, setMobileSide] = useState(false)
 	const [mobileControl, setMobileControl] = useState(true)
@@ -40,13 +43,16 @@ const Layout = ({ children }) => {
 
 				<NavbarBTW onClickSide={handlerMobileSide} onClickControl={handlerMobileControl} />
 
+
+
+
+
+
 				<div className='flex h-full w-full justify-center'>
 
 					<SidebarBTW />
 
-					{children}
-
-
+					{ children }
 
 
 				</div>

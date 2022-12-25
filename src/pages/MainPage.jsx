@@ -18,6 +18,7 @@ import MainBTW from '../components/UI/MainBTW';
 import ControlBTW from '../components/UI/ControlBTW';
 import HeaderPageBTW from '../components/UI/Header/HeaderMainBTW';
 import TitleHeaderMain from '../components/UI/Header/TitleHeaderMain';
+import Loading from '../components/UI/Loading/Loading';
 
 
 
@@ -31,11 +32,6 @@ const MainPage = () => {
 	const isAuth = useSelector(checkIsAuth)
 	const navigate = useNavigate()
 
-	useEffect(() => {
-
-		console.log(isAuth)
-
-	}, [isAuth])
 
 
 	useEffect(() => {
@@ -86,11 +82,10 @@ const MainPage = () => {
 					</TitleHeaderMain>
 				</HeaderPageBTW>
 
-				<CardBTW>
-					Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde voluptatem laboriosam quis error commodi esse architecto voluptatibus similique suscipit vero, enim distinctio cum doloremque facilis pariatur! Neque harum aut ducimus.
-				</CardBTW>
+			
 
 
+				<Loading />
 
 
 

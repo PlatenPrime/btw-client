@@ -1,5 +1,5 @@
 import Layout from "./components/Layout";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, useNavigate } from "react-router-dom";
 
 import { ToastContainer } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
@@ -19,13 +19,14 @@ import RowPage from "./pages/Row/RowPage";
 
 import { LoginPage } from "./pages/Auth/LoginPage";
 import { RegisterPage } from "./pages/Auth/RegisterPage";
-import { useDispatch } from "react-redux";
-import { getMe } from "./redux/features/auth/authSlice";
+import { useDispatch, useSelector } from "react-redux";
+import { checkIsAuth, getMe } from "./redux/features/auth/authSlice";
 import { useEffect, useLayoutEffect } from "react";
 import AddRowPage from "./pages/Row/AddRowPage";
 import ArtFindPage from "./pages/Art/ArtFindPage";
 import ArtPage from "./pages/Art/ArtPage";
 import ArtsZonesLoadingPage from "./pages/Art/ArtsZonesLoadingPage";
+import Loading from "./components/UI/Loading/Loading";
 
 
 
@@ -41,38 +42,47 @@ function App() {
 	}, [dispatch])
 
 
+	
+
+
 
 
 
 
 	return (
+
+	
 		<Layout>
 
-			<Routes>
-				<Route path="/" element={<MainPage />} />
-				<Route path="login" element={<LoginPage />} />
-				<Route path="register" element={<RegisterPage />} />
+		<Routes>
+			<Route path="/" element={<MainPage />} />
+			<Route path="login" element={<LoginPage />} />
+			<Route path="register" element={<RegisterPage />} />
 
-				<Route path="pallets" element={<PalletsPage />} />
-				<Route path="pallets/:id" element={<PalletPage />} />
-				<Route path="pallets/new" element={<AddPalletPage />} />
-
-
-				<Route path="rows" element={<RowsPage />} />
-				<Route path="rows/:id" element={<RowPage />} />
-				<Route path="rows/new" element={<AddRowPage />} />
+			<Route path="pallets" element={<PalletsPage />} />
+			<Route path="pallets/:id" element={<PalletPage />} />
+			<Route path="pallets/new" element={<AddPalletPage />} />
 
 
-				<Route path="artfind" element={<ArtFindPage />} />
-				<Route path="arts/:id" element={<ArtPage />} />
-				<Route path="artszones" element={<ArtsZonesLoadingPage />} />
+			<Route path="rows" element={<RowsPage />} />
+			<Route path="rows/:id" element={<RowPage />} />
+			<Route path="rows/new" element={<AddRowPage />} />
 
 
-			</Routes>
+			<Route path="artfind" element={<ArtFindPage />} />
+			<Route path="arts/:id" element={<ArtPage />} />
+			<Route path="artszones" element={<ArtsZonesLoadingPage />} />
 
-			<ToastContainer position="bottom-right" />
 
-		</Layout>
+		</Routes>
+
+		<ToastContainer position="bottom-right" />
+
+	</Layout>
+
+
+
+
 
 	);
 }

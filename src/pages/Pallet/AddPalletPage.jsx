@@ -38,12 +38,6 @@ const AddPalletPage = () => {
 	const isAuth = useSelector(checkIsAuth)
 
 
-	useEffect(() => {
-		if (status) {
-			toast(status)
-		}
-		if (!isAuth) navigate('/login')
-	}, [status, isAuth, navigate])
 
 
 

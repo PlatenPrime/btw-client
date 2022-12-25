@@ -7,6 +7,7 @@ import { Button, Label, TextInput } from 'flowbite-react'
 import PageBTW from '../../components/UI/PageBTW'
 import ConfirmButton from '../../components/UI/Buttons/ConfirmButton'
 import { Vortex } from 'react-loader-spinner'
+import PageAuthBTW from '../../components/UI/PageAuthBTW'
 
 export const LoginPage = () => {
 	const [username, setUsername] = useState('')
@@ -60,7 +61,7 @@ export const LoginPage = () => {
 
 
 	return (
-		<PageBTW>
+		<PageAuthBTW>
 
 			{isLoading ?
 
@@ -138,6 +139,6 @@ export const LoginPage = () => {
 			}
 
 
-		</PageBTW>
+		</PageAuthBTW>
 	)
 }

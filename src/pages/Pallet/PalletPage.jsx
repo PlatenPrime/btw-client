@@ -53,13 +53,7 @@ const PalletPage = () => {
 	const isAuth = useSelector(checkIsAuth)
 
 
-	useEffect(() => {
-		if (status) {
-			toast(status)
-		}
-		if (!isAuth) navigate('/login')
-	}, [status, isAuth, navigate])
-
+	
 
 
 	const fetchPallet = useCallback(async () => {

@@ -23,12 +23,7 @@ const ArtsZonesLoadingPage = () => {
 	const isAuth = useSelector(checkIsAuth)
 
 
-	useEffect(() => {
-
-		if (!isAuth) navigate('/login')
-
-	}, [isAuth, navigate])
-
+	
 
 
 

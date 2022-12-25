@@ -60,12 +60,7 @@ const RowPage = () => {
 	const isAuth = useSelector(checkIsAuth)
 
 
-	useEffect(() => {
-		if (status) {
-			toast(status)
-		}
-		if (!isAuth) navigate('/login')
-	}, [status, isAuth, navigate])
+	
 
 
 	const fetchRow = useCallback(async () => {
