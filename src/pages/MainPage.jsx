@@ -70,7 +70,8 @@ const MainPage = () => {
 				</HeaderPageBTW>
 
 
-
+				<button type="button" class="buttonBTW buttonPrimary w-1/2">Основная</button>
+				<button type="button" class="buttonBTW buttonSuccess w-1/2">Подтвердить</button>
 
 
 
