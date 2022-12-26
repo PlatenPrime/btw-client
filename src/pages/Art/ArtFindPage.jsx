@@ -6,8 +6,9 @@ import CardBTW from '../../components/UI/CardBTW';
 import ControlBTW from '../../components/UI/ControlBTW';
 import HeaderMainBTW from '../../components/UI/Header/HeaderMainBTW';
 import TitleHeaderMain from '../../components/UI/Header/TitleHeaderMain';
+
 import MainBTW from '../../components/UI/MainBTW';
-import PageBTW from '../../components/UI/PageBTW';
+import PageBTW from '../../components/UI/Page/PageBTW';
 import PhotoArtBTW from '../../components/UI/PhotoArtBTW';
 import { checkIsAuth } from '../../redux/features/auth/authSlice';
 import axios from "../../utils/axios";
@@ -69,6 +70,7 @@ const ArtFindPage = () => {
 			setArtCartDisplay(true)
 		} else {
 			window.alert("Такого артикула нет")
+			console.log(artInput.current.value)
 		}
 
 
@@ -103,7 +105,8 @@ const ArtFindPage = () => {
 
 				<div className='flex flex-col items-center md:flex-row p-4 space-x-5'>
 
-					<input className='md:w-1/2' type="text" ref={artInput} />
+					<input className='md:w-1/2 inputBTW' type="text" ref={artInput} />
+
 
 					<div className='md:w-1/2'>
 

@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 import PalletBage from '../../components/Pallet/PalletBage';
 import ControlBTW from '../../components/UI/ControlBTW';
 import MainBTW from '../../components/UI/MainBTW';
-import PageBTW from '../../components/UI/PageBTW';
+import PageBTW from '../../components/UI/Page/PageBTW';
 import CreateButton from "../../components/UI/Buttons/CreateButton";
 
 import { getAllPallets } from '../../redux/features/pallet/palletSlice';

@@ -3,11 +3,9 @@ import { Link, useNavigate } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { checkIsAuth, loginUser } from '../../redux/features/auth/authSlice'
 import { toast } from 'react-toastify'
-import { Button, Label, TextInput } from 'flowbite-react'
-import PageBTW from '../../components/UI/PageBTW'
 import ConfirmButton from '../../components/UI/Buttons/ConfirmButton'
 import { Vortex } from 'react-loader-spinner'
-import PageAuthBTW from '../../components/UI/PageAuthBTW'
+import PageAuthBTW from '../../components/UI/Page/PageAuthBTW'
 
 export const LoginPage = () => {
 	const [username, setUsername] = useState('')

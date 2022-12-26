@@ -11,14 +11,14 @@ import * as xlsx from "xlsx";
 
 
 
-import CardBTW from "../components/UI/CardBTW";
 
-import PageBTW from '../components/UI/PageBTW';
+
+import PageBTW from '../components/UI/Page/PageBTW';
 import MainBTW from '../components/UI/MainBTW';
 import ControlBTW from '../components/UI/ControlBTW';
 import HeaderPageBTW from '../components/UI/Header/HeaderMainBTW';
 import TitleHeaderMain from '../components/UI/Header/TitleHeaderMain';
-import Loading from '../components/UI/Loading/Loading';
+
 
 
 
@@ -28,19 +28,6 @@ import Loading from '../components/UI/Loading/Loading';
 
 
 const MainPage = () => {
-
-	const isAuth = useSelector(checkIsAuth)
-	const navigate = useNavigate()
-
-
-
-	useEffect(() => {
-
-		if (!isAuth) navigate('/login')
-
-	}, [isAuth, navigate])
-
-
 
 
 
@@ -82,10 +69,8 @@ const MainPage = () => {
 					</TitleHeaderMain>
 				</HeaderPageBTW>
 
-			
 
 
-				<Loading />
 
 
 

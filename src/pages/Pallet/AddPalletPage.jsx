@@ -8,14 +8,13 @@ import { createPallet } from '../../redux/features/pallet/palletSlice';
 import { checkIsAuth } from '../../redux/features/auth/authSlice';
 
 import PalletItem from '../../components/Pallet/PalletItem';
-import PageBTW from '../../components/UI/PageBTW';
+import PageBTW from '../../components/UI/Page/PageBTW';
 import ControlBTW from '../../components/UI/ControlBTW';
 import MainBTW from '../../components/UI/MainBTW';
-import EditButton from '../../components/UI/Buttons/EditButton';
+
 import CancelButton from '../../components/UI/Buttons/CancelButton';
 import SaveButton from '../../components/UI/Buttons/SaveButton';
-import DeleteButton from '../../components/UI/Buttons/DeleteButton';
-import AddButton from '../../components/UI/Buttons/AddButton';
+
 
 
 

@@ -1,8 +1,8 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { checkIsAuth } from '../../redux/features/auth/authSlice';
-import Loading from './Loading/Loading';
+import { checkIsAuth } from '../../../redux/features/auth/authSlice';
+import Loading from '../Loading/Loading';
 
 const PageBTW = ({ children }) => {
 

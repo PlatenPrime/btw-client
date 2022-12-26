@@ -16,7 +16,7 @@ import { checkIsAuth } from '../../redux/features/auth/authSlice';
 import RowItem from "../../components/Row/RowItem";
 
 
-import PageBTW from '../../components/UI/PageBTW';
+import PageBTW from '../../components/UI/Page/PageBTW';
 import ControlBTW from '../../components/UI/ControlBTW';
 import MainBTW from '../../components/UI/MainBTW';
 import EditButton from '../../components/UI/Buttons/EditButton';
@@ -60,7 +60,7 @@ const RowPage = () => {
 	const isAuth = useSelector(checkIsAuth)
 
 
-	
+
 
 
 	const fetchRow = useCallback(async () => {

@@ -6,7 +6,7 @@ import ControlBTW from '../../components/UI/ControlBTW';
 import HeaderMainBTW from '../../components/UI/Header/HeaderMainBTW';
 import TitleHeaderMain from '../../components/UI/Header/TitleHeaderMain';
 import MainBTW from '../../components/UI/MainBTW';
-import PageBTW from '../../components/UI/PageBTW';
+import PageBTW from '../../components/UI/Page/PageBTW';
 import PhotoArtBTW from '../../components/UI/PhotoArtBTW';
 import { checkIsAuth } from '../../redux/features/auth/authSlice';
 

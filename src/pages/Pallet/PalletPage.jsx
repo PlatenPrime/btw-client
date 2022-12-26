@@ -11,14 +11,14 @@ import { removePallet, updatePallet } from '../../redux/features/pallet/palletSl
 import { checkIsAuth } from '../../redux/features/auth/authSlice';
 
 import PalletItem from '../../components/Pallet/PalletItem';
-import PageBTW from '../../components/UI/PageBTW';
+import PageBTW from '../../components/UI/Page/PageBTW';
 import ControlBTW from '../../components/UI/ControlBTW';
 import MainBTW from '../../components/UI/MainBTW';
 import EditButton from '../../components/UI/Buttons/EditButton';
 import CancelButton from '../../components/UI/Buttons/CancelButton';
 import SaveButton from '../../components/UI/Buttons/SaveButton';
 import DeleteButton from '../../components/UI/Buttons/DeleteButton';
-import AddButton from '../../components/UI/Buttons/AddButton';
+
 import HeaderMainBTW from '../../components/UI/Header/HeaderMainBTW';
 import TitleHeaderMain from '../../components/UI/Header/TitleHeaderMain';
 

@@ -9,7 +9,7 @@ import { checkIsAuth } from '../../redux/features/auth/authSlice';
 
 
 import RowItem from '../../components/Row/RowItem';
-import PageBTW from '../../components/UI/PageBTW';
+import PageBTW from '../../components/UI/Page/PageBTW';
 import MainBTW from '../../components/UI/MainBTW';
 import ControlBTW from '../../components/UI/ControlBTW';
 import CancelButton from '../../components/UI/Buttons/CancelButton';

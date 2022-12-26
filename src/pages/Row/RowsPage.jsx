@@ -12,7 +12,7 @@ import { getAllRows } from '../../redux/features/row/rowSlice';
 
 import RowBage from "../../components/Row/RowBage";
 
-import PageBTW from '../../components/UI/PageBTW';
+import PageBTW from '../../components/UI/Page/PageBTW';
 import ControlBTW from '../../components/UI/ControlBTW';
 import MainBTW from '../../components/UI/MainBTW';
 
@@ -27,15 +27,6 @@ import { checkIsAuth } from '../../redux/features/auth/authSlice';
 const RowsPage = () => {
 
 
-	const isAuth = useSelector(checkIsAuth)
-	const navigate = useNavigate()
-
-
-
-
-
-
-	
 
 
 

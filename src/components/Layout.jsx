@@ -3,8 +3,8 @@ import React, { useState } from 'react';
 import NavbarBTW from './UI/NavbarBTW';
 
 
-import SidebarBTW from './UI/SidebarBTW';
-import SidebarMobileBTW from './UI/SidebarMobileBTW';
+import SidebarBTW from './UI/Sidebar/SidebarBTW';
+import SidebarMobileBTW from './UI/Sidebar/SidebarMobileBTW';
 
 export const ControlContext = React.createContext();
 
