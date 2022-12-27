@@ -1,7 +1,5 @@
 import React, { useEffect, useLayoutEffect, useState } from 'react';
-import { useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
-import { checkIsAuth } from "../redux/features/auth/authSlice";
+
 
 import axios from "../utils/axios";
 
@@ -15,9 +13,10 @@ import * as xlsx from "xlsx";
 
 import PageBTW from '../components/UI/Page/PageBTW';
 import MainBTW from '../components/UI/MainBTW';
-import ControlBTW from '../components/UI/ControlBTW';
+import ControlBTW from '../components/UI/Control/ControlBTW';
 import HeaderPageBTW from '../components/UI/Header/HeaderMainBTW';
 import TitleHeaderMain from '../components/UI/Header/TitleHeaderMain';
+import ControlMobileBTW from '../components/UI/Control/ControlMobileBTW';
 
 
 
@@ -76,6 +75,10 @@ const MainPage = () => {
 
 
 			</MainBTW>
+
+			<ControlMobileBTW>
+
+			</ControlMobileBTW>
 
 			<ControlBTW>
 

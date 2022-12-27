@@ -9,7 +9,8 @@ import { checkIsAuth } from '../../redux/features/auth/authSlice';
 
 import PalletItem from '../../components/Pallet/PalletItem';
 import PageBTW from '../../components/UI/Page/PageBTW';
-import ControlBTW from '../../components/UI/ControlBTW';
+import ControlBTW from '../../components/UI/Control/ControlBTW';
+import ControlMobileBTW from '../../components/UI/Control/ControlMobileBTW';
 import MainBTW from '../../components/UI/MainBTW';
 
 import CancelButton from '../../components/UI/Buttons/CancelButton';
@@ -85,6 +86,24 @@ const AddPalletPage = () => {
 				/>
 
 			</MainBTW>
+
+
+			<ControlMobileBTW>
+
+				<CancelButton
+					onClick={handlerClearForm}
+				>
+					Очистить форму
+				</CancelButton>
+
+
+				<SaveButton
+					onClick={handlerSubmit}
+				>
+					Создать
+				</SaveButton>
+
+			</ControlMobileBTW>
 
 
 

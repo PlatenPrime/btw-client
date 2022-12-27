@@ -3,7 +3,8 @@ import { useSelector } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
 import SaveButton from '../../components/UI/Buttons/SaveButton';
 import CardBTW from '../../components/UI/CardBTW';
-import ControlBTW from '../../components/UI/ControlBTW';
+import ControlBTW from '../../components/UI/Control/ControlBTW';
+import ControlMobileBTW from '../../components/UI/Control/ControlMobileBTW';
 import HeaderMainBTW from '../../components/UI/Header/HeaderMainBTW';
 import TitleHeaderMain from '../../components/UI/Header/TitleHeaderMain';
 
@@ -171,9 +172,11 @@ const ArtFindPage = () => {
 
 			</MainBTW>
 
+			<ControlMobileBTW>
+
+			</ControlMobileBTW>
+
 			<ControlBTW>
-
-
 
 			</ControlBTW>
 

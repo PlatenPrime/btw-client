@@ -2,7 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import CardBTW from '../../components/UI/CardBTW';
-import ControlBTW from '../../components/UI/ControlBTW';
+import ControlBTW from '../../components/UI/Control/ControlBTW';
+import ControlMobileBTW from '../../components/UI/Control/ControlMobileBTW';
 import HeaderMainBTW from '../../components/UI/Header/HeaderMainBTW';
 import TitleHeaderMain from '../../components/UI/Header/TitleHeaderMain';
 import MainBTW from '../../components/UI/MainBTW';
@@ -157,6 +158,11 @@ const ArtPage = () => {
 				</CardBTW>
 
 			</MainBTW>
+
+
+			<ControlMobileBTW>
+
+			</ControlMobileBTW>
 
 
 			<ControlBTW>

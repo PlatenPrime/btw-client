@@ -8,7 +8,9 @@
 body {
 	
 	font-family: 'Poppins', sans-serif;
-	background-color: #fff;
+	background-color: #8BC6EC;
+background-image: linear-gradient(135deg, #8BC6EC 0%, #9599E2 100%);
+
 
 
       
@@ -40,7 +42,7 @@ body {
 
 .buttonBTW {
 	@apply
-	 px-6 py-2.5 font-medium text-xs leading-tight uppercase rounded-full shadow-md hover:shadow-lg focus:shadow-lg focus:outline-none focus:ring-0 active:shadow-lg transition duration-150 ease-in-out
+	 w-full my-2 px-6 py-2.5 font-medium text-xs leading-tight uppercase rounded-full shadow-md hover:shadow-lg focus:shadow-lg focus:outline-none focus:ring-0 active:shadow-lg transition duration-150 ease-in-out
 }
 
 
@@ -52,11 +54,37 @@ body {
 
 .buttonSuccess {
 	@apply 
-	bg-green-500 text-white  hover:bg-green-600 hover:shadow-lg focus:bg-green-600  active:bg-green-700
+	bg-green-500 text-white  hover:bg-green-600  focus:bg-green-600  active:bg-green-700
 }
 
+.buttonCancel {
+	@apply
+	bg-gray-200 text-red-600  hover:bg-gray-300  focus:bg-gray-300  active:bg-gray-400 
+}
+
+.buttonDelete {
+	@apply
+	bg-red-600 text-white  hover:bg-red-700  focus:bg-red-700  active:bg-red-800 
+}
+
+.buttonConfirm {
+	@apply
+	bg-blue-400 text-white  hover:bg-blue-500  focus:bg-blue-500  active:bg-blue-600 
+}
+
+.buttonAdd {
+	@apply
+	border-2 border-yellow-500  text-yellow-500  hover:bg-black hover:bg-opacity-5 
+}
+
+.buttonCreate {
+	@apply
+	border-2 border-green-500 text-green-500  hover:bg-black hover:bg-opacity-5 
+}
 
   }
+
+
 
 
 

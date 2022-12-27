@@ -12,7 +12,7 @@ import { checkIsAuth } from '../../redux/features/auth/authSlice';
 
 import PalletItem from '../../components/Pallet/PalletItem';
 import PageBTW from '../../components/UI/Page/PageBTW';
-import ControlBTW from '../../components/UI/ControlBTW';
+import ControlBTW from '../../components/UI/Control/ControlBTW';
 import MainBTW from '../../components/UI/MainBTW';
 import EditButton from '../../components/UI/Buttons/EditButton';
 import CancelButton from '../../components/UI/Buttons/CancelButton';
@@ -21,6 +21,7 @@ import DeleteButton from '../../components/UI/Buttons/DeleteButton';
 
 import HeaderMainBTW from '../../components/UI/Header/HeaderMainBTW';
 import TitleHeaderMain from '../../components/UI/Header/TitleHeaderMain';
+import ControlMobileBTW from '../../components/UI/Control/ControlMobileBTW';
 
 
 
@@ -53,7 +54,7 @@ const PalletPage = () => {
 	const isAuth = useSelector(checkIsAuth)
 
 
-	
+
 
 
 	const fetchPallet = useCallback(async () => {
@@ -150,6 +151,59 @@ const PalletPage = () => {
 			</MainBTW>
 
 
+			<ControlMobileBTW>
+
+
+				{isPalletEditing ?
+
+					<div className=''>
+
+
+						<CancelButton
+							onClick={handlerCancelPalletEditing}
+						>
+							Отмена
+						</CancelButton>
+
+
+						<SaveButton
+							onClick={handlerPalletSave}
+						>
+							Сохранить
+						</SaveButton>
+
+
+
+						<DeleteButton
+							onClick={handlerPalletRemove}
+						>
+							Удалить паллету
+						</DeleteButton>
+
+
+
+					</div>
+
+
+
+
+
+
+					:
+
+
+					<EditButton
+						onClick={handlerPalletEdit}
+					>
+						Редактировать
+					</EditButton>
+
+
+				}
+
+
+
+			</ControlMobileBTW>
 
 
 			<ControlBTW>
@@ -202,7 +256,6 @@ const PalletPage = () => {
 
 
 				}
-
 
 
 

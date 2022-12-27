@@ -5,7 +5,9 @@ import { useNavigate } from 'react-router-dom';
 import CreateButton from '../../components/UI/Buttons/CreateButton';
 import DeleteButton from '../../components/UI/Buttons/DeleteButton';
 import SaveButton from '../../components/UI/Buttons/SaveButton';
-import ControlBTW from '../../components/UI/ControlBTW';
+import ConfirmButton from '../../components/UI/Buttons/ConfirmButton';
+import ControlBTW from '../../components/UI/Control/ControlBTW';
+import ControlMobileBTW from '../../components/UI/Control/ControlMobileBTW';
 import HeaderMainBTW from '../../components/UI/Header/HeaderMainBTW';
 import TitleHeaderMain from '../../components/UI/Header/TitleHeaderMain';
 import MainBTW from '../../components/UI/MainBTW';
@@ -23,7 +25,7 @@ const ArtsZonesLoadingPage = () => {
 	const isAuth = useSelector(checkIsAuth)
 
 
-	
+
 
 
 
@@ -162,7 +164,41 @@ const ArtsZonesLoadingPage = () => {
 
 
 
+			<ControlMobileBTW>
 
+				<SaveButton
+
+					onClick={handlerSave}
+
+				>
+					{isLoading && <Spinner aria-label="Default status example" />}
+					Сохранить
+				</SaveButton>
+
+
+
+
+				<ConfirmButton
+					onClick={handlerUpload}
+					className='bg-green-300 p-2'
+					disabled={!arts}
+				>
+					{isLoading && <Spinner aria-label="Default status example" />}
+					Выгрузить артикулы
+				</ConfirmButton>
+
+
+
+
+				<DeleteButton
+					className='bg-red-300 p-2'
+					onClick={handlerRemove}
+				>
+					{isLoading && <Spinner aria-label="Default status example" />}
+					Удалить
+				</DeleteButton>
+
+			</ControlMobileBTW>
 
 
 			<ControlBTW>
@@ -181,14 +217,14 @@ const ArtsZonesLoadingPage = () => {
 
 
 
-				<CreateButton
+				<ConfirmButton
 					onClick={handlerUpload}
 					className='bg-green-300 p-2'
 					disabled={!arts}
 				>
 					{isLoading && <Spinner aria-label="Default status example" />}
 					Выгрузить артикулы
-				</CreateButton>
+				</ConfirmButton>
 
 
 

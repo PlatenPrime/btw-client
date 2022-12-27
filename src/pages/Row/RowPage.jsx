@@ -17,7 +17,7 @@ import RowItem from "../../components/Row/RowItem";
 
 
 import PageBTW from '../../components/UI/Page/PageBTW';
-import ControlBTW from '../../components/UI/ControlBTW';
+import ControlBTW from '../../components/UI/Control/ControlBTW';
 import MainBTW from '../../components/UI/MainBTW';
 import EditButton from '../../components/UI/Buttons/EditButton';
 import CancelButton from '../../components/UI/Buttons/CancelButton';
@@ -26,6 +26,7 @@ import DeleteButton from '../../components/UI/Buttons/DeleteButton';
 import AddButton from '../../components/UI/Buttons/AddButton';
 import HeaderMainBTW from '../../components/UI/Header/HeaderMainBTW';
 import TitleHeaderMain from '../../components/UI/Header/TitleHeaderMain';
+import ControlMobileBTW from '../../components/UI/Control/ControlMobileBTW';
 
 
 
@@ -266,6 +267,61 @@ const RowPage = () => {
 			</MainBTW>
 
 
+			<ControlMobileBTW>
+
+				{isRowEditing ?
+
+					<div >
+
+						<CancelButton
+
+							onClick={handlerCancelRowEditing}
+
+						>
+							Отмена
+						</CancelButton>
+
+
+
+						<SaveButton
+
+							onClick={handlerRowSave}
+
+						>
+							Сохранить
+						</SaveButton>
+
+
+
+
+						<DeleteButton
+
+							onClick={handlerRowRemove}
+
+						>
+							Удалить ряд
+						</DeleteButton>
+
+
+
+					</div>
+
+
+
+					:
+
+
+
+					<EditButton
+						onClick={handlerRowEdit}
+					>
+						Редактировать
+					</EditButton>
+
+
+				}
+
+			</ControlMobileBTW>
 
 
 			<ControlBTW >

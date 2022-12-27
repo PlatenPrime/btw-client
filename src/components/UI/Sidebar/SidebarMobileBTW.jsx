@@ -41,7 +41,7 @@ const SidebarMobileBTW = ({ onClose }) => {
 				className='
 			flex flex-col justify-start items-center space-y-8
 			h-full min-h-screen w-1/2
-			bg-sky-200 bg-opacity-80
+			bg-sky-400 bg-opacity-80
 			
 			'>
 

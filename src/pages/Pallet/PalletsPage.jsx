@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 
 import PalletBage from '../../components/Pallet/PalletBage';
-import ControlBTW from '../../components/UI/ControlBTW';
+import ControlBTW from '../../components/UI/Control/ControlBTW';
 import MainBTW from '../../components/UI/MainBTW';
 import PageBTW from '../../components/UI/Page/PageBTW';
 import CreateButton from "../../components/UI/Buttons/CreateButton";
@@ -12,6 +12,7 @@ import CreateButton from "../../components/UI/Buttons/CreateButton";
 import { getAllPallets } from '../../redux/features/pallet/palletSlice';
 import HeaderMainBTW from '../../components/UI/Header/HeaderMainBTW';
 import TitleHeaderMain from '../../components/UI/Header/TitleHeaderMain';
+import ControlMobileBTW from '../../components/UI/Control/ControlMobileBTW';
 
 
 
@@ -66,6 +67,18 @@ const PalletsPage = () => {
 				}
 
 			</MainBTW>
+
+			<ControlMobileBTW>
+
+				<Link to="new">
+					<CreateButton >
+						Создать новую паллету
+					</CreateButton>
+				</Link>
+
+			</ControlMobileBTW>
+
+
 
 			<ControlBTW>
 
