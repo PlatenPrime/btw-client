@@ -10,13 +10,14 @@ import { checkIsAuth } from '../../redux/features/auth/authSlice';
 
 import RowItem from '../../components/Row/RowItem';
 import PageBTW from '../../components/UI/Page/PageBTW';
-import MainBTW from '../../components/UI/MainBTW';
-import ControlBTW from '../../components/UI/Control/ControlBTW';
+import MainBTW from '../../components/UI/Page/MainBTW';
+import ControlBTW from '../../components/UI/Page/Control/ControlBTW';
 import CancelButton from '../../components/UI/Buttons/CancelButton';
 import SaveButton from '../../components/UI/Buttons/SaveButton';
-import HeaderMainBTW from '../../components/UI/Header/HeaderMainBTW';
-import TitleHeaderMain from '../../components/UI/Header/TitleHeaderMain';
-import ControlMobileBTW from '../../components/UI/Control/ControlMobileBTW';
+import HeaderMainBTW from '../../components/UI/Page/Header/HeaderMainBTW';
+import TitleHeaderMain from '../../components/UI/Page/Header/TitleHeaderMain';
+import ControlMobileBTW from '../../components/UI/Page/Control/ControlMobileBTW';
+import ContentMain from '../../components/UI/Page/ContentMain';
 
 
 
@@ -79,61 +80,76 @@ const AddRowPage = () => {
 		<PageBTW>
 
 
+			<HeaderMainBTW>
+				<TitleHeaderMain>
+					Создание ряда
+				</TitleHeaderMain>
+			</HeaderMainBTW>
+
+
+
 
 			<MainBTW >
 
-				<HeaderMainBTW>
-					<TitleHeaderMain>
-						Создание ряда
-					</TitleHeaderMain>
-				</HeaderMainBTW>
+
+				<ContentMain>
+
+					<RowItem
+						isRowEditing={isRowEditing}
+						title={title}
+						setTitle={setTitle}
+
+					/>
 
 
-				<RowItem
-					isRowEditing={isRowEditing}
-					title={title}
-					setTitle={setTitle}
+				</ContentMain>
 
-				/>
+
+				<ControlMobileBTW>
+
+					<CancelButton
+						onClick={handlerClearForm}
+					>
+						Очистить форму
+					</CancelButton>
+
+					<SaveButton
+						onClick={handlerSubmit}
+					>
+						Сохранить ряд в БД
+					</SaveButton>
+
+				</ControlMobileBTW>
+
+
+				<ControlBTW >
+
+
+					<CancelButton
+						onClick={handlerClearForm}
+					>
+						Очистить форму
+					</CancelButton>
+
+					<SaveButton
+						onClick={handlerSubmit}
+					>
+						Сохранить ряд в БД
+					</SaveButton>
+
+
+
+				</ControlBTW>
+
 
 			</MainBTW>
 
 
-			<ControlMobileBTW>
-
-				<CancelButton
-					onClick={handlerClearForm}
-				>
-					Очистить форму
-				</CancelButton>
-
-				<SaveButton
-					onClick={handlerSubmit}
-				>
-					Сохранить ряд в БД
-				</SaveButton>
-
-			</ControlMobileBTW>
-
-
-			<ControlBTW >
-
-
-				<CancelButton
-					onClick={handlerClearForm}
-				>
-					Очистить форму
-				</CancelButton>
-
-				<SaveButton
-					onClick={handlerSubmit}
-				>
-					Сохранить ряд в БД
-				</SaveButton>
 
 
 
-			</ControlBTW>
+
+
 
 
 

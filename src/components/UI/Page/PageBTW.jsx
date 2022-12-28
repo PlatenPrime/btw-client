@@ -2,7 +2,7 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { checkIsAuth } from '../../../redux/features/auth/authSlice';
-import Loading from '../Loading/Loading';
+import Loading from './Loading/Loading';
 
 const PageBTW = ({ children }) => {
 
@@ -36,7 +36,7 @@ const PageBTW = ({ children }) => {
 
 			{isAuth &&
 
-				<div className='w-full  flex flex-col items-between md:flex-row md:w-full  '>
+				<div className='w-full  flex flex-col items-between '>
 
 					{children}
 

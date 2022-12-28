@@ -29,8 +29,12 @@ const SidebarBTW = () => {
 
 
 	return (
+
 		<div className='hidden  min-h-screen md:min-w-fit md:w-1/6 
 		md:flex flex-col justify-start items-center space-y-8
+
+		sticky top-0
+
 		 '>
 
 

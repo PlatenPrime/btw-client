@@ -6,16 +6,17 @@ import CreateButton from '../../components/UI/Buttons/CreateButton';
 import DeleteButton from '../../components/UI/Buttons/DeleteButton';
 import SaveButton from '../../components/UI/Buttons/SaveButton';
 import ConfirmButton from '../../components/UI/Buttons/ConfirmButton';
-import ControlBTW from '../../components/UI/Control/ControlBTW';
-import ControlMobileBTW from '../../components/UI/Control/ControlMobileBTW';
-import HeaderMainBTW from '../../components/UI/Header/HeaderMainBTW';
-import TitleHeaderMain from '../../components/UI/Header/TitleHeaderMain';
-import MainBTW from '../../components/UI/MainBTW';
+import ControlBTW from '../../components/UI/Page/Control/ControlBTW';
+import ControlMobileBTW from '../../components/UI/Page/Control/ControlMobileBTW';
+import HeaderMainBTW from '../../components/UI/Page/Header/HeaderMainBTW';
+import TitleHeaderMain from '../../components/UI/Page/Header/TitleHeaderMain';
+import MainBTW from '../../components/UI/Page/MainBTW';
 import PageBTW from '../../components/UI/Page/PageBTW';
 import { checkIsAuth } from '../../redux/features/auth/authSlice';
 
 import axios from '../../utils/axios';
 import { excelToJSON } from '../../utils/excel';
+import ContentMain from '../../components/UI/Page/ContentMain';
 
 
 
@@ -117,45 +118,132 @@ const ArtsZonesLoadingPage = () => {
 	return (
 		<PageBTW>
 
+			<HeaderMainBTW>
+				<TitleHeaderMain>
+					Установка зон
+				</TitleHeaderMain>
+			</HeaderMainBTW>
+
+
+
+
 			<MainBTW>
 
-				<HeaderMainBTW>
-					<TitleHeaderMain>
-						Установка зон
-					</TitleHeaderMain>
-				</HeaderMainBTW>
 
+				<ContentMain>
 
-
-				<form>
-					<label htmlFor="upload">Upload File</label>
-					<input
-						type="file"
-						name="upload"
-						id="upload"
-						onChange={excelToJSON}
-					/>
-				</form>
+					<form>
+						<label htmlFor="upload">Upload File</label>
+						<input
+							type="file"
+							name="upload"
+							id="upload"
+							onChange={excelToJSON}
+						/>
+					</form>
 
 
 
 
-				<div id="textarea">
-					<div className="mb-2 block">
-						<Label
-							htmlFor="comment"
-							value="Поле для вставки JSON списка"
+					<div id="textarea">
+						<div className="mb-2 block">
+							<Label
+								htmlFor="comment"
+								value="Поле для вставки JSON списка"
+							/>
+						</div>
+						<textarea
+							className='w-full'
+							id="comment"
+							placeholder="Leave a comment..."
+							required={true}
+							rows={4}
+							ref={artsInput}
 						/>
 					</div>
-					<textarea
-						className='w-full'
-						id="comment"
-						placeholder="Leave a comment..."
-						required={true}
-						rows={4}
-						ref={artsInput}
-					/>
-				</div>
+
+
+				</ContentMain>
+
+
+
+				<ControlMobileBTW>
+
+					<SaveButton
+
+						onClick={handlerSave}
+
+					>
+						{isLoading && <Spinner aria-label="Default status example" />}
+						Сохранить
+					</SaveButton>
+
+
+
+
+					<ConfirmButton
+						onClick={handlerUpload}
+						className='bg-green-300 p-2'
+						disabled={!arts}
+					>
+						{isLoading && <Spinner aria-label="Default status example" />}
+						Выгрузить артикулы
+					</ConfirmButton>
+
+
+
+
+					<DeleteButton
+						className='bg-red-300 p-2'
+						onClick={handlerRemove}
+					>
+						{isLoading && <Spinner aria-label="Default status example" />}
+						Удалить
+					</DeleteButton>
+
+				</ControlMobileBTW>
+
+
+				<ControlBTW>
+
+
+
+					<SaveButton
+
+						onClick={handlerSave}
+
+					>
+						{isLoading && <Spinner aria-label="Default status example" />}
+						Сохранить
+					</SaveButton>
+
+
+
+
+					<ConfirmButton
+						onClick={handlerUpload}
+						className='bg-green-300 p-2'
+						disabled={!arts}
+					>
+						{isLoading && <Spinner aria-label="Default status example" />}
+						Выгрузить артикулы
+					</ConfirmButton>
+
+
+
+
+					<DeleteButton
+						className='bg-red-300 p-2'
+						onClick={handlerRemove}
+					>
+						{isLoading && <Spinner aria-label="Default status example" />}
+						Удалить
+					</DeleteButton>
+
+
+
+				</ControlBTW>
+
 
 
 
@@ -164,82 +252,6 @@ const ArtsZonesLoadingPage = () => {
 
 
 
-			<ControlMobileBTW>
-
-				<SaveButton
-
-					onClick={handlerSave}
-
-				>
-					{isLoading && <Spinner aria-label="Default status example" />}
-					Сохранить
-				</SaveButton>
-
-
-
-
-				<ConfirmButton
-					onClick={handlerUpload}
-					className='bg-green-300 p-2'
-					disabled={!arts}
-				>
-					{isLoading && <Spinner aria-label="Default status example" />}
-					Выгрузить артикулы
-				</ConfirmButton>
-
-
-
-
-				<DeleteButton
-					className='bg-red-300 p-2'
-					onClick={handlerRemove}
-				>
-					{isLoading && <Spinner aria-label="Default status example" />}
-					Удалить
-				</DeleteButton>
-
-			</ControlMobileBTW>
-
-
-			<ControlBTW>
-
-
-
-				<SaveButton
-
-					onClick={handlerSave}
-
-				>
-					{isLoading && <Spinner aria-label="Default status example" />}
-					Сохранить
-				</SaveButton>
-
-
-
-
-				<ConfirmButton
-					onClick={handlerUpload}
-					className='bg-green-300 p-2'
-					disabled={!arts}
-				>
-					{isLoading && <Spinner aria-label="Default status example" />}
-					Выгрузить артикулы
-				</ConfirmButton>
-
-
-
-
-				<DeleteButton
-					className='bg-red-300 p-2'
-					onClick={handlerRemove}
-				>
-					{isLoading && <Spinner aria-label="Default status example" />}
-					Удалить
-				</DeleteButton>
-
-
-
-			</ControlBTW>
 
 
 

@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
 
-import DeleteIcon from '../Icons/DeleteIcon';
-import EditIcon from '../Icons/EditIcon';
-import SaveIcon from '../Icons/SaveIcon';
+import DeleteIcon from '../UI/Icons/DeleteIcon';
+import EditIcon from '../UI/Icons/EditIcon';
+import SaveIcon from '../UI/Icons/SaveIcon';
 
 
 

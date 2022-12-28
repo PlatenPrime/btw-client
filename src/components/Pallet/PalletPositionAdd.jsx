@@ -1,9 +1,9 @@
 import React from 'react';
 import { useState } from 'react';
 
-import AddIcon from "../Icons/AddIcon";
-import CancelIcon from "../Icons/CancelIcon";
-import SaveIcon from "../Icons/SaveIcon";
+import AddIcon from "../UI/Icons/AddIcon";
+import CancelIcon from "../UI/Icons/CancelIcon";
+import SaveIcon from "../UI/Icons/SaveIcon";
 
 
 import AddButton from "../UI/Buttons/AddButton";

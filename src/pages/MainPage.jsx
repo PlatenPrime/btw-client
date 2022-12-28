@@ -12,11 +12,12 @@ import * as xlsx from "xlsx";
 
 
 import PageBTW from '../components/UI/Page/PageBTW';
-import MainBTW from '../components/UI/MainBTW';
-import ControlBTW from '../components/UI/Control/ControlBTW';
-import HeaderPageBTW from '../components/UI/Header/HeaderMainBTW';
-import TitleHeaderMain from '../components/UI/Header/TitleHeaderMain';
-import ControlMobileBTW from '../components/UI/Control/ControlMobileBTW';
+import MainBTW from '../components/UI/Page/MainBTW';
+import ControlBTW from '../components/UI/Page/Control/ControlBTW';
+import HeaderPageBTW from '../components/UI/Page/Header/HeaderMainBTW';
+import TitleHeaderMain from '../components/UI/Page/Header/TitleHeaderMain';
+import ControlMobileBTW from '../components/UI/Page/Control/ControlMobileBTW';
+import ContentMain from '../components/UI/Page/ContentMain';
 
 
 
@@ -59,30 +60,41 @@ const MainPage = () => {
 	return (
 		<PageBTW >
 
+			<HeaderPageBTW>
+				<TitleHeaderMain
+					className='text-2xl'
+				>
+					Панель быстрого доступа
+				</TitleHeaderMain>
+			</HeaderPageBTW>
+
+
+
 			<MainBTW>
-				<HeaderPageBTW>
-					<TitleHeaderMain
-						className='text-2xl'
-					>
-						Панель быстрого доступа
-					</TitleHeaderMain>
-				</HeaderPageBTW>
 
 
-				<button type="button" class="buttonBTW buttonPrimary w-1/2">Основная</button>
-				<button type="button" class="buttonBTW buttonSuccess w-1/2">Подтвердить</button>
+				<ContentMain>
 
+					<button type="button" class="buttonBTW buttonPrimary w-1/2 ">Основная</button>
+
+
+				</ContentMain>
+
+
+
+
+				<ControlMobileBTW>
+
+				</ControlMobileBTW>
+
+				<ControlBTW>
+
+				</ControlBTW>
 
 
 			</MainBTW>
 
-			<ControlMobileBTW>
 
-			</ControlMobileBTW>
-
-			<ControlBTW>
-
-			</ControlBTW>
 
 		</PageBTW>
 	);

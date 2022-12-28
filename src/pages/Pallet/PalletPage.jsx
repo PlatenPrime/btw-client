@@ -12,16 +12,17 @@ import { checkIsAuth } from '../../redux/features/auth/authSlice';
 
 import PalletItem from '../../components/Pallet/PalletItem';
 import PageBTW from '../../components/UI/Page/PageBTW';
-import ControlBTW from '../../components/UI/Control/ControlBTW';
-import MainBTW from '../../components/UI/MainBTW';
+import ControlBTW from '../../components/UI/Page/Control/ControlBTW';
+import MainBTW from '../../components/UI/Page/MainBTW';
 import EditButton from '../../components/UI/Buttons/EditButton';
 import CancelButton from '../../components/UI/Buttons/CancelButton';
 import SaveButton from '../../components/UI/Buttons/SaveButton';
 import DeleteButton from '../../components/UI/Buttons/DeleteButton';
 
-import HeaderMainBTW from '../../components/UI/Header/HeaderMainBTW';
-import TitleHeaderMain from '../../components/UI/Header/TitleHeaderMain';
-import ControlMobileBTW from '../../components/UI/Control/ControlMobileBTW';
+import HeaderMainBTW from '../../components/UI/Page/Header/HeaderMainBTW';
+import TitleHeaderMain from '../../components/UI/Page/Header/TitleHeaderMain';
+import ControlMobileBTW from '../../components/UI/Page/Control/ControlMobileBTW';
+import ContentMain from '../../components/UI/Page/ContentMain';
 
 
 
@@ -129,137 +130,147 @@ const PalletPage = () => {
 	return (
 		<PageBTW >
 
+
+			<HeaderMainBTW>
+				<TitleHeaderMain>
+					Паллета {title}
+				</TitleHeaderMain>
+			</HeaderMainBTW>
+
+
 			<MainBTW>
 
-				<HeaderMainBTW>
-					<TitleHeaderMain>
-						Паллета {title}
-					</TitleHeaderMain>
-				</HeaderMainBTW>
+				<ContentMain>
 
-				<PalletItem
-					isPalletEditing={isPalletEditing}
-					title={title}
-					setTitle={setTitle}
-					positions={positions}
-					setPositions={setPositions}
+					<PalletItem
+						isPalletEditing={isPalletEditing}
+						title={title}
+						setTitle={setTitle}
+						positions={positions}
+						setPositions={setPositions}
 
 
-				/>
+					/>
+
+				</ContentMain>
+
+
+				<ControlMobileBTW>
+
+
+					{isPalletEditing ?
+
+						<div className=''>
+
+
+							<CancelButton
+								onClick={handlerCancelPalletEditing}
+							>
+								Отмена
+							</CancelButton>
+
+
+							<SaveButton
+								onClick={handlerPalletSave}
+							>
+								Сохранить
+							</SaveButton>
+
+
+
+							<DeleteButton
+								onClick={handlerPalletRemove}
+							>
+								Удалить паллету
+							</DeleteButton>
+
+
+
+						</div>
+
+
+
+
+
+
+						:
+
+
+						<EditButton
+							onClick={handlerPalletEdit}
+						>
+							Редактировать
+						</EditButton>
+
+
+					}
+
+
+
+				</ControlMobileBTW>
+
+
+				<ControlBTW>
+
+
+
+					{isPalletEditing ?
+
+						<div className=''>
+
+
+							<CancelButton
+								onClick={handlerCancelPalletEditing}
+							>
+								Отмена
+							</CancelButton>
+
+
+							<SaveButton
+								onClick={handlerPalletSave}
+							>
+								Сохранить
+							</SaveButton>
+
+
+
+							<DeleteButton
+								onClick={handlerPalletRemove}
+							>
+								Удалить паллету
+							</DeleteButton>
+
+
+
+						</div>
+
+
+
+
+
+
+						:
+
+
+						<EditButton
+							onClick={handlerPalletEdit}
+						>
+							Редактировать
+						</EditButton>
+
+
+					}
+
+
+
+				</ControlBTW>
+
 
 
 			</MainBTW>
 
 
-			<ControlMobileBTW>
 
-
-				{isPalletEditing ?
-
-					<div className=''>
-
-
-						<CancelButton
-							onClick={handlerCancelPalletEditing}
-						>
-							Отмена
-						</CancelButton>
-
-
-						<SaveButton
-							onClick={handlerPalletSave}
-						>
-							Сохранить
-						</SaveButton>
-
-
-
-						<DeleteButton
-							onClick={handlerPalletRemove}
-						>
-							Удалить паллету
-						</DeleteButton>
-
-
-
-					</div>
-
-
-
-
-
-
-					:
-
-
-					<EditButton
-						onClick={handlerPalletEdit}
-					>
-						Редактировать
-					</EditButton>
-
-
-				}
-
-
-
-			</ControlMobileBTW>
-
-
-			<ControlBTW>
-
-
-
-				{isPalletEditing ?
-
-					<div className=''>
-
-
-						<CancelButton
-							onClick={handlerCancelPalletEditing}
-						>
-							Отмена
-						</CancelButton>
-
-
-						<SaveButton
-							onClick={handlerPalletSave}
-						>
-							Сохранить
-						</SaveButton>
-
-
-
-						<DeleteButton
-							onClick={handlerPalletRemove}
-						>
-							Удалить паллету
-						</DeleteButton>
-
-
-
-					</div>
-
-
-
-
-
-
-					:
-
-
-					<EditButton
-						onClick={handlerPalletEdit}
-					>
-						Редактировать
-					</EditButton>
-
-
-				}
-
-
-
-			</ControlBTW>
 
 
 		</PageBTW>

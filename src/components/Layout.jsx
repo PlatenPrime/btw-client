@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-import NavbarBTW from './UI/NavbarBTW';
+import NavbarBTW from './UI/Navbar/NavbarBTW';
 
 
 import SidebarBTW from './UI/Sidebar/SidebarBTW';

@@ -2,8 +2,8 @@ import { Button } from 'flowbite-react';
 import React, { useEffect, useState } from 'react';
 
 
-import EditIcon from "./../Icons/EditIcon"
-import SaveIcon from "./../Icons/SaveIcon"
+import EditIcon from "../UI/Icons/EditIcon"
+import SaveIcon from "../UI/Icons/SaveIcon"
 
 
 

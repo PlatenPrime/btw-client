@@ -26,7 +26,7 @@ import AddRowPage from "./pages/Row/AddRowPage";
 import ArtFindPage from "./pages/Art/ArtFindPage";
 import ArtPage from "./pages/Art/ArtPage";
 import ArtsZonesLoadingPage from "./pages/Art/ArtsZonesLoadingPage";
-import Loading from "./components/UI/Loading/Loading";
+
 
 
 

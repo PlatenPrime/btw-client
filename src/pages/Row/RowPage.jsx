@@ -17,16 +17,17 @@ import RowItem from "../../components/Row/RowItem";
 
 
 import PageBTW from '../../components/UI/Page/PageBTW';
-import ControlBTW from '../../components/UI/Control/ControlBTW';
-import MainBTW from '../../components/UI/MainBTW';
+import ControlBTW from '../../components/UI/Page/Control/ControlBTW';
+import MainBTW from '../../components/UI/Page/MainBTW';
 import EditButton from '../../components/UI/Buttons/EditButton';
 import CancelButton from '../../components/UI/Buttons/CancelButton';
 import SaveButton from '../../components/UI/Buttons/SaveButton';
 import DeleteButton from '../../components/UI/Buttons/DeleteButton';
 import AddButton from '../../components/UI/Buttons/AddButton';
-import HeaderMainBTW from '../../components/UI/Header/HeaderMainBTW';
-import TitleHeaderMain from '../../components/UI/Header/TitleHeaderMain';
-import ControlMobileBTW from '../../components/UI/Control/ControlMobileBTW';
+import HeaderMainBTW from '../../components/UI/Page/Header/HeaderMainBTW';
+import TitleHeaderMain from '../../components/UI/Page/Header/TitleHeaderMain';
+import ControlMobileBTW from '../../components/UI/Page/Control/ControlMobileBTW';
+import ContentMain from '../../components/UI/Page/ContentMain';
 
 
 
@@ -184,206 +185,222 @@ const RowPage = () => {
 
 		<PageBTW >
 
+
+			<HeaderMainBTW>
+				<TitleHeaderMain>
+					Ряд {title}
+				</TitleHeaderMain>
+			</HeaderMainBTW>
+
+
+
 			<MainBTW>
 
-				<HeaderMainBTW>
-					<TitleHeaderMain>
-						Ряд {title}
-					</TitleHeaderMain>
-				</HeaderMainBTW>
 
-				<RowItem
-					isRowEditing={isRowEditing}
-					title={title}
-					setTitle={setTitle}
-					pallets={pallets}
-				/>
+				<ContentMain>
+
+					<RowItem
+						isRowEditing={isRowEditing}
+						title={title}
+						setTitle={setTitle}
+						pallets={pallets}
+					/>
 
 
 
-				{isRowEditing &&
+					{isRowEditing &&
 
-					<div>
+						<div>
 
-						{
-							isPalletCreate ?
-
-
-								<div className=''>
-
-
-									<input
-										className=''
-										type="text"
-										value={palletTitle}
-										placeholder='Название...'
-										onChange={e => setPalletTitle(e.target.value)} />
-
-
-
-
+							{
+								isPalletCreate ?
 
 
 									<div className=''>
 
-										<SaveButton
-											onClick={handlerCreatePallet}
 
-										>
-											Сохранить паллету
-										</SaveButton>
+										<input
+											className=''
+											type="text"
+											value={palletTitle}
+											placeholder='Название...'
+											onChange={e => setPalletTitle(e.target.value)} />
 
-										<CancelButton
 
-											onClick={() => setIsPalletCreate(false)}
-										>
-											Не создавать
-										</CancelButton>
+
+
+
+
+										<div className=''>
+
+											<SaveButton
+												onClick={handlerCreatePallet}
+
+											>
+												Сохранить паллету
+											</SaveButton>
+
+											<CancelButton
+
+												onClick={() => setIsPalletCreate(false)}
+											>
+												Не создавать
+											</CancelButton>
+
+										</div>
+
 
 									</div>
 
 
-								</div>
+									:
 
 
-								:
+									<AddButton
+										onClick={() => setIsPalletCreate(true)}
+									>
+										Добавить паллету
+									</AddButton>
 
 
-								<AddButton
-									onClick={() => setIsPalletCreate(true)}
-								>
-									Добавить паллету
-								</AddButton>
-
-
-						}
+							}
 
 
 
-					</div>
+						</div>
 
-				}
+					}
+
+				</ContentMain>
+
+
+
+				<ControlMobileBTW>
+
+					{isRowEditing ?
+
+						<div >
+
+							<CancelButton
+
+								onClick={handlerCancelRowEditing}
+
+							>
+								Отмена
+							</CancelButton>
+
+
+
+							<SaveButton
+
+								onClick={handlerRowSave}
+
+							>
+								Сохранить
+							</SaveButton>
+
+
+
+
+							<DeleteButton
+
+								onClick={handlerRowRemove}
+
+							>
+								Удалить ряд
+							</DeleteButton>
+
+
+
+						</div>
+
+
+
+						:
+
+
+
+						<EditButton
+							onClick={handlerRowEdit}
+						>
+							Редактировать
+						</EditButton>
+
+
+					}
+
+				</ControlMobileBTW>
+
+
+				<ControlBTW >
+
+
+
+					{isRowEditing ?
+
+						<div >
+
+							<CancelButton
+
+								onClick={handlerCancelRowEditing}
+
+							>
+								Отмена
+							</CancelButton>
+
+
+
+							<SaveButton
+
+								onClick={handlerRowSave}
+
+							>
+								Сохранить
+							</SaveButton>
+
+
+
+
+							<DeleteButton
+
+								onClick={handlerRowRemove}
+
+							>
+								Удалить ряд
+							</DeleteButton>
+
+
+
+						</div>
+
+
+
+						:
+
+
+
+						<EditButton
+							onClick={handlerRowEdit}
+						>
+							Редактировать
+						</EditButton>
+
+
+					}
+
+
+
+
+				</ControlBTW>
+
+
 
 			</MainBTW>
 
 
-			<ControlMobileBTW>
-
-				{isRowEditing ?
-
-					<div >
-
-						<CancelButton
-
-							onClick={handlerCancelRowEditing}
-
-						>
-							Отмена
-						</CancelButton>
 
 
 
-						<SaveButton
-
-							onClick={handlerRowSave}
-
-						>
-							Сохранить
-						</SaveButton>
-
-
-
-
-						<DeleteButton
-
-							onClick={handlerRowRemove}
-
-						>
-							Удалить ряд
-						</DeleteButton>
-
-
-
-					</div>
-
-
-
-					:
-
-
-
-					<EditButton
-						onClick={handlerRowEdit}
-					>
-						Редактировать
-					</EditButton>
-
-
-				}
-
-			</ControlMobileBTW>
-
-
-			<ControlBTW >
-
-
-
-				{isRowEditing ?
-
-					<div >
-
-						<CancelButton
-
-							onClick={handlerCancelRowEditing}
-
-						>
-							Отмена
-						</CancelButton>
-
-
-
-						<SaveButton
-
-							onClick={handlerRowSave}
-
-						>
-							Сохранить
-						</SaveButton>
-
-
-
-
-						<DeleteButton
-
-							onClick={handlerRowRemove}
-
-						>
-							Удалить ряд
-						</DeleteButton>
-
-
-
-					</div>
-
-
-
-					:
-
-
-
-					<EditButton
-						onClick={handlerRowEdit}
-					>
-						Редактировать
-					</EditButton>
-
-
-				}
-
-
-
-
-			</ControlBTW>
 
 
 		</PageBTW>

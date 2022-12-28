@@ -2,7 +2,7 @@ import React from 'react';
 
 const MainBTW = ({ children }) => {
 	return (
-		<div className="w-full md:w-3/4 min-h-full max-h-screen   overflow-auto ">
+		<div className=" flex flex-col md:flex-row w-full max-h-screen   overflow-auto ">
 			{children}
 		</div>
 	);

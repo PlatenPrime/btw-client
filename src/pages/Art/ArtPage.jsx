@@ -2,16 +2,17 @@ import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import CardBTW from '../../components/UI/CardBTW';
-import ControlBTW from '../../components/UI/Control/ControlBTW';
-import ControlMobileBTW from '../../components/UI/Control/ControlMobileBTW';
-import HeaderMainBTW from '../../components/UI/Header/HeaderMainBTW';
-import TitleHeaderMain from '../../components/UI/Header/TitleHeaderMain';
-import MainBTW from '../../components/UI/MainBTW';
+import ControlBTW from '../../components/UI/Page/Control/ControlBTW';
+import ControlMobileBTW from '../../components/UI/Page/Control/ControlMobileBTW';
+import HeaderMainBTW from '../../components/UI/Page/Header/HeaderMainBTW';
+import TitleHeaderMain from '../../components/UI/Page/Header/TitleHeaderMain';
+import MainBTW from '../../components/UI/Page/MainBTW';
 import PageBTW from '../../components/UI/Page/PageBTW';
 import PhotoArtBTW from '../../components/UI/PhotoArtBTW';
 import { checkIsAuth } from '../../redux/features/auth/authSlice';
 
 import axios from "../../utils/axios"
+import ContentMain from '../../components/UI/Page/ContentMain';
 
 
 
@@ -98,76 +99,90 @@ const ArtPage = () => {
 		<PageBTW >
 
 
+
+			<HeaderMainBTW>
+				<TitleHeaderMain>
+					{art.title}
+				</TitleHeaderMain>
+			</HeaderMainBTW>
+
+
 			<MainBTW>
 
-				<HeaderMainBTW>
-					<TitleHeaderMain>
-						{art.title}
-					</TitleHeaderMain>
-				</HeaderMainBTW>
 
+				<ContentMain>
 
-				<CardBTW>
+					<CardBTW>
 
 
 
-					<h1 className='text-xl ' >{art.name}</h1>
+						<h1 className='text-xl ' >{art.name}</h1>
 
-					<PhotoArtBTW title={art.title} />
+						<PhotoArtBTW title={art.title} />
 
-					<h1 className='text-xl'  > Зона: {art.zone}</h1>
-
-
-					{pallets.length ? <h1 className='text-xl ' >
+						<h1 className='text-xl'  > Зона: {art.zone}</h1>
 
 
+						{pallets.length ? <h1 className='text-xl ' >
 
-						Артикул {art.title} находится на следующих паллетах:
 
-						{pallets.map((pallet) => {
 
-							const box = pallet.positions.find(item => item.art == art.title)
+							Артикул {art.title} находится на следующих паллетах:
 
-							return (
-								<Link
-									to={`/pallets/${pallet._id}`}
+							{pallets.map((pallet) => {
 
-								>
+								const box = pallet.positions.find(item => item.art == art.title)
 
-									<p className='text-lg my-1 p-1
+								return (
+									<Link
+										to={`/pallets/${pallet._id}`}
+
+									>
+
+										<p className='text-lg my-1 p-1
 									bg-amber-100 hover:bg-amber-500
 									rounded transition ease-in-out duration-300' >
-										{pallet.title} : {box.pieces} шт
-									</p>
+											{pallet.title} : {box.pieces} шт
+										</p>
 
-								</Link>
+									</Link>
+								)
+							}
+
 							)
+
+							}
+
+						</h1>
+							:
+							<p className='text-xl ' >Артикула на запасах нет</p>
+
+
 						}
 
-						)
+					</CardBTW>
 
-						}
-
-					</h1>
-						:
-						<p className='text-xl ' >Артикула на запасах нет</p>
+				</ContentMain>
 
 
-					}
 
-				</CardBTW>
+				<ControlMobileBTW>
+
+				</ControlMobileBTW>
+
+
+				<ControlBTW>
+
+				</ControlBTW>
+
+
+
+
 
 			</MainBTW>
 
 
-			<ControlMobileBTW>
 
-			</ControlMobileBTW>
-
-
-			<ControlBTW>
-
-			</ControlBTW>
 
 		</PageBTW>
 	);

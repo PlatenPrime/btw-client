@@ -13,15 +13,16 @@ import { getAllRows } from '../../redux/features/row/rowSlice';
 import RowBage from "../../components/Row/RowBage";
 
 import PageBTW from '../../components/UI/Page/PageBTW';
-import ControlBTW from '../../components/UI/Control/ControlBTW';
-import MainBTW from '../../components/UI/MainBTW';
+import ControlBTW from '../../components/UI/Page/Control/ControlBTW';
+import MainBTW from '../../components/UI/Page/MainBTW';
 
 import CreateButton from '../../components/UI/Buttons/CreateButton';
-import HeaderPageBTW from '../../components/UI/Header/HeaderMainBTW';
-import TitleHeaderMain from '../../components/UI/Header/TitleHeaderMain';
+import HeaderMainBTW from '../../components/UI/Page/Header/HeaderMainBTW';
+import TitleHeaderMain from '../../components/UI/Page/Header/TitleHeaderMain';
 import { checkIsAuth } from '../../redux/features/auth/authSlice';
-import Loading from '../../components/UI/Loading/Loading';
-import ControlMobileBTW from '../../components/UI/Control/ControlMobileBTW';
+import Loading from '../../components/UI/Page/Loading/Loading';
+import ControlMobileBTW from '../../components/UI/Page/Control/ControlMobileBTW';
+import ContentMain from '../../components/UI/Page/ContentMain';
 
 
 
@@ -70,56 +71,65 @@ const RowsPage = () => {
 		<PageBTW  >
 
 
+			<HeaderMainBTW>
+				<TitleHeaderMain>
+					Ряды
+				</TitleHeaderMain>
+			</HeaderMainBTW>
+
+
 
 			<MainBTW>
 
-				<HeaderPageBTW>
-					<TitleHeaderMain>
-						Ряды
-					</TitleHeaderMain>
-				</HeaderPageBTW>
+
+				<ContentMain>
+
+					{isLoading ? <Loading /> : <div>
+
+						{
+							!rows.length ?
+								<div className=''>
+									В базе данных нет ни одного ряда.
+								</div>
+								:
+								<div className=' space-y-4 w-full my-2'>
+									{rows?.map((row, idx) => (
+										<RowBage key={idx} row={row} />
+									))}
+								</div>
+						}
+
+					</div>}
+
+				</ContentMain>
 
 
 
 
-				{isLoading ? <Loading /> : <div>
 
-					{
-						!rows.length ?
-							<div className=''>
-								В базе данных нет ни одного ряда.
-							</div>
-							:
-							<div className=' space-y-4 w-full my-2'>
-								{rows?.map((row, idx) => (
-									<RowBage key={idx} row={row} />
-								))}
-							</div>
-					}
+				<ControlMobileBTW>
+					<Link to="new"	>
+						<CreateButton >Создать новый ряд</CreateButton>
+					</Link>
+				</ControlMobileBTW>
 
-				</div>}
 
+
+				<ControlBTW>
+					<Link to="new"	>
+						<CreateButton >Создать новый ряд</CreateButton>
+					</Link>
+				</ControlBTW>
 
 
 
 			</MainBTW>
 
 
-			<ControlMobileBTW>
-				<Link to="new"	>
-					<CreateButton >Создать новый ряд</CreateButton>
-				</Link>
-			</ControlMobileBTW>
 
-
-
-			<ControlBTW>
-				<Link to="new"	>
-					<CreateButton >Создать новый ряд</CreateButton>
-				</Link>
-			</ControlBTW>
 
 		</PageBTW >
+
 
 
 	);

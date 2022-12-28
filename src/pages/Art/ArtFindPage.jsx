@@ -3,16 +3,19 @@ import { useSelector } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
 import SaveButton from '../../components/UI/Buttons/SaveButton';
 import CardBTW from '../../components/UI/CardBTW';
-import ControlBTW from '../../components/UI/Control/ControlBTW';
-import ControlMobileBTW from '../../components/UI/Control/ControlMobileBTW';
-import HeaderMainBTW from '../../components/UI/Header/HeaderMainBTW';
-import TitleHeaderMain from '../../components/UI/Header/TitleHeaderMain';
+import ControlBTW from '../../components/UI/Page/Control/ControlBTW';
+import ControlMobileBTW from '../../components/UI/Page/Control/ControlMobileBTW';
+import HeaderMainBTW from '../../components/UI/Page/Header/HeaderMainBTW';
+import MainBTW from '../../components/UI/Page/MainBTW';
 
-import MainBTW from '../../components/UI/MainBTW';
+import TitleHeaderMain from '../../components/UI/Page/Header/TitleHeaderMain';
+
+
 import PageBTW from '../../components/UI/Page/PageBTW';
 import PhotoArtBTW from '../../components/UI/PhotoArtBTW';
 import { checkIsAuth } from '../../redux/features/auth/authSlice';
 import axios from "../../utils/axios";
+import ContentMain from '../../components/UI/Page/ContentMain';
 
 const ArtFindPage = () => {
 
@@ -89,96 +92,110 @@ const ArtFindPage = () => {
 		<PageBTW >
 
 
+			<HeaderMainBTW>
+				<TitleHeaderMain>
+					Поиск артикула
+				</TitleHeaderMain>
+			</HeaderMainBTW>
+
 
 
 			<MainBTW>
 
-				<HeaderMainBTW>
-					<TitleHeaderMain>
-						Поиск артикула
-					</TitleHeaderMain>
-				</HeaderMainBTW>
+
+
+				<ContentMain>
 
 
 
+					<div className='flex flex-col items-center md:flex-row p-4 space-x-5'>
+
+						<input className='md:w-1/2 inputBTW' type="text" ref={artInput} />
 
 
+						<div className='md:w-1/2'>
 
-				<div className='flex flex-col items-center md:flex-row p-4 space-x-5'>
-
-					<input className='md:w-1/2 inputBTW' type="text" ref={artInput} />
-
-
-					<div className='md:w-1/2'>
-
-						<SaveButton
-							className='bg-blue-600 my-5 p-2 text-white rounded-sm'
-							onClick={handlerArtFind}
-						>
-							Найти артикул
-						</SaveButton>
-
-					</div>
-
-				</div>
-
-
-
-
-
-				<div
-					className='cursor-pointer shadow-md border-5 hover:shadow-green-300 m-2'
-					onClick={() => navigate(`/arts/${artItem._id}`)}
-				>
-
-
-
-
-					{artItem &&
-
-						artCardDisplay &&
-
-						<div className='flex flex-col items-center md:flex-row'>
-
-
-
-							<div className='md:w-1/2 flex flex-col justify-center items-center '>
-
-								<h1 className='text-5xl' >{artItem.title}</h1>
-
-							</div>
-
-
-
-							<div className='md:w-1/2'>
-
-								<CardBTW >
-
-									<PhotoArtBTW title={artItem.title} />
-
-									<h1>{artItem.name}</h1>
-
-								</CardBTW >
-
-							</div>
-
+							<SaveButton
+								className='bg-blue-600 my-5 p-2 text-white rounded-sm'
+								onClick={handlerArtFind}
+							>
+								Найти артикул
+							</SaveButton>
 
 						</div>
 
-					}
+					</div>
 
 
-				</div>
+
+
+
+					<div
+						className='cursor-pointer shadow-md border-5 hover:shadow-green-300 m-2'
+						onClick={() => navigate(`/arts/${artItem._id}`)}
+					>
+
+
+
+
+						{artItem &&
+
+							artCardDisplay &&
+
+							<div className='flex flex-col items-center md:flex-row'>
+
+
+
+								<div className='md:w-1/2 flex flex-col justify-center items-center '>
+
+									<h1 className='text-5xl' >{artItem.title}</h1>
+
+								</div>
+
+
+
+								<div className='md:w-1/2'>
+
+									<CardBTW >
+
+										<PhotoArtBTW title={artItem.title} />
+
+										<h1>{artItem.name}</h1>
+
+									</CardBTW >
+
+								</div>
+
+
+							</div>
+
+						}
+
+
+					</div>
+
+
+				</ContentMain>
+
+
+
+				<ControlMobileBTW>
+
+				</ControlMobileBTW>
+
+				<ControlBTW>
+
+				</ControlBTW>
+
 
 			</MainBTW>
 
-			<ControlMobileBTW>
 
-			</ControlMobileBTW>
 
-			<ControlBTW>
 
-			</ControlBTW>
+
+
+
 
 
 		</PageBTW >
