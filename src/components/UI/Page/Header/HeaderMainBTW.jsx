@@ -6,7 +6,7 @@ const HeaderMainBTW = ({ children }) => {
 		flex justify-center items-center   
 		 bg-gray-600 bg-opacity-40 text-white
 		 
-		 sticky top-0 md:static
+		 
 		 
 		 '>
 			{children}
