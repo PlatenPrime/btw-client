@@ -36,11 +36,11 @@ const PalletPositions = ({ positions, setPositions, isPalletEditing }) => {
 	return (
 
 
-		<div>
+		<div className='flex justify-center my-4'>
 
 			{newPositions &&
 
-				<div className=''>
+				<div className='space-y-3'>
 
 					{
 						newPositions.map((position) => {

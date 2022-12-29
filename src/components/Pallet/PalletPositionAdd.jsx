@@ -60,7 +60,7 @@ const PalletPositionAdd = ({ positions, setPositions }) => {
 
 	return (
 
-		<div className=''>
+		<div className='flex justify-center'>
 
 
 
@@ -72,34 +72,26 @@ const PalletPositionAdd = ({ positions, setPositions }) => {
 
 
 					<div
-						className=''
+						className='flex flex-row  p-6'
 					>
 
-						<input type="text"
-							className='inputBTW block mx-auto m-1'
-							value={art}
-							onChange={(e) => setArt(e.target.value)}
-							placeholder="Артикул"
-
-						/>
-
-						<input type="number"
-							className='inputBTW block mx-auto m-1'
-							value={pieces}
-							onChange={(e) => setPieces(e.target.value)}
-							placeholder="Количество"
-						/>
-
-
-
-
-					</div>
-
-
-					<div className='w-full flex justify-center space-x-4 mx-auto m-1' >
+						<div className='flex flex-col md:flex-row  '>
+							<input type="text"
+								className='inputBTW  '
+								value={art}
+								onChange={(e) => setArt(e.target.value)}
+								placeholder="Артикул"
+							/>
+							<input type="number"
+								className='inputBTW   '
+								value={pieces}
+								onChange={(e) => setPieces(e.target.value)}
+								placeholder="Количество"
+							/>
+						</div>
 
 						<button
-							className=' w-1/2   '
+							className=' w-10  '
 							onClick={handlerPositionAddSave}
 						>
 							<SaveIcon />
@@ -108,13 +100,17 @@ const PalletPositionAdd = ({ positions, setPositions }) => {
 
 
 						<button
-							className=' w-1/2  '
+							className=' w-10 '
 							onClick={handlerPositionAddCancel}
 						>
 							<CancelIcon />
 
 						</button>
+
+
 					</div>
+
+
 
 
 				</div>

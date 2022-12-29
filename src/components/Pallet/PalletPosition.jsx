@@ -79,7 +79,7 @@ const PalletPosition = ({ positions, setPositions, isPalletEditing, art, pieces,
 
 
 
-		<div className="">
+		<div className="flex space-x-3 ">
 
 
 
@@ -89,14 +89,14 @@ const PalletPosition = ({ positions, setPositions, isPalletEditing, art, pieces,
 				<div className=''>
 
 					<input type="text"
-						className=''
+						className='inputBTW'
 						value={newArt}
 						onChange={(e) => setNewArt(e.target.value)}
 
 					/>
 
 					<input type="number"
-						className=''
+						className='inputBTW'
 						value={newPieces}
 						onChange={(e) => setNewPieces(e.target.value)}
 					/>
@@ -105,12 +105,20 @@ const PalletPosition = ({ positions, setPositions, isPalletEditing, art, pieces,
 				</div>
 
 				:
-				<h1
-					className=''
+				<div
+					className='space-x-3 flex justify-start items-center'
 				>
-					{newArt} : {newPieces}
+					<span className='text-xl bg-sky-300 p-1'>
+						{newArt}
+					</span>
 
-				</h1>
+					<span className='text-xl'>:</span>
+
+					<span className='text-xl bg-red-300 p-1' >
+						{newPieces} шт
+					</span>
+
+				</div>
 			}
 
 

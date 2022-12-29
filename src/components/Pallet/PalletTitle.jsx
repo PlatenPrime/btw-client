@@ -45,12 +45,12 @@ const PalletTitle = ({ title, setTitle, isPalletEditing }) => {
 
 			{isEditingTitle ?
 
-				<div className='w-full'>
+				<div className='w-full flex items-center justify-start space-x-4 h-16'>
 
-					<span>Новое название паллеты</span>
+					<span className='bg-gray-100 p-3'>Новое название паллеты: </span>
 
 					<input
-						className=''
+						className='inputBTW'
 						type="text"
 						value={newTitle}
 						placeholder='Название...'
@@ -81,18 +81,19 @@ const PalletTitle = ({ title, setTitle, isPalletEditing }) => {
 					{title ?
 
 						isPalletEditing &&
-						<EditButton
-							className=''
-							onClick={handlerEditTitle}
 
-						>
+						<div className='flex items-center justify-start h-16 space-x-4' >
 
-							Название паллеты: 	{newTitle}
+							<span className='bg-gray-100 p-3'>Название паллеты: 	<span className='text-2xl text-sky-900'>{newTitle}</span></span>
 
-							<EditIcon />
+							<button onClick={handlerEditTitle}>
+								<EditIcon />
+							</button>
 
 
-						</EditButton>
+
+
+						</div>
 
 						:
 
