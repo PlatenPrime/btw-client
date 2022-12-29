@@ -4,7 +4,7 @@ const CancelButton = ({ children, onClick }) => {
 	return (
 		<button
 			onClick={onClick}
-			className='buttonBTW buttonCancel' >
+			className='buttonBTW cancel' >
 
 			{children}
 

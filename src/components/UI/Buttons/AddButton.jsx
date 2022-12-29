@@ -4,7 +4,7 @@ const AddButton = ({ children, onClick }) => {
 	return (
 		<button
 			onClick={onClick}
-			className='buttonBTW buttonAdd' >
+			className='buttonBTW add' >
 
 			{children}
 

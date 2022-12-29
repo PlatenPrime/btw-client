@@ -25,7 +25,6 @@ background: conic-gradient(from .5turn at bottom center, lightblue, white);
 	.inputBTW 
 	{
 	  @apply 
-	  block
 	  px-3
 	  py-1.5
 	  text-base
@@ -46,40 +45,45 @@ background: conic-gradient(from .5turn at bottom center, lightblue, white);
 }
 
 
-.buttonPrimary {
+.iconBTW {
+	@apply
+	flex justify-center items-center p-1 rounded
+}
+
+.edit {
 	@apply 
-	  bg-blue-600 text-white  hover:bg-blue-700  focus:bg-blue-700  active:bg-blue-800 
+	  bg-blue-600 text-white  hover:bg-blue-500  focus:bg-blue-700  active:bg-blue-800 
 }
 
 
-.buttonSuccess {
+.success {
 	@apply 
-	bg-green-500 text-white  hover:bg-green-600  focus:bg-green-600  active:bg-green-700
+	bg-green-500 text-white  hover:bg-green-400  focus:bg-green-600  active:bg-green-700
 }
 
-.buttonCancel {
+.cancel {
 	@apply
-	bg-gray-200 text-red-600  hover:bg-gray-300  focus:bg-gray-300  active:bg-gray-400 
+	bg-gray-200 text-red-600  hover:bg-gray-100  focus:bg-gray-300  active:bg-gray-400 
 }
 
-.buttonDelete {
+.delete {
 	@apply
-	bg-red-600 text-white  hover:bg-red-700  focus:bg-red-700  active:bg-red-800 
+	bg-red-600 text-white  hover:bg-red-500  focus:bg-red-700  active:bg-red-800 
 }
 
-.buttonConfirm {
+.confirm {
 	@apply
-	bg-blue-400 text-white  hover:bg-blue-500  focus:bg-blue-500  active:bg-blue-600 
+	bg-blue-400 text-white  hover:bg-blue-300  focus:bg-blue-500  active:bg-blue-600 
 }
 
-.buttonAdd {
+.add {
 	@apply
-	border-2 border-yellow-500  text-yellow-500  hover:bg-black hover:bg-opacity-5 
+	border-2 border-teal-500  text-teal-500  hover:bg-black hover:bg-opacity-5 
 }
 
-.buttonCreate {
+.create {
 	@apply
-	border-2 border-green-500 text-green-500  hover:bg-black hover:bg-opacity-5 
+	border-2 border-green-500 text-green-400  hover:bg-black hover:bg-opacity-5 
 }
 
   }

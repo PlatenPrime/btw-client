@@ -16,7 +16,7 @@ import PageBTW from '../../components/UI/Page/PageBTW';
 import ControlBTW from '../../components/UI/Page/Control/ControlBTW';
 import MainBTW from '../../components/UI/Page/MainBTW';
 
-import CreateButton from '../../components/UI/Buttons/CreateButton';
+import EditButton from '../../components/UI/Buttons/EditButton';
 import HeaderMainBTW from '../../components/UI/Page/Header/HeaderMainBTW';
 import TitleHeaderMain from '../../components/UI/Page/Header/TitleHeaderMain';
 import { checkIsAuth } from '../../redux/features/auth/authSlice';
@@ -109,7 +109,7 @@ const RowsPage = () => {
 
 				<ControlMobileBTW>
 					<Link to="new"	>
-						<CreateButton >Создать новый ряд</CreateButton>
+						<EditButton >Создать новый ряд</EditButton>
 					</Link>
 				</ControlMobileBTW>
 
@@ -117,7 +117,7 @@ const RowsPage = () => {
 
 				<ControlBTW>
 					<Link to="new"	>
-						<CreateButton >Создать новый ряд</CreateButton>
+						<EditButton >Создать новый ряд</EditButton>
 					</Link>
 				</ControlBTW>
 

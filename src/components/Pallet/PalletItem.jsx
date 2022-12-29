@@ -35,15 +35,6 @@ const PalletItem = ({
 			/>
 
 
-			<PalletPositions
-				isPalletEditing={isPalletEditing}
-				positions={positions}
-				setPositions={setPositions}
-
-
-			/>
-
-
 			{isPalletEditing && <div className=''>
 
 				<PalletPositionAdd
@@ -55,6 +46,18 @@ const PalletItem = ({
 
 
 			</div>}
+
+
+			<PalletPositions
+				isPalletEditing={isPalletEditing}
+				positions={positions}
+				setPositions={setPositions}
+
+
+			/>
+
+
+
 
 
 

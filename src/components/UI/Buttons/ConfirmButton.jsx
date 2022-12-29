@@ -7,7 +7,7 @@ const ConfirmButton = ({ children, onClick }) => {
 		<button
 			type="submit"
 			onClick={onClick}
-			className='buttonBTW buttonConfirm' >
+			className='buttonBTW confirm' >
 
 			{children}
 

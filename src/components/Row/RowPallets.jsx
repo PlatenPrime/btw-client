@@ -32,7 +32,7 @@ const RowPallets = ({ pallets }) => {
 
 			{newPallets &&
 
-				<div className='space-y-4 w-full md:grid  md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-5'>
+				<div className=' w-full md:grid  md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-5'>
 
 					{
 						newPallets.map((pallet) => {

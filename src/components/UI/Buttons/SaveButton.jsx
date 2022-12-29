@@ -4,7 +4,7 @@ const SaveButton = ({ children, onClick }) => {
 	return (
 		<button
 			onClick={onClick}
-			className='buttonBTW buttonSuccess' >
+			className='buttonBTW success' >
 
 			{children}
 

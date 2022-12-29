@@ -199,14 +199,6 @@ const RowPage = () => {
 
 				<ContentMain>
 
-					<RowItem
-						isRowEditing={isRowEditing}
-						title={title}
-						setTitle={setTitle}
-						pallets={pallets}
-					/>
-
-
 
 					{isRowEditing &&
 
@@ -220,13 +212,11 @@ const RowPage = () => {
 
 
 										<input
-											className=''
+											className='inputBTW mx-auto block'
 											type="text"
 											value={palletTitle}
 											placeholder='Название...'
 											onChange={e => setPalletTitle(e.target.value)} />
-
-
 
 
 
@@ -270,6 +260,18 @@ const RowPage = () => {
 						</div>
 
 					}
+
+
+					<RowItem
+						isRowEditing={isRowEditing}
+						title={title}
+						setTitle={setTitle}
+						pallets={pallets}
+					/>
+
+
+
+
 
 				</ContentMain>
 

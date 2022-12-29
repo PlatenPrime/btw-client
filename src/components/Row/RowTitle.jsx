@@ -42,16 +42,24 @@ const RowTitle = ({ title, setTitle, isRowEditing }) => {
 
 				?
 
-				<div className=' h-16 flex justify-center items-center space-x-8 '>
+				<div className=' h-16  flex justify-start items-center space-x-8 '>
 
-					<span className=' text-lg '>Новое название ряда</span>
+					<span className='p-1  bg-gray-100 text-lg '>
 
-					<input
-						className='text-lg '
-						type="text"
-						value={newTitle}
-						placeholder='Название...'
-						onChange={e => setNewTitle(e.target.value)} />
+						<span className='mx-2'>Новое название ряда</span>
+
+						<input
+							className='inputBTW '
+							type="text"
+							value={newTitle}
+							placeholder='Название...'
+							onChange={e => setNewTitle(e.target.value)} />
+
+					</span>
+
+
+
+
 
 					{isRowEditing &&
 
@@ -66,36 +74,53 @@ const RowTitle = ({ title, setTitle, isRowEditing }) => {
 
 				:
 
-				<div className='h-16 flex justify-center items-center  space-x-8 '>
-
-					{title && isRowEditing &&
-						<h2 className=' text-lg '>
-							Название ряда: {newTitle}
-						</h2>}
-
+				<div className='  '>
 
 					{
-						title
-							?
-							isRowEditing &&
+						isRowEditing &&
+						<div className='h-16 flex justify-start items-center  space-x-8' >
 
-							<button
-								className=''
-								onClick={handlerEditTitle}
-							>
-								<EditIcon />
-							</button>
+							{title && isRowEditing &&
+								<h2 className=' text-lg '>
 
-							:
 
-							isRowEditing &&
-							<button
-								className=' '
-								onClick={handlerEditTitle}
-							>
-								Добавить название
-							</button>
+									<span className='p-3  bg-gray-100 text-lg '> Название ряда:  {newTitle}	</span>
+
+
+
+								</h2>}
+
+
+							{
+								title
+									?
+									isRowEditing &&
+
+									<button
+										className=''
+										onClick={handlerEditTitle}
+									>
+										<EditIcon />
+									</button>
+
+									:
+
+									isRowEditing &&
+									<button
+										className='buttonBTW '
+										onClick={handlerEditTitle}
+									>
+										Добавить название
+									</button>
+							}
+
+						</div>
+
+
 					}
+
+
+
 
 
 				</div>

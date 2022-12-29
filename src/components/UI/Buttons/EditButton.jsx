@@ -4,7 +4,7 @@ const EditButton = ({ children, onClick }) => {
 	return (
 		<button
 			onClick={onClick}
-			className='buttonBTW buttonPrimary' >
+			className='buttonBTW edit' >
 
 			{children}
 

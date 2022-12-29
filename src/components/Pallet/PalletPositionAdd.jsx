@@ -76,7 +76,7 @@ const PalletPositionAdd = ({ positions, setPositions }) => {
 					>
 
 						<input type="text"
-							className=''
+							className='inputBTW block mx-auto m-1'
 							value={art}
 							onChange={(e) => setArt(e.target.value)}
 							placeholder="Артикул"
@@ -84,7 +84,7 @@ const PalletPositionAdd = ({ positions, setPositions }) => {
 						/>
 
 						<input type="number"
-							className=''
+							className='inputBTW block mx-auto m-1'
 							value={pieces}
 							onChange={(e) => setPieces(e.target.value)}
 							placeholder="Количество"
@@ -96,10 +96,10 @@ const PalletPositionAdd = ({ positions, setPositions }) => {
 					</div>
 
 
-					<div className='' >
+					<div className='w-full flex justify-center space-x-4 mx-auto m-1' >
 
 						<button
-							className='    '
+							className=' w-1/2   '
 							onClick={handlerPositionAddSave}
 						>
 							<SaveIcon />
@@ -108,7 +108,7 @@ const PalletPositionAdd = ({ positions, setPositions }) => {
 
 
 						<button
-							className='  '
+							className=' w-1/2  '
 							onClick={handlerPositionAddCancel}
 						>
 							<CancelIcon />
@@ -134,7 +134,7 @@ const PalletPositionAdd = ({ positions, setPositions }) => {
 
 					onClick={handlerPositionAddAdd}
 				>
-					<AddIcon />
+					Добавить позиции
 
 				</AddButton>
 
