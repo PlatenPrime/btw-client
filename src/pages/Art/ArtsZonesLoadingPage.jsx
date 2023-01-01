@@ -1,48 +1,45 @@
-import { Button, Label, Spinner, Textarea, Tooltip } from 'flowbite-react';
-import React, { useEffect, useLayoutEffect, useRef, useState } from 'react';
-import { useSelector } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
-import CreateButton from '../../components/UI/Buttons/CreateButton';
-import DeleteButton from '../../components/UI/Buttons/DeleteButton';
-import SaveButton from '../../components/UI/Buttons/SaveButton';
-import ConfirmButton from '../../components/UI/Buttons/ConfirmButton';
+import * as xlsx from "xlsx";
+import React, { useState } from 'react';
+
 import ControlBTW from '../../components/UI/Page/Control/ControlBTW';
 import ControlMobileBTW from '../../components/UI/Page/Control/ControlMobileBTW';
 import HeaderMainBTW from '../../components/UI/Page/Header/HeaderMainBTW';
 import TitleHeaderMain from '../../components/UI/Page/Header/TitleHeaderMain';
 import MainBTW from '../../components/UI/Page/MainBTW';
 import PageBTW from '../../components/UI/Page/PageBTW';
-import { checkIsAuth } from '../../redux/features/auth/authSlice';
+
 
 import axios from '../../utils/axios';
-import { excelToJSON } from '../../utils/excel';
+
 import ContentMain from '../../components/UI/Page/ContentMain';
 
 
 
 const ArtsZonesLoadingPage = () => {
 
-	const navigate = useNavigate()
-	const isAuth = useSelector(checkIsAuth)
-
-
-
-
-
 
 
 	const [arts, setArts] = useState("")
-	const [count, setCount] = useState(0)
-	const [isLoading, setIsLoading] = useState(false);
 
 
-	const artsInput = useRef("");
 
 
-	const handlerSave = () => {
 
-		setArts(JSON.parse(artsInput.current.value))
-
+	const excelToJSON = (e) => {
+		e.preventDefault();
+		if (e.target.files) {
+			const reader = new FileReader();
+			reader.onload = (e) => {
+				const data = e.target.result;
+				const workbook = xlsx.read(data, { type: "array" });
+				const sheetName = workbook.SheetNames[0];
+				const worksheet = workbook.Sheets[sheetName];
+				const json = xlsx.utils.sheet_to_json(worksheet);
+				console.log(json);
+				setArts(json)
+			};
+			reader.readAsArrayBuffer(e.target.files[0]);
+		}
 	}
 
 
@@ -51,24 +48,14 @@ const ArtsZonesLoadingPage = () => {
 
 	const handlerUpload = () => {
 
-		arts.forEach(el => {
 
-			const title = el.title;
-			const zone = el.zone;
-			const name = el.name;
-
-			createArts(title, zone, name)
-
-			setCount(prev => prev += 1)
-
-		})
 
 	}
 
 
 
 
-	const createArts = async (title, zone, name) => {
+	const uploadArts = async (title, zone, name) => {
 
 		try {
 
@@ -86,28 +73,20 @@ const ArtsZonesLoadingPage = () => {
 
 
 
+	// Удаляй артикулы только в процессе загрузки новых, отдельной кнопки не нужно
 
 
-
-	const handlerRemove = async () => {
+	const removeArts = async () => {
 		try {
 
-			setIsLoading(true);
+			// setIsLoading(true);
 			await axios.delete(`arts/zones`);
-			setIsLoading(false);
+			// setIsLoading(false);
 
 		} catch (error) {
 			console.log(error)
 		}
 	}
-
-
-
-
-
-
-
-
 
 
 
@@ -132,35 +111,22 @@ const ArtsZonesLoadingPage = () => {
 
 				<ContentMain>
 
-					<form>
-						<label htmlFor="upload">Upload File</label>
+					<form className="flex justify-center items-center h-full">
+
 						<input
+						className="inputBTW"
 							type="file"
 							name="upload"
 							id="upload"
 							onChange={excelToJSON}
 						/>
+
 					</form>
 
 
 
 
-					<div id="textarea">
-						<div className="mb-2 block">
-							<Label
-								htmlFor="comment"
-								value="Поле для вставки JSON списка"
-							/>
-						</div>
-						<textarea
-							className='w-full'
-							id="comment"
-							placeholder="Leave a comment..."
-							required={true}
-							rows={4}
-							ref={artsInput}
-						/>
-					</div>
+
 
 
 				</ContentMain>
@@ -169,77 +135,35 @@ const ArtsZonesLoadingPage = () => {
 
 				<ControlMobileBTW>
 
-					<SaveButton
-
-						onClick={handlerSave}
-
-					>
-						{isLoading && <Spinner aria-label="Default status example" />}
-						Сохранить
-					</SaveButton>
 
 
-
-
-					<ConfirmButton
+					<button
 						onClick={handlerUpload}
-						className='bg-green-300 p-2'
+						className='buttonBTW success'
 						disabled={!arts}
 					>
-						{isLoading && <Spinner aria-label="Default status example" />}
+
 						Выгрузить артикулы
-					</ConfirmButton>
+					</button>
 
 
-
-
-					<DeleteButton
-						className='bg-red-300 p-2'
-						onClick={handlerRemove}
-					>
-						{isLoading && <Spinner aria-label="Default status example" />}
-						Удалить
-					</DeleteButton>
 
 				</ControlMobileBTW>
 
 
+
+
+
 				<ControlBTW>
 
-
-
-					<SaveButton
-
-						onClick={handlerSave}
-
-					>
-						{isLoading && <Spinner aria-label="Default status example" />}
-						Сохранить
-					</SaveButton>
-
-
-
-
-					<ConfirmButton
+					<button
 						onClick={handlerUpload}
-						className='bg-green-300 p-2'
+						className='buttonBTW success'
 						disabled={!arts}
 					>
-						{isLoading && <Spinner aria-label="Default status example" />}
+
 						Выгрузить артикулы
-					</ConfirmButton>
-
-
-
-
-					<DeleteButton
-						className='bg-red-300 p-2'
-						onClick={handlerRemove}
-					>
-						{isLoading && <Spinner aria-label="Default status example" />}
-						Удалить
-					</DeleteButton>
-
+					</button>
 
 
 				</ControlBTW>
