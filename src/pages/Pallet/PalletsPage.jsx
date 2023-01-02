@@ -7,12 +7,12 @@ import PalletBage from '../../components/Pallet/PalletBage';
 import ControlBTW from '../../components/UI/Page/Control/ControlBTW';
 import MainBTW from '../../components/UI/Page/MainBTW';
 import PageBTW from '../../components/UI/Page/PageBTW';
-import CreateButton from "../../components/UI/Buttons/CreateButton";
+
 
 import { getAllPallets } from '../../redux/features/pallet/palletSlice';
 import HeaderMainBTW from '../../components/UI/Page/Header/HeaderMainBTW';
 import TitleHeaderMain from '../../components/UI/Page/Header/TitleHeaderMain';
-import ControlMobileBTW from '../../components/UI/Page/Control/ControlMobileBTW';
+
 import ContentMain from '../../components/UI/Page/ContentMain';
 
 
@@ -77,24 +77,18 @@ const PalletsPage = () => {
 
 
 
-				<ControlMobileBTW>
 
-					<Link to="new">
-						<CreateButton >
-							Создать новую паллету
-						</CreateButton>
-					</Link>
-
-				</ControlMobileBTW>
 
 
 
 				<ControlBTW>
 
 					<Link to="new">
-						<CreateButton >
+						<button
+							className='buttonBTW edit'
+						>
 							Создать новую паллету
-						</CreateButton>
+						</button>
 					</Link>
 
 				</ControlBTW>

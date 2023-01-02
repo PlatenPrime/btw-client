@@ -1,10 +1,10 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
-import SaveButton from '../../components/UI/Buttons/SaveButton';
+
 import CardBTW from '../../components/UI/CardBTW';
 import ControlBTW from '../../components/UI/Page/Control/ControlBTW';
-import ControlMobileBTW from '../../components/UI/Page/Control/ControlMobileBTW';
+
 import HeaderMainBTW from '../../components/UI/Page/Header/HeaderMainBTW';
 import MainBTW from '../../components/UI/Page/MainBTW';
 
@@ -108,21 +108,22 @@ const ArtFindPage = () => {
 
 
 
-					<div className='flex flex-col items-center md:flex-row p-4 space-x-5'>
+					<div className='flex flex-col items-center  p-4 '>
 
-						<input className='md:w-1/2 inputBTW' type="text" ref={artInput} />
+						<input className=' inputBTW' type="text" ref={artInput} />
 
 
-						<div className='md:w-1/2'>
+						
 
-							<SaveButton
-								className='bg-blue-600 my-5 p-2 text-white rounded-sm'
+							<button
+
+								className='buttonBTW confirm'
 								onClick={handlerArtFind}
 							>
 								Найти артикул
-							</SaveButton>
+							</button>
 
-						</div>
+					
 
 					</div>
 
@@ -179,11 +180,14 @@ const ArtFindPage = () => {
 
 
 
-				<ControlMobileBTW>
-
-				</ControlMobileBTW>
 
 				<ControlBTW>
+
+<button
+className='buttonBTW edit'
+>
+	EMPTY
+</button>
 
 				</ControlBTW>
 

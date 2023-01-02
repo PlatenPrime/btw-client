@@ -30,8 +30,8 @@ const RowBage = ({ row }) => {
 
 
 			className=' flex justify-center
-			bg-slate-100 hover:bg-slate-500
-			border-2 border-orange-400  hover:border-orange-300
+			bg-slate-100 hover:bg-orange-400
+			border-2 border-sky-400  hover:border-orange-100
 			rounded transition ease-in-out duration-300
 			w-full p-2
 			shadow-sm hover:shadow-lg

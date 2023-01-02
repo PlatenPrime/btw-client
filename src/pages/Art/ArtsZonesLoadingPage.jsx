@@ -2,7 +2,6 @@ import * as xlsx from "xlsx";
 import React, { useState } from 'react';
 
 import ControlBTW from '../../components/UI/Page/Control/ControlBTW';
-import ControlMobileBTW from '../../components/UI/Page/Control/ControlMobileBTW';
 import HeaderMainBTW from '../../components/UI/Page/Header/HeaderMainBTW';
 import TitleHeaderMain from '../../components/UI/Page/Header/TitleHeaderMain';
 import MainBTW from '../../components/UI/Page/MainBTW';
@@ -114,7 +113,7 @@ const ArtsZonesLoadingPage = () => {
 					<form className="flex justify-center items-center h-full">
 
 						<input
-						className="inputBTW"
+							className="inputBTW"
 							type="file"
 							name="upload"
 							id="upload"
@@ -133,22 +132,6 @@ const ArtsZonesLoadingPage = () => {
 
 
 
-				<ControlMobileBTW>
-
-
-
-					<button
-						onClick={handlerUpload}
-						className='buttonBTW success'
-						disabled={!arts}
-					>
-
-						Выгрузить артикулы
-					</button>
-
-
-
-				</ControlMobileBTW>
 
 
 
@@ -158,11 +141,11 @@ const ArtsZonesLoadingPage = () => {
 
 					<button
 						onClick={handlerUpload}
-						className='buttonBTW success'
+						className={`buttonBTW  ${arts && `success`}`}
 						disabled={!arts}
 					>
 
-						Выгрузить артикулы
+						Обновить артикулы
 					</button>
 
 

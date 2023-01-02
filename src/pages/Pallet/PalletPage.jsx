@@ -1,4 +1,4 @@
-import React, { useCallback, useLayoutEffect } from 'react';
+import React, { useCallback } from 'react';
 import { useEffect } from 'react';
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
@@ -14,14 +14,11 @@ import PalletItem from '../../components/Pallet/PalletItem';
 import PageBTW from '../../components/UI/Page/PageBTW';
 import ControlBTW from '../../components/UI/Page/Control/ControlBTW';
 import MainBTW from '../../components/UI/Page/MainBTW';
-import EditButton from '../../components/UI/Buttons/EditButton';
-import CancelButton from '../../components/UI/Buttons/CancelButton';
-import SaveButton from '../../components/UI/Buttons/SaveButton';
-import DeleteButton from '../../components/UI/Buttons/DeleteButton';
+
 
 import HeaderMainBTW from '../../components/UI/Page/Header/HeaderMainBTW';
 import TitleHeaderMain from '../../components/UI/Page/Header/TitleHeaderMain';
-import ControlMobileBTW from '../../components/UI/Page/Control/ControlMobileBTW';
+
 import ContentMain from '../../components/UI/Page/ContentMain';
 
 
@@ -155,59 +152,6 @@ const PalletPage = () => {
 				</ContentMain>
 
 
-				<ControlMobileBTW>
-
-
-					{isPalletEditing ?
-
-						<div className=''>
-
-
-							<CancelButton
-								onClick={handlerCancelPalletEditing}
-							>
-								Отмена
-							</CancelButton>
-
-
-							<SaveButton
-								onClick={handlerPalletSave}
-							>
-								Сохранить
-							</SaveButton>
-
-
-
-							<DeleteButton
-								onClick={handlerPalletRemove}
-							>
-								Удалить паллету
-							</DeleteButton>
-
-
-
-						</div>
-
-
-
-
-
-
-						:
-
-
-						<EditButton
-							onClick={handlerPalletEdit}
-						>
-							Редактировать
-						</EditButton>
-
-
-					}
-
-
-
-				</ControlMobileBTW>
 
 
 				<ControlBTW>
@@ -219,26 +163,29 @@ const PalletPage = () => {
 						<div className=''>
 
 
-							<CancelButton
+							<button
+								className='buttonBTW cancel'
 								onClick={handlerCancelPalletEditing}
 							>
 								Отмена
-							</CancelButton>
+							</button>
 
 
-							<SaveButton
+							<button
+								className='buttonBTW success'
 								onClick={handlerPalletSave}
 							>
 								Сохранить
-							</SaveButton>
+							</button>
 
 
 
-							<DeleteButton
+							<button
+								className='buttonBTW delete'
 								onClick={handlerPalletRemove}
 							>
 								Удалить паллету
-							</DeleteButton>
+							</button>
 
 
 
@@ -252,11 +199,12 @@ const PalletPage = () => {
 						:
 
 
-						<EditButton
+						<button
+							className='buttonBTW edit'
 							onClick={handlerPalletEdit}
 						>
 							Редактировать
-						</EditButton>
+						</button>
 
 
 					}

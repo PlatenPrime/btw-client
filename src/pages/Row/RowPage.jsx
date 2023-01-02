@@ -1,4 +1,4 @@
-import React, { useCallback, useLayoutEffect } from 'react';
+import React, { useCallback } from 'react';
 import { useEffect } from 'react';
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
@@ -19,14 +19,10 @@ import RowItem from "../../components/Row/RowItem";
 import PageBTW from '../../components/UI/Page/PageBTW';
 import ControlBTW from '../../components/UI/Page/Control/ControlBTW';
 import MainBTW from '../../components/UI/Page/MainBTW';
-import EditButton from '../../components/UI/Buttons/EditButton';
-import CancelButton from '../../components/UI/Buttons/CancelButton';
-import SaveButton from '../../components/UI/Buttons/SaveButton';
-import DeleteButton from '../../components/UI/Buttons/DeleteButton';
-import AddButton from '../../components/UI/Buttons/AddButton';
+
 import HeaderMainBTW from '../../components/UI/Page/Header/HeaderMainBTW';
 import TitleHeaderMain from '../../components/UI/Page/Header/TitleHeaderMain';
-import ControlMobileBTW from '../../components/UI/Page/Control/ControlMobileBTW';
+
 import ContentMain from '../../components/UI/Page/ContentMain';
 
 
@@ -208,11 +204,11 @@ const RowPage = () => {
 								isPalletCreate ?
 
 
-									<div className=''>
+									<div className='flex justify-center w-full '>
 
 
 										<input
-											className='inputBTW mx-auto block'
+											className='inputBTW  m-1'
 											type="text"
 											value={palletTitle}
 											placeholder='Название...'
@@ -221,21 +217,27 @@ const RowPage = () => {
 
 
 
-										<div className=''>
+										<div className='flex flex-wrap'>
 
-											<SaveButton
-												onClick={handlerCreatePallet}
-
-											>
-												Сохранить паллету
-											</SaveButton>
-
-											<CancelButton
+											<button
+												className='buttonBTW cancel m-1'
 
 												onClick={() => setIsPalletCreate(false)}
 											>
 												Не создавать
-											</CancelButton>
+											</button>
+
+											<button
+												className='buttonBTW success m-1'
+												onClick={handlerCreatePallet}
+
+											>
+												Сохранить паллету
+											</button>
+
+
+
+
 
 										</div>
 
@@ -246,11 +248,14 @@ const RowPage = () => {
 									:
 
 
-									<AddButton
-										onClick={() => setIsPalletCreate(true)}
-									>
-										Добавить паллету
-									</AddButton>
+									<div className='flex justify-center'>
+										<button
+											className='buttonBTW add  '
+											onClick={() => setIsPalletCreate(true)}
+										>
+											Добавить паллету
+										</button>
+									</div>
 
 
 							}
@@ -277,61 +282,6 @@ const RowPage = () => {
 
 
 
-				<ControlMobileBTW>
-
-					{isRowEditing ?
-
-						<div >
-
-							<CancelButton
-
-								onClick={handlerCancelRowEditing}
-
-							>
-								Отмена
-							</CancelButton>
-
-
-
-							<SaveButton
-
-								onClick={handlerRowSave}
-
-							>
-								Сохранить
-							</SaveButton>
-
-
-
-
-							<DeleteButton
-
-								onClick={handlerRowRemove}
-
-							>
-								Удалить ряд
-							</DeleteButton>
-
-
-
-						</div>
-
-
-
-						:
-
-
-
-						<EditButton
-							onClick={handlerRowEdit}
-						>
-							Редактировать
-						</EditButton>
-
-
-					}
-
-				</ControlMobileBTW>
 
 
 				<ControlBTW >
@@ -342,34 +292,34 @@ const RowPage = () => {
 
 						<div >
 
-							<CancelButton
-
+							<button
+								className='buttonBTW cancel w-full'
 								onClick={handlerCancelRowEditing}
 
 							>
 								Отмена
-							</CancelButton>
+							</button>
 
 
 
-							<SaveButton
-
+							<button
+								className='buttonBTW success w-full'
 								onClick={handlerRowSave}
 
 							>
 								Сохранить
-							</SaveButton>
+							</button>
 
 
 
 
-							<DeleteButton
-
+							<button
+								className='buttonBTW delete w-full'
 								onClick={handlerRowRemove}
 
 							>
 								Удалить ряд
-							</DeleteButton>
+							</button>
 
 
 
@@ -381,11 +331,12 @@ const RowPage = () => {
 
 
 
-						<EditButton
+						<button
+							className='buttonBTW edit w-full'
 							onClick={handlerRowEdit}
 						>
 							Редактировать
-						</EditButton>
+						</button>
 
 
 					}

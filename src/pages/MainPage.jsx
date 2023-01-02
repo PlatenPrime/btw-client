@@ -14,7 +14,7 @@ import MainBTW from '../components/UI/Page/MainBTW';
 import ControlBTW from '../components/UI/Page/Control/ControlBTW';
 import HeaderPageBTW from '../components/UI/Page/Header/HeaderMainBTW';
 import TitleHeaderMain from '../components/UI/Page/Header/TitleHeaderMain';
-import ControlMobileBTW from '../components/UI/Page/Control/ControlMobileBTW';
+
 import ContentMain from '../components/UI/Page/ContentMain';
 
 
@@ -60,9 +60,7 @@ const MainPage = () => {
 
 
 
-				<ControlMobileBTW>
-
-				</ControlMobileBTW>
+			
 
 				<ControlBTW>
 

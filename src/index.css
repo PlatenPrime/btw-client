@@ -41,7 +41,7 @@ background: conic-gradient(from .5turn at bottom center, lightblue, white);
 
 .buttonBTW {
 	@apply
-	 w-full my-2 px-6 py-2.5 font-medium text-xs leading-tight uppercase rounded-full shadow-md hover:shadow-lg focus:shadow-lg focus:outline-none focus:ring-0 active:shadow-lg transition duration-150 ease-in-out
+	 my-2 px-6 py-2.5 font-medium text-xs leading-tight uppercase rounded-full shadow-md hover:shadow-lg focus:shadow-lg focus:outline-none focus:ring-0 active:shadow-lg transition duration-150 ease-in-out
 }
 
 
@@ -73,7 +73,7 @@ background: conic-gradient(from .5turn at bottom center, lightblue, white);
 
 .confirm {
 	@apply
-	bg-blue-400 text-white  hover:bg-blue-300  focus:bg-blue-500  active:bg-blue-600 
+	bg-cyan-700 text-white  hover:bg-cyan-600  focus:bg-cyan-800  active:bg-cyan-800 
 }
 
 .add {

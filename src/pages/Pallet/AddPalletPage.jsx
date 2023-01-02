@@ -1,4 +1,4 @@
-import React, { useEffect, useLayoutEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 
@@ -10,7 +10,7 @@ import { checkIsAuth } from '../../redux/features/auth/authSlice';
 import PalletItem from '../../components/Pallet/PalletItem';
 import PageBTW from '../../components/UI/Page/PageBTW';
 import ControlBTW from '../../components/UI/Page/Control/ControlBTW';
-import ControlMobileBTW from '../../components/UI/Page/Control/ControlMobileBTW';
+
 import MainBTW from '../../components/UI/Page/MainBTW';
 
 import CancelButton from '../../components/UI/Buttons/CancelButton';
@@ -36,8 +36,7 @@ const AddPalletPage = () => {
 
 	const dispatch = useDispatch()
 	const navigate = useNavigate()
-	const { status } = useSelector((state) => state.pallet)
-	const isAuth = useSelector(checkIsAuth)
+
 
 
 
@@ -95,22 +94,6 @@ const AddPalletPage = () => {
 			</MainBTW>
 
 
-			<ControlMobileBTW>
-
-				<CancelButton
-					onClick={handlerClearForm}
-				>
-					Очистить форму
-				</CancelButton>
-
-
-				<SaveButton
-					onClick={handlerSubmit}
-				>
-					Создать
-				</SaveButton>
-
-			</ControlMobileBTW>
 
 
 

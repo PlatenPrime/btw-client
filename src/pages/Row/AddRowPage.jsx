@@ -12,11 +12,9 @@ import RowItem from '../../components/Row/RowItem';
 import PageBTW from '../../components/UI/Page/PageBTW';
 import MainBTW from '../../components/UI/Page/MainBTW';
 import ControlBTW from '../../components/UI/Page/Control/ControlBTW';
-import CancelButton from '../../components/UI/Buttons/CancelButton';
-import SaveButton from '../../components/UI/Buttons/SaveButton';
 import HeaderMainBTW from '../../components/UI/Page/Header/HeaderMainBTW';
 import TitleHeaderMain from '../../components/UI/Page/Header/TitleHeaderMain';
-import ControlMobileBTW from '../../components/UI/Page/Control/ControlMobileBTW';
+
 import ContentMain from '../../components/UI/Page/ContentMain';
 
 
@@ -105,37 +103,25 @@ const AddRowPage = () => {
 				</ContentMain>
 
 
-				<ControlMobileBTW>
 
-					<CancelButton
-						onClick={handlerClearForm}
-					>
-						Очистить форму
-					</CancelButton>
-
-					<SaveButton
-						onClick={handlerSubmit}
-					>
-						Сохранить ряд в БД
-					</SaveButton>
-
-				</ControlMobileBTW>
 
 
 				<ControlBTW >
 
 
-					<CancelButton
+					<button
+						className='buttonBTW cancel'
 						onClick={handlerClearForm}
 					>
 						Очистить форму
-					</CancelButton>
+					</button>
 
-					<SaveButton
+					<button
+						className='buttonBTW success'
 						onClick={handlerSubmit}
 					>
 						Сохранить ряд в БД
-					</SaveButton>
+					</button>
 
 
 

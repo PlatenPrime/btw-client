@@ -107,7 +107,7 @@ const RowTitle = ({ title, setTitle, isRowEditing }) => {
 
 									isRowEditing &&
 									<button
-										className='buttonBTW '
+										className='buttonBTW add '
 										onClick={handlerEditTitle}
 									>
 										Добавить название

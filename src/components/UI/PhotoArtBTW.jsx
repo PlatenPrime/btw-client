@@ -6,11 +6,18 @@ const PhotoArtBTW = ({ title }) => {
 
 
 	return (
-		<img
-			src={photoLink}
-			alt="Здесь должно быть изображение артикула"
-			width="200px"
-		></img>
+		<div className=' w-full flex justify-center p-5 bg-gradient-to-b from-blue-500 to-transparent'>
+
+
+
+			<img
+				src={photoLink}
+				alt="Здесь должно быть изображение артикула"
+				width="200px"
+			></img>
+
+		</div>
+
 	);
 };
 

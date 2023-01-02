@@ -16,12 +16,12 @@ import PageBTW from '../../components/UI/Page/PageBTW';
 import ControlBTW from '../../components/UI/Page/Control/ControlBTW';
 import MainBTW from '../../components/UI/Page/MainBTW';
 
-import EditButton from '../../components/UI/Buttons/EditButton';
+
 import HeaderMainBTW from '../../components/UI/Page/Header/HeaderMainBTW';
 import TitleHeaderMain from '../../components/UI/Page/Header/TitleHeaderMain';
-import { checkIsAuth } from '../../redux/features/auth/authSlice';
+
 import Loading from '../../components/UI/Page/Loading/Loading';
-import ControlMobileBTW from '../../components/UI/Page/Control/ControlMobileBTW';
+
 import ContentMain from '../../components/UI/Page/ContentMain';
 
 
@@ -107,17 +107,10 @@ const RowsPage = () => {
 
 
 
-				<ControlMobileBTW>
-					<Link to="new"	>
-						<EditButton >Создать новый ряд</EditButton>
-					</Link>
-				</ControlMobileBTW>
-
-
 
 				<ControlBTW>
 					<Link to="new"	>
-						<EditButton >Создать новый ряд</EditButton>
+						<button className='buttonBTW edit' >Создать новый ряд</button>
 					</Link>
 				</ControlBTW>
 

@@ -12,7 +12,7 @@ export const ControlContext = React.createContext();
 
 const Layout = ({ children }) => {
 
-	
+
 
 	const [mobileSide, setMobileSide] = useState(false)
 	const [mobileControl, setMobileControl] = useState(true)
@@ -39,9 +39,13 @@ const Layout = ({ children }) => {
 
 			<div className='container mx-auto min-h-screen max-h-screen shadow-sm relative'>
 
+
+
 				{mobileSide && <SidebarMobileBTW onClose={handlerMobileSide} />}
 
-				<NavbarBTW onClickSide={handlerMobileSide} onClickControl={handlerMobileControl} />
+
+
+				<NavbarBTW onClickSide={handlerMobileSide} onClickControl={handlerMobileControl} mobileControl={mobileControl} />
 
 
 
@@ -52,7 +56,7 @@ const Layout = ({ children }) => {
 
 					<SidebarBTW />
 
-					{ children }
+					{children}
 
 
 				</div>
