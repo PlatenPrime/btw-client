@@ -67,7 +67,7 @@ const MainPage = () => {
 
 				<ContentMain>
 
-
+Test of API
 
 
 				</ContentMain>
