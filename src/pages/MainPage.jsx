@@ -28,7 +28,22 @@ import ContentMain from '../components/UI/Page/ContentMain';
 const MainPage = () => {
 
 
+	const fetchSmiles = async () => {
+		try {
 
+			const content = await axios.get(`http://rzhunemogu.ru/RandJSON.aspx?CType=1`);
+
+			console.log(content)
+
+		} catch (error) {
+			console.log(error)
+		}
+	}
+
+	useEffect(() => {
+		fetchSmiles()
+
+	}, [])
 
 
 
@@ -60,7 +75,7 @@ const MainPage = () => {
 
 
 
-			
+
 
 				<ControlBTW>
 
