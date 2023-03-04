@@ -45,47 +45,41 @@ const ArtsZonesLoadingPage = () => {
 
 
 
-	const handlerUpload = () => {
 
 
 
-	}
-
-
-
-
-	const uploadArts = async (title, zone, name) => {
-
+	async function handlerDeleteArts() {
 		try {
 
-			await axios.post(`arts`, { title, zone, name });
 
-		} catch (error) {
-
-			console.log(error)
-
-		}
-
-	}
-
-
-
-
-
-	// Удаляй артикулы только в процессе загрузки новых, отдельной кнопки не нужно
-
-
-	const removeArts = async () => {
-		try {
-
-			// setIsLoading(true);
 			await axios.delete(`arts/zones`);
-			// setIsLoading(false);
 
 		} catch (error) {
 			console.log(error)
 		}
 	}
+
+
+
+
+
+
+
+	async function handlerUploadArts() {
+
+		const art = arts[0]
+
+		try {
+
+
+			await axios.post(`arts/`, { ...art });
+
+		} catch (error) {
+			console.log(error)
+		}
+	}
+
+
 
 
 
@@ -110,7 +104,7 @@ const ArtsZonesLoadingPage = () => {
 
 				<ContentMain>
 
-					<form className="flex justify-center items-center h-full">
+					<form className="flex justify-center items-center">
 
 						<input
 							className="inputBTW"
@@ -121,6 +115,18 @@ const ArtsZonesLoadingPage = () => {
 						/>
 
 					</form>
+
+
+
+					<button
+						className="btn delete p-4 rounded "
+						onClick={handlerDeleteArts}
+					>
+
+						УДАЛИТЬ АРТИКУЛЫ ИЗ БАЗЫ
+
+					</button>
+
 
 
 
@@ -140,7 +146,7 @@ const ArtsZonesLoadingPage = () => {
 				<ControlBTW>
 
 					<button
-						onClick={handlerUpload}
+						onClick={handlerUploadArts}
 						className={`buttonBTW  ${arts && `success`}`}
 						disabled={!arts}
 					>
