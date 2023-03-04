@@ -65,9 +65,8 @@ const ArtsZonesLoadingPage = () => {
 
 
 
-	async function handlerUploadArts() {
+	async function uploadArt(art) {
 
-		const art = arts[0]
 
 		try {
 
@@ -78,6 +77,29 @@ const ArtsZonesLoadingPage = () => {
 			console.log(error)
 		}
 	}
+
+
+
+
+
+	async function handlerUploadArts() {
+
+		if (!arts) return
+
+		if (arts) {
+
+
+			let slice = arts.slice(6000, 7001);
+			await slice.forEach(art => uploadArt(art))
+
+
+
+		}
+
+
+	}
+
+
 
 
 
@@ -151,7 +173,7 @@ const ArtsZonesLoadingPage = () => {
 						disabled={!arts}
 					>
 
-						Обновить артикулы
+						Загрузить артикулы
 					</button>
 
 
