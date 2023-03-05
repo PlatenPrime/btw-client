@@ -18,7 +18,13 @@ const ArtsZonesLoadingPage = () => {
 
 
 
-	const [arts, setArts] = useState("")
+	const [arts, setArts] = useState([]);
+	const [claster, setClaster] = useState(0);
+
+
+
+
+	const clasters = Math.ceil(arts.length / 1000)
 
 
 
@@ -82,16 +88,20 @@ const ArtsZonesLoadingPage = () => {
 
 
 
-	async function handlerUploadArts() {
+	function handlerUploadArts() {
 
 		if (!arts) return
 
 		if (arts) {
 
 
-			let slice = arts.slice(6000, 7001);
-			await slice.forEach(art => uploadArt(art))
 
+
+			let slice = arts.slice(1000 * claster, (1001 + 1000 * claster))
+
+			slice.forEach(art => uploadArt(art))
+
+			setClaster(prev => prev + 1)
 
 
 		}
@@ -138,21 +148,33 @@ const ArtsZonesLoadingPage = () => {
 
 					</form>
 
+					<h2 className="m-6">Общее количество артикулов: {arts.length}</h2>
+					<h2 className="m-6">Всего кластеров артикулов: {clasters} </h2>
+
+
+
+					{
+						arts.length != 0 &&
+						<button
+							className="btn confirm m-6 p-4 rounded "
+							onClick={handlerUploadArts}
+						>
+
+							{`Загрузить ${claster + 1} кластер артикулов`}
+
+						</button>
+					}
+
 
 
 					<button
-						className="btn delete p-4 rounded "
+						className="btn delete m-6 p-4 rounded "
 						onClick={handlerDeleteArts}
 					>
 
 						УДАЛИТЬ АРТИКУЛЫ ИЗ БАЗЫ
 
 					</button>
-
-
-
-
-
 
 
 
@@ -167,14 +189,14 @@ const ArtsZonesLoadingPage = () => {
 
 				<ControlBTW>
 
-					<button
+					{/* <button
 						onClick={handlerUploadArts}
 						className={`buttonBTW  ${arts && `success`}`}
 						disabled={!arts}
 					>
 
 						Загрузить артикулы
-					</button>
+					</button> */}
 
 
 				</ControlBTW>
