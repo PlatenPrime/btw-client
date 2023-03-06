@@ -86,25 +86,44 @@ const ArtsZonesLoadingPage = () => {
 
 
 
+	function uploadClacter() {
+
+		// 
+
+	}
+
+
 
 
 	function handlerUploadArts() {
 
+
+		
+
+
+
+
 		if (!arts) return
 
-		if (arts) {
+		// запустить на выгрузку первый кластер и создать его время 
+		// создать сетИнтервал, который будет проверять время
+		// если время будет отличаться на определенное количество милисекунд, то запускать выполнения следующего кластера
+		// если кластер больше, чем количество кластеров, то выходить и очищать интервал
 
 
 
 
-			let slice = arts.slice(1000 * claster, (1001 + 1000 * claster))
 
-			slice.forEach(art => uploadArt(art))
+		// if (arts) {
 
-			setClaster(prev => prev + 1)
+		// 	let slice = arts.slice(1000 * claster, (1001 + 1000 * claster))
+
+		// 	slice.forEach(art => uploadArt(art))
+
+		// 	setClaster(prev => prev + 1)
 
 
-		}
+		// }
 
 
 	}
