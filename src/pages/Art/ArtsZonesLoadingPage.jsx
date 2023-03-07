@@ -20,6 +20,8 @@ const ArtsZonesLoadingPage = () => {
 
 	const [arts, setArts] = useState([]);
 	const [claster, setClaster] = useState(0);
+	const [isUpload, setIsUpload] = useState(false);
+
 
 
 
@@ -68,14 +70,9 @@ const ArtsZonesLoadingPage = () => {
 
 
 
-
-
-
 	async function uploadArt(art) {
 
-
 		try {
-
 
 			await axios.post(`arts/`, { ...art });
 
@@ -86,9 +83,12 @@ const ArtsZonesLoadingPage = () => {
 
 
 
-	function uploadClacter() {
+	function uploadClacter(claster) {
 
-		// 
+		let slice = arts.slice(1000 * claster, (1001 + 1000 * claster))
+
+		slice.forEach(art => uploadArt(art))
+
 
 	}
 
@@ -97,33 +97,22 @@ const ArtsZonesLoadingPage = () => {
 
 	function handlerUploadArts() {
 
-
-		
-
-
-
-
 		if (!arts) return
 
-		// запустить на выгрузку первый кластер и создать его время 
-		// создать сетИнтервал, который будет проверять время
-		// если время будет отличаться на определенное количество милисекунд, то запускать выполнения следующего кластера
-		// если кластер больше, чем количество кластеров, то выходить и очищать интервал
 
-
-
-
-
-		// if (arts) {
-
-		// 	let slice = arts.slice(1000 * claster, (1001 + 1000 * claster))
-
-		// 	slice.forEach(art => uploadArt(art))
-
-		// 	setClaster(prev => prev + 1)
-
-
-		// }
+		let interval = setInterval(() => {
+			setClaster(currentClaster => {
+				if (currentClaster < clasters) {
+					setIsUpload(true)
+					uploadClacter(currentClaster)
+					return currentClaster + 1;
+				} else {
+					setIsUpload(false)
+					clearInterval(interval);
+					return currentClaster;
+				}
+			});
+		}, 10000);
 
 
 	}
@@ -167,22 +156,25 @@ const ArtsZonesLoadingPage = () => {
 
 					</form>
 
-					<h2 className="m-6">Общее количество артикулов: {arts.length}</h2>
-					<h2 className="m-6">Всего кластеров артикулов: {clasters} </h2>
+					{arts.length != 0 && <div>
+
+						<h2 className="m-6">Общее количество артикулов: {arts.length}</h2>
+						<h2 className="m-6">Всего кластеров артикулов: {clasters} </h2>
+						<h2 className="m-6">Текущий кластер на выгрузку: {claster} / {clasters} </h2>
+
+					</div>}
+
+					{isUpload && <h2 className="text-3xl mx-auto">ИДЕТ ВЫГРУЗКА... </h2>}
 
 
+					<button
+						className="btn confirm m-6 p-4 rounded "
+						onClick={handlerUploadArts}
+					>
 
-					{
-						arts.length != 0 &&
-						<button
-							className="btn confirm m-6 p-4 rounded "
-							onClick={handlerUploadArts}
-						>
+						Запустить выгрузку артикулов в базу
 
-							{`Загрузить ${claster + 1} кластер артикулов`}
-
-						</button>
-					}
+					</button>
 
 
 
