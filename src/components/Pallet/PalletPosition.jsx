@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import RowBlock from '../blocks/RowBlock';
 
 import DeleteIcon from '../UI/Icons/DeleteIcon';
 import EditIcon from '../UI/Icons/EditIcon';
@@ -79,7 +80,7 @@ const PalletPosition = ({ positions, setPositions, isPalletEditing, art, pieces,
 
 
 
-		<div className="flex space-x-3 ">
+		<RowBlock>
 
 
 
@@ -174,7 +175,7 @@ const PalletPosition = ({ positions, setPositions, isPalletEditing, art, pieces,
 
 			}
 
-		</div>
+		</RowBlock>
 	);
 };
 

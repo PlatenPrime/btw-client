@@ -16,6 +16,7 @@ import HeaderPageBTW from '../components/UI/Page/Header/HeaderMainBTW';
 import TitleHeaderMain from '../components/UI/Page/Header/TitleHeaderMain';
 
 import ContentMain from '../components/UI/Page/ContentMain';
+import RowBlock from '../components/blocks/RowBlock';
 
 
 
@@ -28,7 +29,7 @@ import ContentMain from '../components/UI/Page/ContentMain';
 const MainPage = () => {
 
 
-	
+
 
 
 	return (
@@ -49,7 +50,15 @@ const MainPage = () => {
 
 				<ContentMain>
 
-					Test of API
+				<RowBlock>
+					Test Row Block
+				</RowBlock>
+				<RowBlock>
+					Test Row Block
+				</RowBlock>
+				<RowBlock>
+					Test Row Block
+				</RowBlock>
 
 
 				</ContentMain>
