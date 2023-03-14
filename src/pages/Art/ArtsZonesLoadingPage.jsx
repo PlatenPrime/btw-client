@@ -8,6 +8,9 @@ import MainBTW from '../../components/UI/Page/MainBTW';
 import PageBTW from '../../components/UI/Page/PageBTW';
 
 
+import ButtonBlock from '../../components/blocks/ButtonBlock';
+
+
 import axios from '../../utils/axios';
 
 import ContentMain from '../../components/UI/Page/ContentMain';
@@ -167,25 +170,25 @@ const ArtsZonesLoadingPage = () => {
 					{isUpload && <h2 className="text-3xl mx-auto">ИДЕТ ВЫГРУЗКА... </h2>}
 
 
-					<button
-						className="btn confirm m-6 p-4 rounded "
+					<ButtonBlock
+						className=" "
 						onClick={handlerUploadArts}
 					>
 
 						Запустить выгрузку артикулов в базу
 
-					</button>
+					</ButtonBlock>
 
 
 
-					<button
-						className="btn delete m-6 p-4 rounded "
+					<ButtonBlock
+						className=" "
 						onClick={handlerDeleteArts}
 					>
 
 						УДАЛИТЬ АРТИКУЛЫ ИЗ БАЗЫ
 
-					</button>
+					</ButtonBlock>
 
 
 

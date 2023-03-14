@@ -1,5 +1,6 @@
 import { Button } from 'flowbite-react';
 import React, { useEffect, useState } from 'react';
+import ButtonBlock from '../blocks/ButtonBlock';
 
 
 import EditIcon from "../UI/Icons/EditIcon"
@@ -63,12 +64,12 @@ const RowTitle = ({ title, setTitle, isRowEditing }) => {
 
 					{isRowEditing &&
 
-						<button
+						<ButtonBlock
 							className=''
 							onClick={handlerSaveTitle}
 						>
 							<SaveIcon />
-						</button>}
+						</ButtonBlock>}
 
 				</div>
 
@@ -96,22 +97,22 @@ const RowTitle = ({ title, setTitle, isRowEditing }) => {
 									?
 									isRowEditing &&
 
-									<button
+									<ButtonBlock
 										className=''
 										onClick={handlerEditTitle}
 									>
-										<EditIcon />
-									</button>
+										<EditIcon /> Редактировать
+									</ButtonBlock>
 
 									:
 
 									isRowEditing &&
-									<button
-										className='buttonBTW add '
+									<ButtonBlock
+										className=' '
 										onClick={handlerEditTitle}
 									>
 										Добавить название
-									</button>
+									</ButtonBlock>
 							}
 
 						</div>

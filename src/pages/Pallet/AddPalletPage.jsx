@@ -17,6 +17,7 @@ import CancelButton from '../../components/UI/Buttons/CancelButton';
 import SaveButton from '../../components/UI/Buttons/SaveButton';
 import HeaderMainBTW from '../../components/UI/Page/Header/HeaderMainBTW';
 import TitleHeaderMain from '../../components/UI/Page/Header/TitleHeaderMain';
+import ButtonBlock from '../../components/blocks/ButtonBlock';
 
 
 
@@ -99,18 +100,18 @@ const AddPalletPage = () => {
 
 			<ControlBTW>
 
-				<CancelButton
+				<ButtonBlock
 					onClick={handlerClearForm}
 				>
 					Очистить форму
-				</CancelButton>
+				</ButtonBlock>
 
 
-				<SaveButton
+				<ButtonBlock
 					onClick={handlerSubmit}
 				>
 					Создать
-				</SaveButton>
+				</ButtonBlock>
 
 
 

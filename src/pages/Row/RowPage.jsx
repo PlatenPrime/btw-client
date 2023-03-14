@@ -24,6 +24,7 @@ import HeaderMainBTW from '../../components/UI/Page/Header/HeaderMainBTW';
 import TitleHeaderMain from '../../components/UI/Page/Header/TitleHeaderMain';
 
 import ContentMain from '../../components/UI/Page/ContentMain';
+import ButtonBlock from '../../components/blocks/ButtonBlock';
 
 
 
@@ -219,21 +220,21 @@ const RowPage = () => {
 
 										<div className='flex flex-wrap'>
 
-											<button
-												className='buttonBTW cancel m-1'
+											<ButtonBlock
+												className=''
 
 												onClick={() => setIsPalletCreate(false)}
 											>
 												Не создавать
-											</button>
+											</ButtonBlock>
 
-											<button
-												className='buttonBTW success m-1'
+											<ButtonBlock
+												className=''
 												onClick={handlerCreatePallet}
 
 											>
 												Сохранить паллету
-											</button>
+											</ButtonBlock>
 
 
 
@@ -249,12 +250,12 @@ const RowPage = () => {
 
 
 									<div className='flex justify-center'>
-										<button
-											className='buttonBTW add  '
+										<ButtonBlock
+											className=' '
 											onClick={() => setIsPalletCreate(true)}
 										>
 											Добавить паллету
-										</button>
+										</ButtonBlock>
 									</div>
 
 
@@ -290,36 +291,36 @@ const RowPage = () => {
 
 					{isRowEditing ?
 
-						<div >
+						<div className='w-full' >
 
-							<button
-								className='buttonBTW cancel w-full'
+							<ButtonBlock
+								className='w-full'
 								onClick={handlerCancelRowEditing}
 
 							>
 								Отмена
-							</button>
+							</ButtonBlock>
 
 
 
-							<button
-								className='buttonBTW success w-full'
+							<ButtonBlock
+								className='w-full'
 								onClick={handlerRowSave}
 
 							>
 								Сохранить
-							</button>
+							</ButtonBlock>
 
 
 
 
-							<button
-								className='buttonBTW delete w-full'
+							<ButtonBlock
+								className=' w-full'
 								onClick={handlerRowRemove}
 
 							>
 								Удалить ряд
-							</button>
+							</ButtonBlock>
 
 
 
@@ -331,12 +332,12 @@ const RowPage = () => {
 
 
 
-						<button
-							className='buttonBTW edit w-full'
+						<ButtonBlock
+							className=' w-full'
 							onClick={handlerRowEdit}
 						>
 							Редактировать
-						</button>
+						</ButtonBlock>
 
 
 					}

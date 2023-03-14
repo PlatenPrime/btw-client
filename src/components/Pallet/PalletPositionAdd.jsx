@@ -7,6 +7,7 @@ import SaveIcon from "../UI/Icons/SaveIcon";
 
 
 import AddButton from "../UI/Buttons/AddButton";
+import ButtonBlock from '../blocks/ButtonBlock';
 
 
 
@@ -90,22 +91,22 @@ const PalletPositionAdd = ({ positions, setPositions }) => {
 							/>
 						</div>
 
-						<button
-							className=' w-10  '
+						<ButtonBlock
+							className='  '
 							onClick={handlerPositionAddSave}
 						>
 							<SaveIcon />
 
-						</button>
+						</ButtonBlock>
 
 
-						<button
-							className=' w-10 '
+						<ButtonBlock
+							className='  '
 							onClick={handlerPositionAddCancel}
 						>
 							<CancelIcon />
 
-						</button>
+						</ButtonBlock>
 
 
 					</div>
@@ -126,13 +127,13 @@ const PalletPositionAdd = ({ positions, setPositions }) => {
 
 
 
-				<AddButton
+				<ButtonBlock
 
 					onClick={handlerPositionAddAdd}
 				>
 					Добавить позиции
 
-				</AddButton>
+				</ButtonBlock>
 
 
 

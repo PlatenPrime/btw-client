@@ -16,6 +16,7 @@ import HeaderMainBTW from '../../components/UI/Page/Header/HeaderMainBTW';
 import TitleHeaderMain from '../../components/UI/Page/Header/TitleHeaderMain';
 
 import ContentMain from '../../components/UI/Page/ContentMain';
+import ButtonBlock from '../../components/blocks/ButtonBlock';
 
 
 
@@ -109,19 +110,19 @@ const AddRowPage = () => {
 				<ControlBTW >
 
 
-					<button
-						className='buttonBTW cancel'
+					<ButtonBlock
+						className=''
 						onClick={handlerClearForm}
 					>
 						Очистить форму
-					</button>
+					</ButtonBlock>
 
-					<button
-						className='buttonBTW success'
+					<ButtonBlock
+						className=''
 						onClick={handlerSubmit}
 					>
 						Сохранить ряд в БД
-					</button>
+					</ButtonBlock>
 
 
 

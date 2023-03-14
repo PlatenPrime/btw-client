@@ -23,6 +23,7 @@ import TitleHeaderMain from '../../components/UI/Page/Header/TitleHeaderMain';
 import Loading from '../../components/UI/Page/Loading/Loading';
 
 import ContentMain from '../../components/UI/Page/ContentMain';
+import ButtonBlock from '../../components/blocks/ButtonBlock';
 
 
 
@@ -110,7 +111,7 @@ const RowsPage = () => {
 
 				<ControlBTW>
 					<Link to="new"	>
-						<button className='buttonBTW edit' >Создать новый ряд</button>
+						<ButtonBlock className='' >Создать новый ряд</ButtonBlock>
 					</Link>
 				</ControlBTW>
 

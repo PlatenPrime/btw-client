@@ -16,6 +16,7 @@ import PhotoArtBTW from '../../components/UI/PhotoArtBTW';
 import { checkIsAuth } from '../../redux/features/auth/authSlice';
 import axios from "../../utils/axios";
 import ContentMain from '../../components/UI/Page/ContentMain';
+import ButtonBlock from '../../components/blocks/ButtonBlock';
 
 const ArtFindPage = () => {
 
@@ -113,17 +114,17 @@ const ArtFindPage = () => {
 						<input className=' inputBTW' type="text" ref={artInput} />
 
 
-						
 
-							<button
 
-								className='buttonBTW confirm'
-								onClick={handlerArtFind}
-							>
-								Найти артикул
-							</button>
+						<ButtonBlock
 
-					
+							className=''
+							onClick={handlerArtFind}
+						>
+							Найти артикул
+						</ButtonBlock>
+
+
 
 					</div>
 
@@ -183,11 +184,11 @@ const ArtFindPage = () => {
 
 				<ControlBTW>
 
-<button
-className='buttonBTW edit'
->
-	EMPTY
-</button>
+					<ButtonBlock
+						className='w-full'
+					>
+						EMPTY
+					</ButtonBlock>
 
 				</ControlBTW>
 

@@ -7,6 +7,7 @@ import SaveIcon from "../UI/Icons/SaveIcon"
 
 import AddButton from '../UI/Buttons/AddButton';
 import EditButton from '../UI/Buttons/EditButton';
+import ButtonBlock from '../blocks/ButtonBlock';
 
 
 
@@ -58,7 +59,7 @@ const PalletTitle = ({ title, setTitle, isPalletEditing }) => {
 
 
 					{isPalletEditing &&
-						<button
+						<ButtonBlock
 							className=''
 							onClick={handlerSaveTitle}
 
@@ -66,7 +67,7 @@ const PalletTitle = ({ title, setTitle, isPalletEditing }) => {
 							<SaveIcon />
 
 
-						</button>}
+						</ButtonBlock>}
 
 				</div>
 
@@ -86,9 +87,9 @@ const PalletTitle = ({ title, setTitle, isPalletEditing }) => {
 
 							<span className='bg-gray-100 p-3'>Название паллеты: 	<span className='text-2xl text-sky-900'>{newTitle}</span></span>
 
-							<button onClick={handlerEditTitle}>
-								<EditIcon />
-							</button>
+							<ButtonBlock onClick={handlerEditTitle}>
+								<EditIcon /> <span className='hidden lg:flex'>Редактировать</span>
+							</ButtonBlock>
 
 
 

@@ -43,7 +43,7 @@ const SidebarBTW = () => {
 				style={({ isActive }) => isActive ? activeStyles : undefined}
 			>
 
-				<div className='flex items-center h-16'>
+				<div className='flex items-center h-16 text-gray-700 '>
 
 					BTW
 

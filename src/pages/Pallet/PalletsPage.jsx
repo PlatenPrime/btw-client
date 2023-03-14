@@ -14,6 +14,7 @@ import HeaderMainBTW from '../../components/UI/Page/Header/HeaderMainBTW';
 import TitleHeaderMain from '../../components/UI/Page/Header/TitleHeaderMain';
 
 import ContentMain from '../../components/UI/Page/ContentMain';
+import ButtonBlock from '../../components/blocks/ButtonBlock';
 
 
 
@@ -84,11 +85,11 @@ const PalletsPage = () => {
 				<ControlBTW>
 
 					<Link to="new">
-						<button
-							className='buttonBTW edit'
+						<ButtonBlock
+							className=''
 						>
 							Создать новую паллету
-						</button>
+						</ButtonBlock>
 					</Link>
 
 				</ControlBTW>

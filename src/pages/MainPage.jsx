@@ -17,6 +17,7 @@ import TitleHeaderMain from '../components/UI/Page/Header/TitleHeaderMain';
 
 import ContentMain from '../components/UI/Page/ContentMain';
 import RowBlock from '../components/blocks/RowBlock';
+import ButtonBlock from '../components/blocks/ButtonBlock';
 
 
 
@@ -50,15 +51,34 @@ const MainPage = () => {
 
 				<ContentMain>
 
-				<RowBlock>
-					Test Row Block
-				</RowBlock>
-				<RowBlock>
-					Test Row Block
-				</RowBlock>
-				<RowBlock>
-					Test Row Block
-				</RowBlock>
+					<div>
+
+						<ButtonBlock onClick={() => { window.alert("Works") }}
+							className="bg-red-500 hover:bg-red-400"
+						>
+							Тестовая кнопка 1
+						</ButtonBlock>
+
+						<ButtonBlock onClick={() => { window.alert("Works") }}
+							className="bg-blue-500 hover:bg-blue-400 w-1/3"
+						>
+							Тестовая кнопка 2
+						</ButtonBlock>
+
+
+						<ButtonBlock onClick={() => { window.alert("Works") }}
+							className="bg-green-500 hover:bg-green-400 text-emerald-100"
+
+						>
+							Тестовая кнопка 3
+						</ButtonBlock>
+
+						<ButtonBlock>
+							Тестовая кнопка 4
+						</ButtonBlock>
+
+
+					</div>
 
 
 				</ContentMain>

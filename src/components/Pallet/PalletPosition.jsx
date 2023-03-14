@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import ButtonBlock from '../blocks/ButtonBlock';
 import RowBlock from '../blocks/RowBlock';
 
 import DeleteIcon from '../UI/Icons/DeleteIcon';
@@ -133,19 +134,19 @@ const PalletPosition = ({ positions, setPositions, isPalletEditing, art, pieces,
 
 						<div className=''>
 
-							<button
-								className='   '
+							<ButtonBlock
+								className='inline   '
 								onClick={() => handlerPositionDelete(id)}
 							>
 								<DeleteIcon />
-							</button>
+							</ButtonBlock>
 
-							<button
-								className='   '
+							<ButtonBlock
+								className='inline   '
 								onClick={() => handlerPositionSave(id)}
 							>
 								<SaveIcon />
-							</button>
+							</ButtonBlock>
 
 
 
@@ -160,12 +161,12 @@ const PalletPosition = ({ positions, setPositions, isPalletEditing, art, pieces,
 
 						<div className=''>
 
-							<button
+							<ButtonBlock
 								className='  '
 								onClick={() => handlerPositionEdit(id)}
 							>
 								<EditIcon />
-							</button>
+							</ButtonBlock>
 
 						</div>
 					}

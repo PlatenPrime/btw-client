@@ -20,6 +20,7 @@ import HeaderMainBTW from '../../components/UI/Page/Header/HeaderMainBTW';
 import TitleHeaderMain from '../../components/UI/Page/Header/TitleHeaderMain';
 
 import ContentMain from '../../components/UI/Page/ContentMain';
+import ButtonBlock from '../../components/blocks/ButtonBlock';
 
 
 
@@ -160,32 +161,32 @@ const PalletPage = () => {
 
 					{isPalletEditing ?
 
-						<div className=''>
+						<div className='w-full'>
 
 
-							<button
-								className='buttonBTW cancel'
+							<ButtonBlock
+								className='w-full'
 								onClick={handlerCancelPalletEditing}
 							>
 								Отмена
-							</button>
+							</ButtonBlock>
 
 
-							<button
-								className='buttonBTW success'
+							<ButtonBlock
+								className='w-full'
 								onClick={handlerPalletSave}
 							>
 								Сохранить
-							</button>
+							</ButtonBlock>
 
 
 
-							<button
-								className='buttonBTW delete'
+							<ButtonBlock
+								className='w-full'
 								onClick={handlerPalletRemove}
 							>
 								Удалить паллету
-							</button>
+							</ButtonBlock>
 
 
 
@@ -199,12 +200,12 @@ const PalletPage = () => {
 						:
 
 
-						<button
-							className='buttonBTW edit'
+						<ButtonBlock
+							className='w-full'
 							onClick={handlerPalletEdit}
 						>
 							Редактировать
-						</button>
+						</ButtonBlock>
 
 
 					}
