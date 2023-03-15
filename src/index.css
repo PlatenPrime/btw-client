@@ -17,6 +17,13 @@ body {
     min-height: 101vh;
 	
   }
+
+  button {
+	background-color: gray;
+	color: white;
+  }
+
+
 }
 
 
