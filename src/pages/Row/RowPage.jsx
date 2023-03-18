@@ -25,6 +25,7 @@ import TitleHeaderMain from '../../components/UI/Page/Header/TitleHeaderMain';
 
 import ContentMain from '../../components/UI/Page/ContentMain';
 import ButtonBlock from '../../components/blocks/ButtonBlock';
+import InputBlock from '../../components/blocks/InputBlock';
 
 
 
@@ -208,8 +209,8 @@ const RowPage = () => {
 									<div className='flex justify-center w-full '>
 
 
-										<input
-											className='inputBTW  m-1'
+										<InputBlock
+											className=' m-1'
 											type="text"
 											value={palletTitle}
 											placeholder='Название...'

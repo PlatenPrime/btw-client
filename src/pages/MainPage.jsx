@@ -19,6 +19,7 @@ import ContentMain from '../components/UI/Page/ContentMain';
 import RowBlock from '../components/blocks/RowBlock';
 import ButtonBlock from '../components/blocks/ButtonBlock';
 import CardBlock from '../components/blocks/CardBlock';
+import InputBlock from '../components/blocks/InputBlock';
 
 
 
@@ -52,27 +53,20 @@ const MainPage = () => {
 
 				<ContentMain>
 
-					<CardBlock className='bg-blue-700 p-10 m-2' >
+					<CardBlock className='' >
 
 						<ButtonBlock onClick={() => { window.alert("Works") }}
-							className="bg-red-500 hover:bg-red-400"
+							className="bg-red-500 hover:bg-red-600 active:bg-red-700"
 						>
 							Тестовая кнопка 1
 						</ButtonBlock>
 
 						<ButtonBlock onClick={() => { window.alert("Works") }}
-							className="bg-blue-500 hover:bg-blue-400 w-1/3  p-10 text-yellow-400 "
+							className="bg-blue-500 hover:bg-blue-600 w-1/3  p-10 text-yellow-400 inline"
 						>
 							Тестовая кнопка 2
 						</ButtonBlock>
 
-
-						<ButtonBlock onClick={() => { window.alert("Works") }}
-							className="bg-green-500 hover:bg-green-400 text-emerald-100"
-
-						>
-							Тестовая кнопка 3
-						</ButtonBlock>
 
 						<ButtonBlock>
 							Тестовая кнопка 4
@@ -80,6 +74,13 @@ const MainPage = () => {
 
 
 					</CardBlock>
+
+<CardBlock>
+	<InputBlock placeholder="Тестовый инпут 1" />
+	<InputBlock placeholder="Тестовый инпут 2 " />
+	<InputBlock placeholder="Тестовый инпут 3 "  className="block bg-red-200 m-8" />
+</CardBlock>
+
 
 
 

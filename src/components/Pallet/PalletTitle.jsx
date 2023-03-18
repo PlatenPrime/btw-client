@@ -8,6 +8,7 @@ import SaveIcon from "../UI/Icons/SaveIcon"
 import AddButton from '../UI/Buttons/AddButton';
 import EditButton from '../UI/Buttons/EditButton';
 import ButtonBlock from '../blocks/ButtonBlock';
+import InputBlock from '../blocks/InputBlock';
 
 
 
@@ -50,8 +51,8 @@ const PalletTitle = ({ title, setTitle, isPalletEditing }) => {
 
 					<span className='bg-gray-100 p-3'>Новое название паллеты: </span>
 
-					<input
-						className='inputBTW'
+					<InputBlock
+						className=''
 						type="text"
 						value={newTitle}
 						placeholder='Название...'

@@ -8,6 +8,7 @@ import SaveIcon from "../UI/Icons/SaveIcon";
 
 import AddButton from "../UI/Buttons/AddButton";
 import ButtonBlock from '../blocks/ButtonBlock';
+import InputBlock from '../blocks/InputBlock';
 
 
 
@@ -77,14 +78,14 @@ const PalletPositionAdd = ({ positions, setPositions }) => {
 					>
 
 						<div className='flex flex-col md:flex-row  '>
-							<input type="text"
-								className='inputBTW  '
+							<InputBlock type="text"
+								className=' '
 								value={art}
 								onChange={(e) => setArt(e.target.value)}
 								placeholder="Артикул"
 							/>
-							<input type="number"
-								className='inputBTW   '
+							<InputBlock type="number"
+								className='   '
 								value={pieces}
 								onChange={(e) => setPieces(e.target.value)}
 								placeholder="Количество"

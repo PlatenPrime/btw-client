@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import ButtonBlock from '../blocks/ButtonBlock';
+import InputBlock from '../blocks/InputBlock';
 import RowBlock from '../blocks/RowBlock';
 
 import DeleteIcon from '../UI/Icons/DeleteIcon';
@@ -90,15 +91,15 @@ const PalletPosition = ({ positions, setPositions, isPalletEditing, art, pieces,
 
 				<div className=''>
 
-					<input type="text"
-						className='inputBTW'
+					<InputBlock type="text"
+						className=''
 						value={newArt}
 						onChange={(e) => setNewArt(e.target.value)}
 
 					/>
 
-					<input type="number"
-						className='inputBTW'
+					<InputBlock type="number"
+						className=''
 						value={newPieces}
 						onChange={(e) => setNewPieces(e.target.value)}
 					/>

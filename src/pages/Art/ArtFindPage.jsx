@@ -17,6 +17,7 @@ import { checkIsAuth } from '../../redux/features/auth/authSlice';
 import axios from "../../utils/axios";
 import ContentMain from '../../components/UI/Page/ContentMain';
 import ButtonBlock from '../../components/blocks/ButtonBlock';
+import InputBlock from '../../components/blocks/InputBlock';
 
 const ArtFindPage = () => {
 
@@ -111,7 +112,7 @@ const ArtFindPage = () => {
 
 					<div className='flex flex-col items-center  p-4 '>
 
-						<input className=' inputBTW' type="text" ref={artInput} />
+						<input className='InputBlock ' type="text" ref={artInput} />
 
 
 

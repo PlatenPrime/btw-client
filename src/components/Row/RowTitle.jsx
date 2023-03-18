@@ -1,6 +1,7 @@
 import { Button } from 'flowbite-react';
 import React, { useEffect, useState } from 'react';
 import ButtonBlock from '../blocks/ButtonBlock';
+import InputBlock from '../blocks/InputBlock';
 
 
 import EditIcon from "../UI/Icons/EditIcon"
@@ -49,8 +50,8 @@ const RowTitle = ({ title, setTitle, isRowEditing }) => {
 
 						<span className='mx-2'>Новое название ряда</span>
 
-						<input
-							className='inputBTW '
+						<InputBlock
+							className=' '
 							type="text"
 							value={newTitle}
 							placeholder='Название...'

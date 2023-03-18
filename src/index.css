@@ -8,7 +8,7 @@
 body {
 	
 	font-family: 'Poppins', sans-serif;
-	 background-color: #fafafa; 
+	 background-color: #f7f7f7; 
 
 
 
@@ -18,10 +18,6 @@ body {
 	
   }
 
-  button {
-	background-color: gray;
-	color: white;
-  }
 
 
 }
@@ -29,22 +25,6 @@ body {
 
 @layer components {
 
-	.inputBTW 
-	{
-	  @apply 
-	  px-3
-	  py-1.5
-	  text-base
-	  font-normal
-	  text-gray-700
-	  bg-white bg-clip-padding
-	  border border-solid border-gray-300
-	  rounded
-	  transition
-	  ease-in-out
-	  m-0
-	  focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none;
-	}
 
 
 
@@ -57,9 +37,19 @@ body {
 	flex justify-center items-center p-1 rounded
 }
 
+.ButtonBlock {
+	@apply
+	p-2 m-1 block rounded  
+	bg-gray-400 text-white
+transition ease-in-out duration-300
+
+}
+
+
+
 .CardBlock {
 	@apply
-	p-4 m-8 rounded
+	p-1 m-1 rounded
 	bg-white 	
 	shadow hover:shadow-lg
 	transition ease-in-out duration-300	
@@ -67,6 +57,25 @@ body {
 	
 		
 }
+
+
+.InputBlock {
+	@apply
+	px-3  py-1.5
+	  m-0
+	  text-base
+	  font-normal
+	  text-gray-700
+	  bg-white bg-clip-padding
+	  border border-solid border-gray-300
+	  rounded
+	  transition ease-in-out duration-300	
+	  
+	  focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none;
+		
+}
+
+
 
 
 /* BLOCKS */

@@ -1,10 +1,27 @@
 import React from 'react';
 
-const InputBlock = () => {
+const InputBlock = ({ type, name, value, onChange, className, placeholder, ref }) => {
+
+	const style = `
+
+	InputBlock
+	
+	${className}
+
+`
+
+
 	return (
-		<div>
-			
-		</div>
+		<input className={style}
+			type={type}
+			name={name}
+			value={value}
+			onChange={onChange}
+			placeholder={placeholder}
+			ref={ref}
+
+		/>
+
 	);
 };
 

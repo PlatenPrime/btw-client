@@ -14,6 +14,7 @@ import ButtonBlock from '../../components/blocks/ButtonBlock';
 import axios from '../../utils/axios';
 
 import ContentMain from '../../components/UI/Page/ContentMain';
+import InputBlock from "../../components/blocks/InputBlock";
 
 
 
@@ -149,8 +150,8 @@ const ArtsZonesLoadingPage = () => {
 
 					<form className="flex justify-center items-center">
 
-						<input
-							className="inputBTW"
+						<InputBlock
+							className=""
 							type="file"
 							name="upload"
 							id="upload"
@@ -203,14 +204,7 @@ const ArtsZonesLoadingPage = () => {
 
 				<ControlBTW>
 
-					{/* <button
-						onClick={handlerUploadArts}
-						className={`buttonBTW  ${arts && `success`}`}
-						disabled={!arts}
-					>
-
-						Загрузить артикулы
-					</button> */}
+				
 
 
 				</ControlBTW>
