@@ -4,12 +4,12 @@ const ButtonBlock = ({ className, onClick, disabled, children }) => {
 
 
 	const style = `
-	${className}
+	
 	
 	p-2 m-1 block rounded  
 transition ease-in-out duration-300
 
-
+${className}
 
 `
 

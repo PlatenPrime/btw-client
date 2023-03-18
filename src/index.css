@@ -8,13 +8,13 @@
 body {
 	
 	font-family: 'Poppins', sans-serif;
-	 background-color: #d4d4d4; 
+	 background-color: #fafafa; 
 
 
 
 
       
-    min-height: 101vh;
+    min-height: 100vh;
 	
   }
 
@@ -53,6 +53,12 @@ body {
 	@apply
 	flex justify-center items-center p-1 rounded
 }
+
+.cardblock {
+	@apply
+	bg-red-600
+}
+
 
 .edit {
 	@apply 

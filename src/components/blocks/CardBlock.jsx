@@ -3,15 +3,18 @@ import React from 'react';
 const CardBlock = ({ children, className }) => {
 
 	const style = `
-	p-1
+
+	cardblock
+
+	p-16
 		m-1
 		rounded
-		bg-white
-		bg-opacity-50
+		
+	bg-white
 		shadow hover:shadow-lg
 		transition ease-in-out duration-300
 
-${className}
+		${className}
 
 `
 

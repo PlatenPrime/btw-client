@@ -52,7 +52,7 @@ const MainPage = () => {
 
 				<ContentMain>
 
-					<CardBlock className='' >
+					<CardBlock className='bg-blue-700 p-5' >
 
 						<ButtonBlock onClick={() => { window.alert("Works") }}
 							className="bg-red-500 hover:bg-red-400"
@@ -61,7 +61,7 @@ const MainPage = () => {
 						</ButtonBlock>
 
 						<ButtonBlock onClick={() => { window.alert("Works") }}
-							className="bg-blue-500 hover:bg-blue-400 w-1/3  p-10  text-yellow-400 "
+							className="bg-blue-500 hover:bg-blue-400 w-1/3  p-10 text-yellow-400 "
 						>
 							Тестовая кнопка 2
 						</ButtonBlock>
@@ -80,34 +80,9 @@ const MainPage = () => {
 
 
 					</CardBlock>
-					<CardBlock className='p-8' >
-
-						<ButtonBlock onClick={() => { window.alert("Works") }}
-							className="bg-red-500 hover:bg-red-400"
-						>
-							Тестовая кнопка 1
-						</ButtonBlock>
-
-						<ButtonBlock onClick={() => { window.alert("Works") }}
-							className="bg-blue-500 hover:bg-blue-400 w-1/3  p-10  text-yellow-400 "
-						>
-							Тестовая кнопка 2
-						</ButtonBlock>
 
 
-						<ButtonBlock onClick={() => { window.alert("Works") }}
-							className="bg-green-500 hover:bg-green-400 text-emerald-100"
 
-						>
-							Тестовая кнопка 3
-						</ButtonBlock>
-
-						<ButtonBlock>
-							Тестовая кнопка 4
-						</ButtonBlock>
-
-
-					</CardBlock>
 
 
 				</ContentMain>
