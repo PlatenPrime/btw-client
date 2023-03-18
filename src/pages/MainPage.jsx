@@ -52,7 +52,7 @@ const MainPage = () => {
 
 				<ContentMain>
 
-					<CardBlock className='bg-blue-700 p-5' >
+					<CardBlock className='bg-blue-700 p-10 m-2' >
 
 						<ButtonBlock onClick={() => { window.alert("Works") }}
 							className="bg-red-500 hover:bg-red-400"
