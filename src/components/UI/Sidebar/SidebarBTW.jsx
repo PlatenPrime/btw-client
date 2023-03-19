@@ -10,7 +10,7 @@ const SidebarBTW = () => {
 
 
 	const activeStyles = {
-		color: "white",
+		color: "blue",
 
 	}
 

@@ -1,8 +1,7 @@
 import React from 'react';
 import RowTitle from './RowTitle';
 import RowPallets from "./RowPallets";
-import { Card } from 'flowbite-react';
-import CardBTW from '../UI/CardBTW';
+
 
 
 
