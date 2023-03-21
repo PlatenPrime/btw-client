@@ -22,10 +22,12 @@ const RowPallet = ({ title, id }) => {
 
 			<Link
 				className=' flex justify-center
+				border-2
+				hover:bg-sky-100
 			border-sky-600 hover:border-sky-700
 			rounded transition ease-in-out duration-300
 			w-full  p-3
-			text-black hover:text-gray-700
+			text-sky-900 hover:text-gray-700
 			
 			'
 

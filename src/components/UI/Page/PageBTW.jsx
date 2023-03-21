@@ -23,7 +23,7 @@ const PageBTW = ({ children }) => {
 			{!isAuth &&
 
 
-				<div className=' w-full flex justify-center items-center'  >
+				<div className=' w-full flex justify-center items-center '  >
 
 					<Loading />
 
@@ -36,7 +36,7 @@ const PageBTW = ({ children }) => {
 
 			{isAuth &&
 
-				<div className='w-full  flex flex-col items-between '>
+				<div className='w-full  flex flex-col items-between max-h-screen '>
 
 					{children}
 

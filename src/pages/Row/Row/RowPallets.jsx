@@ -1,5 +1,6 @@
 
 import React, { useEffect, useState } from 'react';
+import ListBlock from '../../../components/blocks/ListBlock';
 import CardBTW from '../../../components/UI/CardBTW';
 import RowPallet from "./RowPallet";
 
@@ -28,11 +29,11 @@ const RowPallets = ({ pallets }) => {
 	return (
 
 
-		<CardBTW >
+		< >
 
 			{newPallets &&
 
-				<div className=' w-full'>
+				<ListBlock className=' w-full'>
 
 					{
 						newPallets.map((pallet) => {
@@ -53,12 +54,12 @@ const RowPallets = ({ pallets }) => {
 					}
 
 
-				</div>
+				</ListBlock>
 
 			}
 
 
-		</CardBTW>
+		</>
 
 
 	);

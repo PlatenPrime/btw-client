@@ -24,6 +24,7 @@ import Loading from '../../components/UI/Page/Loading/Loading';
 
 import ContentMain from '../../components/UI/Page/ContentMain';
 import ButtonBlock from '../../components/blocks/ButtonBlock';
+import ListBlock from '../../components/blocks/ListBlock';
 
 
 
@@ -93,11 +94,11 @@ const RowsPage = () => {
 									В базе данных нет ни одного ряда.
 								</div>
 								:
-								<div className=' space-y-4 w-full my-2'>
+								<ListBlock >
 									{rows?.map((row, idx) => (
 										<RowBage key={idx} row={row} />
 									))}
-								</div>
+								</ListBlock>
 						}
 
 					</div>}

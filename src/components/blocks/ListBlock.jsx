@@ -1,9 +1,12 @@
 import React from 'react';
 
-const ListBlock = () => {
+const ListBlock = ({ children }) => {
+
+
+
 	return (
-		<div>
-			
+		<div className='p-1 my-1 space-y-1 w-full'  >
+			{children}
 		</div>
 	);
 };
