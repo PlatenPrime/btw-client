@@ -10,7 +10,10 @@ import { toast } from 'react-toastify';
 import { removePallet, updatePallet } from '../../redux/features/pallet/palletSlice';
 import { checkIsAuth } from '../../redux/features/auth/authSlice';
 
-import PalletItem from '../../components/Pallet/PalletItem';
+import PalletItem from '../../pages/Pallet/Pallet/PalletItem';
+
+
+
 import PageBTW from '../../components/UI/Page/PageBTW';
 import ControlBTW from '../../components/UI/Page/Control/ControlBTW';
 import MainBTW from '../../components/UI/Page/MainBTW';

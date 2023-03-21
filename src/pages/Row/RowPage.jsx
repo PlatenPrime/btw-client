@@ -13,7 +13,7 @@ import { createPallet, getRowPallets } from "../../redux/features/pallet/palletS
 import { removeRow, updateRow } from "../../redux/features//row/rowSlice";
 import { checkIsAuth } from '../../redux/features/auth/authSlice';
 
-import RowItem from "../../components/Row/RowItem";
+import RowItem from "../../pages/Row/Row/RowItem";
 
 
 import PageBTW from '../../components/UI/Page/PageBTW';

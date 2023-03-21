@@ -10,7 +10,7 @@ import { getAllRows } from '../../redux/features/row/rowSlice';
 
 
 
-import RowBage from "../../components/Row/RowBage";
+import RowBage from "../../pages/Row/Row/RowBage";
 
 import PageBTW from '../../components/UI/Page/PageBTW';
 import ControlBTW from '../../components/UI/Page/Control/ControlBTW';

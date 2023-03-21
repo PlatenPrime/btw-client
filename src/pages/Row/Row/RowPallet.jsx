@@ -1,7 +1,7 @@
 
 import React, { useEffect, useState } from 'react';
 import { Link, NavLink } from "react-router-dom";
-import RowBlock from '../blocks/RowBlock';
+import RowBlock from '../../../components/blocks/RowBlock';
 
 
 

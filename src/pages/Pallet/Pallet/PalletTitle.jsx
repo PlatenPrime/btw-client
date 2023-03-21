@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from 'react';
 
 
-import EditIcon from "../UI/Icons/EditIcon"
-import SaveIcon from "../UI/Icons/SaveIcon"
+import EditIcon from "../../../components/UI/Icons/EditIcon"
+import SaveIcon from "../../../components/UI/Icons/SaveIcon"
 
 
-import AddButton from '../UI/Buttons/AddButton';
-import EditButton from '../UI/Buttons/EditButton';
-import ButtonBlock from '../blocks/ButtonBlock';
-import InputBlock from '../blocks/InputBlock';
+
+import EditButton from '../../../components/UI/Buttons/EditButton';
+import ButtonBlock from '../../../components/blocks/ButtonBlock';
+import InputBlock from '../../../components/blocks/InputBlock';
 
 
 
@@ -101,12 +101,12 @@ const PalletTitle = ({ title, setTitle, isPalletEditing }) => {
 
 						isPalletEditing &&
 
-						<EditButton
+						<ButtonBlock
 
 							onClick={handlerEditTitle}
 						>
 							Добавить название
-						</EditButton>
+						</ButtonBlock>
 
 					}
 

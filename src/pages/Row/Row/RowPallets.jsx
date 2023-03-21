@@ -1,6 +1,6 @@
-import { Card } from 'flowbite-react';
+
 import React, { useEffect, useState } from 'react';
-import CardBTW from '../UI/CardBTW';
+import CardBTW from '../../../components/UI/CardBTW';
 import RowPallet from "./RowPallet";
 
 

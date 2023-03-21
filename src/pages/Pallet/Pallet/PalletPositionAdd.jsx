@@ -1,14 +1,14 @@
 import React from 'react';
 import { useState } from 'react';
 
-import AddIcon from "../UI/Icons/AddIcon";
-import CancelIcon from "../UI/Icons/CancelIcon";
-import SaveIcon from "../UI/Icons/SaveIcon";
+
+import CancelIcon from "../../../components/UI/Icons/CancelIcon";
+import SaveIcon from "../../../components/UI/Icons/SaveIcon";
 
 
-import AddButton from "../UI/Buttons/AddButton";
-import ButtonBlock from '../blocks/ButtonBlock';
-import InputBlock from '../blocks/InputBlock';
+
+import ButtonBlock from '../../../components/blocks/ButtonBlock';
+import InputBlock from '../../../components/blocks/InputBlock';
 
 
 

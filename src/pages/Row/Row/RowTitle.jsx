@@ -1,11 +1,11 @@
-import { Button } from 'flowbite-react';
+
 import React, { useEffect, useState } from 'react';
-import ButtonBlock from '../blocks/ButtonBlock';
-import InputBlock from '../blocks/InputBlock';
+import ButtonBlock from '../../../components/blocks/ButtonBlock';
+import InputBlock from '../../../components/blocks/InputBlock';
 
 
-import EditIcon from "../UI/Icons/EditIcon"
-import SaveIcon from "../UI/Icons/SaveIcon"
+import EditIcon from "../../../components/UI/Icons/EditIcon"
+import SaveIcon from "../../../components/UI/Icons/EditIcon"
 
 
 

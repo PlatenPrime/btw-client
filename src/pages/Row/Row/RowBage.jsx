@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import RowBlock from '../blocks/RowBlock';
-import CardBTW from '../UI/CardBTW';
+import RowBlock from '../../../components/blocks/RowBlock';
+
 
 
 

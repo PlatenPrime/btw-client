@@ -1,11 +1,15 @@
 import React, { useEffect, useState } from 'react';
-import ButtonBlock from '../blocks/ButtonBlock';
-import InputBlock from '../blocks/InputBlock';
-import RowBlock from '../blocks/RowBlock';
 
-import DeleteIcon from '../UI/Icons/DeleteIcon';
-import EditIcon from '../UI/Icons/EditIcon';
-import SaveIcon from '../UI/Icons/SaveIcon';
+
+
+
+import ButtonBlock from '../../../components/blocks/ButtonBlock';
+import InputBlock from '../../../components/blocks/InputBlock';
+import RowBlock from '../../../components/blocks/RowBlock';
+
+import DeleteIcon from '../../../components/UI/Icons/DeleteIcon';
+import EditIcon from '../../../components/UI/Icons/EditIcon';
+import SaveIcon from '../../../components/UI/Icons/SaveIcon';
 
 
 
@@ -109,7 +113,7 @@ const PalletPosition = ({ positions, setPositions, isPalletEditing, art, pieces,
 
 				:
 				<div
-					className='space-x-3 flex justify-start items-center'
+					className='space-x-3 flex justify-start items-center p-3'
 				>
 					<span className='text-xl bg-sky-300 p-1'>
 						{newArt}
