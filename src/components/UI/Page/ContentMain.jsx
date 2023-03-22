@@ -2,7 +2,7 @@ import React from 'react';
 
 const ContentMain = ({ children }) => {
 	return (
-		<div className='w-full md:w-3/4  max-h-screen   overflow-auto' >
+		<div className='w-full md:w-3/4  max-h-screen min-h-full  overflow-auto' >
 			{children}
 		</div>
 	);

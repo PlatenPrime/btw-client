@@ -20,6 +20,7 @@ import RowBlock from '../components/blocks/RowBlock';
 import ButtonBlock from '../components/blocks/ButtonBlock';
 import CardBlock from '../components/blocks/CardBlock';
 import InputBlock from '../components/blocks/InputBlock';
+import SpinnerBlock from '../components/blocks/SpinnerBlock';
 
 
 
@@ -51,45 +52,17 @@ const MainPage = () => {
 			<MainBTW>
 
 
-				<ContentMain>
+				<ContentMain >
 
-					<CardBlock className='' >
+				<CardBlock className="h-40 bg-blue-500" >
 
-						<ButtonBlock onClick={() => { window.alert("Works") }}
-							className="bg-red-500 hover:bg-red-600 active:bg-red-700"
-						>
-							Тестовая кнопка 1
-						</ButtonBlock>
-
-						<ButtonBlock onClick={() => { window.alert("Works") }}
-							className="bg-blue-500 hover:bg-blue-600 w-1/3  p-10 text-yellow-400 inline"
-						>
-							Тестовая кнопка 2
-						</ButtonBlock>
-
-
-						<ButtonBlock>
-							Тестовая кнопка 4
-						</ButtonBlock>
-
+					<SpinnerBlock  />
 
 					</CardBlock>
-
-<CardBlock>
-	<InputBlock placeholder="Тестовый инпут 1" />
-	<InputBlock placeholder="Тестовый инпут 2 " />
-	<InputBlock placeholder="Тестовый инпут 3 "  className="block bg-red-200 m-8" />
-</CardBlock>
-
-
-
-
+					
 
 
 				</ContentMain>
-
-
-
 
 
 
