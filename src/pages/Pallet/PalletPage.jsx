@@ -168,7 +168,7 @@ const PalletPage = () => {
 
 
 							<ButtonBlock
-								className='w-full'
+								className='cancel w-full'
 								onClick={handlerCancelPalletEditing}
 							>
 								Отмена
@@ -176,7 +176,7 @@ const PalletPage = () => {
 
 
 							<ButtonBlock
-								className='w-full'
+								className='success w-full'
 								onClick={handlerPalletSave}
 							>
 								Сохранить
@@ -185,7 +185,7 @@ const PalletPage = () => {
 
 
 							<ButtonBlock
-								className='w-full'
+								className=' delete w-full mt-10'
 								onClick={handlerPalletRemove}
 							>
 								Удалить паллету
@@ -204,7 +204,7 @@ const PalletPage = () => {
 
 
 						<ButtonBlock
-							className='w-full'
+							className=' edit w-full'
 							onClick={handlerPalletEdit}
 						>
 							Редактировать

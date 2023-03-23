@@ -302,7 +302,7 @@ const RowPage = () => {
 						<div className='w-full' >
 
 							<ButtonBlock
-								className='w-full'
+								className='cancel w-full'
 								onClick={handlerCancelRowEditing}
 
 							>
@@ -312,7 +312,7 @@ const RowPage = () => {
 
 
 							<ButtonBlock
-								className='w-full'
+								className=' success w-full'
 								onClick={handlerRowSave}
 
 							>
@@ -323,8 +323,8 @@ const RowPage = () => {
 
 
 							<ButtonBlock
-								className=' w-full'
-								onClick={handlerRowRemove}
+								className='delete w-full mt-10'
+								// onClick={handlerRowRemove}
 
 							>
 								Удалить ряд
@@ -341,7 +341,7 @@ const RowPage = () => {
 
 
 						<ButtonBlock
-							className=' w-full'
+							className='edit w-full'
 							onClick={handlerRowEdit}
 						>
 							Редактировать

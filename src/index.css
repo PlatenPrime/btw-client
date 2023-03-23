@@ -89,39 +89,68 @@ transition ease-in-out duration-300
 
 .edit {
 	@apply 
-	  bg-blue-600 text-white  hover:bg-blue-500  focus:bg-blue-700  active:bg-blue-800 
+	 border-2 border-blue-500 bg-transparent text-blue-500 
+	  hover:bg-blue-200 hover:text-blue-800
+	   focus:text-blue-800 active:text-white active:bg-blue-300 
 }
 
 
 .success {
 	@apply 
-	bg-green-500 text-white  hover:bg-green-400  focus:bg-green-600  active:bg-green-700
+	
+	border-2 border-green-500 bg-transparent text-green-500 
+	hover:bg-green-200 hover:text-green-800
+	 focus:text-green-800 active:text-white active:bg-green-300 
+
+
+
 }
 
 .cancel {
 	@apply
-	bg-gray-200 text-red-600  hover:bg-gray-100  focus:bg-gray-300  active:bg-gray-400 
+	 
+	border-2 border-red-500 bg-transparent text-red-500 
+	hover:bg-red-200 hover:text-red-800
+	 focus:text-red-800 active:text-white active:bg-red-300 
+
+}
+
+
+.create {
+	@apply
+	border-2 border-green-500 bg-green-500 text-gray-100 
+	  hover:bg-green-600 hover:text-white
+	   focus:text-white active:text-white active:bg-green-700  
 }
 
 .delete {
 	@apply
-	bg-red-600 text-white  hover:bg-red-500  focus:bg-red-700  active:bg-red-800 
+ 
+	border-2 border-red-500 bg-red-500 text-gray-100 
+	  hover:bg-red-600 hover:text-white
+	   focus:text-white active:text-white active:bg-red-700 
+
+
+
 }
+
+
+
 
 .confirm {
 	@apply
 	bg-cyan-700 text-white  hover:bg-cyan-600  focus:bg-cyan-800  active:bg-cyan-800 
 }
 
+
+
+
 .add {
 	@apply
-	border-2 border-teal-500  text-teal-500 bg-white hover:bg-black hover:bg-opacity-5 
+	border-2 border-teal-500  text-teal-500 bg-transparent hover:bg-teal-200 hover:text-teal-800
 }
 
-.create {
-	@apply
-	border-2 border-green-500 text-green-400  hover:bg-black hover:bg-opacity-5 
-}
+
 
   }
 
