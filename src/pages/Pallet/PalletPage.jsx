@@ -24,6 +24,7 @@ import TitleHeaderMain from '../../components/UI/Page/Header/TitleHeaderMain';
 
 import ContentMain from '../../components/UI/Page/ContentMain';
 import ButtonBlock from '../../components/blocks/ButtonBlock';
+import HeaderBlock from '../../components/blocks/HeaderBlock';
 
 
 
@@ -132,11 +133,11 @@ const PalletPage = () => {
 		<PageBTW >
 
 
-			<HeaderMainBTW>
-				<TitleHeaderMain>
+			<HeaderBlock className='bg-sky-500' >
+				
 					Паллета {title}
-				</TitleHeaderMain>
-			</HeaderMainBTW>
+				
+			</HeaderBlock>
 
 
 			<MainBTW>

@@ -111,14 +111,14 @@ const AddRowPage = () => {
 
 
 					<ButtonBlock
-						className=''
+						className='cancel w-full'
 						onClick={handlerClearForm}
 					>
 						Очистить форму
 					</ButtonBlock>
 
 					<ButtonBlock
-						className=''
+						className='success w-full mt-10'
 						onClick={handlerSubmit}
 					>
 						Сохранить ряд в БД

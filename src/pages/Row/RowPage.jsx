@@ -20,12 +20,12 @@ import PageBTW from '../../components/UI/Page/PageBTW';
 import ControlBTW from '../../components/UI/Page/Control/ControlBTW';
 import MainBTW from '../../components/UI/Page/MainBTW';
 
-import HeaderMainBTW from '../../components/UI/Page/Header/HeaderMainBTW';
-import TitleHeaderMain from '../../components/UI/Page/Header/TitleHeaderMain';
+
 
 import ContentMain from '../../components/UI/Page/ContentMain';
 import ButtonBlock from '../../components/blocks/ButtonBlock';
 import InputBlock from '../../components/blocks/InputBlock';
+import HeaderBlock from '../../components/blocks/HeaderBlock';
 
 
 
@@ -184,11 +184,11 @@ const RowPage = () => {
 		<PageBTW >
 
 
-			<HeaderMainBTW>
-				<TitleHeaderMain>
+			<HeaderBlock className="bg-orange-500" >
+				
 					Ряд {title}
-				</TitleHeaderMain>
-			</HeaderMainBTW>
+				
+			</HeaderBlock>
 
 
 
@@ -222,7 +222,7 @@ const RowPage = () => {
 										<div className='flex flex-wrap'>
 
 											<ButtonBlock
-												className=''
+												className='cancel'
 
 												onClick={() => setIsPalletCreate(false)}
 											>
@@ -230,7 +230,7 @@ const RowPage = () => {
 											</ButtonBlock>
 
 											<ButtonBlock
-												className=''
+												className='confirm'
 												onClick={handlerCreatePallet}
 
 											>
@@ -250,14 +250,14 @@ const RowPage = () => {
 									:
 
 
-									<div className='flex justify-center'>
+									
 										<ButtonBlock
-											className=' '
+											className='add mx-auto '
 											onClick={() => setIsPalletCreate(true)}
 										>
 											Добавить паллету
 										</ButtonBlock>
-									</div>
+									
 
 
 							}

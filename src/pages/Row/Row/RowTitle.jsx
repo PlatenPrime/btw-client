@@ -44,7 +44,7 @@ const RowTitle = ({ title, setTitle, isRowEditing }) => {
 
 				?
 
-				<div className=' h-16  flex justify-start items-center space-x-8 '>
+				<div className=' h-16  flex justify-center items-center space-x-8 '>
 
 					<span className='p-1  bg-gray-100 text-lg '>
 
@@ -66,10 +66,11 @@ const RowTitle = ({ title, setTitle, isRowEditing }) => {
 					{isRowEditing &&
 
 						<ButtonBlock
-							className=''
+							className='confirm'
 							onClick={handlerSaveTitle}
 						>
-							<SaveIcon />
+							Сохранить
+							
 						</ButtonBlock>}
 
 				</div>
@@ -80,7 +81,7 @@ const RowTitle = ({ title, setTitle, isRowEditing }) => {
 
 					{
 						isRowEditing &&
-						<div className='h-16 flex justify-start items-center  space-x-8' >
+						<div className='h-16 flex justify-center items-center  space-x-8' >
 
 							{title && isRowEditing &&
 								<h2 className=' text-lg '>
@@ -99,17 +100,17 @@ const RowTitle = ({ title, setTitle, isRowEditing }) => {
 									isRowEditing &&
 
 									<ButtonBlock
-										className=''
+										className='edit'
 										onClick={handlerEditTitle}
 									>
-										<EditIcon /> Редактировать
+										 Редактировать
 									</ButtonBlock>
 
 									:
 
 									isRowEditing &&
 									<ButtonBlock
-										className=' '
+										className='add '
 										onClick={handlerEditTitle}
 									>
 										Добавить название

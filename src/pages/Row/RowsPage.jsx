@@ -25,6 +25,7 @@ import Loading from '../../components/UI/Page/Loading/Loading';
 import ContentMain from '../../components/UI/Page/ContentMain';
 import ButtonBlock from '../../components/blocks/ButtonBlock';
 import ListBlock from '../../components/blocks/ListBlock';
+import HeaderBlock from '../../components/blocks/HeaderBlock';
 
 
 
@@ -73,11 +74,11 @@ const RowsPage = () => {
 		<PageBTW  >
 
 
-			<HeaderMainBTW>
-				<TitleHeaderMain>
+			<HeaderBlock className="bg-orange-500" >
+				
 					Ряды
-				</TitleHeaderMain>
-			</HeaderMainBTW>
+			
+			</HeaderBlock>
 
 
 

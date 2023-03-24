@@ -5,10 +5,10 @@ import { Link, useNavigate } from 'react-router-dom';
 import CardBTW from '../../components/UI/CardBTW';
 import ControlBTW from '../../components/UI/Page/Control/ControlBTW';
 
-import HeaderMainBTW from '../../components/UI/Page/Header/HeaderMainBTW';
+
 import MainBTW from '../../components/UI/Page/MainBTW';
 
-import TitleHeaderMain from '../../components/UI/Page/Header/TitleHeaderMain';
+
 
 
 import PageBTW from '../../components/UI/Page/PageBTW';
@@ -18,6 +18,7 @@ import axios from "../../utils/axios";
 import ContentMain from '../../components/UI/Page/ContentMain';
 import ButtonBlock from '../../components/blocks/ButtonBlock';
 import InputBlock from '../../components/blocks/InputBlock';
+import HeaderBlock from '../../components/blocks/HeaderBlock';
 
 const ArtFindPage = () => {
 
@@ -94,11 +95,11 @@ const ArtFindPage = () => {
 		<PageBTW >
 
 
-			<HeaderMainBTW>
-				<TitleHeaderMain>
+			<HeaderBlock className="bg-teal-600" >
+				
 					Поиск артикула
-				</TitleHeaderMain>
-			</HeaderMainBTW>
+				
+			</HeaderBlock>
 
 
 
@@ -119,7 +120,7 @@ const ArtFindPage = () => {
 
 						<ButtonBlock
 
-							className=''
+							className='confirm'
 							onClick={handlerArtFind}
 						>
 							Найти артикул
@@ -186,7 +187,7 @@ const ArtFindPage = () => {
 				<ControlBTW>
 
 					<ButtonBlock
-						className='w-full'
+						className=' edit w-full'
 					>
 						EMPTY
 					</ButtonBlock>
