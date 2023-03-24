@@ -40,9 +40,11 @@ body {
 .ButtonBlock {
 	@apply
 	p-2 m-1 block rounded  
-	bg-gray-400 text-white
-transition ease-in-out duration-300
-
+	border-2 border-gray-900
+	bg-gray-100 text-gray-900
+	hover:bg-white 
+	active:bg-gray-900 active:text-white
+	transition ease-in-out duration-300
 }
 
 
@@ -94,6 +96,10 @@ transition ease-in-out duration-300
 
 
 
+
+
+
+
 .edit {
 	@apply 
 	 border-2 border-blue-500 bg-transparent text-blue-500 
@@ -101,15 +107,40 @@ transition ease-in-out duration-300
 	   focus:text-blue-800 active:text-white active:bg-blue-300 
 }
 
+.edit-c {
+	@apply 
+	 border-2 border-blue-500 bg-blue-500 text-gray-100  
+	  hover:bg-blue-400 active:bg-blue-600 
+	  hover:text-white focus:text-white active:text-white
+		hover:shadow-xl
+}
+
+
+
 
 .create {
 	@apply 
 	
-	border-2 border-green-500 bg-transparent text-green-500 
-	hover:bg-green-200 hover:text-green-800
+	border-2 border-sky-500 bg-transparent text-sky-500 
+	hover:bg-sky-200 hover:text-sky-800
 	 focus:text-green-800 active:text-white active:bg-green-300 
 
 }
+
+.create-c {
+	@apply 
+	
+	border-2 border-sky-500 bg-sky-500 text-gray-100 
+	hover:bg-sky-400 active:bg-sky-600 
+	  hover:text-white focus:text-white active:text-white
+	  hover:shadow-xl
+}
+
+
+
+
+
+
 
 .cancel {
 	@apply
@@ -120,23 +151,51 @@ transition ease-in-out duration-300
 
 }
 
+.cancel-c {
+	@apply
+	 
+	border-2 border-gray-300 bg-gray-100 text-red-500
+	hover:bg-white 
+	  active:bg-gray-200 
+	  hover:shadow-xl
+}
+
+
 
 .success {
 	@apply
-	border-2 border-green-500 bg-green-500 text-gray-100 
-	  hover:bg-green-600 hover:text-white
-	   focus:text-white active:text-white active:bg-green-700  
+	border-2 border-green-500 bg-transparent text-green-500 
+	hover:bg-green-200 hover:text-green-800
+	 focus:text-green-800 active:text-white active:bg-green-300 
 }
+
+.success-c {
+	@apply
+	border-2 border-green-500 bg-green-500 text-gray-100 
+	  hover:bg-green-400 active:bg-green-600  
+	  hover:text-white focus:text-white active:text-white
+	 hover:shadow-xl
+}
+
+
+
+
 
 .delete {
 	@apply
  
-	border-2 border-red-500 bg-red-500 text-gray-100 
+	border-2 border-red-500 bg-red-200 text-red-800 
 	  hover:bg-red-600 hover:text-white
-	   focus:text-white active:text-white active:bg-red-700 
+	    active:text-white active:bg-red-700 
+}
 
-
-
+.delete-c {
+	@apply
+ 
+	border-2 border-red-500 bg-red-500 text-gray-100 
+	  hover:bg-red-400 active:bg-red-600  
+	  hover:text-white focus:text-white active:text-white
+	 hover:shadow-xl
 }
 
 
@@ -149,6 +208,17 @@ transition ease-in-out duration-300
 	 focus:text-emerald-800 active:text-white active:bg-emerald-300 
 }
 
+.confirm-c {
+	@apply
+ 
+	border-2 border-emerald-500 bg-emerald-500 text-gray-100 
+	  hover:bg-emerald-400 active:bg-emerald-600  
+	  hover:text-white focus:text-white active:text-white
+	 hover:shadow-xl
+}
+
+
+
 
 
 
@@ -158,6 +228,17 @@ transition ease-in-out duration-300
 	hover:bg-amber-200 hover:text-amber-800
 	 focus:text-amber-800 active:text-white active:bg-amber-300 
 }
+
+.add-c {
+	@apply
+ 
+	border-2 border-amber-500 bg-amber-500 text-gray-100 
+	  hover:bg-amber-400 active:bg-amber-600  
+	  hover:text-white focus:text-white active:text-white
+	 hover:shadow-xl
+}
+
+
 
 
 

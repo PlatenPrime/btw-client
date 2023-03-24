@@ -59,6 +59,16 @@ const MainPage = () => {
 					<SpinnerBlock  />
 
 					</CardBlock>
+
+					<CardBlock>
+					<ButtonBlock className='edit' >Edit</ButtonBlock>
+					<ButtonBlock className='create' >Create</ButtonBlock>
+					<ButtonBlock className='cancel' >Cancel</ButtonBlock>
+					<ButtonBlock className='success' >Success</ButtonBlock>
+					<ButtonBlock className='delete' >Delete</ButtonBlock>
+					<ButtonBlock className='confirm' >Confirm</ButtonBlock>
+					<ButtonBlock className='add' >Add</ButtonBlock>
+					</CardBlock>
 					
 
 
@@ -67,7 +77,13 @@ const MainPage = () => {
 
 
 				<ControlBTW>
-
+				<ButtonBlock className='edit-c w-full' >Edit-c</ButtonBlock>
+					<ButtonBlock className='create-c w-full' >Create-c</ButtonBlock>
+					<ButtonBlock className='cancel-c w-full' >Cancel-c</ButtonBlock>
+					<ButtonBlock className='success-c w-full' >Success-c</ButtonBlock>
+					<ButtonBlock className='delete-c w-full' >Delete-c</ButtonBlock>
+					<ButtonBlock className='confirm-c w-full' >Confirm-c</ButtonBlock>
+					<ButtonBlock className='add-c w-full' >Add-c</ButtonBlock>
 				</ControlBTW>
 
 

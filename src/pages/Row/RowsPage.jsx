@@ -115,6 +115,9 @@ const RowsPage = () => {
 					<Link to="new" className='w-full'	>
 						<ButtonBlock className='create w-full' >Создать новый ряд</ButtonBlock>
 					</Link>
+					
+
+
 				</ControlBTW>
 
 
