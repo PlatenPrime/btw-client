@@ -3,14 +3,14 @@ import { Link, useNavigate, useParams } from 'react-router-dom';
 import CardBTW from '../../components/UI/CardBTW';
 import ControlBTW from '../../components/UI/Page/Control/ControlBTW';
 
-import HeaderMainBTW from '../../components/UI/Page/Header/HeaderMainBTW';
-import TitleHeaderMain from '../../components/UI/Page/Header/TitleHeaderMain';
+
 import MainBTW from '../../components/UI/Page/MainBTW';
 import PageBTW from '../../components/UI/Page/PageBTW';
 import PhotoArtBTW from '../../components/UI/PhotoArtBTW';
 
 import axios from "../../utils/axios"
 import ContentMain from '../../components/UI/Page/ContentMain';
+import HeaderBlock from '../../components/blocks/HeaderBlock';
 
 
 
@@ -95,11 +95,11 @@ const ArtPage = () => {
 
 
 
-			<HeaderMainBTW>
-				<TitleHeaderMain>
-					{art.title}
-				</TitleHeaderMain>
-			</HeaderMainBTW>
+			<HeaderBlock className="bg-gradient-to-r from-purple-500 to-pink-500">
+
+				{art.title}
+
+			</HeaderBlock>
 
 
 			<MainBTW>

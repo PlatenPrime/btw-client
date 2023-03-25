@@ -121,17 +121,17 @@ body {
 .create {
 	@apply 
 	
-	border-2 border-sky-500 bg-transparent text-sky-500 
-	hover:bg-sky-200 hover:text-sky-800
-	 focus:text-green-800 active:text-white active:bg-green-300 
+	border-2 border-cyan-500 bg-transparent text-cyan-500 
+	hover:bg-cyan-200 hover:text-cyan-800
+	 focus:text-cyan-800 active:text-white active:bg-cyan-300 
 
 }
 
 .create-c {
 	@apply 
 	
-	border-2 border-sky-500 bg-sky-500 text-gray-100 
-	hover:bg-sky-400 active:bg-sky-600 
+	border-2 border-cyan-500 bg-cyan-500 text-gray-100 
+	hover:bg-cyan-400 active:bg-cyan-600 
 	  hover:text-white focus:text-white active:text-white
 	  hover:shadow-xl
 }
@@ -156,7 +156,7 @@ body {
 	 
 	border-2 border-gray-300 bg-gray-100 text-red-500
 	hover:bg-white 
-	  active:bg-gray-200 
+	  active:bg-gray-200 active:text-red-600
 	  hover:shadow-xl
 }
 
@@ -203,16 +203,16 @@ body {
 
 .confirm {
 	@apply
-	border-2 border-emerald-500 bg-transparent text-emerald-500 
-	hover:bg-emerald-200 hover:text-emerald-800
-	 focus:text-emerald-800 active:text-white active:bg-emerald-300 
+	border-2 border-yellow-500 bg-transparent text-yellow-500 
+	hover:bg-yellow-200 hover:text-yellow-800
+	 focus:text-yellow-800 active:text-white active:bg-yellow-300 
 }
 
 .confirm-c {
 	@apply
  
-	border-2 border-emerald-500 bg-emerald-500 text-gray-100 
-	  hover:bg-emerald-400 active:bg-emerald-600  
+	border-2 border-yellow-500 bg-yellow-500 text-gray-100 
+	  hover:bg-yellow-400 active:bg-yellow-600  
 	  hover:text-white focus:text-white active:text-white
 	 hover:shadow-xl
 }
@@ -224,16 +224,16 @@ body {
 
 .add {
 	@apply
-	border-2 border-amber-500 bg-transparent text-amber-500 
-	hover:bg-amber-200 hover:text-amber-800
-	 focus:text-amber-800 active:text-white active:bg-amber-300 
+	border-2 border-fuchsia-500 bg-transparent text-fuchsia-500 
+	hover:bg-fuchsia-200 hover:text-fuchsia-800
+	 focus:text-fuchsia-800 active:text-white active:bg-fuchsia-300 
 }
 
 .add-c {
 	@apply
  
-	border-2 border-amber-500 bg-amber-500 text-gray-100 
-	  hover:bg-amber-400 active:bg-amber-600  
+	border-2 border-fuchsia-500 bg-fuchsia-500 text-gray-100 
+	  hover:bg-fuchsia-400 active:bg-fuchsia-600  
 	  hover:text-white focus:text-white active:text-white
 	 hover:shadow-xl
 }

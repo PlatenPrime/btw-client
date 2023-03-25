@@ -13,11 +13,10 @@ import PageBTW from '../../components/UI/Page/PageBTW';
 
 import { getAllPallets } from '../../redux/features/pallet/palletSlice';
 
-import HeaderMainBTW from '../../components/UI/Page/Header/HeaderMainBTW';
-import TitleHeaderMain from '../../components/UI/Page/Header/TitleHeaderMain';
 
 import ContentMain from '../../components/UI/Page/ContentMain';
 import ButtonBlock from '../../components/blocks/ButtonBlock';
+import HeaderBlock from '../../components/blocks/HeaderBlock';
 
 
 
@@ -46,11 +45,11 @@ const PalletsPage = () => {
 		<PageBTW  >
 
 
-			<HeaderMainBTW>
-				<TitleHeaderMain>
+			<HeaderBlock>
+				
 					Паллеты
-				</TitleHeaderMain>
-			</HeaderMainBTW>
+				
+			</HeaderBlock>
 
 
 
@@ -89,7 +88,7 @@ const PalletsPage = () => {
 
 					<Link to="new">
 						<ButtonBlock
-							className=''
+							className='add'
 						>
 							Создать новую паллету
 						</ButtonBlock>

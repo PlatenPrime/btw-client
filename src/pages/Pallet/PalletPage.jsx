@@ -19,8 +19,6 @@ import ControlBTW from '../../components/UI/Page/Control/ControlBTW';
 import MainBTW from '../../components/UI/Page/MainBTW';
 
 
-import HeaderMainBTW from '../../components/UI/Page/Header/HeaderMainBTW';
-import TitleHeaderMain from '../../components/UI/Page/Header/TitleHeaderMain';
 
 import ContentMain from '../../components/UI/Page/ContentMain';
 import ButtonBlock from '../../components/blocks/ButtonBlock';
@@ -169,7 +167,7 @@ const PalletPage = () => {
 
 
 							<ButtonBlock
-								className='cancel w-full'
+								className='cancel-c w-full'
 								onClick={handlerCancelPalletEditing}
 							>
 								Отмена
@@ -177,7 +175,7 @@ const PalletPage = () => {
 
 
 							<ButtonBlock
-								className='success w-full'
+								className='success-c w-full'
 								onClick={handlerPalletSave}
 							>
 								Сохранить
@@ -186,7 +184,7 @@ const PalletPage = () => {
 
 
 							<ButtonBlock
-								className=' delete w-full mt-10'
+								className=' delete-c w-full'
 								onClick={handlerPalletRemove}
 							>
 								Удалить паллету
@@ -205,7 +203,7 @@ const PalletPage = () => {
 
 
 						<ButtonBlock
-							className=' edit w-full'
+							className=' edit-c w-full'
 							onClick={handlerPalletEdit}
 						>
 							Редактировать

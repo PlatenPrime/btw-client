@@ -2,9 +2,7 @@ import React from 'react';
 
 const SaveIcon = () => {
 	return (
-		<div className='flex justify-center items-center
-		p-1 rounded
-		bg-green-500 text-white  hover:bg-green-400  focus:bg-green-600  active:bg-green-700
+		<div className='
 		'
 
 		>

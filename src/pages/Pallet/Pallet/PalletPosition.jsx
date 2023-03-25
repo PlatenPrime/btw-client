@@ -139,21 +139,21 @@ const PalletPosition = ({ positions, setPositions, isPalletEditing, art, pieces,
 
 						<div className=''>
 
-							<ButtonBlock
-								className='inline   '
-								onClick={() => handlerPositionDelete(id)}
-							>
-								<DeleteIcon />
-							</ButtonBlock>
+						
 
 							<ButtonBlock
-								className='inline   '
+								className='inline success  '
 								onClick={() => handlerPositionSave(id)}
 							>
 								<SaveIcon />
 							</ButtonBlock>
 
-
+							<ButtonBlock
+								className='inline delete  '
+								onClick={() => handlerPositionDelete(id)}
+							>
+								<DeleteIcon />
+							</ButtonBlock>
 
 
 
@@ -167,7 +167,7 @@ const PalletPosition = ({ positions, setPositions, isPalletEditing, art, pieces,
 						<div className=''>
 
 							<ButtonBlock
-								className='  '
+								className='edit  '
 								onClick={() => handlerPositionEdit(id)}
 							>
 								<EditIcon />

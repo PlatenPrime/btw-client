@@ -15,6 +15,7 @@ const ButtonBlock = ({ className, onClick, disabled, children }) => {
 		<button
 			className={style}
 			onClick={onClick}
+		
 			disabled={disabled}
 		>
 

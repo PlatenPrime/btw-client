@@ -61,7 +61,7 @@ const PalletTitle = ({ title, setTitle, isPalletEditing }) => {
 
 					{isPalletEditing &&
 						<ButtonBlock
-							className=''
+							className='confirm'
 							onClick={handlerSaveTitle}
 
 						>
@@ -84,12 +84,14 @@ const PalletTitle = ({ title, setTitle, isPalletEditing }) => {
 
 						isPalletEditing &&
 
-						<div className='flex items-center justify-start h-16 space-x-4' >
+						<div className='flex items-center justify-center h-16 space-x-4' >
 
 							<span className='bg-gray-100 p-3'>Название паллеты: 	<span className='text-2xl text-sky-900'>{newTitle}</span></span>
 
-							<ButtonBlock onClick={handlerEditTitle}>
-								<EditIcon /> <span className='hidden lg:flex'>Редактировать</span>
+							<ButtonBlock
+								className='edit'
+								onClick={handlerEditTitle}>
+								<EditIcon />
 							</ButtonBlock>
 
 
@@ -102,10 +104,10 @@ const PalletTitle = ({ title, setTitle, isPalletEditing }) => {
 						isPalletEditing &&
 
 						<ButtonBlock
-
+							className="create"
 							onClick={handlerEditTitle}
 						>
-							Добавить название
+							Создать название
 						</ButtonBlock>
 
 					}

@@ -93,7 +93,7 @@ const PalletPositionAdd = ({ positions, setPositions }) => {
 						</div>
 
 						<ButtonBlock
-							className='  '
+							className=' success '
 							onClick={handlerPositionAddSave}
 						>
 							<SaveIcon />
@@ -102,7 +102,7 @@ const PalletPositionAdd = ({ positions, setPositions }) => {
 
 
 						<ButtonBlock
-							className='  '
+							className='cancel  '
 							onClick={handlerPositionAddCancel}
 						>
 							<CancelIcon />
@@ -129,6 +129,7 @@ const PalletPositionAdd = ({ positions, setPositions }) => {
 
 
 				<ButtonBlock
+				className='add'
 
 					onClick={handlerPositionAddAdd}
 				>

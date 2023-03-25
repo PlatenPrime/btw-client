@@ -17,8 +17,6 @@ import ControlBTW from '../../components/UI/Page/Control/ControlBTW';
 import MainBTW from '../../components/UI/Page/MainBTW';
 
 
-import HeaderMainBTW from '../../components/UI/Page/Header/HeaderMainBTW';
-import TitleHeaderMain from '../../components/UI/Page/Header/TitleHeaderMain';
 
 import Loading from '../../components/UI/Page/Loading/Loading';
 
@@ -113,7 +111,7 @@ const RowsPage = () => {
 
 				<ControlBTW>
 					<Link to="new" className='w-full'	>
-						<ButtonBlock className='create w-full' >Создать новый ряд</ButtonBlock>
+						<ButtonBlock className='create-c w-full' >Создать новый ряд</ButtonBlock>
 					</Link>
 					
 

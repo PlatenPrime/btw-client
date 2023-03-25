@@ -12,11 +12,11 @@ import RowItem from '../../pages/Row/Row/RowItem';
 import PageBTW from '../../components/UI/Page/PageBTW';
 import MainBTW from '../../components/UI/Page/MainBTW';
 import ControlBTW from '../../components/UI/Page/Control/ControlBTW';
-import HeaderMainBTW from '../../components/UI/Page/Header/HeaderMainBTW';
-import TitleHeaderMain from '../../components/UI/Page/Header/TitleHeaderMain';
+
 
 import ContentMain from '../../components/UI/Page/ContentMain';
 import ButtonBlock from '../../components/blocks/ButtonBlock';
+import HeaderBlock from '../../components/blocks/HeaderBlock';
 
 
 
@@ -79,11 +79,11 @@ const AddRowPage = () => {
 		<PageBTW>
 
 
-			<HeaderMainBTW>
-				<TitleHeaderMain>
+			<HeaderBlock className='bg-gradient-to-r from-emerald-500 to-teal-500' >
+				
 					Создание ряда
-				</TitleHeaderMain>
-			</HeaderMainBTW>
+				
+			</HeaderBlock>
 
 
 
@@ -111,14 +111,15 @@ const AddRowPage = () => {
 
 
 					<ButtonBlock
-						className='cancel w-full'
+						className='cancel-c w-full'
 						onClick={handlerClearForm}
 					>
 						Очистить форму
 					</ButtonBlock>
 
 					<ButtonBlock
-						className='success w-full mt-10'
+					
+						className='success-c w-full '
 						onClick={handlerSubmit}
 					>
 						Сохранить ряд в БД

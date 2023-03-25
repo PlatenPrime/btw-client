@@ -2,8 +2,7 @@ import * as xlsx from "xlsx";
 import React, { useState } from 'react';
 
 import ControlBTW from '../../components/UI/Page/Control/ControlBTW';
-import HeaderMainBTW from '../../components/UI/Page/Header/HeaderMainBTW';
-import TitleHeaderMain from '../../components/UI/Page/Header/TitleHeaderMain';
+
 import MainBTW from '../../components/UI/Page/MainBTW';
 import PageBTW from '../../components/UI/Page/PageBTW';
 
@@ -15,6 +14,7 @@ import axios from '../../utils/axios';
 
 import ContentMain from '../../components/UI/Page/ContentMain';
 import InputBlock from "../../components/blocks/InputBlock";
+import HeaderBlock from "../../components/blocks/HeaderBlock";
 
 
 
@@ -134,11 +134,11 @@ const ArtsZonesLoadingPage = () => {
 	return (
 		<PageBTW>
 
-			<HeaderMainBTW>
-				<TitleHeaderMain>
+			<HeaderBlock className='bg-cyan-500'>
+				
 					Установка зон
-				</TitleHeaderMain>
-			</HeaderMainBTW>
+			
+			</HeaderBlock>
 
 
 
@@ -171,25 +171,7 @@ const ArtsZonesLoadingPage = () => {
 					{isUpload && <h2 className="text-3xl mx-auto">ИДЕТ ВЫГРУЗКА... </h2>}
 
 
-					<ButtonBlock
-						className=" "
-						onClick={handlerUploadArts}
-					>
-
-						Запустить выгрузку артикулов в базу
-
-					</ButtonBlock>
-
-
-
-					<ButtonBlock
-						className=" "
-						onClick={handlerDeleteArts}
-					>
-
-						УДАЛИТЬ АРТИКУЛЫ ИЗ БАЗЫ
-
-					</ButtonBlock>
+					
 
 
 
@@ -205,7 +187,25 @@ const ArtsZonesLoadingPage = () => {
 				<ControlBTW>
 
 				
+				<ButtonBlock
+						className="create-c w-full "
+						onClick={handlerUploadArts}
+					>
 
+						Запустить выгрузку артикулов
+
+					</ButtonBlock>
+
+
+
+					<ButtonBlock
+						className="delete-c w-full "
+						onClick={handlerDeleteArts}
+					>
+
+						УДАЛИТЬ АРТИКУЛЫ ИЗ БАЗЫ
+
+					</ButtonBlock>
 
 				</ControlBTW>
 

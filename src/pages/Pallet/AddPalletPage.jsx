@@ -16,10 +16,8 @@ import ControlBTW from '../../components/UI/Page/Control/ControlBTW';
 
 import MainBTW from '../../components/UI/Page/MainBTW';
 
-
-import HeaderMainBTW from '../../components/UI/Page/Header/HeaderMainBTW';
-import TitleHeaderMain from '../../components/UI/Page/Header/TitleHeaderMain';
 import ButtonBlock from '../../components/blocks/ButtonBlock';
+import HeaderBlock from '../../components/blocks/HeaderBlock';
 
 
 
@@ -78,11 +76,11 @@ const AddPalletPage = () => {
 		<PageBTW >
 
 
-			<HeaderMainBTW>
-				<TitleHeaderMain>
+			<HeaderBlock>
+				
 					Создание паллеты
-				</TitleHeaderMain>
-			</HeaderMainBTW>
+				
+			</HeaderBlock>
 
 			<MainBTW>
 

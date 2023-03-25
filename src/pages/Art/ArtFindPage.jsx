@@ -95,7 +95,7 @@ const ArtFindPage = () => {
 		<PageBTW >
 
 
-			<HeaderBlock className="bg-teal-600" >
+			<HeaderBlock className="bg-teal-500" >
 				
 					Поиск артикула
 				
@@ -187,7 +187,7 @@ const ArtFindPage = () => {
 				<ControlBTW>
 
 					<ButtonBlock
-						className=' edit w-full'
+						className=' edit-c w-full'
 					>
 						EMPTY
 					</ButtonBlock>

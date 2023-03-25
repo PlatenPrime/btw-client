@@ -12,15 +12,13 @@ import React from 'react';
 import PageBTW from '../components/UI/Page/PageBTW';
 import MainBTW from '../components/UI/Page/MainBTW';
 import ControlBTW from '../components/UI/Page/Control/ControlBTW';
-import HeaderPageBTW from '../components/UI/Page/Header/HeaderMainBTW';
-import TitleHeaderMain from '../components/UI/Page/Header/TitleHeaderMain';
+
 
 import ContentMain from '../components/UI/Page/ContentMain';
-import RowBlock from '../components/blocks/RowBlock';
 import ButtonBlock from '../components/blocks/ButtonBlock';
 import CardBlock from '../components/blocks/CardBlock';
-import InputBlock from '../components/blocks/InputBlock';
 import SpinnerBlock from '../components/blocks/SpinnerBlock';
+import HeaderBlock from '../components/blocks/HeaderBlock';
 
 
 
@@ -39,13 +37,11 @@ const MainPage = () => {
 	return (
 		<PageBTW >
 
-			<HeaderPageBTW>
-				<TitleHeaderMain
-					className='text-2xl'
-				>
-					Панель быстрого доступа
-				</TitleHeaderMain>
-			</HeaderPageBTW>
+			<HeaderBlock className='bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-purple-400' >
+
+				Панель быстрого доступа
+
+			</HeaderBlock>
 
 
 
@@ -54,22 +50,22 @@ const MainPage = () => {
 
 				<ContentMain >
 
-				<CardBlock className="h-40 bg-blue-500" >
+					<CardBlock className=" bg-gradient-to-r from-sky-500 to-indigo-500" >
 
-					<SpinnerBlock  />
+						<SpinnerBlock />
 
 					</CardBlock>
 
 					<CardBlock>
-					<ButtonBlock className='edit' >Edit</ButtonBlock>
-					<ButtonBlock className='create' >Create</ButtonBlock>
-					<ButtonBlock className='cancel' >Cancel</ButtonBlock>
-					<ButtonBlock className='success' >Success</ButtonBlock>
-					<ButtonBlock className='delete' >Delete</ButtonBlock>
-					<ButtonBlock className='confirm' >Confirm</ButtonBlock>
-					<ButtonBlock className='add' >Add</ButtonBlock>
+						<ButtonBlock className='edit'   >Edit</ButtonBlock>
+						<ButtonBlock className='create' >Create</ButtonBlock>
+						<ButtonBlock className='cancel' >Cancel</ButtonBlock>
+						<ButtonBlock className='success' >Success</ButtonBlock>
+						<ButtonBlock className='delete' >Delete</ButtonBlock>
+						<ButtonBlock className='confirm' >Confirm</ButtonBlock>
+						<ButtonBlock className='add' >Add</ButtonBlock>
 					</CardBlock>
-					
+
 
 
 				</ContentMain>
@@ -77,7 +73,7 @@ const MainPage = () => {
 
 
 				<ControlBTW>
-				<ButtonBlock className='edit-c w-full' >Edit-c</ButtonBlock>
+					<ButtonBlock className='edit-c w-full' >Edit-c</ButtonBlock>
 					<ButtonBlock className='create-c w-full' >Create-c</ButtonBlock>
 					<ButtonBlock className='cancel-c w-full' >Cancel-c</ButtonBlock>
 					<ButtonBlock className='success-c w-full' >Success-c</ButtonBlock>
