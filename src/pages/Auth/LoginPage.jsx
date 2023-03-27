@@ -3,9 +3,18 @@ import { Link, useNavigate } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { checkIsAuth, loginUser } from '../../redux/features/auth/authSlice'
 import { toast } from 'react-toastify'
-import ConfirmButton from '../../components/UI/Buttons/ConfirmButton'
+import ButtonBlock from '../../components/blocks/ButtonBlock'
+import InputBlock from '../../components/blocks/InputBlock'
 import { Vortex } from 'react-loader-spinner'
 import PageAuthBTW from '../../components/UI/Page/PageAuthBTW'
+
+
+
+
+
+
+
+
 
 export const LoginPage = () => {
 	const [username, setUsername] = useState('')
@@ -79,7 +88,7 @@ export const LoginPage = () => {
 
 					onSubmit={(e) => e.preventDefault()}
 
-					className="flex flex-col gap-4 justify-center items-center mx-auto mt-40 "
+					className="flex flex-col gap-4 justify-center items-center mx-auto  "
 
 				>
 
@@ -91,10 +100,10 @@ export const LoginPage = () => {
 
 					<div>
 						<div className="mb-2 block">
-							Имя пользователя
+							Имя пользователя:
 						</div>
 
-						<input
+						<InputBlock
 
 							type="text"
 							placeholder="username"
@@ -109,12 +118,12 @@ export const LoginPage = () => {
 
 						<div className="mb-2 block">
 
-							Пароль
+							Пароль:
 
 						</div>
 
 
-						<input
+						<InputBlock
 							id="password1"
 							type="password"
 							value={password}
@@ -126,11 +135,12 @@ export const LoginPage = () => {
 
 
 
-					<ConfirmButton
+					<ButtonBlock
+					className="success-c w-full"
 						onClick={handleSubmit}
 					>
 						Войти
-					</ConfirmButton>
+					</ButtonBlock>
 
 				</form>
 

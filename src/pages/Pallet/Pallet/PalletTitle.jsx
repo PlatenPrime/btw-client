@@ -9,6 +9,7 @@ import SaveIcon from "../../../components/UI/Icons/SaveIcon"
 import EditButton from '../../../components/UI/Buttons/EditButton';
 import ButtonBlock from '../../../components/blocks/ButtonBlock';
 import InputBlock from '../../../components/blocks/InputBlock';
+import RowBlock from '../../../components/blocks/RowBlock';
 
 
 
@@ -43,7 +44,7 @@ const PalletTitle = ({ title, setTitle, isPalletEditing }) => {
 
 
 
-		<div className='   '>
+		<RowBlock className='   '>
 
 			{isEditingTitle ?
 
@@ -121,7 +122,7 @@ const PalletTitle = ({ title, setTitle, isPalletEditing }) => {
 
 
 
-		</div>
+		</RowBlock>
 
 	);
 };

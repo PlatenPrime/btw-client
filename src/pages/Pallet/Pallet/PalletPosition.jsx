@@ -4,6 +4,7 @@ import React, { useEffect, useState } from 'react';
 
 
 import ButtonBlock from '../../../components/blocks/ButtonBlock';
+import CellBlock from '../../../components/blocks/CellBlock';
 import InputBlock from '../../../components/blocks/InputBlock';
 import RowBlock from '../../../components/blocks/RowBlock';
 
@@ -86,14 +87,14 @@ const PalletPosition = ({ positions, setPositions, isPalletEditing, art, pieces,
 
 
 
-		<RowBlock>
+		<RowBlock className="" >
 
 
 
 			{isPalletEditing && isPositionEditing ?
 
 
-				<div className=''>
+				<CellBlock>
 
 					<InputBlock type="text"
 						className=''
@@ -109,10 +110,10 @@ const PalletPosition = ({ positions, setPositions, isPalletEditing, art, pieces,
 					/>
 
 
-				</div>
+				</CellBlock>
 
 				:
-				<div
+				<CellBlock
 					className='space-x-3 flex justify-start items-center p-3'
 				>
 					<span className='text-xl bg-sky-300 p-1'>
@@ -125,14 +126,14 @@ const PalletPosition = ({ positions, setPositions, isPalletEditing, art, pieces,
 						{newPieces} шт
 					</span>
 
-				</div>
+				</CellBlock>
 			}
 
 
 
 			{isPalletEditing &&
 
-				<div className=''>
+				<div>
 
 
 					{isPositionEditing ?

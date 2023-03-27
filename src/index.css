@@ -84,8 +84,22 @@ body {
 		
 }
 
+.RowBlock {
+	@apply
+	flex justify-center
+		 w-full 
+		rounded transition ease-in-out duration-300
+		 hover:shadow-lg
+		
+}
 
-
+.CellBlock {
+	@apply
+	flex justify-center
+	
+		rounded transition ease-in-out duration-300
+	
+}
 
 
 

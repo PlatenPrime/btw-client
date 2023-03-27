@@ -3,7 +3,7 @@ import PalletPositionAdd from './PalletPositionAdd';
 import PalletPositions from './PalletPositions';
 import PalletTitle from './PalletTitle';
 
-
+import CardBlock from "../../../components/blocks/CardBlock"
 
 
 
@@ -25,7 +25,7 @@ const PalletItem = ({
 
 
 	return (
-		<div>
+		<CardBlock>
 
 			<PalletTitle
 				isPalletEditing={isPalletEditing}
@@ -61,7 +61,7 @@ const PalletItem = ({
 
 
 
-		</div>
+		</CardBlock>
 	);
 };
 
