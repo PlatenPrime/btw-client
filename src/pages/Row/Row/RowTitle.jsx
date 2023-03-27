@@ -4,10 +4,6 @@ import ButtonBlock from '../../../components/blocks/ButtonBlock';
 import InputBlock from '../../../components/blocks/InputBlock';
 
 
-import EditIcon from "../../../components/UI/Icons/EditIcon"
-import SaveIcon from "../../../components/UI/Icons/EditIcon"
-
-
 
 const RowTitle = ({ title, setTitle, isRowEditing }) => {
 

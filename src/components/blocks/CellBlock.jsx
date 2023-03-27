@@ -10,13 +10,13 @@ const CellBlock = ({ children, className }) => {
 
 
 	return (
-		<div
+		<section
 			className={style}
 		>
 
 			{children}
 
-		</div>
+		</section>
 	);
 };
 

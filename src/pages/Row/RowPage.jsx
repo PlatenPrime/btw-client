@@ -13,8 +13,6 @@ import { createPallet, getRowPallets } from "../../redux/features/pallet/palletS
 import { removeRow, updateRow } from "../../redux/features//row/rowSlice";
 import { checkIsAuth } from '../../redux/features/auth/authSlice';
 
-import RowItem from "../../pages/Row/Row/RowItem";
-
 
 import PageBTW from '../../components/UI/Page/PageBTW';
 import ControlBTW from '../../components/UI/Page/Control/ControlBTW';
@@ -24,8 +22,11 @@ import MainBTW from '../../components/UI/Page/MainBTW';
 
 import ContentMain from '../../components/UI/Page/ContentMain';
 import ButtonBlock from '../../components/blocks/ButtonBlock';
-import InputBlock from '../../components/blocks/InputBlock';
 import HeaderBlock from '../../components/blocks/HeaderBlock';
+import CellBlock from '../../components/blocks/CellBlock';
+import RowTitle from './Row/RowTitle';
+import RowPallets from './Row/RowPallets';
+import RowPalletAdd from './Row/RowPalletAdd';
 
 
 
@@ -184,10 +185,17 @@ const RowPage = () => {
 		<PageBTW >
 
 
-			<HeaderBlock className="bg-orange-500" >
-				
-					Ряд {title}
-				
+			<HeaderBlock
+				className="
+			bg-orange-500
+			bg-gradient-to-r from-orange-500 to-amber-500
+			
+			"
+
+			>
+
+				Ряд {title}
+
 			</HeaderBlock>
 
 
@@ -198,93 +206,25 @@ const RowPage = () => {
 				<ContentMain>
 
 
-					{isRowEditing &&
-
-						<div>
-
-							{
-								isPalletCreate ?
-
-
-									<div className='flex justify-center w-full '>
-
-
-										<InputBlock
-											className=' m-1'
-											type="text"
-											value={palletTitle}
-											placeholder='Название...'
-											onChange={e => setPalletTitle(e.target.value)} />
-
-
-
-
-										<div className='flex flex-wrap'>
-
-											<ButtonBlock
-												className='cancel'
-
-												onClick={() => setIsPalletCreate(false)}
-											>
-												Не создавать
-											</ButtonBlock>
-
-											<ButtonBlock
-												className='confirm'
-												onClick={handlerCreatePallet}
-
-											>
-												Сохранить паллету
-											</ButtonBlock>
-
-
-
-
-
-										</div>
-
-
-									</div>
-
-
-									:
-
-
-									
-										<ButtonBlock
-											className='add mx-auto '
-											onClick={() => setIsPalletCreate(true)}
-										>
-											Добавить паллету
-										</ButtonBlock>
-									
-
-
-							}
-
-
-
-						</div>
-
-					}
-
-
-
-{/* /////////////////////////////////////////////////////////////////////////////// */}
-
-
-					<RowItem
+					<RowTitle
 						isRowEditing={isRowEditing}
 						title={title}
 						setTitle={setTitle}
-						pallets={pallets}
 					/>
 
-{/* ////////////////////////////////////////////////////////////////////////////// */}
 
+					{isRowEditing && <RowPalletAdd
+						isPalletCreate={isPalletCreate}
+						palletTitle={palletTitle}
+						setPalletTitle={setPalletTitle}
+						setIsPalletCreate={setIsPalletCreate}
+						handlerCreatePallet={handlerCreatePallet}
+					/>
+					}
 
-
-
+					<RowPallets
+						pallets={pallets}
+					/>
 
 
 				</ContentMain>
@@ -299,7 +239,7 @@ const RowPage = () => {
 
 					{isRowEditing ?
 
-						<div className='w-full' >
+						<CellBlock className='w-full flex flex-col ' >
 
 							<ButtonBlock
 								className='cancel-c w-full'
@@ -324,7 +264,7 @@ const RowPage = () => {
 
 							<ButtonBlock
 								className='delete-c w-full '
-								// onClick={handlerRowRemove}
+							// onClick={handlerRowRemove}
 
 							>
 								Удалить ряд
@@ -332,7 +272,7 @@ const RowPage = () => {
 
 
 
-						</div>
+						</CellBlock>
 
 
 

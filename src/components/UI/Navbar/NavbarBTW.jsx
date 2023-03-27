@@ -10,7 +10,7 @@ const NavbarBTW = ({ onClickSide, onClickControl, mobileControl }) => {
 		
 		<div className='h-16 w-full p-4 md:hidden
 		flex justify-between items-center
-		 bg-sky-700 text-white' >
+		bg-gradient-to-r from-sky-500 to-indigo-500 text-white' >
 
 			<button
 				className=''
