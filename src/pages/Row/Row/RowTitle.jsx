@@ -2,10 +2,11 @@
 import React, { useEffect, useState } from 'react';
 import ButtonBlock from '../../../components/blocks/ButtonBlock';
 import InputBlock from '../../../components/blocks/InputBlock';
+import RowBlock from '../../../components/blocks/RowBlock';
 
 
 
-const RowTitle = ({ title, setTitle, isRowEditing }) => {
+const RowTitle = ({ title, setTitle }) => {
 
 	const [isEditingTitle, setIsEditingTitle] = useState(false);
 	const [newTitle, setNewTitle] = useState("")
@@ -34,99 +35,95 @@ const RowTitle = ({ title, setTitle, isRowEditing }) => {
 
 
 
-		<div className=''>
+		<>
 
 			{isEditingTitle
 
 				?
 
-				<div className=' h-16  flex justify-center items-center space-x-8 '>
+				<RowBlock className=' h-16  flex justify-center items-center  border-2 border-black'>
 
-					<span className='p-1  bg-gray-100 text-lg '>
 
-						<span className='mx-2'>Новое название ряда</span>
 
-						<InputBlock
-							className=' '
-							type="text"
-							value={newTitle}
-							placeholder='Название...'
-							onChange={e => setNewTitle(e.target.value)} />
+					<span className='mx-2'>Новое название ряда</span>
 
-					</span>
+					<InputBlock
+						className=' '
+						type="text"
+						value={newTitle}
+						placeholder='Название...'
+						onChange={e => setNewTitle(e.target.value)} />
 
 
 
 
+					<ButtonBlock
+						className='confirm'
+						onClick={handlerSaveTitle}
+					>
+						Сохранить
 
-					{isRowEditing &&
+					</ButtonBlock>
 
-						<ButtonBlock
-							className='confirm'
-							onClick={handlerSaveTitle}
-						>
-							Сохранить
-							
-						</ButtonBlock>}
+				</RowBlock>
 
-				</div>
+
+
 
 				:
 
-				<div className='  '>
+
+
+
+
+
+
+				<RowBlock className=' h-16 flex justify-center items-center  border-2 border-black'>
+
+
+
+
+					{title &&
+
+						<h2 className=' text-lg '>
+
+							Название ряда:  {newTitle}
+
+						</h2>}
+
+
+
 
 					{
-						isRowEditing &&
-						<div className='h-16 flex justify-center items-center  space-x-8' >
-
-							{title && isRowEditing &&
-								<h2 className=' text-lg '>
+						title
+							?
 
 
-									<span className='p-3  bg-gray-100 text-lg '> Название ряда:  {newTitle}	</span>
+							<ButtonBlock
+								className='edit'
+								onClick={handlerEditTitle}
+							>
+								Редактировать
+							</ButtonBlock>
+
+							:
 
 
-
-								</h2>}
-
-
-							{
-								title
-									?
-									isRowEditing &&
-
-									<ButtonBlock
-										className='edit'
-										onClick={handlerEditTitle}
-									>
-										 Редактировать
-									</ButtonBlock>
-
-									:
-
-									isRowEditing &&
-									<ButtonBlock
-										className='add '
-										onClick={handlerEditTitle}
-									>
-										Добавить название
-									</ButtonBlock>
-							}
-
-						</div>
-
-
+							<ButtonBlock
+								className='add '
+								onClick={handlerEditTitle}
+							>
+								Добавить название
+							</ButtonBlock>
 					}
 
 
 
-
-
-				</div>
+				</RowBlock>
 			}
 
 
-		</div>
+		</>
 
 
 

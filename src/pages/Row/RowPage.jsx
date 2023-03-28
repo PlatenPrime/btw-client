@@ -205,12 +205,15 @@ const RowPage = () => {
 
 				<ContentMain>
 
+					{isRowEditing &&
+						<RowTitle
+							isRowEditing={isRowEditing}
+							title={title}
+							setTitle={setTitle}
+						/>
 
-					<RowTitle
-						isRowEditing={isRowEditing}
-						title={title}
-						setTitle={setTitle}
-					/>
+					}
+
 
 
 					{isRowEditing && <RowPalletAdd
@@ -221,6 +224,8 @@ const RowPage = () => {
 						handlerCreatePallet={handlerCreatePallet}
 					/>
 					}
+
+					
 
 					<RowPallets
 						pallets={pallets}

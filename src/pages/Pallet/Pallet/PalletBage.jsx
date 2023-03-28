@@ -7,7 +7,7 @@ const PalletBage = ({ pallet }) => {
 	if (!pallet) {
 		return (
 			<div className=''>
-				Загрузка...
+				Нет паллеты
 			</div>
 		)
 	}
