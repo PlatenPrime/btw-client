@@ -6,7 +6,7 @@ const PhotoArtBTW = ({ title }) => {
 
 
 	return (
-		<div className=' w-full flex justify-center p-5 bg-gradient-to-b from-blue-500 to-transparent'>
+		<div className=' w-full flex justify-center p-5 bg-white hover:scale-125 hover:skew-z-3 ease-in duration-300 '>
 
 
 

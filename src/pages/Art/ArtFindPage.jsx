@@ -113,7 +113,7 @@ const ArtFindPage = () => {
 
 					<div className='flex flex-col items-center  p-4 '>
 
-						<input className='InputBlock ' type="text" ref={artInput} />
+						<InputBlock className=' ' type="text" ref={artInput} />
 
 
 

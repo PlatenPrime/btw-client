@@ -84,6 +84,15 @@ body {
 		
 }
 
+
+.ImageBlock {
+	@apply
+transition ease-in-out duration-300
+		
+		
+}
+
+
 .RowBlock {
 	@apply
 	flex justify-center
@@ -95,9 +104,9 @@ body {
 
 .CellBlock {
 	@apply
-	flex justify-center
+	flex justify-center items-center
 	
-		rounded transition ease-in-out duration-300
+	transition ease-in-out duration-300
 	
 }
 

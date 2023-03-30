@@ -17,60 +17,63 @@ const RowPalletAdd = ({
 
 }) => {
 	return (
-				<RowBlock className='' >
+		<RowBlock className='py-2' >
 
-					{
-						isPalletCreate ?
-
-
-							<CellBlock className='flex justify-center w-full '>
+			{
+				isPalletCreate ?
 
 
-								<InputBlock
-									className='m-1'
-									type="text"
-									value={palletTitle}
-									placeholder='Название...'
-									onChange={e => setPalletTitle(e.target.value)} />
+					<CellBlock className='flex justify-center w-full p-1'>
 
 
-								<ButtonBlock
-									className='cancel'
-									onClick={() => setIsPalletCreate(false)}
-								>
-									Не создавать
-								</ButtonBlock>
-
-								<ButtonBlock
-									className='success'
-									onClick={handlerCreatePallet}
-
-								>
-									Сохранить паллету
-								</ButtonBlock>
+						<InputBlock
+							className='mx-1'
+							type="text"
+							value={palletTitle}
+							placeholder='Название...'
+							onChange={e => setPalletTitle(e.target.value)} />
 
 
-							</CellBlock>
+						<ButtonBlock
+							className='success'
+							onClick={handlerCreatePallet}
+
+						>
+							Создать
+						</ButtonBlock>
 
 
-							:
+						<ButtonBlock
+							className='cancel'
+							onClick={() => setIsPalletCreate(false)}
+						>
+							Не создавать
+						</ButtonBlock>
 
 
 
-							<ButtonBlock
-								className='add w-full p-3'
-								onClick={() => setIsPalletCreate(true)}
-							>
-								Добавить паллету
-							</ButtonBlock>
+
+					</CellBlock>
+
+
+					:
 
 
 
-					}
+					<ButtonBlock
+						className='create w-full p-3 '
+						onClick={() => setIsPalletCreate(true)}
+					>
+						Добавить паллету
+					</ButtonBlock>
 
-				</RowBlock>
 
-			
+
+			}
+
+		</RowBlock>
+
+
 	);
 };
 

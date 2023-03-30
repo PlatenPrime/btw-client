@@ -1,6 +1,7 @@
 import React from 'react';
+import { forwardRef } from 'react';
 
-const InputBlock = ({ type, name, value, onChange, className, placeholder, ref }) => {
+const InputBlock = forwardRef(({ type, name, value, onChange, className, placeholder }, ref) => {
 
 	const style = `
 
@@ -23,6 +24,6 @@ const InputBlock = ({ type, name, value, onChange, className, placeholder, ref }
 		/>
 
 	);
-};
+});
 
 export default InputBlock;
