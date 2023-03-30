@@ -35,14 +35,14 @@ const RowTitle = ({ title, setTitle }) => {
 
 
 
-		<>
+		<RowBlock className='m-1 h-16 flex justify-center items-center '>
 
 			{isEditingTitle
 
 				?
 
-				<RowBlock className=' h-16  flex justify-center items-center  border-2 border-black'>
 
+				<>
 
 
 					<span className='mx-2'>Новое название ряда</span>
@@ -65,7 +65,7 @@ const RowTitle = ({ title, setTitle }) => {
 
 					</ButtonBlock>
 
-				</RowBlock>
+				</>
 
 
 
@@ -74,14 +74,7 @@ const RowTitle = ({ title, setTitle }) => {
 
 
 
-
-
-
-
-				<RowBlock className=' h-16 flex justify-center items-center  border-2 border-black'>
-
-
-
+				<>
 
 					{title &&
 
@@ -119,11 +112,11 @@ const RowTitle = ({ title, setTitle }) => {
 
 
 
-				</RowBlock>
+				</>
 			}
 
 
-		</>
+		</RowBlock>
 
 
 

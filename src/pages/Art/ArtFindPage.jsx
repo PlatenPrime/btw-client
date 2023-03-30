@@ -92,10 +92,29 @@ const ArtFindPage = () => {
 	return (
 
 
-		<PageBTW >
+		<PageBTW
+		
+		className="
+			
+			
+			bg-teal-500
+			bg-gradient-to-r from-green-100 to-teal-100
+			
+			" 
+		
+		>
 
 
-			<HeaderBlock className="bg-teal-500" >
+			<HeaderBlock className="
+			
+			
+			bg-teal-500
+			bg-gradient-to-r from-green-500 to-teal-500
+			
+			
+			
+			
+			" >
 				
 					Поиск артикула
 				

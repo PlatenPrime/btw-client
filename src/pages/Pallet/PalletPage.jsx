@@ -128,10 +128,21 @@ const PalletPage = () => {
 
 
 	return (
-		<PageBTW >
+		<PageBTW 
+		className='bg-blue-500
+			bg-gradient-to-r from-blue-100 to-sky-100' 
+		
+		>
 
 
-			<HeaderBlock className='bg-sky-500' >
+			<HeaderBlock
+			
+			className='bg-blue-500
+			bg-gradient-to-r from-blue-500 to-sky-500' 
+			
+			
+			
+			>
 				
 					Паллета {title}
 				

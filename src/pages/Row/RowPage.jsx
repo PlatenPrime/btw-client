@@ -182,7 +182,11 @@ const RowPage = () => {
 	return (
 
 
-		<PageBTW >
+		<PageBTW className="
+		bg-orange-500
+		bg-gradient-to-r from-orange-100 to-amber-100
+		
+		" >
 
 
 			<HeaderBlock
@@ -225,7 +229,7 @@ const RowPage = () => {
 					/>
 					}
 
-					
+
 
 					<RowPallets
 						pallets={pallets}

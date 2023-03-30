@@ -4,10 +4,20 @@ import { useNavigate } from 'react-router-dom';
 import { checkIsAuth } from '../../../redux/features/auth/authSlice';
 import Loading from './Loading/Loading';
 
-const PageBTW = ({ children }) => {
+const PageBTW = ({ children, className }) => {
 
 	const isAuth = useSelector(checkIsAuth)
 	const navigate = useNavigate()
+
+
+	const style = `
+	
+	PageBTW
+	${className}
+
+`
+
+
 
 
 
@@ -36,7 +46,7 @@ const PageBTW = ({ children }) => {
 
 			{isAuth &&
 
-				<div className='w-full  flex flex-col items-between max-h-screen '>
+				<div className={style}>
 
 					{children}
 

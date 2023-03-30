@@ -29,6 +29,20 @@ body {
 
 
 
+
+
+	.PageBTW {
+		@apply
+		w-full  flex flex-col max-h-screen
+	}
+
+
+
+
+
+
+
+
 /* BLOCKS */
 
 
@@ -87,6 +101,8 @@ body {
 
 .ImageBlock {
 	@apply
+
+	
 transition ease-in-out duration-300
 		
 		
@@ -96,7 +112,7 @@ transition ease-in-out duration-300
 .RowBlock {
 	@apply
 	flex justify-center
-		 w-full 
+		
 		rounded transition ease-in-out duration-300
 		 hover:shadow-lg
 		
@@ -114,14 +130,9 @@ transition ease-in-out duration-300
 
 
 
-/* BLOCKS */
 
 
-
-
-
-
-
+/* COLORS */
 
 .edit {
 	@apply 
