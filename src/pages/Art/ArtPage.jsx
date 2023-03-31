@@ -91,7 +91,7 @@ const ArtPage = () => {
 
 
 	return (
-		<PageBTW >
+		<PageBTW className="bg-gradient-to-r from-purple-100 to-pink-100" >
 
 
 
@@ -121,7 +121,7 @@ const ArtPage = () => {
 						{pallets.length ?
 
 
-							<div className='w-full bg-gradient-to-t from-blue-500 to-transparent text-xl space-y-6 ' >
+							<div className='w-full bg-gradient-to-t from-blue-100 to-transparent text-xl space-y-6 ' >
 
 
 
