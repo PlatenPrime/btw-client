@@ -64,6 +64,7 @@ const MainPage = () => {
 						<ButtonBlock className='delete' >Delete</ButtonBlock>
 						<ButtonBlock className='confirm' >Confirm</ButtonBlock>
 						<ButtonBlock className='add' >Add</ButtonBlock>
+						<ButtonBlock className='search' >Search</ButtonBlock>
 					</CardBlock>
 
 
@@ -80,6 +81,7 @@ const MainPage = () => {
 					<ButtonBlock className='delete-c w-full' >Delete-c</ButtonBlock>
 					<ButtonBlock className='confirm-c w-full' >Confirm-c</ButtonBlock>
 					<ButtonBlock className='add-c w-full' >Add-c</ButtonBlock>
+					<ButtonBlock className='search-c w-full' >Search-c</ButtonBlock>
 				</ControlBTW>
 
 

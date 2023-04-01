@@ -1,6 +1,6 @@
 import React from 'react';
 
-const CardBlock = ({ children, className }) => {
+const CardBlock = ({ children, className, onClick }) => {
 
 	const style = `
 
@@ -12,7 +12,9 @@ const CardBlock = ({ children, className }) => {
 
 
 	return (
-		<div className={style}>
+		<div className={style}
+		onClick={onClick}
+		>
 			{children}
 		</div>
 	);

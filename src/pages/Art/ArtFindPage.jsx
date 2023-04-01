@@ -19,6 +19,9 @@ import ContentMain from '../../components/UI/Page/ContentMain';
 import ButtonBlock from '../../components/blocks/ButtonBlock';
 import InputBlock from '../../components/blocks/InputBlock';
 import HeaderBlock from '../../components/blocks/HeaderBlock';
+import CardBlock from '../../components/blocks/CardBlock';
+import ImageBlock from '../../components/blocks/ImageBlock';
+import RowBlock from '../../components/blocks/RowBlock';
 
 const ArtFindPage = () => {
 
@@ -66,7 +69,10 @@ const ArtFindPage = () => {
 
 
 
-	const handlerArtFind = () => {
+	const handlerArtFind = (e) => {
+
+		e.preventDefault();
+
 
 		const art = arts.find(item => item.title === artInput.current.value)
 
@@ -93,31 +99,19 @@ const ArtFindPage = () => {
 
 
 		<PageBTW
-		
-		className="
-			
-			
+
+			className="
 			bg-teal-500
 			bg-gradient-to-r from-green-100 to-teal-100
-			
-			" 
-		
+			"
 		>
 
 
 			<HeaderBlock className="
-			
-			
 			bg-teal-500
 			bg-gradient-to-r from-green-500 to-teal-500
-			
-			
-			
-			
 			" >
-				
-					Поиск артикула
-				
+				Поиск артикула
 			</HeaderBlock>
 
 
@@ -128,74 +122,65 @@ const ArtFindPage = () => {
 
 				<ContentMain>
 
+					<form onSubmit={handlerArtFind}>
+
+						<CardBlock className='flex flex-row justify-center items-center  p-4 '>
+
+							<InputBlock className='p-2 ' type="text" ref={artInput} />
 
 
-					<div className='flex flex-col items-center  p-4 '>
-
-						<InputBlock className=' ' type="text" ref={artInput} />
 
 
+							<ButtonBlock
+
+								className='search'
+								type="submit"
+							>
+								Найти артикул
+							</ButtonBlock>
+
+						</CardBlock>
+
+					</form>
 
 
-						<ButtonBlock
-
-							className='confirm'
-							onClick={handlerArtFind}
+					{artCardDisplay && artItem &&
+						<CardBlock
+							className='cursor-pointer p-5'
+							onClick={() => navigate(`/arts/${artItem._id}`)}
 						>
-							Найти артикул
-						</ButtonBlock>
+
+
+							<RowBlock className=' m-2 rounded flex flex-col  md:flex-row items-center justify-start space-x-10 hover:bg-teal-200 '>
+
+
+								<ImageBlock
+									src={photo}
+									alt="Здесь должно быть изображение артикула"
+									width="200px"
+									height="200px"
+									className='rounded  ' />
 
 
 
-					</div>
+								<h1 className='text-xl' >{artItem.name}</h1>
+
+
+
+							</RowBlock>
 
 
 
 
 
-					<div
-						className='cursor-pointer shadow-md border-5 hover:shadow-green-300 m-2'
-						onClick={() => navigate(`/arts/${artItem._id}`)}
-					>
+						</CardBlock>
+					}
 
 
 
 
-						{artItem &&
-
-							artCardDisplay &&
-
-							<div className='flex flex-col items-center md:flex-row'>
 
 
-
-								<div className='md:w-1/2 flex flex-col justify-center items-center '>
-
-									<h1 className='text-5xl' >{artItem.title}</h1>
-
-								</div>
-
-
-
-								<div className='md:w-1/2'>
-
-									<CardBTW >
-
-										<PhotoArtBTW title={artItem.title} />
-
-										<h1>{artItem.name}</h1>
-
-									</CardBTW >
-
-								</div>
-
-
-							</div>
-
-						}
-
-
-					</div>
 
 
 				</ContentMain>
