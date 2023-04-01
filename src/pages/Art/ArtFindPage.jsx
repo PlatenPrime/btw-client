@@ -126,7 +126,7 @@ const ArtFindPage = () => {
 
 						<CardBlock className='flex flex-row justify-center items-center  p-4 '>
 
-							<InputBlock className='p-2 ' type="text" ref={artInput} />
+							<InputBlock className='p-2 w-1/2 ' type="text" ref={artInput} />
 
 
 
@@ -151,7 +151,7 @@ const ArtFindPage = () => {
 						>
 
 
-							<RowBlock className=' m-2 rounded flex flex-col  md:flex-row items-center justify-start space-x-10 hover:bg-teal-200 '>
+							<RowBlock className=' m-2 pr-5 rounded flex flex-col  md:flex-row items-center justify-start space-x-10 hover:bg-teal-200 '>
 
 
 								<ImageBlock
@@ -159,7 +159,7 @@ const ArtFindPage = () => {
 									alt="Здесь должно быть изображение артикула"
 									width="200px"
 									height="200px"
-									className='rounded  ' />
+									className='rounded hover:scale-125 hover:translate-x-3 ' />
 
 
 
