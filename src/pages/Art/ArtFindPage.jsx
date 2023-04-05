@@ -126,7 +126,7 @@ const ArtFindPage = () => {
 
 						<CardBlock className='flex flex-row justify-center items-center  p-4 '>
 
-							<InputBlock className='p-2 w-1/2 ' type="text" ref={artInput} />
+							<InputBlock className='p-2 w-1/2 text-green-600 focus:border-green-600 ' type="text" ref={artInput} />
 
 
 
@@ -190,11 +190,7 @@ const ArtFindPage = () => {
 
 				<ControlBTW>
 
-					<ButtonBlock
-						className=' edit-c w-full'
-					>
-						EMPTY
-					</ButtonBlock>
+
 
 				</ControlBTW>
 
