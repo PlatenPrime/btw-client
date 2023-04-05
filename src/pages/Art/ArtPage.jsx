@@ -13,6 +13,7 @@ import ContentMain from '../../components/UI/Page/ContentMain';
 import HeaderBlock from '../../components/blocks/HeaderBlock';
 import ImageBlock from '../../components/blocks/ImageBlock';
 import CardBlock from '../../components/blocks/CardBlock';
+import RowBlock from '../../components/blocks/RowBlock';
 
 
 
@@ -137,11 +138,13 @@ const ArtPage = () => {
 					{pallets.length ?
 
 
-						<div className='w-full bg-gradient-to-t from-blue-100 to-transparent text-xl space-y-6 ' >
+						<CardBlock className='  text-xl space-y-6 ' >
 
 
 
-							<div className='my-3 text-2xl w-full flex justify-center'>Запасы:</div>
+							<RowBlock className='my-3 p-3 text-2xl  flex justify-center'>
+								ТЕКСТОВЫЙ БЛОК
+								</RowBlock>
 
 
 							<div className=''>
@@ -160,17 +163,17 @@ const ArtPage = () => {
 
 										>
 
-											<div className=' 
+											<RowBlock className=' 
 										flex justify-center space-x-5 
 										text-lg my-1 p-3
 										bg-gray-200 hover:bg-gray-600 bg-opacity-10 hover:bg-opacity-20
 										rounded transition ease-in-out duration-300' >
 
-												<span className='bg-sky-600 bg-opacity-50 text-white p-1 w-1/3 flex justify-center'>{pallet.title}</span>
-												<span className='text-white'>: </span>
-												<span className='bg-pink-200 bg-opacity-50 text-white p-1 w-1/3 flex justify-center ' >{box.pieces} </span>
+												<span className='bg-sky-600 bg-opacity-50  p-1 w-1/3 flex justify-center'>{pallet.title}</span>
+												<span className=''>: </span>
+												<span className='bg-pink-400 bg-opacity-50  p-1 w-1/3 flex justify-center ' >{box.pieces} </span>
 
-											</div>
+											</RowBlock>
 
 										</Link>
 									)
@@ -184,7 +187,7 @@ const ArtPage = () => {
 
 
 
-						</div>
+						</CardBlock>
 
 
 
@@ -192,7 +195,7 @@ const ArtPage = () => {
 
 
 
-						<p className='text-xl ' >Артикула на запасах нет</p>
+						<RowBlock className='text-xl ' >Артикула на запасах нет</RowBlock>
 
 
 					}
