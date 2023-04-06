@@ -114,15 +114,15 @@ const PalletPosition = ({ positions, setPositions, isPalletEditing, art, pieces,
 
 				:
 				<CellBlock
-					className='space-x-3 flex justify-start items-center p-3'
+					className='space-x-3 flex justify-start items-center p-3 border-2 border-sky-500 rounded'
 				>
-					<span className='text-xl bg-sky-300 p-1'>
+					<span className='text-xl text-white rounded bg-rose-500 p-1'>
 						{newArt}
 					</span>
 
 					<span className='text-xl'>:</span>
 
-					<span className='text-xl bg-red-300 p-1' >
+					<span className='text-xl text-white rounded bg-purple-500 p-1' >
 						{newPieces} шт
 					</span>
 

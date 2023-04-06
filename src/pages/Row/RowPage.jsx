@@ -28,6 +28,7 @@ import RowTitle from './Row/RowTitle';
 import RowPallets from './Row/RowPallets';
 import RowPalletAdd from './Row/RowPalletAdd';
 import TextBlock from '../../components/blocks/TextBlock';
+import CardBlock from '../../components/blocks/CardBlock';
 
 
 
@@ -184,7 +185,7 @@ const RowPage = () => {
 
 
 		<PageBTW className="
-		bg-orange-500
+		
 		bg-gradient-to-r from-orange-100 to-amber-100
 		
 		" >
@@ -210,37 +211,41 @@ const RowPage = () => {
 
 				<ContentMain>
 
-
-					<TextBlock className="text-2xl text-white m-2 p-3 bg-orange-500" >
-						Паллеты
-					</TextBlock>
+					<CardBlock className="p-2" >
 
 
-					{isRowEditing &&
-						<RowTitle
-							isRowEditing={isRowEditing}
-							title={title}
-							setTitle={setTitle}
+						<TextBlock className="text-2xl text-white rounded m-1 p-3 bg-orange-500" >
+							Паллеты
+						</TextBlock>
+
+
+						{isRowEditing &&
+							<RowTitle
+								isRowEditing={isRowEditing}
+								title={title}
+								setTitle={setTitle}
+							/>
+
+						}
+
+
+
+						{isRowEditing && <RowPalletAdd
+							isPalletCreate={isPalletCreate}
+							palletTitle={palletTitle}
+							setPalletTitle={setPalletTitle}
+							setIsPalletCreate={setIsPalletCreate}
+							handlerCreatePallet={handlerCreatePallet}
+						/>
+						}
+
+
+
+						<RowPallets
+							pallets={pallets}
 						/>
 
-					}
-
-
-
-					{isRowEditing && <RowPalletAdd
-						isPalletCreate={isPalletCreate}
-						palletTitle={palletTitle}
-						setPalletTitle={setPalletTitle}
-						setIsPalletCreate={setIsPalletCreate}
-						handlerCreatePallet={handlerCreatePallet}
-					/>
-					}
-
-
-
-					<RowPallets
-						pallets={pallets}
-					/>
+					</CardBlock>
 
 
 				</ContentMain>
