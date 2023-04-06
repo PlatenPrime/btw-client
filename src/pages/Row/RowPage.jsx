@@ -27,6 +27,7 @@ import CellBlock from '../../components/blocks/CellBlock';
 import RowTitle from './Row/RowTitle';
 import RowPallets from './Row/RowPallets';
 import RowPalletAdd from './Row/RowPalletAdd';
+import TextBlock from '../../components/blocks/TextBlock';
 
 
 
@@ -208,6 +209,12 @@ const RowPage = () => {
 
 
 				<ContentMain>
+
+
+					<TextBlock className="text-2xl text-white m-2 p-3 bg-orange-500" >
+						Паллеты
+					</TextBlock>
+
 
 					{isRowEditing &&
 						<RowTitle
