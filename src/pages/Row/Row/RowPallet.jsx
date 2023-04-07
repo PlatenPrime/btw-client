@@ -26,7 +26,7 @@ const RowPallet = ({ title, id }) => {
 				border-2 border-orange-700 hover:border-orange-900
 
 
-				bg-orange-100  hover:bg-orange-500
+				bg-orange-100  hover:bg-amber-500
 
 				
 				text-orange-900 hover:text-white
