@@ -11,8 +11,11 @@ const ControlBTW = ({ children }) => {
 
 		<>
 
-			<div className=" hidden min-h-fit max-h-screen  md:flex w-1/4 p-2
-	  flex-col items-center justify-start">
+			<div className=" hidden min-h-fit h-full max-h-screen w-1/4 p-2 
+			md:flex flex-col items-center justify-start
+			bg-sky-500  bg-opacity-20
+			
+			">
 
 				{children}
 

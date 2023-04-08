@@ -10,7 +10,7 @@ const SidebarBTW = () => {
 
 
 	const activeStyles = {
-		color: "blue",
+		color: "white",
 
 	}
 
@@ -34,6 +34,8 @@ const SidebarBTW = () => {
 		md:flex flex-col justify-start items-center space-y-8
 
 		sticky top-0
+
+		bg-gradient-to-r from-cyan-500 to-blue-500
 
 		 '>
 

@@ -9,6 +9,7 @@ import SaveIcon from "../../../components/UI/Icons/SaveIcon";
 
 import ButtonBlock from '../../../components/blocks/ButtonBlock';
 import InputBlock from '../../../components/blocks/InputBlock';
+import CellBlock from '../../../components/blocks/CellBlock';
 
 
 
@@ -62,22 +63,22 @@ const PalletPositionAdd = ({ positions, setPositions }) => {
 
 	return (
 
-		<div className='flex justify-center'>
+		<CellBlock className='flex justify-center'>
 
 
 
 			{isPositionAdding ?
 
-				<div className=''>
+				<CellBlock className=''>
 
 
 
 
-					<div
+					<CellBlock
 						className='flex flex-row  p-6'
 					>
 
-						<div className='flex flex-col md:flex-row  '>
+						<CellBlock className='flex flex-col md:flex-row  '>
 							<InputBlock type="text"
 								className=' '
 								value={art}
@@ -90,7 +91,7 @@ const PalletPositionAdd = ({ positions, setPositions }) => {
 								onChange={(e) => setPieces(e.target.value)}
 								placeholder="Количество"
 							/>
-						</div>
+						</CellBlock>
 
 						<ButtonBlock
 							className=' success '
@@ -110,12 +111,12 @@ const PalletPositionAdd = ({ positions, setPositions }) => {
 						</ButtonBlock>
 
 
-					</div>
+					</CellBlock>
 
 
 
 
-				</div>
+				</CellBlock>
 
 
 
@@ -143,7 +144,7 @@ const PalletPositionAdd = ({ positions, setPositions }) => {
 			}
 
 
-		</div>
+		</CellBlock>
 	);
 };
 

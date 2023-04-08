@@ -3,6 +3,8 @@ import React, { useEffect, useState } from 'react';
 import ButtonBlock from '../../../components/blocks/ButtonBlock';
 import InputBlock from '../../../components/blocks/InputBlock';
 import RowBlock from '../../../components/blocks/RowBlock';
+import CellBlock from '../../../components/blocks/CellBlock';
+import TextBlock from '../../../components/blocks/TextBlock';
 
 
 
@@ -35,20 +37,20 @@ const RowTitle = ({ title, setTitle }) => {
 
 
 
-		<RowBlock className='m-1 h-16 flex justify-center items-center '>
+		<RowBlock className='m-1 p-1 flex justify-center items-center '>
 
 			{isEditingTitle
 
 				?
 
 
-				<>
+				<CellBlock>
 
 
-					<span className='mx-2'>Новое название ряда</span>
+					<TextBlock className='mx-2 text-xl text-orange-700'>Новое название ряда</TextBlock>
 
 					<InputBlock
-						className=' '
+						className=' text-center text-xl text-orange-700'
 						type="text"
 						value={newTitle}
 						placeholder='Название...'
@@ -65,7 +67,7 @@ const RowTitle = ({ title, setTitle }) => {
 
 					</ButtonBlock>
 
-				</>
+				</CellBlock>
 
 
 
@@ -74,15 +76,15 @@ const RowTitle = ({ title, setTitle }) => {
 
 
 
-				<>
+				<CellBlock>
 
 					{title &&
 
-						<h2 className=' text-lg '>
+						<TextBlock className=' mx-2 text-xl text-orange-700 '>
 
 							Название ряда:  {newTitle}
 
-						</h2>}
+						</TextBlock>}
 
 
 
@@ -112,7 +114,7 @@ const RowTitle = ({ title, setTitle }) => {
 
 
 
-				</>
+				</CellBlock>
 			}
 
 

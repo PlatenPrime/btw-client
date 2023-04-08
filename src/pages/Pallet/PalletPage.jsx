@@ -10,7 +10,7 @@ import { toast } from 'react-toastify';
 import { removePallet, updatePallet } from '../../redux/features/pallet/palletSlice';
 import { checkIsAuth } from '../../redux/features/auth/authSlice';
 
-import PalletItem from '../../pages/Pallet/Pallet/PalletItem';
+
 
 
 
@@ -23,6 +23,11 @@ import MainBTW from '../../components/UI/Page/MainBTW';
 import ContentMain from '../../components/UI/Page/ContentMain';
 import ButtonBlock from '../../components/blocks/ButtonBlock';
 import HeaderBlock from '../../components/blocks/HeaderBlock';
+import CellBlock from '../../components/blocks/CellBlock';
+import CardBlock from '../../components/blocks/CardBlock';
+import PalletTitle from './Pallet/PalletTitle';
+import PalletPositionAdd from './Pallet/PalletPositionAdd';
+import PalletPositions from './Pallet/PalletPositions';
 
 
 
@@ -128,24 +133,22 @@ const PalletPage = () => {
 
 
 	return (
-		<PageBTW 
-		className='bg-blue-500
-			bg-gradient-to-r from-blue-100 to-sky-100' 
-		
+		<PageBTW
+			className='
+			bg-gradient-to-r from-amber-100 to-yellow-100'
+
 		>
 
 
 			<HeaderBlock
-			
-			className='bg-blue-500
-			bg-gradient-to-r from-blue-500 to-sky-500' 
-			
-			
-			
+
+				className='
+			bg-gradient-to-r from-amber-500 to-yellow-500'
+
 			>
-				
-					Паллета {title}
-				
+
+				Паллета {title}
+
 			</HeaderBlock>
 
 
@@ -153,15 +156,46 @@ const PalletPage = () => {
 
 				<ContentMain>
 
-					<PalletItem
+
+					{
+						isPalletEditing &&
+
+
+						<CardBlock>
+
+
+
+							<PalletTitle
+								title={title}
+								setTitle={setTitle}
+							/>
+
+
+
+							<PalletPositionAdd
+								positions={positions}
+								setPositions={setPositions}
+
+							/>
+
+						</CardBlock>
+
+
+					}
+
+
+
+
+					<PalletPositions
 						isPalletEditing={isPalletEditing}
-						title={title}
-						setTitle={setTitle}
 						positions={positions}
 						setPositions={setPositions}
-
-
 					/>
+
+
+
+
+
 
 				</ContentMain>
 
@@ -174,7 +208,7 @@ const PalletPage = () => {
 
 					{isPalletEditing ?
 
-						<div className='w-full'>
+						<CellBlock className='w-full flex-col'>
 
 
 							<ButtonBlock
@@ -203,7 +237,7 @@ const PalletPage = () => {
 
 
 
-						</div>
+						</CellBlock>
 
 
 

@@ -7,7 +7,7 @@ import { toast } from 'react-toastify';
 import { createPallet } from '../../redux/features/pallet/palletSlice';
 import { checkIsAuth } from '../../redux/features/auth/authSlice';
 
-import PalletItem from '../../pages/Pallet/Pallet/PalletItem';
+
 
 
 
@@ -84,13 +84,7 @@ const AddPalletPage = () => {
 
 			<MainBTW>
 
-				<PalletItem
-					isPalletEditing={isPalletEditing}
-					title={title}
-					setTitle={setTitle}
-					positions={positions}
-					setPositions={setPositions}
-				/>
+				
 
 			</MainBTW>
 

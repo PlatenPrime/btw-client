@@ -25,6 +25,7 @@ import ButtonBlock from '../../components/blocks/ButtonBlock';
 import ListBlock from '../../components/blocks/ListBlock';
 import HeaderBlock from '../../components/blocks/HeaderBlock';
 import CardBlock from '../../components/blocks/CardBlock';
+import TextBlock from '../../components/blocks/TextBlock';
 
 
 
@@ -71,7 +72,6 @@ const RowsPage = () => {
 
 
 		<PageBTW className="
-		bg-orange-500
 		bg-gradient-to-r from-orange-100 to-amber-100
 		
 		"  >
@@ -93,27 +93,46 @@ const RowsPage = () => {
 
 				<ContentMain>
 
-					<CardBlock className="p-2" >
-
-						{isLoading ? <Loading /> : <div>
-
-							{
-								!rows.length ?
-									<div className=''>
-										В базе данных нет ни одного ряда.
-									</div>
-									:
-									<ListBlock >
-										{rows?.map((row, idx) => (
-											<RowBage key={idx} row={row} />
-										))}
-									</ListBlock>
-							}
-
-						</div>}
 
 
-					</CardBlock>
+					{
+
+						isLoading ?
+
+
+							<Loading />
+
+
+							:
+
+
+							<CardBlock>
+
+								{
+									!rows.length
+
+										?
+
+										<TextBlock className='text-xl'>
+											В базе данных нет ни одного ряда.
+										</TextBlock>
+
+										:
+
+										<ListBlock >
+											{rows?.map((row, idx) => (
+												<RowBage key={idx} row={row} />
+											))}
+										</ListBlock>
+								}
+
+							</CardBlock>
+
+
+					}
+
+
+
 
 
 				</ContentMain>
@@ -124,8 +143,13 @@ const RowsPage = () => {
 
 
 				<ControlBTW>
+
 					<Link to="new" className='w-full'	>
-						<ButtonBlock className='create-c w-full' >Создать новый ряд</ButtonBlock>
+
+						<ButtonBlock className='create-c w-full' >
+							Создать новый ряд
+						</ButtonBlock>
+
 					</Link>
 
 

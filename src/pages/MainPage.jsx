@@ -35,9 +35,9 @@ const MainPage = () => {
 
 
 	return (
-		<PageBTW >
+		<PageBTW className='bg-gradient-to-r from-cyan-100 to-blue-100 '  >
 
-			<HeaderBlock className='bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-purple-400' >
+			<HeaderBlock className='bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-green-400  hover:to-yellow-500' >
 
 				Панель быстрого доступа
 

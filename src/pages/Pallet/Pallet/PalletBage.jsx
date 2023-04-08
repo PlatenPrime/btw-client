@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom'
+import TextBlock from '../../../components/blocks/TextBlock';
 
 
 const PalletBage = ({ pallet }) => {
@@ -17,7 +18,7 @@ const PalletBage = ({ pallet }) => {
 
 		<Link to={`${pallet._id}`} className='' >
 
-			<span className=''>Паллета {pallet.title}</span>
+			<TextBlock className=''>Паллета {pallet.title}</TextBlock>
 
 		</Link>
 

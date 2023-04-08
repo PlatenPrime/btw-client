@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import RowBlock from '../../../components/blocks/RowBlock';
+import TextBlock from '../../../components/blocks/TextBlock';
 
 
 
@@ -13,9 +14,9 @@ const RowBage = ({ row }) => {
 
 	if (!row) {
 		return (
-			<div className=''>
+			<TextBlock className='text-center text-3xl'>
 				Загрузка...
-			</div>
+			</TextBlock>
 		)
 	}
 

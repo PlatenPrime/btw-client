@@ -11,6 +11,7 @@ import RowBlock from '../../../components/blocks/RowBlock';
 import DeleteIcon from '../../../components/UI/Icons/DeleteIcon';
 import EditIcon from '../../../components/UI/Icons/EditIcon';
 import SaveIcon from '../../../components/UI/Icons/SaveIcon';
+import TextBlock from '../../../components/blocks/TextBlock';
 
 
 
@@ -116,15 +117,15 @@ const PalletPosition = ({ positions, setPositions, isPalletEditing, art, pieces,
 				<CellBlock
 					className='space-x-3 flex justify-start items-center p-3 border-2 border-sky-500 rounded'
 				>
-					<span className='text-xl text-white rounded bg-rose-500 p-1'>
+					<TextBlock className='text-xl text-white rounded bg-rose-500 p-1'>
 						{newArt}
-					</span>
+					</TextBlock>
 
-					<span className='text-xl'>:</span>
+					<TextBlock className='text-xl'>:</TextBlock>
 
-					<span className='text-xl text-white rounded bg-purple-500 p-1' >
+					<TextBlock className='text-xl text-white rounded bg-purple-500 p-1' >
 						{newPieces} шт
-					</span>
+					</TextBlock>
 
 				</CellBlock>
 			}
@@ -133,12 +134,12 @@ const PalletPosition = ({ positions, setPositions, isPalletEditing, art, pieces,
 
 			{isPalletEditing &&
 
-				<div>
+				<CellBlock>
 
 
 					{isPositionEditing ?
 
-						<div className=''>
+						<CellBlock className=''>
 
 						
 
@@ -158,14 +159,14 @@ const PalletPosition = ({ positions, setPositions, isPalletEditing, art, pieces,
 
 
 
-						</div>
+						</CellBlock>
 
 
 						:
 
 
 
-						<div className=''>
+						<CellBlock className=''>
 
 							<ButtonBlock
 								className='edit  '
@@ -174,10 +175,10 @@ const PalletPosition = ({ positions, setPositions, isPalletEditing, art, pieces,
 								<EditIcon />
 							</ButtonBlock>
 
-						</div>
+						</CellBlock>
 					}
 
-				</div>
+				</CellBlock>
 
 
 			}

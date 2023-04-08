@@ -214,7 +214,7 @@ const RowPage = () => {
 					<CardBlock className="p-2" >
 
 
-						<TextBlock className="text-2xl text-white rounded m-1 p-3 bg-orange-500" >
+						<TextBlock className="text-2xl text-white rounded m-1 p-3 bg-amber-500" >
 							Паллеты
 						</TextBlock>
 

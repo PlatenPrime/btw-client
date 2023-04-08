@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import PalletPosition from './PalletPosition';
+import CellBlock from '../../../components/blocks/CellBlock';
+import CardBlock from '../../../components/blocks/CardBlock';
 
 
 
@@ -36,11 +38,11 @@ const PalletPositions = ({ positions, setPositions, isPalletEditing }) => {
 	return (
 
 
-		<div className='flex justify-center my-4'>
+		<CardBlock className='flex justify-center my-2 p-3'>
 
 			{newPositions &&
 
-				<div className='space-y-3'>
+				<CellBlock className='flex-col space-y-3'>
 
 					{
 						newPositions.map((position) => {
@@ -66,12 +68,12 @@ const PalletPositions = ({ positions, setPositions, isPalletEditing }) => {
 					}
 
 
-				</div>
+				</CellBlock>
 
 			}
 
 
-		</div>
+		</CardBlock>
 	);
 };
 
