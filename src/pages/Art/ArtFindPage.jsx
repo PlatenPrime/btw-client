@@ -2,17 +2,15 @@ import React, { useEffect, useRef, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
 
-import CardBTW from '../../components/UI/CardBTW';
+
 import ControlBTW from '../../components/UI/Page/Control/ControlBTW';
 
 
 import MainBTW from '../../components/UI/Page/MainBTW';
 
 
-
-
 import PageBTW from '../../components/UI/Page/PageBTW';
-import PhotoArtBTW from '../../components/UI/PhotoArtBTW';
+
 import { checkIsAuth } from '../../redux/features/auth/authSlice';
 import axios from "../../utils/axios";
 import ContentMain from '../../components/UI/Page/ContentMain';
@@ -22,6 +20,13 @@ import HeaderBlock from '../../components/blocks/HeaderBlock';
 import CardBlock from '../../components/blocks/CardBlock';
 import ImageBlock from '../../components/blocks/ImageBlock';
 import RowBlock from '../../components/blocks/RowBlock';
+import TextBlock from '../../components/blocks/TextBlock';
+
+
+
+
+
+
 
 const ArtFindPage = () => {
 
@@ -101,14 +106,14 @@ const ArtFindPage = () => {
 		<PageBTW
 
 			className="
-			bg-teal-500
+		
 			bg-gradient-to-r from-green-100 to-teal-100
 			"
 		>
 
 
 			<HeaderBlock className="
-			bg-teal-500
+		
 			bg-gradient-to-r from-green-500 to-teal-500
 			" >
 				Поиск артикула
@@ -126,14 +131,19 @@ const ArtFindPage = () => {
 
 						<CardBlock className='flex flex-row justify-center items-center  p-4 '>
 
-							<InputBlock className='p-2 w-1/2 text-green-600 focus:border-green-600 ' type="text" ref={artInput} />
+							<InputBlock 
+							className='p-2 text-2xl text-center  text-green-800 focus:border-green-800 ' 
+							type="text" 
+							ref={artInput} 
+							placeholder="ХХХХ-ХХХХ"
+							/>
 
 
 
 
 							<ButtonBlock
 
-								className='search'
+								className='search p-3'
 								type="submit"
 							>
 								Найти артикул
@@ -163,7 +173,7 @@ const ArtFindPage = () => {
 
 
 
-								<h1 className='text-xl' >{artItem.name}</h1>
+								<TextBlock className='text-xl' >{artItem.name}</TextBlock>
 
 
 

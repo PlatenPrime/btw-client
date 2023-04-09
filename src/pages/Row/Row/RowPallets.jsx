@@ -1,7 +1,6 @@
 
 import React, { useEffect, useState } from 'react';
 import ListBlock from '../../../components/blocks/ListBlock';
-import CardBTW from '../../../components/UI/CardBTW';
 import RowPallet from "./RowPallet";
 
 

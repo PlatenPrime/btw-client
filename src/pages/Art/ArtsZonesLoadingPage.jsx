@@ -15,6 +15,9 @@ import axios from '../../utils/axios';
 import ContentMain from '../../components/UI/Page/ContentMain';
 import InputBlock from "../../components/blocks/InputBlock";
 import HeaderBlock from "../../components/blocks/HeaderBlock";
+import CardBlock from "../../components/blocks/CardBlock";
+import TextBlock from "../../components/blocks/TextBlock";
+
 
 
 
@@ -69,6 +72,9 @@ const ArtsZonesLoadingPage = () => {
 		} catch (error) {
 			console.log(error)
 		}
+
+		window.alert("Артикулы удалены с базы данных")
+
 	}
 
 
@@ -135,9 +141,9 @@ const ArtsZonesLoadingPage = () => {
 		<PageBTW>
 
 			<HeaderBlock className='bg-cyan-500'>
-				
-					Установка зон
-			
+
+				Установка зон
+
 			</HeaderBlock>
 
 
@@ -148,7 +154,7 @@ const ArtsZonesLoadingPage = () => {
 
 				<ContentMain>
 
-					<form className="flex justify-center items-center">
+					<CardBlock className=" flex justify-center items-center ">
 
 						<InputBlock
 							className=""
@@ -158,20 +164,21 @@ const ArtsZonesLoadingPage = () => {
 							onChange={excelToJSON}
 						/>
 
-					</form>
-
-					{arts.length != 0 && <div>
-
-						<h2 className="m-6">Общее количество артикулов: {arts.length}</h2>
-						<h2 className="m-6">Всего кластеров артикулов: {clasters} </h2>
-						<h2 className="m-6">Текущий кластер на выгрузку: {claster} / {clasters} </h2>
-
-					</div>}
-
-					{isUpload && <h2 className="text-3xl mx-auto">ИДЕТ ВЫГРУЗКА... </h2>}
+					</CardBlock>
 
 
-					
+					{arts.length != 0 && <CardBlock>
+
+						<TextBlock className="m-6">Общее количество артикулов: {arts.length}</TextBlock>
+						<TextBlock className="m-6">Всего кластеров артикулов: {clasters} </TextBlock>
+						<TextBlock className="m-6">Текущий кластер на выгрузку: {claster} / {clasters} </TextBlock>
+
+					</CardBlock>}
+
+					{isUpload && <TextBlock className="text-3xl mx-auto">ИДЕТ ВЫГРУЗКА... </TextBlock>}
+
+
+
 
 
 
@@ -186,8 +193,8 @@ const ArtsZonesLoadingPage = () => {
 
 				<ControlBTW>
 
-				
-				<ButtonBlock
+
+					<ButtonBlock
 						className="create-c w-full "
 						onClick={handlerUploadArts}
 					>
