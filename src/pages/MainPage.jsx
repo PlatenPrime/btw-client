@@ -19,9 +19,16 @@ import ButtonBlock from '../components/blocks/ButtonBlock';
 import CardBlock from '../components/blocks/CardBlock';
 import SpinnerBlock from '../components/blocks/SpinnerBlock';
 import HeaderBlock from '../components/blocks/HeaderBlock';
+import RowBlock from '../components/blocks/RowBlock';
 
 
-
+import { BiSave } from "react-icons/bi";
+import { BiEdit } from "react-icons/bi";
+import { BiEditAlt } from "react-icons/bi";
+import { BiPlus } from "react-icons/bi";
+import { BiCheck } from "react-icons/bi";
+import { BiX } from "react-icons/bi";
+import { BiTrash } from "react-icons/bi";
 
 
 
@@ -66,6 +73,18 @@ const MainPage = () => {
 						<ButtonBlock className='add' >Add</ButtonBlock>
 						<ButtonBlock className='search' >Search</ButtonBlock>
 					</CardBlock>
+
+
+					<RowBlock className="text-3xl" >
+						<BiEdit />
+						<BiEditAlt />
+						<BiPlus />
+						<BiSave />
+						<BiCheck />
+						<BiX />
+						<BiTrash />
+
+					</RowBlock>
 
 
 

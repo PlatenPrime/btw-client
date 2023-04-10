@@ -1,17 +1,19 @@
 import React, { useEffect, useState } from 'react';
 
 
-import EditIcon from "../../../components/UI/Icons/EditIcon"
-import SaveIcon from "../../../components/UI/Icons/SaveIcon"
 
-
-
-import EditButton from '../../../components/UI/Buttons/EditButton';
 import ButtonBlock from '../../../components/blocks/ButtonBlock';
 import InputBlock from '../../../components/blocks/InputBlock';
 import RowBlock from '../../../components/blocks/RowBlock';
 import TextBlock from '../../../components/blocks/TextBlock';
 import CellBlock from '../../../components/blocks/CellBlock';
+
+
+
+import { BiSave } from "react-icons/bi";
+import { BiEditAlt } from "react-icons/bi";
+import { BiPlus } from "react-icons/bi";
+
 
 
 
@@ -52,7 +54,7 @@ const PalletTitle = ({ title, setTitle }) => {
 
 				<CellBlock className='w-full flex items-center justify-center '>
 
-					
+
 
 					<InputBlock
 						className='text-center text-2xl'
@@ -64,11 +66,11 @@ const PalletTitle = ({ title, setTitle }) => {
 
 					{
 						<ButtonBlock
-							className='confirm'
+							className='confirm text-xl '
 							onClick={handlerSaveTitle}
 
 						>
-							<SaveIcon />
+							<BiSave />
 
 
 						</ButtonBlock>}
@@ -97,9 +99,9 @@ const PalletTitle = ({ title, setTitle }) => {
 							</TextBlock>
 
 							<ButtonBlock
-								className='edit'
+								className='edit text-xl '
 								onClick={handlerEditTitle}>
-								<EditIcon />
+								<BiEditAlt />
 							</ButtonBlock>
 
 
@@ -112,10 +114,10 @@ const PalletTitle = ({ title, setTitle }) => {
 
 
 						<ButtonBlock
-							className="create"
+							className="create text-xl"
 							onClick={handlerEditTitle}
 						>
-							Создать название
+							<BiPlus />
 						</ButtonBlock>
 
 					}

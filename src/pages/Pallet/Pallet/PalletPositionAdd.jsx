@@ -2,8 +2,6 @@ import React from 'react';
 import { useState } from 'react';
 
 
-import CancelIcon from "../../../components/UI/Icons/CancelIcon";
-import SaveIcon from "../../../components/UI/Icons/SaveIcon";
 
 
 
@@ -12,6 +10,11 @@ import InputBlock from '../../../components/blocks/InputBlock';
 import CellBlock from '../../../components/blocks/CellBlock';
 
 
+
+
+import { BiPlus } from "react-icons/bi";
+import { BiCheck } from "react-icons/bi";
+import { BiX } from "react-icons/bi";
 
 
 
@@ -94,19 +97,19 @@ const PalletPositionAdd = ({ positions, setPositions }) => {
 						</CellBlock>
 
 						<ButtonBlock
-							className=' success '
+							className=' success text-xl '
 							onClick={handlerPositionAddSave}
 						>
-							<SaveIcon />
+							<BiCheck />
 
 						</ButtonBlock>
 
 
 						<ButtonBlock
-							className='cancel  '
+							className='cancel text-xl '
 							onClick={handlerPositionAddCancel}
 						>
-							<CancelIcon />
+							<BiX />
 
 						</ButtonBlock>
 
@@ -130,11 +133,13 @@ const PalletPositionAdd = ({ positions, setPositions }) => {
 
 
 				<ButtonBlock
-				className='add'
+					className='add flex text-xl items-center '
 
 					onClick={handlerPositionAddAdd}
 				>
+					<BiPlus />
 					Добавить позиции
+					<BiPlus />
 
 				</ButtonBlock>
 

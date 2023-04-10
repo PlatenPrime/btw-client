@@ -24,14 +24,14 @@ const RowBage = ({ row }) => {
 
 	return (
 
-<RowBlock>
+		<RowBlock>
 
-		<Link
+			<Link
 
-			to={`${row._id}`}
+				to={`${row._id}`}
 
 
-			className=' 
+				className=' 
 			flex justify-center
 			bg-orange-100 hover:bg-orange-500 
 			 hover:text-white 
@@ -40,16 +40,15 @@ border-gray-600 hover:border-gray-700
 			rounded transition ease-in-out duration-300
 			w-full p-3
 			text-gray-900
-			
 			'
-		>
+			>
 
 
-			{row.title}
+				{row.title}
 
 
 
-		</Link>
+			</Link>
 
 		</RowBlock>
 

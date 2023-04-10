@@ -8,10 +8,18 @@ import CellBlock from '../../../components/blocks/CellBlock';
 import InputBlock from '../../../components/blocks/InputBlock';
 import RowBlock from '../../../components/blocks/RowBlock';
 
-import DeleteIcon from '../../../components/UI/Icons/DeleteIcon';
-import EditIcon from '../../../components/UI/Icons/EditIcon';
-import SaveIcon from '../../../components/UI/Icons/SaveIcon';
+
 import TextBlock from '../../../components/blocks/TextBlock';
+
+
+
+import { BiSave } from "react-icons/bi";
+import { BiEdit } from "react-icons/bi";
+import { BiEditAlt } from "react-icons/bi";
+import { BiPlus } from "react-icons/bi";
+import { BiCheck } from "react-icons/bi";
+import { BiX } from "react-icons/bi";
+import { BiTrash } from "react-icons/bi";
 
 
 
@@ -115,7 +123,7 @@ const PalletPosition = ({ positions, setPositions, isPalletEditing, art, pieces,
 
 				:
 				<CellBlock
-					className='space-x-3 flex justify-start items-center p-3 border-2 border-sky-500 rounded'
+					className='space-x-3 flex justify-start items-center p-3 '
 				>
 					<TextBlock className='text-xl text-white rounded bg-rose-500 p-1'>
 						{newArt}
@@ -141,20 +149,20 @@ const PalletPosition = ({ positions, setPositions, isPalletEditing, art, pieces,
 
 						<CellBlock className=''>
 
-						
+
 
 							<ButtonBlock
-								className='inline success  '
+								className='inline success text-xl '
 								onClick={() => handlerPositionSave(id)}
 							>
-								<SaveIcon />
+								<BiCheck />
 							</ButtonBlock>
 
 							<ButtonBlock
-								className='inline delete  '
+								className='inline delete text-xl '
 								onClick={() => handlerPositionDelete(id)}
 							>
-								<DeleteIcon />
+								<BiTrash />
 							</ButtonBlock>
 
 
@@ -169,10 +177,10 @@ const PalletPosition = ({ positions, setPositions, isPalletEditing, art, pieces,
 						<CellBlock className=''>
 
 							<ButtonBlock
-								className='edit  '
+								className='edit text-xl  '
 								onClick={() => handlerPositionEdit(id)}
 							>
-								<EditIcon />
+								<BiEditAlt />
 							</ButtonBlock>
 
 						</CellBlock>

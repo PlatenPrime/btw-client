@@ -7,6 +7,16 @@ import ButtonBlock from '../../../components/blocks/ButtonBlock';
 
 
 
+
+
+import { BiPlus } from "react-icons/bi";
+import { BiCheck } from "react-icons/bi";
+import { BiX } from "react-icons/bi";
+
+
+
+
+
 const RowPalletAdd = ({
 	isPalletCreate,
 	palletTitle,
@@ -35,19 +45,21 @@ const RowPalletAdd = ({
 
 
 						<ButtonBlock
-							className='success'
+							className='success text-xl'
 							onClick={handlerCreatePallet}
 
 						>
-							Создать
+							<BiCheck />
+
 						</ButtonBlock>
 
 
 						<ButtonBlock
-							className='cancel'
+							className='cancel text-xl '
 							onClick={() => setIsPalletCreate(false)}
 						>
-							Не создавать
+							<BiX />
+
 						</ButtonBlock>
 
 
@@ -61,10 +73,12 @@ const RowPalletAdd = ({
 
 
 					<ButtonBlock
-						className='create w-full p-3 '
+						className='create w-full p-3 flex items-center justify-center'
 						onClick={() => setIsPalletCreate(true)}
 					>
+						<BiPlus />
 						Добавить паллету
+						<BiPlus />
 					</ButtonBlock>
 
 

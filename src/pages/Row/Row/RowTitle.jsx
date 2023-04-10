@@ -1,9 +1,16 @@
 
 import React, { useEffect, useState } from 'react';
+
+
+import { BiSave } from "react-icons/bi";
+import { BiEditAlt} from "react-icons/bi";
+import { BiPlus} from "react-icons/bi";
+
+
+
 import ButtonBlock from '../../../components/blocks/ButtonBlock';
 import InputBlock from '../../../components/blocks/InputBlock';
 import RowBlock from '../../../components/blocks/RowBlock';
-import CellBlock from '../../../components/blocks/CellBlock';
 import TextBlock from '../../../components/blocks/TextBlock';
 
 
@@ -42,15 +49,14 @@ const RowTitle = ({ title, setTitle }) => {
 			{isEditingTitle
 
 				?
+(
 
+				<>
 
-				<CellBlock>
-
-
-					<TextBlock className='mx-2 text-xl text-orange-700'>Новое название ряда</TextBlock>
+					
 
 					<InputBlock
-						className=' text-center text-xl text-orange-700'
+						className=' text-center text-2xl text-orange-700'
 						type="text"
 						value={newTitle}
 						placeholder='Название...'
@@ -60,29 +66,31 @@ const RowTitle = ({ title, setTitle }) => {
 
 
 					<ButtonBlock
-						className='confirm'
+						className='confirm text-xl'
 						onClick={handlerSaveTitle}
 					>
-						Сохранить
+						<BiSave/>
 
 					</ButtonBlock>
 
-				</CellBlock>
 
+					</>
+			
 
+)
 
 
 				:
 
+(
 
-
-				<CellBlock>
+				<>
 
 					{title &&
 
-						<TextBlock className=' mx-2 text-xl text-orange-700 '>
+						<TextBlock className=' mx-2 text-2xl text-orange-700 '>
 
-							Название ряда:  {newTitle}
+							 {newTitle}
 
 						</TextBlock>}
 
@@ -95,26 +103,30 @@ const RowTitle = ({ title, setTitle }) => {
 
 
 							<ButtonBlock
-								className='edit'
+								className='edit text-xl'
 								onClick={handlerEditTitle}
 							>
-								Редактировать
+								<BiEditAlt/>
 							</ButtonBlock>
 
 							:
 
 
 							<ButtonBlock
-								className='add '
+								className='add flex items-center '
 								onClick={handlerEditTitle}
 							>
+								<BiPlus/>
 								Добавить название
+								<BiPlus/>
 							</ButtonBlock>
 					}
 
 
 
-				</CellBlock>
+				</>
+
+)
 			}
 
 
