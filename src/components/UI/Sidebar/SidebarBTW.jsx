@@ -11,6 +11,10 @@ const SidebarBTW = () => {
 
 	const activeStyles = {
 		color: "white",
+		backgroundColor: "lightblue",
+		
+	
+	
 
 	}
 
@@ -31,11 +35,11 @@ const SidebarBTW = () => {
 	return (
 
 		<div className='hidden  min-h-screen md:min-w-fit md:w-1/6 
-		md:flex flex-col justify-start items-center space-y-8
+		md:flex flex-col justify-start items-stratch text-center space-y-8
 
 		sticky top-0
 
-		bg-gradient-to-r from-cyan-500 to-blue-500
+		bg-white bg-opacity-20
 
 		 '>
 
@@ -43,9 +47,10 @@ const SidebarBTW = () => {
 			<NavLink
 				to={"/"}
 				style={({ isActive }) => isActive ? activeStyles : undefined}
+				className="bg-red-600"
 			>
 
-				<div className='flex items-center h-16 text-gray-700 '>
+				<div className='flex items-center justify-center w-full h-16 text-gray-100 bg-sky-800 hover:bg-sky-700 '>
 
 					BTW
 

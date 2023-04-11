@@ -103,27 +103,30 @@ const PalletPosition = ({ positions, setPositions, isPalletEditing, art, pieces,
 			{isPalletEditing && isPositionEditing ?
 
 
-				<CellBlock>
+				(<CellBlock
+					className='space-x-3 flex  justify-start items-center p-2 '
+				>
 
 					<InputBlock type="text"
-						className=''
+						className='p-1 text-xl text-center '
 						value={newArt}
 						onChange={(e) => setNewArt(e.target.value)}
 
 					/>
+					<TextBlock className='text-xl'>:</TextBlock>
 
 					<InputBlock type="number"
-						className=''
+						className='p-1 text-xl text-center  '
 						value={newPieces}
 						onChange={(e) => setNewPieces(e.target.value)}
 					/>
 
 
-				</CellBlock>
+				</CellBlock>)
 
 				:
-				<CellBlock
-					className='space-x-3 flex justify-start items-center p-3 '
+				(<CellBlock
+					className='space-x-3   flex justify-start items-center p-2 '
 				>
 					<TextBlock className='text-xl text-white rounded bg-rose-500 p-1'>
 						{newArt}
@@ -132,10 +135,10 @@ const PalletPosition = ({ positions, setPositions, isPalletEditing, art, pieces,
 					<TextBlock className='text-xl'>:</TextBlock>
 
 					<TextBlock className='text-xl text-white rounded bg-purple-500 p-1' >
-						{newPieces} шт
+						{newPieces}
 					</TextBlock>
 
-				</CellBlock>
+				</CellBlock>)
 			}
 
 
