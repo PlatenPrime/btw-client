@@ -134,8 +134,7 @@ const PalletPage = () => {
 
 	return (
 		<PageBTW
-			className='
-			bg-gradient-to-r from-amber-100 to-yellow-100'
+			
 
 		>
 

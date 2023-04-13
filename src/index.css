@@ -8,7 +8,7 @@
 body {
 	
 	font-family: 'Poppins', sans-serif;
-	 background-color: #00a4af; 
+	 background-color: #001736cb; 
 
 
 
@@ -54,6 +54,20 @@ body {
 		@apply
 		w-full  flex flex-col max-h-screen
 	}
+
+
+	
+	.MainBTW {
+		@apply
+		flex flex-col md:flex-row h-full w-full max-h-screen   overflow-auto
+	}
+
+
+	.ContentMain {
+		@apply
+		w-full md:w-3/4  max-h-screen min-h-full  overflow-auto
+	}
+
 
 
 

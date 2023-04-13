@@ -105,10 +105,7 @@ const ArtFindPage = () => {
 
 		<PageBTW
 
-			className="
 		
-			bg-gradient-to-r from-green-100 to-teal-100
-			"
 		>
 
 

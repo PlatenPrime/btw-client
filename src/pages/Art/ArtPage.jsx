@@ -96,7 +96,7 @@ const ArtPage = () => {
 
 
 	return (
-		<PageBTW className="bg-gradient-to-r from-rose-100 to-pink-100" >
+		<PageBTW  >
 
 
 
@@ -110,7 +110,7 @@ const ArtPage = () => {
 			<MainBTW>
 
 
-				<ContentMain>
+				<ContentMain   >
 
 					<CardBlock 
 					className="
@@ -133,7 +133,7 @@ const ArtPage = () => {
 						<CellBlock className='flex flex-col h-full justify-evenly ' >
 
 
-							<TextBlock className='text-xl my-2 p-4 w-full rounded border-2 border-rose-700 hover:border-rose-900 ' >{art.name}</TextBlock>
+							<TextBlock className='text-xl text-white  my-2 p-4 w-full rounded border-2 border-rose-700 hover:border-rose-900 ' >{art.name}</TextBlock>
 
 							<TextBlock className='text-2xl my-2 p-4 rounded bg-rose-500 text-white'  > Зона: {art.zone}</TextBlock>
 

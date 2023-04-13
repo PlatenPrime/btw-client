@@ -184,11 +184,7 @@ const RowPage = () => {
 	return (
 
 
-		<PageBTW className="
-		
-		bg-gradient-to-r from-orange-100 to-amber-100
-		
-		" >
+		<PageBTW  >
 
 
 			<HeaderBlock
@@ -206,15 +202,15 @@ const RowPage = () => {
 
 
 
-			<MainBTW>
+			<MainBTW  >
 
 
-				<ContentMain>
+				<ContentMain   >
 
-					<CardBlock className="p-2" >
+					<CardBlock className="p-2  " >
 
 
-						<TextBlock className="text-2xl text-white rounded m-1 p-3 bg-amber-500" >
+						<TextBlock className="text-2xl text-white   rounded m-1 p-3 bg-amber-500" >
 							Паллеты
 						</TextBlock>
 

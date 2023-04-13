@@ -1,8 +1,27 @@
 import React from 'react';
 
-const ContentMain = ({ children }) => {
+
+
+
+
+
+
+const ContentMain = ({ children, className }) => {
+
+
+	const style = `
+	
+	ContentMain
+	${className}
+
+`
+
+
+
+
+
 	return (
-		<div className='w-full md:w-3/4  max-h-screen min-h-full  overflow-auto' >
+		<div className={style} >
 			{children}
 		</div>
 	);

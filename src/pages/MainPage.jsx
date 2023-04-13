@@ -42,7 +42,7 @@ const MainPage = () => {
 
 
 	return (
-		<PageBTW className='bg-gradient-to-r from-cyan-100 to-blue-100 '  >
+		<PageBTW  >
 
 			<HeaderBlock className='bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-green-400  hover:to-yellow-500' >
 
@@ -55,7 +55,7 @@ const MainPage = () => {
 			<MainBTW>
 
 
-				<ContentMain >
+				<ContentMain     >
 
 					<CardBlock className=" bg-gradient-to-r from-sky-500 to-indigo-500" >
 

@@ -71,10 +71,7 @@ const RowsPage = () => {
 
 
 
-		<PageBTW className="
-		bg-gradient-to-r from-orange-100 to-amber-100
-		
-		"  >
+		<PageBTW  >
 
 
 			<HeaderBlock className="bg-orange-500" >
@@ -91,7 +88,7 @@ const RowsPage = () => {
 
 
 
-				<ContentMain>
+				<ContentMain  >
 
 
 

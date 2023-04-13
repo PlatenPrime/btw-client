@@ -1,8 +1,19 @@
 import React from 'react';
 
-const MainBTW = ({ children }) => {
+const MainBTW = ({ children, className }) => {
+
+	const style = `
+	
+	MainBTW
+	${className}
+
+`
+
+
+
+
 	return (
-		<div className=" flex flex-col md:flex-row h-full w-full max-h-screen   overflow-auto ">
+		<div className={style}>
 			{children}
 		</div>
 	);
