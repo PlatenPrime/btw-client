@@ -8,8 +8,8 @@
 body {
 	
 	font-family: 'Poppins', sans-serif;
-	 background-color: #001736cb; 
-
+	background-color: rgb(15 23 42);
+color: aliceblue;
 
 
 
@@ -28,7 +28,7 @@ body {
   }
   
   ::-webkit-scrollbar-thumb {
-	background: rgba(0, 68, 255, 0.1);
+	background: rgba(72, 212, 255, 0.781);
 	opacity: 10%;
 	border-radius: 8px; /* Roundness of the scrollbar thumb */
   }
@@ -65,7 +65,7 @@ body {
 
 	.ContentMain {
 		@apply
-		w-full md:w-3/4  max-h-screen min-h-full  overflow-auto
+		w-full md:w-3/4  max-h-screen min-h-full  overflow-auto p-2
 	}
 
 
@@ -100,7 +100,7 @@ body {
 	@apply
 	
 	p-1 m-1 rounded
-	bg-white bg-opacity-20	
+	bg-white bg-opacity-10	
 	shadow hover:shadow-lg
 	transition ease-in-out duration-300		
 }
@@ -184,15 +184,15 @@ transition ease-in-out duration-300
 
 .edit {
 	@apply 
-	 border border-blue-500 bg-transparent text-blue-500 
-	  hover:bg-blue-200 hover:text-blue-800
-	   focus:text-blue-800 active:text-white active:bg-blue-300 
+	 border border-blue-300 bg-transparent  text-blue-300 
+	  hover:bg-blue-200 hover:text-blue-600
+	    active:text-white active:bg-blue-300 
 }
 
 .edit-c {
 	@apply 
 	 border border-blue-500 bg-blue-500 text-gray-100  
-	  hover:bg-blue-400 active:bg-blue-600 
+	  hover:bg-blue-400 active:bg-blue-800 
 	  hover:text-white focus:text-white active:text-white
 		hover:shadow-xl
 }
@@ -203,9 +203,9 @@ transition ease-in-out duration-300
 .create {
 	@apply 
 	
-	border border-cyan-500 bg-transparent text-cyan-500 
+	border border-cyan-300 bg-transparent text-cyan-300 
 	hover:bg-cyan-200 hover:text-cyan-800
-	 focus:text-cyan-800 active:text-white active:bg-cyan-300 
+	 active:text-white active:bg-cyan-300 
 
 }
 
@@ -221,15 +221,12 @@ transition ease-in-out duration-300
 
 
 
-
-
-
 .cancel {
 	@apply
 	 
-	border border-red-500 bg-transparent text-red-500 
+	border border-red-300 bg-transparent text-red-300 
 	hover:bg-red-200 hover:text-red-800
-	 focus:text-red-800 active:text-white active:bg-red-300 
+	  active:text-white active:bg-red-300 
 
 }
 
@@ -246,15 +243,15 @@ transition ease-in-out duration-300
 
 .success {
 	@apply
-	border border-green-500 bg-transparent text-green-500 
-	hover:bg-green-200 hover:text-green-800
-	 focus:text-green-800 active:text-white active:bg-green-300 
+	border border-green-300 bg-transparent text-green-300 
+	hover:bg-green-200 hover:text-green-600
+	 active:text-white active:bg-green-300 
 }
 
 .success-c {
 	@apply
 	border border-green-500 bg-green-500 text-gray-100 
-	  hover:bg-green-400 active:bg-green-600  
+	  hover:bg-green-400 active:bg-green-800  
 	  hover:text-white focus:text-white active:text-white
 	 hover:shadow-xl
 }
@@ -266,8 +263,8 @@ transition ease-in-out duration-300
 .delete {
 	@apply
  
-	border border-red-500 bg-red-200 text-red-800 
-	  hover:bg-red-600 hover:text-white
+	border border-red-600 bg-red-600 text-red-100 
+	  hover:bg-red-800 hover:text-white
 	    active:text-white active:bg-red-700 
 }
 
@@ -285,9 +282,9 @@ transition ease-in-out duration-300
 
 .confirm {
 	@apply
-	border border-yellow-500 bg-transparent text-yellow-500 
+	border border-yellow-300 bg-transparent text-yellow-300 
 	hover:bg-yellow-200 hover:text-yellow-800
-	 focus:text-yellow-800 active:text-white active:bg-yellow-300 
+	  active:text-white active:bg-yellow-300 
 }
 
 .confirm-c {
@@ -306,9 +303,9 @@ transition ease-in-out duration-300
 
 .add {
 	@apply
-	border border-fuchsia-500 bg-transparent text-fuchsia-500 
+	border border-fuchsia-300 bg-transparent text-fuchsia-300 
 	hover:bg-fuchsia-200 hover:text-fuchsia-800
-	 focus:text-fuchsia-800 active:text-white active:bg-fuchsia-300 
+	  active:text-white active:bg-fuchsia-300 
 }
 
 .add-c {
@@ -322,9 +319,9 @@ transition ease-in-out duration-300
 
 .search {
 	@apply
-	border border-teal-500 bg-transparent text-teal-500 
+	border border-teal-300 bg-transparent text-teal-300 
 	hover:bg-teal-200 hover:text-teal-800
-	 focus:text-teal-800 active:text-white active:bg-teal-300 
+	  active:text-white active:bg-teal-300 
 }
 
 .search-c {

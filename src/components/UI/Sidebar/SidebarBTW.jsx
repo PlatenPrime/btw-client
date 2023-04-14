@@ -39,7 +39,7 @@ const SidebarBTW = () => {
 
 		sticky top-0
 
-		bg-white bg-opacity-20
+		bg-white bg-opacity-0
 
 		 '>
 

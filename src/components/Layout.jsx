@@ -15,7 +15,7 @@ const Layout = ({ children }) => {
 
 
 	const [mobileSide, setMobileSide] = useState(false)
-	const [mobileControl, setMobileControl] = useState(true)
+	const [mobileControl, setMobileControl] = useState(false)
 
 	const handlerMobileSide = () => {
 		setMobileSide(prev => !prev)

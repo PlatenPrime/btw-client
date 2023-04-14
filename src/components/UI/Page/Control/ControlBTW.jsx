@@ -13,7 +13,7 @@ const ControlBTW = ({ children }) => {
 
 			<div className=" hidden min-h-fit h-full max-h-screen w-1/4 p-2 
 			md:flex flex-col items-center justify-start
-			bg-white bg-opacity-20
+			bg-white bg-opacity-0
 			
 			">
 
