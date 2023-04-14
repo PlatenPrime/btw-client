@@ -1,0 +1,168 @@
+.spinner {
+	padding: 100px;
+	width: 200px;
+	height: 200px;
+	
+	display: grid;
+	place-content: center;
+	animation: scale 2s  infinite alternate ;
+}
+
+
+.circle1 {
+	aspect-ratio: 1/1;
+	width:150px;
+	height:150px;
+	display: grid;
+	place-content: center;
+	border-radius: 50%;
+	border: 3px solid rgb(0, 47, 255);
+	box-shadow: 0px 0px 10px 5px rgb(0, 47, 255);
+	border-bottom-color: transparent;
+
+
+	background-color: transparent;
+	
+
+animation: rotate1 2.5s  infinite alternate;
+
+
+}
+.circle2 {
+	aspect-ratio: 1/1;
+	width:120px;
+	height:120px;
+	display: grid;
+	place-content: center;
+	border-radius: 50%;
+	border: 3px solid rgb(255, 51, 0);
+	box-shadow: 0px 0px 10px 5px rgb(255, 51, 0);
+	
+	border-left-color: transparent;
+	
+
+
+	background-color: transparent;
+	
+
+animation: rotate2 2s  infinite alternate ;
+
+
+
+}
+.circle3 {
+	aspect-ratio: 1/1;
+	width:90px;
+	height:90px;
+	display: grid;
+	place-content: center;
+	border-radius: 50%;
+	border: 3px solid rgb(251, 255, 0);
+	box-shadow: 0px 0px 10px 5px rgb(251, 255, 0);
+
+	border-right-color: transparent;
+	
+	
+	background-color: transparent;
+	
+
+animation: rotate1 1.5s  infinite alternate ;
+
+}
+.circle4 {
+	aspect-ratio: 1/1;
+	width:60px;
+	height:60px;
+	display: grid;
+	place-content: center;
+	border-radius: 50%;
+	border: 3px solid rgb(0, 255, 34);
+	box-shadow: 0px 0px 10px 5px rgb(0, 255, 34);
+	border-top-color: transparent;
+
+
+	
+	background-color: transparent;
+	
+
+animation: rotate2 1s  infinite alternate ;
+
+}
+
+.circle5 {
+	aspect-ratio: 1/1;
+	width:30px;
+	height:30px;
+	display: grid;
+	place-content: center;
+	border-radius: 50%;
+	border: 3px solid rgb(0, 238, 255);
+	box-shadow: 0px 0px 10px 5px rgb(0, 238, 255);
+	border-bottom-color: transparent;
+	
+	
+	
+	
+	
+
+animation: rotate1 0.5s  infinite alternate ;
+
+
+}
+
+
+  @keyframes rotate1 {
+	0% {
+	  transform: rotate(0);
+	 
+	}
+  
+	100% {
+	  transform: rotate(480deg);
+	  
+	}
+  }
+
+   @keyframes rotate2 {
+	0% {
+	  transform: rotate(720deg);
+	 
+	}
+  
+	100% {
+	  transform: rotate(0);
+	  
+	}
+  }
+
+  @keyframes scale {
+	0% {
+	  
+	  transform: scale(1)
+	}
+  
+	100% {
+	
+	  transform: scale(1.5)
+	}
+  }
+
+
+
+
+
+
+   @keyframes text-color {
+	0% {
+	  color: rgb(255, 255, 255);
+	}
+  
+	50% {
+	  color: rgba(255, 255, 255, 0.5);
+	}
+  
+	100% {
+	  color: rgba(255, 255, 255, 0.1);
+	}
+  }
+  

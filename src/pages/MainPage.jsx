@@ -29,6 +29,7 @@ import { BiPlus } from "react-icons/bi";
 import { BiCheck } from "react-icons/bi";
 import { BiX } from "react-icons/bi";
 import { BiTrash } from "react-icons/bi";
+import Spinner from '../components/Spinner/Spinner';
 
 
 
@@ -95,6 +96,10 @@ const MainPage = () => {
 						<BiTrash />
 
 					</RowBlock>
+
+					<CardBlock className="flex items-center justify-center p-10" >
+<Spinner/>
+					</CardBlock>
 
 
 
