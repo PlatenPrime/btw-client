@@ -71,9 +71,9 @@ const MainPage = () => {
 
 
 
-					
 
-					<CardBlock>
+
+					<CardBlock className="grid md:grid-cols-3" >
 						<ButtonBlock className='edit'   >Edit</ButtonBlock>
 						<ButtonBlock className='create' >Create</ButtonBlock>
 						<ButtonBlock className='cancel' >Cancel</ButtonBlock>
@@ -102,7 +102,7 @@ const MainPage = () => {
 
 
 
-				<ControlBTW>
+				<ControlBTW  >
 					<ButtonBlock className='edit-c w-full' >Edit-c</ButtonBlock>
 					<ButtonBlock className='create-c w-full' >Create-c</ButtonBlock>
 					<ButtonBlock className='cancel-c w-full' >Cancel-c</ButtonBlock>

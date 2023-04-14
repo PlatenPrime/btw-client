@@ -32,7 +32,7 @@ const RowPallets = ({ pallets }) => {
 
 			{newPallets &&
 
-				<ListBlock className=' w-full'>
+				<ListBlock className=' w-full grid grid-cols-3 '>
 
 					{
 						newPallets.map((pallet) => {

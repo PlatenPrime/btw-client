@@ -18,11 +18,11 @@ const RowPallet = ({ title, id }) => {
 
 	return (
 
-		<RowBlock>
+	
 
 			<Link
 				className=' flex justify-center
-				w-full  p-3 rounded 
+				  p-3 rounded 
 				border-2 border-amber-500 hover:border-orange-700
 
 
@@ -42,7 +42,7 @@ const RowPallet = ({ title, id }) => {
 				{title}
 			</Link>
 
-		</RowBlock>
+		
 
 	);
 };

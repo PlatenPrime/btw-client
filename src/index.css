@@ -186,7 +186,7 @@ transition ease-in-out duration-300
 	@apply 
 	 border border-blue-300 bg-transparent  text-blue-300 
 	  hover:bg-blue-200 hover:text-blue-600
-	    active:text-white active:bg-blue-300 
+	    active:text-white active:bg-blue-500 
 }
 
 .edit-c {
@@ -205,7 +205,7 @@ transition ease-in-out duration-300
 	
 	border border-cyan-300 bg-transparent text-cyan-300 
 	hover:bg-cyan-200 hover:text-cyan-800
-	 active:text-white active:bg-cyan-300 
+	 active:text-white active:bg-cyan-500 
 
 }
 
@@ -226,7 +226,7 @@ transition ease-in-out duration-300
 	 
 	border border-red-300 bg-transparent text-red-300 
 	hover:bg-red-200 hover:text-red-800
-	  active:text-white active:bg-red-300 
+	  active:text-white active:bg-red-500 
 
 }
 
@@ -245,7 +245,7 @@ transition ease-in-out duration-300
 	@apply
 	border border-green-300 bg-transparent text-green-300 
 	hover:bg-green-200 hover:text-green-600
-	 active:text-white active:bg-green-300 
+	 active:text-white active:bg-green-500 
 }
 
 .success-c {
@@ -284,7 +284,7 @@ transition ease-in-out duration-300
 	@apply
 	border border-yellow-300 bg-transparent text-yellow-300 
 	hover:bg-yellow-200 hover:text-yellow-800
-	  active:text-white active:bg-yellow-300 
+	  active:text-white active:bg-yellow-500 
 }
 
 .confirm-c {
@@ -305,7 +305,7 @@ transition ease-in-out duration-300
 	@apply
 	border border-fuchsia-300 bg-transparent text-fuchsia-300 
 	hover:bg-fuchsia-200 hover:text-fuchsia-800
-	  active:text-white active:bg-fuchsia-300 
+	  active:text-white active:bg-fuchsia-500 
 }
 
 .add-c {
@@ -321,7 +321,7 @@ transition ease-in-out duration-300
 	@apply
 	border border-teal-300 bg-transparent text-teal-300 
 	hover:bg-teal-200 hover:text-teal-800
-	  active:text-white active:bg-teal-300 
+	  active:text-white active:bg-teal-500 
 }
 
 .search-c {
