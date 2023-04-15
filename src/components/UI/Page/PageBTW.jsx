@@ -2,7 +2,9 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { checkIsAuth } from '../../../redux/features/auth/authSlice';
-import Loading from './Loading/Loading';
+
+import SpinnerBlock from '../../blocks/SpinnerBlock';
+import CardBlock from '../../blocks/CardBlock';
 
 const PageBTW = ({ children, className }) => {
 
@@ -33,11 +35,11 @@ const PageBTW = ({ children, className }) => {
 			{!isAuth &&
 
 
-				<div className=' w-full flex justify-center items-center '  >
+				<CardBlock className=' w-full flex justify-center items-center '  >
 
-					<Loading />
+					<SpinnerBlock />
 
-				</div>
+				</CardBlock>
 
 			}
 

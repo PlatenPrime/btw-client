@@ -12,7 +12,7 @@ import CellBlock from '../../../components/blocks/CellBlock';
 
 
 
-import { BiPlus } from "react-icons/bi";
+import { BiPlus, BiSave } from "react-icons/bi";
 import { BiCheck } from "react-icons/bi";
 import { BiX } from "react-icons/bi";
 
@@ -100,7 +100,7 @@ const PalletPositionAdd = ({ positions, setPositions }) => {
 							className=' success text-xl '
 							onClick={handlerPositionAddSave}
 						>
-							<BiCheck />
+							<BiSave />
 
 						</ButtonBlock>
 

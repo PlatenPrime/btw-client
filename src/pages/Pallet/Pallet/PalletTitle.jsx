@@ -10,7 +10,7 @@ import CellBlock from '../../../components/blocks/CellBlock';
 
 
 
-import { BiSave } from "react-icons/bi";
+import { BiCheck, BiSave } from "react-icons/bi";
 import { BiEditAlt } from "react-icons/bi";
 import { BiPlus } from "react-icons/bi";
 
@@ -70,7 +70,7 @@ const PalletTitle = ({ title, setTitle }) => {
 							onClick={handlerSaveTitle}
 
 						>
-							<BiSave />
+							<BiCheck />
 
 
 						</ButtonBlock>}

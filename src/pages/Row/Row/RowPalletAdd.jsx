@@ -9,7 +9,7 @@ import ButtonBlock from '../../../components/blocks/ButtonBlock';
 
 
 
-import { BiPlus } from "react-icons/bi";
+import { BiPlus, BiSave } from "react-icons/bi";
 import { BiCheck } from "react-icons/bi";
 import { BiX } from "react-icons/bi";
 
@@ -49,7 +49,7 @@ const RowPalletAdd = ({
 							onClick={handlerCreatePallet}
 
 						>
-							<BiCheck />
+							<BiSave />
 
 						</ButtonBlock>
 

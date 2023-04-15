@@ -18,7 +18,6 @@ import MainBTW from '../../components/UI/Page/MainBTW';
 
 
 
-import Loading from '../../components/UI/Page/Loading/Loading';
 
 import ContentMain from '../../components/UI/Page/ContentMain';
 import ButtonBlock from '../../components/blocks/ButtonBlock';
@@ -26,6 +25,7 @@ import ListBlock from '../../components/blocks/ListBlock';
 import HeaderBlock from '../../components/blocks/HeaderBlock';
 import CardBlock from '../../components/blocks/CardBlock';
 import TextBlock from '../../components/blocks/TextBlock';
+import SpinnerBlock from '../../components/blocks/SpinnerBlock';
 
 
 
@@ -97,7 +97,7 @@ const RowsPage = () => {
 						isLoading ?
 
 
-							<Loading />
+							<SpinnerBlock />
 
 
 							:

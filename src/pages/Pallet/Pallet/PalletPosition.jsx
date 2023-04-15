@@ -158,7 +158,7 @@ const PalletPosition = ({ positions, setPositions, isPalletEditing, art, pieces,
 								className='inline success text-xl '
 								onClick={() => handlerPositionSave(id)}
 							>
-								<BiCheck />
+								<BiSave />
 							</ButtonBlock>
 
 							<ButtonBlock

@@ -16,11 +16,13 @@
 	display: grid;
 	place-content: center;
 	border-radius: 50%;
-	border: 3px solid rgb(0, 47, 255);
-	box-shadow: 0px 0px 10px 5px rgb(0, 47, 255);
+	border: 1rem solid rgb(0, 238, 255);
+	box-shadow: 0px 0px 1rem 5px rgb(0, 238, 255);
 	border-bottom-color: transparent;
+	border-top-color: transparent;
 
 
+	mix-blend-mode: normal;
 	background-color: transparent;
 	
 
@@ -35,12 +37,13 @@ animation: rotate1 2.5s  infinite alternate;
 	display: grid;
 	place-content: center;
 	border-radius: 50%;
-	border: 3px solid rgb(255, 51, 0);
-	box-shadow: 0px 0px 10px 5px rgb(255, 51, 0);
+	border: 1rem solid rgb(3, 61, 255);
+	box-shadow: 0px 0px 1rem 5px rgb(0, 238, 255);
 	
 	border-left-color: transparent;
+	border-right-color: transparent;
 	
-
+	mix-blend-mode: normal;
 
 	background-color: transparent;
 	
@@ -57,12 +60,14 @@ animation: rotate2 2s  infinite alternate ;
 	display: grid;
 	place-content: center;
 	border-radius: 50%;
-	border: 3px solid rgb(251, 255, 0);
-	box-shadow: 0px 0px 10px 5px rgb(251, 255, 0);
+	border: 1rem solid rgb(255, 0, 221);
+	box-shadow: 0px 0px 1rem 5px rgb(3, 61, 255);
 
+	border-left-color: transparent;
 	border-right-color: transparent;
 	
 	
+	mix-blend-mode: normal;
 	background-color: transparent;
 	
 
@@ -76,12 +81,13 @@ animation: rotate1 1.5s  infinite alternate ;
 	display: grid;
 	place-content: center;
 	border-radius: 50%;
-	border: 3px solid rgb(0, 255, 34);
-	box-shadow: 0px 0px 10px 5px rgb(0, 255, 34);
+	border: 1rem solid rgb(231, 4, 34);
+	box-shadow: 0px 0px 1rem 5px rgb(255, 0, 221);
 	border-top-color: transparent;
+	border-bottom-color: transparent;
 
 
-	
+	mix-blend-mode: normal;
 	background-color: transparent;
 	
 
@@ -96,12 +102,13 @@ animation: rotate2 1s  infinite alternate ;
 	display: grid;
 	place-content: center;
 	border-radius: 50%;
-	border: 3px solid rgb(0, 238, 255);
-	box-shadow: 0px 0px 10px 5px rgb(0, 238, 255);
+	border: 1rem solid rgb(91, 248, 0);
+	box-shadow: 0px 0px 1rem 5px rgb(231, 4, 34);
 	border-bottom-color: transparent;
+	border-top-color: transparent;
 	
 	
-	
+	mix-blend-mode: normal;
 	
 	
 
@@ -118,14 +125,14 @@ animation: rotate1 0.5s  infinite alternate ;
 	}
   
 	100% {
-	  transform: rotate(480deg);
+	  transform: rotate(1000deg);
 	  
 	}
   }
 
    @keyframes rotate2 {
 	0% {
-	  transform: rotate(720deg);
+	  transform: rotate(1000deg);
 	 
 	}
   
@@ -138,12 +145,12 @@ animation: rotate1 0.5s  infinite alternate ;
   @keyframes scale {
 	0% {
 	  
-	  transform: scale(1)
+	  transform: scale(0.5)
 	}
   
 	100% {
 	
-	  transform: scale(1.5)
+	  transform: scale(1)
 	}
   }
 

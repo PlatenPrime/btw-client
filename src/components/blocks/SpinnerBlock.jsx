@@ -1,5 +1,6 @@
 import React from 'react';
-import Loading from '../UI/Page/Loading/Loading';
+import Spinner from '../Spinner/Spinner';
+
 
 const SpinnerBlock = () => {
 
@@ -8,7 +9,7 @@ const SpinnerBlock = () => {
 	return (
 		
 			
-				<Loading/>
+				<Spinner/>
 		
 		
 	);

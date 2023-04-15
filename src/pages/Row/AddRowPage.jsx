@@ -9,6 +9,11 @@ import { checkIsAuth } from '../../redux/features/auth/authSlice';
 
 
 import RowItem from '../../pages/Row/Row/RowItem';
+
+
+
+
+
 import PageBTW from '../../components/UI/Page/PageBTW';
 import MainBTW from '../../components/UI/Page/MainBTW';
 import ControlBTW from '../../components/UI/Page/Control/ControlBTW';
@@ -17,6 +22,9 @@ import ControlBTW from '../../components/UI/Page/Control/ControlBTW';
 import ContentMain from '../../components/UI/Page/ContentMain';
 import ButtonBlock from '../../components/blocks/ButtonBlock';
 import HeaderBlock from '../../components/blocks/HeaderBlock';
+import CardBlock from '../../components/blocks/CardBlock';
+import RowTitle from './Row/RowTitle';
+import RowPallets from './Row/RowPallets';
 
 
 
@@ -80,9 +88,9 @@ const AddRowPage = () => {
 
 
 			<HeaderBlock className='bg-gradient-to-r from-emerald-500 to-teal-500' >
-				
-					Создание ряда
-				
+
+				Создание ряда
+
 			</HeaderBlock>
 
 
@@ -93,12 +101,25 @@ const AddRowPage = () => {
 
 				<ContentMain>
 
-					<RowItem
-						isRowEditing={isRowEditing}
-						title={title}
-						setTitle={setTitle}
 
-					/>
+					<CardBlock>
+
+
+
+						<RowTitle
+							isRowEditing={isRowEditing}
+							title={title}
+							setTitle={setTitle}
+
+
+						/>
+
+
+
+
+					</CardBlock>
+
+
 
 
 				</ContentMain>
@@ -117,12 +138,14 @@ const AddRowPage = () => {
 						Очистить форму
 					</ButtonBlock>
 
+
+
 					<ButtonBlock
-					
+
 						className='success-c w-full '
 						onClick={handlerSubmit}
 					>
-						Сохранить ряд в БД
+						Создать
 					</ButtonBlock>
 
 

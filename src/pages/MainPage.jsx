@@ -22,7 +22,7 @@ import HeaderBlock from '../components/blocks/HeaderBlock';
 import RowBlock from '../components/blocks/RowBlock';
 
 
-import { BiSave } from "react-icons/bi";
+import { BiSave, BiSearch } from "react-icons/bi";
 import { BiEdit } from "react-icons/bi";
 import { BiEditAlt } from "react-icons/bi";
 import { BiPlus } from "react-icons/bi";
@@ -58,9 +58,36 @@ const MainPage = () => {
 
 				<ContentMain     >
 
-					<CardBlock className=" bg-gradient-to-r from-sky-500 to-indigo-500" >
+					<CardBlock className=" bg-gradient-to-r from-sky-700 to-indigo-700" >
 
 						<SpinnerBlock />
+
+
+						<RowBlock className="text-3xl" >
+							
+							
+							
+							
+							
+							
+							
+
+						</RowBlock>
+
+						<CardBlock className="grid md:grid-cols-3" >
+							<ButtonBlock className='edit text-2xl '   ><BiEditAlt /></ButtonBlock>
+							<ButtonBlock className='create text-2xl' ><BiPlus /></ButtonBlock>
+							<ButtonBlock className='cancel text-2xl' ><BiX /></ButtonBlock>
+							<ButtonBlock className='success text-2xl' ><BiSave /></ButtonBlock>
+							<ButtonBlock className='delete text-2xl' ><BiTrash /></ButtonBlock>
+							<ButtonBlock className='confirm text-2xl' ><BiCheck /></ButtonBlock>
+							<ButtonBlock className='add text-2xl' ><BiPlus /></ButtonBlock>
+							<ButtonBlock className='search text-2xl' ><BiSearch /></ButtonBlock>
+						</CardBlock>
+
+
+
+
 
 					</CardBlock>
 
@@ -86,20 +113,8 @@ const MainPage = () => {
 					</CardBlock>
 
 
-					<RowBlock className="text-3xl" >
-						<BiEdit />
-						<BiEditAlt />
-						<BiPlus />
-						<BiSave />
-						<BiCheck />
-						<BiX />
-						<BiTrash />
 
-					</RowBlock>
 
-					<CardBlock className="flex items-center justify-center p-10" >
-<Spinner/>
-					</CardBlock>
 
 
 
