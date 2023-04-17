@@ -116,7 +116,7 @@ const RowsPage = () => {
 
 										:
 
-										<ListBlock >
+										<ListBlock className="flex flex-col w-full" >
 											{rows?.map((row, idx) => (
 												<RowBage key={idx} row={row} />
 											))}

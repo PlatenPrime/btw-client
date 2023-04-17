@@ -32,7 +32,12 @@ const RowPallets = ({ pallets }) => {
 
 			{newPallets &&
 
-				<ListBlock className=' w-full grid grid-cols-3 '>
+				<ListBlock className=' 
+				w-full 
+				flex flex-col 
+				md:grid md:grid-cols-2
+				lg:grid-cols-4 
+				xl:grid-cols-6 gap-1 '>
 
 					{
 						newPallets.map((pallet) => {

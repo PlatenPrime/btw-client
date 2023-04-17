@@ -24,7 +24,7 @@ const RowBage = ({ row }) => {
 
 	return (
 
-		<RowBlock>
+		<RowBlock  className='w-full'  >
 
 			<Link
 
@@ -33,13 +33,14 @@ const RowBage = ({ row }) => {
 
 				className=' 
 			flex justify-center
-			bg-orange-100 hover:bg-orange-500 
-			 hover:text-white 
-			border-2 
-border-gray-600 hover:border-gray-700
-			rounded transition ease-in-out duration-300
-			w-full p-3
-			text-gray-900
+		w-full p-3 m-1
+			rounded
+			 text-2xl text-orange-100 hover:text-white 
+			bg-transparent hover:bg-orange-500 
+			border-2 border-gray-600 hover:border-orange-500 
+			shadow-2xl hover:shadow-orange-500
+			 transition ease-in-out duration-300
+			
 			'
 			>
 

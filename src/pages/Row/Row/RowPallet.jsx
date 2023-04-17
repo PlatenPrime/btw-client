@@ -1,7 +1,7 @@
 
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { Link, NavLink } from "react-router-dom";
-import RowBlock from '../../../components/blocks/RowBlock';
+
 
 
 
@@ -21,15 +21,13 @@ const RowPallet = ({ title, id }) => {
 	
 
 			<Link
-				className=' flex justify-center
-				  p-3 rounded 
-				border-2 border-amber-500 hover:border-orange-700
-
-
-				bg-orange-100  hover:bg-amber-500
-
-				
-				text-amber-700 hover:text-white
+				className=' w-full
+				flex flex-col items-center justify-start
+				  p-3 my-1 rounded 
+				border-2 border-gray-500 hover:border-amber-500
+				bg-transparent  hover:bg-amber-500
+				text-amber-100 hover:text-white
+				shadow-2xl hover:shadow-amber-500
 			transition ease-in-out duration-300
 			
 			
