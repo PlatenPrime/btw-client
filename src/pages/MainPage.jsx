@@ -64,13 +64,13 @@ const MainPage = () => {
 
 
 						<RowBlock className="text-3xl" >
-							
-							
-							
-							
-							
-							
-							
+
+
+
+
+
+
+
 
 						</RowBlock>
 
@@ -115,6 +115,8 @@ const MainPage = () => {
 
 
 
+			
+
 
 
 
@@ -132,6 +134,10 @@ const MainPage = () => {
 					<ButtonBlock className='add-c w-full' >Add-c</ButtonBlock>
 					<ButtonBlock className='search-c w-full' >Search-c</ButtonBlock>
 				</ControlBTW>
+
+
+
+			
 
 
 			</MainBTW>

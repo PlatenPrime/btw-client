@@ -25,9 +25,9 @@ const RowPallet = ({ title, id }) => {
 				flex flex-col items-center justify-start
 				  p-3 my-1 rounded 
 				border-2 border-gray-500 hover:border-amber-500
-				bg-transparent  hover:bg-amber-500
+				 bg-transparent  
 				text-amber-100 hover:text-white
-				shadow-2xl hover:shadow-amber-500
+				 shadow-inner hover:shadow-amber-500
 			transition ease-in-out duration-300
 			
 			

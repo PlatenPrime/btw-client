@@ -195,12 +195,14 @@ transition ease-in-out duration-300
 	 border border-blue-300 bg-transparent  text-blue-300 
 	  hover:bg-blue-200 hover:text-blue-600
 	    active:text-white active:bg-blue-500 
+		shadow-lg hover:shadow-blue-300
+
 }
 
 .edit-c {
 	@apply 
-	 border border-blue-500 bg-blue-500 text-gray-100  
-	  hover:bg-blue-400 active:bg-blue-800 
+	 border border-blue-500  text-gray-100  
+	 bg-transparent hover:bg-blue-400 active:bg-blue-800 
 	  hover:text-white focus:text-white active:text-white
 	  shadow-2xl hover:shadow-blue-500
 }
@@ -214,14 +216,15 @@ transition ease-in-out duration-300
 	border border-cyan-300 bg-transparent text-cyan-300 
 	hover:bg-cyan-200 hover:text-cyan-800
 	 active:text-white active:bg-cyan-500 
+	 shadow-lg hover:shadow-cyan-300
 
 }
 
 .create-c {
 	@apply 
 	
-	border border-cyan-500 bg-cyan-500 text-gray-100 
-	hover:bg-cyan-400 active:bg-cyan-600 
+	border border-cyan-500  text-gray-100 
+	bg-transparent hover:bg-cyan-400 active:bg-cyan-600 
 	  hover:text-white focus:text-white active:text-white
 	  shadow-2xl hover:shadow-cyan-500
 }
@@ -235,14 +238,15 @@ transition ease-in-out duration-300
 	border border-red-500 bg-transparent text-red-500 
 	hover:bg-red-200 hover:text-red-900
 	  active:text-white active:bg-red-500 
+	  shadow-lg hover:shadow-red-200
 
 }
 
 .cancel-c {
 	@apply
 	 
-	border border-gray-300 bg-gray-100 text-red-500
-	hover:bg-white 
+	border border-red-500  text-white
+	bg-transparent	hover:bg-white hover:text-red-500
 	  active:bg-gray-200 active:text-red-600
 	  shadow-2xl hover:shadow-white
 }
@@ -254,12 +258,13 @@ transition ease-in-out duration-300
 	border border-green-300 bg-transparent text-green-300 
 	hover:bg-green-200 hover:text-green-600
 	 active:text-white active:bg-green-500 
+	 shadow-lg hover:shadow-green-200
 }
 
 .success-c {
 	@apply
-	border border-green-500 bg-green-500 text-gray-100 
-	  hover:bg-green-400 active:bg-green-800  
+	border border-green-500  text-gray-100 
+	bg-transparent hover:bg-green-400 active:bg-green-800  
 	  hover:text-white focus:text-white active:text-white
 	  shadow-2xl hover:shadow-green-500
 }
@@ -272,16 +277,17 @@ transition ease-in-out duration-300
 	@apply
  
 	border border-red-600 bg-red-600 text-red-100 
-	  hover:bg-red-700 hover:text-white
+	  hover:bg-red-500 hover:text-white
 	    active:text-white active:bg-red-900 
+		shadow-lg hover:shadow-red-500
 }
 
 .delete-c {
 	@apply
  
-	border border-red-500 bg-red-500 text-gray-100 
-	  hover:bg-red-400 active:bg-red-600  
-	  hover:text-white focus:text-white active:text-white
+	border border-red-500  text-red-500 
+	bg-transparent hover:bg-red-500 active:bg-red-600  
+	  hover:text-black 
 	  shadow-2xl hover:shadow-red-500
 }
 
@@ -293,13 +299,14 @@ transition ease-in-out duration-300
 	border border-yellow-300 bg-transparent text-yellow-300 
 	hover:bg-yellow-200 hover:text-yellow-800
 	  active:text-white active:bg-yellow-500 
+	  shadow-lg hover:shadow-yellow-200
 }
 
 .confirm-c {
 	@apply
  
-	border border-yellow-500 bg-yellow-500 text-gray-100 
-	  hover:bg-yellow-400 active:bg-yellow-600  
+	border border-yellow-500  text-gray-100 
+	bg-transparent hover:bg-yellow-400 active:bg-yellow-600  
 	  hover:text-white focus:text-white active:text-white
 	  shadow-2xl hover:shadow-yellow-500
 }
@@ -314,13 +321,14 @@ transition ease-in-out duration-300
 	border border-fuchsia-300 bg-transparent text-fuchsia-300 
 	hover:bg-fuchsia-200 hover:text-fuchsia-800
 	  active:text-white active:bg-fuchsia-500 
+	  shadow-lg hover:shadow-fuchsia-200
 }
 
 .add-c {
 	@apply
  
-	border border-fuchsia-500 bg-fuchsia-500 text-gray-100 
-	  hover:bg-fuchsia-400 active:bg-fuchsia-600  
+	border border-fuchsia-500  text-gray-100 
+	bg-transparent hover:bg-fuchsia-400 active:bg-fuchsia-600  
 	  hover:text-white focus:text-white active:text-white
 	  shadow-2xl hover:shadow-fuchsia-500
 }
@@ -330,13 +338,14 @@ transition ease-in-out duration-300
 	border border-teal-300 bg-transparent text-teal-300 
 	hover:bg-teal-200 hover:text-teal-800
 	  active:text-white active:bg-teal-500 
+	  shadow-lg hover:shadow-teal-200
 }
 
 .search-c {
 	@apply
  
-	border border-teal-500 bg-teal-500 text-gray-100 
-	  hover:bg-teal-400 active:bg-teal-600  
+	border border-teal-500  text-gray-100 
+	bg-transparent  hover:bg-teal-400 active:bg-teal-600  
 	  hover:text-white focus:text-white active:text-white
 	  shadow-2xl hover:shadow-teal-500
 }
