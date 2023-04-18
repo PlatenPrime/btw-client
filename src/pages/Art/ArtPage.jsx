@@ -112,8 +112,8 @@ const ArtPage = () => {
 
 				<ContentMain   >
 
-					<CardBlock 
-					className="
+					<CardBlock
+						className="
 					flex flex-col md:flex-row justify-center items-center md:justify-evenly 
 					p-2
 					
@@ -180,9 +180,10 @@ const ArtPage = () => {
 										transition ease-in-out duration-300
 										border-2 border-rose-700 hover:border-rose-900
 
-										bg-rose-100 
+										bg-transparent 
 										hover:bg-rose-500 
-										text-rose-900 hover:text-gray-100
+										text-rose-100 hover:text-gray-100
+										shadow-2xl hover:shadow-rose-500
 									' >
 
 											<span className=' p-1 w-5/12 flex justify-center'>{pallet.title}</span>

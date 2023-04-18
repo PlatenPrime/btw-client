@@ -38,11 +38,11 @@ const PalletPositions = ({ positions, setPositions, isPalletEditing }) => {
 	return (
 
 
-		<CardBlock className='flex justify-center my-2 p-3'>
+		<CardBlock className='  flex justify-center my-2 p-3'>
 
 			{newPositions &&
 
-				<CellBlock className='flex-col space-y-3'>
+				<CellBlock className=' w-full  flex-col space-y-3'>
 
 					{
 						newPositions.map((position) => {
