@@ -57,7 +57,7 @@ const PalletTitle = ({ title, setTitle }) => {
 
 
 					<InputBlock
-						className='text-center text-2xl'
+						className='text-center text-white text-2xl'
 						type="text"
 						value={newTitle}
 						placeholder='Название...'
@@ -92,7 +92,7 @@ const PalletTitle = ({ title, setTitle }) => {
 						<CellBlock className='flex items-center justify-center  ' >
 
 							<TextBlock
-								className='text-2xl text-sky-900'>
+								className='text-3xl text-white'>
 								{newTitle}
 
 

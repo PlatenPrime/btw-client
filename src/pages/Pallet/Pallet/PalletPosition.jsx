@@ -96,7 +96,7 @@ const PalletPosition = ({ positions, setPositions, isPalletEditing, art, pieces,
 
 
 
-		<RowBlock className="w-full" >
+		<RowBlock className="w-full grid grid-cols-3 grid-rows-2" >
 
 
 
@@ -104,19 +104,19 @@ const PalletPosition = ({ positions, setPositions, isPalletEditing, art, pieces,
 
 
 				(<CellBlock
-					className=' w-full  xl:space-x-3 flex  flex-col xl:flex-row justify-start items-center p-2 '
+					className=' w-full col-span-2 row-span-2 '
 				>
 
 					<InputBlock type="text"
-						className=' bg-rose-500 bg-opacity-50 p-1 text-xl text-white text-center '
+						className='col-span-1  bg-rose-500 bg-opacity-50 p-1 text-xl text-white text-center '
 						value={newArt}
 						onChange={(e) => setNewArt(e.target.value)}
 
 					/>
-					<TextBlock className='hidden xl:flex text-xl'>:</TextBlock>
+					
 
 					<InputBlock type="number"
-						className=' bg-purple-500 bg-opacity-50  p-1 text-xl text-white text-center  '
+						className='col-span-1 bg-purple-500 bg-opacity-50  p-1 text-xl text-white text-center  '
 						value={newPieces}
 						onChange={(e) => setNewPieces(e.target.value)}
 					/>
@@ -128,15 +128,15 @@ const PalletPosition = ({ positions, setPositions, isPalletEditing, art, pieces,
 
 
 				(<CellBlock
-					className='w-full flex justify-evenly items-center p-2 '
+					className='w-full col-span-2 flex justify-between  '
 				>
-					<TextBlock className='text-xl min-w-xl text-white rounded bg-rose-500 p-1'>
+					<TextBlock className=' text-xl min-w-xl text-white rounded bg-rose-500 p-1'>
 						{newArt}
 					</TextBlock>
 
-					<TextBlock className='text-xl'>:</TextBlock>
+					
 
-					<TextBlock className='text-xl text-white rounded bg-purple-500 p-1' >
+					<TextBlock className='  text-xl text-white rounded bg-purple-500 p-1' >
 						{newPieces}
 					</TextBlock>
 
