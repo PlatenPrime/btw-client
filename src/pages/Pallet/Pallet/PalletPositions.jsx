@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import PalletPosition from './PalletPosition';
 import CellBlock from '../../../components/blocks/CellBlock';
 import CardBlock from '../../../components/blocks/CardBlock';
+import TextBlock from '../../../components/blocks/TextBlock';
 
 
 
@@ -38,11 +39,15 @@ const PalletPositions = ({ positions, setPositions, isPalletEditing }) => {
 	return (
 
 
-		<CardBlock className='  flex justify-center my-2 p-3'>
+		<>
 
 			{newPositions &&
 
-				<CellBlock className=' w-full  flex-col space-y-3'>
+				<CardBlock className='  flex  flex-col items-center p-3 space-y-2'>
+
+					<TextBlock className=" w-full text-2xl text-white   rounded m-1 p-3 bg-rose-500" >
+						Позиции
+					</TextBlock>
 
 					{
 						newPositions.map((position) => {
@@ -68,12 +73,12 @@ const PalletPositions = ({ positions, setPositions, isPalletEditing }) => {
 					}
 
 
-				</CellBlock>
+				</CardBlock>
 
 			}
 
 
-		</CardBlock>
+		</>
 	);
 };
 

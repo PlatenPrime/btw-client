@@ -38,7 +38,7 @@ const RowBage = ({ row }) => {
 			 text-2xl text-orange-100 hover:text-white 
 			bg-transparent hover:bg-orange-500 
 			border-2 border-gray-600 hover:border-orange-500 
-			shadow-2xl hover:shadow-orange-500
+			 hover:shadow-2xl hover:shadow-orange-500 
 			 transition ease-in-out duration-300
 			
 			'

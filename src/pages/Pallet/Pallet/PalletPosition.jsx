@@ -96,7 +96,7 @@ const PalletPosition = ({ positions, setPositions, isPalletEditing, art, pieces,
 
 
 
-		<RowBlock className="w-full grid grid-cols-3 grid-rows-2" >
+		<RowBlock className="w-full p-1 flex flex-col items-center md:flex-row   border  " >
 
 
 
@@ -104,19 +104,19 @@ const PalletPosition = ({ positions, setPositions, isPalletEditing, art, pieces,
 
 
 				(<CellBlock
-					className=' w-full col-span-2 row-span-2 '
+					className='w-full md:w-4/5 flex flex-col xl:flex-row justify-evenly xl:space-x-1 '
 				>
 
 					<InputBlock type="text"
-						className='col-span-1  bg-rose-500 bg-opacity-50 p-1 text-xl text-white text-center '
+						className='  bg-rose-800 p-1 text-xl text-white text-center '
 						value={newArt}
 						onChange={(e) => setNewArt(e.target.value)}
 
 					/>
-					
+
 
 					<InputBlock type="number"
-						className='col-span-1 bg-purple-500 bg-opacity-50  p-1 text-xl text-white text-center  '
+						className=' bg-purple-800   p-1 text-xl text-white text-center  '
 						value={newPieces}
 						onChange={(e) => setNewPieces(e.target.value)}
 					/>
@@ -128,15 +128,15 @@ const PalletPosition = ({ positions, setPositions, isPalletEditing, art, pieces,
 
 
 				(<CellBlock
-					className='w-full col-span-2 flex justify-between  '
+					className=' w-full md:w-4/5 flex justify-evenly space-x-3'
 				>
-					<TextBlock className=' text-xl min-w-xl text-white rounded bg-rose-500 p-1'>
+					<TextBlock className='w-1/2 text-xl min-w-xl text-white rounded bg-rose-500 p-1'>
 						{newArt}
 					</TextBlock>
 
-					
 
-					<TextBlock className='  text-xl text-white rounded bg-purple-500 p-1' >
+
+					<TextBlock className=' w-1/2 text-xl text-white rounded bg-purple-500 p-1' >
 						{newPieces}
 					</TextBlock>
 
@@ -147,48 +147,42 @@ const PalletPosition = ({ positions, setPositions, isPalletEditing, art, pieces,
 
 			{isPalletEditing &&
 
-				<CellBlock>
+				<CellBlock className=" w-full md:w-1/5" >
 
 
 					{isPositionEditing ?
 
-						<CellBlock className=''>
-
-
-
+						<>
 							<ButtonBlock
-								className='inline success text-xl '
+								className=' w-1/2 inline success text-xl flex justify-center '
 								onClick={() => handlerPositionSave(id)}
 							>
 								<BiSave />
 							</ButtonBlock>
 
 							<ButtonBlock
-								className='inline delete text-xl '
+								className=' w-1/2 inline delete text-xl flex justify-center'
 								onClick={() => handlerPositionDelete(id)}
 							>
 								<BiTrash />
 							</ButtonBlock>
-
-
-
-						</CellBlock>
+						</>
 
 
 						:
 
 
 
-						<CellBlock className=''>
 
-							<ButtonBlock
-								className='edit text-xl  '
-								onClick={() => handlerPositionEdit(id)}
-							>
-								<BiEditAlt />
-							</ButtonBlock>
 
-						</CellBlock>
+						<ButtonBlock
+							className='edit text-xl w-full flex justify-center  '
+							onClick={() => handlerPositionEdit(id)}
+						>
+							<BiEditAlt />
+						</ButtonBlock>
+
+
 					}
 
 				</CellBlock>
