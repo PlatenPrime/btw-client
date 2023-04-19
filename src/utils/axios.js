@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 const instance = axios.create({
-	baseURL: 'https://btw-server-1.up.railway.app/api',
+	baseURL: 'https://btw-server.onrender.com/api',
 })
 
 instance.interceptors.request.use((config) => {
