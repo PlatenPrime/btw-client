@@ -30,6 +30,7 @@ import { BiCheck } from "react-icons/bi";
 import { BiX } from "react-icons/bi";
 import { BiTrash } from "react-icons/bi";
 import Spinner from '../components/Spinner/Spinner';
+import TableBTW from '../components/Table/TableBTW';
 
 
 
@@ -115,7 +116,10 @@ const MainPage = () => {
 
 
 
-			
+					<CardBlock>
+						<TableBTW/>
+
+					</CardBlock>
 
 
 
@@ -137,7 +141,7 @@ const MainPage = () => {
 
 
 
-			
+
 
 
 			</MainBTW>

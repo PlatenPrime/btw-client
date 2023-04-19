@@ -65,7 +65,7 @@ color: aliceblue;
 
 	.ContentMain {
 		@apply
-		w-full md:w-3/4  max-h-screen min-h-full  overflow-auto p-2
+		w-full md:w-3/4  max-h-screen min-h-full  overflow-auto 
 	}
 
 

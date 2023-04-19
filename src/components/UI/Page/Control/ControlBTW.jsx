@@ -14,7 +14,7 @@ const ControlBTW = ({ children }) => {
 
 			<CardBlock className=" hidden min-h-fit h-full max-h-screen w-1/4 
 			md:flex flex-col items-center justify-start
-			bg-opacity-0
+			bg-opacity-0 m-0
 			
 			">
 				<div className="w-full md:flex flex-col items-center justify-start p-2 " >
