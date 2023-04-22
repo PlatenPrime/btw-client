@@ -8,6 +8,7 @@ import { useState } from 'react';
 import ButtonBlock from '../../../components/blocks/ButtonBlock';
 import InputBlock from '../../../components/blocks/InputBlock';
 import CellBlock from '../../../components/blocks/CellBlock';
+import RowBlock from '../../../components/blocks/RowBlock';
 
 
 
@@ -66,13 +67,13 @@ const PalletPositionAdd = ({ positions, setPositions }) => {
 
 	return (
 
-		<CellBlock className='flex justify-center'>
+		<RowBlock className='flex justify-center'>
 
 
 
 			{isPositionAdding ?
 
-				<CellBlock className=''>
+				
 
 
 
@@ -81,18 +82,18 @@ const PalletPositionAdd = ({ positions, setPositions }) => {
 						className='flex flex-row  p-6'
 					>
 
-						<CellBlock className='flex flex-col md:flex-row  '>
+						<CellBlock className='flex flex-col xl:flex-row  '>
 							<InputBlock type="text"
-								className=' '
+								className='m-1 text-center '
 								value={art}
 								onChange={(e) => setArt(e.target.value)}
-								placeholder="Артикул"
+								placeholder="Артикул..."
 							/>
 							<InputBlock type="number"
-								className='   '
+								className=' m-1 text-center '
 								value={pieces}
 								onChange={(e) => setPieces(e.target.value)}
-								placeholder="Количество"
+								placeholder="Количество..."
 							/>
 						</CellBlock>
 
@@ -119,8 +120,6 @@ const PalletPositionAdd = ({ positions, setPositions }) => {
 
 
 
-				</CellBlock>
-
 
 
 
@@ -133,7 +132,7 @@ const PalletPositionAdd = ({ positions, setPositions }) => {
 
 
 				<ButtonBlock
-					className='add flex text-xl items-center '
+					className='add flex text-xl items-center my-6 '
 
 					onClick={handlerPositionAddAdd}
 				>
@@ -149,7 +148,7 @@ const PalletPositionAdd = ({ positions, setPositions }) => {
 			}
 
 
-		</CellBlock>
+		</RowBlock>
 	);
 };
 

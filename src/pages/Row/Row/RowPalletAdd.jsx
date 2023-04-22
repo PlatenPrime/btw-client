@@ -10,7 +10,7 @@ import ButtonBlock from '../../../components/blocks/ButtonBlock';
 
 
 import { BiPlus, BiSave } from "react-icons/bi";
-import { BiCheck } from "react-icons/bi";
+
 import { BiX } from "react-icons/bi";
 
 
@@ -27,17 +27,17 @@ const RowPalletAdd = ({
 
 }) => {
 	return (
-		<RowBlock className='py-2' >
+		<RowBlock className='py-2  ' >
 
 			{
 				isPalletCreate ?
 
 
-					<CellBlock className='flex justify-center w-full p-1'>
+					<CellBlock className='flex justify-center w-full p-2'>
 
 
 						<InputBlock
-							className='mx-1'
+							className='mx-1 text-center'
 							type="text"
 							value={palletTitle}
 							placeholder='Название...'
@@ -73,12 +73,12 @@ const RowPalletAdd = ({
 
 
 					<ButtonBlock
-						className='create w-full p-3 flex items-center justify-center'
+						className='create w-full my-1 p-3 flex items-center justify-center'
 						onClick={() => setIsPalletCreate(true)}
 					>
-						<BiPlus />
-						Добавить паллету
-						<BiPlus />
+						
+						Создать паллету
+						
 					</ButtonBlock>
 
 

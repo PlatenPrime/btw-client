@@ -157,7 +157,9 @@ const RowPage = () => {
 	// Pallet handlers
 
 	const handlerCreatePallet = () => {
-		try {
+
+
+		if (palletTitle) try {
 			const rowId = params.id;
 			const title = palletTitle;
 			const positions = [];
@@ -207,13 +209,15 @@ const RowPage = () => {
 
 				<ContentMain   >
 
+
+
+
+					<TextBlock className="text-2xl text-white   rounded m-1 p-3 bg-amber-500" >
+						Паллеты
+					</TextBlock>
+
+
 					<CardBlock className="p-2  " >
-
-
-						<TextBlock className="text-2xl text-white   rounded m-1 p-3 bg-amber-500" >
-							Паллеты
-						</TextBlock>
-
 
 						{isRowEditing &&
 							<RowTitle
@@ -235,7 +239,9 @@ const RowPage = () => {
 						/>
 						}
 
+					</CardBlock>
 
+					<CardBlock className="p-2  " >
 
 						<RowPallets
 							pallets={pallets}

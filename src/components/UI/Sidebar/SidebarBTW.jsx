@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Link, NavLink } from "react-router-dom";
 import { checkIsAuth, logout } from '../../../redux/features/auth/authSlice';
 import { toast } from 'react-toastify';
+import ButtonBlock from '../../blocks/ButtonBlock';
 
 
 const SidebarBTW = () => {
@@ -11,12 +12,19 @@ const SidebarBTW = () => {
 
 	const activeStyles = {
 		color: "white",
-		backgroundColor: "lightblue",
+		backgroundColor: "darkgray",
 		
-	
-	
-
+		padding: "12px",
 	}
+
+	const inActiveStyles = {
+		color: "white",
+		backgroundColor: "black",
+		padding: "12px",
+	}
+
+
+
 
 
 	const isAuth = useSelector(checkIsAuth);
@@ -35,7 +43,7 @@ const SidebarBTW = () => {
 	return (
 
 		<div className='hidden  min-h-screen md:min-w-fit md:w-1/6 
-		md:flex flex-col justify-start items-stratch text-center space-y-8
+		md:flex flex-col justify-start items-stratch text-center 
 
 		sticky top-0
 
@@ -46,11 +54,11 @@ const SidebarBTW = () => {
 
 			<NavLink
 				to={"/"}
-				style={({ isActive }) => isActive ? activeStyles : undefined}
-				className="bg-red-600"
+				
+				
 			>
 
-				<div className='flex items-center justify-center w-full h-16 text-gray-100 bg-sky-800 hover:bg-sky-700 '>
+				<div className='flex items-center justify-center w-full h-16 text-3xl text-gray-100 bg-sky-800 hover:bg-sky-700 '>
 
 					BTW
 
@@ -63,14 +71,14 @@ const SidebarBTW = () => {
 
 			<NavLink
 				to={"rows"}
-				style={({ isActive }) => isActive ? activeStyles : undefined}
+				style={({ isActive }) => isActive ? activeStyles : inActiveStyles}
 			>
 				Запасы
 			</NavLink>
 
 			<NavLink
 				to={"artfind"}
-				style={({ isActive }) => isActive ? activeStyles : undefined}
+				style={({ isActive }) => isActive ? activeStyles : inActiveStyles}
 			>
 				Поиск артикула
 			</NavLink>
@@ -78,7 +86,7 @@ const SidebarBTW = () => {
 
 			<NavLink
 				to={"artszones"}
-				style={({ isActive }) => isActive ? activeStyles : undefined}
+				style={({ isActive }) => isActive ? activeStyles : inActiveStyles}
 			>
 				Установка зон
 			</NavLink>
@@ -86,10 +94,19 @@ const SidebarBTW = () => {
 
 
 			{isAuth ?
-				<button
-					className="text-red-600"
-					onClick={logoutHandler} >Выйти</button> :
-				<Link to={"/login"}>Войти</Link>
+				<ButtonBlock
+					className="cancel-c"
+					onClick={logoutHandler} >Выйти</ButtonBlock>
+
+				:
+
+				<ButtonBlock
+				className="search-c"
+				>
+					<Link to={"/login"}>Войти</Link>
+				</ButtonBlock>
+
+
 			}
 
 

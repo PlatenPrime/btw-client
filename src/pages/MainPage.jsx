@@ -59,17 +59,16 @@ const MainPage = () => {
 
 				<ContentMain     >
 
-					<CardBlock className=" bg-gradient-to-r from-sky-700 to-indigo-700" >
+					<CardBlock className=" " >
 
-						<SpinnerBlock />
+						<CardBlock className="flex justify-center" >
+
+						<SpinnerBlock   />
+
+						</CardBlock>
 
 
 						<RowBlock className="text-3xl" >
-
-
-
-
-
 
 
 
@@ -88,18 +87,7 @@ const MainPage = () => {
 
 
 
-
-
 					</CardBlock>
-
-
-
-
-
-
-
-
-
 
 
 					<CardBlock className="grid md:grid-cols-3" >
@@ -112,9 +100,6 @@ const MainPage = () => {
 						<ButtonBlock className='add' >Add</ButtonBlock>
 						<ButtonBlock className='search' >Search</ButtonBlock>
 					</CardBlock>
-
-
-
 
 
 

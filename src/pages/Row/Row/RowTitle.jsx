@@ -62,7 +62,7 @@ const RowTitle = ({ title, setTitle }) => {
 
 
 						<InputBlock
-							className=' text-center text-2xl text-orange-700'
+							className=' text-center text-2xl text-white'
 							type="text"
 							value={newTitle}
 							placeholder='Название...'
@@ -107,7 +107,7 @@ const RowTitle = ({ title, setTitle }) => {
 
 						{title &&
 
-							<TextBlock className=' mx-2 text-2xl text-orange-700 '>
+							<TextBlock className=' mx-2 text-2xl text-white '>
 
 								{newTitle}
 

@@ -57,7 +57,7 @@ const PalletTitle = ({ title, setTitle }) => {
 
 
 					<InputBlock
-						className='text-center text-white text-2xl'
+						className='text-center text-white text-xl'
 						type="text"
 						value={newTitle}
 						placeholder='Название...'
