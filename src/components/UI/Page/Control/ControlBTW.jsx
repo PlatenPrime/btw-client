@@ -34,13 +34,13 @@ const ControlBTW = ({ children }) => {
 			{display &&
 
 
-				<div className=" md:hidden w-full p-3  fixed bottom-0 left-0 min-h-fit max-h-screen 
+				<div className=" md:hidden w-full p-3  fixed top-16 left-0 min-h-fit max-h-screen 
 		
 		
-		bg-gray-100 bg-opacity-10 ">
+				bg-black bg-opacity-90">
 
 
-					<CardBlock className=' md:flex flex-col items-center justify-start md:mt-16  '>
+					<CardBlock className=' md:flex flex-col items-center justify-start md:mt-16 bg-opacity-100 bg-black  '>
 						{children}
 					</CardBlock>
 

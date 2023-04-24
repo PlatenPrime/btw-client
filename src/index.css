@@ -23,12 +23,12 @@ color: aliceblue;
 }
 
 ::-webkit-scrollbar {
-	width: 8px; /* Width of the scrollbar */
-	height: 32px;
+	width: 4px; /* Width of the scrollbar */
+	height: 16px;
   }
   
   ::-webkit-scrollbar-thumb {
-	background: rgba(72, 212, 255, 0.781);
+	background: rgba(72, 212, 255, 0.363);
 	opacity: 10%;
 	border-radius: 8px; /* Roundness of the scrollbar thumb */
   }
@@ -101,7 +101,8 @@ color: aliceblue;
 	
 	p-1 m-1 rounded
 	bg-white bg-opacity-10	
-	hover:shadow-md hover:shadow-gray-700
+	 border border-transparent
+	hover:border hover:border-white
 	transition ease-in-out duration-300		
 }
 

@@ -11,7 +11,7 @@ import { toast } from 'react-toastify';
 import { createPallet, getRowPallets } from "../../redux/features/pallet/palletSlice"
 
 import { removeRow, updateRow } from "../../redux/features//row/rowSlice";
-import { checkIsAuth } from '../../redux/features/auth/authSlice';
+
 
 
 import PageBTW from '../../components/UI/Page/PageBTW';
@@ -60,7 +60,7 @@ const RowPage = () => {
 	const navigate = useNavigate()
 	const params = useParams()
 	const dispatch = useDispatch()
-	const isAuth = useSelector(checkIsAuth)
+
 
 
 
@@ -217,29 +217,35 @@ const RowPage = () => {
 					</TextBlock>
 
 
-					<CardBlock className="p-2  " >
-
-						{isRowEditing &&
-							<RowTitle
-								isRowEditing={isRowEditing}
-								title={title}
-								setTitle={setTitle}
-							/>
-
-						}
+					{isRowEditing && <CardBlock className="p-2  " >
 
 
 
-						{isRowEditing && <RowPalletAdd
+
+						<RowTitle
+							isRowEditing={isRowEditing}
+							title={title}
+							setTitle={setTitle}
+						/>
+
+
+
+
+						<RowPalletAdd
 							isPalletCreate={isPalletCreate}
 							palletTitle={palletTitle}
 							setPalletTitle={setPalletTitle}
 							setIsPalletCreate={setIsPalletCreate}
 							handlerCreatePallet={handlerCreatePallet}
 						/>
-						}
 
-					</CardBlock>
+
+
+					</CardBlock>}
+
+
+
+
 
 					<CardBlock className="p-2  " >
 
@@ -287,7 +293,7 @@ const RowPage = () => {
 
 							<ButtonBlock
 								className='delete-c w-full '
-							// onClick={handlerRowRemove}
+							onClick={handlerRowRemove}
 
 							>
 								Удалить ряд

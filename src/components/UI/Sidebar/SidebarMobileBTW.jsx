@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Link, NavLink } from "react-router-dom";
 import { checkIsAuth, logout } from '../../../redux/features/auth/authSlice';
 import { toast } from 'react-toastify';
-import { Vortex } from 'react-loader-spinner';
+
 
 const SidebarMobileBTW = ({ onClose }) => {
 
@@ -41,7 +41,7 @@ const SidebarMobileBTW = ({ onClose }) => {
 				className='
 			flex flex-col justify-start items-center space-y-8
 			h-full min-h-screen w-1/2
-			bg-sky-400 bg-opacity-80
+			bg-black bg-opacity-80
 			
 			'>
 

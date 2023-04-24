@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { useSelector } from 'react-redux';
-import { Link, useNavigate } from 'react-router-dom';
+
+import {  useNavigate } from 'react-router-dom';
 
 
 import ControlBTW from '../../components/UI/Page/Control/ControlBTW';
@@ -11,7 +11,7 @@ import MainBTW from '../../components/UI/Page/MainBTW';
 
 import PageBTW from '../../components/UI/Page/PageBTW';
 
-import { checkIsAuth } from '../../redux/features/auth/authSlice';
+
 import axios from "../../utils/axios";
 import ContentMain from '../../components/UI/Page/ContentMain';
 import ButtonBlock from '../../components/blocks/ButtonBlock';
@@ -31,7 +31,7 @@ import TextBlock from '../../components/blocks/TextBlock';
 const ArtFindPage = () => {
 
 	const navigate = useNavigate()
-	const isAuth = useSelector(checkIsAuth)
+
 
 
 
@@ -83,7 +83,7 @@ const ArtFindPage = () => {
 
 
 
-		if (art != undefined) {
+		if (art !== undefined) {
 			setArtItem(art)
 			setArtCartDisplay(true)
 		} else {
@@ -126,10 +126,10 @@ const ArtFindPage = () => {
 
 					<form onSubmit={handlerArtFind}>
 
-						<CardBlock className='flex flex-row justify-center items-center  p-4 '>
+						<CardBlock className='flex flex-col md:flex-row justify-center items-center  p-4 '>
 
 							<InputBlock 
-							className='p-2 text-2xl text-center  text-green-800 focus:border-green-800 ' 
+							className='p-2 text-2xl text-center  text-white ' 
 							type="text" 
 							ref={artInput} 
 							placeholder="ХХХХ-ХХХХ"
@@ -140,7 +140,7 @@ const ArtFindPage = () => {
 
 							<ButtonBlock
 
-								className='search p-3'
+								className='search p-3 my-1'
 								type="submit"
 							>
 								Найти артикул
@@ -158,15 +158,25 @@ const ArtFindPage = () => {
 						>
 
 
-							<RowBlock className=' m-2 pr-5 rounded flex flex-col  md:flex-row items-center justify-start space-x-10 hover:bg-teal-200 '>
+							<RowBlock className='
+						
+							m-2 pr-5 rounded 
+							flex flex-col  md:flex-row items-center justify-start 
+						hover:text-2xl
+							space-x-10 hover:bg-teal-500 
+							hover:shadow-2xl hover:shadow-teal-500
+							
+							'>
 
 
 								<ImageBlock
 									src={photo}
 									alt="Здесь должно быть изображение артикула"
-									width="200px"
-									height="200px"
-									className='rounded hover:scale-125 hover:translate-x-3 ' />
+									width="100px"
+									height="100px"
+									className='rounded 
+									hover:scale-150 hover:translate-x-3 duration-500
+									hover:shadow-xl hover:shadow-white ' />
 
 
 
