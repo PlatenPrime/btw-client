@@ -7,6 +7,8 @@ import ButtonBlock from '../../components/blocks/ButtonBlock'
 import InputBlock from '../../components/blocks/InputBlock'
 import { Vortex } from 'react-loader-spinner'
 import PageAuthBTW from '../../components/UI/Page/PageAuthBTW'
+import CardBlock from '../../components/blocks/CardBlock'
+import TextBlock from '../../components/blocks/TextBlock'
 
 
 
@@ -45,7 +47,7 @@ export const LoginPage = () => {
 
 	useEffect(() => {
 
-		if (status) toast(status)
+		if (status) toast.info(status)
 
 		checkingAuth()
 
@@ -84,22 +86,22 @@ export const LoginPage = () => {
 
 				:
 
-				<form
+				<CardBlock
 
-					onSubmit={(e) => e.preventDefault()}
+					
 
-					className="flex flex-col gap-4 justify-center items-center mx-auto  "
+					className="flex flex-col gap-4 justify-center items-center mx-auto p-10  "
 
 				>
 
-					<h1
-						className='text-lg text-black text-center'
+					<TextBlock
+						className='text-3xl text-white text-center'
 					>
 						Авторизация
-					</h1>
+					</TextBlock>
 
-					<div>
-						<div className="mb-2 block">
+					
+						<div className=" block">
 							Имя пользователя:
 						</div>
 
@@ -111,12 +113,12 @@ export const LoginPage = () => {
 							onChange={(e) => setUsername(e.target.value)}
 						/>
 
-					</div>
+					
 
 
-					<div>
+					
 
-						<div className="mb-2 block">
+						<div className=" block">
 
 							Пароль:
 
@@ -131,18 +133,18 @@ export const LoginPage = () => {
 						/>
 
 
-					</div>
+					
 
 
 
 					<ButtonBlock
-					className="success-c w-full"
+					className="confirm-c w-full"
 						onClick={handleSubmit}
 					>
 						Войти
 					</ButtonBlock>
 
-				</form>
+				</CardBlock>
 
 			}
 

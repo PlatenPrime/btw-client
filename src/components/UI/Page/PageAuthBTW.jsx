@@ -5,7 +5,7 @@ const PageAuthBTW = ({ children }) => {
 
 
 	return (
-		<div className='w-full  flex flex-col items-between md:flex-row md:w-full  '>
+		<div className='w-full  flex  items-center justify-center   '>
 			{children}
 		</div>
 	);

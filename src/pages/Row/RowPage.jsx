@@ -103,7 +103,7 @@ const RowPage = () => {
 
 	const removeAttempt = () => {
 		window.confirm("Удалить этот ряд?") && dispatch(removeRow(params.id))
-			&& toast('Ряд был удален')
+			&& toast.info(`Ряд ${title} был удален`)
 			&& navigate('/rows')
 	}
 
@@ -246,14 +246,37 @@ const RowPage = () => {
 
 
 
-
 					<CardBlock className="p-2  " >
 
-						<RowPallets
-							pallets={pallets}
-						/>
+
+						{pallets.length ?
+
+							<RowPallets
+								pallets={pallets}
+							/>
+
+
+							:
+
+							<TextBlock className="text-2xl" >
+								Этот ряд не содержит паллет
+							</TextBlock>
+
+
+}
+
+
+
+
+
+
 
 					</CardBlock>
+
+
+
+
+
 
 
 				</ContentMain>
@@ -293,7 +316,7 @@ const RowPage = () => {
 
 							<ButtonBlock
 								className='delete-c w-full '
-							onClick={handlerRowRemove}
+								onClick={handlerRowRemove}
 
 							>
 								Удалить ряд

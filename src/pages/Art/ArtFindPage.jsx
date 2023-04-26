@@ -13,6 +13,9 @@ import PageBTW from '../../components/UI/Page/PageBTW';
 
 
 import axios from "../../utils/axios";
+import { toast } from 'react-toastify';
+
+
 import ContentMain from '../../components/UI/Page/ContentMain';
 import ButtonBlock from '../../components/blocks/ButtonBlock';
 import InputBlock from '../../components/blocks/InputBlock';
@@ -81,13 +84,13 @@ const ArtFindPage = () => {
 
 		const art = arts.find(item => item.title === artInput.current.value)
 
-
-
-		if (art !== undefined) {
+if (!artInput.current.value) {
+	toast.error("Введи артикул")
+} else if (art) {
 			setArtItem(art)
 			setArtCartDisplay(true)
 		} else {
-			window.alert("Такого артикула нет")
+			toast.error("Такого артикула нет")
 			console.log(artInput.current.value)
 		}
 

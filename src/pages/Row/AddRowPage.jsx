@@ -5,10 +5,10 @@ import { useDispatch, useSelector } from 'react-redux';
 import { toast } from 'react-toastify';
 
 import { createRow } from "../../redux/features/row/rowSlice";
-import { checkIsAuth } from '../../redux/features/auth/authSlice';
 
 
-import RowItem from '../../pages/Row/Row/RowItem';
+
+
 
 
 
@@ -24,7 +24,7 @@ import ButtonBlock from '../../components/blocks/ButtonBlock';
 import HeaderBlock from '../../components/blocks/HeaderBlock';
 import CardBlock from '../../components/blocks/CardBlock';
 import RowTitle from './Row/RowTitle';
-import RowPallets from './Row/RowPallets';
+
 
 
 
@@ -45,8 +45,6 @@ const AddRowPage = () => {
 
 	const dispatch = useDispatch()
 	const navigate = useNavigate()
-	const { status } = useSelector((state) => state.row)
-	const isAuth = useSelector(checkIsAuth)
 
 
 
@@ -57,23 +55,26 @@ const AddRowPage = () => {
 
 
 	const handlerSubmit = () => {
-		try {
-			const data = {
-				title, pallets
+		if (!title) {
+			
+			toast.error("Введи название ряда")
+			
+		} else
+			try {
+				const data = {
+					title, pallets
+				}
+				dispatch(createRow(data))
+				toast.success(`Новый ряд ${title} создан`)
+
+				navigate('/rows')
+
+			} catch (error) {
+				console.log(error)
 			}
-			dispatch(createRow(data))
-			console.log(data)
-			navigate('/rows')
-
-		} catch (error) {
-			console.log(error)
-		}
 	}
 
-	const handlerClearForm = () => {
 
-		setTitle('')
-	}
 
 
 
@@ -131,15 +132,7 @@ const AddRowPage = () => {
 				<ControlBTW >
 
 
-					<ButtonBlock
-						className='cancel-c w-full'
-						onClick={handlerClearForm}
-					>
-						Очистить форму
-					</ButtonBlock>
-
-
-
+					
 					<ButtonBlock
 
 						className='success-c w-full '
