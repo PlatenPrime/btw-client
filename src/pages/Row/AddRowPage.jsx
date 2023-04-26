@@ -57,7 +57,7 @@ const AddRowPage = () => {
 	const handlerSubmit = () => {
 		if (!title) {
 			
-			toast.error("Введи название ряда")
+			toast.error("У ряда нет названия")
 			
 		} else
 			try {

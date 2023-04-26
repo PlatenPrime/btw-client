@@ -135,9 +135,9 @@ const RowTitle = ({ title, setTitle }) => {
 									className='add flex items-center '
 									onClick={handlerEditTitle}
 								>
-									<BiPlus />
+								
 									Добавить название
-									<BiPlus />
+								
 								</ButtonBlock>
 						}
 
