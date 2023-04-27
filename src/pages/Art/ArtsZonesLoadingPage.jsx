@@ -9,7 +9,7 @@ import PageBTW from '../../components/UI/Page/PageBTW';
 
 import ButtonBlock from '../../components/blocks/ButtonBlock';
 
-
+import { toast } from 'react-toastify';
 import axios from '../../utils/axios';
 
 import ContentMain from '../../components/UI/Page/ContentMain';
@@ -66,14 +66,16 @@ const ArtsZonesLoadingPage = () => {
 	async function handlerDeleteArts() {
 		try {
 
+			if (window.confirm("Удалить артикулы с базы данных?")) {
+				await axios.delete(`arts/zones`);
+				toast.info("Артикулы удалены с базы данных");
+			}
 
-			await axios.delete(`arts/zones`);
 
 		} catch (error) {
 			console.log(error)
 		}
 
-		window.alert("Артикулы удалены с базы данных")
 
 	}
 
@@ -93,7 +95,7 @@ const ArtsZonesLoadingPage = () => {
 
 
 
-	function uploadClacter(claster) {
+	function uploadClaster(claster) {
 
 		let slice = arts.slice(1000 * claster, (1001 + 1000 * claster))
 
@@ -114,7 +116,8 @@ const ArtsZonesLoadingPage = () => {
 			setClaster(currentClaster => {
 				if (currentClaster < clasters) {
 					setIsUpload(true)
-					uploadClacter(currentClaster)
+					uploadClaster(currentClaster)
+					toast.success(`Кластер ${currentClaster} загружен`)
 					return currentClaster + 1;
 				} else {
 					setIsUpload(false)

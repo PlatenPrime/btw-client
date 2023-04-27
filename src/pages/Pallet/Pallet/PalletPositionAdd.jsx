@@ -136,9 +136,9 @@ const PalletPositionAdd = ({ positions, setPositions }) => {
 
 					onClick={handlerPositionAddAdd}
 				>
-					<BiPlus />
+					
 					Добавить позиции
-					<BiPlus />
+					
 
 				</ButtonBlock>
 

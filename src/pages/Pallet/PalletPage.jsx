@@ -81,7 +81,7 @@ const PalletPage = () => {
 
 	const removeAttempt = () => {
 		window.confirm("Удалить эту паллету?") && dispatch(removePallet(params.id))
-			&& toast('Паллета была удалена')
+			&& toast.info(`Паллета ${title} была удалена`)
 			&& navigate(`/rows`)
 	}
 
@@ -101,6 +101,10 @@ const PalletPage = () => {
 
 	const handlerCancelPalletEditing = () => {
 		setIsPalletEditing(false);
+
+
+
+		
 	}
 
 
