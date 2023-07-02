@@ -38,7 +38,7 @@ const ArtFindPage = () => {
 
 
 
-	const [arts, setArts] = useState("");
+	const [arts, setArts] = useState([]);
 
 	const fetchArts = async () => {
 		try {

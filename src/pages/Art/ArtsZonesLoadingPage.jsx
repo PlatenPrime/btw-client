@@ -1,5 +1,5 @@
 import * as xlsx from "xlsx";
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 import ControlBTW from '../../components/UI/Page/Control/ControlBTW';
 
@@ -25,10 +25,35 @@ const ArtsZonesLoadingPage = () => {
 
 
 
+	const [artsFetched, setArtsFetched] = useState([]);
+
+
 	const [arts, setArts] = useState([]);
 	const [claster, setClaster] = useState(0);
 	const [isUpload, setIsUpload] = useState(false);
 
+
+	const fetchArts = async () => {
+		try {
+
+			const { data } = await axios.get(`arts`);
+			setArtsFetched(data.arts)
+
+
+		} catch (error) {
+			console.log(error)
+		}
+	}
+
+
+	useEffect(() => {
+		fetchArts()
+	}, [])
+
+
+	useEffect(() => {
+		console.log("Загружены такие артикулы: ", artsFetched)
+	}, [artsFetched])
 
 
 
@@ -157,6 +182,23 @@ const ArtsZonesLoadingPage = () => {
 
 				<ContentMain>
 
+					<CardBlock className="flex flex-col justify-center " >
+						<TextBlock>
+							Сейчас в БД артикулов: {artsFetched.length}
+						</TextBlock>
+						<ButtonBlock
+							className="delete flex justify-center "
+							onClick={handlerDeleteArts}
+						>
+
+							Удалить артикулы с БД
+
+						</ButtonBlock>
+
+					</CardBlock>
+
+
+
 					<CardBlock className=" flex justify-center items-center ">
 
 						<InputBlock
@@ -172,9 +214,19 @@ const ArtsZonesLoadingPage = () => {
 
 					{arts.length != 0 && <CardBlock>
 
-						<TextBlock className="m-6">Общее количество артикулов: {arts.length}</TextBlock>
-						<TextBlock className="m-6">Всего кластеров артикулов: {clasters} </TextBlock>
+						<TextBlock className="m-6">Артикулов на загрузку: {arts.length}</TextBlock>
+						<TextBlock className="m-6">Кластеры: {clasters} </TextBlock>
 						<TextBlock className="m-6">Текущий кластер на выгрузку: {claster} / {clasters} </TextBlock>
+
+						<ButtonBlock
+							className="create-c w-full "
+							onClick={handlerUploadArts}
+						>
+
+							Запустить выгрузку артикулов
+
+						</ButtonBlock>
+
 
 					</CardBlock>}
 
@@ -197,25 +249,10 @@ const ArtsZonesLoadingPage = () => {
 				<ControlBTW>
 
 
-					<ButtonBlock
-						className="create-c w-full "
-						onClick={handlerUploadArts}
-					>
-
-						Запустить выгрузку артикулов
-
-					</ButtonBlock>
 
 
 
-					<ButtonBlock
-						className="delete-c w-full "
-						onClick={handlerDeleteArts}
-					>
 
-						УДАЛИТЬ АРТИКУЛЫ ИЗ БАЗЫ
-
-					</ButtonBlock>
 
 				</ControlBTW>
 
