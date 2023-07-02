@@ -1,5 +1,6 @@
 import * as xlsx from "xlsx";
 import React, { useEffect, useState } from 'react';
+import useArts from "../../hooks/useArts";
 
 import ControlBTW from '../../components/UI/Page/Control/ControlBTW';
 
@@ -25,35 +26,15 @@ const ArtsZonesLoadingPage = () => {
 
 
 
-	const [artsFetched, setArtsFetched] = useState([]);
+	const { artsDB, loadingArtsDB, errorArtsDB } = useArts('arts');
+
+
 
 
 	const [arts, setArts] = useState([]);
 	const [claster, setClaster] = useState(0);
 	const [isUpload, setIsUpload] = useState(false);
 
-
-	const fetchArts = async () => {
-		try {
-
-			const { data } = await axios.get(`arts`);
-			setArtsFetched(data.arts)
-
-
-		} catch (error) {
-			console.log(error)
-		}
-	}
-
-
-	useEffect(() => {
-		fetchArts()
-	}, [])
-
-
-	useEffect(() => {
-		console.log("Загружены такие артикулы: ", artsFetched)
-	}, [artsFetched])
 
 
 
@@ -183,9 +164,12 @@ const ArtsZonesLoadingPage = () => {
 				<ContentMain>
 
 					<CardBlock className="flex flex-col justify-center " >
+
 						<TextBlock>
-							Сейчас в БД артикулов: {artsFetched.length}
+							Сейчас в БД артикулов:
+							{loadingArtsDB ? "Загрузка..." : artsDB.length}
 						</TextBlock>
+
 						<ButtonBlock
 							className="delete flex justify-center "
 							onClick={handlerDeleteArts}
@@ -233,40 +217,13 @@ const ArtsZonesLoadingPage = () => {
 					{isUpload && <TextBlock className="text-3xl mx-auto">ИДЕТ ВЫГРУЗКА... </TextBlock>}
 
 
-
-
-
-
 				</ContentMain>
-
-
-
-
-
-
-
 
 				<ControlBTW>
 
-
-
-
-
-
-
 				</ControlBTW>
 
-
-
-
-
 			</MainBTW>
-
-
-
-
-
-
 
 		</PageBTW>
 	);

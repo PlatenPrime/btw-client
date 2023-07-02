@@ -1,14 +1,11 @@
 import React, { useEffect, useRef, useState } from 'react';
 
 import {  useNavigate } from 'react-router-dom';
+import useArts from '../../hooks/useArts';
 
 
 import ControlBTW from '../../components/UI/Page/Control/ControlBTW';
-
-
 import MainBTW from '../../components/UI/Page/MainBTW';
-
-
 import PageBTW from '../../components/UI/Page/PageBTW';
 
 
@@ -36,31 +33,13 @@ const ArtFindPage = () => {
 	const navigate = useNavigate()
 
 
+	const  { artsDB, loadingArtsDB, errorArtsDB } = useArts('arts');
 
-
-	const [arts, setArts] = useState([]);
-
-	const fetchArts = async () => {
-		try {
-
-			const { data } = await axios.get(`arts`);
-			setArts(data.arts)
-
-
-		} catch (error) {
-			console.log(error)
-		}
-	}
 
 
 	useEffect(() => {
-		fetchArts()
-	}, [])
-
-
-	useEffect(() => {
-		console.log("Загружены такие артикулы: ", arts)
-	}, [arts])
+		console.log("Загружены такие артикулы: ", artsDB)
+	}, [artsDB])
 
 
 
@@ -82,7 +61,7 @@ const ArtFindPage = () => {
 		e.preventDefault();
 
 
-		const art = arts.find(item => item.title === artInput.current.value)
+		const art = artsDB.find(item => item.title === artInput.current.value)
 
 if (!artInput.current.value) {
 	toast.error("Введи артикул")
