@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 
-import {  useNavigate } from 'react-router-dom';
-import useArts from '../../hooks/useArts';
+import { useNavigate } from 'react-router-dom';
+import useArts from '../../hooks/useFetchArts';
 
 
 import ControlBTW from '../../components/UI/Page/Control/ControlBTW';
@@ -33,7 +33,7 @@ const ArtFindPage = () => {
 	const navigate = useNavigate()
 
 
-	const  { artsDB, loadingArtsDB, errorArtsDB } = useArts('arts');
+	const { artsDB, loadingArtsDB, errorArtsDB } = useArts('arts');
 
 
 
@@ -63,9 +63,9 @@ const ArtFindPage = () => {
 
 		const art = artsDB.find(item => item.title === artInput.current.value)
 
-if (!artInput.current.value) {
-	toast.error("Введи артикул")
-} else if (art) {
+		if (!artInput.current.value) {
+			toast.error("Введи артикул")
+		} else if (art) {
 			setArtItem(art)
 			setArtCartDisplay(true)
 		} else {
@@ -87,7 +87,7 @@ if (!artInput.current.value) {
 
 		<PageBTW
 
-		
+
 		>
 
 
@@ -110,11 +110,11 @@ if (!artInput.current.value) {
 
 						<CardBlock className='flex flex-col md:flex-row justify-center items-center  p-4 '>
 
-							<InputBlock 
-							className='p-2 text-2xl text-center  text-white ' 
-							type="text" 
-							ref={artInput} 
-							placeholder="ХХХХ-ХХХХ"
+							<InputBlock
+								className='p-2 text-2xl text-center  text-white '
+								type="text"
+								ref={artInput}
+								placeholder="ХХХХ-ХХХХ"
 							/>
 
 

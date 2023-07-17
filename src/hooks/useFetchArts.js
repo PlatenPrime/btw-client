@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react';
 import axios from '../utils/axios'
 
-const useArts = (url) => {
+const useFetchArts = (url) => {
   const [artsDB, setArtsDB] = useState([]);
   const [loadingArtsDB, setLoadingArtsDB] = useState(true);
   const [errorArtsDB, setErrorArtsDB] = useState(null);
@@ -27,4 +27,4 @@ const useArts = (url) => {
   return { artsDB, loadingArtsDB, errorArtsDB };
 };
 
-export default useArts;
+export default useFetchArts;

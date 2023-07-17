@@ -1,6 +1,6 @@
 import * as xlsx from "xlsx";
 import React, { useEffect, useState } from 'react';
-import useArts from "../../hooks/useArts";
+import useArts from "../../hooks/useFetchArts";
 
 import ControlBTW from '../../components/UI/Page/Control/ControlBTW';
 
