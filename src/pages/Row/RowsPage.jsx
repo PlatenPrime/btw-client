@@ -59,7 +59,7 @@ const RowsPage = () => {
 
 	useEffect(() => {
 		dispatchRows()
-	}, [rows])
+	}, [])
 
 
 
