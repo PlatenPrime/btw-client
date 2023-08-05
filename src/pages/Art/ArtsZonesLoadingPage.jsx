@@ -27,21 +27,19 @@ const ArtsZonesLoadingPage = () => {
 
 
 	const { artsDB, loadingArtsDB, errorArtsDB } = useArts('arts');
-
-
-
-
 	const [arts, setArts] = useState([]);
 	const [claster, setClaster] = useState(0);
 	const [isUpload, setIsUpload] = useState(false);
 
-
+	const [count, setCount] = useState(1)
 
 
 
 	const clasters = Math.ceil(arts.length / 1000)
 
-
+	// if (arts) {
+	// 	console.log(...arts[count])
+	// }
 
 
 
@@ -123,7 +121,7 @@ const ArtsZonesLoadingPage = () => {
 				if (currentClaster < clasters) {
 					setIsUpload(true)
 					uploadClaster(currentClaster)
-					toast.success(`Кластер ${currentClaster} загружен`)
+					toast.success(`Кластер ${currentClaster + 1} загружен`)
 					return currentClaster + 1;
 				} else {
 					setIsUpload(false)
@@ -217,7 +215,27 @@ const ArtsZonesLoadingPage = () => {
 					{isUpload && <TextBlock className="text-3xl mx-auto">ИДЕТ ВЫГРУЗКА... </TextBlock>}
 
 
+					{/* <CardBlock>
+						<ButtonBlock
+							onClick={() => {
+
+								const artup = { ...arts[count] }
+
+								uploadArt(artup)
+								setCount(prev => prev + 1)
+							}}
+
+						>
+							Выгрузить артикул
+						</ButtonBlock>
+						<p>{count}</p>
+					</CardBlock> */}
+
+
 				</ContentMain>
+
+
+
 
 				<ControlBTW>
 
