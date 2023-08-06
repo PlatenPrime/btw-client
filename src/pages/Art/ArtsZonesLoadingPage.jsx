@@ -35,7 +35,10 @@ const ArtsZonesLoadingPage = () => {
 
 
 
-	const clasters = Math.ceil(arts.length / 1000)
+	const clasterLength = 500
+
+
+	const clasters = Math.ceil(arts.length / clasterLength)
 
 	// if (arts) {
 	// 	console.log(...arts[count])
@@ -86,7 +89,7 @@ const ArtsZonesLoadingPage = () => {
 
 
 
-	async function uploadArt(art) {
+	async function createArt(art) {
 
 		try {
 
@@ -99,11 +102,27 @@ const ArtsZonesLoadingPage = () => {
 
 
 
+	async function createOrUpdateArt(art) {
+
+		try {
+
+			await axios.post(`arts/update`, { ...art });
+
+		} catch (error) {
+			console.log(error)
+		}
+	}
+
+
+
+
+
+
 	function uploadClaster(claster) {
 
-		let slice = arts.slice(1000 * claster, (1001 + 1000 * claster))
+		let slice = arts.slice(clasterLength * claster, (clasterLength + 1 + clasterLength * claster))
 
-		slice.forEach(art => uploadArt(art))
+		slice.forEach(art => createOrUpdateArt(art))
 
 
 	}
@@ -168,14 +187,14 @@ const ArtsZonesLoadingPage = () => {
 							{loadingArtsDB ? "Загрузка..." : artsDB.length}
 						</TextBlock>
 
-						<ButtonBlock
+						{/* <ButtonBlock
 							className="delete flex justify-center "
 							onClick={handlerDeleteArts}
 						>
 
 							Удалить артикулы с БД
 
-						</ButtonBlock>
+						</ButtonBlock> */}
 
 					</CardBlock>
 
@@ -221,7 +240,7 @@ const ArtsZonesLoadingPage = () => {
 
 								const artup = { ...arts[count] }
 
-								uploadArt(artup)
+								createOrUpdateArt(artup)
 								setCount(prev => prev + 1)
 							}}
 
