@@ -61,7 +61,7 @@ const ArtFindPage = () => {
 		e.preventDefault();
 
 
-		const art = artsDB.find(item => item.title === artInput.current.value)
+		const art = artsDB.find(item => item.artikul === artInput.current.value)
 
 		if (!artInput.current.value) {
 			toast.error("Введи артикул")
@@ -80,7 +80,7 @@ const ArtFindPage = () => {
 	}
 
 
-	const photo = `https://sharik.ua/images/elements_big/${artItem.title}_m1.jpg`;
+	const photo = `https://sharik.ua/images/elements_big/${artItem.artikul}_m1.jpg`;
 
 	return (
 
@@ -162,7 +162,8 @@ const ArtFindPage = () => {
 
 
 
-								<TextBlock className='text-xl' >{artItem.name}</TextBlock>
+								<TextBlock className='text-xl' >{artItem.nameukr}</TextBlock>
+								{/* <TextBlock className='text-xl' >{artItem.namerus}</TextBlock> */}
 
 
 

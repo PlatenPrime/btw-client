@@ -90,7 +90,7 @@ const ArtPage = () => {
 
 
 
-	const photo = `https://sharik.ua/images/elements_big/${art.title}_m1.jpg`;
+	const photo = `https://sharik.ua/images/elements_big/${art.artikul}_m1.jpg`;
 
 
 
@@ -102,7 +102,7 @@ const ArtPage = () => {
 
 			<HeaderBlock className="bg-gradient-to-r from-rose-500 to-pink-500">
 
-				{art.title}
+				{art.artikul}
 
 			</HeaderBlock>
 
@@ -133,7 +133,7 @@ const ArtPage = () => {
 						<CellBlock className='flex flex-col h-full justify-evenly ' >
 
 
-							<TextBlock className='text-xl text-white  my-2 p-4 w-full rounded border-2 border-rose-700 hover:border-rose-900 ' >{art.name}</TextBlock>
+							<TextBlock className='text-xl text-white  my-2 p-4 w-full rounded border-2 border-rose-700 hover:border-rose-900 ' >{art.nameukr}</TextBlock>
 
 							<TextBlock className='text-2xl my-2 p-4 rounded bg-rose-500 text-white'  > Зона: {art.zone}</TextBlock>
 
@@ -165,7 +165,7 @@ const ArtPage = () => {
 
 							{pallets.map((pallet) => {
 
-								const box = pallet.positions.find(item => item.art == art.title)
+								const box = pallet.positions.find(item => item.art == art.artikul)
 
 								return (
 
