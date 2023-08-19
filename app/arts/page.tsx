@@ -12,18 +12,31 @@ export const metadata: Metadata = {
 
 export default async function ArtsPage() {
 
-	const artsData: Promise<Art[]> = getAllArts()
+	const artsData: Promise<ObjectOfArtsArray> = getAllArts()
 
 	const arts = await artsData;
 
 
-	// const firstTen = arts.slice(0, 10)
+	// const firstTen =   arts.map(art => (
+	// 	<h1 key={art._id} >{art.artikul}</h1>
+	// ))
 
+	const firstTen = (
+		<section>
 
-	// const sectioncontent = arts.map(art => (
-	// 			<h1 key={art._id} >{art.artikul}</h1>
-	// 		))
-		
+			{arts.arts.slice(0, 10).map(art => {
+				return (
+					<>
+						<p key={art._id}>
+							<Link href={`/arts/${art._id}`}>{art.nameukr}</Link>
+						</p>
+						<br />
+					</>
+				)
+			})}
+		</section>
+	)
+
 
 
 	return (
@@ -31,7 +44,7 @@ export default async function ArtsPage() {
 		<>
 			<div className='text-center text-lg'>Сторінка артикулів</div>
 			<Link href="/" className='bg-sky-600 p-2' >На головну</Link>
-			{/* {sectioncontent} */}
+			{firstTen}
 		</>
 	)
 }

@@ -6,3 +6,9 @@ type Art = {
 	"zone": string,
 	"__v": number
 }
+
+
+
+type ObjectOfArtsArray = {
+	"arts": Art[]
+}
