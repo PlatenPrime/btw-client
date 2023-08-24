@@ -13,7 +13,7 @@ const SidebarBTW = () => {
 	const activeStyles = {
 		color: "white",
 		backgroundColor: "darkgray",
-		
+
 		padding: "12px",
 	}
 
@@ -54,8 +54,8 @@ const SidebarBTW = () => {
 
 			<NavLink
 				to={"/"}
-				
-				
+
+
 			>
 
 				<div className='flex items-center justify-center w-full h-16 text-3xl text-gray-100 bg-sky-800 hover:bg-sky-700 '>
@@ -93,6 +93,15 @@ const SidebarBTW = () => {
 
 
 
+			<NavLink
+				to={"competitors"}
+				style={({ isActive }) => isActive ? activeStyles : inActiveStyles}
+			>
+				Конкуренты
+			</NavLink>
+
+
+
 			{isAuth ?
 				<ButtonBlock
 					className="cancel-c"
@@ -101,7 +110,7 @@ const SidebarBTW = () => {
 				:
 
 				<ButtonBlock
-				className="search-c"
+					className="search-c"
 				>
 					<Link to={"/login"}>Войти</Link>
 				</ButtonBlock>

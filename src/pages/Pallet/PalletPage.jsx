@@ -244,9 +244,6 @@ const PalletPage = () => {
 
 
 
-
-
-
 						:
 
 

@@ -26,6 +26,7 @@ import AddRowPage from "./pages/Row/AddRowPage";
 import ArtFindPage from "./pages/Art/ArtFindPage";
 import ArtPage from "./pages/Art/ArtPage";
 import ArtsZonesLoadingPage from "./pages/Art/ArtsZonesLoadingPage";
+import ArtList from "./pages/Competitors/ArtList";
 
 
 
@@ -42,7 +43,7 @@ function App() {
 	}, [dispatch])
 
 
-	
+
 
 
 
@@ -51,34 +52,39 @@ function App() {
 
 	return (
 
-	
+
 		<Layout>
 
-		<Routes>
-			<Route path="/" element={<MainPage />} />
-			<Route path="login" element={<LoginPage />} />
-			<Route path="register" element={<RegisterPage />} />
+			<Routes>
+				<Route path="/" element={<MainPage />} />
+				<Route path="login" element={<LoginPage />} />
+				<Route path="register" element={<RegisterPage />} />
 
-			<Route path="pallets" element={<PalletsPage />} />
-			<Route path="pallets/:id" element={<PalletPage />} />
-			<Route path="pallets/new" element={<AddPalletPage />} />
-
-
-			<Route path="rows" element={<RowsPage />} />
-			<Route path="rows/:id" element={<RowPage />} />
-			<Route path="rows/new" element={<AddRowPage />} />
+				<Route path="pallets" element={<PalletsPage />} />
+				<Route path="pallets/:id" element={<PalletPage />} />
+				<Route path="pallets/new" element={<AddPalletPage />} />
 
 
-			<Route path="artfind" element={<ArtFindPage />} />
-			<Route path="arts/:id" element={<ArtPage />} />
-			<Route path="artszones" element={<ArtsZonesLoadingPage />} />
+				<Route path="rows" element={<RowsPage />} />
+				<Route path="rows/:id" element={<RowPage />} />
+				<Route path="rows/new" element={<AddRowPage />} />
 
 
-		</Routes>
+				<Route path="artfind" element={<ArtFindPage />} />
+				<Route path="arts/:id" element={<ArtPage />} />
+				<Route path="artszones" element={<ArtsZonesLoadingPage />} />
 
-		<ToastContainer position="bottom-right" />
 
-	</Layout>
+				<Route path="competitors" element={<ArtList />} />
+
+
+
+
+			</Routes>
+
+			<ToastContainer position="bottom-right" />
+
+		</Layout>
 
 
 
