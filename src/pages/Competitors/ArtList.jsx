@@ -167,7 +167,7 @@ export default function ArtList() {
 				</ControlBTW>
 			</MainBTW>
 
-			ArtList
+	
 
 		</PageBTW>
 	)
