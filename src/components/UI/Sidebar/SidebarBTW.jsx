@@ -5,6 +5,7 @@ import { Link, NavLink } from "react-router-dom";
 import { checkIsAuth, logout } from '../../../redux/features/auth/authSlice';
 import { toast } from 'react-toastify';
 import ButtonBlock from '../../blocks/ButtonBlock';
+import CardBlock from '../../blocks/CardBlock';
 
 
 const SidebarBTW = () => {
@@ -12,14 +13,13 @@ const SidebarBTW = () => {
 
 	const activeStyles = {
 		color: "white",
-		backgroundColor: "darkgray",
 
 		padding: "12px",
 	}
 
 	const inActiveStyles = {
 		color: "white",
-		backgroundColor: "black",
+
 		padding: "12px",
 	}
 
@@ -68,58 +68,83 @@ const SidebarBTW = () => {
 			</NavLink>
 
 
-
-			<NavLink
-				to={"rows"}
-				style={({ isActive }) => isActive ? activeStyles : inActiveStyles}
-			>
-				Запасы
-			</NavLink>
-
-			<NavLink
-				to={"artfind"}
-				style={({ isActive }) => isActive ? activeStyles : inActiveStyles}
-			>
-				Поиск артикула
-			</NavLink>
-
-
-			<NavLink
-				to={"artszones"}
-				style={({ isActive }) => isActive ? activeStyles : inActiveStyles}
-			>
-				Установка зон
-			</NavLink>
-
-
-
-			<NavLink
-				to={"competitors"}
-				style={({ isActive }) => isActive ? activeStyles : inActiveStyles}
-			>
-				Конкуренты
-			</NavLink>
-
-
-
-			{isAuth ?
-				<ButtonBlock
-					className="cancel-c"
-					onClick={logoutHandler} >Выйти</ButtonBlock>
-
-				:
-
-				<ButtonBlock
-					className="search-c"
+			<CardBlock className="bg-orange-500">
+				<NavLink
+					to={"rows"}
+					style={({ isActive }) => isActive ? {
+						color: "white",
+						backgroundColor: "",
+						padding: "12px",
+					} : inActiveStyles}
 				>
-					<Link to={"/login"}>Войти</Link>
-				</ButtonBlock>
+					Запасы
+				</NavLink>
+			</CardBlock>
+
+
+			<CardBlock className="bg-teal-500">
+				<NavLink
+					to={"artfind"}
+					style={({ isActive }) => isActive ? {
+						color: "white",
+						backgroundColor: "",
+						padding: "12px",
+					} : inActiveStyles}
+				>
+					Поиск артикула
+				</NavLink>
+			</CardBlock>
+
+
+			<CardBlock className="bg-cyan-500">
+				<NavLink
+					to={"artszones"}
+					style={({ isActive }) => isActive ? {
+						color: "white",
+						backgroundColor: "",
+						padding: "12px",
+					} : inActiveStyles}
+				>
+					Установка зон
+				</NavLink>
+			</CardBlock>
+
+
+
+			<CardBlock className="bg-violet-500">
+				<NavLink
+					to={"competitors"}
+					style={({ isActive }) => isActive ? {
+						color: "white",
+						backgroundColor: "",
+						padding: "12px",
+					} : inActiveStyles}
+				>
+					Конкуренты
+				</NavLink>
+			</CardBlock>
+
+
+
+			{
+				isAuth ?
+					<ButtonBlock
+						className="cancel-c"
+						onClick={logoutHandler} >Выйти</ButtonBlock>
+
+					:
+
+					<ButtonBlock
+						className="search-c"
+					>
+						<Link to={"/login"}>Войти</Link>
+					</ButtonBlock>
 
 
 			}
 
 
-		</div>
+		</div >
 	);
 };
 

@@ -30,6 +30,7 @@ import { BiCheck } from "react-icons/bi";
 import { BiX } from "react-icons/bi";
 import { BiTrash } from "react-icons/bi";
 import Spinner from '../components/Spinner/Spinner';
+import TextBlock from '../components/blocks/TextBlock';
 
 
 
@@ -48,7 +49,7 @@ const MainPage = () => {
 
 			<HeaderBlock className='bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-green-400  hover:to-yellow-500' >
 
-				Панель быстрого доступа
+				Главная страница
 
 			</HeaderBlock>
 
@@ -63,7 +64,9 @@ const MainPage = () => {
 
 						<CardBlock className="flex justify-center" >
 
-						<SpinnerBlock   />
+						<TextBlock className="text-6xl" >
+							BTrade Warehouse App
+						</TextBlock>
 
 						</CardBlock>
 

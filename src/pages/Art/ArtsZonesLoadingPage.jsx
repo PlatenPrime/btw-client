@@ -18,6 +18,7 @@ import InputBlock from "../../components/blocks/InputBlock";
 import HeaderBlock from "../../components/blocks/HeaderBlock";
 import CardBlock from "../../components/blocks/CardBlock";
 import TextBlock from "../../components/blocks/TextBlock";
+import ImageBlock from "../../components/blocks/ImageBlock";
 
 
 
@@ -180,12 +181,13 @@ const ArtsZonesLoadingPage = () => {
 
 				<ContentMain>
 
-					<CardBlock className="flex flex-col justify-center " >
 
-						<TextBlock>
-							Сейчас в БД артикулов:
-							{loadingArtsDB ? "Загрузка..." : artsDB.length}
-						</TextBlock>
+					<CardBlock className="bg-sky-400/50" >
+						<h2 className='text-2xl'>Артикулы БТрейд</h2>
+
+						{loadingArtsDB && <p>Загрузка данных...</p>}
+						{artsDB && <p>Сейчас в базе данных БТрейд артикулов: <span className='text-lg bg-sky-500 p-1 rounded' >{artsDB.length} </span>  </p>}
+
 
 						{/* <ButtonBlock
 							className="delete flex justify-center "
@@ -198,6 +200,20 @@ const ArtsZonesLoadingPage = () => {
 
 					</CardBlock>
 
+
+					<CardBlock>
+						<TextBlock className="p-2" >
+							Выгрузи прайслист с 1с и  подготовь файл excel с полями как на картинке. Не должно быть артикулов без зон.
+						</TextBlock>
+						<ImageBlock
+							src="https://i.imgur.com/rxPEjmi.png"
+							alt='Excel пример'
+							width={600}
+							height={600}
+							className="mx-auto  p-2"
+
+						/>
+					</CardBlock>
 
 
 					<CardBlock className=" flex justify-center items-center ">

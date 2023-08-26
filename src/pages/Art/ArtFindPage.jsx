@@ -33,7 +33,7 @@ const ArtFindPage = () => {
 	const navigate = useNavigate()
 
 
-	const { artsDB, loadingArtsDB, errorArtsDB } = useArts('arts');
+	const { artsDB, loadingArtsDB, errorArtsDB } = useArts();
 
 
 
@@ -105,6 +105,12 @@ const ArtFindPage = () => {
 
 
 				<ContentMain>
+					<CardBlock className="bg-sky-400/50" >
+						<h2 className='text-2xl'>Артикулы БТрейд</h2>
+
+						{loadingArtsDB && <p>Загрузка данных...</p>}
+						{artsDB && <p>Сейчас в базе данных БТрейд артикулов: <span className='text-lg bg-sky-500 p-1 rounded' >{artsDB.length} </span>  </p>}
+					</CardBlock>
 
 					<form onSubmit={handlerArtFind}>
 
