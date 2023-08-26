@@ -3,12 +3,12 @@ import React from 'react';
 const ButtonBlock = ({ className, onClick, disabled, children, type }) => {
 
 
-	const style = `
-	
-	ButtonBlock
-	${className}
 
-`
+
+	const style = disabled ?
+		`ButtonBlock disabled`
+		:
+		`ButtonBlock ${className}`
 
 
 	return (

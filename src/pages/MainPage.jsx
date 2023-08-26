@@ -62,13 +62,13 @@ const MainPage = () => {
 
 					<CardBlock className=" " >
 
-						<CardBlock className="flex justify-center" >
+				
 
 						<TextBlock className="text-6xl" >
 							BTrade Warehouse App
 						</TextBlock>
 
-						</CardBlock>
+						
 
 
 						<RowBlock className="text-3xl" >
@@ -77,7 +77,8 @@ const MainPage = () => {
 
 						</RowBlock>
 
-						<CardBlock className="grid md:grid-cols-3" >
+
+						{/* <CardBlock className="grid md:grid-cols-3" >
 							<ButtonBlock className='edit text-2xl '   ><BiEditAlt /></ButtonBlock>
 							<ButtonBlock className='create text-2xl' ><BiPlus /></ButtonBlock>
 							<ButtonBlock className='cancel text-2xl' ><BiX /></ButtonBlock>
@@ -86,14 +87,14 @@ const MainPage = () => {
 							<ButtonBlock className='confirm text-2xl' ><BiCheck /></ButtonBlock>
 							<ButtonBlock className='add text-2xl' ><BiPlus /></ButtonBlock>
 							<ButtonBlock className='search text-2xl' ><BiSearch /></ButtonBlock>
-						</CardBlock>
+						</CardBlock> */}
 
 
 
 					</CardBlock>
 
 
-					<CardBlock className="grid md:grid-cols-3" >
+					{/* <CardBlock className="grid md:grid-cols-3" >
 						<ButtonBlock className='edit'   >Edit</ButtonBlock>
 						<ButtonBlock className='create' >Create</ButtonBlock>
 						<ButtonBlock className='cancel' >Cancel</ButtonBlock>
@@ -102,7 +103,7 @@ const MainPage = () => {
 						<ButtonBlock className='confirm' >Confirm</ButtonBlock>
 						<ButtonBlock className='add' >Add</ButtonBlock>
 						<ButtonBlock className='search' >Search</ButtonBlock>
-					</CardBlock>
+					</CardBlock> */}
 
 
 

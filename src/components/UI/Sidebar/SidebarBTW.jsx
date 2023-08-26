@@ -73,8 +73,8 @@ const SidebarBTW = () => {
 					to={"rows"}
 					style={({ isActive }) => isActive ? {
 						color: "white",
-						backgroundColor: "",
 						padding: "12px",
+						width: "100%"
 					} : inActiveStyles}
 				>
 					Запасы
@@ -87,7 +87,6 @@ const SidebarBTW = () => {
 					to={"artfind"}
 					style={({ isActive }) => isActive ? {
 						color: "white",
-						backgroundColor: "",
 						padding: "12px",
 					} : inActiveStyles}
 				>
@@ -101,7 +100,6 @@ const SidebarBTW = () => {
 					to={"artszones"}
 					style={({ isActive }) => isActive ? {
 						color: "white",
-						backgroundColor: "",
 						padding: "12px",
 					} : inActiveStyles}
 				>
@@ -116,7 +114,6 @@ const SidebarBTW = () => {
 					to={"competitors"}
 					style={({ isActive }) => isActive ? {
 						color: "white",
-						backgroundColor: "",
 						padding: "12px",
 					} : inActiveStyles}
 				>

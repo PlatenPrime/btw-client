@@ -5,6 +5,7 @@ import { checkIsAuth } from '../../../redux/features/auth/authSlice';
 
 import SpinnerBlock from '../../blocks/SpinnerBlock';
 import CardBlock from '../../blocks/CardBlock';
+import TextBlock from '../../blocks/TextBlock';
 
 const PageBTW = ({ children, className }) => {
 
@@ -37,7 +38,9 @@ const PageBTW = ({ children, className }) => {
 
 				<CardBlock className=' w-full flex justify-center items-center '  >
 
-					<SpinnerBlock />
+					<TextBlock className="text-xl" >
+						Авторизуйся, чтобы видеть содержимое разделов
+					</TextBlock>
 
 				</CardBlock>
 
