@@ -36,14 +36,14 @@ const prods = [
 export default function CompsPage() {
 
 
-	const [link, setLink] = useState("")
 
 	const [responseAO, setResponseAO] = useState(false)
 	const [compArt, setCompArt] = useState("")
 	const [sharteLink, setSharteLink] = useState("")
 	const [selectedProd, setSelectedProd] = useState('');
-	const [price, setPrice] = useState("")
-	const [isAvailable, setIsAvailable] = useState(false)
+	const [price, setPrice] = useState(null)
+	const [isAvailable, setIsAvailable] = useState('')
+
 
 
 	const [isCreatingComp, setIsCreatingComp] = useState(false)
@@ -101,10 +101,7 @@ export default function CompsPage() {
 	//////////////////////////////////////////////////////
 
 
-	const handleChange = (e) => {
-		setLink(e.target.value)
-		console.log(e.target.value)
-	}
+
 
 
 
@@ -131,12 +128,6 @@ export default function CompsPage() {
 
 		}
 
-
-
-
-
-
-
 	}
 
 
@@ -153,7 +144,9 @@ export default function CompsPage() {
 			prod: selectedProd,
 			competitorsLinks: {
 				sharteLink
-			}
+			},
+			isAvailable,
+			price
 		}
 
 		try {
@@ -167,6 +160,8 @@ export default function CompsPage() {
 			setCompArt("");
 			setSharteLink("");
 			setSelectedProd("");
+			setPrice(null)
+			setIsAvailable("")
 
 		}
 
@@ -283,6 +278,21 @@ export default function CompsPage() {
 								</RowBlock>
 
 
+								<RowBlock className="space-x-2" >
+									<TextBlock>
+										Цена: {price ? <p>{price}</p> : <p></p>}
+									</TextBlock>
+								</RowBlock>
+
+								<RowBlock className="space-x-2" >
+									<TextBlock>
+										Наличие: {typeof isAvailable === "string" ? "" : isAvailable ? "Есть на остатке" : "Нет на остатке"}
+									</TextBlock>
+								</RowBlock>
+
+
+
+
 
 
 								<ButtonBlock
@@ -292,6 +302,8 @@ export default function CompsPage() {
 								>
 									Добавить
 								</ButtonBlock>
+
+
 
 
 
@@ -333,27 +345,6 @@ export default function CompsPage() {
 
 
 
-					<CardBlock>
-						<InputBlock type="text"
-							className='InputBlock'
-							placeholder="Введи ссылку sharte"
-							onChange={(e) => handleChange(e)}
-
-						/>
-						<ButtonBlock
-							className="confirm"
-							onClick={handleAnalizeOne}
-						>
-							Получить данные
-						</ButtonBlock>
-
-
-						{!responseAO ? "Нет информации" : isAvailable ? "Есть на остатке" : "Нет на остатке"}
-
-						{price ? <p>{price}</p> : <p>Нет цены</p>}
-
-
-					</CardBlock>
 
 
 
@@ -362,7 +353,34 @@ export default function CompsPage() {
 					<CardBlock>
 						Здесь будет вывод списка артикулов с БД с возможностью обновления по ним информации о наличии
 
-						{compsDB && compsDB.map((comp) => <TextBlock>{comp.artikul}</TextBlock>)}
+						<div>
+							<table>
+								<thead>
+									<tr>
+										<th>Артикул</th>
+										<th>Производитель</th>
+										<th>Ссылка Шарте</th>
+										<th>Наличие</th>
+										<th>Цена</th>
+									</tr>
+								</thead>
+								{compsDB && <tbody>
+									{compsDB.map((comp) => (
+										<tr key={comp._id.$oid}>
+											<td>{comp.artikul}</td>
+											<td>{comp.prod}</td>
+											<td>
+												<a href={comp.competitorsLinks.sharteLink} target="_blank" rel="noopener noreferrer">
+													{comp.competitorsLinks.sharteLink.slice(0, 20)}
+												</a>
+											</td>
+											<td>{comp.isAvailable ? 'Есть' : 'Нет'}</td>
+											<td>{comp.price}</td>
+										</tr>
+									))}
+								</tbody>}
+							</table>
+						</div>
 
 					</CardBlock>
 

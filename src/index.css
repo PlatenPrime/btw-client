@@ -18,6 +18,44 @@ color: aliceblue;
 	
   }
 
+/* Стили для таблицы */
+table {
+	border-collapse: collapse;
+	width: 100%;
+	border: 1px solid #ddd;
+	margin-top: 20px;
+  }
+  
+  /* Стили для заголовка таблицы */
+  th, td {
+	text-align: left;
+	padding: 8px;
+  }
+  
+  th {
+	background-color: #2168ffb0;
+	font-weight: bold;
+  }
+  
+  /* Стили для строк таблицы */
+  tr:nth-child(even) {
+	background-color: #00042b;
+  }
+  
+  /* Стили для ссылок в ячейках */
+  a {
+	color: #007bff;
+	text-decoration: none;
+  }
+  
+  /* При наведении на ссылки */
+  a:hover {
+	text-decoration: underline;
+  }
+
+
+
+
 
 
 }
