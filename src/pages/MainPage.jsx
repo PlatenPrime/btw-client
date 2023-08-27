@@ -38,7 +38,7 @@ const MainPage = () => {
 	return (
 		<PageBTW  >
 
-			<HeaderBlock className='bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-green-400  hover:to-yellow-500' >
+			<HeaderBlock className='bg-gradient-to-r from-cyan-500 to-blue-500' >
 
 				Главная страница
 

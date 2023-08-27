@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+
 import PageBTW from '../../components/UI/Page/PageBTW'
 import MainBTW from '../../components/UI/Page/MainBTW'
 import ContentMain from '../../components/UI/Page/ContentMain'
@@ -6,12 +7,15 @@ import ControlBTW from '../../components/UI/Page/Control/ControlBTW'
 import InputBlock from "../../components/blocks/InputBlock"
 import CardBlock from '../../components/blocks/CardBlock'
 import ButtonBlock from '../../components/blocks/ButtonBlock'
-import { getArtDataSharte } from '../../utils/getArtDataSharte'
-import useFetchArts from '../../hooks/useFetchArts'
 import HeaderBlock from '../../components/blocks/HeaderBlock'
 import TextBlock from '../../components/blocks/TextBlock'
 import RowBlock from '../../components/blocks/RowBlock'
 import ImageBlock from '../../components/blocks/ImageBlock'
+
+import { getArtDataSharte } from '../../utils/getArtDataSharte'
+import useFetchArts from '../../hooks/useFetchArts'
+import useFetchComps from '../../hooks/useFetchComps'
+
 import { toast } from 'react-toastify'
 import axios from '../../utils/axios'
 
@@ -29,17 +33,22 @@ const prods = [
 
 
 
-export default function ArtList() {
+export default function CompsPage() {
 
 
 	const [link, setLink] = useState("")
-	const [price, setPrice] = useState("")
-	const [isAvailable, setIsAvailable] = useState(false)
-	const [res, setRes] = useState(false)
+
+	const [responseAO, setResponseAO] = useState(false)
 	const [compArt, setCompArt] = useState("")
 	const [sharteLink, setSharteLink] = useState("")
 	const [selectedProd, setSelectedProd] = useState('');
+	const [price, setPrice] = useState("")
+	const [isAvailable, setIsAvailable] = useState(false)
+
+
 	const [isCreatingComp, setIsCreatingComp] = useState(false)
+
+
 
 
 	const { artsDB, loadingArtsDB, errorArtsDB } = useFetchArts();
@@ -52,9 +61,28 @@ export default function ArtList() {
 	}, [errorArtsDB])
 
 
+	const { compsDB, loadingCompsDB, errorCompsDB } = useFetchComps();
+
+
+	useEffect(() => {
+		if (errorCompsDB) {
+			toast.error("Ошибка загрузки с БД артикулов отслеживания")
+		}
+
+	}, [errorCompsDB])
+
+	useEffect(() => {
+		if (compsDB) {
+			console.log(compsDB)
+		}
+
+	}, [compsDB])
 
 
 
+
+
+	// НУЖНЫЕ КОНСТАНТЫ
 
 
 	const photoSrc = `https://sharik.ua/images/elements_big/${compArt.trim()}_m1.jpg`;
@@ -64,11 +92,13 @@ export default function ArtList() {
 	if (artsDB) artikulDB = artsDB.find(item => item.artikul === compArt.trim());
 
 
+	const isFormNotValid = !compArt || !selectedProd || !sharteLink || !price || !isAvailable
 
+	const linkSharteRegex = /^https:\/\/sharte\.net\//;
 
+	const isSharteLinkValid = linkSharteRegex.test(sharteLink)
 
-
-
+	//////////////////////////////////////////////////////
 
 
 	const handleChange = (e) => {
@@ -76,17 +106,42 @@ export default function ArtList() {
 		console.log(e.target.value)
 	}
 
-	const handleClick = async () => {
 
-		setPrice("")
-		setRes(false)
 
-		const { price, isAvailable } = await getArtDataSharte(link)
-		setRes(true)
-		setPrice(price)
-		setIsAvailable(isAvailable)
+	const handleAnalizeOne = async (e) => {
+
+		e.preventDefault()
+
+
+
+		try {
+			setPrice("")
+			setResponseAO(false)
+
+			const { price, isAvailable } = await getArtDataSharte(sharteLink)
+
+
+			setPrice(price)
+			setIsAvailable(isAvailable)
+			setResponseAO(true)
+
+		} catch (error) {
+			window.alert("Артикул не проанализирован")
+		} finally {
+
+		}
+
+
+
+
+
+
 
 	}
+
+
+
+
 
 
 
@@ -112,7 +167,7 @@ export default function ArtList() {
 			setCompArt("");
 			setSharteLink("");
 			setSelectedProd("");
-			
+
 		}
 
 
@@ -154,6 +209,8 @@ export default function ArtList() {
 
 					<CardBlock className="flex flex-col justify-center items-center" >
 
+
+
 						<TextBlock className="text-xl">
 							Добавление артикула для отслеживания
 						</TextBlock>
@@ -165,7 +222,7 @@ export default function ArtList() {
 
 							<form
 								className='  flex flex-col items-start justify-start space-y-2'
-								onSubmit={handleSubmitAddComp}
+							// onSubmit={handleSubmitAddComp}
 							>
 
 								<RowBlock className="space-x-2" >
@@ -212,15 +269,31 @@ export default function ArtList() {
 										value={sharteLink}
 
 									/>
+									{isSharteLinkValid && <ButtonBlock
+										className='add'
+										onClick={(e) => handleAnalizeOne(e)}
+
+									>
+
+										Анализ
+									</ButtonBlock>}
+
+
+
 								</RowBlock>
+
+
+
 
 								<ButtonBlock
 									className="create"
-									disabled={!compArt || !selectedProd || !sharteLink}
+									disabled={isFormNotValid}
 									onClick={handleSubmitAddComp}
 								>
 									Добавить
 								</ButtonBlock>
+
+
 
 								{isCreatingComp && <TextBlock>
 									Создание артикула конкурента в базе данных...
@@ -260,10 +333,6 @@ export default function ArtList() {
 
 
 
-
-
-
-
 					<CardBlock>
 						<InputBlock type="text"
 							className='InputBlock'
@@ -273,15 +342,15 @@ export default function ArtList() {
 						/>
 						<ButtonBlock
 							className="confirm"
-							onClick={handleClick}
+							onClick={handleAnalizeOne}
 						>
 							Получить данные
 						</ButtonBlock>
 
 
-						{!res ? "Нет информации" : isAvailable ? "Есть на остатке" : "Нет на остатке"}
+						{!responseAO ? "Нет информации" : isAvailable ? "Есть на остатке" : "Нет на остатке"}
 
-						{price ? <p>{price}</p> : <p></p>}
+						{price ? <p>{price}</p> : <p>Нет цены</p>}
 
 
 					</CardBlock>
@@ -292,6 +361,9 @@ export default function ArtList() {
 
 					<CardBlock>
 						Здесь будет вывод списка артикулов с БД с возможностью обновления по ним информации о наличии
+
+						{compsDB && compsDB.map((comp) => <TextBlock>{comp.artikul}</TextBlock>)}
+
 					</CardBlock>
 
 
