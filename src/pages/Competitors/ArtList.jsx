@@ -12,8 +12,18 @@ import HeaderBlock from '../../components/blocks/HeaderBlock'
 import TextBlock from '../../components/blocks/TextBlock'
 import RowBlock from '../../components/blocks/RowBlock'
 import ImageBlock from '../../components/blocks/ImageBlock'
+import { toast } from 'react-toastify'
+import axios from '../../utils/axios'
 
 
+const prods = [
+	'Gemar',
+	'Belbal',
+	'Flex',
+	"Anagram",
+	"Qualatex"
+	// ... добавьте остальные производители
+];
 
 
 
@@ -27,11 +37,25 @@ export default function ArtList() {
 	const [isAvailable, setIsAvailable] = useState(false)
 	const [res, setRes] = useState(false)
 	const [compArt, setCompArt] = useState("")
-	const [compProd, setCompProd] = useState("")
 	const [sharteLink, setSharteLink] = useState("")
+	const [selectedProd, setSelectedProd] = useState('');
+	const [isCreatingComp, setIsCreatingComp] = useState(false)
 
 
 	const { artsDB, loadingArtsDB, errorArtsDB } = useFetchArts();
+
+
+	useEffect(() => {
+		if (errorArtsDB) {
+			toast.error("Ошибка загрузки артикулов с БД")
+		}
+	}, [errorArtsDB])
+
+
+
+
+
+
 
 	const photoSrc = `https://sharik.ua/images/elements_big/${compArt.trim()}_m1.jpg`;
 
@@ -42,9 +66,9 @@ export default function ArtList() {
 
 
 
-	useEffect(() => {
-		console.log(artsDB)
-	}, [artsDB])
+
+
+
 
 
 	const handleChange = (e) => {
@@ -67,6 +91,33 @@ export default function ArtList() {
 
 
 
+	const handleSubmitAddComp = async (e) => {
+		e.preventDefault();
+		const newComp = {
+			artikul: compArt,
+			prod: selectedProd,
+			competitorsLinks: {
+				sharteLink
+			}
+		}
+
+		try {
+			setIsCreatingComp(true)
+			const createCompRes = await axios.post("comps", newComp);
+			console.log(createCompRes.json());
+		} catch (error) {
+			setIsCreatingComp(false)
+		} finally {
+			setIsCreatingComp(false)
+			setCompArt("");
+			setSharteLink("");
+			setSelectedProd("");
+			
+		}
+
+
+	}
+
 
 
 	return (
@@ -82,7 +133,11 @@ export default function ArtList() {
 			</HeaderBlock>
 
 			<MainBTW>
+
+
 				<ContentMain>
+
+					{/* Хедер Загрузки артикулов */}
 
 					<CardBlock className="bg-sky-400/50" >
 						<h2 className='text-2xl'>Артикулы БТрейд</h2>
@@ -92,6 +147,11 @@ export default function ArtList() {
 					</CardBlock>
 
 
+
+
+
+					{/* Блок добавления артикула для отслеживания */}
+
 					<CardBlock className="flex flex-col justify-center items-center" >
 
 						<TextBlock className="text-xl">
@@ -100,10 +160,13 @@ export default function ArtList() {
 
 
 
-						<CardBlock className=' flex w-full' >
 
-							<form className=' w-1/2 flex flex-col items-start justify-start space-y-2' >
+						<CardBlock className='  flex flex-col justify-between lg:flex-row w-full' >
 
+							<form
+								className='  flex flex-col items-start justify-start space-y-2'
+								onSubmit={handleSubmitAddComp}
+							>
 
 								<RowBlock className="space-x-2" >
 									<TextBlock className=' w-1/2' >
@@ -113,26 +176,29 @@ export default function ArtList() {
 										className='InputBlock  '
 										placeholder="Введи артикул БТрейд..."
 										onChange={(e) => setCompArt(e.target.value)}
+										value={compArt}
 
 									/>
 
 								</RowBlock>
-
 
 								<RowBlock className="space-x-2" >
 									<TextBlock>
 										Производитель:
 									</TextBlock>
-
-									<InputBlock type="text"
-										className='InputBlock'
-										placeholder="Выбери производителя"
-										onChange={(e) => setCompProd(e.target.value)}
-
-									/>
+									<select
+										className='InputBlock focus:bg-sky-900'
+										value={selectedProd}
+										onChange={(e) => setSelectedProd(e.target.value)}
+									>
+										<option value="">Выбери производителя</option>
+										{prods.map((prod, index) => (
+											<option key={index} value={prod}>
+												{prod}
+											</option>
+										))}
+									</select>
 								</RowBlock>
-
-
 
 								<RowBlock className="space-x-2" >
 									<TextBlock>
@@ -143,23 +209,31 @@ export default function ArtList() {
 										className='InputBlock'
 										placeholder="Введи ссылку sharte"
 										onChange={(e) => setSharteLink(e.target.value)}
+										value={sharteLink}
 
 									/>
 								</RowBlock>
 
 								<ButtonBlock
-									className="create w-full"
-									disabled={!compArt || !compProd || !sharteLink}
+									className="create"
+									disabled={!compArt || !selectedProd || !sharteLink}
+									onClick={handleSubmitAddComp}
 								>
 									Добавить
 								</ButtonBlock>
 
+								{isCreatingComp && <TextBlock>
+									Создание артикула конкурента в базе данных...
+								</TextBlock>
+								}
 
 
 							</form>
 
 
-							<CardBlock className="w-1/2 space-y-2" >
+
+
+							<CardBlock className=" space-y-2" >
 
 								<TextBlock>
 									{artikulDB && <span>{artikulDB.nameukr}</span>}
@@ -178,11 +252,17 @@ export default function ArtList() {
 
 						</CardBlock>
 
-
-
-
-
 					</CardBlock>
+
+
+
+
+
+
+
+
+
+
 
 					<CardBlock>
 						<InputBlock type="text"
@@ -199,7 +279,6 @@ export default function ArtList() {
 						</ButtonBlock>
 
 
-
 						{!res ? "Нет информации" : isAvailable ? "Есть на остатке" : "Нет на остатке"}
 
 						{price ? <p>{price}</p> : <p></p>}
@@ -212,21 +291,22 @@ export default function ArtList() {
 
 
 					<CardBlock>
-						Здесь будет поиск 1 артикула и добавление его в бд
-					</CardBlock>
-
-
-
-
-					<CardBlock>
 						Здесь будет вывод списка артикулов с БД с возможностью обновления по ним информации о наличии
 					</CardBlock>
 
 
+
+
 				</ContentMain>
+
+
+
 				<ControlBTW>
 					Control Panel
 				</ControlBTW>
+
+
+
 			</MainBTW>
 
 

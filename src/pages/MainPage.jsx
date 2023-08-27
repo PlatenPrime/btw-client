@@ -17,19 +17,10 @@ import ControlBTW from '../components/UI/Page/Control/ControlBTW';
 import ContentMain from '../components/UI/Page/ContentMain';
 import ButtonBlock from '../components/blocks/ButtonBlock';
 import CardBlock from '../components/blocks/CardBlock';
-import SpinnerBlock from '../components/blocks/SpinnerBlock';
 import HeaderBlock from '../components/blocks/HeaderBlock';
 import RowBlock from '../components/blocks/RowBlock';
 
 
-import { BiSave, BiSearch } from "react-icons/bi";
-import { BiEdit } from "react-icons/bi";
-import { BiEditAlt } from "react-icons/bi";
-import { BiPlus } from "react-icons/bi";
-import { BiCheck } from "react-icons/bi";
-import { BiX } from "react-icons/bi";
-import { BiTrash } from "react-icons/bi";
-import Spinner from '../components/Spinner/Spinner';
 import TextBlock from '../components/blocks/TextBlock';
 
 
@@ -62,13 +53,17 @@ const MainPage = () => {
 
 					<CardBlock className=" " >
 
-				
+
 
 						<TextBlock className="text-6xl" >
-							BTrade Warehouse App
+
+							BTW App
+						</TextBlock>
+						<TextBlock className="text-lg" >
+
+							Balloon Trade Warehouse App
 						</TextBlock>
 
-						
 
 
 						<RowBlock className="text-3xl" >
