@@ -351,7 +351,7 @@ export default function CompsPage() {
 
 
 					<CardBlock>
-						Здесь будет вывод списка артикулов с БД с возможностью обновления по ним информации о наличии
+					
 
 						<div>
 							<table>

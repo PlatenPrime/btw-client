@@ -27,6 +27,7 @@ import ArtFindPage from "./pages/Art/ArtFindPage";
 import ArtPage from "./pages/Art/ArtPage";
 import ArtsZonesLoadingPage from "./pages/Art/ArtsZonesLoadingPage";
 import CompsPage from "./pages/Competitors/CompsPage";
+import CompsPageNew from "./pages/Competitors/CompsPageNew";
 
 
 
@@ -76,6 +77,7 @@ function App() {
 
 
 				<Route path="competitors" element={<CompsPage />} />
+				<Route path="competitorsnew" element={<CompsPageNew />} />
 
 
 
