@@ -121,18 +121,7 @@ const SidebarBTW = () => {
 				</NavLink>
 			</CardBlock>
 
-			<CardBlock className="bg-violet-500">
-				<NavLink
-					to={"competitorsnew"}
-					style={({ isActive }) => isActive ? {
-						color: "white",
-						padding: "12px",
-					} : inActiveStyles}
-				>
-					Конкуренты
-				</NavLink>
-			</CardBlock>
-
+		
 
 
 			{
