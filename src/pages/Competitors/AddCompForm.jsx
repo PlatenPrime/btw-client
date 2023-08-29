@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useCompContext } from './compContextProvider'; // Import the context hook
+import { useCompContext } from './compContextProvider';
 import {
 	ButtonBlock,
 	InputBlock,
@@ -7,21 +7,43 @@ import {
 	TextBlock,
 	CardBlock,
 	ImageBlock
-} from '../../components'; // Import your UI components here
+} from '../../components';
 import { getArtDataSharte } from '../../utils/getArtDataSharte';
+import { getArtDataBtrade } from '../../utils/getArtDataBtrade';
+
+
 import axios from "../../utils/axios"
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 export default function AddCompForm() {
 	const { artsDB } = useCompContext();
 
 	// State for form fields
-	const [responseAO, setResponseAO] = useState(false)
+
 	const [compArt, setCompArt] = useState('');
 	const [selectedProd, setSelectedProd] = useState('');
 	const [sharteLink, setSharteLink] = useState('');
-	const [price, setPrice] = useState('');
-	const [isAvailable, setIsAvailable] = useState('');
+
+	const [priceSharte, setPriceSharte] = useState('');
+	const [isAvailableSharte, setIsAvailableSharte] = useState('');
+
+	const [priceBtrade, setPriceBtrade] = useState('');
+	const [quantBtrade, setQuantBtrade] = useState('');
+
+	const [isAnalyze, setIsAnalyze] = useState(false)
+
 	const [isCreatingComp, setIsCreatingComp] = useState(false);
 
 	// Other form-related state and functions
@@ -45,7 +67,7 @@ export default function AddCompForm() {
 
 	if (artsDB) artikulDB = artsDB.find(item => item.artikul === compArt.trim());
 
-	const isFormNotValid = !compArt || !selectedProd || !sharteLink || !price || !isAvailable;
+	const isFormNotValid = !compArt || !selectedProd || !sharteLink || !priceSharte || !isAvailableSharte;
 	const linkSharteRegex = /^https:\/\/sharte\.net\//;
 	const isSharteLinkValid = linkSharteRegex.test(sharteLink);
 
@@ -54,19 +76,45 @@ export default function AddCompForm() {
 		e.preventDefault();
 
 		try {
-			setPrice("")
-			setResponseAO(false)
-
-			const { price, isAvailable } = await getArtDataSharte(sharteLink)
 
 
-			setPrice(price)
-			setIsAvailable(isAvailable)
-			setResponseAO(true)
+			setIsAnalyze(false)
+
+			// Анализ Sharte
+
+			setPriceSharte("")
+			const {
+				price: priceSharte,
+				isAvailable: isAvailableSharte
+			} = await getArtDataSharte(sharteLink)
+			setPriceSharte(priceSharte)
+			setIsAvailableSharte(isAvailableSharte)
+
+
+			setPriceBtrade("")
+			const {
+				price: priceBtrade,
+				quant: quantBtrade
+			} = await getArtDataBtrade(compArt)
+			console.log(priceBtrade)
+			setPriceBtrade(priceBtrade)
+			setQuantBtrade(quantBtrade)
+
+
+
+
+
+
+
 		} catch (error) {
-			console.error('Error analyzing Sharte link:', error);
+			console.error('Error analyzing artikul:', error);
+		} finally {
+			setIsAnalyze(true)
 		}
 	};
+
+
+
 
 	const handleSubmitAddComp = async (e) => {
 		e.preventDefault();
@@ -76,8 +124,9 @@ export default function AddCompForm() {
 			competitorsLinks: {
 				sharteLink
 			},
-			isAvailable,
-			price
+			isAvailableSharte,
+			priceSharte
+
 		}
 
 		try {
@@ -91,11 +140,18 @@ export default function AddCompForm() {
 			setCompArt("");
 			setSharteLink("");
 			setSelectedProd("");
-			setPrice(null)
-			setIsAvailable("")
+			setPriceSharte(null)
+			setIsAvailableSharte("")
 
 		}
 	};
+
+
+
+
+
+
+
 
 	return (
 		<CardBlock className='  flex flex-col justify-between lg:flex-row ' >
@@ -137,47 +193,73 @@ export default function AddCompForm() {
 				</RowBlock>
 
 
+
+
+				<RowBlock className="space-x-2" >
+					<TextBlock>
+						Ссылка Sharte:
+					</TextBlock>
+
+					<InputBlock type="text"
+						className='InputBlock'
+						placeholder="Введи ссылку sharte"
+						onChange={(e) => setSharteLink(e.target.value)}
+						value={sharteLink}
+
+					/>
+
+
+
+
+
+				</RowBlock>
+
 				<CardBlock>
 
-					<RowBlock className="space-x-2" >
+					{isSharteLinkValid && <ButtonBlock
+						className='add w-full'
+						onClick={(e) => handleAnalizeOne(e)}
+
+					>
+
+						Анализ
+					</ButtonBlock>}
+
+
+
+					{isAnalyze && <RowBlock className=" flex flex-col items-start " >
 						<TextBlock>
-							Ссылка Sharte:
+							Цена Sharte: {
+								priceSharte ?
+									<p>{priceSharte}</p>
+									:
+									<p></p>}
 						</TextBlock>
 
-						<InputBlock type="text"
-							className='InputBlock'
-							placeholder="Введи ссылку sharte"
-							onChange={(e) => setSharteLink(e.target.value)}
-							value={sharteLink}
-
-						/>
-
-						
-						{isSharteLinkValid && <ButtonBlock
-							className='add'
-							onClick={(e) => handleAnalizeOne(e)}
-
-						>
-
-							Анализ
-						</ButtonBlock>}
-
-
-
-					</RowBlock>
-
-
-					<RowBlock className="space-x-2 " >
 						<TextBlock>
-							Цена: {price ? <p>{price}</p> : <p></p>}
+							Наличие у Sharte: {typeof isAvailableSharte === "string" ? "" : isAvailableSharte ? "Есть" : "Нет"}
 						</TextBlock>
-					</RowBlock>
 
-					<RowBlock className="space-x-2" >
 						<TextBlock>
-							Наличие: {typeof isAvailable === "string" ? "" : isAvailable ? "Есть на остатке" : "Нет на остатке"}
+							Цена Btrade: {
+								priceBtrade ?
+									<p>{priceBtrade} грн</p>
+									:
+									<p></p>}
 						</TextBlock>
-					</RowBlock>
+
+
+						<TextBlock>
+							Остаток на Погребах: {quantBtrade ? <span>{quantBtrade} шт</span> : ""}
+						</TextBlock>
+
+
+					</RowBlock>}
+
+
+
+
+
 
 
 				</CardBlock>
