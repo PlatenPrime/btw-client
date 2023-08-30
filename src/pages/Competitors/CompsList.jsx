@@ -18,7 +18,7 @@ export default function CompList() {
 	return (
 		<CardBlock>
 			<TextBlock>Список артикулов с БД с возможностью обновления по ним информации о наличии</TextBlock>
-			<ButtonBlock className='success' >Обновить данные</ButtonBlock>
+			<ButtonBlock className='success-c' >Обновить данные</ButtonBlock>
 			<table>
 				<thead>
 					<tr>
