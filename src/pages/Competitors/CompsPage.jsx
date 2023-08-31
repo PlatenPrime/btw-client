@@ -33,7 +33,7 @@ export default function CompsPage() {
 
 		<CompContextProvider>
 
-			
+
 			<PageBTW className='max-h-screen space-y-4' >
 
 				<HeaderBlock className="bg-gradient-to-r from-violet-500 to-purple-500">
@@ -42,17 +42,18 @@ export default function CompsPage() {
 
 				</HeaderBlock>
 
-				
 
 
-				
-
-						<AddCompForm />
-						<CompList />
-						
 
 
-				
+
+				<AddCompForm />
+				<CompList />
+
+
+
+
+
 
 
 

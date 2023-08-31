@@ -15,14 +15,30 @@ import { getArtDataBtrade } from '../../utils/getArtDataBtrade';
 import axios from "../../utils/axios"
 
 
+const prods = [
+	'Gemar',
+	'Belbal',
+	'Flex',
+	"Anagram",
+	"Qualatex"
+
+];
+
+
+const initialStateForm = {
+	compArt: "",
+	selectedProd: "",
+	sharteLink: "",
+	priceSharte: "",
+	isAvailableSharte: null,
+	priceBtrade: "",
+	quantBtrade: "",
+	isAnalyze: false,
+	isCreatingComp: false,
 
 
 
-
-
-
-
-
+}
 
 
 
@@ -32,44 +48,48 @@ export default function AddCompForm() {
 
 	// State for form fields
 
-	const [compArt, setCompArt] = useState('');
-	const [selectedProd, setSelectedProd] = useState('');
-	const [sharteLink, setSharteLink] = useState('');
+	const [state, setState] = useState(initialStateForm)
 
-	const [priceSharte, setPriceSharte] = useState('');
-	const [isAvailableSharte, setIsAvailableSharte] = useState('');
-
-	const [priceBtrade, setPriceBtrade] = useState('');
-	const [quantBtrade, setQuantBtrade] = useState('');
-
-	const [isAnalyze, setIsAnalyze] = useState(false)
-
-	const [isCreatingComp, setIsCreatingComp] = useState(false);
 
 	// Other form-related state and functions
 
 	// НУЖНЫЕ КОНСТАНТЫ
 
 
-	const prods = [
-		'Gemar',
-		'Belbal',
-		'Flex',
-		"Anagram",
-		"Qualatex"
-
-	];
 
 
-	const photoSrc = `https://sharik.ua/images/elements_big/${compArt.trim()}_m1.jpg`;
+
+	const photoSrc = `https://sharik.ua/images/elements_big/${state.compArt.trim()}_m1.jpg`;
 
 	let artikulDB;
 
-	if (artsDB) artikulDB = artsDB.find(item => item.artikul === compArt.trim());
+	if (artsDB) artikulDB = artsDB.find(item => item.artikul === state.compArt.trim());
 
-	const isFormNotValid = !compArt || !selectedProd || !sharteLink || !priceSharte || !isAvailableSharte;
+
+
+	const isFormNotValid = !state.compArt ||
+		!state.selectedProd ||
+		!state.sharteLink ||
+		!state.priceSharte ||
+		!state.isAvailableSharte;
+
+
+
+
 	const linkSharteRegex = /^https:\/\/sharte\.net\//;
-	const isSharteLinkValid = linkSharteRegex.test(sharteLink);
+
+
+	const isSharteLinkValid = linkSharteRegex.test(state.sharteLink);
+
+
+
+	const handleChange = (e) => {
+		setState({
+			...state,
+			[e.target.name]: e.target.value,
+		});
+
+	}
 
 
 	const handleAnalizeOne = async (e) => {
@@ -78,38 +98,39 @@ export default function AddCompForm() {
 		try {
 
 
-			setIsAnalyze(false)
+			setState(prevState => ({
+				...prevState,
+				isAnalyze: false,
+				priceSharte: '',
+				isAvailableSharte: '',
+				priceBtrade: '',
+				quantBtrade: '',
+			}));
+
 
 			// Анализ Sharte
 
-			setPriceSharte("")
-			const {
-				price: priceSharte,
-				isAvailable: isAvailableSharte
-			} = await getArtDataSharte(sharteLink)
-			setPriceSharte(priceSharte)
-			setIsAvailableSharte(isAvailableSharte)
+			const { price: priceSharte, isAvailable: isAvailableSharte } = await getArtDataSharte(state.sharteLink);
+			setState(prevState => ({
+				...prevState,
+				priceSharte,
+				isAvailableSharte,
+				isAnalyze: true,
+			}));
 
+			// Анализ Btrade
 
-			setPriceBtrade("")
-			const {
-				price: priceBtrade,
-				quant: quantBtrade
-			} = await getArtDataBtrade(compArt)
-			console.log(priceBtrade)
-			setPriceBtrade(priceBtrade)
-			setQuantBtrade(quantBtrade)
-
-
-
-
+			const { price: priceBtrade, quant: quantBtrade } = await getArtDataBtrade(state.compArt);
+			setState(prevState => ({
+				...prevState,
+				priceBtrade,
+				quantBtrade,
+			}));
 
 
 
 		} catch (error) {
 			console.error('Error analyzing artikul:', error);
-		} finally {
-			setIsAnalyze(true)
 		}
 	};
 
@@ -118,30 +139,54 @@ export default function AddCompForm() {
 
 	const handleSubmitAddComp = async (e) => {
 		e.preventDefault();
+
+
+
 		const newComp = {
-			artikul: compArt,
-			prod: selectedProd,
+			artikul: state.compArt,
+			prod: state.selectedProd,
 			competitorsLinks: {
-				sharteLink
+				sharteLink: state.sharteLink
 			},
-			isAvailableSharte,
-			priceSharte
+			avail: {
+				btrade: state.quantBtrade,
+				sharte: state.isAvailableSharte,
+
+			},
+			price: {
+				btrade: state.priceBtrade,
+				sharte: state.priceSharte,
+			}
 
 		}
 
 		try {
-			setIsCreatingComp(true)
+
+
+			setState(prevState => ({
+				...prevState,
+				isCreatingComp: true,
+			}));
+
 			const createCompRes = await axios.post("comps", newComp);
+
 			console.log(createCompRes.json());
+
 		} catch (error) {
-			setIsCreatingComp(false)
+
+			console.log("Ошибка создания артикула для анализа", error)
+
 		} finally {
-			setIsCreatingComp(false)
-			setCompArt("");
-			setSharteLink("");
-			setSelectedProd("");
-			setPriceSharte(null)
-			setIsAvailableSharte("")
+			setState(prevState => ({
+				...prevState,
+				isCreatingComp: false,
+				isAnalyze: false,
+				compArt: '',
+				sharteLink: '',
+				selectedProd: '',
+				priceSharte: null,
+				isAvailableSharte: '',
+			}));
 
 		}
 	};
@@ -183,10 +228,11 @@ export default function AddCompForm() {
 							Артикул Бтрейд:
 						</TextBlock>
 						<InputBlock type="text"
+							name="compArt"
 							className='InputBlock  w-full text-center'
 							placeholder="Введи артикул БТрейд..."
-							onChange={(e) => setCompArt(e.target.value)}
-							value={compArt}
+							onChange={handleChange}
+							value={state.compArt}
 
 						/>
 
@@ -197,9 +243,10 @@ export default function AddCompForm() {
 							Производитель:
 						</TextBlock>
 						<select
+							name="selectedProd"
 							className='InputBlock focus:bg-sky-900 w-full'
-							value={selectedProd}
-							onChange={(e) => setSelectedProd(e.target.value)}
+							value={state.selectedProd}
+							onChange={handleChange}
 						>
 							<option value="">Выбери производителя</option>
 							{prods.map((prod, index) => (
@@ -218,11 +265,13 @@ export default function AddCompForm() {
 							Ссылка Sharte:
 						</TextBlock>
 
-						<InputBlock type="text"
+						<InputBlock
+							type="text"
+							name="sharteLink"
 							className='InputBlock w-full  '
 							placeholder="Введи ссылку sharte"
-							onChange={(e) => setSharteLink(e.target.value)}
-							value={sharteLink}
+							onChange={handleChange}
+							value={state.sharteLink}
 
 						/>
 
@@ -279,13 +328,13 @@ export default function AddCompForm() {
 
 
 
-					{isAnalyze && <RowBlock className=" flex flex-col items-start space-y-1 " >
+					{state.isAnalyze && <RowBlock className=" flex flex-col items-start space-y-1 " >
 						<TextBlock
 							className='border p-1 rounded w-full flex justify-start'
 						>
 							Цена Sharte: {
-								priceSharte ?
-									<p>{priceSharte}</p>
+								state.priceSharte ?
+									<p>{state.priceSharte} грн</p>
 									:
 									<p></p>}
 						</TextBlock>
@@ -294,8 +343,8 @@ export default function AddCompForm() {
 							className='border p-1 rounded w-full flex justify-start'
 						>
 							Цена Btrade: {
-								priceBtrade ?
-									<p>{priceBtrade} грн</p>
+								state.priceBtrade ?
+									<p>{state.priceBtrade} грн</p>
 									:
 									<p></p>}
 						</TextBlock>
@@ -303,7 +352,7 @@ export default function AddCompForm() {
 						<TextBlock
 							className='border p-1 rounded w-full flex justify-start'
 						>
-							Наличие у Sharte: {typeof isAvailableSharte === "string" ? "" : isAvailableSharte ? "Есть" : "Нет"}
+							Наличие у Sharte: {state.isAvailableSharte ? "Есть" : "Нет"}
 						</TextBlock>
 
 
@@ -312,7 +361,7 @@ export default function AddCompForm() {
 						<TextBlock
 							className='border p-1 rounded w-full flex justify-start'
 						>
-							Остаток на Погребах: {quantBtrade ? <span>{quantBtrade} шт</span> : ""}
+							Остаток на Погребах: {state.quantBtrade ? <span>{state.quantBtrade} шт</span> : ""}
 						</TextBlock>
 
 
@@ -348,7 +397,7 @@ export default function AddCompForm() {
 				</ButtonBlock>
 
 
-				{isCreatingComp && <TextBlock>
+				{state.isCreatingComp && <TextBlock>
 					Создание артикула конкурента в базе данных...
 				</TextBlock>
 				}

@@ -17,23 +17,32 @@ export default function CompList() {
 
 	return (
 		<CardBlock>
-			<TextBlock>Список артикулов с БД с возможностью обновления по ним информации о наличии</TextBlock>
-			<ButtonBlock className='success-c' >Обновить данные</ButtonBlock>
+
+			<CardBlock
+				className="flex justify-between"
+			>
+				<ButtonBlock className='add-c' >Анализировать артикулы</ButtonBlock>
+				<ButtonBlock className='success-c' >Обновить данные</ButtonBlock>
+			</CardBlock>
+
+
 			<table>
 				<thead>
 					<tr>
 						<th>Артикул</th>
 						<th>Производитель</th>
 						<th>Ссылка Шарте</th>
-						<th>Наличие</th>
-						<th>Цена</th>
+						<th>Наличие Шарте</th>
+						<th>Наличие Бтрейд</th>
+						<th>Цена Шарте</th>
+						<th>Цена Бтрейд</th>
 					</tr>
 				</thead>
 				<tbody>
 					{compsDB && compsDB.map((comp) => (
 						<tr key={comp._id.$oid}>
 							<td className='flex items-center space-x-1' >
-								
+
 								<ImageBlock
 									src={`https://sharik.ua/images/elements_big/${comp.artikul}_m1.jpg`}
 									width={30}
@@ -47,11 +56,13 @@ export default function CompList() {
 							<td>{comp.prod}</td>
 							<td>
 								<a href={comp.competitorsLinks.sharteLink} target="_blank" rel="noopener noreferrer">
-									{comp.competitorsLinks.sharteLink.slice(0, 20)}
+									{comp.competitorsLinks.sharteLink.slice(0, 20)}...
 								</a>
 							</td>
-							<td>{comp.isAvailable ? 'Есть' : 'Нет'}</td>
-							<td>{comp.price}</td>
+							<td>{comp.avail.sharte ? <span className='bg-green-500 p-1' >Есть</span> : <span className='bg-red-500 p-1' >Нет</span>}</td>
+							<td>{comp.avail.btrade ? <span>{comp.avail.btrade}</span> : 'Нет'}</td>
+							<td>{comp.price.sharte}</td>
+							<td>{comp.price.btrade}</td>
 						</tr>
 					))}
 				</tbody>

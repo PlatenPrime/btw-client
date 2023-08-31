@@ -17,7 +17,7 @@ export async function getArtDataSharte(link) {
 		let price, isAvailable;
 
 		if (match && match[1]) {
-			price = match[1] + " грн";
+			price = match[1];
 			console.log("Нашли цену");
 		} else {
 			price = "Цена не определена"
@@ -27,10 +27,6 @@ export async function getArtDataSharte(link) {
 		const toolsLocations = responseString.indexOf("smallElementTools");
 		const searchValueBeLocation = responseString.indexOf(searchValueAvailability, toolsLocations);
 		const letter = responseString.slice(searchValueBeLocation - 2, searchValueBeLocation - 1);
-
-		if (!letter) {
-			isAvailable = "Наличие не определено"
-		}
 
 
 		const isUpperCase = letter === letter.toUpperCase();
