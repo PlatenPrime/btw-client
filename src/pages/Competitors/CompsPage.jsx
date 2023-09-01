@@ -43,10 +43,6 @@ export default function CompsPage() {
 				</HeaderBlock>
 
 
-
-
-
-
 				<AddCompForm />
 				<CompList />
 
