@@ -12,9 +12,7 @@ import { checkIsAuth } from '../../redux/features/auth/authSlice';
 
 
 import PageBTW from '../../components/UI/Page/PageBTW';
-import ControlBTW from '../../components/UI/Page/Control/ControlBTW';
 
-import MainBTW from '../../components/UI/Page/MainBTW';
 
 import ButtonBlock from '../../components/blocks/ButtonBlock';
 import HeaderBlock from '../../components/blocks/HeaderBlock';
@@ -82,17 +80,8 @@ const AddPalletPage = () => {
 				
 			</HeaderBlock>
 
-			<MainBTW>
+		
 
-				
-
-			</MainBTW>
-
-
-
-
-
-			<ControlBTW>
 
 				<ButtonBlock
 					onClick={handlerClearForm}
@@ -106,13 +95,6 @@ const AddPalletPage = () => {
 				>
 					Создать
 				</ButtonBlock>
-
-
-
-
-			</ControlBTW>
-
-
 
 
 

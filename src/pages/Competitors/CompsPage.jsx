@@ -30,11 +30,13 @@ export default function CompsPage() {
 
 
 	const activeStyles = {
-		backgroundColor: "black",
+		backgroundColor: "rgb(139 92 246)",
 		color: "white",
 		padding: "0.5rem",
 		width: "100%",
 		textAlign: 'center',
+		borderBottomLeftRadius: "0.5rem",
+		borderBottomRightRadius: "0.5rem",
 	}
 
 
@@ -51,9 +53,9 @@ export default function CompsPage() {
 		<CompContextProvider>
 
 
-			<PageBTW className='max-h-screen space-y-4' >
+			<PageBTW className='max-h-screen' >
 
-				<HeaderBlock className="bg-gradient-to-r from-violet-500 to-purple-500">
+				<HeaderBlock className="bg-violet-500 ">
 
 					Анализ конкурентов
 
@@ -61,13 +63,13 @@ export default function CompsPage() {
 
 
 				<CardBlock
-					className="flex justify-evenly "
+					className="flex justify-evenly  "
 
 				>
 
 
 					<TextBlock
-						className="w-1/3"
+						className="w-1/3 rounded hover:bg-violet-500/50 rounded-b-lg"
 
 					>
 						<NavLink
@@ -79,15 +81,18 @@ export default function CompsPage() {
 						</NavLink>
 					</TextBlock>
 
+
+
+
 					<TextBlock
-						className="w-1/3"
+						className="w-1/3 hover:bg-violet-500/50 rounded-b-lg"
 					>
 						<NavLink
 							to={"logs"}
 							style={({ isActive }) => isActive ? activeStyles : inActiveStyles}
 
 						>
-							Логи
+							История изменений
 						</NavLink>
 					</TextBlock>
 
@@ -95,14 +100,14 @@ export default function CompsPage() {
 
 
 					<TextBlock
-						className="w-1/3"
+						className="w-1/3 hover:bg-violet-500/50 rounded-b-lg"
 					>
 						<NavLink
 							to={"one"}
 							style={({ isActive }) => isActive ? activeStyles : inActiveStyles}
 
 						>
-							Один
+							Редактирование
 						</NavLink>
 					</TextBlock>
 

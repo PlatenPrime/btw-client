@@ -73,12 +73,15 @@ function App() {
 				<Route path="rows/new" element={<AddRowPage />} />
 
 
-				<Route path="artfind" element={<ArtFindPage />} />
+				<Route path="arts" element={<ArtFindPage />} />
 				<Route path="arts/:id" element={<ArtPage />} />
-				<Route path="artszones" element={<ArtsZonesLoadingPage />} />
 
 
-				<Route path="competitors" element={<CompsPage />} >
+
+				<Route path="zones" element={<ArtsZonesLoadingPage />} />
+
+
+				<Route path="comps" element={<CompsPage />} >
 					<Route path="one" element={<CompOnePage />} />
 					<Route path="list" element={<CompsListPage />} />
 					<Route path="logs" element={<CompLogsPage />} />

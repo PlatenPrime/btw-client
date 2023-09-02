@@ -15,11 +15,7 @@ import { createRow } from "../../redux/features/row/rowSlice";
 
 
 import PageBTW from '../../components/UI/Page/PageBTW';
-import MainBTW from '../../components/UI/Page/MainBTW';
-import ControlBTW from '../../components/UI/Page/Control/ControlBTW';
 
-
-import ContentMain from '../../components/UI/Page/ContentMain';
 import ButtonBlock from '../../components/blocks/ButtonBlock';
 import HeaderBlock from '../../components/blocks/HeaderBlock';
 import CardBlock from '../../components/blocks/CardBlock';
@@ -56,9 +52,9 @@ const AddRowPage = () => {
 
 	const handlerSubmit = () => {
 		if (!title) {
-			
+
 			toast.error("У ряда нет названия")
-			
+
 		} else
 			try {
 				const data = {
@@ -95,67 +91,39 @@ const AddRowPage = () => {
 			</HeaderBlock>
 
 
-
-
-			<MainBTW >
-
-
-				<ContentMain>
-
-
-					<CardBlock>
+			<CardBlock >
 
 
 
-						<RowTitle
-							isRowEditing={isRowEditing}
-							title={title}
-							setTitle={setTitle}
+				<ButtonBlock
+
+					className='success-c w-full '
+					onClick={handlerSubmit}
+				>
+					Создать
+				</ButtonBlock>
 
 
-						/>
+
+			</CardBlock>
 
 
 
 
-					</CardBlock>
+			<CardBlock>
 
 
 
-
-				</ContentMain>
-
-
-
-
-
-				<ControlBTW >
+				<RowTitle
+					isRowEditing={isRowEditing}
+					title={title}
+					setTitle={setTitle}
 
 
-					
-					<ButtonBlock
-
-						className='success-c w-full '
-						onClick={handlerSubmit}
-					>
-						Создать
-					</ButtonBlock>
+				/>
 
 
-
-				</ControlBTW>
-
-
-			</MainBTW>
-
-
-
-
-
-
-
-
-
+			</CardBlock>
 
 
 

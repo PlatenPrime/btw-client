@@ -13,13 +13,7 @@ import { getAllRows } from '../../redux/features/row/rowSlice';
 import RowBage from "../../pages/Row/Row/RowBage";
 
 import PageBTW from '../../components/UI/Page/PageBTW';
-import ControlBTW from '../../components/UI/Page/Control/ControlBTW';
-import MainBTW from '../../components/UI/Page/MainBTW';
 
-
-
-
-import ContentMain from '../../components/UI/Page/ContentMain';
 import ButtonBlock from '../../components/blocks/ButtonBlock';
 import ListBlock from '../../components/blocks/ListBlock';
 import HeaderBlock from '../../components/blocks/HeaderBlock';
@@ -82,80 +76,60 @@ const RowsPage = () => {
 
 
 
-			<MainBTW>
+			<CardBlock>
+
+				<Link to="new" className='w-full'	>
+
+					<ButtonBlock className='create-c w-full' >
+						Создать новый ряд
+					</ButtonBlock>
+
+				</Link>
+
+
+
+			</CardBlock>
 
 
 
 
+			{
 
-				<ContentMain  >
-
-
-
-					{
-
-						isLoading ?
+				isLoading ?
 
 
-							<SpinnerBlock />
+					<SpinnerBlock />
 
 
-							:
+					:
 
 
-							<CardBlock>
+					<CardBlock>
 
-								{
-									!rows.length
+						{
+							!rows.length
 
-										?
+								?
 
-										<TextBlock className='text-xl'>
-											В базе данных нет ни одного ряда.
-										</TextBlock>
+								<TextBlock className='text-xl'>
+									В базе данных нет ни одного ряда.
+								</TextBlock>
 
-										:
+								:
 
-										<ListBlock className="flex flex-col w-full" >
-											{rows?.map((row, idx) => (
-												<RowBage key={idx} row={row} />
-											))}
-										</ListBlock>
-								}
+								<ListBlock className="flex flex-col w-full" >
+									{rows?.map((row, idx) => (
+										<RowBage key={idx} row={row} />
+									))}
+								</ListBlock>
+						}
 
-							</CardBlock>
-
-
-					}
+					</CardBlock>
 
 
+			}
 
 
-
-				</ContentMain>
-
-
-
-
-
-
-				<ControlBTW>
-
-					<Link to="new" className='w-full'	>
-
-						<ButtonBlock className='create-c w-full' >
-							Создать новый ряд
-						</ButtonBlock>
-
-					</Link>
-
-
-
-				</ControlBTW>
-
-
-
-			</MainBTW>
 
 
 

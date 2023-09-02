@@ -15,12 +15,7 @@ import { checkIsAuth } from '../../redux/features/auth/authSlice';
 
 
 import PageBTW from '../../components/UI/Page/PageBTW';
-import ControlBTW from '../../components/UI/Page/Control/ControlBTW';
-import MainBTW from '../../components/UI/Page/MainBTW';
 
-
-
-import ContentMain from '../../components/UI/Page/ContentMain';
 import ButtonBlock from '../../components/blocks/ButtonBlock';
 import HeaderBlock from '../../components/blocks/HeaderBlock';
 import CellBlock from '../../components/blocks/CellBlock';
@@ -104,7 +99,7 @@ const PalletPage = () => {
 
 
 
-		
+
 	}
 
 
@@ -138,7 +133,7 @@ const PalletPage = () => {
 
 	return (
 		<PageBTW
-			
+
 
 		>
 
@@ -154,116 +149,113 @@ const PalletPage = () => {
 
 			</HeaderBlock>
 
-
-			<MainBTW>
-
-				<ContentMain>
-
-
-					{
-						isPalletEditing &&
-
-
-						<CardBlock>
+			<CardBlock>
 
 
 
-							<PalletTitle
-								title={title}
-								setTitle={setTitle}
-							/>
+				{isPalletEditing ?
+
+					<CellBlock className='w-full flex-col'>
+
+
+						<ButtonBlock
+							className='cancel-c w-full'
+							onClick={handlerCancelPalletEditing}
+						>
+							Отмена
+						</ButtonBlock>
+
+
+						<ButtonBlock
+							className='success-c w-full'
+							onClick={handlerPalletSave}
+						>
+							Сохранить
+						</ButtonBlock>
 
 
 
-							<PalletPositionAdd
-								positions={positions}
-								setPositions={setPositions}
-
-							/>
-
-						</CardBlock>
-
-
-					}
+						<ButtonBlock
+							className=' delete-c w-full'
+							onClick={handlerPalletRemove}
+						>
+							Удалить паллету
+						</ButtonBlock>
 
 
 
+					</CellBlock>
 
-					<PalletPositions
-						isPalletEditing={isPalletEditing}
-						positions={positions}
-						setPositions={setPositions}
+
+
+					:
+
+
+					<ButtonBlock
+						className=' edit-c w-full'
+						onClick={handlerPalletEdit}
+					>
+						Редактировать
+					</ButtonBlock>
+
+
+				}
+
+
+
+			</CardBlock>
+
+
+
+			{
+				isPalletEditing &&
+
+
+				<CardBlock>
+
+
+
+					<PalletTitle
+						title={title}
+						setTitle={setTitle}
 					/>
 
 
 
+					<PalletPositionAdd
+						positions={positions}
+						setPositions={setPositions}
+
+					/>
+
+				</CardBlock>
+
+
+			}
 
 
 
-				</ContentMain>
+
+			<PalletPositions
+				isPalletEditing={isPalletEditing}
+				positions={positions}
+				setPositions={setPositions}
+			/>
 
 
 
 
-				<ControlBTW>
 
 
 
-					{isPalletEditing ?
-
-						<CellBlock className='w-full flex-col'>
-
-
-							<ButtonBlock
-								className='cancel-c w-full'
-								onClick={handlerCancelPalletEditing}
-							>
-								Отмена
-							</ButtonBlock>
-
-
-							<ButtonBlock
-								className='success-c w-full'
-								onClick={handlerPalletSave}
-							>
-								Сохранить
-							</ButtonBlock>
 
 
 
-							<ButtonBlock
-								className=' delete-c w-full'
-								onClick={handlerPalletRemove}
-							>
-								Удалить паллету
-							</ButtonBlock>
 
 
 
-						</CellBlock>
 
 
-
-						:
-
-
-						<ButtonBlock
-							className=' edit-c w-full'
-							onClick={handlerPalletEdit}
-						>
-							Редактировать
-						</ButtonBlock>
-
-
-					}
-
-
-
-				</ControlBTW>
-
-
-
-			</MainBTW>
 
 
 

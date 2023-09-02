@@ -6,17 +6,16 @@ import { Link } from 'react-router-dom';
 import PalletBage from '../../pages/Pallet/Pallet/PalletBage';
 
 
-import ControlBTW from '../../components/UI/Page/Control/ControlBTW';
-import MainBTW from '../../components/UI/Page/MainBTW';
+
 import PageBTW from '../../components/UI/Page/PageBTW';
 
 
 import { getAllPallets } from '../../redux/features/pallet/palletSlice';
 
 
-import ContentMain from '../../components/UI/Page/ContentMain';
 import ButtonBlock from '../../components/blocks/ButtonBlock';
 import HeaderBlock from '../../components/blocks/HeaderBlock';
+import CardBlock from '../../components/blocks/CardBlock';
 
 
 
@@ -46,61 +45,46 @@ const PalletsPage = () => {
 
 
 			<HeaderBlock>
-				
-					Паллеты
-				
+
+				Паллеты
+
 			</HeaderBlock>
 
 
 
-			<MainBTW>
-
-
-				<ContentMain>
-
-					{!pallets.length ?
-
-						<div className=''>
-							В базе данных нет ни одной паллеты.
-						</div>
-						:
-
-						<div className='space-y-8'>
-							<h2 className=''>В базе данных на текущий момент есть такие паллеты:</h2>
-							{pallets?.map((pallet, idx) => (
-								<PalletBage key={idx} pallet={pallet} />
-							))}
-						</div>
-
-
-					}
-
-
-				</ContentMain>
 
 
 
 
+			<CardBlock>
+
+				<Link to="new">
+					<ButtonBlock
+						className='add'
+					>
+						Создать новую паллету
+					</ButtonBlock>
+				</Link>
+
+			</CardBlock>
 
 
+			{!pallets.length ?
 
-				<ControlBTW>
+				<div className=''>
+					В базе данных нет ни одной паллеты.
+				</div>
+				:
 
-					<Link to="new">
-						<ButtonBlock
-							className='add'
-						>
-							Создать новую паллету
-						</ButtonBlock>
-					</Link>
-
-				</ControlBTW>
-
-
-
+				<div className='space-y-8'>
+					<h2 className=''>В базе данных на текущий момент есть такие паллеты:</h2>
+					{pallets?.map((pallet, idx) => (
+						<PalletBage key={idx} pallet={pallet} />
+					))}
+				</div>
 
 
-			</MainBTW>
+			}
 
 
 

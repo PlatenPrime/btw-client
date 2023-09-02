@@ -19,9 +19,9 @@ export default function CompList() {
 		<CardBlock>
 
 			<CardBlock
-				className="flex justify-between"
+				className="flex justify-end"
 			>
-				<ButtonBlock className='add-c' >Анализировать артикулы</ButtonBlock>
+
 				<ButtonBlock className='success-c' >Обновить данные</ButtonBlock>
 			</CardBlock>
 

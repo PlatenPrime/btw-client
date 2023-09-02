@@ -10,13 +10,29 @@ body {
 	font-family: 'Poppins', sans-serif;
 	background-color: rgb(15 23 42);
 color: aliceblue;
-
-
-
-      
     min-height: 100vh;
-	
+
+
   }
+  
+
+  body::before {
+	content: "";
+	/* background-image: url('https://wallpapercave.com/wp/wp3789039.jpg'); */
+	background-image: url('https://trumpwallpapers.com/wp-content/uploads/Night-Sky-Wallpaper-15-1920x1080-1.jpg');
+	background-size: cover;
+	filter: blur(5px); 
+	position: fixed; /* Фиксированная позиция, чтобы размытое изображение было под фоном */
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	z-index: -1; /* Поместите псевдоэлемент под контентом */
+	opacity: 0.3; /* Установите желаемую прозрачность фонового изображения */
+  }
+
+  
+
 
 /* Стили для таблицы */
 table {
@@ -127,9 +143,7 @@ table {
 	@apply
 	
 	 rounded
-	bg-sky-400/5
-	 border border-transparent
-	hover:border 
+	 
 	transition ease-in-out duration-300		
 }
 

@@ -15,12 +15,7 @@ import { removeRow, updateRow } from "../../redux/features//row/rowSlice";
 
 
 import PageBTW from '../../components/UI/Page/PageBTW';
-import ControlBTW from '../../components/UI/Page/Control/ControlBTW';
-import MainBTW from '../../components/UI/Page/MainBTW';
 
-
-
-import ContentMain from '../../components/UI/Page/ContentMain';
 import ButtonBlock from '../../components/blocks/ButtonBlock';
 import HeaderBlock from '../../components/blocks/HeaderBlock';
 import CellBlock from '../../components/blocks/CellBlock';
@@ -203,156 +198,131 @@ const RowPage = () => {
 			</HeaderBlock>
 
 
+			<CardBlock >
 
-			<MainBTW  >
 
 
-				<ContentMain   >
+				{isRowEditing ?
 
+					<CellBlock className='w-full flex flex-col ' >
 
+						<ButtonBlock
+							className='cancel-c w-full'
+							onClick={handlerCancelRowEditing}
 
-
-					<TextBlock className="text-2xl text-white   rounded m-1 p-3 bg-amber-500" >
-						Паллеты
-					</TextBlock>
-
-
-					{isRowEditing && <CardBlock className="p-2  " >
-
-
-
-
-						<RowTitle
-							isRowEditing={isRowEditing}
-							title={title}
-							setTitle={setTitle}
-						/>
-
-
-
-
-						<RowPalletAdd
-							isPalletCreate={isPalletCreate}
-							palletTitle={palletTitle}
-							setPalletTitle={setPalletTitle}
-							setIsPalletCreate={setIsPalletCreate}
-							handlerCreatePallet={handlerCreatePallet}
-						/>
-
-
-
-					</CardBlock>}
-
-
-
-
-					<CardBlock className="p-2  " >
-
-
-						{pallets.length ?
-
-							<RowPallets
-								pallets={pallets}
-							/>
-
-
-							:
-
-							<TextBlock className="text-2xl" >
-								Этот ряд не содержит паллет
-							</TextBlock>
-
-
-}
-
-
-
-
-
-
-
-					</CardBlock>
-
-
-
-
-
-
-
-				</ContentMain>
-
-
-
-
-
-				<ControlBTW >
-
-
-
-					{isRowEditing ?
-
-						<CellBlock className='w-full flex flex-col ' >
-
-							<ButtonBlock
-								className='cancel-c w-full'
-								onClick={handlerCancelRowEditing}
-
-							>
-								Отмена
-							</ButtonBlock>
-
-
-
-							<ButtonBlock
-								className=' success-c w-full'
-								onClick={handlerRowSave}
-
-							>
-								Сохранить
-							</ButtonBlock>
-
-
-
-
-							<ButtonBlock
-								className='delete-c w-full '
-								onClick={handlerRowRemove}
-
-							>
-								Удалить ряд
-							</ButtonBlock>
-
-
-
-						</CellBlock>
-
-
-
-						:
+						>
+							Отмена
+						</ButtonBlock>
 
 
 
 						<ButtonBlock
-							className='edit-c w-full'
-							onClick={handlerRowEdit}
+							className=' success-c w-full'
+							onClick={handlerRowSave}
+
 						>
-							Редактировать
+							Сохранить
 						</ButtonBlock>
 
 
-					}
+
+
+						<ButtonBlock
+							className='delete-c w-full '
+							onClick={handlerRowRemove}
+
+						>
+							Удалить ряд
+						</ButtonBlock>
+
+
+
+					</CellBlock>
+
+
+
+					:
+
+
+
+					<ButtonBlock
+						className='edit-c w-full'
+						onClick={handlerRowEdit}
+					>
+						Редактировать
+					</ButtonBlock>
+
+
+				}
 
 
 
 
-				</ControlBTW>
+			</CardBlock>
 
 
 
-			</MainBTW>
+
+			<TextBlock className="text-2xl text-white   rounded m-1 p-3 bg-amber-500" >
+				Паллеты
+			</TextBlock>
+
+
+			{isRowEditing && <CardBlock className="p-2  " >
 
 
 
+
+				<RowTitle
+					isRowEditing={isRowEditing}
+					title={title}
+					setTitle={setTitle}
+				/>
+
+
+
+
+				<RowPalletAdd
+					isPalletCreate={isPalletCreate}
+					palletTitle={palletTitle}
+					setPalletTitle={setPalletTitle}
+					setIsPalletCreate={setIsPalletCreate}
+					handlerCreatePallet={handlerCreatePallet}
+				/>
+
+
+
+			</CardBlock>}
+
+
+
+
+			<CardBlock className="p-2  " >
+
+
+				{pallets.length ?
+
+					<RowPallets
+						pallets={pallets}
+					/>
+
+
+					:
+
+					<TextBlock className="text-2xl" >
+						Этот ряд не содержит паллет
+					</TextBlock>
+
+
+				}
+
+
+
+
+
+
+
+			</CardBlock>
 
 
 

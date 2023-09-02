@@ -12,11 +12,6 @@ import TextBlock from '../../blocks/TextBlock';
 const SidebarBTW = () => {
 
 
-	const activeStyles = {
-		color: "white",
-
-		padding: "12px",
-	}
 
 	const inActiveStyles = {
 		color: "white",
@@ -62,11 +57,11 @@ const SidebarBTW = () => {
 
 			>
 
-				<div className='flex items-center justify-center w-full h-16 text-5xl text-gray-100  hover:bg-sky-700/80 '>
+				<CardBlock className='flex items-center justify-center w-full h-16 text-5xl text-gray-100  '>
 
 					BTW
 
-				</div>
+				</CardBlock>
 
 
 
@@ -78,7 +73,7 @@ const SidebarBTW = () => {
 			<CardBlock className='space-y-1' >
 
 
-				<TextBlock className="border border-orange-500 rounded" >
+				<TextBlock className="border border-orange-500 hover:bg-orange-500/50 rounded" >
 					<NavLink
 						to={"rows"}
 						style={({ isActive }) => isActive ? {
@@ -94,9 +89,9 @@ const SidebarBTW = () => {
 				</TextBlock>
 
 
-				<TextBlock className="border border-teal-500 rounded" >
+				<TextBlock className="border border-teal-500 hover:bg-teal-500/50 rounded" >
 					<NavLink
-						to={"artfind"}
+						to={"arts"}
 						style={({ isActive }) => isActive ? {
 							color: "white",
 							padding: "12px",
@@ -109,9 +104,11 @@ const SidebarBTW = () => {
 				</TextBlock>
 
 
-				<TextBlock className="border border-cyan-500 rounded">
+
+
+				<TextBlock className="border border-cyan-500 hover:bg-cyan-500/50 rounded">
 					<NavLink
-						to={"artszones"}
+						to={"zones"}
 						style={({ isActive }) => isActive ? {
 							color: "white",
 							padding: "12px",
@@ -119,15 +116,15 @@ const SidebarBTW = () => {
 							background: "rgb(6 182 212)",
 						} : inActiveStyles}
 					>
-						Установка зон
+						Зоны
 					</NavLink>
 				</TextBlock>
 
 
 
-				<TextBlock className="border border-violet-500 rounded" >
+				<TextBlock className="border border-violet-500 hover:bg-violet-500/50 rounded " >
 					<NavLink
-						to={"competitors"}
+						to={"comps/list"}
 						style={({ isActive }) => isActive ? {
 							color: "white",
 							padding: "12px",

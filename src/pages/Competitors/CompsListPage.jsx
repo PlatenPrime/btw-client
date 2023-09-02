@@ -1,8 +1,11 @@
 import React from 'react'
+import CompsList from './CompsList'
 
 
 export default function CompsListPage() {
 	return (
-		<div>CompsListPage</div>
+		<div>
+			<CompsList />
+		</div>
 	)
 }

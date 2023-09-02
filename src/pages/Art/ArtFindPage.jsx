@@ -4,7 +4,6 @@ import { useNavigate } from 'react-router-dom';
 import useArts from '../../hooks/useFetchArts';
 
 
-import ControlBTW from '../../components/UI/Page/Control/ControlBTW';
 import MainBTW from '../../components/UI/Page/MainBTW';
 import PageBTW from '../../components/UI/Page/PageBTW';
 
@@ -100,11 +99,11 @@ const ArtFindPage = () => {
 
 
 
-			<MainBTW>
+	
 
 
 
-				<ContentMain>
+		
 					<CardBlock className="bg-sky-400/50" >
 						<h2 className='text-2xl'>Артикулы БТрейд</h2>
 
@@ -181,32 +180,6 @@ const ArtFindPage = () => {
 
 						</CardBlock>
 					}
-
-
-
-
-
-
-
-
-				</ContentMain>
-
-
-
-
-				<ControlBTW>
-
-
-
-				</ControlBTW>
-
-
-			</MainBTW>
-
-
-
-
-
 
 
 

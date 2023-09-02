@@ -1,21 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import { Link, useNavigate, useParams } from 'react-router-dom';
 
-import ControlBTW from '../../components/UI/Page/Control/ControlBTW';
-
-
-import MainBTW from '../../components/UI/Page/MainBTW';
-import PageBTW from '../../components/UI/Page/PageBTW';
-
 
 import axios from "../../utils/axios"
-import ContentMain from '../../components/UI/Page/ContentMain';
 import HeaderBlock from '../../components/blocks/HeaderBlock';
 import ImageBlock from '../../components/blocks/ImageBlock';
 import CardBlock from '../../components/blocks/CardBlock';
 import RowBlock from '../../components/blocks/RowBlock';
 import TextBlock from '../../components/blocks/TextBlock';
 import CellBlock from '../../components/blocks/CellBlock';
+import PageBTW from '../../components/UI/Page/PageBTW';
 
 
 
@@ -107,13 +101,10 @@ const ArtPage = () => {
 			</HeaderBlock>
 
 
-			<MainBTW>
 
 
-				<ContentMain   >
-
-					<CardBlock
-						className="
+			<CardBlock
+				className="
 					flex flex-col md:flex-row justify-center items-center md:justify-evenly 
 					p-2
 					
@@ -122,59 +113,59 @@ const ArtPage = () => {
 
 
 
-						<ImageBlock
-							src={photo}
-							alt="Здесь должно быть изображение артикула"
-							width="200px"
-							height="200px"
-							className='rounded  ' />
+				<ImageBlock
+					src={photo}
+					alt="Здесь должно быть изображение артикула"
+					width="200px"
+					height="200px"
+					className='rounded  ' />
 
 
-						<CellBlock className='flex flex-col h-full justify-evenly ' >
+				<CellBlock className='flex flex-col h-full justify-evenly ' >
 
 
-							<TextBlock className='text-xl text-white  my-2 p-4 w-full rounded border-2 border-rose-700 hover:border-rose-900 ' >{art.nameukr}</TextBlock>
+					<TextBlock className='text-xl text-white  my-2 p-4 w-full rounded border-2 border-rose-700 hover:border-rose-900 ' >{art.nameukr}</TextBlock>
 
-							<TextBlock className='text-2xl my-2 p-4 rounded bg-rose-500 text-white'  > Зона: {art.zone}</TextBlock>
+					<TextBlock className='text-2xl my-2 p-4 rounded bg-rose-500 text-white'  > Зона: {art.zone}</TextBlock>
 
-						</CellBlock>
-
-
-					</CardBlock>
+				</CellBlock>
 
 
-
-
-
-					{pallets.length ?
-
-
-						<CardBlock className='  text-xl p-2 ' >
-
-
-
-							<TextBlock className='my-3 p-3 text-2xl bg-rose-500 text-gray-100 rounded'>
-								ЗАПАСЫ
-							</TextBlock>
+			</CardBlock>
 
 
 
 
 
+			{pallets.length ?
 
 
-							{pallets.map((pallet) => {
+				<CardBlock className='  text-xl p-2 ' >
 
-								const box = pallet.positions.find(item => item.art == art.artikul)
 
-								return (
 
-									<Link
-										to={`/pallets/${pallet._id}`}
+					<TextBlock className='my-3 p-3 text-2xl bg-rose-500 text-gray-100 rounded'>
+						ЗАПАСЫ
+					</TextBlock>
 
-									>
 
-										<RowBlock className=' 
+
+
+
+
+
+					{pallets.map((pallet) => {
+
+						const box = pallet.positions.find(item => item.art == art.artikul)
+
+						return (
+
+							<Link
+								to={`/pallets/${pallet._id}`}
+
+							>
+
+								<RowBlock className=' 
 										flex justify-center
 										w-full my-1 p-3 rounded 
 										transition ease-in-out duration-300
@@ -186,55 +177,36 @@ const ArtPage = () => {
 										shadow-2xl hover:shadow-rose-500
 									' >
 
-											<span className=' p-1 w-5/12 flex justify-center'>{pallet.title}</span>
-											<span className='p-1 w-2/12 flex justify-center'>: </span>
-											<span className='  p-1 w-5/12 flex justify-center ' >{box.pieces} </span>
+									<span className=' p-1 w-5/12 flex justify-center'>{pallet.title}</span>
+									<span className='p-1 w-2/12 flex justify-center'>: </span>
+									<span className='  p-1 w-5/12 flex justify-center ' >{box.pieces} </span>
 
-										</RowBlock>
+								</RowBlock>
 
-									</Link>
-								)
-							}
+							</Link>
+						)
+					}
 
-							)
-
-							}
-
-
-
-
-
-						</CardBlock>
-
-
-
-						:
-
-
-
-						<RowBlock className='text-xl ' >Артикула на запасах нет</RowBlock>
-
+					)
 
 					}
 
 
 
-				</ContentMain>
+
+
+				</CardBlock>
 
 
 
+				:
 
 
 
-				<ControlBTW>
-
-				</ControlBTW>
+				<RowBlock className='text-xl ' >Артикула на запасах нет</RowBlock>
 
 
-
-
-
-			</MainBTW>
+			}
 
 
 

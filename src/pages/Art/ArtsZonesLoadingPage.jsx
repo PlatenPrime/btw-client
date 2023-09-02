@@ -2,10 +2,6 @@ import * as xlsx from "xlsx";
 import React, { useEffect, useState } from 'react';
 import useArts from "../../hooks/useFetchArts";
 
-import ControlBTW from '../../components/UI/Page/Control/ControlBTW';
-
-import MainBTW from '../../components/UI/Page/MainBTW';
-import PageBTW from '../../components/UI/Page/PageBTW';
 
 
 import ButtonBlock from '../../components/blocks/ButtonBlock';
@@ -13,12 +9,12 @@ import ButtonBlock from '../../components/blocks/ButtonBlock';
 import { toast } from 'react-toastify';
 import axios from '../../utils/axios';
 
-import ContentMain from '../../components/UI/Page/ContentMain';
 import InputBlock from "../../components/blocks/InputBlock";
 import HeaderBlock from "../../components/blocks/HeaderBlock";
 import CardBlock from "../../components/blocks/CardBlock";
 import TextBlock from "../../components/blocks/TextBlock";
 import ImageBlock from "../../components/blocks/ImageBlock";
+import PageBTW from "../../components/UI/Page/PageBTW";
 
 
 
@@ -176,20 +172,16 @@ const ArtsZonesLoadingPage = () => {
 
 
 
-			<MainBTW>
 
 
-				<ContentMain>
+			<CardBlock className="bg-sky-400/50" >
+				<h2 className='text-2xl'>Артикулы БТрейд</h2>
+
+				{loadingArtsDB && <p>Загрузка данных...</p>}
+				{artsDB && <p>Сейчас в базе данных БТрейд артикулов: <span className='text-lg bg-sky-500 p-1 rounded' >{artsDB.length} </span>  </p>}
 
 
-					<CardBlock className="bg-sky-400/50" >
-						<h2 className='text-2xl'>Артикулы БТрейд</h2>
-
-						{loadingArtsDB && <p>Загрузка данных...</p>}
-						{artsDB && <p>Сейчас в базе данных БТрейд артикулов: <span className='text-lg bg-sky-500 p-1 rounded' >{artsDB.length} </span>  </p>}
-
-
-						{/* <ButtonBlock
+				{/* <ButtonBlock
 							className="delete flex justify-center "
 							onClick={handlerDeleteArts}
 						>
@@ -198,59 +190,59 @@ const ArtsZonesLoadingPage = () => {
 
 						</ButtonBlock> */}
 
-					</CardBlock>
+			</CardBlock>
 
 
-					<CardBlock>
-						<TextBlock className="p-2" >
-							Выгрузи прайслист с 1с и  подготовь файл excel с полями как на картинке. Не должно быть артикулов без зон.
-						</TextBlock>
-						<ImageBlock
-							src="https://i.imgur.com/rxPEjmi.png"
-							alt='Excel пример'
-							width={600}
-							height={600}
-							className="mx-auto  p-2"
+			<CardBlock>
+				<TextBlock className="p-2" >
+					Выгрузи прайслист с 1с и  подготовь файл excel с полями как на картинке. Не должно быть артикулов без зон.
+				</TextBlock>
+				<ImageBlock
+					src="https://i.imgur.com/rxPEjmi.png"
+					alt='Excel пример'
+					width={600}
+					height={600}
+					className="mx-auto  p-2"
 
-						/>
-					</CardBlock>
-
-
-					<CardBlock className=" flex justify-center items-center ">
-
-						<InputBlock
-							className=""
-							type="file"
-							name="upload"
-							id="upload"
-							onChange={excelToJSON}
-						/>
-
-					</CardBlock>
+				/>
+			</CardBlock>
 
 
-					{arts.length != 0 && <CardBlock>
+			<CardBlock className=" flex justify-center items-center ">
 
-						<TextBlock className="m-6">Артикулов на загрузку: {arts.length}</TextBlock>
-						<TextBlock className="m-6">Кластеры: {clasters} </TextBlock>
-						<TextBlock className="m-6">Текущий кластер на выгрузку: {claster} / {clasters} </TextBlock>
+				<InputBlock
+					className=""
+					type="file"
+					name="upload"
+					id="upload"
+					onChange={excelToJSON}
+				/>
 
-						<ButtonBlock
-							className="create-c w-full "
-							onClick={handlerUploadArts}
-						>
-
-							Запустить выгрузку артикулов
-
-						</ButtonBlock>
+			</CardBlock>
 
 
-					</CardBlock>}
+			{arts.length != 0 && <CardBlock>
 
-					{isUpload && <TextBlock className="text-3xl mx-auto">ИДЕТ ВЫГРУЗКА... </TextBlock>}
+				<TextBlock className="m-6">Артикулов на загрузку: {arts.length}</TextBlock>
+				<TextBlock className="m-6">Кластеры: {clasters} </TextBlock>
+				<TextBlock className="m-6">Текущий кластер на выгрузку: {claster} / {clasters} </TextBlock>
+
+				<ButtonBlock
+					className="create-c w-full "
+					onClick={handlerUploadArts}
+				>
+
+					Запустить выгрузку артикулов
+
+				</ButtonBlock>
 
 
-					{/* <CardBlock>
+			</CardBlock>}
+
+			{isUpload && <TextBlock className="text-3xl mx-auto">ИДЕТ ВЫГРУЗКА... </TextBlock>}
+
+
+			{/* <CardBlock>
 						<ButtonBlock
 							onClick={() => {
 
@@ -267,16 +259,6 @@ const ArtsZonesLoadingPage = () => {
 					</CardBlock> */}
 
 
-				</ContentMain>
-
-
-
-
-				<ControlBTW>
-
-				</ControlBTW>
-
-			</MainBTW>
 
 		</PageBTW>
 	);

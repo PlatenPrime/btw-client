@@ -4,6 +4,9 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Link, NavLink } from "react-router-dom";
 import { checkIsAuth, logout } from '../../../redux/features/auth/authSlice';
 import { toast } from 'react-toastify';
+import TextBlock from '../../blocks/TextBlock';
+import CardBlock from '../../blocks/CardBlock';
+import ButtonBlock from '../../blocks/ButtonBlock';
 
 
 const SidebarMobileBTW = ({ onClose }) => {
@@ -13,6 +16,13 @@ const SidebarMobileBTW = ({ onClose }) => {
 		color: "white",
 
 	}
+
+	const inActiveStyles = {
+		color: "white",
+		padding: "12px",
+		width: "100%",
+	}
+
 
 
 	const isAuth = useSelector(checkIsAuth);
@@ -29,19 +39,19 @@ const SidebarMobileBTW = ({ onClose }) => {
 
 
 	return (
-		<div
+		<CardBlock
 			onClick={onClose}
 
 			className='fixed md:hidden  min-h-screen w-full 
 		
 		 bg-gray-600 bg-opacity-50 '>
 
-			<div
+			<CardBlock
 				onClick={(e) => e.stopPropagation()}
 				className='
 			flex flex-col justify-start items-center space-y-8
 			h-full min-h-screen w-1/2
-			bg-black bg-opacity-80
+			bg-black bg-opacity-80 hover:bg-black
 			
 			'>
 
@@ -51,56 +61,96 @@ const SidebarMobileBTW = ({ onClose }) => {
 					style={({ isActive }) => isActive ? activeStyles : undefined}
 				>
 
-					<div className='flex items-center h-16'>
+					<CardBlock className='flex items-center h-16 w-full'>
 
 						BTW
 
-					</div>
+					</CardBlock>
 
 
 				</NavLink>
 
 
 
-				<NavLink
-					onClick={onClose}
-					to={"rows"}
-					style={({ isActive }) => isActive ? activeStyles : undefined}
-				>
-					Запасы
-				</NavLink>
+				<TextBlock className="border border-orange-500 hover:bg-orange-500/50 rounded" >
+					<NavLink
+						onClick={onClose}
+						to={"rows"}
+						style={({ isActive }) => isActive ? {
+							color: "white",
+							padding: "12px",
+							width: "100%",
 
-				<NavLink
-				onClick={onClose}
-					to={"artfind"}
-					style={({ isActive }) => isActive ? activeStyles : undefined}
-				>
-					Поиск артикула
-				</NavLink>
+							background: "rgb(249 115 22)",
+						} : inActiveStyles}
+					>
+						Запасы
+					</NavLink>
+				</TextBlock>
 
 
-				<NavLink
-				onClick={onClose}
-					to={"artszones"}
-					style={({ isActive }) => isActive ? activeStyles : undefined}
-				>
-					Установка зон
-				</NavLink>
+
+				<TextBlock className="border border-teal-500 hover:bg-teal-500/50 rounded" >
+					<NavLink
+						onClick={onClose}
+						to={"arts"}
+						style={({ isActive }) => isActive ? {
+							color: "white",
+							padding: "12px",
+							width: "100%",
+							background: "rgb(20 184 166)",
+						} : inActiveStyles}
+					>
+						Артикулы
+					</NavLink>
+				</TextBlock>
+
+
+				<TextBlock className="border border-cyan-500 hover:bg-cyan-500/50 rounded">
+					<NavLink
+						onClick={onClose}
+						to={"zones"}
+						style={({ isActive }) => isActive ? {
+							color: "white",
+							padding: "12px",
+							width: "100%",
+							background: "rgb(6 182 212)",
+						} : inActiveStyles}
+					>
+						Зоны
+					</NavLink>
+				</TextBlock>
+
+				<TextBlock className="border border-violet-500 hover:bg-violet-500/50 rounded " >
+					<NavLink
+						onClick={onClose}
+						to={"comps/list"}
+						style={({ isActive }) => isActive ? {
+							color: "white",
+							padding: "12px",
+							width: "100%",
+							background: "rgb(139 92 246)",
+						} : inActiveStyles}
+					>
+						Конкуренты
+					</NavLink>
+				</TextBlock>
 
 
 
 				{isAuth ?
-					<button
-						className="text-red-600"
-						onClick={logoutHandler} >Выйти</button> :
+					<ButtonBlock
+						className="cancel-c"
+						onClick={logoutHandler} >Выйти
+					</ButtonBlock> :
 					<Link to={"/login"}>Войти</Link>
 				}
 
-			</div>
+			</CardBlock>
 
 
 
-		</div>
+		</CardBlock>
 	);
 };
 

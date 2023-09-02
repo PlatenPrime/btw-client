@@ -6,8 +6,6 @@ import NavbarBTW from './UI/Navbar/NavbarBTW';
 import SidebarBTW from './UI/Sidebar/SidebarBTW';
 import SidebarMobileBTW from './UI/Sidebar/SidebarMobileBTW';
 
-export const ControlContext = React.createContext();
-
 
 
 const Layout = ({ children }) => {
@@ -15,17 +13,13 @@ const Layout = ({ children }) => {
 
 
 	const [mobileSide, setMobileSide] = useState(false)
-	const [mobileControl, setMobileControl] = useState(false)
+
 
 	const handlerMobileSide = () => {
 		setMobileSide(prev => !prev)
-		setMobileControl(false)
+	
 	}
 
-	const handlerMobileControl = () => {
-		setMobileControl(prev => !prev)
-
-	}
 
 
 
@@ -35,7 +29,7 @@ const Layout = ({ children }) => {
 	return (
 
 
-		<ControlContext.Provider value={mobileControl}>
+		
 
 			<div className='container mx-auto min-h-screen max-h-screen shadow-sm relative'>
 
@@ -45,7 +39,7 @@ const Layout = ({ children }) => {
 
 
 
-				<NavbarBTW onClickSide={handlerMobileSide} onClickControl={handlerMobileControl} mobileControl={mobileControl} />
+				<NavbarBTW onClickSide={handlerMobileSide}  />
 
 
 
@@ -64,7 +58,7 @@ const Layout = ({ children }) => {
 
 			</div>
 
-		</ControlContext.Provider>
+
 
 	);
 };
