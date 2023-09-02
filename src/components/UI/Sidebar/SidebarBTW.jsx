@@ -6,6 +6,7 @@ import { checkIsAuth, logout } from '../../../redux/features/auth/authSlice';
 import { toast } from 'react-toastify';
 import ButtonBlock from '../../blocks/ButtonBlock';
 import CardBlock from '../../blocks/CardBlock';
+import TextBlock from '../../blocks/TextBlock';
 
 
 const SidebarBTW = () => {
@@ -19,8 +20,8 @@ const SidebarBTW = () => {
 
 	const inActiveStyles = {
 		color: "white",
-
 		padding: "12px",
+		width: "100%",
 	}
 
 
@@ -49,6 +50,9 @@ const SidebarBTW = () => {
 
 		bg-white bg-opacity-0
 
+
+		space-y-2
+
 		 '>
 
 
@@ -58,76 +62,92 @@ const SidebarBTW = () => {
 
 			>
 
-				<div className='flex items-center justify-center w-full h-16 text-3xl text-gray-100 bg-sky-800 hover:bg-sky-700 '>
+				<div className='flex items-center justify-center w-full h-16 text-5xl text-gray-100  hover:bg-sky-700/80 '>
 
 					BTW
 
 				</div>
 
 
+
+
+
 			</NavLink>
 
 
-			<CardBlock className="bg-orange-500">
-				<NavLink
-					to={"rows"}
-					style={({ isActive }) => isActive ? {
-						color: "white",
-						padding: "12px",
-						width: "100%"
-					} : inActiveStyles}
-				>
-					Запасы
-				</NavLink>
+			<CardBlock className='space-y-1' >
+
+
+				<TextBlock className="border border-orange-500 rounded" >
+					<NavLink
+						to={"rows"}
+						style={({ isActive }) => isActive ? {
+							color: "white",
+							padding: "12px",
+							width: "100%",
+
+							background: "rgb(249 115 22)",
+						} : inActiveStyles}
+					>
+						Запасы
+					</NavLink>
+				</TextBlock>
+
+
+				<TextBlock className="border border-teal-500 rounded" >
+					<NavLink
+						to={"artfind"}
+						style={({ isActive }) => isActive ? {
+							color: "white",
+							padding: "12px",
+							width: "100%",
+							background: "rgb(20 184 166)",
+						} : inActiveStyles}
+					>
+						Артикулы
+					</NavLink>
+				</TextBlock>
+
+
+				<TextBlock className="border border-cyan-500 rounded">
+					<NavLink
+						to={"artszones"}
+						style={({ isActive }) => isActive ? {
+							color: "white",
+							padding: "12px",
+							width: "100%",
+							background: "rgb(6 182 212)",
+						} : inActiveStyles}
+					>
+						Установка зон
+					</NavLink>
+				</TextBlock>
+
+
+
+				<TextBlock className="border border-violet-500 rounded" >
+					<NavLink
+						to={"competitors"}
+						style={({ isActive }) => isActive ? {
+							color: "white",
+							padding: "12px",
+							width: "100%",
+							background: "rgb(139 92 246)",
+						} : inActiveStyles}
+					>
+						Конкуренты
+					</NavLink>
+				</TextBlock>
+
+
 			</CardBlock>
 
-
-			<CardBlock className="bg-teal-500">
-				<NavLink
-					to={"artfind"}
-					style={({ isActive }) => isActive ? {
-						color: "white",
-						padding: "12px",
-					} : inActiveStyles}
-				>
-					Поиск артикула
-				</NavLink>
-			</CardBlock>
-
-
-			<CardBlock className="bg-cyan-500">
-				<NavLink
-					to={"artszones"}
-					style={({ isActive }) => isActive ? {
-						color: "white",
-						padding: "12px",
-					} : inActiveStyles}
-				>
-					Установка зон
-				</NavLink>
-			</CardBlock>
-
-
-
-			<CardBlock className="bg-violet-500">
-				<NavLink
-					to={"competitors"}
-					style={({ isActive }) => isActive ? {
-						color: "white",
-						padding: "12px",
-					} : inActiveStyles}
-				>
-					Конкуренты
-				</NavLink>
-			</CardBlock>
-
-		
 
 
 			{
 				isAuth ?
 					<ButtonBlock
-						className="cancel-c"
+						className="cancel-c "
 						onClick={logoutHandler} >Выйти</ButtonBlock>
 
 					:

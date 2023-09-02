@@ -33,7 +33,7 @@ table {
   }
   
   th {
-	background-color: #2168ffb0;
+	background-color: #010d27b0;
 	font-weight: bold;
   }
   
@@ -42,17 +42,6 @@ table {
 	background-color: #00042b;
   }
   
-  /* Стили для ссылок в ячейках */
-  a {
-	color: #007bff;
-	text-decoration: none;
-  }
-  
-  /* При наведении на ссылки */
-  a:hover {
-	text-decoration: underline;
-  }
-
 
 
 
@@ -140,7 +129,7 @@ table {
 	 rounded
 	bg-sky-400/5
 	 border border-transparent
-	hover:border hover:border-white
+	hover:border 
 	transition ease-in-out duration-300		
 }
 

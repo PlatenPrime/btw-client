@@ -1,0 +1,25 @@
+/* Стили для таблицы */
+table {
+	border-collapse: collapse;
+	width: 100%;
+	border: 1px solid #ddd;
+	margin-top: 20px;
+  }
+  
+  /* Стили для заголовка таблицы */
+  th, td {
+	text-align: left;
+	padding: 8px;
+  }
+  
+  th {
+	background-color: #010d27b0;
+	font-weight: bold;
+  }
+  
+  /* Стили для строк таблицы */
+  tr:nth-child(even) {
+	background-color: #00042b;
+  }
+  
+

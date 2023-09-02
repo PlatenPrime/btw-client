@@ -27,6 +27,9 @@ import ArtFindPage from "./pages/Art/ArtFindPage";
 import ArtPage from "./pages/Art/ArtPage";
 import ArtsZonesLoadingPage from "./pages/Art/ArtsZonesLoadingPage";
 import CompsPage from "./pages/Competitors/CompsPage";
+import CompOnePage from "./pages/Competitors/CompOnePage";
+import CompsListPage from "./pages/Competitors/CompsListPage";
+import CompLogsPage from "./pages/Competitors/CompLogsPage";
 
 
 
@@ -75,7 +78,11 @@ function App() {
 				<Route path="artszones" element={<ArtsZonesLoadingPage />} />
 
 
-				<Route path="competitors" element={<CompsPage />} />
+				<Route path="competitors" element={<CompsPage />} >
+					<Route path="one" element={<CompOnePage />} />
+					<Route path="list" element={<CompsListPage />} />
+					<Route path="logs" element={<CompLogsPage />} />
+				</Route>
 
 
 
