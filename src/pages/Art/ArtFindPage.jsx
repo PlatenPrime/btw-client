@@ -3,16 +3,12 @@ import React, { useEffect, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import useArts from '../../hooks/useFetchArts';
 
-
-import MainBTW from '../../components/UI/Page/MainBTW';
 import PageBTW from '../../components/UI/Page/PageBTW';
 
 
 import axios from "../../utils/axios";
 import { toast } from 'react-toastify';
 
-
-import ContentMain from '../../components/UI/Page/ContentMain';
 import ButtonBlock from '../../components/blocks/ButtonBlock';
 import InputBlock from '../../components/blocks/InputBlock';
 import HeaderBlock from '../../components/blocks/HeaderBlock';

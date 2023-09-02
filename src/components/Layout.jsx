@@ -17,7 +17,7 @@ const Layout = ({ children }) => {
 
 	const handlerMobileSide = () => {
 		setMobileSide(prev => !prev)
-	
+
 	}
 
 
@@ -29,34 +29,43 @@ const Layout = ({ children }) => {
 	return (
 
 
-		
-
-			<div className='container mx-auto min-h-screen max-h-screen shadow-sm relative'>
 
 
-
-				{mobileSide && <SidebarMobileBTW onClose={handlerMobileSide} />}
+		<div className='container mx-auto min-h-screen max-h-screen shadow-sm relative'>
 
 
 
-				<NavbarBTW onClickSide={handlerMobileSide}  />
+			{mobileSide && <SidebarMobileBTW onClose={handlerMobileSide} />}
 
 
+
+			<NavbarBTW onClickSide={handlerMobileSide} />
 
 
 
 
-				<div className='flex h-full w-full justify-center'>
+
+
+			<div className='flex h-full w-full justify-center'>
+
+
+				<div className='w-60  lg:w-72  hidden md:flex'>
 
 					<SidebarBTW />
-
-					{children}
-
 
 				</div>
 
 
+
+				{children}
+
+
 			</div>
+
+
+
+
+		</div>
 
 
 

@@ -26,10 +26,10 @@ import AddRowPage from "./pages/Row/AddRowPage";
 import ArtFindPage from "./pages/Art/ArtFindPage";
 import ArtPage from "./pages/Art/ArtPage";
 import ArtsZonesLoadingPage from "./pages/Art/ArtsZonesLoadingPage";
-import CompsPage from "./pages/Competitors/CompsPage";
-import CompOnePage from "./pages/Competitors/CompOnePage";
-import CompsListPage from "./pages/Competitors/CompsListPage";
-import CompLogsPage from "./pages/Competitors/CompLogsPage";
+import CompsPage from "./pages/Competitors/pages/CompsPage";
+import CompsEditPage from "./pages/Competitors/pages/CompsEditPage";
+import CompsListPage from "./pages/Competitors/pages/CompsListPage";
+import CompsLogsPage from "./pages/Competitors/pages/CompsLogsPage";
 
 
 
@@ -82,9 +82,9 @@ function App() {
 
 
 				<Route path="comps" element={<CompsPage />} >
-					<Route path="one" element={<CompOnePage />} />
+					<Route path="edit" element={<CompsEditPage />} />
 					<Route path="list" element={<CompsListPage />} />
-					<Route path="logs" element={<CompLogsPage />} />
+					<Route path="logs" element={<CompsLogsPage />} />
 				</Route>
 
 

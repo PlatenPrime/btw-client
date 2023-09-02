@@ -76,11 +76,11 @@ const RowsPage = () => {
 
 
 
-			<CardBlock>
+			<CardBlock className="flex flex-col items-center">
 
-				<Link to="new" className='w-full'	>
+				<Link to="new" className=''	>
 
-					<ButtonBlock className='create-c w-full' >
+					<ButtonBlock className='create-c' >
 						Создать новый ряд
 					</ButtonBlock>
 

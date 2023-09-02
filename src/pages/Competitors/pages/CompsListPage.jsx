@@ -1,5 +1,5 @@
 import React from 'react'
-import CompsList from './CompsList'
+import CompsList from '../components/CompsList'
 
 
 export default function CompsListPage() {

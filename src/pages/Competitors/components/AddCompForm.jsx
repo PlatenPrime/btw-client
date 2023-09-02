@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useCompContext } from './compContextProvider';
+import { useCompContext } from '../contexts/compContextProvider';
 import {
 	ButtonBlock,
 	InputBlock,
@@ -7,12 +7,12 @@ import {
 	TextBlock,
 	CardBlock,
 	ImageBlock
-} from '../../components';
-import { getArtDataSharte } from '../../utils/getArtDataSharte';
-import { getArtDataBtrade } from '../../utils/getArtDataBtrade';
+} from '../../../components';
+import { getArtDataSharte } from '../../../utils/getArtDataSharte';
+import { getArtDataBtrade } from '../../../utils/getArtDataBtrade';
 
 
-import axios from "../../utils/axios"
+import axios from "../../../utils/axios"
 
 
 const prods = [

@@ -49,13 +49,13 @@ table {
   }
   
   th {
-	background-color: #010d27b0;
+	background-color: #741effb0;
 	font-weight: bold;
   }
   
   /* Стили для строк таблицы */
   tr:nth-child(even) {
-	background-color: #00042b;
+	background-color: #00042b88;
   }
   
 

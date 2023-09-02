@@ -1,6 +1,6 @@
 import React from 'react';
-import { useCompContext } from './compContextProvider';  // Import the context hook
-import { ButtonBlock, CardBlock, ImageBlock, TextBlock } from '../../components'; // Import your UI components here
+import { useCompContext } from '../contexts/compContextProvider';  // Import the context hook
+import { ButtonBlock, CardBlock, ImageBlock, TextBlock } from '../../../components'; // Import your UI components here
 
 export default function CompList() {
 	const { compsDB, loadingCompsDB, errorCompsDB } = useCompContext();

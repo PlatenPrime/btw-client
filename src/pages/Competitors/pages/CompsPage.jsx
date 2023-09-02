@@ -10,14 +10,14 @@ import {
 	CardBlock,
 	TextBlock,
 
-} from '../../components';
+} from '../../../components';
 
 
 
 
-import { CompContextProvider } from './compContextProvider'
-import AddCompForm from './AddCompForm';
-import CompList from './CompsList';
+import { CompContextProvider } from '../contexts/compContextProvider'
+import AddCompForm from '../components/AddCompForm';
+import CompList from '../components/CompsList';
 import { Link, NavLink, Outlet } from 'react-router-dom';
 
 
@@ -103,7 +103,7 @@ export default function CompsPage() {
 						className="w-1/3 hover:bg-violet-500/50 rounded-b-lg"
 					>
 						<NavLink
-							to={"one"}
+							to={"edit"}
 							style={({ isActive }) => isActive ? activeStyles : inActiveStyles}
 
 						>

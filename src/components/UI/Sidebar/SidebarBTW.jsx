@@ -38,10 +38,10 @@ const SidebarBTW = () => {
 
 	return (
 
-		<div className='hidden  min-h-screen md:min-w-fit md:w-1/6 
+		<CardBlock className='hidden  min-h-screen md:min-w-fit  md:w-40 lg:w-56
 		md:flex flex-col justify-start items-stratch text-center 
 
-		sticky top-0
+		fixed top-0 left-0
 
 		bg-white bg-opacity-0
 
@@ -124,7 +124,7 @@ const SidebarBTW = () => {
 
 				<TextBlock className="border border-violet-500 hover:bg-violet-500/50 rounded " >
 					<NavLink
-						to={"comps/list"}
+						to={"comps"}
 						style={({ isActive }) => isActive ? {
 							color: "white",
 							padding: "12px",
@@ -159,7 +159,7 @@ const SidebarBTW = () => {
 			}
 
 
-		</div >
+		</CardBlock >
 	);
 };
 

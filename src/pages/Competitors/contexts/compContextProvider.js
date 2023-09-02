@@ -1,6 +1,6 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
-import  useFetchArts  from '../../hooks/useFetchArts';
-import  useFetchComps  from '../../hooks/useFetchComps';
+import useFetchArts from '../../../hooks/useFetchArts';
+import useFetchComps from '../../../hooks/useFetchComps';
 
 const CompContext = createContext();
 

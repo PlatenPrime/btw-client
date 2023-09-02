@@ -124,7 +124,7 @@ const SidebarMobileBTW = ({ onClose }) => {
 				<TextBlock className="border border-violet-500 hover:bg-violet-500/50 rounded " >
 					<NavLink
 						onClick={onClose}
-						to={"comps/list"}
+						to={"comps"}
 						style={({ isActive }) => isActive ? {
 							color: "white",
 							padding: "12px",

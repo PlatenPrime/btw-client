@@ -62,6 +62,8 @@ const MainPage = () => {
 			</CardBlock>
 
 
+			<TextBlock className="text-4xl" >Icons</TextBlock>
+
 			<CardBlock className="grid md:grid-cols-3" >
 				<ButtonBlock className='edit'   >Edit</ButtonBlock>
 				<ButtonBlock className='create' >Create</ButtonBlock>
@@ -74,14 +76,17 @@ const MainPage = () => {
 			</CardBlock>
 
 
-			<ButtonBlock className='edit-c w-full' >Edit-c</ButtonBlock>
-			<ButtonBlock className='create-c w-full' >Create-c</ButtonBlock>
-			<ButtonBlock className='cancel-c w-full' >Cancel-c</ButtonBlock>
-			<ButtonBlock className='success-c w-full' >Success-c</ButtonBlock>
-			<ButtonBlock className='delete-c w-full' >Delete-c</ButtonBlock>
-			<ButtonBlock className='confirm-c w-full' >Confirm-c</ButtonBlock>
-			<ButtonBlock className='add-c w-full' >Add-c</ButtonBlock>
-			<ButtonBlock className='search-c w-full' >Search-c</ButtonBlock>
+
+			<TextBlock className="text-4xl" >Buttons</TextBlock>
+
+			<ButtonBlock className='edit-c ' >Edit-c</ButtonBlock>
+			<ButtonBlock className='create-c ' >Create-c</ButtonBlock>
+			<ButtonBlock className='cancel-c ' >Cancel-c</ButtonBlock>
+			<ButtonBlock className='success-c ' >Success-c</ButtonBlock>
+			<ButtonBlock className='delete-c ' >Delete-c</ButtonBlock>
+			<ButtonBlock className='confirm-c ' >Confirm-c</ButtonBlock>
+			<ButtonBlock className='add-c ' >Add-c</ButtonBlock>
+			<ButtonBlock className='search-c ' >Search-c</ButtonBlock>
 
 
 
