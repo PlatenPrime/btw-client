@@ -18,8 +18,7 @@ color: aliceblue;
 
   body::before {
 	content: "";
-	/* background-image: url('https://wallpapercave.com/wp/wp3789039.jpg'); */
-	background-image: url('https://trumpwallpapers.com/wp-content/uploads/Night-Sky-Wallpaper-15-1920x1080-1.jpg');
+	background-image: url('https://wallpaper-mania.com/wp-content/uploads/2018/09/High_resolution_wallpaper_background_ID_77700343287.jpg');
 	background-size: cover;
 	filter: blur(5px); 
 	position: fixed; /* Фиксированная позиция, чтобы размытое изображение было под фоном */

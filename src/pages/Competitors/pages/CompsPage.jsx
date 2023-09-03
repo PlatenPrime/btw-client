@@ -40,7 +40,7 @@ export default function CompsPage() {
 
 
 	const activeStyles = {
-		backgroundColor: "rgb(139 92 246)",
+		backgroundColor: "rgb(139 92 246 / 0.5)",
 		color: "white",
 		padding: "0.5rem",
 		width: "100%",
@@ -65,7 +65,7 @@ export default function CompsPage() {
 
 			<PageBTW className='max-h-screen' >
 
-				<HeaderBlock className="bg-violet-500 ">
+				<HeaderBlock className="bg-violet-500/50 ">
 
 
 					<NavLink
@@ -86,7 +86,7 @@ export default function CompsPage() {
 
 
 					<TextBlock
-						className="w-1/4 rounded hover:bg-violet-500/50 rounded-b-lg"
+						className="w-1/4 rounded hover:bg-violet-500/20 rounded-b-lg"
 
 					>
 						<NavLink
@@ -102,7 +102,7 @@ export default function CompsPage() {
 
 
 					<TextBlock
-						className="w-1/4 hover:bg-violet-500/50 rounded-b-lg"
+						className="w-1/4 hover:bg-violet-500/20 rounded-b-lg"
 					>
 						<NavLink
 							to={"logs"}
@@ -117,7 +117,7 @@ export default function CompsPage() {
 
 
 					<TextBlock
-						className="w-1/4 hover:bg-violet-500/50 rounded-b-lg"
+						className="w-1/4 hover:bg-violet-500/20 rounded-b-lg"
 					>
 						<NavLink
 							to={"edit"}
@@ -130,7 +130,7 @@ export default function CompsPage() {
 
 
 					<TextBlock
-						className="w-1/4 hover:bg-violet-500/50 rounded-b-lg"
+						className="w-1/4 hover:bg-violet-500/20 rounded-b-lg"
 					>
 						<NavLink
 							to={"add"}
