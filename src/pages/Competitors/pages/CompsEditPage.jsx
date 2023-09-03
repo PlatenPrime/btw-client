@@ -1,13 +1,13 @@
 import React from 'react'
 import { CardBlock } from '../../../components'
 
-import OneCompCard from '../components/OneCompCard'
+import OneCompCardPage from '../components/OneCompCardPage'
 
 export default function CompEditPage() {
 	return (
 		<CardBlock>
 
-			<OneCompCard />
+			<OneCompCardPage />
 
 
 		</CardBlock>

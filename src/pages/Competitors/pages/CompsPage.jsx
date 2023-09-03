@@ -18,7 +18,7 @@ import {
 import { CompContextProvider } from '../contexts/compContextProvider'
 import AddCompForm from '../components/AddCompForm';
 import CompList from '../components/CompsList';
-import { Link, NavLink, Outlet } from 'react-router-dom';
+import { Link, NavLink, Outlet, useNavigate } from 'react-router-dom';
 
 
 
@@ -27,6 +27,16 @@ import { Link, NavLink, Outlet } from 'react-router-dom';
 
 
 export default function CompsPage() {
+
+	const navigate = useNavigate()
+
+
+	useEffect(() => {
+		navigate("/comps/list")
+		return () => { }
+	}, [])
+
+
 
 
 	const activeStyles = {

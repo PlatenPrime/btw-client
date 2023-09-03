@@ -217,7 +217,7 @@ export default function AddCompForm() {
 
 				<CardBlock
 					className='space-y-2  w-full flex flex-col  justify-start  xl:w-1/3  p-1
-					bg-sky-400/25
+					bg-sky-400/10
 					
 					'
 				>
