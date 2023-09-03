@@ -30,6 +30,7 @@ import CompsPage from "./pages/Competitors/pages/CompsPage";
 import CompsEditPage from "./pages/Competitors/pages/CompsEditPage";
 import CompsListPage from "./pages/Competitors/pages/CompsListPage";
 import CompsLogsPage from "./pages/Competitors/pages/CompsLogsPage";
+import CompsAddPage from "./pages/Competitors/pages/CompsAddPage";
 
 
 
@@ -85,6 +86,7 @@ function App() {
 					<Route path="edit" element={<CompsEditPage />} />
 					<Route path="list" element={<CompsListPage />} />
 					<Route path="logs" element={<CompsLogsPage />} />
+					<Route path="add" element={<CompsAddPage />} />
 				</Route>
 
 

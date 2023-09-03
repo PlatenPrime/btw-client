@@ -57,19 +57,26 @@ export default function CompsPage() {
 
 				<HeaderBlock className="bg-violet-500 ">
 
-					Анализ конкурентов
+
+					<NavLink
+						to={""}
+						style={({ isActive }) => isActive ? activeStyles : inActiveStyles}
+
+					>
+						Анализ конкурентов
+					</NavLink>
 
 				</HeaderBlock>
 
 
 				<CardBlock
-					className="flex justify-evenly  "
+					className="flex justify-evenly border border-violet-500  "
 
 				>
 
 
 					<TextBlock
-						className="w-1/3 rounded hover:bg-violet-500/50 rounded-b-lg"
+						className="w-1/4 rounded hover:bg-violet-500/50 rounded-b-lg"
 
 					>
 						<NavLink
@@ -85,7 +92,7 @@ export default function CompsPage() {
 
 
 					<TextBlock
-						className="w-1/3 hover:bg-violet-500/50 rounded-b-lg"
+						className="w-1/4 hover:bg-violet-500/50 rounded-b-lg"
 					>
 						<NavLink
 							to={"logs"}
@@ -100,7 +107,7 @@ export default function CompsPage() {
 
 
 					<TextBlock
-						className="w-1/3 hover:bg-violet-500/50 rounded-b-lg"
+						className="w-1/4 hover:bg-violet-500/50 rounded-b-lg"
 					>
 						<NavLink
 							to={"edit"}
@@ -110,6 +117,20 @@ export default function CompsPage() {
 							Редактирование
 						</NavLink>
 					</TextBlock>
+
+
+					<TextBlock
+						className="w-1/4 hover:bg-violet-500/50 rounded-b-lg"
+					>
+						<NavLink
+							to={"add"}
+							style={({ isActive }) => isActive ? activeStyles : inActiveStyles}
+
+						>
+							Добавление
+						</NavLink>
+					</TextBlock>
+
 
 
 				</CardBlock>

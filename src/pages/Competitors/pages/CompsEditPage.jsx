@@ -1,12 +1,14 @@
 import React from 'react'
 import { CardBlock } from '../../../components'
-import AddCompForm from '../components/AddCompForm'
+
+import OneCompCard from '../components/OneCompCard'
 
 export default function CompEditPage() {
 	return (
 		<CardBlock>
 
-			<AddCompForm />
+			<OneCompCard />
+
 
 		</CardBlock>
 	)

@@ -36,7 +36,7 @@ const PageBTW = ({ children, className }) => {
 			{!isAuth &&
 
 
-				<CardBlock className=' w-full flex justify-center items-center '  >
+				<CardBlock className=' w-full flex justify-center items-center h-screen'  >
 
 					<TextBlock className="text-xl" >
 						Авторизуйся, чтобы видеть содержимое разделов
