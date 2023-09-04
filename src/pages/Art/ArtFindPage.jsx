@@ -88,7 +88,7 @@ const ArtFindPage = () => {
 
 			<HeaderBlock className="
 		
-			bg-gradient-to-r from-green-500 to-teal-500
+			bg-teal-500/50
 			" >
 				Поиск артикула
 			</HeaderBlock>
@@ -136,7 +136,7 @@ const ArtFindPage = () => {
 
 					{artCardDisplay && artItem &&
 						<CardBlock
-							className='cursor-pointer p-5'
+							className='cursor-pointer p-5 border border-teal-500 '
 							onClick={() => navigate(`/arts/${artItem._id}`)}
 						>
 

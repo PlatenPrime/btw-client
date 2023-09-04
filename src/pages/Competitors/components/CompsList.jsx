@@ -27,15 +27,14 @@ export default function CompList() {
 
 
 			<table>
-				<thead>
+				<thead className="bg-violet-500/50">
 					<tr>
-						<th>Артикул</th>
-						<th>Производитель</th>
-						<th>Ссылка Шарте</th>
-						<th>Наличие Шарте</th>
-						<th>Наличие Бтрейд</th>
-						<th>Цена Шарте</th>
-						<th>Цена Бтрейд</th>
+						<th className='w-2/6' >Артикул</th>
+						<th className='w-1/6'>Производитель</th>
+						<th className='w-1/6'>Наличие Шарте</th>
+						<th className='w-1/6'>Наличие Бтрейд</th>
+						<th className='w-1/6'>Цена Шарте</th>
+						<th className='w-1/6'>Цена Бтрейд</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -51,14 +50,11 @@ export default function CompList() {
 									className="rounded "
 
 								/>
-								<p>{comp.artikul}</p>
-							</td>
-							<td>{comp.prod}</td>
-							<td>
 								<a href={comp.competitorsLinks.sharteLink} target="_blank" rel="noopener noreferrer">
-									{comp.competitorsLinks.sharteLink.slice(0, 20)}...
+									{comp.nameukr.length > 40 ? <>{comp.nameukr.slice(0, 37)}...</> : <>{comp.nameukr}</>}
 								</a>
 							</td>
+							<td>{comp.prod}</td>
 							<td>{comp.avail.sharte ? <span className='bg-green-500 p-1' >Есть</span> : <span className='bg-red-500 p-1' >Нет</span>}</td>
 							<td>{comp.avail.btrade ? <span>{comp.avail.btrade}</span> : 'Нет'}</td>
 							<td>{comp.price.sharte}</td>

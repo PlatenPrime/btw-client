@@ -84,7 +84,7 @@ const AddRowPage = () => {
 		<PageBTW>
 
 
-			<HeaderBlock className='bg-gradient-to-r from-emerald-500 to-teal-500' >
+			<HeaderBlock className='bg-orange-500/50' >
 
 				Создание ряда
 

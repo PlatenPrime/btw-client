@@ -186,8 +186,8 @@ const RowPage = () => {
 
 			<HeaderBlock
 				className="
-			bg-orange-500
-			bg-gradient-to-r from-orange-500 to-amber-500
+			bg-orange-500/50
+			
 			
 			"
 
@@ -246,7 +246,7 @@ const RowPage = () => {
 
 
 					<ButtonBlock
-						className='edit-c w-full'
+						className='edit-c '
 						onClick={handlerRowEdit}
 					>
 						Редактировать
@@ -263,7 +263,7 @@ const RowPage = () => {
 
 
 
-			<TextBlock className="text-2xl text-white   rounded m-1 p-3 bg-amber-500" >
+			<TextBlock className="text-2xl text-white   rounded m-1 p-3 bg-amber-500/50" >
 				Паллеты
 			</TextBlock>
 

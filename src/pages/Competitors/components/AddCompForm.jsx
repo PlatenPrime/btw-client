@@ -67,11 +67,10 @@ export default function AddCompForm() {
 
 
 
-	const isFormNotValid = !state.compArt ||
+	const isFormNotValid =
+		!state.compArt ||
 		!state.selectedProd ||
-		!state.sharteLink ||
-		!state.priceSharte ||
-		!state.isAvailableSharte;
+		!state.sharteLink 
 
 
 
@@ -144,6 +143,7 @@ export default function AddCompForm() {
 
 		const newComp = {
 			artikul: state.compArt,
+			nameukr: artikulDB.nameukr,
 			prod: state.selectedProd,
 			competitorsLinks: {
 				sharteLink: state.sharteLink

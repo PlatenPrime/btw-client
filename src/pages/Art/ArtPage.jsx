@@ -94,9 +94,9 @@ const ArtPage = () => {
 
 
 
-			<HeaderBlock className="bg-gradient-to-r from-rose-500 to-pink-500">
+			<HeaderBlock className="bg-rose-500/50">
 
-				{art.artikul}
+				{art.nameukr}
 
 			</HeaderBlock>
 
@@ -107,7 +107,7 @@ const ArtPage = () => {
 				className="
 					flex flex-col md:flex-row justify-center items-center md:justify-evenly 
 					p-2
-					
+					 
 					" >
 
 
@@ -121,7 +121,7 @@ const ArtPage = () => {
 					className='rounded  ' />
 
 
-				<CellBlock className='flex flex-col h-full justify-evenly ' >
+				<CellBlock className='flex flex-col h-full justify-evenly  ' >
 
 
 					<TextBlock className='text-xl text-white  my-2 p-4 w-full rounded border-2 border-rose-700 hover:border-rose-900 ' >{art.nameukr}</TextBlock>

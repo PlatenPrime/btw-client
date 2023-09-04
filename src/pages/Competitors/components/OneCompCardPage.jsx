@@ -165,7 +165,7 @@ export default function OneCompCardPage() {
 					className="search-c"
 
 				>
-					Поиск
+					Поиск в АБД
 				</ButtonBlock>
 
 			</CardBlock>

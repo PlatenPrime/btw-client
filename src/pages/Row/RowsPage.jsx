@@ -68,7 +68,7 @@ const RowsPage = () => {
 		<PageBTW  >
 
 
-			<HeaderBlock className="bg-orange-500" >
+			<HeaderBlock className="bg-orange-500/50" >
 
 				Ряды
 

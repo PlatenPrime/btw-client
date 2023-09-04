@@ -163,7 +163,7 @@ const ArtsZonesLoadingPage = () => {
 	return (
 		<PageBTW>
 
-			<HeaderBlock className='bg-cyan-500'>
+			<HeaderBlock className='bg-cyan-500/50'>
 
 				Установка зон
 

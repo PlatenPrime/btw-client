@@ -157,10 +157,6 @@ export default function CompsPage() {
 
 
 
-
-
-
-
 			</PageBTW>
 
 		</CompContextProvider>
