@@ -1,8 +1,18 @@
 import React from 'react';
 import { useCompContext } from '../contexts/compContextProvider';  // Import the context hook
-import { ButtonBlock, CardBlock, ImageBlock, TextBlock } from '../../../components'; // Import your UI components here
+import { ButtonBlock, CardBlock, ImageBlock, TextBlock } from '../../../components';
+import { analyzeComps } from '../../../utils/analyzeComps';
+
+
+
+
+
+
 
 export default function CompList() {
+
+
+
 	const { compsDB, loadingCompsDB, errorCompsDB } = useCompContext();
 
 	if (loadingCompsDB) {
@@ -14,6 +24,14 @@ export default function CompList() {
 	}
 
 
+	const handleAnalyze = () => {
+		analyzeComps(compsDB)
+		window.location.reload();
+
+
+	}
+
+
 
 	return (
 		<CardBlock>
@@ -22,7 +40,11 @@ export default function CompList() {
 				className="flex justify-end"
 			>
 
-				<ButtonBlock className='success-c' >Обновить данные</ButtonBlock>
+				<ButtonBlock
+					className='success-c'
+					onClick={handleAnalyze}
+				>Обновить данные
+				</ButtonBlock>
 			</CardBlock>
 
 
