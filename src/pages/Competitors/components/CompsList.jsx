@@ -1,7 +1,7 @@
 import React from 'react';
 import { useCompContext } from '../contexts/compContextProvider';  // Import the context hook
 import { ButtonBlock, CardBlock, ImageBlock, TextBlock } from '../../../components';
-import { analyzeComps } from '../../../utils/analyzeComps';
+import { analyzeComp } from '../../../utils/analyzeComp';
 
 
 
@@ -25,11 +25,18 @@ export default function CompList() {
 
 
 	const handleAnalyze = () => {
-		analyzeComps(compsDB)
+
+
+		compsDB.forEach(comp => {
+			analyzeComp(comp)
+		});
+
 		window.location.reload();
 
 
 	}
+
+
 
 
 

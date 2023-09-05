@@ -28,7 +28,7 @@ const MainPage = () => {
 
 		<PageBTW  >
 
-			<HeaderBlock className='bg-gradient-to-r from-cyan-500 to-blue-500' >
+			<HeaderBlock className='bg-blue-500/50' >
 
 				Главная страница
 
@@ -62,7 +62,7 @@ const MainPage = () => {
 			</CardBlock>
 
 
-			<TextBlock className="text-4xl" >Icons</TextBlock>
+			{/* <TextBlock className="text-4xl" >Icons</TextBlock>
 
 			<CardBlock className="grid md:grid-cols-3" >
 				<ButtonBlock className='edit'   >Edit</ButtonBlock>
@@ -89,7 +89,7 @@ const MainPage = () => {
 			<ButtonBlock className='search-c ' >Search-c</ButtonBlock>
 
 
-
+ */}
 
 
 
