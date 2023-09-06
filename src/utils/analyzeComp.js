@@ -30,27 +30,27 @@ export async function analyzeComp(comp) {
 
 		// Проверка на изменения в полях avail и price
 		const changes = [];
-		if (quantBtrade !== comp.avail.btrade) {
-			changes.push({
-				field: 'avail.btrade',
-				oldValue: comp.avail.btrade,
-				newValue: quantBtrade,
-			});
-		}
+		// if (quantBtrade !== comp.avail.btrade) {
+		// 	changes.push({
+		// 		field: 'avail.btrade',
+		// 		oldValue: comp.avail.btrade,
+		// 		newValue: quantBtrade,
+		// 	});
+		// }
 		if (isAvailableSharte !== comp.avail.sharte) {
 			changes.push({
 				field: 'avail.sharte',
-				oldValue: comp.avail.sharte,
-				newValue: isAvailableSharte,
+				oldValue: comp.avail.sharte ? "Есть" : "Нет",
+				newValue: isAvailableSharte ? "Есть" : "Нет",
 			});
 		}
-		if (priceBtrade !== comp.price.btrade) {
-			changes.push({
-				field: 'price.btrade',
-				oldValue: comp.price.btrade,
-				newValue: priceBtrade,
-			});
-		}
+		// if (priceBtrade !== comp.price.btrade) {
+		// 	changes.push({
+		// 		field: 'price.btrade',
+		// 		oldValue: comp.price.btrade,
+		// 		newValue: priceBtrade,
+		// 	});
+		// }
 		if (priceSharte !== comp.price.sharte) {
 			changes.push({
 				field: 'price.sharte',
@@ -66,11 +66,12 @@ export async function analyzeComp(comp) {
 
 				const artikul = comp.artikul
 
-
-				const createLogComp = await axios.post("logs", {
-					artikul, changes
-				});
-				console.log(createLogComp);
+				for (const change of changes) {
+					const createLogComp = await axios.post("logs", {
+						artikul, change
+					});
+					console.log(createLogComp)
+				}
 
 			} catch (error) {
 				console.log(error)

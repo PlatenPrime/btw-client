@@ -32,10 +32,10 @@ export async function getArtDataSharte(link) {
 		const isUpperCase = letter === letter.toUpperCase();
 
 		if (isUpperCase) {
-			isAvailable = 1;
+			isAvailable = true;
 			console.log("Товар в наличии");
 		} else {
-			isAvailable = 0;
+			isAvailable = false;
 			console.log("Товара нет в наличии");
 		}
 

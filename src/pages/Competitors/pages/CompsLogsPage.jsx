@@ -1,11 +1,14 @@
 import React from 'react'
 import useFetchLogs from '../../../hooks/useFetchLogs'
 import { CardBlock, TextBlock } from '../../../components'
+import { useCompContext } from '../contexts/compContextProvider';
 
 export default function CompsLogsPage() {
 
 
-	const { logsDB, loadingLogsDB, errorLogsDB } = useFetchLogs()
+	const { logsDB, loadingLogsDB, errorLogsDB } = useCompContext();
+
+
 
 	console.log(logsDB)
 
@@ -34,9 +37,9 @@ export default function CompsLogsPage() {
 							<tr key={item._id}>
 								<td>{new Date(item.timestamp).toLocaleDateString()}</td>
 								<td>{item.artikul}</td>
-								<td>{item.changes[0].field === "avail.sharte" ? "Наличие Шарте" : "Цена Шарте"}</td>
-								<td>{item.changes[0].oldValue.toString()}</td>
-								<td>{item.changes[0].newValue.toString()}</td>
+								<td>{item.change.field === "avail.sharte" ? "Наличие Шарте" : "Цена Шарте"}</td>
+								<td>{item.change.oldValue.toString()}</td>
+								<td>{item.change.newValue.toString()}</td>
 
 							</tr>
 						))}
