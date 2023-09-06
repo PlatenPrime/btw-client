@@ -24,18 +24,16 @@ export default function CompList() {
 	}
 
 
-	const handleAnalyze = () => {
-
-
-		compsDB.forEach(comp => {
-			analyzeComp(comp)
-		});
-
-		window.location.reload();
-
-
+	const handleAnalyze = async () => {
+		try {
+			for (const comp of compsDB) {
+				await analyzeComp(comp);
+			}
+			window.location.reload();
+		} catch (error) {
+			console.log(error);
+		}
 	}
-
 
 
 
