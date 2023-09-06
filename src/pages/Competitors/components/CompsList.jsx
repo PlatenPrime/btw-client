@@ -81,11 +81,11 @@ export default function CompList() {
 									{comp.nameukr.length > 40 ? <>{comp.nameukr.slice(0, 37)}...</> : <>{comp.nameukr}</>}
 								</a>
 							</td>
-							<td>{comp.prod}</td>
+							<td  > <span className='bg-slate-500/50 p-1 rounded' >{comp.prod}</span> </td>
 							<td>{comp.avail.sharte ? <span className='bg-green-500 p-1' >Есть</span> : <span className='bg-red-500 p-1' >Нет</span>}</td>
-							<td>{comp.avail.btrade ? <span>{comp.avail.btrade}</span> : 'Нет'}</td>
-							<td>{comp.price.sharte}</td>
-							<td>{comp.price.btrade}</td>
+							<td>{comp.avail.btrade ? <span className='bg-sky-500 p-1' >{comp.avail.btrade}</span> : <span className='bg-rose-500 p-1' >Нет</span>}</td>
+							<td className='text-yellow-400' >{comp.price.sharte}</td>
+							<td className='text-green-500' >{comp.price.btrade}</td>
 						</tr>
 					))}
 				</tbody>
