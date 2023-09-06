@@ -1,5 +1,4 @@
 import React from 'react'
-import useFetchLogs from '../../../hooks/useFetchLogs'
 import { CardBlock, TextBlock } from '../../../components'
 import { useCompContext } from '../contexts/compContextProvider';
 
