@@ -29,7 +29,9 @@ export async function getArtDataSharte(link) {
 		const letter = responseString.slice(searchValueBeLocation - 2, searchValueBeLocation - 1);
 
 
-		const isUpperCase = letter === letter.toUpperCase();
+		let isUpperCase
+
+		if (letter) isUpperCase = letter === letter.toUpperCase();
 
 		if (isUpperCase) {
 			isAvailable = true;
@@ -39,7 +41,13 @@ export async function getArtDataSharte(link) {
 			console.log("Товара нет в наличии");
 		}
 
+		
+
+
 		return { price, isAvailable };
+
+
+
 	} catch (error) {
 		console.error(error);
 	}

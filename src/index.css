@@ -38,7 +38,7 @@ table {
 	border-collapse: collapse;
 	width: 100%;
 	border: 1px solid #ddd;
-	margin-top: 20px;
+	
   }
   
   /* Стили для заголовка таблицы */
@@ -129,7 +129,7 @@ table {
 
 .ButtonBlock {
 	@apply
-	p-2 m-1  block rounded  
+	p-2 m-1  block rounded-full 
 	border-2 border-gray-900
 	bg-gray-100 text-gray-900
 	hover:bg-white 
@@ -237,6 +237,7 @@ transition ease-in-out duration-300
 	  hover:bg-blue-200 hover:text-blue-600
 	    active:text-white active:bg-blue-500 
 		shadow-lg hover:shadow-blue-300
+		rounded-full
 
 }
 
@@ -246,6 +247,7 @@ transition ease-in-out duration-300
 	 bg-transparent hover:bg-blue-400 active:bg-blue-800 
 	  hover:text-white focus:text-white active:text-white
 	  shadow-2xl hover:shadow-blue-500
+	  rounded-full
 }
 
 
@@ -258,6 +260,7 @@ transition ease-in-out duration-300
 	hover:bg-cyan-200 hover:text-cyan-800
 	 active:text-white active:bg-cyan-500 
 	 shadow-lg hover:shadow-cyan-300
+	 rounded-full
 
 }
 
@@ -268,6 +271,7 @@ transition ease-in-out duration-300
 	bg-transparent hover:bg-cyan-400 active:bg-cyan-600 
 	  hover:text-white focus:text-white active:text-white
 	  shadow-2xl hover:shadow-cyan-500
+	  rounded-full
 }
 
 
@@ -280,6 +284,7 @@ transition ease-in-out duration-300
 	hover:bg-red-200 hover:text-red-900
 	  active:text-white active:bg-red-500 
 	  shadow-lg hover:shadow-red-200
+	  rounded-full
 
 }
 
@@ -290,6 +295,7 @@ transition ease-in-out duration-300
 	bg-transparent	hover:bg-white hover:text-red-500
 	  active:bg-gray-200 active:text-red-600
 	  shadow-2xl hover:shadow-white
+	  rounded-full
 }
 
 
@@ -300,6 +306,7 @@ transition ease-in-out duration-300
 	hover:bg-green-200 hover:text-green-600
 	 active:text-white active:bg-green-500 
 	 shadow-lg hover:shadow-green-200
+	 rounded-full
 }
 
 .success-c {
@@ -308,6 +315,7 @@ transition ease-in-out duration-300
 	bg-transparent hover:bg-green-400 active:bg-green-800  
 	  hover:text-white focus:text-white active:text-white
 	  shadow-2xl hover:shadow-green-500
+	  rounded-full
 }
 
 
@@ -321,6 +329,7 @@ transition ease-in-out duration-300
 	  hover:bg-red-500 hover:text-white
 	    active:text-white active:bg-red-900 
 		shadow-lg hover:shadow-red-500
+		rounded-full
 }
 
 .delete-c {
@@ -330,6 +339,7 @@ transition ease-in-out duration-300
 	bg-transparent hover:bg-red-500 active:bg-red-600  
 	  hover:text-black 
 	  shadow-2xl hover:shadow-red-500
+	  rounded-full
 }
 
 
@@ -341,6 +351,7 @@ transition ease-in-out duration-300
 	hover:bg-yellow-200 hover:text-yellow-800
 	  active:text-white active:bg-yellow-500 
 	  shadow-lg hover:shadow-yellow-200
+	  rounded-full
 }
 
 .confirm-c {
@@ -350,6 +361,7 @@ transition ease-in-out duration-300
 	bg-transparent hover:bg-yellow-400 active:bg-yellow-600  
 	  hover:text-white focus:text-white active:text-white
 	  shadow-2xl hover:shadow-yellow-500
+	  rounded-full
 }
 
 
@@ -359,19 +371,21 @@ transition ease-in-out duration-300
 
 .add {
 	@apply
-	border border-fuchsia-300 bg-transparent text-fuchsia-300 
-	hover:bg-fuchsia-200 hover:text-fuchsia-800
-	  active:text-white active:bg-fuchsia-500 
-	  shadow-lg hover:shadow-fuchsia-200
+	border border-violet-300 bg-transparent text-violet-300 
+	hover:bg-violet-200 hover:text-violet-800
+	  active:text-white active:bg-violet-500 
+	  shadow-lg hover:shadow-violet-200
+	  rounded-full
 }
 
 .add-c {
 	@apply
  
-	border border-fuchsia-500  text-fuchsia-500 
-	bg-transparent hover:bg-fuchsia-400 active:bg-fuchsia-600  
+	border border-violet-500  text-violet-500 
+	bg-transparent hover:bg-violet-400 active:bg-violet-600  
 	  hover:text-white focus:text-white active:text-white
-	  shadow-2xl hover:shadow-fuchsia-500
+	  shadow-2xl hover:shadow-violet-500
+	  rounded-full
 }
 
 .search {
@@ -380,6 +394,7 @@ transition ease-in-out duration-300
 	hover:bg-teal-200 hover:text-teal-800
 	  active:text-white active:bg-teal-500 
 	  shadow-lg hover:shadow-teal-200
+	  rounded-full
 }
 
 .search-c {
@@ -389,6 +404,7 @@ transition ease-in-out duration-300
 	bg-transparent  hover:bg-teal-400 active:bg-teal-600  
 	  hover:text-white focus:text-white active:text-white
 	  shadow-2xl hover:shadow-teal-500
+	  rounded-full
 }
 
 
@@ -396,6 +412,7 @@ transition ease-in-out duration-300
 	@apply
 	border border-gray-300 bg-transparent text-gray-300 
 hover:text-gray-300  hover:border-gray-300  hover:bg-transparent
+rounded-full
 	
 }
 
