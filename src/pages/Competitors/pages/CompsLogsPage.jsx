@@ -20,7 +20,7 @@ export default function CompsLogsPage() {
 
 
 			{logsDB &&
-				<table>
+				<table style={{ overflowY: 'auto', maxHeight: '100vh' }}  >
 					<thead className="bg-violet-500/50">
 						<tr>
 							<th>Дата</th>
@@ -31,7 +31,7 @@ export default function CompsLogsPage() {
 
 						</tr>
 					</thead>
-					<tbody>
+					<tbody className='relative' >
 						{logsDB.map(item => (
 							<tr key={item._id}>
 								<td>{new Date(item.timestamp).toLocaleDateString()}</td>

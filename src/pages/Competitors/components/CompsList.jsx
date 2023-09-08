@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import { useCompContext } from '../contexts/compContextProvider';  // Import the context hook
 import { ButtonBlock, CardBlock, ImageBlock, TextBlock } from '../../../components';
 import { analyzeComp } from '../../../utils/analyzeComp';
+import Spinner from '../../../components/Spinner/Spinner';
 
 
 
@@ -15,7 +16,7 @@ export default function CompList() {
 	const [isAnalyzing, setIsAnalyzing] = useState(false)
 	const [progress, setProgress] = useState(0)
 
-	const theadRef = useRef(null);
+
 
 
 
@@ -63,7 +64,12 @@ export default function CompList() {
 
 
 	if (loadingCompsDB) {
-		return <p>Loading competitors data...</p>;
+		return <>
+
+			<Spinner color="rgb(139 92 246)" />
+
+
+		</>;
 	}
 
 	if (errorCompsDB) {
@@ -123,48 +129,45 @@ export default function CompList() {
 
 
 
-			<div  style={{ overflowY: 'auto', maxHeight: '500px' }}>
+			<table style={{ overflowY: 'auto', maxHeight: '100vh' }}  >
+				<thead className="bg-violet-500/50  "  >
+					<tr>
+						<th className='w-2/6' >Артикул</th>
+						<th className='w-1/6'>Производитель</th>
+						<th className='w-1/6'>Наличие Шарте</th>
+						<th className='w-1/6'>Наличие Бтрейд</th>
+						<th className='w-1/6'>Цена Шарте</th>
+						<th className='w-1/6'>Цена Бтрейд</th>
+					</tr>
+				</thead>
+				<tbody className='relative' >
+					{compsDB && compsDB.map((comp) => (
+						<tr key={comp._id.$oid}>
+							<td className='flex items-center space-x-1' >
 
+								<ImageBlock
+									src={`https://sharik.ua/images/elements_big/${comp.artikul}_m1.jpg`}
+									width={30}
+									height={30}
+									alt="Фото артикула"
+									className="rounded "
 
-				<table>
-					<thead className="bg-violet-500/90 fixed z-10  " ref={theadRef} >
-						<tr>
-							<th className='w-2/6' >Артикул</th>
-							<th className='w-1/6'>Производитель</th>
-							<th className='w-1/6'>Наличие Шарте</th>
-							<th className='w-1/6'>Наличие Бтрейд</th>
-							<th className='w-1/6'>Цена Шарте</th>
-							<th className='w-1/6'>Цена Бтрейд</th>
+								/>
+								<a href={comp.competitorsLinks.sharteLink} target="_blank" rel="noopener noreferrer">
+									{comp.nameukr.length > 40 ? <>{comp.nameukr.slice(0, 37)}...</> : <>{comp.nameukr}</>}
+								</a>
+							</td>
+							<td  > <span className='bg-slate-500/50 p-1 rounded' >{comp.prod}</span> </td>
+							<td>{comp.avail.sharte ? <span className='bg-green-500 p-1' >Есть</span> : <span className='bg-red-500 p-1' >Нет</span>}</td>
+							<td>{comp.avail.btrade ? <span className='bg-sky-500 p-1' >{comp.avail.btrade}</span> : <span className='bg-rose-500 p-1' >Нет</span>}</td>
+							<td className='text-yellow-400' >{comp.price.sharte}</td>
+							<td className='text-green-500' >{comp.price.btrade}</td>
 						</tr>
-					</thead>
-					<tbody  className='relative top-16' >
-						{compsDB && compsDB.map((comp) => (
-							<tr key={comp._id.$oid}>
-								<td className='flex items-center space-x-1' >
+					))}
+				</tbody>
+			</table>
 
-									<ImageBlock
-										src={`https://sharik.ua/images/elements_big/${comp.artikul}_m1.jpg`}
-										width={30}
-										height={30}
-										alt="Фото артикула"
-										className="rounded "
 
-									/>
-									<a href={comp.competitorsLinks.sharteLink} target="_blank" rel="noopener noreferrer">
-										{comp.nameukr.length > 40 ? <>{comp.nameukr.slice(0, 37)}...</> : <>{comp.nameukr}</>}
-									</a>
-								</td>
-								<td  > <span className='bg-slate-500/50 p-1 rounded' >{comp.prod}</span> </td>
-								<td>{comp.avail.sharte ? <span className='bg-green-500 p-1' >Есть</span> : <span className='bg-red-500 p-1' >Нет</span>}</td>
-								<td>{comp.avail.btrade ? <span className='bg-sky-500 p-1' >{comp.avail.btrade}</span> : <span className='bg-rose-500 p-1' >Нет</span>}</td>
-								<td className='text-yellow-400' >{comp.price.sharte}</td>
-								<td className='text-green-500' >{comp.price.btrade}</td>
-							</tr>
-						))}
-					</tbody>
-				</table>
-
-			</div>
 
 		</CardBlock >
 	);

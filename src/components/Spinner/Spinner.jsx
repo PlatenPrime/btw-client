@@ -1,24 +1,10 @@
 import React from 'react';
-import style from "./Spinner.module.css"
+import styles from "./Spinner.module.css"
 
-
-
-const Spinner = () => {
+const Spinner = ({ color }) => {
 	return (
-		<div className={style.spinner} >
-			<div className={style.circle1}>
-				<div className={style.circle2}>
-					<div className={style.circle3}>
-						<div className={style.circle4}>
-							<div className={style.circle5}>
-
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
+		<div className={styles.spinner} style={{ borderTopColor: color }}></div>
 	);
-};
+}
 
 export default Spinner;

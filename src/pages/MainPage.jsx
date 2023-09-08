@@ -10,6 +10,7 @@ import RowBlock from '../components/blocks/RowBlock';
 
 
 import TextBlock from '../components/blocks/TextBlock';
+import Spinner from '../components/Spinner/Spinner';
 
 
 
@@ -91,8 +92,7 @@ const MainPage = () => {
 
  */}
 
-
-
+			
 
 
 
