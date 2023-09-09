@@ -43,7 +43,6 @@ table {
   
   /* Стили для заголовка таблицы */
   th, td {
-	text-align: left;
 	padding: 8px;
 	text-align: center;
   }
@@ -53,11 +52,7 @@ table {
 	font-weight: bold;
   }
   
-  /* Стили для строк таблицы */
-  tr:nth-child(even) {
-	background-color: #00042b88;
-  }
-  
+
 
 
 

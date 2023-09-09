@@ -81,7 +81,7 @@ export default function CompList() {
 
 
 	return (
-		<CardBlock>
+		<CardBlock className="flex flex-col h-screen" >
 
 
 			<CardBlock>
@@ -89,7 +89,7 @@ export default function CompList() {
 
 				<ButtonBlock
 					onClick={handleAnalyze}
-					className=" add-c rounded-full mt-4 "
+					className=" add-c rounded-full mx-auto"
 				>
 					Анализировать артикулы
 				</ButtonBlock>
@@ -129,45 +129,49 @@ export default function CompList() {
 
 
 
-			<table style={{ overflowY: 'auto', maxHeight: '100vh' }}  >
-				<thead className="bg-violet-500/50  "  >
-					<tr>
-						<th className='w-2/6' >Артикул</th>
-						<th className='w-1/6'>Производитель</th>
-						<th className='w-1/6'>Наличие Шарте</th>
-						<th className='w-1/6'>Наличие Бтрейд</th>
-						<th className='w-1/6'>Цена Шарте</th>
-						<th className='w-1/6'>Цена Бтрейд</th>
-					</tr>
-				</thead>
-				<tbody className='relative' >
-					{compsDB && compsDB.map((comp) => (
-						<tr key={comp._id.$oid}>
-							<td className='flex items-center space-x-1' >
+			<CardBlock
+				className="flex-grow overflow-auto "
+			>
 
-								<ImageBlock
-									src={`https://sharik.ua/images/elements_big/${comp.artikul}_m1.jpg`}
-									width={30}
-									height={30}
-									alt="Фото артикула"
-									className="rounded "
-
-								/>
-								<a href={comp.competitorsLinks.sharteLink} target="_blank" rel="noopener noreferrer">
-									{comp.nameukr.length > 40 ? <>{comp.nameukr.slice(0, 37)}...</> : <>{comp.nameukr}</>}
-								</a>
-							</td>
-							<td  > <span className='bg-slate-500/50 p-1 rounded' >{comp.prod}</span> </td>
-							<td>{comp.avail.sharte ? <span className='bg-green-500 p-1' >Есть</span> : <span className='bg-red-500 p-1' >Нет</span>}</td>
-							<td>{comp.avail.btrade ? <span className='bg-sky-500 p-1' >{comp.avail.btrade}</span> : <span className='bg-rose-500 p-1' >Нет</span>}</td>
-							<td className='text-yellow-400' >{comp.price.sharte}</td>
-							<td className='text-green-500' >{comp.price.btrade}</td>
+				<table className="min-w-full"  >
+					<thead className="bg-violet-500/50  "  >
+						<tr>
+							<th className='w-2/6' >Артикул</th>
+							<th className='w-1/6'>Производитель</th>
+							<th className='w-1/6'>Наличие Шарте</th>
+							<th className='w-1/6'>Наличие Бтрейд</th>
+							<th className='w-1/6'>Цена Шарте</th>
+							<th className='w-1/6'>Цена Бтрейд</th>
 						</tr>
-					))}
-				</tbody>
-			</table>
+					</thead>
+					<tbody className='' >
+						{compsDB && compsDB.map((comp) => (
+							<tr class="bg-violet-500 even:bg-opacity-25 odd:bg-opacity-10 " key={comp._id.$oid}>
+								<td className='flex items-center space-x-1' >
 
+									<ImageBlock
+										src={`https://sharik.ua/images/elements_big/${comp.artikul}_m1.jpg`}
+										width={30}
+										height={30}
+										alt="Фото артикула"
+										className="rounded "
 
+									/>
+									<a href={comp.competitorsLinks.sharteLink} target="_blank" rel="noopener noreferrer">
+										{comp.nameukr.length > 40 ? <>{comp.nameukr.slice(0, 37)}...</> : <>{comp.nameukr}</>}
+									</a>
+								</td>
+								<td  > <span className='bg-slate-500/50 p-1 rounded' >{comp.prod}</span> </td>
+								<td >{comp.avail.sharte ? <span className='bg-green-500 p-2 rounded' >Есть</span> : <span className='bg-red-500 p-2 rounded' >Нет</span>}</td>
+								<td>{comp.avail.btrade ? <span className='bg-sky-500 p-2 rounded' >{comp.avail.btrade}</span> : <span className='bg-rose-500 p-2 rounded' >Нет</span>}</td>
+								<td className='text-yellow-400' >{comp.price.sharte}</td>
+								<td className='text-green-500' >{comp.price.btrade}</td>
+							</tr>
+						))}
+					</tbody>
+				</table>
+
+			</CardBlock>
 
 		</CardBlock >
 	);
