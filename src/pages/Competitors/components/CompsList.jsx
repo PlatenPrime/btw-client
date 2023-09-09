@@ -152,7 +152,7 @@ export default function CompList() {
 
 				<table className="min-w-full"  >
 					<thead className="bg-violet-500/90   sticky top-0  z-10  ">
-						<tr>
+						<tr >
 							<th className="w-2/6" rowSpan="2">Артикул</th>
 							<th className="w-1/6" rowSpan="2">
 								<select
@@ -191,7 +191,7 @@ export default function CompList() {
 
 
 							.map((comp) => (
-								<tr class="bg-violet-500 even:bg-opacity-25 odd:bg-opacity-10 " key={comp._id.$oid}>
+								<tr className="bg-violet-500 even:bg-opacity-25 odd:bg-opacity-10 " key={comp._id.$oid}>
 									<td className='flex items-center space-x-1' >
 
 										<ImageBlock

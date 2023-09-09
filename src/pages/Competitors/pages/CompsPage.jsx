@@ -94,7 +94,7 @@ export default function CompsPage() {
 							style={({ isActive }) => isActive ? activeStyles : inActiveStyles}
 
 						>
-							Список всех артикулов
+							Артикулы
 						</NavLink>
 					</TextBlock>
 
@@ -109,7 +109,7 @@ export default function CompsPage() {
 							style={({ isActive }) => isActive ? activeStyles : inActiveStyles}
 
 						>
-							История изменений
+							Изменения
 						</NavLink>
 					</TextBlock>
 
@@ -124,7 +124,7 @@ export default function CompsPage() {
 							style={({ isActive }) => isActive ? activeStyles : inActiveStyles}
 
 						>
-							Редактирование
+							Проверка
 						</NavLink>
 					</TextBlock>
 
