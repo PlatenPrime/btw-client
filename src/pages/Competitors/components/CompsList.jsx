@@ -97,12 +97,14 @@ export default function CompList() {
 		<CardBlock className="flex flex-col h-screen" >
 
 
-			<CardBlock>
+			<CardBlock
+				className=" sticky top-negative z-10  "
+			>
 
 
 				<ButtonBlock
 					onClick={handleAnalyze}
-					className=" add-c rounded-full mx-auto"
+					className=" add-c rounded-full mx-auto "
 				>
 					Анализировать артикулы
 				</ButtonBlock>
@@ -149,13 +151,12 @@ export default function CompList() {
 			>
 
 				<table className="min-w-full"  >
-					<thead className="bg-violet-500/50  "  >
+					<thead className="bg-violet-500/90   sticky top-0  z-10  ">
 						<tr>
-							<th className='w-2/6' >Артикул</th>
-
-							<th className='w-1/6'>
+							<th className="w-2/6" rowSpan="2">Артикул</th>
+							<th className="w-1/6" rowSpan="2">
 								<select
-									className='InputBlock focus:bg-violet-900 w-full '
+									className="InputBlock focus:bg-violet-900 w-full"
 									value={filter.prod}
 									onChange={(e) => setFilter({ ...filter, prod: e.target.value })}
 								>
@@ -165,14 +166,16 @@ export default function CompList() {
 											{option}
 										</option>
 									))}
-								</select></th>
-
-
-
-							<th className='w-1/6'>Наличие Шарте</th>
-							<th className='w-1/6'>Наличие Бтрейд</th>
-							<th className='w-1/6'>Цена Шарте</th>
-							<th className='w-1/6'>Цена Бтрейд</th>
+								</select>
+							</th>
+							<th className="w-1/6" colSpan="2">Наличие</th>
+							<th className="w-1/6" colSpan="2">Цена</th>
+						</tr>
+						<tr>
+							<th className="w-1/6">Шарте</th>
+							<th className="w-1/6">Бтрейд</th>
+							<th className="w-1/6">Шарте</th>
+							<th className="w-1/6">Бтрейд</th>
 						</tr>
 					</thead>
 					<tbody className='' >
@@ -203,11 +206,21 @@ export default function CompList() {
 											{comp.nameukr.length > 40 ? <>{comp.nameukr.slice(0, 37)}...</> : <>{comp.nameukr}</>}
 										</a>
 									</td>
+
+
+
 									<td  > <span className='bg-slate-500/50 p-1 rounded' >{comp.prod}</span> </td>
+
+
+
+
 									<td >{comp.avail.sharte ? <span className='bg-green-500 p-2 rounded' >Есть</span> : <span className='bg-red-500 p-2 rounded' >Нет</span>}</td>
 									<td>{comp.avail.btrade ? <span className='bg-sky-500 p-2 rounded' >{comp.avail.btrade}</span> : <span className='bg-rose-500 p-2 rounded' >Нет</span>}</td>
 									<td className='text-yellow-400' >{comp.price.sharte}</td>
 									<td className='text-green-500' >{comp.price.btrade}</td>
+
+
+
 								</tr>
 							))}
 					</tbody>
