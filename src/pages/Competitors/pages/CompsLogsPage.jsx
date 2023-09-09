@@ -44,8 +44,8 @@ export default function CompsLogsPage() {
 									<td className='flex items-center justify-center'>
 										<ImageBlock
 											src={`https://sharik.ua/images/elements_big/${item.artikul}_m1.jpg`}
-											width={20}
-											height={20}
+											width={30}
+											height={30}
 											alt="Фото артикула"
 											className="rounded "
 

@@ -98,13 +98,13 @@ export default function CompList() {
 
 
 			<CardBlock
-				className=" sticky top-negative z-10  "
+				className="  "
 			>
 
 
 				<ButtonBlock
 					onClick={handleAnalyze}
-					className=" add-c rounded-full mx-auto "
+					className=" add-c rounded-full block mx-auto "
 				>
 					Анализировать артикулы
 				</ButtonBlock>
@@ -147,7 +147,7 @@ export default function CompList() {
 
 
 			<CardBlock
-				className="flex-grow overflow-auto "
+				className="flex-grow overflow-auto mb-1 "
 			>
 
 				<table className="min-w-full"  >
