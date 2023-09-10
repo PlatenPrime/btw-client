@@ -13,6 +13,7 @@ import { getArtDataBtrade } from '../../../utils/getArtDataBtrade';
 
 
 import axios from "../../../utils/axios"
+import Spinner from '../../../components/Spinner/Spinner';
 
 
 const prods = [
@@ -70,7 +71,7 @@ export default function AddCompForm() {
 	const isFormNotValid =
 		!state.compArt ||
 		!state.selectedProd ||
-		!state.sharteLink 
+		!state.sharteLink
 
 
 
@@ -216,8 +217,8 @@ export default function AddCompForm() {
 
 
 				<CardBlock
-					className='space-y-2  w-full flex flex-col  justify-start  xl:w-1/3  p-1
-					bg-sky-400/10
+					className='space-y-2  w-full flex flex-col  justify-start  xl:w-1/3  p-2
+					bg-sky-500/10
 					
 					'
 				>
@@ -281,21 +282,68 @@ export default function AddCompForm() {
 				</CardBlock>
 
 
+				<CardBlock
+					className=' flex flex-col justify-center xl:justify-start xl:w-1/3 
+					
+					
+					'
+				>
+
+					<ButtonBlock
+						className={`${isSharteLinkValid ? "add-c" : "disabled"}  `}
+						onClick={(e) => handleAnalizeOne(e)}
+						disabled={!isSharteLinkValid || !artikulDB}
+					>
+
+						Анализ
+					</ButtonBlock>
+
+
+
+					{state.isAnalyze && (
+						<table className="border-collapse w-full">
+							<tr>
+								<td className="text-left border p-1 rounded w-1/2">Цена Sharte:</td>
+								<td className="border p-1 rounded w-1/2">
+									{state.priceSharte ? <p>{state.priceSharte} грн</p> : <p></p>}
+								</td>
+							</tr>
+							<tr>
+								<td className="text-left border p-1 rounded w-1/2">Цена Btrade:</td>
+								<td className="border p-1 rounded w-1/2">
+									{state.priceBtrade ? <p>{state.priceBtrade} грн</p> : <p></p>}
+								</td>
+							</tr>
+							<tr>
+								<td className="text-left border p-1 rounded w-1/2">Наличие у Sharte:</td>
+								<td className="border p-1 rounded w-1/2">
+									{state.isAvailableSharte ? "Есть" : "Нет"}
+								</td>
+							</tr>
+							<tr>
+								<td className="text-left border p-1 rounded w-1/2">Остаток на Погребах:</td>
+								<td className="border p-1 rounded w-1/2">
+									{state.quantBtrade ? <span>{state.quantBtrade} шт</span> : ""}
+								</td>
+							</tr>
+						</table>
+					)}
+
+
+
+				</CardBlock>
 
 				<CardBlock className="
 				p-4 w-full flex flex-col space-y-2  xl:w-1/3
-				bg-white
+				bg-violet-500/20
 				" >
 
 					<TextBlock className='text-lg text-center' >
-						{artikulDB ?
+						{artikulDB &&
 							<span
-								className='bg-violet-600 p-2 rounded-lg '
+								className=' p-2 rounded-lg '
 							>{artikulDB.nameukr}</span>
-							:
-							<span
-								className='bg-slate-600 p-2 rounded-lg'
-							>Название</span>}
+						}
 					</TextBlock>
 
 
@@ -310,77 +358,9 @@ export default function AddCompForm() {
 				</CardBlock>
 
 
-				<CardBlock
-					className=' flex flex-col justify-center xl:justify-start xl:w-1/3 
-					bg-violet-800/25
-					
-					'
-				>
-
-					<ButtonBlock
-						className={`${isSharteLinkValid ? "add-c" : "disabled"} `}
-						onClick={(e) => handleAnalizeOne(e)}
-						disabled={!isSharteLinkValid || !artikulDB}
-					>
-
-						Анализ
-					</ButtonBlock>
-
-
-
-					{state.isAnalyze && <RowBlock className=" flex flex-col items-start space-y-1 " >
-						<TextBlock
-							className='border p-1 rounded w-full flex justify-start'
-						>
-							Цена Sharte: {
-								state.priceSharte ?
-									<p>{state.priceSharte} грн</p>
-									:
-									<p></p>}
-						</TextBlock>
-
-						<TextBlock
-							className='border p-1 rounded w-full flex justify-start'
-						>
-							Цена Btrade: {
-								state.priceBtrade ?
-									<p>{state.priceBtrade} грн</p>
-									:
-									<p></p>}
-						</TextBlock>
-
-						<TextBlock
-							className='border p-1 rounded w-full flex justify-start'
-						>
-							Наличие у Sharte: {state.isAvailableSharte ? "Есть" : "Нет"}
-						</TextBlock>
-
-
-
-
-						<TextBlock
-							className='border p-1 rounded w-full flex justify-start'
-						>
-							Остаток на Погребах: {state.quantBtrade ? <span>{state.quantBtrade} шт</span> : ""}
-						</TextBlock>
-
-
-					</RowBlock>}
-
-
-
-				</CardBlock>
-
-
-
-
-
 
 
 			</CardBlock>
-
-
-
 
 
 
@@ -389,18 +369,17 @@ export default function AddCompForm() {
 			>
 
 				<ButtonBlock
-					className="create-c "
+					className="create-c inline-block "
 					disabled={isFormNotValid}
 					onClick={handleSubmitAddComp}
 				>
 					Добавить
+					{state.isCreatingComp &&
+						<Spinner color="rgb(6 182 212)" />}
 				</ButtonBlock>
 
 
-				{state.isCreatingComp && <TextBlock>
-					Создание артикула конкурента в базе данных...
-				</TextBlock>
-				}
+
 
 
 			</CardBlock>
