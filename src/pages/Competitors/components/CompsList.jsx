@@ -60,7 +60,7 @@ export default function CompList() {
 				const progressValue = (completedItems / totalItems) * 100;
 				setProgress(progressValue)
 			}
-			// window.location.reload();
+			window.location.reload();
 		} catch (error) {
 			console.log(error);
 
