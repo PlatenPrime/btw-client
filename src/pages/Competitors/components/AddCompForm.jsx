@@ -290,7 +290,7 @@ export default function AddCompForm() {
 				>
 
 					<ButtonBlock
-						className={`${isSharteLinkValid ? "add-c" : "disabled"}  `}
+						className={`${isSharteLinkValid ? "add" : "disabled"}  `}
 						onClick={(e) => handleAnalizeOne(e)}
 						disabled={!isSharteLinkValid || !artikulDB}
 					>

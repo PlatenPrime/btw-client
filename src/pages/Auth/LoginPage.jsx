@@ -5,10 +5,15 @@ import { checkIsAuth, loginUser } from '../../redux/features/auth/authSlice'
 import { toast } from 'react-toastify'
 import ButtonBlock from '../../components/blocks/ButtonBlock'
 import InputBlock from '../../components/blocks/InputBlock'
-import { Vortex } from 'react-loader-spinner'
+
 import PageAuthBTW from '../../components/UI/Page/PageAuthBTW'
 import CardBlock from '../../components/blocks/CardBlock'
 import TextBlock from '../../components/blocks/TextBlock'
+
+
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
+
 
 
 
@@ -21,7 +26,8 @@ import TextBlock from '../../components/blocks/TextBlock'
 export const LoginPage = () => {
 	const [username, setUsername] = useState('')
 	const [password, setPassword] = useState('')
-	const [isLoading, setIsLoading] = useState(true)
+	const [showPassword, setShowPassword] = useState(false);
+
 
 
 	const { status } = useSelector((state) => state.auth)
@@ -33,25 +39,24 @@ export const LoginPage = () => {
 
 	const checkingAuth = async () => {
 		try {
-			setIsLoading(true)
-			if (isAuth)  navigate('/')
-			setIsLoading(false)
+
+			if (isAuth) navigate('/')
+
 
 		} catch (error) {
 			console.log(error)
 		}
 	}
 
-
+	if (status) toast.info(status)
 
 
 	useEffect(() => {
 
-		if (status) toast.info(status)
 
 		checkingAuth()
 
-	}, [status, checkingAuth])
+	}, [checkingAuth])
 
 
 
@@ -67,86 +72,87 @@ export const LoginPage = () => {
 	}
 
 
+	const togglePasswordVisibility = () => {
+		setShowPassword(!showPassword);
+	};
+
+
 
 
 	return (
 		<PageAuthBTW>
 
-			{isLoading ?
 
-				<Vortex
-					visible={true}
-					height="200"
-					width="200"
-					ariaLabel="vortex-loading"
-					wrapperStyle={{}}
-					wrapperClass="vortex-wrapper"
-					colors={['red', 'green', 'blue', 'yellow', 'orange', 'purple']}
+			<CardBlock
+
+
+
+				className="flex flex-col gap-4 justify-center items-center mx-auto p-10  "
+
+			>
+
+				<TextBlock
+					className='text-3xl text-white text-center'
+				>
+					Авторизация
+				</TextBlock>
+
+
+				<div className=" block">
+					Имя пользователя:
+				</div>
+
+				<InputBlock
+
+					type="text"
+					placeholder="username"
+					value={username}
+					onChange={(e) => setUsername(e.target.value)}
 				/>
 
-				:
 
-				<CardBlock
 
-					
 
-					className="flex flex-col gap-4 justify-center items-center mx-auto p-10  "
 
-				>
 
-					<TextBlock
-						className='text-3xl text-white text-center'
+				<div className=" block">
+
+				Пароль:
+					<span
+						onClick={togglePasswordVisibility}
+						style={{ cursor: 'pointer' }}
 					>
-						Авторизация
-					</TextBlock>
+						{showPassword ? (
+							<FontAwesomeIcon icon={faEye} />
+						) : (
+							<FontAwesomeIcon icon={faEyeSlash} />
+						)}
+					</span>
 
-					
-						<div className=" block">
-							Имя пользователя:
-						</div>
-
-						<InputBlock
-
-							type="text"
-							placeholder="username"
-							value={username}
-							onChange={(e) => setUsername(e.target.value)}
-						/>
-
-					
+				</div>
 
 
-					
-
-						<div className=" block">
-
-							Пароль:
-
-						</div>
-
-
-						<InputBlock
-							id="password1"
-							type="password"
-							value={password}
-							onChange={(e) => setPassword(e.target.value)}
-						/>
+				<InputBlock
+					id="password1"
+					type={showPassword ? 'text' : 'password'}
+					value={password}
+					onChange={(e) => setPassword(e.target.value)}
+				/>
 
 
-					
+		
 
 
-
-					<ButtonBlock
+				<ButtonBlock
 					className="confirm-c w-full"
-						onClick={handleSubmit}
-					>
-						Войти
-					</ButtonBlock>
+					onClick={handleSubmit}
+				>
+					Войти
+				</ButtonBlock>
 
-				</CardBlock>
+			</CardBlock>
 
-			}
+
 
 
 		</PageAuthBTW>
