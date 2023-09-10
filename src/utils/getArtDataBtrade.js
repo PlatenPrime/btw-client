@@ -5,11 +5,15 @@ class NetworkError extends Error {
 	}
 }
 
-function extractValueFromString(valueString, searchValue, decimal = false, back = false) {
+
+const regex = /(\d+(\.\d+)?)/;
+
+
+
+function extractValueFromString(valueString, searchValue, back = false) {
 	try {
 		const index = valueString.indexOf(searchValue);
 		const substring = back ? valueString.slice(index - 50, index) : valueString.slice(index, index + 50);
-		const regex = decimal ? /(\d+\.\d+)/ : /(\d+)/;
 		const match = substring.match(regex);
 		return match ? match[0] : null;
 	} catch (error) {

@@ -14,14 +14,13 @@ export async function getArtDataSharte(link) {
 
 		const regex = /(\d+\.\d{2})\sгрн/;
 		const match = title.match(regex);
-		let price, isAvailable;
+		let price = null
+
+		let isAvailable = null;
 
 		if (match && match[1]) {
 			price = match[1];
 			console.log("Нашли цену");
-		} else {
-			price = "Цена не определена"
-			console.log("Цена не найдена");
 		}
 
 		const toolsLocations = responseString.indexOf("smallElementTools");
@@ -29,19 +28,13 @@ export async function getArtDataSharte(link) {
 		const letter = responseString.slice(searchValueBeLocation - 2, searchValueBeLocation - 1);
 
 
-		let isUpperCase
+		let isUpperCase = null
 
 		if (letter) isUpperCase = letter === letter.toUpperCase();
 
-		if (isUpperCase) {
-			isAvailable = true;
-			console.log("Товар в наличии");
-		} else {
-			isAvailable = false;
-			console.log("Товара нет в наличии");
-		}
+		isAvailable = isUpperCase ?? null;
+		console.log(isAvailable ? "Товар в наличии" : "Товара нет в наличии");
 
-		
 
 
 		return { price, isAvailable };

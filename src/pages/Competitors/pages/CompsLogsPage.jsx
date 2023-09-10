@@ -56,8 +56,6 @@ export default function CompsLogsPage() {
 									</td>
 
 
-
-
 									<td>{item.change.field === "avail.sharte" ? "Наличие Шарте" : "Цена Шарте"}</td>
 									<td>{item.change.oldValue.toString()}</td>
 									<td>{item.change.newValue.toString()}</td>
