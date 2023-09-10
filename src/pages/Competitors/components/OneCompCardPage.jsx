@@ -93,7 +93,7 @@ export default function OneCompCardPage() {
 		// try {
 		// 	const res = await axios.delete(`comps/${compArt._id}`);
 		// 	console.log(res);
-		 	setShowModal(false);
+		setShowModal(false);
 		// } catch (error) {
 		// 	console.log(error);
 		// }
@@ -245,6 +245,119 @@ export default function OneCompCardPage() {
 					}
 
 
+					<CardBlock className='flex justify-center' >
+
+
+						{compArt &&
+
+							<>
+								{!isEditing &&
+									<ButtonBlock
+										className="edit-c"
+										onClick={() => { setIsEditing(true) }}
+									>
+										Редактировать данные артикула
+									</ButtonBlock>
+
+
+
+								}
+
+								{isEditing && <ButtonBlock
+									className="cancel-c"
+									onClick={() => { setIsEditing(false) }}
+								>
+									Отменить редактирование
+								</ButtonBlock>}
+
+
+							</>
+						}
+
+					</CardBlock>
+
+
+					{isEditing &&
+
+						<CardBlock
+							className=' border border-violet-500 bg-violet-500/10 space-y-4 p-2'
+						>
+
+							<TextBlock
+								className=" p-4 rounded text-lg bg-violet-500/20 "
+							>
+								Редактирование данных
+							</TextBlock>
+
+
+
+
+
+
+							<RowBlock className=" flex flex-col items-center space-y-2 " >
+								<select
+									name="selectedProd"
+									className='InputBlock focus:bg-violet-900'
+									value={prod}
+									onChange={(e) => { setProd(e.target.value) }}
+								>
+									<option value="">Выбери производителя</option>
+									{prods.map((prod, index) => (
+										<option key={index} value={prod}>
+											{prod}
+										</option>
+									))}
+								</select>
+
+
+								<InputBlock
+									type="text"
+									name="sharteLink"
+									className="text-center"
+									placeholder="Введи cсылку Шарте..."
+									onChange={(e) => setSharteLink(e.target.value)}
+									value={sharteLink}
+								/>
+
+
+								<ButtonBlock
+									className="success-c "
+									disabled={!prod || !sharteLink}
+
+									onClick={handleUpdate}
+								>
+									Изменить данные
+								</ButtonBlock>
+
+
+								<ButtonBlock
+									className="delete-c "
+									onClick={handleDelete}
+								>
+									Удалить артикул из базы анализа
+								</ButtonBlock>
+
+								{showModal && (
+									<div className="fixed inset-0 flex items-center justify-center z-50">
+										<div className="modal-overlay absolute w-full h-full bg-gray-900/80" onClick={() => { setShowModal(false) }} ></div>
+										<div className="modal-container bg-violet-500/90 w-11/12 md:max-w-md mx-auto rounded shadow-lg z-50 overflow-y-auto">
+											<div className="modal-content py-4 text-left px-6">
+												<p className="text-xl font-semibold">Вы уверены, что хотите удалить артикул из базы отслеживания?</p>
+												<div className="mt-4 flex justify-evenly space-x-4">
+													<ButtonBlock className="delete font-semibold w-1/4 " onClick={confirmDelete}>Да</ButtonBlock>
+													<ButtonBlock className="success font-semibold w-1/4  " onClick={closeModal}>Нет</ButtonBlock>
+												</div>
+											</div>
+										</div>
+									</div>
+								)}
+
+							</RowBlock>
+
+
+
+						</CardBlock>}
+
 
 
 					{compArt && <CardBlock
@@ -294,135 +407,19 @@ export default function OneCompCardPage() {
 						</table>
 
 
-						<CardBlock className='flex justify-center' >
 
-
-							{compArt &&
-
-								<>
-									{!isEditing &&
-										<ButtonBlock
-											className="edit-c"
-											onClick={() => { setIsEditing(true) }}
-										>
-											Редактировать данные артикула
-										</ButtonBlock>
-
-
-
-									}
-
-									{isEditing && <ButtonBlock
-										className="cancel-c"
-										onClick={() => { setIsEditing(false) }}
-									>
-										Отменить редактирование
-									</ButtonBlock>}
-
-
-								</>
-							}
-
-
-
-
-
-
-
-
-						</CardBlock>
 
 
 
 					</CardBlock>}
-
-
-
-
 
 				</CardBlock>
 
 
-				{isEditing &&
-
-					<CardBlock
-						className=' border border-violet-500 bg-violet-500/10 space-y-4 p-2'
-					>
-
-						<TextBlock
-							className=" p-4 rounded text-lg bg-violet-500/20 "
-						>
-							Редактирование данных
-						</TextBlock>
 
 
 
 
-
-
-						<RowBlock className=" flex flex-col items-center space-y-2 " >
-							<select
-								name="selectedProd"
-								className='InputBlock focus:bg-violet-900'
-								value={prod}
-								onChange={(e) => { setProd(e.target.value) }}
-							>
-								<option value="">Выбери производителя</option>
-								{prods.map((prod, index) => (
-									<option key={index} value={prod}>
-										{prod}
-									</option>
-								))}
-							</select>
-
-
-							<InputBlock
-								type="text"
-								name="sharteLink"
-								className="text-center"
-								placeholder="Введи cсылку Шарте..."
-								onChange={(e) => setSharteLink(e.target.value)}
-								value={sharteLink}
-							/>
-
-
-							<ButtonBlock
-								className="success-c "
-								disabled={!prod || !sharteLink}
-
-								onClick={handleUpdate}
-							>
-								Изменить данные
-							</ButtonBlock>
-
-
-							<ButtonBlock
-								className="delete-c "
-								onClick={handleDelete}
-							>
-								Удалить артикул из базы анализа
-							</ButtonBlock>
-
-							{showModal && (
-								<div className="fixed inset-0 flex items-center justify-center z-50">
-									<div className="modal-overlay absolute w-full h-full bg-gray-900 opacity-50"  onClick={() => {setShowModal(false)}} ></div>
-									<div className="modal-container bg-violet-500/80 w-11/12 md:max-w-md mx-auto rounded shadow-lg z-50 overflow-y-auto">
-										<div className="modal-content py-4 text-left px-6">
-											<p className="text-xl font-semibold">Вы уверены, что хотите удалить артикул из базы данных?</p>
-											<div className="mt-4 flex justify-evenly space-x-4">
-												<ButtonBlock className="delete-c font-semibold w-1/4 " onClick={confirmDelete}>Да</ButtonBlock>
-												<ButtonBlock className="confirm-c font-semibold w-1/4  " onClick={closeModal}>Отмена</ButtonBlock>
-											</div>
-										</div>
-									</div>
-								</div>
-							)}
-
-						</RowBlock>
-
-
-
-					</CardBlock>}
 
 
 			</CardBlock>
