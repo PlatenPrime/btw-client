@@ -231,7 +231,7 @@ export default function AddCompForm() {
 						<InputBlock type="text"
 							name="compArt"
 							className='InputBlock  w-full text-center'
-							placeholder="Введи артикул БТрейд..."
+							placeholder="Например 1102-0260..."
 							onChange={handleChange}
 							value={state.compArt}
 
@@ -270,7 +270,7 @@ export default function AddCompForm() {
 							type="text"
 							name="sharteLink"
 							className='InputBlock w-full  '
-							placeholder="Введи ссылку sharte"
+							placeholder="Страница артикула шарте..."
 							onChange={handleChange}
 							value={state.sharteLink}
 

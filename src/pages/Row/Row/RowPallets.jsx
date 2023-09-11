@@ -45,9 +45,9 @@ const RowPallets = ({ pallets }) => {
 
 								<RowPallet
 
-									title={pallet.title}
-									id={pallet._id}
-									key={pallet._id}
+									title={pallet?.title}
+									id={pallet?._id}
+									key={pallet?._id}
 
 
 								/>
