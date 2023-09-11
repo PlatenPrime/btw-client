@@ -7,6 +7,7 @@ import { toast } from 'react-toastify';
 
 
 import { getAllRows } from '../../redux/features/row/rowSlice';
+import { createRow } from "../../redux/features/row/rowSlice";
 
 
 
@@ -20,6 +21,8 @@ import HeaderBlock from '../../components/blocks/HeaderBlock';
 import CardBlock from '../../components/blocks/CardBlock';
 import TextBlock from '../../components/blocks/TextBlock';
 import SpinnerBlock from '../../components/blocks/SpinnerBlock';
+import RowTitle from './Row/RowTitle';
+import InputBlock from '../../components/blocks/InputBlock';
 
 
 
@@ -28,7 +31,12 @@ const RowsPage = () => {
 
 
 	const [isLoading, setIsLoading] = useState(false);
+	const [isRowEditing, setIsRowEditing] = useState(true);
 
+	const [isAddingRow, setIsAddingRow] = useState(false);
+
+	const [title, setTitle] = useState('');
+	const [pallets, setPallets] = useState([]);
 
 
 
@@ -57,6 +65,37 @@ const RowsPage = () => {
 
 
 
+	const handleSubmit = () => {
+		if (!title) {
+
+			toast.error("У ряда нет названия")
+
+		} else
+			try {
+				const data = {
+					title, pallets
+				}
+				dispatch(createRow(data))
+				toast.success(`Новый ряд ${title} создан`)
+
+
+
+			} catch (error) {
+				console.log(error)
+			}
+			finally {
+				setTitle("")
+				setIsAddingRow(false)
+			}
+	}
+
+
+
+
+
+
+
+
 
 
 
@@ -76,19 +115,51 @@ const RowsPage = () => {
 
 
 
-			<CardBlock className="flex flex-col items-center">
+			<CardBlock className="flex flex-col items-end">
 
-				<Link to="new" className=''	>
 
-					<ButtonBlock className='create-c' >
+
+				{!isAddingRow ?
+					<ButtonBlock
+						onClick={() => { setIsAddingRow(true) }}
+						className='create-c' >
 						Создать новый ряд
 					</ButtonBlock>
-
-				</Link>
-
-
-
+					:
+					<ButtonBlock
+						onClick={() => { setIsAddingRow(false) }}
+						className='cancel-c' >
+						Отменить
+					</ButtonBlock>
+				}
 			</CardBlock>
+
+
+
+			{isAddingRow && <CardBlock
+				className='flex justify-center'
+			>
+
+
+				<InputBlock
+					className=' text-center text-2xl text-white'
+					type="text"
+					value={title}
+					placeholder='Название...'
+					onChange={e => setTitle(e.target.value)}
+				/>
+
+				<ButtonBlock
+
+					className='success-c '
+					onClick={handleSubmit}
+					disabled={!title}
+				>
+					Создать
+				</ButtonBlock>
+
+
+			</CardBlock>}
 
 
 

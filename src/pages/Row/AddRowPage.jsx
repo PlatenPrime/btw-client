@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 
@@ -91,21 +91,6 @@ const AddRowPage = () => {
 			</HeaderBlock>
 
 
-			<CardBlock >
-
-
-
-				<ButtonBlock
-
-					className='success-c w-full '
-					onClick={handlerSubmit}
-				>
-					Создать
-				</ButtonBlock>
-
-
-
-			</CardBlock>
 
 
 
@@ -124,6 +109,24 @@ const AddRowPage = () => {
 
 
 			</CardBlock>
+
+
+			<CardBlock >
+
+
+
+				<ButtonBlock
+
+					className='success-c '
+					onClick={handlerSubmit}
+				>
+					Создать
+				</ButtonBlock>
+
+
+
+			</CardBlock>
+
 
 
 

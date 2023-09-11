@@ -121,7 +121,7 @@ export default function CompList() {
 							<div className="flex mb-2 items-center justify-between">
 
 								<div className="text-right">
-									<span className="text-xs font-semibold inline-block text-violet-600">
+									<span className="text-sm font-semibold inline-block text-violet-100">
 										{progress.toFixed(2)}%
 									</span>
 								</div>
