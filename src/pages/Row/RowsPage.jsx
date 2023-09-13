@@ -24,6 +24,10 @@ const RowsPage = () => {
 	const row = useRowStore((state) => state.row)
 	const changeRow = useRowStore((state) => state.changeRow)
 	const clearRow = useRowStore((state) => state.clearRow)
+	const getRows = useRowStore((state) => state.getRows)
+
+
+	getRows()
 
 
 
