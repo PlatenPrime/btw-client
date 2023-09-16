@@ -1,9 +1,10 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { useCompContext } from '../contexts/compContextProvider';  // Import the context hook
-import { ButtonBlock, CardBlock, ImageBlock, TextBlock } from '../../../components';
+import { ButtonBlock, CardBlock, ImageBlock, InputBlock, TextBlock } from '../../../components';
 import { analyzeComp } from '../../../utils/analyzeComp';
-import { exportToExcel } from '../../../utils/exportExcel';
+import { exportToExcelComps } from '../../../utils/exportExcel';
 import Spinner from '../../../components/Spinner/Spinner';
+import { importFromExcelComps } from '../../../utils/importExcel';
 
 
 
@@ -73,6 +74,12 @@ export default function CompList() {
 
 
 
+	const handleChangeImportExcel = (e) => {
+		e.preventDefault()
+		const importedComps = importFromExcelComps(e)
+		console.log(importedComps)
+	}
+
 
 
 
@@ -102,13 +109,22 @@ export default function CompList() {
 				className="  "
 			>
 
-				<ButtonBlock
-					onClick={() => exportToExcel(compsDB)}
+				{/* <ButtonBlock
+					onClick={() => exportToExcelComps(compsDB)}
 					className=" success-c rounded-full block mx-auto "
 
 				>
 					Экспортировать в Excel
 				</ButtonBlock>
+
+				<InputBlock
+					type="file"
+					className="create-c rounded-full block mx-auto "
+					onChange={(e) => handleChangeImportExcel(e)}
+
+				>
+					Импортировать из Excel
+				</InputBlock> */}
 
 				<ButtonBlock
 					onClick={handleAnalyze}

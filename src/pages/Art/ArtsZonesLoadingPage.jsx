@@ -8,7 +8,7 @@ import ButtonBlock from '../../components/blocks/ButtonBlock';
 
 import { toast } from 'react-toastify';
 import axios from '../../utils/axios';
-import { excelToJSON } from '../../utils/importExcel';
+import { excelToJSONArts } from '../../utils/importExcel';
 
 import InputBlock from "../../components/blocks/InputBlock";
 import HeaderBlock from "../../components/blocks/HeaderBlock";
@@ -137,7 +137,7 @@ const ArtsZonesLoadingPage = () => {
 
 
 	const handleChangeExcelInput = (e) => {
-		const data = excelToJSON(e)
+		const data = excelToJSONArts(e)
 		console.log(data)
 		setArts(data)
 
