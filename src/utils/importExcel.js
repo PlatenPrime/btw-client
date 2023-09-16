@@ -1,7 +1,8 @@
 import * as xlsx from "xlsx";
-
+ 
 export const excelToJSON = (e) => {
 	e.preventDefault();
+	let json
 	if (e.target.files) {
 		const reader = new FileReader();
 		reader.onload = (e) => {
@@ -9,11 +10,13 @@ export const excelToJSON = (e) => {
 			const workbook = xlsx.read(data, { type: "array" });
 			const sheetName = workbook.SheetNames[0];
 			const worksheet = workbook.Sheets[sheetName];
-			const json = xlsx.utils.sheet_to_json(worksheet);
+			json = xlsx.utils.sheet_to_json(worksheet);
 			console.log(json);
 		};
 		reader.readAsArrayBuffer(e.target.files[0]);
+		return json;
 	}
 }
+
 
 

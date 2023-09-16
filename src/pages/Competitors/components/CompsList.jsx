@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import { useCompContext } from '../contexts/compContextProvider';  // Import the context hook
 import { ButtonBlock, CardBlock, ImageBlock, TextBlock } from '../../../components';
 import { analyzeComp } from '../../../utils/analyzeComp';
+import { exportToExcel } from '../../../utils/exportExcel';
 import Spinner from '../../../components/Spinner/Spinner';
 
 
@@ -101,6 +102,13 @@ export default function CompList() {
 				className="  "
 			>
 
+				<ButtonBlock
+					onClick={() => exportToExcel(compsDB)}
+					className=" success-c rounded-full block mx-auto "
+
+				>
+					Экспортировать в Excel
+				</ButtonBlock>
 
 				<ButtonBlock
 					onClick={handleAnalyze}
