@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 
-import * as XLSX from 'xlsx';
+import * as  XLSX from 'xlsx';
 
 
 
@@ -85,42 +85,12 @@ const ArtFindPage = () => {
 
 
 
-
-	function downloadFile(blob, filename) {
-		const url = window.URL.createObjectURL(blob);
-		const a = document.createElement('a');
-		a.href = url;
-		a.download = filename || 'downloaded_file.xlsx';
-		document.body.appendChild(a);
-		a.click();
-		window.URL.revokeObjectURL(url);
+	function exportToExcel(data) {
+		const ws = XLSX.utils.json_to_sheet(data);
+		const wb = XLSX.utils.book_new();
+		XLSX.utils.book_append_sheet(wb, ws, 'Sheet1');
+		XLSX.writeFile(wb, 'exported_data.xlsx');
 	}
-
-
-	const handleDownloadExcel = () => {
-		console.log("artsDB:", artsDB); // Добавьте это логирование
-
-
-		const workbook = XLSX.utils.book_new();
-		const ws = XLSX.utils.json_to_sheet(artsDB);
-
-		try {
-			// Попытайтесь создать Blob
-			const blob = XLSX.write(workbook, { bookType: 'blob', type: 'blob' });
-
-			// Проверьте, что Blob создан успешно
-			if (blob) {
-				// Вызов функции для скачивания файла
-				downloadFile(blob, 'artsDB.xlsx');
-			} else {
-				console.error('Не удалось создать Blob для Excel-файла.');
-			}
-		} catch (error) {
-			console.error('Произошла ошибка при создании Excel-файла:', error);
-		}
-	};
-
-
 
 
 
@@ -230,8 +200,8 @@ const ArtFindPage = () => {
 
 			<CardBlock>
 
+				<button onClick={() => exportToExcel(artsDB)}>Экспорт в Excel</button>
 
-				<button onClick={handleDownloadExcel}>Скачать Excel-файл</button>
 
 			</CardBlock>
 
