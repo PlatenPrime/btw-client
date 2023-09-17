@@ -74,13 +74,6 @@ export default function CompList() {
 
 
 
-	const handleChangeImportExcel = (e) => {
-		e.preventDefault()
-		const importedComps = importFromExcelComps(e)
-		console.log(importedComps)
-	}
-
-
 
 
 
@@ -106,29 +99,22 @@ export default function CompList() {
 
 
 			<CardBlock
-				className="  "
+				className="flex justify-end  "
 			>
 
-				{/* <ButtonBlock
+				<ButtonBlock
 					onClick={() => exportToExcelComps(compsDB)}
-					className=" success-c rounded-full block mx-auto "
+					className=" success-c rounded-full block  "
 
 				>
 					Экспортировать в Excel
 				</ButtonBlock>
 
-				<InputBlock
-					type="file"
-					className="create-c rounded-full block mx-auto "
-					onChange={(e) => handleChangeImportExcel(e)}
 
-				>
-					Импортировать из Excel
-				</InputBlock> */}
 
 				<ButtonBlock
 					onClick={handleAnalyze}
-					className=" add-c rounded-full block mx-auto "
+					className=" add-c rounded-full block  "
 				>
 					Анализировать артикулы
 				</ButtonBlock>
@@ -136,6 +122,14 @@ export default function CompList() {
 
 
 
+
+
+
+			</CardBlock>
+
+
+
+			<CardBlock>
 
 				{isAnalyzing &&
 					<CardBlock>
@@ -162,11 +156,7 @@ export default function CompList() {
 
 				}
 
-
-
 			</CardBlock>
-
-
 
 
 
