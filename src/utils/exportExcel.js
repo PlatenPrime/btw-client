@@ -16,11 +16,19 @@ export function exportToExcelComps(data) {
 		artikul: item.artikul,
 		nameukr: item.nameukr,
 		prod: item.prod,
+		category: item.category,
+		subcategory: item.subcategory,
 		"competitorsLinks.sharteLink": item.competitorsLinks.sharteLink,
+		"competitorsLinks.airLink": item.competitorsLinks.airLink,
+		"competitorsLinks.yumiArtikul": item.competitorsLinks.yumiArtikul,
 		"avail.btrade": item.avail.btrade,
 		"avail.sharte": item.avail.sharte,
+		"avail.yumi": item.avail.yumi,
+		"avail.air": item.avail.air,
 		"price.btrade": item.price.btrade,
 		"price.sharte": item.price.sharte,
+		"price.yumi": item.price.yumi,
+		"price.air": item.price.air,
 	}));
 
 	const ws = XLSX.utils.json_to_sheet(transformedData);
