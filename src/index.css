@@ -94,24 +94,6 @@ table {
 	}
 
 
-	
-	.MainBTW {
-		@apply
-		flex flex-col md:flex-row h-full w-full max-h-screen   overflow-auto
-	}
-
-
-	.ContentMain {
-		@apply
-		w-full md:w-3/4  max-h-screen min-h-full  overflow-auto 
-	}
-
-
-
-
-
-
-
 
 
 /* BLOCKS */
@@ -262,7 +244,7 @@ transition ease-in-out duration-300
 .create-c {
 	@apply 
 	
-	border border-cyan-500  text-cyan-500
+	border border-cyan-500  text-gray-100 
 	bg-transparent hover:bg-cyan-400 active:bg-cyan-600 
 	  hover:text-white focus:text-white active:text-white
 	  shadow-2xl hover:shadow-cyan-500
@@ -376,7 +358,7 @@ transition ease-in-out duration-300
 .add-c {
 	@apply
  
-	border border-violet-500  text-violet-500 
+	border border-violet-500  text-gray-100 
 	bg-transparent hover:bg-violet-400 active:bg-violet-600  
 	  hover:text-white focus:text-white active:text-white
 	  shadow-2xl hover:shadow-violet-500

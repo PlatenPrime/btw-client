@@ -67,7 +67,7 @@ export default function AddCompForm() {
 
 
 	const isFormNotValid =
-		!state.artikulDB ||
+		!artikulDB ||
 		!state.selectedProd
 
 
@@ -214,7 +214,7 @@ export default function AddCompForm() {
 
 
 				<CardBlock
-					className='space-y-2  w-full flex flex-col  justify-start  xl:w-1/3  p-2
+					className='space-y-2  w-full   justify-start  xl:w-1/3  p-2
 					bg-sky-500/10 border border-sky-500
 					
 					'
@@ -278,11 +278,11 @@ export default function AddCompForm() {
 
 
 					<CardBlock
-						className=' flex flex-col justify-center'
+						className="flex flex-col items-center"
 					>
 
 						<ButtonBlock
-							className="create-c w-auto mx-auto"
+							className="create-c mx-auto"
 							disabled={isFormNotValid}
 							onClick={handleSubmitAddComp}
 						>
@@ -291,11 +291,11 @@ export default function AddCompForm() {
 								<Spinner color="rgb(6 182 212)" />}
 						</ButtonBlock>
 
-
-
-
-
 					</CardBlock>
+
+
+
+
 
 
 
@@ -305,14 +305,19 @@ export default function AddCompForm() {
 
 
 				<CardBlock
-					className=' flex flex-col justify-start xl:w-1/3  border 
-					
-					
+					className=' 
+					xl:w-1/3  border p-1 space-y-2
+					flex flex-col items-center
 					'
 				>
 
+
+
+
+
+
 					<ButtonBlock
-						className={`${isSharteLinkValid ? "add" : "disabled"}  `}
+						className={`${isSharteLinkValid ? "add-c" : "disabled"} mx-auto  `}
 						onClick={(e) => handleAnalizeOne(e)}
 						disabled={!isSharteLinkValid || !artikulDB}
 					>
