@@ -45,6 +45,7 @@ const initialStateForm = {
 
 
 export default function AddCompForm() {
+
 	const { artsDB } = useCompContext();
 
 	// State for form fields
@@ -52,9 +53,6 @@ export default function AddCompForm() {
 	const [state, setState] = useState(initialStateForm)
 
 
-	// Other form-related state and functions
-
-	// НУЖНЫЕ КОНСТАНТЫ
 
 
 
@@ -64,14 +62,13 @@ export default function AddCompForm() {
 
 	let artikulDB;
 
-	if (artsDB) artikulDB = artsDB.find(item => item.artikul === state.compArt.trim());
+	if (artsDB) artikulDB = artsDB.find(item => item.artikul === state.compArt.trim()) || null;
 
 
 
 	const isFormNotValid =
-		!state.compArt ||
-		!state.selectedProd ||
-		!state.sharteLink
+		!state.artikulDB ||
+		!state.selectedProd
 
 
 
@@ -218,7 +215,7 @@ export default function AddCompForm() {
 
 				<CardBlock
 					className='space-y-2  w-full flex flex-col  justify-start  xl:w-1/3  p-2
-					bg-sky-500/10
+					bg-sky-500/10 border border-sky-500
 					
 					'
 				>
@@ -279,11 +276,36 @@ export default function AddCompForm() {
 
 					</RowBlock>
 
+
+					<CardBlock
+						className=' flex flex-col justify-center'
+					>
+
+						<ButtonBlock
+							className="create-c w-auto mx-auto"
+							disabled={isFormNotValid}
+							onClick={handleSubmitAddComp}
+						>
+							Добавить
+							{state.isCreatingComp &&
+								<Spinner color="rgb(6 182 212)" />}
+						</ButtonBlock>
+
+
+
+
+
+					</CardBlock>
+
+
+
+
+
 				</CardBlock>
 
 
 				<CardBlock
-					className=' flex flex-col justify-center xl:justify-start xl:w-1/3 
+					className=' flex flex-col justify-start xl:w-1/3  border 
 					
 					
 					'
@@ -335,7 +357,7 @@ export default function AddCompForm() {
 
 				<CardBlock className="
 				p-4 w-full flex flex-col space-y-2  xl:w-1/3
-				bg-violet-500/20
+				bg-violet-500/20 border border-violet-500
 				" >
 
 					<TextBlock className='text-lg text-center' >
@@ -364,25 +386,7 @@ export default function AddCompForm() {
 
 
 
-			<CardBlock
-				className=' flex flex-col justify-center'
-			>
 
-				<ButtonBlock
-					className="create-c inline-block "
-					disabled={isFormNotValid}
-					onClick={handleSubmitAddComp}
-				>
-					Добавить
-					{state.isCreatingComp &&
-						<Spinner color="rgb(6 182 212)" />}
-				</ButtonBlock>
-
-
-
-
-
-			</CardBlock>
 
 
 

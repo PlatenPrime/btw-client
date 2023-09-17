@@ -107,7 +107,7 @@ export default function CompList() {
 					className=" success-c rounded-full block  "
 
 				>
-					Экспортировать в Excel
+					Экспорт в Excel
 				</ButtonBlock>
 
 
@@ -118,12 +118,6 @@ export default function CompList() {
 				>
 					Анализировать артикулы
 				</ButtonBlock>
-
-
-
-
-
-
 
 			</CardBlock>
 
