@@ -1,11 +1,15 @@
 import React, { useState } from 'react'
-import { CardBlock, InputBlock, TextBlock } from '../../../components'
+import { ButtonBlock, CardBlock, InputBlock, TextBlock } from '../../../components'
 import { importFromExcelComps } from "../../../utils/importExcel"
+import axios from '../../../utils/axios'
+import Spinner from '../../../components/Spinner/Spinner'
 
 export default function ImportExcelComps() {
 
 
 	const [uploadData, setUploadData] = useState([])
+	const [uploadProgress, setUploadProgress] = useState(0)
+	const [isUploading, setIsUploading] = useState(false)
 
 
 
@@ -23,6 +27,57 @@ export default function ImportExcelComps() {
 	}
 
 
+
+	const handleUpload = async () => {
+		try {
+
+			const totalItems = uploadData.length;
+			let completedItems = 0;
+
+			setIsUploading(true)
+
+			for (const comp of uploadData) {
+
+				const { prod,
+					category,
+					subcategory,
+					competitorsLinks,
+					size,
+					artikul,
+					nameukr
+				} = { ...comp }
+
+
+				await axios.post("comps/update", {
+					prod,
+					category,
+					subcategory,
+					competitorsLinks,
+					size,
+					artikul,
+					nameukr
+				});
+				completedItems++;
+				const progressValue = (completedItems / totalItems) * 100;
+				setUploadProgress(progressValue)
+			}
+
+		} catch (error) {
+			console.log(error);
+
+		} finally {
+			setIsUploading(false)
+			setUploadProgress(0)
+		}
+	}
+
+
+
+
+
+
+
+
 	return (
 
 
@@ -32,7 +87,7 @@ export default function ImportExcelComps() {
 		<CardBlock
 			className="
 			
-			bg-green-600/20 border border-green-600 p-4"
+			bg-green-600/10 border border-green-600 p-4"
 		>
 			<TextBlock
 				className="text-xl"
@@ -48,6 +103,53 @@ export default function ImportExcelComps() {
 			>
 				Импортировать из Excel
 			</InputBlock>
+
+
+			{uploadData.length > 0 && <ButtonBlock
+				className="success-c"
+				onClick={handleUpload}
+			>
+				Выгрузить обновленные данные
+
+				{isUploading && <Spinner color="rgb(34 197 94)" />}
+			</ButtonBlock>}
+
+
+
+			<CardBlock>
+
+				{isUploading &&
+					<CardBlock>
+
+
+						<div className="relative pt-1">
+							<div className="flex mb-2 items-center justify-between">
+
+								<div className="text-right">
+									<span className="text-sm font-semibold inline-block text-green-100">
+										{uploadProgress.toFixed(2)}%
+									</span>
+								</div>
+							</div>
+							<div className="flex h-2 mb-4 overflow-hidden text-xs bg-green-200">
+								<div
+									style={{ width: `${uploadProgress}%` }}
+									className="flex flex-col justify-center text-center text-white bg-green-500 shadow-none whitespace-nowrap"
+								></div>
+							</div>
+						</div>
+
+					</CardBlock>
+
+				}
+
+			</CardBlock>
+
+
+
+
+
+
 
 			{uploadData.length > 0 && <div className="w-full  mx-auto">
 				<table className="min-w-full table-auto text-black">
