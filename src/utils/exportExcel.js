@@ -18,6 +18,7 @@ export function exportToExcelComps(data) {
 		prod: item.prod,
 		category: item.category,
 		subcategory: item.subcategory,
+		size: item.size,
 		"competitorsLinks.sharteLink": item.competitorsLinks.sharteLink,
 		"competitorsLinks.airLink": item.competitorsLinks.airLink,
 		"competitorsLinks.yumiArtikul": item.competitorsLinks.yumiArtikul,
@@ -34,6 +35,6 @@ export function exportToExcelComps(data) {
 	const ws = XLSX.utils.json_to_sheet(transformedData);
 	const wb = XLSX.utils.book_new();
 	XLSX.utils.book_append_sheet(wb, ws, 'Sheet1');
-	XLSX.writeFile(wb, 'exported_data.xlsx');
+	XLSX.writeFile(wb, 'konkurenty.xlsx');
 }
 

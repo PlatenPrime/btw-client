@@ -50,9 +50,9 @@ export default function ImportExcelComps() {
 			</InputBlock>
 
 			{uploadData.length > 0 && <div className="w-full  mx-auto">
-				<table className="min-w-full table-auto">
+				<table className="min-w-full table-auto text-black">
 					<thead>
-						<tr className='bg-black'>
+						<tr className='bg-gray-100'>
 
 							<th className="px-4 py-2">Артикул</th>
 
@@ -61,7 +61,7 @@ export default function ImportExcelComps() {
 					</thead>
 					<tbody>
 						{uploadData.map((item, index) => (
-							<tr key={index} className={index % 2 === 0 ? 'bg-gray-900' : 'bg-slate-700'}>
+							<tr key={index} className={index % 2 === 0 ? 'bg-gray-200' : 'bg-slate-100'}>
 
 								<td className="px-4 py-2 text-left">{item.nameukr}</td>
 
