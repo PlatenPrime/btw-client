@@ -56,28 +56,28 @@ export const importFromExcelComps = async (e) => {
 
 			// Обратное преобразование данных для восстановления вложенных объектов
 			const restoredData = jsonData.map(item => ({
-				artikul: item.artikul,
-				nameukr: item.nameukr,
-				prod: item.prod,
-				category: item["category"],
-				subcategory: item["subcategory"],
-				size: item["size"],
+				artikul: item.artikul ?? "",
+				nameukr: item.nameukr ?? "",
+				prod: item.prod ?? "",
+				category: item["category"] ?? "",
+				subcategory: item["subcategory"] ?? "",
+				size: item["size"] ?? "",
 				competitorsLinks: {
-					sharteLink: item["competitorsLinks.sharteLink"],
-					airLink: item["competitorsLinks.airLink"],
-					yumiArtikul: item["competitorsLinks.yumiArtikul"],
+					sharteLink: item["competitorsLinks.sharteLink"] ?? "",
+					airLink: item["competitorsLinks.airLink"] ?? "",
+					yumiArtikul: item["competitorsLinks.yumiArtikul"] ?? "",
 				},
 				avail: {
-					btrade: item["avail.btrade"],
-					sharte: item["avail.sharte"],
-					air: item["avail.air"],
-					yumi: item["avail.yumi"],
+					btrade: item["avail.btrade"] ?? 0,
+					sharte: item["avail.sharte"] ?? false,
+					air: item["avail.air"] ?? false,
+					yumi: item["avail.yumi"] ?? 0,
 				},
 				price: {
-					btrade: item["price.btrade"],
-					sharte: item["price.sharte"],
-					air: item["price.air"],
-					yumi: item["price.yumi"],
+					btrade: item["price.btrade"] ?? "",
+					sharte: item["price.sharte"] ?? "",
+					air: item["price.air"] ?? "",
+					yumi: item["price.yumi"] ?? "",
 				}
 			}));
 
