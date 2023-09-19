@@ -6,12 +6,24 @@ import axios from "./axios";
 
 
 export async function analyzeComp(comp) {
-
-
 	try {
-		const { price: priceSharte, isAvailable: isAvailableSharte } = await getArtDataSharte(comp.competitorsLinks.sharteLink);
+		// Запускаем оба асинхронных запроса параллельно
+		const [sharteData, btradeData] = await Promise.all([
+			getArtDataSharte(comp.competitorsLinks.sharteLink),
+			getArtDataBtrade(comp.artikul)
+		]);
 
-		const { price: priceBtrade, quant: quantBtrade } = await getArtDataBtrade(comp.artikul)
+		let priceSharte, isAvailableSharte, priceBtrade, quantBtrade;
+
+		if (sharteData) {
+			priceSharte = sharteData.price;
+			isAvailableSharte = sharteData.isAvailable;
+		}
+
+		if (btradeData) {
+			priceBtrade = btradeData.price;
+			quantBtrade = btradeData.quant;
+		}
 
 		const updateComp = {
 			artikul: comp.artikul,
@@ -23,8 +35,7 @@ export async function analyzeComp(comp) {
 				btrade: priceBtrade,
 				sharte: priceSharte,
 			}
-
-		}
+		};
 
 		const updateCompRes = await axios.post("comps/update", updateComp);
 
@@ -37,7 +48,7 @@ export async function analyzeComp(comp) {
 		// 		newValue: quantBtrade,
 		// 	});
 		// }
-		if (isAvailableSharte !== comp.avail.sharte) {
+		if (isAvailableSharte !== null && isAvailableSharte !== undefined !== comp.avail.sharte) {
 			changes.push({
 				field: 'avail.sharte',
 				oldValue: comp.avail.sharte ? "Есть" : "Нет",
@@ -51,7 +62,7 @@ export async function analyzeComp(comp) {
 		// 		newValue: priceBtrade,
 		// 	});
 		// }
-		if (priceSharte !== comp.price.sharte) {
+		if (priceSharte !== null && priceSharte !== undefined && priceSharte !== comp.price.sharte) {
 			changes.push({
 				field: 'price.sharte',
 				oldValue: comp.price.sharte,
