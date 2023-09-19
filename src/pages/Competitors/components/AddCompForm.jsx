@@ -30,12 +30,21 @@ const initialStateForm = {
 	compArt: "",
 	selectedProd: "",
 	sharteLink: "",
+	airLink: "",
+	yumiArtikul: "",
 	priceSharte: "",
-	isAvailableSharte: null,
 	priceBtrade: "",
+	priceYumi: "",
+	priceAir: "",
+	isAvailableSharte: null,
+	isAvailableAir: null,
 	quantBtrade: "",
+	quantYumi: "",
 	isAnalyze: false,
 	isCreatingComp: false,
+	category: "",
+	subcategory: "",
+	size: ""
 
 
 
@@ -66,9 +75,13 @@ export default function AddCompForm() {
 
 
 
+
+
+
+	
+
 	const isFormNotValid =
-		!artikulDB ||
-		!state.selectedProd
+		!artikulDB
 
 
 
@@ -144,17 +157,26 @@ export default function AddCompForm() {
 			nameukr: artikulDB.nameukr,
 			prod: state.selectedProd,
 			competitorsLinks: {
-				sharteLink: state.sharteLink
+				sharteLink: state.sharteLink,
+				airLink: state.airLink,
+				yumiArtikul: state.yumiArtikul
 			},
 			avail: {
 				btrade: state.quantBtrade,
 				sharte: state.isAvailableSharte,
+				air: state.isAvailableAir,
+				yumi: state.quantYumi,
 
 			},
 			price: {
 				btrade: state.priceBtrade,
 				sharte: state.priceSharte,
-			}
+				air: state.priceAir,
+				yumi: state.priceYumi,
+			},
+			category: state.category,
+			subcategory: state.subcategory,
+			size: state.size,
 
 		}
 
@@ -177,13 +199,25 @@ export default function AddCompForm() {
 		} finally {
 			setState(prevState => ({
 				...prevState,
-				isCreatingComp: false,
+				compArt: "",
+				selectedProd: "",
+				sharteLink: "",
+				airLink: "",
+				yumiArtikul: "",
+				priceSharte: "",
+				priceBtrade: "",
+				priceYumi: "",
+				priceAir: "",
+				isAvailableSharte: null,
+				isAvailableAir: null,
+				quantBtrade: "",
+				quantYumi: "",
 				isAnalyze: false,
-				compArt: '',
-				sharteLink: '',
-				selectedProd: '',
-				priceSharte: null,
-				isAvailableSharte: '',
+				isCreatingComp: false,
+				category: "",
+				subcategory: "",
+				size: ""
+
 			}));
 
 		}

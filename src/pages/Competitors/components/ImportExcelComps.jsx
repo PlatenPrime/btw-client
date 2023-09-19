@@ -92,7 +92,7 @@ export default function ImportExcelComps() {
 			<TextBlock
 				className="text-xl"
 			>
-				Импорт из Excel (пока не работает)
+				Импорт из Excel
 			</TextBlock>
 
 			<InputBlock
