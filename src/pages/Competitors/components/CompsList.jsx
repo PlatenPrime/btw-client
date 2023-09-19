@@ -26,6 +26,9 @@ export default function CompList() {
 	const [progress, setProgress] = useState(0)
 
 
+
+
+
 	const [filter, setFilter] = useState({
 		// Initialize your filter criteria here
 		// For example:
@@ -176,6 +179,10 @@ export default function CompList() {
 									))}
 								</select>
 							</th>
+
+
+							<th className="w-1/6" rowSpan="2">Ссылка Sharte</th>
+
 							<th className="w-1/6" colSpan="2">Наличие</th>
 							<th className="w-1/6" colSpan="2">Цена</th>
 						</tr>
@@ -199,7 +206,15 @@ export default function CompList() {
 
 
 							.map((comp) => (
-								<tr className="bg-violet-500 even:bg-opacity-25 odd:bg-opacity-10 " key={comp._id.$oid}>
+								<tr
+
+									className="bg-violet-500 even:bg-opacity-25 odd:bg-opacity-10 "
+
+									key={comp._id.$oid}
+
+
+
+								>
 									<td className='flex items-center space-x-1' >
 
 										<ImageBlock
@@ -219,6 +234,8 @@ export default function CompList() {
 
 									<td  > <span className='bg-slate-500/50 p-1 rounded' >{comp.prod}</span> </td>
 
+
+									<td>{comp.competitorsLinks?.sharteLink?.slice(0, 20)}</td>
 
 
 
