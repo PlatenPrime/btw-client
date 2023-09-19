@@ -104,7 +104,7 @@ export default function CompList() {
 
 				<ButtonBlock
 					onClick={() => exportToExcelComps(compsDB)}
-					className=" success-c rounded-full block  "
+					className=" success-c   "
 
 				>
 					Экспорт в Excel
@@ -114,7 +114,7 @@ export default function CompList() {
 
 				<ButtonBlock
 					onClick={handleAnalyze}
-					className=" add-c rounded-full block  "
+					className=" add-c  "
 				>
 					Анализировать артикулы
 				</ButtonBlock>
@@ -210,7 +210,7 @@ export default function CompList() {
 											className="rounded "
 
 										/>
-										<a href={comp.competitorsLinks.sharteLink} target="_blank" rel="noopener noreferrer">
+										<a href={comp.competitorsLinks?.sharteLink} target="_blank" rel="noopener noreferrer">
 											{comp.nameukr.length > 40 ? <>{comp.nameukr.slice(0, 37)}...</> : <>{comp.nameukr}</>}
 										</a>
 									</td>

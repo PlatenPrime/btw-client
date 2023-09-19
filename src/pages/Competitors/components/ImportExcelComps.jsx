@@ -86,7 +86,7 @@ export default function ImportExcelComps() {
 
 		<CardBlock
 			className="
-			
+			flex flex-col
 			bg-green-600/10 border border-green-600 p-4"
 		>
 			<TextBlock
@@ -106,7 +106,7 @@ export default function ImportExcelComps() {
 
 
 			{uploadData.length > 0 && <ButtonBlock
-				className="success-c"
+				className="success-c mx-auto"
 				onClick={handleUpload}
 			>
 				Выгрузить обновленные данные
