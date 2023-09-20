@@ -5,14 +5,12 @@ import { analyzeComp } from '../../../utils/analyzeComp';
 import { exportToExcelComps } from '../../../utils/exportExcel';
 import Spinner from '../../../components/Spinner/Spinner';
 import { importFromExcelComps } from '../../../utils/importExcel';
+import { GoFilter } from 'react-icons/go'
+
+import { prods } from '../../../constants/compsData';
 
 
-
-const prodOptions = ['Gemar',
-	'Belbal',
-	'Flex',
-	"Anagram",
-	"Qualatex"]
+const prodOptions = prods;
 
 
 
@@ -152,6 +150,32 @@ export default function CompList() {
 					</CardBlock>
 
 				}
+
+			</CardBlock>
+
+
+			<CardBlock>
+				<ButtonBlock className="add-c">
+					<GoFilter className='text-2xl' />
+				</ButtonBlock>
+
+
+				<CardBlock
+					className="flex p-4 ">
+
+					<select
+						className="InputBlock focus:bg-violet-900 w-full"
+						value={filter.prod}
+						onChange={(e) => setFilter({ ...filter, prod: e.target.value })}
+					>
+						<option value="">Производитель</option>
+						{prodOptions.map((option) => (
+							<option key={option} value={option}>
+								{option}
+							</option>
+						))}
+					</select>
+				</CardBlock>
 
 			</CardBlock>
 
