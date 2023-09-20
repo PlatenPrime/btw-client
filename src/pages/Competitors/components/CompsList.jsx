@@ -181,16 +181,21 @@ export default function CompList() {
 							</th>
 
 
-							<th className="w-1/6" rowSpan="2">Ссылка Sharte</th>
 
-							<th className="w-1/6" colSpan="2">Наличие</th>
-							<th className="w-1/6" colSpan="2">Цена</th>
+
+							<th className="w-1/6" colSpan="4">Наличие</th>
+							<th className="w-1/6" colSpan="4">Цена</th>
 						</tr>
 						<tr>
-							<th className="w-1/6">Шарте</th>
-							<th className="w-1/6">Бтрейд</th>
-							<th className="w-1/6">Шарте</th>
-							<th className="w-1/6">Бтрейд</th>
+							<th className="w-1/6">Sharte</th>
+							<th className="w-1/6">Btrade</th>
+							<th className="w-1/6">Yumi</th>
+							<th className="w-1/6">Air</th>
+
+							<th className="w-1/6">Sharte</th>
+							<th className="w-1/6">Btrade</th>
+							<th className="w-1/6">Yumi</th>
+							<th className="w-1/6">Air</th>
 						</tr>
 					</thead>
 					<tbody className='' >
@@ -225,9 +230,8 @@ export default function CompList() {
 											className="rounded "
 
 										/>
-										<a href={comp.competitorsLinks?.sharteLink} target="_blank" rel="noopener noreferrer">
-											{comp.nameukr.length > 40 ? <>{comp.nameukr.slice(0, 37)}...</> : <>{comp.nameukr}</>}
-										</a>
+										<TextBlock>{comp.nameukr}</TextBlock>
+
 									</td>
 
 
@@ -235,15 +239,42 @@ export default function CompList() {
 									<td  > <span className='bg-slate-500/50 p-1 rounded' >{comp.prod}</span> </td>
 
 
-									<td>{comp.competitorsLinks?.sharteLink?.slice(0, 20)}</td>
 
 
 
-									<td >{comp.avail.sharte ? <span className='bg-green-500 p-2 rounded' >Есть</span> : <span className='bg-red-500 p-2 rounded' >Нет</span>}</td>
-									<td>{comp.avail.btrade ? <span className='bg-sky-500 p-2 rounded' >{comp.avail.btrade}</span> : <span className='bg-rose-500 p-2 rounded' >Нет</span>}</td>
-									<td className='text-yellow-400' >{comp.price.sharte}</td>
-									<td className='text-green-500' >{comp.price.btrade}</td>
 
+									<td >
+										{comp.avail.sharte ? <span className='bg-green-500 p-2 rounded' >Есть</span> : <span className='bg-red-500 p-2 rounded' >Нет</span>}
+									</td>
+
+									<td>
+										{comp.avail.btrade ? <span className='bg-sky-500 p-2 rounded' >{comp.avail.btrade}</span> : <span className='bg-rose-500 p-2 rounded' >Нет</span>}
+									</td>
+
+									<td>
+										{comp.avail.yumi ? <span className='bg-sky-500 p-2 rounded' >{comp.avail.yumi}</span> : <span className='bg-rose-500 p-2 rounded' >Нет</span>}
+									</td>
+
+									<td >
+										{comp.avail.air ? <span className='bg-green-500 p-2 rounded' >Есть</span> : <span className='bg-red-500 p-2 rounded' >Нет</span>}
+									</td>
+
+
+
+									<td className='text-yellow-400' >
+										{comp.price.sharte}
+									</td>
+
+									<td className='text-green-500' >
+										{comp.price.btrade}
+									</td>
+
+									<td className='text-yellow-400' >
+										{comp.price.yumi}
+									</td>
+									<td className='text-yellow-400' >
+										{comp.price.air}
+									</td>
 
 
 								</tr>
