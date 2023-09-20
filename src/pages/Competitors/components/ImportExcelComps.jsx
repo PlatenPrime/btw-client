@@ -157,8 +157,13 @@ export default function ImportExcelComps() {
 						<tr className='bg-gray-100'>
 
 							<th className="px-4 py-2">Артикул</th>
+							<th>Категория</th>
+							<th>Подкатегория</th>
+							<th>Размер</th>
 
 							<th className="px-4 py-2">Ссылка Sharte</th>
+							<th className="px-4 py-2">Артикул Yumi</th>
+							<th className="px-4 py-2">Ссылка Air</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -166,12 +171,24 @@ export default function ImportExcelComps() {
 							<tr key={index} className={index % 2 === 0 ? 'bg-gray-200' : 'bg-slate-100'}>
 
 								<td className="px-4 py-2 text-left">{item.nameukr}</td>
+								<td className="px-4 py-2 text-left">{item.category}</td>
+								<td className="px-4 py-2 text-left">{item.subcategory}</td>
+								<td className="px-4 py-2 text-left">{item.size}</td>
 
 								<td className="px-4 py-2">
 									<a href={item.competitorsLinks.sharteLink} target="_blank" rel="noopener noreferrer">
 										{item.competitorsLinks.sharteLink.slice(0, 20)}
 									</a>
 								</td>
+
+								<td>{item.competitorsLinks.yumiArtikul}</td>
+
+								<td className="px-4 py-2">
+									<a href={item.competitorsLinks.airLink} target="_blank" rel="noopener noreferrer">
+										{item.competitorsLinks.airLink?.slice(0, 20)}
+									</a>
+								</td>
+
 							</tr>
 						))}
 					</tbody>
