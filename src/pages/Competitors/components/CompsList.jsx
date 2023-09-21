@@ -7,7 +7,7 @@ import Spinner from '../../../components/Spinner/Spinner';
 import { importFromExcelComps } from '../../../utils/importExcel';
 import { GoFilter } from 'react-icons/go'
 
-import { prods, categoriesList } from '../../../constants/compsData';
+import { prods, categoriesList, subcategoriesList } from '../../../constants/compsData';
 
 
 const prodOptions = prods;
@@ -24,16 +24,19 @@ export default function CompList() {
 	const [isAnalyzing, setIsAnalyzing] = useState(false)
 	const [progress, setProgress] = useState(0)
 	const [isFilterOpen, setIsFilterOpen] = useState(false)
-
-
-
-
+	const [selectedCategory, setSelectedCategory] = useState("");
+	const [selectedSubcategory, setSelectedSubcategory] = useState("");
 	const [filter, setFilter] = useState({
 		// Initialize your filter criteria here
 		prod: '',
 		category: "",
+		subcategory: "",
 
 	});
+
+	const prodOptions = prods;
+	const categoryOptions = categoriesList;
+	const subcategoryOptions = categoriesList[filter.category];
 
 
 
@@ -120,6 +123,14 @@ export default function CompList() {
 					Анализировать артикулы
 				</ButtonBlock>
 
+
+				<ButtonBlock
+					className="add-c flex"
+					onClick={() => { setIsFilterOpen(prev => !prev) }}
+				>
+					<TextBlock>Фільтры</TextBlock>	<GoFilter className='text-2xl' />
+				</ButtonBlock>
+
 			</CardBlock>
 
 
@@ -156,12 +167,7 @@ export default function CompList() {
 
 			<CardBlock >
 
-				<ButtonBlock
-					className="add-c flex"
-					onClick={() => { setIsFilterOpen(prev => !prev) }}
-				>
-					<TextBlock>Фильтры</TextBlock>	<GoFilter className='text-2xl' />
-				</ButtonBlock>
+
 
 				{isFilterOpen && <CardBlock
 					className="flex p-4 space-x-4 ">
@@ -171,7 +177,7 @@ export default function CompList() {
 						value={filter.prod}
 						onChange={(e) => setFilter({ ...filter, prod: e.target.value })}
 					>
-						<option value="">Производитель</option>
+						<option value="">Виробник</option>
 						{prodOptions.map((option) => (
 							<option key={option} value={option}>
 								{option}
@@ -182,9 +188,13 @@ export default function CompList() {
 					<select
 						className="InputBlock focus:bg-violet-900 "
 						value={filter.category}
-						onChange={(e) => setFilter({ ...filter, category: e.target.value })}
+						onChange={(e) => {
+							setSelectedCategory(e.target.value);
+							setSelectedSubcategory(""); // Сбросить выбранную подкатегорию при изменении категории
+							setFilter({ ...filter, category: e.target.value });
+						}}
 					>
-						<option value="">Категория</option>
+						<option value="">Категорія</option>
 						{categoryOptions.map((option) => (
 							<option key={option} value={option}>
 								{option}
@@ -192,7 +202,21 @@ export default function CompList() {
 						))}
 					</select>
 
-
+					<select
+						className="InputBlock focus:bg-violet-900 "
+						value={filter.subcategory}
+						onChange={(e) => {
+							setSelectedSubcategory(e.target.value);
+							setFilter({ ...filter, subcategory: e.target.value });
+						}}
+					>
+						<option value="">Підкатегорія</option>
+						{subcategoriesList[selectedCategory]?.map((option) => (
+							<option key={option} value={option}>
+								{option}
+							</option>
+						))}
+					</select>
 
 
 
@@ -216,14 +240,14 @@ export default function CompList() {
 			>
 
 				<table className="min-w-full border border-violet-500"  >
-					<thead className="bg-violet-900/90  border border-violet-500  sticky top-0  z-10  ">
+
+					<thead className="bg-violet-900/95  border border-violet-500  sticky top-0  z-10  ">
 
 						<tr >
 							<th className="w-1/3" rowSpan="2">Артикул</th>
 							<th className="w-1/3" colSpan="4">Наличие</th>
 							<th className="w-1/3" colSpan="4">Цена</th>
 						</tr>
-
 
 						<tr>
 
@@ -238,10 +262,10 @@ export default function CompList() {
 
 						</tr>
 
-
-
-
 					</thead>
+
+
+
 					<tbody className='' >
 						{compsDB
 
@@ -250,16 +274,15 @@ export default function CompList() {
 								// Filter based on criteria
 								return (
 									(filter.prod === '' || comp.prod === filter.prod) &&
-									(filter.category === '' || comp.category === filter.category)
+									(filter.category === '' || comp.category === filter.category) &&
+									(filter.subcategory === '' || comp.subcategory === filter.subcategory)
 								);
 							})
 
 
 							.map((comp) => (
 								<tr
-
 									className="bg-violet-500 even:bg-opacity-25 odd:bg-opacity-10 "
-
 									key={comp._id.$oid}
 
 
