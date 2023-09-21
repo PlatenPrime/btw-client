@@ -7,10 +7,11 @@ import Spinner from '../../../components/Spinner/Spinner';
 import { importFromExcelComps } from '../../../utils/importExcel';
 import { GoFilter } from 'react-icons/go'
 
-import { prods } from '../../../constants/compsData';
+import { prods, categoriesList } from '../../../constants/compsData';
 
 
 const prodOptions = prods;
+const categoryOptions = categoriesList;
 
 
 
@@ -29,10 +30,9 @@ export default function CompList() {
 
 	const [filter, setFilter] = useState({
 		// Initialize your filter criteria here
-		// For example:
 		prod: '',
-		// sharteAvailability: false,
-		// btradeAvailability: false,
+		category: "",
+
 	});
 
 
@@ -164,10 +164,10 @@ export default function CompList() {
 				</ButtonBlock>
 
 				{isFilterOpen && <CardBlock
-					className="flex p-4 w-1/3 ">
+					className="flex p-4 space-x-4 ">
 
 					<select
-						className="InputBlock focus:bg-violet-900 w-full"
+						className="InputBlock focus:bg-violet-900 "
 						value={filter.prod}
 						onChange={(e) => setFilter({ ...filter, prod: e.target.value })}
 					>
@@ -178,6 +178,28 @@ export default function CompList() {
 							</option>
 						))}
 					</select>
+
+					<select
+						className="InputBlock focus:bg-violet-900 "
+						value={filter.category}
+						onChange={(e) => setFilter({ ...filter, category: e.target.value })}
+					>
+						<option value="">Категория</option>
+						{categoryOptions.map((option) => (
+							<option key={option} value={option}>
+								{option}
+							</option>
+						))}
+					</select>
+
+
+
+
+
+
+
+
+
 				</CardBlock>
 				}
 
@@ -227,7 +249,8 @@ export default function CompList() {
 							.filter((comp) => {
 								// Filter based on criteria
 								return (
-									(filter.prod === '' || comp.prod === filter.prod)
+									(filter.prod === '' || comp.prod === filter.prod) &&
+									(filter.category === '' || comp.category === filter.category)
 								);
 							})
 

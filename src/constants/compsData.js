@@ -2,6 +2,10 @@ export const prods = [
 	"Anagram", "Belbal", "Everts", "Flex", "Gemar", "Grabo", "Qualatex"
 ]
 
+export const categoriesList = ["Латекс", "Фольга", "Обладнання, інше", "Сервіровка",]
+
+
+
 export const categories = {
 	"11": "Латекс",
 	"31": "Латекс",
@@ -11,9 +15,6 @@ export const categories = {
 	"33": "Обладнання, інше",
 	"15": "Сервіровка",
 	"35": "Сервіровка",
-
-
-
 }
 
 
