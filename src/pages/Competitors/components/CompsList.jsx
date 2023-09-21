@@ -177,7 +177,10 @@ export default function CompList() {
 						value={filter.prod}
 						onChange={(e) => setFilter({ ...filter, prod: e.target.value })}
 					>
-						<option value="">Виробник</option>
+						<option
+							value="">
+							Виробник
+						</option>
 						{prodOptions.map((option) => (
 							<option key={option} value={option}>
 								{option}
@@ -194,7 +197,10 @@ export default function CompList() {
 							setFilter({ ...filter, category: e.target.value });
 						}}
 					>
-						<option value="">Категорія</option>
+						<option
+							value="">
+							Категорія
+						</option>
 						{categoryOptions.map((option) => (
 							<option key={option} value={option}>
 								{option}
@@ -210,7 +216,10 @@ export default function CompList() {
 							setFilter({ ...filter, subcategory: e.target.value });
 						}}
 					>
-						<option value="">Підкатегорія</option>
+						<option
+							value="">
+							Підкатегорія
+						</option>
 						{subcategoriesList[selectedCategory]?.map((option) => (
 							<option key={option} value={option}>
 								{option}
