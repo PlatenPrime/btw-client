@@ -1,21 +1,39 @@
 import * as xlsx from "xlsx";
 
-export const excelToJSONArts = (e) => {
+export const excelToJSONArts = async (e) => {
 	e.preventDefault();
-	let json
+
 	if (e.target.files) {
+		const file = e.target.files[0];
+
+		if (!file) {
+			throw new Error("No file selected");
+		}
+
+		const data = await readFileAsync(file);
+		const workbook = xlsx.read(data, { type: "array" });
+		const sheetName = workbook.SheetNames[0];
+		const worksheet = workbook.Sheets[sheetName];
+		const json = xlsx.utils.sheet_to_json(worksheet);
+		console.log(json);
+		return json;
+	} else {
+		throw new Error("No files selected");
+	}
+};
+
+// Вспомогательная функция для асинхронного чтения файла
+function readFileAsync(file) {
+	return new Promise((resolve, reject) => {
 		const reader = new FileReader();
 		reader.onload = (e) => {
-			const data = e.target.result;
-			const workbook = xlsx.read(data, { type: "array" });
-			const sheetName = workbook.SheetNames[0];
-			const worksheet = workbook.Sheets[sheetName];
-			json = xlsx.utils.sheet_to_json(worksheet);
-			console.log(json);
+			resolve(e.target.result);
 		};
-		reader.readAsArrayBuffer(e.target.files[0]);
-		return json;
-	}
+		reader.onerror = (error) => {
+			reject(error);
+		};
+		reader.readAsArrayBuffer(file);
+	});
 }
 
 

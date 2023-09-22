@@ -36,7 +36,7 @@ const ArtsZonesLoadingPage = () => {
 	const clasterLength = 500
 
 
-	const clasters = Math.ceil(arts.length / clasterLength)
+	const clasters = Math.ceil(arts?.length / clasterLength)
 
 	// if (arts) {
 	// 	console.log(...arts[count])
@@ -136,10 +136,18 @@ const ArtsZonesLoadingPage = () => {
 
 
 
-	const handleChangeExcelInput = (e) => {
-		const data = excelToJSONArts(e)
-		console.log(data)
-		setArts(data)
+	const handleChangeExcelInput = async (e) => {
+
+
+		try {
+			const json = await excelToJSONArts(e);
+			setArts(json)
+			// Здесь можно выполнять действия с полученными данными
+			console.log(json);
+		} catch (error) {
+			// Обработка ошибок, если что-то пошло не так
+			console.error(error);
+		}
 
 	}
 
@@ -210,9 +218,9 @@ const ArtsZonesLoadingPage = () => {
 			</CardBlock>
 
 
-			{arts.length != 0 && <CardBlock>
+			{arts?.length != 0 && <CardBlock>
 
-				<TextBlock className="m-6">Артикулов на загрузку: {arts.length}</TextBlock>
+				<TextBlock className="m-6">Артикулов на загрузку: {arts?.length}</TextBlock>
 				<TextBlock className="m-6">Кластеры: {clasters} </TextBlock>
 				<TextBlock className="m-6">Текущий кластер на выгрузку: {claster} / {clasters} </TextBlock>
 
