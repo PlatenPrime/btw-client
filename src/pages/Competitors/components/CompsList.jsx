@@ -170,7 +170,7 @@ export default function CompList() {
 
 
 				{isFilterOpen && <CardBlock
-					className="flex p-4 space-x-4 ">
+					className="flex justify-end p-4 space-x-4 ">
 
 					<select
 						className="InputBlock focus:bg-violet-900 "
@@ -297,7 +297,7 @@ export default function CompList() {
 
 
 								>
-									<td className='flex items-center space-x-1 ' >
+									<td className='flex items-center justify-start space-x-1 ' >
 
 										<ImageBlock
 											src={`https://sharik.ua/images/elements_big/${comp.artikul}_m1.jpg`}
@@ -307,7 +307,9 @@ export default function CompList() {
 											className="rounded "
 
 										/>
-										<TextBlock>{comp.nameukr}</TextBlock>
+										<TextBlock 
+										className="flex justify-start items-start flex-wrap"
+										>{comp.nameukr}</TextBlock>
 
 									</td>
 
