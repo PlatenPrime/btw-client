@@ -1,5 +1,5 @@
 export const prods = [
-	"Anagram", "Belbal", "Everts", "Flex", "Gemar", "Grabo", "Qualatex"
+	"Anagram", "Belbal", "Everts", "Flex", "Gemar", "Grabo", "PD", "Qualatex"
 ]
 
 export const categoriesList = ["1 Латекс", "2 Фольга", "3 Гелій та інше", "4 Гірлянди", "5 Аксесуари для свята",]
@@ -46,6 +46,13 @@ export const subcategoriesList = {
 	]
 
 }
+
+
+export const sizesList = [
+	"2", "3", "4", "5", "6", "7", "8", "9", "10", "10,5",
+	"11", "12", "13", "14", "15", "17", "18", "19", "20",
+	"22", "24", "26", "30", "31", "36", "40", "45", "64"
+];
 
 
 
@@ -157,3 +164,5 @@ export const subcategories = {
 	"3509": "09 Полки та крючки",
 
 }
+
+

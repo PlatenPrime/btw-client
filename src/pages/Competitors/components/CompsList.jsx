@@ -7,11 +7,12 @@ import Spinner from '../../../components/Spinner/Spinner';
 import { importFromExcelComps } from '../../../utils/importExcel';
 import { GoFilter } from 'react-icons/go'
 
-import { prods, categoriesList, subcategoriesList } from '../../../constants/compsData';
+import { prods, categoriesList, subcategoriesList, sizesList } from '../../../constants/compsData';
 
 
 const prodOptions = prods;
 const categoryOptions = categoriesList;
+const sizesOptions = sizesList;
 
 
 
@@ -31,12 +32,13 @@ export default function CompList() {
 		prod: '',
 		category: "",
 		subcategory: "",
+		size: "",
 
 	});
 
 	const prodOptions = prods;
 	const categoryOptions = categoriesList;
-	const subcategoryOptions = categoriesList[filter.category];
+
 
 
 
@@ -228,6 +230,23 @@ export default function CompList() {
 					</select>
 
 
+					<select
+						className="InputBlock focus:bg-violet-900 "
+						value={filter.size}
+						onChange={(e) => setFilter({ ...filter, size: e.target.value })}
+					>
+						<option
+							className=''
+							value="">
+							Розмір
+						</option>
+						{sizesOptions.map((option) => (
+							<option key={option} value={option}>
+								{option}
+							</option>
+						))}
+					</select>
+
 
 
 
@@ -284,7 +303,8 @@ export default function CompList() {
 								return (
 									(filter.prod === '' || comp.prod === filter.prod) &&
 									(filter.category === '' || comp.category === filter.category) &&
-									(filter.subcategory === '' || comp.subcategory === filter.subcategory)
+									(filter.subcategory === '' || comp.subcategory === filter.subcategory) &&
+									(filter.size === '' || comp.size === filter.size)
 								);
 							})
 
@@ -308,7 +328,8 @@ export default function CompList() {
 
 										/>
 										<TextBlock
-											className="flex justify-start items-start flex-wrap"
+											className="text-left"
+
 										>{comp.nameukr}</TextBlock>
 
 									</td>
