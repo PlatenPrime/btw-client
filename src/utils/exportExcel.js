@@ -1,4 +1,5 @@
 import * as  XLSX from 'xlsx';
+import { subcategoriesList } from '../constants/compsData';
 
 
 export function exportToExcel(data) {
@@ -32,9 +33,21 @@ export function exportToExcelComps(data) {
 		"price.air": item?.price?.air,
 	}));
 
+
+
+
 	const ws = XLSX.utils.json_to_sheet(transformedData);
 	const wb = XLSX.utils.book_new();
 	XLSX.utils.book_append_sheet(wb, ws, 'Sheet1');
-	XLSX.writeFile(wb, 'konkurenty.xlsx');
+
+
+
+	// Получаем текущую дату в формате ГГГГ-ММ-ДД
+	const currentDate = new Date().toISOString().slice(0, 10);
+
+	// Создаем название файла, объединяя "konkurenty" и текущую дату
+	const fileName = `konkurenty_${currentDate}.xlsx`;
+	// Записываем файл с новым названием
+	XLSX.writeFile(wb, fileName);
 }
 

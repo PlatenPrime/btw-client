@@ -29,6 +29,7 @@ export default function ImportExcelComps() {
 
 
 	const handleUpload = async () => {
+		console.log(uploadData)
 		try {
 
 			const totalItems = uploadData.length;
@@ -47,8 +48,16 @@ export default function ImportExcelComps() {
 					nameukr
 				} = { ...comp }
 
+				console.log(prod,
+					category,
+					subcategory,
+					competitorsLinks,
+					size,
+					artikul,
+					nameukr)
 
-				await axios.post("comps/update", {
+
+				const res = await axios.post("comps/update", {
 					prod,
 					category,
 					subcategory,
@@ -57,10 +66,13 @@ export default function ImportExcelComps() {
 					artikul,
 					nameukr
 				});
+				console.log(res)
+
 				completedItems++;
 				const progressValue = (completedItems / totalItems) * 100;
 				setUploadProgress(progressValue)
 			}
+
 
 		} catch (error) {
 			console.log(error);

@@ -196,7 +196,7 @@ export default function CompList() {
 						onChange={(e) => {
 							setSelectedCategory(e.target.value);
 							setSelectedSubcategory(""); // Сбросить выбранную подкатегорию при изменении категории
-							setFilter({ ...filter, category: e.target.value });
+							setFilter({ ...filter, category: e.target.value, subcategory: "" });
 						}}
 					>
 						<option
