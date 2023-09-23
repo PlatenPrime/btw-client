@@ -307,8 +307,8 @@ export default function CompList() {
 											className="rounded "
 
 										/>
-										<TextBlock 
-										className="flex justify-start items-start flex-wrap"
+										<TextBlock
+											className="flex justify-start items-start flex-wrap"
 										>{comp.nameukr}</TextBlock>
 
 									</td>
