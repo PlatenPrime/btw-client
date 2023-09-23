@@ -5,6 +5,7 @@ import { Link, useNavigate } from 'react-router-dom';
 
 
 import axios from "../../../utils/axios"
+import Spinner from '../../../components/Spinner/Spinner';
 
 
 
@@ -44,10 +45,8 @@ export default function OneCompCardPage() {
 	const [compSearch, setCompSearch] = useState("")
 	const [compArt, setCompArt] = useState(null)
 	const [isAddEnable, setIsAddEnable] = useState(false)
-
-
-
 	const [isEditing, setIsEditing] = useState(false)
+	const [isDeleting, setIsDeleting] = useState(false)
 
 	const [prod, setProd] = useState("");
 	const [sharteLink, setSharteLink] = useState("")
@@ -90,13 +89,23 @@ export default function OneCompCardPage() {
 	}
 
 	const confirmDelete = async () => {
-		// try {
-		// 	const res = await axios.delete(`comps/${compArt._id}`);
-		// 	console.log(res);
-		setShowModal(false);
-		// } catch (error) {
-		// 	console.log(error);
-		// }
+		try {
+
+			setIsDeleting(true)
+			const res = await axios.delete(`comps/${compArt._id}`);
+			console.log(res);
+			setShowModal(false);
+			setCompSearch("")
+			setIsEditing(false)
+			setCompArt(null)
+
+
+
+		} catch (error) {
+			console.log(error);
+		} finally {
+			setIsDeleting(false)
+		}
 	}
 
 	const closeModal = () => {
@@ -340,12 +349,24 @@ export default function OneCompCardPage() {
 								{showModal && (
 									<div className="fixed inset-0 flex items-center justify-center z-50">
 										<div className="modal-overlay absolute w-full h-full bg-gray-900/80" onClick={() => { setShowModal(false) }} ></div>
-										<div className="modal-container bg-violet-500/90 w-11/12 md:max-w-md mx-auto rounded shadow-lg z-50 overflow-y-auto">
+										<div className="modal-container bg-violet-900/90 w-11/12 md:max-w-md mx-auto rounded shadow-lg z-50 overflow-y-auto">
 											<div className="modal-content py-4 text-left px-6">
 												<p className="text-xl font-semibold">Вы уверены, что хотите удалить артикул из базы отслеживания?</p>
 												<div className="mt-4 flex justify-evenly space-x-4">
-													<ButtonBlock className="delete font-semibold w-1/4 " onClick={confirmDelete}>Да</ButtonBlock>
-													<ButtonBlock className="success font-semibold w-1/4  " onClick={closeModal}>Нет</ButtonBlock>
+
+													<ButtonBlock
+														className="delete flex font-semibold w-1/4 " onClick={confirmDelete}>
+														<TextBlock >
+															Да
+														</TextBlock>
+														{isDeleting &&
+															<Spinner color="#fff" />}
+													</ButtonBlock>
+
+													<ButtonBlock
+														className="success font-semibold w-1/4  " onClick={closeModal}>
+														Нет
+													</ButtonBlock>
 												</div>
 											</div>
 										</div>
