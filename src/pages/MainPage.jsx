@@ -9,6 +9,7 @@ import { InputBlock, ButtonBlock, CardBlock, RowBlock, HeaderBlock, TextBlock } 
 import Spinner from '../components/Spinner/Spinner';
 import { getArtDataYumi } from '../utils/getArtDataYumi';
 import { getArtDataBtrade } from '../utils/getArtDataBtrade';
+import { getArtDataSharte } from '../utils/getArtDataSharte';
 
 
 
@@ -27,7 +28,9 @@ const MainPage = () => {
 	const [priceBtrade, setPriceBtrade] = useState("")
 	const [quantBtrade, setQuantBtrade] = useState(null)
 
-
+	const [artikulSharte, setArtikulSharte] = useState("")
+	const [priceSharte, setPriceSharte] = useState("")
+	const [isAvailableSharte, setIsAvailable] = useState(null)
 
 
 
@@ -53,6 +56,21 @@ const MainPage = () => {
 		setQuantBtrade(quant)
 
 	}
+
+	const handleFetchSharte = async (artikulSharte) => {
+		console.log(artikulSharte)
+
+		const { price, isAvailable } = await getArtDataSharte(artikulSharte)
+		console.log(price)
+		console.log(isAvailable)
+		isAvailableSharte(price)
+		setIsAvailable(isAvailable)
+
+	}
+
+
+
+
 
 
 
@@ -125,6 +143,23 @@ const MainPage = () => {
 				<TextBlock>{quantBtrade}</TextBlock>
 			</CardBlock>
 
+
+			<CardBlock>
+				<InputBlock
+					onChange={(e) => { setArtikulSharte(e.target.value) }}
+					value={artikulSharte}
+					placeholder="Введи артикул sharte"
+				/>
+				<ButtonBlock
+					className="search-c"
+					onClick={() => { handleFetchSharte(artikulSharte) }}
+				// onClick={testFetch}
+				>
+					Поиск
+				</ButtonBlock>
+				<TextBlock>{priceSharte}</TextBlock>
+				<TextBlock>{isAvailableSharte}</TextBlock>
+			</CardBlock>
 
 
 
