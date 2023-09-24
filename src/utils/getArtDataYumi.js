@@ -5,29 +5,43 @@ class NetworkError extends Error {
 	}
 }
 
-
 const regex = /(\d+(\.\d+)?)/;
 
-
-
 function extractValueFromString(valueString, searchValue, back = false) {
-	try {
-		const index = valueString.indexOf(searchValue);
-		const substring = back ? valueString.slice(index - 50, index) : valueString.slice(index, index + 50);
-		const match = substring.match(regex);
-		return match ? match[0] : null;
-	} catch (error) {
-		console.error(error);
-		return null;
+	const index = valueString.indexOf(searchValue);
+	if (index === -1) {
+		return null; // Не найдено значение
 	}
+
+	const substring = back ? valueString.slice(index - 50, index) : valueString.slice(index, index + 50);
+	const match = substring.match(regex);
+	return match ? match[0] : null;
+}
+
+function extractQuantFromString(valueString) {
+	const searchQuantValue = "наявності";
+	const notAvailableString = "Немає в наявності";
+
+	// Проверяем, содержит ли valueString фразу "Немає в наявності"
+	if (valueString.includes(notAvailableString)) {
+		return 0;
+	}
+
+	// В противном случае ищем значение как обычно
+	const quant = extractValueFromString(valueString, searchQuantValue);
+
+	return quant;
+}
+
+function extractPriceFromString(valueString) {
+	const searchPriceValue = '₴/шт';
+	const extractedPrice = extractValueFromString(valueString, searchPriceValue, true);
+	return extractedPrice ? parseFloat(extractedPrice).toFixed(2) : null;
 }
 
 export async function getArtDataYumi(yumiLink) {
-	const searchQuantValue = "наявності";
-	const searchPriceValue = '₴/шт';
 	const urlCA = 'https://corsproxy.io/?';
 	const corsUrl = `${urlCA}${yumiLink}`;
-
 
 	try {
 		const response = await fetch(corsUrl);
@@ -35,20 +49,14 @@ export async function getArtDataYumi(yumiLink) {
 			throw new NetworkError('Network response was not ok');
 		}
 		const responseString = await response.text();
+		console.log(responseString);
 
-		console.log(responseString)
+		const quant = extractQuantFromString(responseString);
+		const price = extractPriceFromString(responseString);
 
-		const quant = extractValueFromString(responseString, searchQuantValue);
+		console.log(price);
 
-
-		const extractedPrice = extractValueFromString(responseString, searchPriceValue, true, true);
-
-		console.log(extractedPrice)
-
-		const formattedPrice = extractedPrice ? parseFloat(extractedPrice).toFixed(2) : null;
-
-
-		return { price: formattedPrice, quant };
+		return { price, quant };
 
 	} catch (error) {
 		if (error instanceof NetworkError) {
