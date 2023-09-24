@@ -31,13 +31,16 @@ const initialStateForm = {
 	selectedProd: "",
 	sharteLink: "",
 	airLink: "",
-	yumiArtikul: "",
+	yumiLink: "",
+	bestLink: "",
 	priceSharte: "",
 	priceBtrade: "",
 	priceYumi: "",
 	priceAir: "",
-	isAvailableSharte: null,
-	isAvailableAir: null,
+	priceBest: "",
+	isAvailableSharte: "",
+	isAvailableAir: "",
+	isAvailableBest: "",
 	quantBtrade: "",
 	quantYumi: "",
 	isAnalyze: false,
@@ -78,7 +81,7 @@ export default function AddCompForm() {
 
 
 
-	
+
 
 	const isFormNotValid =
 		!artikulDB
@@ -159,13 +162,15 @@ export default function AddCompForm() {
 			competitorsLinks: {
 				sharteLink: state.sharteLink,
 				airLink: state.airLink,
-				yumiArtikul: state.yumiArtikul
+				yumiLink: state.yumiLink,
+				bestLink: state.bestLink
 			},
 			avail: {
 				btrade: state.quantBtrade,
 				sharte: state.isAvailableSharte,
 				air: state.isAvailableAir,
 				yumi: state.quantYumi,
+				best: state.isAvailableBest,
 
 			},
 			price: {
@@ -173,6 +178,7 @@ export default function AddCompForm() {
 				sharte: state.priceSharte,
 				air: state.priceAir,
 				yumi: state.priceYumi,
+				best: state.priceBest
 			},
 			category: state.category,
 			subcategory: state.subcategory,
@@ -190,7 +196,7 @@ export default function AddCompForm() {
 
 			const createCompRes = await axios.post("comps", newComp);
 
-			console.log(createCompRes.json());
+			console.log(createCompRes);
 
 		} catch (error) {
 

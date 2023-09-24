@@ -68,6 +68,8 @@ export async function getArtDataBtrade(art) {
 		const price = extractPriceFromString(responseString);
 
 		console.log(price);
+		console.log(quant);
+
 
 		return { price, quant };
 	} catch (error) {

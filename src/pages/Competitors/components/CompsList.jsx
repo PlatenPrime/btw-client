@@ -120,10 +120,10 @@ export default function CompList() {
 
 
 				<ButtonBlock
-					onClick={handleAnalyze}
+					// onClick={handleAnalyze}
 					className=" add-c  "
 				>
-					Анализировать артикулы
+					Анализ (временно не работает)
 				</ButtonBlock>
 
 
