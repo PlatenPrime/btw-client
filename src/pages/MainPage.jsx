@@ -1,16 +1,13 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 
 import PageBTW from '../components/UI/Page/PageBTW';
 
-import ButtonBlock from '../components/blocks/ButtonBlock';
-import CardBlock from '../components/blocks/CardBlock';
-import HeaderBlock from '../components/blocks/HeaderBlock';
-import RowBlock from '../components/blocks/RowBlock';
+import { InputBlock, ButtonBlock, CardBlock, RowBlock, HeaderBlock, TextBlock } from "../components/index"
 
 
-import TextBlock from '../components/blocks/TextBlock';
 import Spinner from '../components/Spinner/Spinner';
+import { getArtDataYumi } from '../utils/getArtDataYumi';
 
 
 
@@ -20,6 +17,43 @@ import Spinner from '../components/Spinner/Spinner';
 
 const MainPage = () => {
 
+
+	const [artikul, setArtikul] = useState("")
+	const [price, setPrice] = useState("")
+	const [quant, setQuant] = useState(null)
+
+
+
+
+	const testFetch = async () => {
+		const urlCA = 'https://corsproxy.io/?';
+		const testUrl = "https://yumi-market.com.ua/ua/p819105543-kulya-gemar-dzh.html"
+		const testCorsUrl = `${urlCA}${testUrl}`
+
+		try {
+			const response = await fetch(testCorsUrl);
+			const responseString = await response.text();
+			console.log(responseString)
+
+		} catch (error) {
+			console.log(error)
+		}
+
+	}
+
+
+	const handleFetch = async (artikul) => {
+		console.log(artikul)
+
+		const { price, quant } = await getArtDataYumi(artikul)
+		console.log(price)
+		console.log(quant)
+		setPrice(price)
+		setQuant(quant)
+
+
+
+	}
 
 
 
@@ -54,13 +88,32 @@ const MainPage = () => {
 
 
 
-				<RowBlock className="text-3xl" >
-
-
-
-				</RowBlock>
 
 			</CardBlock>
+
+
+			<CardBlock>
+				<InputBlock
+					onChange={(e) => { setArtikul(e.target.value) }}
+					value={artikul}
+					placeholder="Введи артикул yumi"
+				/>
+				<ButtonBlock
+					className="search-c"
+					onClick={() => { handleFetch(artikul) }}
+				// onClick={testFetch}
+				>
+					Поиск
+				</ButtonBlock>
+				<TextBlock>{price}</TextBlock>
+				<TextBlock>{quant}</TextBlock>
+			</CardBlock>
+
+
+
+
+
+
 
 
 			{/* <TextBlock className="text-4xl" >Icons</TextBlock>
@@ -92,7 +145,7 @@ const MainPage = () => {
 
  */}
 
-			
+
 
 
 

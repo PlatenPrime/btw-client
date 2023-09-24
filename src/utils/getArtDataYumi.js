@@ -22,13 +22,12 @@ function extractValueFromString(valueString, searchValue, back = false) {
 	}
 }
 
-export async function getArtDataBtrade(art) {
-	const searchQuantValue = "У наявності";
-	const searchPriceValue = 'грн';
+export async function getArtDataYumi(yumiLink) {
+	const searchQuantValue = "наявності";
+	const searchPriceValue = '₴/шт';
 	const urlCA = 'https://corsproxy.io/?';
-	const baseUrl = "https://sharik.ua/ua";
-	const apiRequest = `/search/?q=${art}`;
-	const corsUrl = `${urlCA}${baseUrl}${apiRequest}`;
+	const corsUrl = `${urlCA}${yumiLink}`;
+
 
 	try {
 		const response = await fetch(corsUrl);
@@ -36,6 +35,8 @@ export async function getArtDataBtrade(art) {
 			throw new NetworkError('Network response was not ok');
 		}
 		const responseString = await response.text();
+
+		console.log(responseString)
 
 		const quant = extractValueFromString(responseString, searchQuantValue);
 
@@ -47,9 +48,8 @@ export async function getArtDataBtrade(art) {
 		const formattedPrice = extractedPrice ? parseFloat(extractedPrice).toFixed(2) : null;
 
 
-
-
 		return { price: formattedPrice, quant };
+
 	} catch (error) {
 		if (error instanceof NetworkError) {
 			console.error("Network error:", error.message);
