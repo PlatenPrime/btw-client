@@ -30,7 +30,7 @@ const MainPage = () => {
 
 	const [artikulSharte, setArtikulSharte] = useState("")
 	const [priceSharte, setPriceSharte] = useState("")
-	const [isAvailableSharte, setIsAvailable] = useState(null)
+	const [isAvailableSharte, setIsAvailableSharte] = useState(null)
 
 
 
@@ -63,8 +63,8 @@ const MainPage = () => {
 		const { price, isAvailable } = await getArtDataSharte(artikulSharte)
 		console.log(price)
 		console.log(isAvailable)
-		isAvailableSharte(price)
-		setIsAvailable(isAvailable)
+		setPriceSharte(price)
+		setIsAvailableSharte(isAvailable)
 
 	}
 
@@ -158,7 +158,7 @@ const MainPage = () => {
 					Поиск
 				</ButtonBlock>
 				<TextBlock>{priceSharte}</TextBlock>
-				<TextBlock>{isAvailableSharte}</TextBlock>
+				<TextBlock>{isAvailableSharte ? "Yes" : "No"}</TextBlock>
 			</CardBlock>
 
 

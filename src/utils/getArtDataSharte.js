@@ -1,7 +1,35 @@
+class NetworkError extends Error {
+	constructor(message) {
+		super(message);
+		this.name = "NetworkError";
+	}
+}
+
+const regexPrice = /(\d+\.\d{2})\sгрн/;
+
+function extractPriceFromTitle(title) {
+	const match = title.match(regexPrice);
+	return match ? match[1] : null;
+}
+
+function extractAvailabilityFromResponse(responseString) {
+	const toolsLocations = responseString.indexOf("smallElementTools");
+	const searchValueAvailability = "наявності";
+	const searchValueBeLocation = responseString.indexOf(searchValueAvailability, toolsLocations);
+	const letter = responseString.slice(searchValueBeLocation - 2, searchValueBeLocation - 1);
+
+	let isAvailable = null;
+
+	if (letter) {
+		isAvailable = letter === letter.toUpperCase();
+	}
+
+	return isAvailable;
+}
+
 export async function getArtDataSharte(link) {
 	try {
 		const searchValuePrice = "title";
-		const searchValueAvailability = "наявності";
 		const urlProxy = 'https://corsproxy.io/?';
 		const superLink = `${urlProxy}${link}`;
 
@@ -12,34 +40,14 @@ export async function getArtDataSharte(link) {
 		const indexPrice2 = responseString.indexOf(searchValuePrice, indexPrice + searchValuePrice.length);
 		const title = responseString.slice(indexPrice, indexPrice2 + searchValuePrice.length);
 
-		const regex = /(\d+\.\d{2})\sгрн/;
-		const match = title.match(regex);
-		let price = null
+		const price = extractPriceFromTitle(title);
 
-		let isAvailable = null;
+		const isAvailable = extractAvailabilityFromResponse(responseString);
 
-		if (match && match[1]) {
-			price = match[1];
-			console.log("Нашли цену");
-		}
-
-		const toolsLocations = responseString.indexOf("smallElementTools");
-		const searchValueBeLocation = responseString.indexOf(searchValueAvailability, toolsLocations);
-		const letter = responseString.slice(searchValueBeLocation - 2, searchValueBeLocation - 1);
-
-
-		let isUpperCase = null
-
-		if (letter) isUpperCase = letter === letter.toUpperCase();
-
-		isAvailable = isUpperCase ?? null;
+		console.log(price ? `Цена: ${price} грн` : "Цена не найдена");
 		console.log(isAvailable ? "Товар в наличии" : "Товара нет в наличии");
 
-
-
 		return { price, isAvailable };
-
-
 
 	} catch (error) {
 		console.error(error);
