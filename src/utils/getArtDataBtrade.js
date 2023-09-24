@@ -5,10 +5,7 @@ class NetworkError extends Error {
 	}
 }
 
-
 const regex = /(\d+(\.\d+)?)/;
-
-
 
 function extractValueFromString(valueString, searchValue, back = false) {
 	try {
@@ -22,9 +19,39 @@ function extractValueFromString(valueString, searchValue, back = false) {
 	}
 }
 
-export async function getArtDataBtrade(art) {
-	const searchQuantValue = "У наявності";
+function extractQuantFromString(valueString) {
+	const searchQuantPrefix = "У наявності: ";
+
+	// Ищем индекс начала "У наявності"
+	const startIndex = valueString.indexOf(searchQuantPrefix);
+
+	// Если "У наявності" не найдено, возвращаем 0
+	if (startIndex === -1) {
+		return 0;
+	}
+
+	// Находим подстроку после "У наявності"
+	const quantString = valueString.slice(startIndex + searchQuantPrefix.length);
+
+	// Парсим строку в число и возвращаем
+	const quant = parseInt(quantString, 10);
+
+	// Если не удалось распарсить число, возвращаем 0
+	if (isNaN(quant)) {
+		return 0;
+	}
+
+	return quant;
+}
+
+
+function extractPriceFromString(valueString) {
 	const searchPriceValue = 'грн';
+	const extractedPrice = extractValueFromString(valueString, searchPriceValue, true, true);
+	return extractedPrice ? parseFloat(extractedPrice).toFixed(2) : null;
+}
+
+export async function getArtDataBtrade(art) {
 	const urlCA = 'https://corsproxy.io/?';
 	const baseUrl = "https://sharik.ua/ua";
 	const apiRequest = `/search/?q=${art}`;
@@ -37,19 +64,12 @@ export async function getArtDataBtrade(art) {
 		}
 		const responseString = await response.text();
 
-		const quant = extractValueFromString(responseString, searchQuantValue);
+		const quant = extractQuantFromString(responseString);
+		const price = extractPriceFromString(responseString);
 
+		console.log(price);
 
-		const extractedPrice = extractValueFromString(responseString, searchPriceValue, true, true);
-
-		console.log(extractedPrice)
-
-		const formattedPrice = extractedPrice ? parseFloat(extractedPrice).toFixed(2) : null;
-
-
-
-
-		return { price: formattedPrice, quant };
+		return { price, quant };
 	} catch (error) {
 		if (error instanceof NetworkError) {
 			console.error("Network error:", error.message);

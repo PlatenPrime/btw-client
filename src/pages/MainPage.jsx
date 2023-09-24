@@ -8,6 +8,7 @@ import { InputBlock, ButtonBlock, CardBlock, RowBlock, HeaderBlock, TextBlock } 
 
 import Spinner from '../components/Spinner/Spinner';
 import { getArtDataYumi } from '../utils/getArtDataYumi';
+import { getArtDataBtrade } from '../utils/getArtDataBtrade';
 
 
 
@@ -22,24 +23,12 @@ const MainPage = () => {
 	const [price, setPrice] = useState("")
 	const [quant, setQuant] = useState(null)
 
+	const [artikulBtrade, setArtikulBtrade] = useState("")
+	const [priceBtrade, setPriceBtrade] = useState("")
+	const [quantBtrade, setQuantBtrade] = useState(null)
 
 
 
-	const testFetch = async () => {
-		const urlCA = 'https://corsproxy.io/?';
-		const testUrl = "https://yumi-market.com.ua/ua/p819105543-kulya-gemar-dzh.html"
-		const testCorsUrl = `${urlCA}${testUrl}`
-
-		try {
-			const response = await fetch(testCorsUrl);
-			const responseString = await response.text();
-			console.log(responseString)
-
-		} catch (error) {
-			console.log(error)
-		}
-
-	}
 
 
 	const handleFetch = async (artikul) => {
@@ -51,10 +40,19 @@ const MainPage = () => {
 		setPrice(price)
 		setQuant(quant)
 
-
-
 	}
 
+
+	const handleFetchBtrade = async (artikulBtrade) => {
+		console.log(artikulBtrade)
+
+		const { price, quant } = await getArtDataBtrade(artikulBtrade)
+		console.log(price)
+		console.log(quant)
+		setPriceBtrade(price)
+		setQuantBtrade(quant)
+
+	}
 
 
 
@@ -107,6 +105,24 @@ const MainPage = () => {
 				</ButtonBlock>
 				<TextBlock>{price}</TextBlock>
 				<TextBlock>{quant}</TextBlock>
+			</CardBlock>
+
+
+			<CardBlock>
+				<InputBlock
+					onChange={(e) => { setArtikulBtrade(e.target.value) }}
+					value={artikulBtrade}
+					placeholder="Введи артикул btrade"
+				/>
+				<ButtonBlock
+					className="search-c"
+					onClick={() => { handleFetchBtrade(artikulBtrade) }}
+				// onClick={testFetch}
+				>
+					Поиск
+				</ButtonBlock>
+				<TextBlock>{priceBtrade}</TextBlock>
+				<TextBlock>{quantBtrade}</TextBlock>
 			</CardBlock>
 
 
