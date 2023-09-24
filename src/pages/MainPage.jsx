@@ -158,7 +158,7 @@ const MainPage = () => {
 					Поиск
 				</ButtonBlock>
 				<TextBlock>{priceSharte}</TextBlock>
-				<TextBlock>{isAvailableSharte ? "Yes" : "No"}</TextBlock>
+				<TextBlock>{isAvailableSharte ? "Yes" : ""}</TextBlock>
 			</CardBlock>
 
 

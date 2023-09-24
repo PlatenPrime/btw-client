@@ -63,12 +63,13 @@ export default function CompList() {
 			setIsAnalyzing(true)
 
 			for (const comp of compsDB) {
+				console.log(comp)
 				await analyzeComp(comp);
 				completedItems++;
 				const progressValue = (completedItems / totalItems) * 100;
 				setProgress(progressValue)
 			}
-			window.location.reload();
+			// window.location.reload();
 		} catch (error) {
 			console.log(error);
 

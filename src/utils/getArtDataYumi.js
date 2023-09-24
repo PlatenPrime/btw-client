@@ -49,7 +49,7 @@ export async function getArtDataYumi(yumiLink) {
 			throw new NetworkError('Network response was not ok');
 		}
 		const responseString = await response.text();
-		console.log(responseString);
+		
 
 		const quant = extractQuantFromString(responseString);
 		const price = extractPriceFromString(responseString);

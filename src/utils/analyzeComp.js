@@ -8,7 +8,7 @@ import axios from "./axios";
 
 export async function analyzeComp(comp) {
 	try {
-		// Запускаем оба асинхронных запроса параллельно
+	
 		const [sharteData, btradeData, yumiData] = await Promise.all([
 			getArtDataSharte(comp.competitorsLinks.sharteLink),
 			getArtDataBtrade(comp.artikul),

@@ -70,13 +70,6 @@ export default function CompsLogsPage() {
 									}
 
 
-
-
-
-
-
-
-
 									<td>{item.change.oldValue.toString()}</td>
 									<td>{item.change.newValue.toString()}</td>
 								</tr>
