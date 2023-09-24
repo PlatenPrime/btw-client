@@ -1,5 +1,5 @@
 import * as  XLSX from 'xlsx';
-import { subcategoriesList } from '../constants/compsData';
+
 
 
 export function exportToExcel(data) {
@@ -22,15 +22,18 @@ export function exportToExcelComps(data) {
 		size: item?.size,
 		"competitorsLinks.sharteLink": item?.competitorsLinks?.sharteLink,
 		"competitorsLinks.airLink": item?.competitorsLinks?.airLink,
-		"competitorsLinks.yumiArtikul": item?.competitorsLinks?.yumiArtikul,
+		"competitorsLinks.yumiLink": item?.competitorsLinks?.yumiLink,
+		"competitorsLinks.bestLink": item?.competitorsLinks?.bestLink,
 		"avail.btrade": item?.avail?.btrade,
 		"avail.sharte": item?.avail?.sharte,
 		"avail.yumi": item?.avail?.yumi,
 		"avail.air": item?.avail?.air,
+		"avail.best": item?.avail?.best,
 		"price.btrade": item?.price?.btrade,
 		"price.sharte": item?.price?.sharte,
 		"price.yumi": item?.price?.yumi,
 		"price.air": item?.price?.air,
+		"price.best": item?.price?.best,
 	}));
 
 

@@ -56,7 +56,27 @@ export default function CompsLogsPage() {
 									</td>
 
 
-									<td>{item.change.field === "avail.sharte" ? "Наличие Шарте" : "Цена Шарте"}</td>
+									{item.change.field === "avail.sharte" &&
+										<td>Наличие Шарте</td>
+									}
+									{item.change.field === "avail.yumi" &&
+										<td>Наличие Yumi</td>
+									}
+									{item.change.field === "price.sharte" &&
+										<td>Цена Шарте</td>
+									}
+									{item.change.field === "price.yumi" &&
+										<td>Цена Yumi</td>
+									}
+
+
+
+
+
+
+
+
+
 									<td>{item.change.oldValue.toString()}</td>
 									<td>{item.change.newValue.toString()}</td>
 								</tr>

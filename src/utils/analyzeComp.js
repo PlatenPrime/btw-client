@@ -1,5 +1,6 @@
 import { getArtDataBtrade } from "./getArtDataBtrade";
 import { getArtDataSharte } from "./getArtDataSharte";
+import { getArtDataYumi } from "./getArtDataYumi";
 import axios from "./axios";
 
 
@@ -8,12 +9,13 @@ import axios from "./axios";
 export async function analyzeComp(comp) {
 	try {
 		// Запускаем оба асинхронных запроса параллельно
-		const [sharteData, btradeData] = await Promise.all([
+		const [sharteData, btradeData, yumiData] = await Promise.all([
 			getArtDataSharte(comp.competitorsLinks.sharteLink),
-			getArtDataBtrade(comp.artikul)
+			getArtDataBtrade(comp.artikul),
+			getArtDataYumi(comp.competitorsLinks.yumiLink)
 		]);
 
-		let priceSharte, isAvailableSharte, priceBtrade, quantBtrade;
+		let priceSharte, isAvailableSharte, priceBtrade, quantBtrade, priceYumi, quantYumi;
 
 		if (sharteData) {
 			priceSharte = sharteData.price;
@@ -25,15 +27,23 @@ export async function analyzeComp(comp) {
 			quantBtrade = btradeData.quant;
 		}
 
+		if (yumiData) {
+			priceYumi = yumiData.price;
+			quantYumi = yumiData.quant;
+		}
+
+
 		const updateComp = {
 			artikul: comp.artikul,
 			avail: {
 				btrade: quantBtrade,
-				sharte: isAvailableSharte
+				sharte: isAvailableSharte,
+				yumi: quantYumi
 			},
 			price: {
 				btrade: priceBtrade,
 				sharte: priceSharte,
+				yumi: priceYumi,
 			}
 		};
 
@@ -55,6 +65,17 @@ export async function analyzeComp(comp) {
 				newValue: isAvailableSharte ? "Есть" : "Нет",
 			});
 		}
+		if (quantYumi !== null && quantYumi !== undefined !== comp.avail.yumi) {
+			changes.push({
+				field: 'avail.yumi',
+				oldValue: comp.avail.yumi ? "Есть" : "Нет",
+				newValue: quantYumi ? "Есть" : "Нет",
+			});
+		}
+
+
+
+
 		// if (priceBtrade !== comp.price.btrade) {
 		// 	changes.push({
 		// 		field: 'price.btrade',
@@ -62,6 +83,10 @@ export async function analyzeComp(comp) {
 		// 		newValue: priceBtrade,
 		// 	});
 		// }
+
+
+
+
 		if (priceSharte !== null && priceSharte !== undefined && priceSharte !== comp.price.sharte) {
 			changes.push({
 				field: 'price.sharte',
@@ -69,6 +94,20 @@ export async function analyzeComp(comp) {
 				newValue: priceSharte,
 			});
 		}
+
+		if (priceYumi !== null && priceYumi !== undefined && priceYumi !== comp.price.yumi) {
+			changes.push({
+				field: 'price.yumi',
+				oldValue: comp.price.yumi,
+				newValue: priceYumi,
+			});
+		}
+
+
+
+
+
+
 
 		if (changes.length > 0) {
 			// Создание записи в журнале при наличии изменений

@@ -83,19 +83,22 @@ export const importFromExcelComps = async (e) => {
 				competitorsLinks: {
 					sharteLink: item["competitorsLinks.sharteLink"] ?? "",
 					airLink: item["competitorsLinks.airLink"] ?? "",
-					yumiArtikul: item["competitorsLinks.yumiArtikul"] ?? "",
+					yumiLink: item["competitorsLinks.yumiLink"] ?? "",
+					bestLink: item["competitorsLinks.bestLink"] ?? "",
 				},
 				avail: {
 					btrade: item["avail.btrade"] ?? 0,
 					sharte: item["avail.sharte"] ?? false,
 					air: item["avail.air"] ?? false,
 					yumi: item["avail.yumi"] ?? 0,
+					best: item["avail.best"] ?? 0,
 				},
 				price: {
 					btrade: item["price.btrade"] ?? "",
 					sharte: item["price.sharte"] ?? "",
 					air: item["price.air"] ?? "",
 					yumi: item["price.yumi"] ?? "",
+					best: item["price.best"] ?? "",
 				}
 			}));
 
