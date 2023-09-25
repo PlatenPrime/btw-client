@@ -16,12 +16,12 @@ function extractPriceFromString(valueString) {
 function extractAvailabilityFromString(valueString) {
 	const match = valueString.match(regexAvailability);
 	if (match) {
-		const availabilityText = match[1].trim();
-		return availabilityText === 'Є в наявності' || availabilityText === 'Немає в наявності';
+		const availabilityTextWithTags = match[1].trim();
+		const availabilityText = availabilityTextWithTags.replace(/<[^>]*>/g, ""); // Удаление HTML-тегов
+		return availabilityText === 'Є в наявності';
 	}
 	return false;
 }
-
 
 export async function getArtDataAir(airLink) {
 	const urlCA = 'https://corsproxy.io/?';
@@ -34,6 +34,7 @@ export async function getArtDataAir(airLink) {
 		}
 
 		const responseString = await response.text();
+		console.log(responseString)
 
 		const priceStartIndex = responseString.indexOf("Ціна за ед.:");
 		const availabilityStartIndex = responseString.indexOf("Наявність:");
