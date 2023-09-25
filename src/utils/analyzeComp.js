@@ -2,6 +2,7 @@ import { getArtDataBtrade } from "./getArtDataBtrade";
 import { getArtDataSharte } from "./getArtDataSharte";
 import { getArtDataYumi } from "./getArtDataYumi";
 import axios from "./axios";
+import { getArtDataAir } from "./getArtDataAir";
 
 
 
@@ -9,34 +10,37 @@ import axios from "./axios";
 export async function analyzeComp(comp) {
 	try {
 
-		// const [sharteData, btradeData, yumiData] = await Promise.all([
-		// 	getArtDataSharte(comp.competitorsLinks.sharteLink),
-		// 	getArtDataBtrade(comp.artikul),
-		// 	getArtDataYumi(comp.competitorsLinks.yumiLink)
-		// ]);
+		const [sharteData, btradeData, yumiData, airData] = await Promise.allSettled([
+			comp.competitorsLinks && comp.competitorsLinks.sharteLink ? getArtDataSharte(comp.competitorsLinks.sharteLink) : Promise.resolve(null),
+			getArtDataBtrade(comp.artikul),
+			comp.competitorsLinks && comp.competitorsLinks.yumiLink ? getArtDataYumi(comp.competitorsLinks.yumiLink) : Promise.resolve(null),
+			comp.competitorsLinks && comp.competitorsLinks.airLink ? getArtDataAir(comp.competitorsLinks.airLink) : Promise.resolve(null),
+		]);
 
-		let sharteData, btradeData, yumiData
+		// let sharteData, btradeData, yumiData, airData
 
-		console.log("Before getArtDataSharte");
-		if (comp.competitorsLinks.sharteLink) sharteData = await getArtDataSharte(comp.competitorsLinks.sharteLink);
-		console.log("After getArtDataSharte");
+		// console.log("Before getArtDataSharte");
+		// if (comp.competitorsLinks.sharteLink) sharteData = await getArtDataSharte(comp.competitorsLinks.sharteLink);
+		// console.log("After getArtDataSharte");
 
-		console.log("Before getArtDataBtrade");
-		if (comp.artikul) btradeData = await getArtDataBtrade(comp.artikul);
-		console.log("After getArtDataBtrade");
+		// console.log("Before getArtDataBtrade");
+		// if (comp.artikul) btradeData = await getArtDataBtrade(comp.artikul);
+		// console.log("After getArtDataBtrade");
 
-		console.log("Before getArtDataYumi");
-		if (comp.competitorsLinks.yumiLink) yumiData = await getArtDataYumi(comp.competitorsLinks.yumiLink);
-		console.log("After getArtDataYumi");
-
-
-
+		// console.log("Before getArtDataYumi");
+		// if (comp.competitorsLinks.yumiLink) yumiData = await getArtDataYumi(comp.competitorsLinks.yumiLink);
+		// console.log("After getArtDataYumi");
 
 
+		// console.log("Before getArtDataAir");
+		// if (comp.competitorsLinks.airLink) airData = await getArtDataAir(comp.competitorsLinks.airLink);
+		// console.log("After getArtDataAir");
 
 
 
-		let priceSharte, isAvailableSharte, priceBtrade, quantBtrade, priceYumi, quantYumi;
+
+
+		let priceSharte, isAvailableSharte, priceBtrade, quantBtrade, priceYumi, quantYumi, priceAir, isAvailableAir;
 
 		if (sharteData) {
 			priceSharte = sharteData.price;
@@ -54,17 +58,29 @@ export async function analyzeComp(comp) {
 		}
 
 
+		if (airData) {
+			priceAir = airData.price;
+			isAvailableAir = airData.isAvailable;
+		}
+
+
+
+
+
+
 		const updateComp = {
 			artikul: comp.artikul,
 			avail: {
 				btrade: quantBtrade,
 				sharte: isAvailableSharte,
-				yumi: quantYumi
+				yumi: quantYumi,
+				air: isAvailableAir,
 			},
 			price: {
 				btrade: priceBtrade,
 				sharte: priceSharte,
 				yumi: priceYumi,
+				air: priceAir
 			}
 		};
 
@@ -90,6 +106,8 @@ export async function analyzeComp(comp) {
 				newValue: isAvailableSharte ? "Есть" : "Нет",
 			});
 		}
+
+
 		if (quantYumi !== null && quantYumi !== undefined !== comp.avail.yumi) {
 			changes.push({
 				field: 'avail.yumi',
@@ -98,6 +116,14 @@ export async function analyzeComp(comp) {
 			});
 		}
 
+
+		if (isAvailableAir !== null && isAvailableAir !== undefined !== comp.avail.air) {
+			changes.push({
+				field: 'avail.air',
+				oldValue: comp.avail.air ? "Есть" : "Нет",
+				newValue: isAvailableAir ? "Есть" : "Нет",
+			});
+		}
 
 
 
@@ -125,6 +151,14 @@ export async function analyzeComp(comp) {
 				field: 'price.yumi',
 				oldValue: comp.price.yumi,
 				newValue: priceYumi,
+			});
+		}
+
+		if (priceAir !== null && priceAir !== undefined && priceAir !== comp.price.air) {
+			changes.push({
+				field: 'price.air',
+				oldValue: comp.price.air,
+				newValue: priceAir,
 			});
 		}
 
