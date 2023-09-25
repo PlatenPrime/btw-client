@@ -84,6 +84,13 @@ export default function CompList() {
 
 
 
+
+
+
+
+
+
+
 	if (loadingCompsDB) {
 		return <>
 
@@ -274,8 +281,8 @@ export default function CompList() {
 
 						<tr >
 							<th className="w-1/3" rowSpan="2">Артикул</th>
-							<th className="w-1/3" colSpan="4">Наличие</th>
-							<th className="w-1/3" colSpan="4">Цена</th>
+							<th className="w-1/3" colSpan="5">Наличие</th>
+							<th className="w-1/3" colSpan="5">Цена</th>
 						</tr>
 
 						<tr>
@@ -284,10 +291,12 @@ export default function CompList() {
 							<th className="">Sharte</th>
 							<th className="">Yumi</th>
 							<th className="">Air</th>
+							<th className="">Best</th>
 							<th className="">Btrade</th>
 							<th className="">Sharte</th>
 							<th className="">Yumi</th>
 							<th className="">Air</th>
+							<th className="">Best</th>
 
 						</tr>
 
@@ -348,12 +357,20 @@ export default function CompList() {
 
 
 									<td className=' w-1/12'>
-										{comp.avail.yumi ? <span className='bg-sky-500 p-2 rounded' >{comp.avail.yumi}</span> : <span className=' p-2 rounded' >---</span>}
+										{comp.avail.yumi ? <span className='bg-sky-500 p-2 rounded' >{comp.avail.yumi}</span> : <span className=' p-2 rounded' >-</span>}
 									</td>
 
 									<td className=' w-1/12' >
-										{comp.avail.air ? <span className='bg-green-500 p-2 rounded' >Есть</span> : <span className=' p-2 rounded' >---</span>}
+										{comp.avail.air ? <span className='bg-green-500 p-2 rounded' >Есть</span> : <span className=' p-2 rounded' >-</span>}
 									</td>
+
+									<td className=' w-1/12' >
+										{comp.avail.best ? <span className='bg-green-500 p-2 rounded' >Есть</span> : <span className=' p-2 rounded' >-</span>}
+									</td>
+
+
+
+
 
 
 									<td className='text-green-500 w-1/12' >
@@ -365,10 +382,13 @@ export default function CompList() {
 									</td>
 
 									<td className='text-yellow-400 w-1/12' >
-										{comp.price.yumi ? comp.price.yumi : "---"}
+										{comp.price.yumi ? comp.price.yumi : "-"}
 									</td>
 									<td className='text-yellow-400 w-1/12' >
-										{comp.price.air ? comp.price.air : "---"}
+										{comp.price.air ? comp.price.air : "-"}
+									</td>
+									<td className='text-yellow-400 w-1/12' >
+										{comp.price.best ? comp.price.best : "-"}
 									</td>
 
 

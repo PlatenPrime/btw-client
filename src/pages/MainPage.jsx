@@ -10,6 +10,7 @@ import Spinner from '../components/Spinner/Spinner';
 import { getArtDataYumi } from '../utils/getArtDataYumi';
 import { getArtDataBtrade } from '../utils/getArtDataBtrade';
 import { getArtDataSharte } from '../utils/getArtDataSharte';
+import { getArtDataAir } from '../utils/getArtDataAir';
 
 
 
@@ -31,6 +32,12 @@ const MainPage = () => {
 	const [artikulSharte, setArtikulSharte] = useState("")
 	const [priceSharte, setPriceSharte] = useState("")
 	const [isAvailableSharte, setIsAvailableSharte] = useState(null)
+
+
+	const [artikulAir, setArtikulAir] = useState("")
+	const [priceAir, setPriceAir] = useState("")
+	const [isAvailableAir, setIsAvailableAir] = useState(null)
+
 
 
 
@@ -65,6 +72,18 @@ const MainPage = () => {
 		console.log(isAvailable)
 		setPriceSharte(price)
 		setIsAvailableSharte(isAvailable)
+
+	}
+
+
+	const handleFetchAir = async (artikulAir) => {
+		console.log(artikulAir)
+
+		const { price, isAvailable } = await getArtDataAir(artikulAir)
+		console.log(price)
+		console.log(isAvailable)
+		setPriceAir(price)
+		setIsAvailableAir(isAvailable)
 
 	}
 
@@ -161,6 +180,23 @@ const MainPage = () => {
 				<TextBlock>{isAvailableSharte ? "Yes" : ""}</TextBlock>
 			</CardBlock>
 
+
+			<CardBlock>
+				<InputBlock
+					onChange={(e) => { setArtikulAir(e.target.value) }}
+					value={artikulAir}
+					placeholder="Введи артикул air"
+				/>
+				<ButtonBlock
+					className="search-c"
+					onClick={() => { handleFetchAir(artikulAir) }}
+
+				>
+					Поиск
+				</ButtonBlock>
+				<TextBlock>{priceAir}</TextBlock>
+				<TextBlock>{isAvailableAir ? "Yes" : ""}</TextBlock>
+			</CardBlock>
 
 
 
