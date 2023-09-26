@@ -1,6 +1,7 @@
 import { getArtDataBtrade } from "./getArtDataBtrade";
 import { getArtDataSharte } from "./getArtDataSharte";
 import { getArtDataYumi } from "./getArtDataYumi";
+import { getArtDataBest } from "./getArtDataBest";
 import axios from "./axios";
 import { getArtDataAir } from "./getArtDataAir";
 
@@ -10,11 +11,12 @@ import { getArtDataAir } from "./getArtDataAir";
 export async function analyzeComp(comp) {
 	try {
 
-		const [sharteData, btradeData, yumiData, airData] = await Promise.allSettled([
+		const [sharteData, btradeData, yumiData, airData, bestData] = await Promise.allSettled([
 			comp.competitorsLinks && comp.competitorsLinks.sharteLink ? getArtDataSharte(comp.competitorsLinks.sharteLink) : Promise.resolve(null),
 			getArtDataBtrade(comp.artikul),
 			comp.competitorsLinks && comp.competitorsLinks.yumiLink ? getArtDataYumi(comp.competitorsLinks.yumiLink) : Promise.resolve(null),
 			comp.competitorsLinks && comp.competitorsLinks.airLink ? getArtDataAir(comp.competitorsLinks.airLink) : Promise.resolve(null),
+			comp.competitorsLinks && comp.competitorsLinks.bestLink ? getArtDataBest(comp.competitorsLinks.bestLink) : Promise.resolve(null),
 		]);
 
 		// let sharteData, btradeData, yumiData, airData
@@ -40,7 +42,7 @@ export async function analyzeComp(comp) {
 
 
 
-		let priceSharte, isAvailableSharte, priceBtrade, quantBtrade, priceYumi, quantYumi, priceAir, isAvailableAir;
+		let priceSharte, isAvailableSharte, priceBtrade, quantBtrade, priceYumi, quantYumi, priceAir, isAvailableAir, priceBest, isAvailableBest;
 
 		if (sharteData) {
 			priceSharte = sharteData.price;
@@ -63,6 +65,13 @@ export async function analyzeComp(comp) {
 			isAvailableAir = airData.isAvailable;
 		}
 
+		if (bestData) {
+			priceBest = bestData.price;
+			isAvailableBest = bestData.isAvailable;
+		}
+
+
+
 
 
 
@@ -75,12 +84,14 @@ export async function analyzeComp(comp) {
 				sharte: isAvailableSharte,
 				yumi: quantYumi,
 				air: isAvailableAir,
+				best: isAvailableBest,
 			},
 			price: {
 				btrade: priceBtrade,
 				sharte: priceSharte,
 				yumi: priceYumi,
-				air: priceAir
+				air: priceAir,
+				best: priceBest,
 			}
 		};
 
@@ -126,6 +137,15 @@ export async function analyzeComp(comp) {
 		}
 
 
+		if (isAvailableBest !== null && isAvailableBest !== undefined !== comp.avail.best) {
+			changes.push({
+				field: 'avail.best',
+				oldValue: comp.avail.best ? "Есть" : "Нет",
+				newValue: isAvailableBest ? "Есть" : "Нет",
+			});
+		}
+
+
 
 		// if (priceBtrade !== comp.price.btrade) {
 		// 	changes.push({
@@ -161,6 +181,16 @@ export async function analyzeComp(comp) {
 				newValue: priceAir,
 			});
 		}
+
+		if (priceBest !== null && priceBest !== undefined && priceBest !== comp.price.best) {
+			changes.push({
+				field: 'price.best',
+				oldValue: comp.price.best,
+				newValue: priceBest,
+			});
+		}
+
+
 
 
 
