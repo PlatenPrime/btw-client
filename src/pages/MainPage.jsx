@@ -11,6 +11,7 @@ import { getArtDataYumi } from '../utils/getArtDataYumi';
 import { getArtDataBtrade } from '../utils/getArtDataBtrade';
 import { getArtDataSharte } from '../utils/getArtDataSharte';
 import { getArtDataAir } from '../utils/getArtDataAir';
+import { getArtDataBest } from '../utils/getArtDataBest';
 
 
 
@@ -38,6 +39,10 @@ const MainPage = () => {
 	const [priceAir, setPriceAir] = useState("")
 	const [isAvailableAir, setIsAvailableAir] = useState(null)
 
+
+	const [artikulBest, setArtikulBest] = useState("")
+	const [priceBest, setPriceBest] = useState("")
+	const [isAvailableBest, setIsAvailableBest] = useState(null)
 
 
 
@@ -89,6 +94,20 @@ const MainPage = () => {
 
 
 
+	const handleFetchBest = async (artikulBest) => {
+		console.log(artikulBest)
+
+		const { price, isAvailable } = await getArtDataBest(artikulBest)
+		console.log(price)
+		console.log(isAvailable)
+		setPriceBest(price)
+		setIsAvailableBest(isAvailable)
+
+	}
+
+
+
+
 
 
 
@@ -136,7 +155,6 @@ const MainPage = () => {
 				<ButtonBlock
 					className="search-c"
 					onClick={() => { handleFetch(artikul) }}
-				// onClick={testFetch}
 				>
 					Поиск
 				</ButtonBlock>
@@ -172,7 +190,6 @@ const MainPage = () => {
 				<ButtonBlock
 					className="search-c"
 					onClick={() => { handleFetchSharte(artikulSharte) }}
-				// onClick={testFetch}
 				>
 					Поиск
 				</ButtonBlock>
@@ -196,6 +213,25 @@ const MainPage = () => {
 				</ButtonBlock>
 				<TextBlock>{priceAir}</TextBlock>
 				<TextBlock>{isAvailableAir ? "Yes" : ""}</TextBlock>
+			</CardBlock>
+
+
+
+			<CardBlock>
+				<InputBlock
+					onChange={(e) => { setArtikulBest(e.target.value) }}
+					value={artikulBest}
+					placeholder="Введи артикул best"
+				/>
+				<ButtonBlock
+					className="search-c"
+					onClick={() => { handleFetchBest(artikulBest) }}
+
+				>
+					Поиск
+				</ButtonBlock>
+				<TextBlock>{priceBest}</TextBlock>
+				<TextBlock>{isAvailableBest ? "Yes" : ""}</TextBlock>
 			</CardBlock>
 
 
