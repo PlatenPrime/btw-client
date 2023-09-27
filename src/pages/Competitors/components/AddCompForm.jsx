@@ -416,7 +416,7 @@ export default function AddCompForm() {
 
 					<ImageBlock
 						src={artikulDB ? photoSrc : "https://sharik.ua/images/elements_big/1102-3092_m1.jpg"}
-						alt="Если ты видишь эту надпись, значит ты ошибся с артикулом"
+						alt="Если ты видишь эту надпись, значит с фоткой какая-то проблема или артикула нет на сайте sharik.ua"
 						width={200}
 						height={200}
 						className="mx-auto rounded-2xl shadow-md shadow-white"
