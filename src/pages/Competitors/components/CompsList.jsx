@@ -151,8 +151,8 @@ export default function CompList() {
 					<CardBlock>
 
 
-						<div className="relative pt-1">
-							<div className="flex mb-2 items-center justify-between">
+						<div className="relative pt-1 px-4">
+							<div className="flex px-4 mb-2 items-center justify-between">
 
 								<div className="text-right">
 									<span className="text-sm font-semibold inline-block text-violet-100">

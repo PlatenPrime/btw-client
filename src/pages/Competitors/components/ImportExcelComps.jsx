@@ -174,8 +174,9 @@ export default function ImportExcelComps() {
 							<th>Размер</th>
 
 							<th className="px-4 py-2">Ссылка Sharte</th>
-							<th className="px-4 py-2">Артикул Yumi</th>
+							<th className="px-4 py-2">Ссылка Yumi</th>
 							<th className="px-4 py-2">Ссылка Air</th>
+							<th className="px-4 py-2">Ссылка Best</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -193,13 +194,25 @@ export default function ImportExcelComps() {
 									</a>
 								</td>
 
-								<td>{item.competitorsLinks.yumiArtikul}</td>
+								<td className="px-4 py-2">
+									<a href={item.competitorsLinks.yumiLink} target="_blank" rel="noopener noreferrer">
+										{item.competitorsLinks.yumiLink?.slice(0, 20)}
+									</a>
+								</td>
 
 								<td className="px-4 py-2">
 									<a href={item.competitorsLinks.airLink} target="_blank" rel="noopener noreferrer">
 										{item.competitorsLinks.airLink?.slice(0, 20)}
 									</a>
 								</td>
+
+
+								<td className="px-4 py-2">
+									<a href={item.competitorsLinks.bestLink} target="_blank" rel="noopener noreferrer">
+										{item.competitorsLinks.bestLink?.slice(0, 20)}
+									</a>
+								</td>
+
 
 							</tr>
 						))}
