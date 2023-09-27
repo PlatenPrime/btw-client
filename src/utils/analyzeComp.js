@@ -39,7 +39,7 @@ export async function analyzeComp(comp) {
 		console.log("After getArtDataAir");
 
 
-		
+
 		console.log("Before getArtDataBest");
 		if (comp.competitorsLinks.bestLink) bestData = await getArtDataBest(comp.competitorsLinks.bestLink);
 		console.log("After getArtDataBest");
@@ -116,7 +116,7 @@ export async function analyzeComp(comp) {
 		// 		newValue: quantBtrade,
 		// 	});
 		// }
-		if (isAvailableSharte !== null && isAvailableSharte !== undefined !== comp.avail.sharte) {
+		if (isAvailableSharte !== null && isAvailableSharte !== undefined && isAvailableSharte !== comp.avail.sharte) {
 			changes.push({
 				field: 'avail.sharte',
 				oldValue: comp.avail.sharte ? "Есть" : "Нет",
@@ -125,7 +125,7 @@ export async function analyzeComp(comp) {
 		}
 
 
-		if (quantYumi !== null && quantYumi !== undefined !== comp.avail.yumi) {
+		if (quantYumi !== null && quantYumi !== undefined && quantYumi !== comp.avail.yumi) {
 			changes.push({
 				field: 'avail.yumi',
 				oldValue: comp.avail.yumi ? "Есть" : "Нет",
@@ -134,7 +134,7 @@ export async function analyzeComp(comp) {
 		}
 
 
-		if (isAvailableAir !== null && isAvailableAir !== undefined !== comp.avail.air) {
+		if (isAvailableAir !== null && isAvailableAir !== undefined && isAvailableAir !== comp.avail.air) {
 			changes.push({
 				field: 'avail.air',
 				oldValue: comp.avail.air ? "Есть" : "Нет",
@@ -143,7 +143,7 @@ export async function analyzeComp(comp) {
 		}
 
 
-		if (isAvailableBest !== null && isAvailableBest !== undefined !== comp.avail.best) {
+		if (isAvailableBest !== null && isAvailableBest !== undefined && isAvailableBest !== comp.avail.best) {
 			changes.push({
 				field: 'avail.best',
 				oldValue: comp.avail.best ? "Есть" : "Нет",
