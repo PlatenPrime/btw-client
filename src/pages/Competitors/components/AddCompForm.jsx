@@ -15,15 +15,11 @@ import { getArtDataBtrade } from '../../../utils/getArtDataBtrade';
 import axios from "../../../utils/axios"
 import Spinner from '../../../components/Spinner/Spinner';
 
+import { categories, subcategories, prods } from '../../../constants/compsData';
 
-const prods = [
-	'Gemar',
-	'Belbal',
-	'Flex',
-	"Anagram",
-	"Qualatex"
 
-];
+
+
 
 
 const initialStateForm = {
@@ -45,8 +41,6 @@ const initialStateForm = {
 	quantYumi: "",
 	isAnalyze: false,
 	isCreatingComp: false,
-	category: "",
-	subcategory: "",
 	size: ""
 
 
@@ -75,6 +69,14 @@ export default function AddCompForm() {
 	let artikulDB;
 
 	if (artsDB) artikulDB = artsDB.find(item => item.artikul === state.compArt.trim()) || null;
+
+	let artCategory;
+	let artSubcategory;
+
+	if (artikulDB) artCategory = categories[artikulDB.artikul.slice(0, 2)]
+	console.log(artCategory)
+	if (artikulDB) artSubcategory = subcategories[artikulDB.artikul.slice(0, 4)]
+	console.log(artSubcategory)
 
 
 
@@ -180,8 +182,8 @@ export default function AddCompForm() {
 				yumi: state.priceYumi,
 				best: state.priceBest
 			},
-			category: state.category,
-			subcategory: state.subcategory,
+			category: artCategory,
+			subcategory: artSubcategory,
 			size: state.size,
 
 		}
@@ -220,8 +222,6 @@ export default function AddCompForm() {
 				quantYumi: "",
 				isAnalyze: false,
 				isCreatingComp: false,
-				category: "",
-				subcategory: "",
 				size: ""
 
 			}));
@@ -333,15 +333,11 @@ export default function AddCompForm() {
 
 					</CardBlock>
 
-
-
-
-
-
-
-
-
 				</CardBlock>
+
+
+
+
 
 
 				<CardBlock
@@ -350,11 +346,6 @@ export default function AddCompForm() {
 					flex flex-col items-center
 					'
 				>
-
-
-
-
-
 
 					<ButtonBlock
 						className={`${isSharteLinkValid ? "add-c" : "disabled"} mx-auto  `}
@@ -422,6 +413,34 @@ export default function AddCompForm() {
 						className="mx-auto rounded-2xl shadow-md shadow-white"
 
 					/>
+
+					{artikulDB &&
+						<CardBlock 
+						className="space-y-2"
+						>
+							<TextBlock
+								className="text-xl"
+							>  
+								<TextBlock
+								className="border border-sky-500 p-1 rounded"
+								>
+									{artCategory}
+								</TextBlock>
+							</TextBlock>
+							<TextBlock
+								className="text-xl"
+							>
+	
+								<TextBlock
+								className="border border-yellow-500 p-1 rounded"
+								>
+									{artSubcategory}
+								</TextBlock>
+							</TextBlock>
+
+						</CardBlock>}
+
+
 				</CardBlock>
 
 

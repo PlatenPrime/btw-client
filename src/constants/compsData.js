@@ -4,6 +4,8 @@ export const prods = [
 
 export const categoriesList = ["1 Латекс", "2 Фольга", "3 Гелій та інше", "4 Гірлянди", "5 Аксесуари для свята",]
 
+
+
 export const subcategoriesList = {
 	"1 Латекс": [
 		"01 Латекс асорті",
