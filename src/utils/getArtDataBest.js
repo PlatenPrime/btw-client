@@ -28,7 +28,7 @@ export async function getArtDataBest(bestLink) {
 		if (priceMatch1) {
 			price = parseFloat(priceMatch1[1]).toFixed(2);
 		} else if (priceMatch2) {
-			price = parseFloat(priceMatch2[1]).toFixed(2) + '€';
+			price = parseFloat(priceMatch2[1]).toFixed(4) + '€';
 		} else {
 			throw new Error("Price information not found");
 		}

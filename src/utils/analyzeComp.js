@@ -11,32 +11,38 @@ import { getArtDataAir } from "./getArtDataAir";
 export async function analyzeComp(comp) {
 	try {
 
-		const [sharteData, btradeData, yumiData, airData, bestData] = await Promise.allSettled([
-			comp.competitorsLinks && comp.competitorsLinks.sharteLink ? getArtDataSharte(comp.competitorsLinks.sharteLink) : Promise.resolve(null),
-			getArtDataBtrade(comp.artikul),
-			comp.competitorsLinks && comp.competitorsLinks.yumiLink ? getArtDataYumi(comp.competitorsLinks.yumiLink) : Promise.resolve(null),
-			comp.competitorsLinks && comp.competitorsLinks.airLink ? getArtDataAir(comp.competitorsLinks.airLink) : Promise.resolve(null),
-			comp.competitorsLinks && comp.competitorsLinks.bestLink ? getArtDataBest(comp.competitorsLinks.bestLink) : Promise.resolve(null),
-		]);
+		// const [sharteData, btradeData, yumiData, airData, bestData] = await Promise.allSettled([
+		// 	comp.competitorsLinks && comp.competitorsLinks.sharteLink ? getArtDataSharte(comp.competitorsLinks.sharteLink) : Promise.resolve(null),
+		// 	getArtDataBtrade(comp.artikul),
+		// 	comp.competitorsLinks && comp.competitorsLinks.yumiLink ? getArtDataYumi(comp.competitorsLinks.yumiLink) : Promise.resolve(null),
+		// 	comp.competitorsLinks && comp.competitorsLinks.airLink ? getArtDataAir(comp.competitorsLinks.airLink) : Promise.resolve(null),
+		// 	comp.competitorsLinks && comp.competitorsLinks.bestLink ? getArtDataBest(comp.competitorsLinks.bestLink) : Promise.resolve(null),
+		// ]);
 
-		// let sharteData, btradeData, yumiData, airData
+		let sharteData, btradeData, yumiData, airData, bestData
 
-		// console.log("Before getArtDataSharte");
-		// if (comp.competitorsLinks.sharteLink) sharteData = await getArtDataSharte(comp.competitorsLinks.sharteLink);
-		// console.log("After getArtDataSharte");
+		console.log("Before getArtDataSharte");
+		if (comp.competitorsLinks.sharteLink) sharteData = await getArtDataSharte(comp.competitorsLinks.sharteLink);
+		console.log("After getArtDataSharte");
 
-		// console.log("Before getArtDataBtrade");
-		// if (comp.artikul) btradeData = await getArtDataBtrade(comp.artikul);
-		// console.log("After getArtDataBtrade");
+		console.log("Before getArtDataBtrade");
+		if (comp.artikul) btradeData = await getArtDataBtrade(comp.artikul);
+		console.log("After getArtDataBtrade");
 
-		// console.log("Before getArtDataYumi");
-		// if (comp.competitorsLinks.yumiLink) yumiData = await getArtDataYumi(comp.competitorsLinks.yumiLink);
-		// console.log("After getArtDataYumi");
+		console.log("Before getArtDataYumi");
+		if (comp.competitorsLinks.yumiLink) yumiData = await getArtDataYumi(comp.competitorsLinks.yumiLink);
+		console.log("After getArtDataYumi");
 
 
-		// console.log("Before getArtDataAir");
-		// if (comp.competitorsLinks.airLink) airData = await getArtDataAir(comp.competitorsLinks.airLink);
-		// console.log("After getArtDataAir");
+		console.log("Before getArtDataAir");
+		if (comp.competitorsLinks.airLink) airData = await getArtDataAir(comp.competitorsLinks.airLink);
+		console.log("After getArtDataAir");
+
+
+		
+		console.log("Before getArtDataBest");
+		if (comp.competitorsLinks.bestLink) bestData = await getArtDataBest(comp.competitorsLinks.bestLink);
+		console.log("After getArtDataBest");
 
 
 

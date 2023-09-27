@@ -34,7 +34,7 @@ export async function getArtDataAir(airLink) {
 		}
 
 		const responseString = await response.text();
-		console.log(responseString)
+
 
 		const priceStartIndex = responseString.indexOf("Ціна за ед.:");
 		const availabilityStartIndex = responseString.indexOf("Наявність:");
