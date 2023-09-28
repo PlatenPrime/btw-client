@@ -4,8 +4,9 @@ import { ButtonBlock, CardBlock, ImageBlock, InputBlock, TextBlock } from '../..
 import { analyzeComp } from '../../../utils/analyzeComp';
 import { exportToExcelComps } from '../../../utils/exportExcel';
 import Spinner from '../../../components/Spinner/Spinner';
-import { importFromExcelComps } from '../../../utils/importExcel';
 import { GoFilter } from 'react-icons/go'
+
+
 
 import { prods, categoriesList, subcategoriesList, sizesList } from '../../../constants/compsData';
 
@@ -168,7 +169,7 @@ export default function CompList() {
 					onClick={handleAnalyze}
 					className=" add-c  "
 				>
-					Аналіз
+					Аналіз (повний)
 				</ButtonBlock>
 
 				<ButtonBlock
@@ -181,7 +182,7 @@ export default function CompList() {
 
 
 				<ButtonBlock
-					className="add-c flex"
+					className="add-c border-rose-500 hover:bg-rose-500 hover:shadow-rose-500 active:bg-rose-600 flex"
 					onClick={() => { setIsFilterOpen(prev => !prev) }}
 				>
 					<TextBlock>Фільтр</TextBlock>	<GoFilter className='text-2xl' />
@@ -226,7 +227,7 @@ export default function CompList() {
 
 
 				{isFilterOpen && <CardBlock
-					className="flex justify-end p-4 space-x-4 ">
+					className={`flex justify-end p-4 space-x-4 `}>
 
 					<select
 						className="InputBlock focus:bg-violet-900 "
