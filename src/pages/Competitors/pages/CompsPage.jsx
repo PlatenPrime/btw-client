@@ -63,7 +63,7 @@ export default function CompsPage() {
 		<CompContextProvider>
 
 
-			<PageBTW className='max-h-screen' >
+			<PageBTW className='max-h-screen ' >
 
 				<HeaderBlock className="bg-violet-500/50 ">
 
@@ -146,9 +146,12 @@ export default function CompsPage() {
 				</CardBlock>
 
 
+				<CardBlock
+				className="p-4">
 
+					<Outlet />
 
-				<Outlet />
+				</CardBlock>
 
 
 

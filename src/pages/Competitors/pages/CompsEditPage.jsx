@@ -5,7 +5,9 @@ import OneCompCardPage from '../components/OneCompCardPage'
 
 export default function CompEditPage() {
 	return (
-		<CardBlock>
+		<CardBlock 
+		
+		>
 
 			<OneCompCardPage />
 

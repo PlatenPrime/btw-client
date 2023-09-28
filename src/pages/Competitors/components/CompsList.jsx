@@ -48,6 +48,17 @@ export default function CompList() {
 	const { compsDB, loadingCompsDB, errorCompsDB } = useCompContext();
 
 
+	const filteredComps = compsDB?.filter((comp) => {
+		return (
+			(filter.prod === '' || comp.prod === filter.prod) &&
+			(filter.category === '' || comp.category === filter.category) &&
+			(filter.subcategory === '' || comp.subcategory === filter.subcategory) &&
+			(filter.size === '' || comp.size === filter.size)
+		);
+	});
+
+
+
 
 
 
@@ -81,6 +92,33 @@ export default function CompList() {
 
 
 
+	const handleAnalyzeOnFilter = async (filteredComps) => {
+
+		try {
+
+			const totalItems = filteredComps.length;
+			let completedItems = 0;
+
+			setIsAnalyzing(true)
+
+			for (const comp of filteredComps) {
+				console.log(comp)
+				await analyzeComp(comp);
+				completedItems++;
+				const progressValue = (completedItems / totalItems) * 100;
+				setProgress(progressValue)
+			}
+			window.location.reload();
+		} catch (error) {
+			console.log(error);
+
+		} finally {
+			setIsAnalyzing(false)
+			setProgress(0)
+		}
+	}
+
+
 
 
 
@@ -109,7 +147,7 @@ export default function CompList() {
 
 
 	return (
-		<CardBlock className="flex flex-col h-screen" >
+		<CardBlock className="flex flex-col space-y-2 " >
 
 
 			<CardBlock
@@ -121,7 +159,7 @@ export default function CompList() {
 					className=" success-c   "
 
 				>
-					Экспорт в Excel
+					Експорт в Excel
 				</ButtonBlock>
 
 
@@ -130,15 +168,23 @@ export default function CompList() {
 					onClick={handleAnalyze}
 					className=" add-c  "
 				>
-					Анализ
+					Аналіз
 				</ButtonBlock>
+
+				<ButtonBlock
+					onClick={() => handleAnalyzeOnFilter(filteredComps)}
+					className=" create-c  "
+				>
+					Аналіз (фільтр)
+				</ButtonBlock>
+
 
 
 				<ButtonBlock
 					className="add-c flex"
 					onClick={() => { setIsFilterOpen(prev => !prev) }}
 				>
-					<TextBlock>Фільтры</TextBlock>	<GoFilter className='text-2xl' />
+					<TextBlock>Фільтр</TextBlock>	<GoFilter className='text-2xl' />
 				</ButtonBlock>
 
 			</CardBlock>

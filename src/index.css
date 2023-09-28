@@ -61,14 +61,14 @@ table {
 }
 
 ::-webkit-scrollbar {
-	width: 4px; /* Width of the scrollbar */
-	height: 16px;
+	width: 16px; /* Width of the scrollbar */
+	height: 32px;
   }
   
   ::-webkit-scrollbar-thumb {
-	background: rgba(72, 212, 255, 0.363);
-	opacity: 10%;
-	border-radius: 8px; /* Roundness of the scrollbar thumb */
+	background: rgb(72, 167, 255);
+	opacity: 80%;
+	border-radius: 4px; /* Roundness of the scrollbar thumb */
   }
   
   ::-webkit-scrollbar-track {
