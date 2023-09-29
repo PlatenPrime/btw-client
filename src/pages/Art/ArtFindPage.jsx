@@ -82,20 +82,6 @@ const ArtFindPage = () => {
 
 
 
-
-
-
-	function exportToExcel(data) {
-		const ws = XLSX.utils.json_to_sheet(data);
-		const wb = XLSX.utils.book_new();
-		XLSX.utils.book_append_sheet(wb, ws, 'Sheet1');
-		XLSX.writeFile(wb, 'exported_data.xlsx');
-	}
-
-
-
-
-
 	return (
 
 
@@ -196,14 +182,6 @@ const ArtFindPage = () => {
 				</CardBlock>
 			}
 
-
-
-			<CardBlock>
-
-				<button onClick={() => exportToExcel(artsDB)}>Экспорт в Excel</button>
-
-
-			</CardBlock>
 
 
 		</PageBTW >
