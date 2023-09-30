@@ -38,10 +38,10 @@ const SidebarBTW = () => {
 
 	return (
 
-		<CardBlock className='hidden  min-h-screen md:min-w-fit  md:w-40 lg:w-56
-		md:flex flex-col justify-start items-stratch text-center 
+		<CardBlock className='hidden  min-h-screen lg:min-w-fit  lg:w-40 xl:w-56
+		lg:flex flex-col justify-start items-stratch text-center 
 
-		fixed top-0 left-0
+		sticky top-0 left-0
 
 		bg-white bg-opacity-0
 

@@ -42,16 +42,16 @@ const SidebarMobileBTW = ({ onClose }) => {
 		<CardBlock
 			onClick={onClose}
 
-			className='fixed md:hidden  min-h-screen w-full 
+			className='fixed lg:hidden  min-h-screen w-full 
 		
 		 bg-gray-600 bg-opacity-50 '>
 
 			<CardBlock
 				onClick={(e) => e.stopPropagation()}
 				className='
-			flex flex-col justify-start items-center space-y-8
+			flex flex-col justify-start items-center space-y-2 p-4
 			h-full min-h-screen w-1/2
-			bg-black bg-opacity-80 hover:bg-black
+			bg-black bg-opacity-90 hover:bg-black
 			
 			'>
 
@@ -72,7 +72,7 @@ const SidebarMobileBTW = ({ onClose }) => {
 
 
 
-				<TextBlock className="border border-orange-500 hover:bg-orange-500/50 rounded" >
+				<TextBlock className="w-full text-center border border-orange-500 hover:bg-orange-500/50 rounded" >
 					<NavLink
 						onClick={onClose}
 						to={"rows"}
@@ -90,7 +90,7 @@ const SidebarMobileBTW = ({ onClose }) => {
 
 
 
-				<TextBlock className="border border-teal-500 hover:bg-teal-500/50 rounded" >
+				<TextBlock className="w-full text-center border border-teal-500 hover:bg-teal-500/50 rounded" >
 					<NavLink
 						onClick={onClose}
 						to={"arts"}
@@ -106,7 +106,7 @@ const SidebarMobileBTW = ({ onClose }) => {
 				</TextBlock>
 
 
-				<TextBlock className="border border-cyan-500 hover:bg-cyan-500/50 rounded">
+				<TextBlock className="w-full text-center border border-cyan-500 hover:bg-cyan-500/50 rounded">
 					<NavLink
 						onClick={onClose}
 						to={"zones"}
@@ -121,7 +121,7 @@ const SidebarMobileBTW = ({ onClose }) => {
 					</NavLink>
 				</TextBlock>
 
-				<TextBlock className="border border-violet-500 hover:bg-violet-500/50 rounded " >
+				<TextBlock className="w-full text-center border border-violet-500 hover:bg-violet-500/50 rounded " >
 					<NavLink
 						onClick={onClose}
 						to={"comps"}
@@ -140,7 +140,7 @@ const SidebarMobileBTW = ({ onClose }) => {
 
 				{isAuth ?
 					<ButtonBlock
-						className="cancel-c"
+						className="cancel-c w-full text-center"
 						onClick={logoutHandler} >Выйти
 					</ButtonBlock> :
 					<Link to={"/login"}>Войти</Link>

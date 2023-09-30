@@ -62,17 +62,21 @@ table {
 
 ::-webkit-scrollbar {
 	width: 16px; /* Width of the scrollbar */
-	height: 32px;
+	height: 16px;
   }
   
   ::-webkit-scrollbar-thumb {
-	background: rgb(72, 167, 255);
-	opacity: 80%;
+	
+
+	border: 2px solid rgb(72, 167, 255);
 	border-radius: 4px; /* Roundness of the scrollbar thumb */
+	
   }
+
+
   
   ::-webkit-scrollbar-track {
-	background-color: transparent; /* Color of the scrollbar track */
+	background-color: #33333336; /* Color of the scrollbar track */
 	border-radius: 8px; /* Roundness of the scrollbar track */
   }
 

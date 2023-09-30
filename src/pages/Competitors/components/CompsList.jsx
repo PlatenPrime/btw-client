@@ -341,7 +341,7 @@ export default function CompList() {
 
 				<table className="min-w-full border border-violet-500"  >
 
-					<thead className="bg-violet-900/95  border border-violet-500  sticky top-0  z-10  ">
+					<thead className="bg-violet-900/95  border border-violet-500  ">
 
 						<tr >
 							<th className="w-1/3" rowSpan="2">Артикул</th>
