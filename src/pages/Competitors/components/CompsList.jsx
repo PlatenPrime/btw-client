@@ -4,7 +4,13 @@ import { ButtonBlock, CardBlock, ImageBlock, InputBlock, TextBlock } from '../..
 import { analyzeComp } from '../../../utils/analyzeComp';
 import { exportToExcelComps } from '../../../utils/exportExcel';
 import Spinner from '../../../components/Spinner/Spinner';
-import { GoFilter } from 'react-icons/go'
+
+import { IoAnalyticsOutline } from "react-icons/io5";
+import { SiMicrosoftexcel } from "react-icons/si";
+import { MdOutlineAnalytics } from "react-icons/md";
+import { LuFilter } from "react-icons/lu";
+
+
 
 
 
@@ -157,35 +163,46 @@ export default function CompList() {
 
 				<ButtonBlock
 					onClick={() => exportToExcelComps(compsDB)}
-					className=" success-c   "
-
+					className=" success-c flex items-center space-x-1  "
 				>
-					Експорт в Excel
+					< SiMicrosoftexcel className='text-3xl' />
+					<TextBlock>
+						Експорт в Excel
+					</TextBlock>
 				</ButtonBlock>
 
 
 
 				<ButtonBlock
 					onClick={handleAnalyze}
-					className=" add-c  "
+					className=" add-c flex items-center space-x-1  "
 				>
-					Аналіз (повний)
+					< MdOutlineAnalytics className='text-3xl' />
+					<TextBlock>
+						Аналіз (повний)
+					</TextBlock>
+
 				</ButtonBlock>
 
 				<ButtonBlock
 					onClick={() => handleAnalyzeOnFilter(filteredComps)}
-					className=" create-c  "
+					className=" create-c flex items-center space-x-1  "
 				>
-					Аналіз (фільтр)
+					< IoAnalyticsOutline className='text-3xl ' />
+					<TextBlock>
+						Аналіз (фільтр)
+					</TextBlock>
+
 				</ButtonBlock>
 
 
 
 				<ButtonBlock
-					className="add-c border-rose-500 hover:bg-rose-500 hover:shadow-rose-500 active:bg-rose-600 flex"
+					className="add-c flex  items-center space-x-1   border-rose-400 hover:bg-rose-400 hover:shadow-rose-400 active:bg-rose-600 hover:text-white"
 					onClick={() => { setIsFilterOpen(prev => !prev) }}
 				>
-					<TextBlock>Фільтр</TextBlock>	<GoFilter className='text-2xl' />
+					<LuFilter className=' text-3xl' />
+					<TextBlock>Фільтр</TextBlock>
 				</ButtonBlock>
 
 			</CardBlock>
