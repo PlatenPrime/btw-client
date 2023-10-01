@@ -11,7 +11,8 @@ import PageBTW from '../../components/UI/Page/PageBTW';
 
 import HeaderBlock from '../../components/blocks/HeaderBlock';
 import { ButtonBlock } from "../../components"
-import { useRowStore } from './rowStore';
+
+import RowList from '../Zapasi/RowList';
 
 
 
@@ -19,15 +20,6 @@ import { useRowStore } from './rowStore';
 
 
 const RowsPage = () => {
-
-
-	const row = useRowStore((state) => state.row)
-	const changeRow = useRowStore((state) => state.changeRow)
-	const clearRow = useRowStore((state) => state.clearRow)
-	const getRows = useRowStore((state) => state.getRows)
-
-
-	getRows()
 
 
 
@@ -46,18 +38,7 @@ const RowsPage = () => {
 			</HeaderBlock>
 
 
-
-			{row}
-			<ButtonBlock
-				onClick={changeRow}
-			>
-				Плюс
-			</ButtonBlock>
-			<ButtonBlock
-				onClick={clearRow}
-			>
-				Ноль
-			</ButtonBlock>
+			<RowList />
 
 
 		</PageBTW >
