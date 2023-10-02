@@ -341,26 +341,26 @@ export default function CompList() {
 
 				<table className="min-w-full border border-violet-500"  >
 
-					<thead className="bg-violet-900/95  border border-violet-500  ">
+					<thead className=" border border-violet-500  ">
 
 						<tr >
-							<th className="w-1/3" rowSpan="2">Артикул</th>
-							<th className="w-1/3" colSpan="5">Наличие</th>
-							<th className="w-1/3" colSpan="5">Цена</th>
+							<th className="w-1/3 bg-rose-500/40" rowSpan="2">Артикул</th>
+							<th className="w-1/3 bg-sky-500/40 " colSpan="5">Наличие</th>
+							<th className="w-1/3 bg-yellow-500/40" colSpan="5">Цена</th>
 						</tr>
 
 						<tr>
 
-							<th className="">Btrade</th>
-							<th className="">Sharte</th>
-							<th className="">Yumi</th>
-							<th className="">Air</th>
-							<th className="">Best</th>
-							<th className="">Btrade</th>
-							<th className="">Sharte</th>
-							<th className="">Yumi</th>
-							<th className="">Air</th>
-							<th className="">Best</th>
+							<th className="bg-sky-500/10">Btrade</th>
+							<th className="bg-sky-500/10">Sharte</th>
+							<th className="bg-sky-500/10">Yumi</th>
+							<th className="bg-sky-500/10">Air</th>
+							<th className="bg-sky-500/10">Best</th>
+							<th className="bg-yellow-500/10">Btrade</th>
+							<th className="bg-yellow-500/10">Sharte</th>
+							<th className="bg-yellow-500/10">Yumi</th>
+							<th className="bg-yellow-500/10">Air</th>
+							<th className="bg-yellow-500/10">Best</th>
 
 						</tr>
 
@@ -391,18 +391,18 @@ export default function CompList() {
 
 
 								>
-									<td className='flex items-center justify-start space-x-1 ' >
+									<td className='flex bg-rose-500/20 items-center justify-start space-x-1 ' >
 
 										<ImageBlock
 											src={`https://sharik.ua/images/elements_big/${comp.artikul}_m1.jpg`}
-											width={30}
-											height={30}
+											width={50}
+											height={50}
 											alt="Фото артикула"
-											className="rounded "
+											className="rounded hover:scale-150 hover:translate-x-1"
 
 										/>
 										<TextBlock
-											className="text-left"
+											className="text-left   "
 
 										>{comp.nameukr}</TextBlock>
 
@@ -411,24 +411,24 @@ export default function CompList() {
 
 
 
-									<td className=' w-1/12'>
+									<td className=' w-1/12 bg-sky-500/10'>
 										{comp.avail.btrade ? <span className='bg-sky-500 p-2 rounded' >{comp.avail.btrade}</span> : <span className='bg-rose-500 p-2 rounded' >Нет</span>}
 									</td>
 
-									<td className=' w-1/12' >
+									<td className=' w-1/12 bg-sky-500/10' >
 										{comp.avail.sharte ? <span className='bg-green-500 p-2 rounded' >Есть</span> : <span className='bg-red-500 p-2 rounded' >Нет</span>}
 									</td>
 
 
-									<td className=' w-1/12'>
+									<td className=' w-1/12 bg-sky-500/10'>
 										{comp.avail.yumi ? <span className='bg-sky-500 p-2 rounded' >{comp.avail.yumi}</span> : <span className=' p-2 rounded' >-</span>}
 									</td>
 
-									<td className=' w-1/12' >
+									<td className=' w-1/12 bg-sky-500/10' >
 										{comp.avail.air ? <span className='bg-green-500 p-2 rounded' >Есть</span> : <span className=' p-2 rounded' >-</span>}
 									</td>
 
-									<td className=' w-1/12' >
+									<td className=' w-1/12 bg-sky-500/10' >
 										{comp.avail.best ? <span className='bg-green-500 p-2 rounded' >Есть</span> : <span className=' p-2 rounded' >-</span>}
 									</td>
 
@@ -437,21 +437,21 @@ export default function CompList() {
 
 
 
-									<td className='text-green-500 w-1/12' >
+									<td className='text-green-500 w-1/12 bg-yellow-500/10' >
 										{comp.price.btrade}
 									</td>
 
-									<td className='text-yellow-400 w-1/12' >
+									<td className='text-yellow-400 w-1/12 bg-yellow-500/10' >
 										{comp.price.sharte}
 									</td>
 
-									<td className='text-yellow-400 w-1/12' >
+									<td className='text-yellow-400 w-1/12 bg-yellow-500/10' >
 										{comp.price.yumi ? comp.price.yumi : "-"}
 									</td>
-									<td className='text-yellow-400 w-1/12' >
+									<td className='text-yellow-400 w-1/12 bg-yellow-500/10' >
 										{comp.price.air ? comp.price.air : "-"}
 									</td>
-									<td className='text-yellow-400 w-1/12' >
+									<td className='text-yellow-400 w-1/12 bg-yellow-500/10' >
 										{comp.price.best ? comp.price.best : "-"}
 									</td>
 
