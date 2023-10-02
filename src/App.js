@@ -30,6 +30,7 @@ import CompsEditPage from "./pages/Competitors/pages/CompsEditPage";
 import CompsListPage from "./pages/Competitors/pages/CompsListPage";
 import CompsLogsPage from "./pages/Competitors/pages/CompsLogsPage";
 import CompsAddPage from "./pages/Competitors/pages/CompsAddPage";
+import StocksPage from "./pages/Stocks/StocksPage";
 
 
 
@@ -68,6 +69,9 @@ function App() {
 				<Route path="pallets/new" element={<AddPalletPage />} />
 
 
+
+
+				<Route path="stocks" element={<StocksPage />} />
 				<Route path="rows" element={<RowsPage />} />
 				<Route path="rows/:id" element={<RowPage />} />
 

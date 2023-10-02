@@ -12,7 +12,7 @@ import PageBTW from '../../components/UI/Page/PageBTW';
 import HeaderBlock from '../../components/blocks/HeaderBlock';
 import { ButtonBlock } from "../../components"
 
-import RowList from '../Zapasi/RowList';
+
 
 
 
@@ -38,7 +38,7 @@ const RowsPage = () => {
 			</HeaderBlock>
 
 
-			<RowList />
+		
 
 
 		</PageBTW >
