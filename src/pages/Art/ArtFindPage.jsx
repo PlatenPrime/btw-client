@@ -93,7 +93,7 @@ const ArtFindPage = () => {
 
 			<HeaderBlock className="
 		
-			bg-teal-500/50
+			bg-rose-500/50
 			" >
 				Поиск артикула
 			</HeaderBlock>
@@ -105,7 +105,7 @@ const ArtFindPage = () => {
 
 
 
-			<CardBlock className="bg-sky-400/50" >
+			<CardBlock className="bg-sky-400/50 p-2 text-center" >
 				<h2 className='text-2xl'>Артикулы БТрейд</h2>
 
 				{loadingArtsDB && <p>Загрузка данных...</p>}

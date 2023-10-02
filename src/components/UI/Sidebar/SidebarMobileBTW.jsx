@@ -72,16 +72,16 @@ const SidebarMobileBTW = ({ onClose }) => {
 
 
 
-				<TextBlock className="w-full text-center border border-orange-500 hover:bg-orange-500/50 rounded" >
+				<TextBlock className="w-full text-center border border-slate-500 hover:bg-slate-500/50  rounded" >
 					<NavLink
 						onClick={onClose}
-						to={"rows"}
+						to={"stocks"}
 						style={({ isActive }) => isActive ? {
 							color: "white",
 							padding: "12px",
 							width: "100%",
 
-							background: "rgb(249 115 22)",
+							background: "rgb(244 63 94 )",
 						} : inActiveStyles}
 					>
 						Запасы
@@ -90,7 +90,7 @@ const SidebarMobileBTW = ({ onClose }) => {
 
 
 
-				<TextBlock className="w-full text-center border border-teal-500 hover:bg-teal-500/50 rounded" >
+				<TextBlock className="w-full text-center border border-rose-500 hover:bg-rose-500/50 rounded" >
 					<NavLink
 						onClick={onClose}
 						to={"arts"}

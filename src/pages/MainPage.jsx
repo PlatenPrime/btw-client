@@ -140,112 +140,114 @@ const MainPage = () => {
 					Balloon Trade Warehouse App
 				</TextBlock>
 
-
-
-
-			</CardBlock>
-
-
-			<CardBlock
-				className="flex space-x-2"
-			>
-				<InputBlock
-					onChange={(e) => { setArtikul(e.target.value) }}
-					value={artikul}
-					placeholder="Введи артикул yumi"
-				/>
-				<ButtonBlock
-					className="add-c"
-					onClick={() => { handleFetch(artikul) }}
-				>
-					Анализ
-				</ButtonBlock>
-				<TextBlock>{price}</TextBlock>
-				<TextBlock>{quant}</TextBlock>
-			</CardBlock>
-
-
-			<CardBlock
-				className="flex space-x-2"
-			>
-				<InputBlock
-					onChange={(e) => { setArtikulBtrade(e.target.value) }}
-					value={artikulBtrade}
-					placeholder="Введи артикул btrade"
-				/>
-				<ButtonBlock
-					className="add-c"
-					onClick={() => { handleFetchBtrade(artikulBtrade) }}
-				// onClick={testFetch}
-				>
-					Анализ
-				</ButtonBlock>
-				<TextBlock>{priceBtrade}</TextBlock>
-				<TextBlock>{quantBtrade}</TextBlock>
-			</CardBlock>
-
-
-			<CardBlock
-				className="flex space-x-2"
-
-			>
-				<InputBlock
-					onChange={(e) => { setArtikulSharte(e.target.value) }}
-					value={artikulSharte}
-					placeholder="Введи артикул sharte"
-				/>
-				<ButtonBlock
-					className="add-c"
-					onClick={() => { handleFetchSharte(artikulSharte) }}
-				>
-					Анализ
-				</ButtonBlock>
-				<TextBlock>{priceSharte}</TextBlock>
-				<TextBlock>{isAvailableSharte ? "Есть" : isAvailableSharte === false ? "Нет" : ""}</TextBlock>
-			</CardBlock>
-
-
-			<CardBlock
-				className="flex space-x-2"
-			>
-				<InputBlock
-					onChange={(e) => { setArtikulAir(e.target.value) }}
-					value={artikulAir}
-					placeholder="Введи артикул air"
-				/>
-				<ButtonBlock
-					className="add-c"
-					onClick={() => { handleFetchAir(artikulAir) }}
-
-				>
-					Анализ
-				</ButtonBlock>
-				<TextBlock>{priceAir}</TextBlock>
-				<TextBlock>{isAvailableAir ? "Есть" : isAvailableAir === false ? "Нет" : ""}</TextBlock>
 			</CardBlock>
 
 
 
 			<CardBlock
-				className="flex space-x-2"
+				className="flex flex-col items-center space-y-2 border border-violet-500 p-2"
 			>
-				<InputBlock
-					onChange={(e) => { setArtikulBest(e.target.value) }}
-					value={artikulBest}
-					placeholder="Введи артикул best"
-				/>
-				<ButtonBlock
-					className="add-c"
-					onClick={() => { handleFetchBest(artikulBest) }}
+
+				<CardBlock
+					className="flex space-x-2"
+				>
+					<InputBlock
+						onChange={(e) => { setArtikul(e.target.value) }}
+						value={artikul}
+						placeholder="Введи ссылку yumi"
+					/>
+					<ButtonBlock
+						className="add-c"
+						onClick={() => { handleFetch(artikul) }}
+					>
+						Анализ
+					</ButtonBlock>
+					<TextBlock>{price}</TextBlock>
+					<TextBlock>{quant}</TextBlock>
+				</CardBlock>
+
+
+				<CardBlock
+					className="flex space-x-2"
+				>
+					<InputBlock
+						onChange={(e) => { setArtikulBtrade(e.target.value) }}
+						value={artikulBtrade}
+						placeholder="Введи артикул btrade"
+					/>
+					<ButtonBlock
+						className="add-c"
+						onClick={() => { handleFetchBtrade(artikulBtrade) }}
+					// onClick={testFetch}
+					>
+						Анализ
+					</ButtonBlock>
+					<TextBlock>{priceBtrade}</TextBlock>
+					<TextBlock>{quantBtrade}</TextBlock>
+				</CardBlock>
+
+
+				<CardBlock
+					className="flex space-x-2"
 
 				>
-					Анализ
-				</ButtonBlock>
-				<TextBlock>{priceBest}</TextBlock>
-				<TextBlock>{isAvailableBest ? "Есть" : isAvailableBest === false ? "Нет" : ""}</TextBlock>
+					<InputBlock
+						onChange={(e) => { setArtikulSharte(e.target.value) }}
+						value={artikulSharte}
+						placeholder="Введи ссылку sharte"
+					/>
+					<ButtonBlock
+						className="add-c"
+						onClick={() => { handleFetchSharte(artikulSharte) }}
+					>
+						Анализ
+					</ButtonBlock>
+					<TextBlock>{priceSharte}</TextBlock>
+					<TextBlock>{isAvailableSharte ? "Есть" : isAvailableSharte === false ? "Нет" : ""}</TextBlock>
+				</CardBlock>
+
+
+				<CardBlock
+					className="flex space-x-2"
+				>
+					<InputBlock
+						onChange={(e) => { setArtikulAir(e.target.value) }}
+						value={artikulAir}
+						placeholder="Введи ссылку air"
+					/>
+					<ButtonBlock
+						className="add-c"
+						onClick={() => { handleFetchAir(artikulAir) }}
+
+					>
+						Анализ
+					</ButtonBlock>
+					<TextBlock>{priceAir}</TextBlock>
+					<TextBlock>{isAvailableAir ? "Есть" : isAvailableAir === false ? "Нет" : ""}</TextBlock>
+				</CardBlock>
+
+
+
+				<CardBlock
+					className="flex space-x-2"
+				>
+					<InputBlock
+						onChange={(e) => { setArtikulBest(e.target.value) }}
+						value={artikulBest}
+						placeholder="Введи ссылку best"
+					/>
+					<ButtonBlock
+						className="add-c"
+						onClick={() => { handleFetchBest(artikulBest) }}
+
+					>
+						Анализ
+					</ButtonBlock>
+					<TextBlock>{priceBest}</TextBlock>
+					<TextBlock>{isAvailableBest ? "Есть" : isAvailableBest === false ? "Нет" : ""}</TextBlock>
+				</CardBlock>
+
 			</CardBlock>
-
-
 
 
 
