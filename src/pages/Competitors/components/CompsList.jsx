@@ -158,7 +158,7 @@ export default function CompList() {
 
 
 			<CardBlock
-				className="flex justify-end  "
+				className="flex justify-end flex-wrap "
 			>
 
 				<ButtonBlock

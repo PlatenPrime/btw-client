@@ -1,6 +1,7 @@
 import React from 'react'
-import CreateRowComponent from './CreateRowComponent'
+import CreateRowForm from './CreateRowForm'
 import { HeaderBlock, PageBTW } from '../../components'
+import { RowList } from './RowList'
 
 export default function StocksPage() {
 	return (
@@ -11,7 +12,8 @@ export default function StocksPage() {
 			</HeaderBlock>
 
 
-			<CreateRowComponent />
+			<CreateRowForm />
+			<RowList />
 		</PageBTW>
 	)
 }

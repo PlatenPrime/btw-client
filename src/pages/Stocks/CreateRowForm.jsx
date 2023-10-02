@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { useRowStore } from './stocksStore';
-import { ButtonBlock, CardBlock, InputBlock } from '../../components';
+import { ButtonBlock, CardBlock, InputBlock, TextBlock } from '../../components';
 import Spinner from '../../components/Spinner/Spinner';
 
-function CreateRowComponent() {
+function CreateRowForm() {
 	const createRow = useRowStore((state) => state.createRow);
 	const [newRowTitle, setNewRowTitle] = useState('');
 	const [isCreatingRow, setIsCreatingRow] = useState(false)
@@ -23,7 +23,7 @@ function CreateRowComponent() {
 
 	return (
 		<CardBlock
-			className="border border-cyan-500 p-2 flex justify-center"
+			className="border bg-cyan-500/10 border-cyan-500 p-2 flex justify-center"
 		>
 			<InputBlock
 				type="text"
@@ -33,13 +33,13 @@ function CreateRowComponent() {
 			/>
 			<ButtonBlock
 				onClick={handleCreateRow}
-				className="create-c "
+				className="create-c flex items-center justify-center "
 			>
-				Создать новый ряд
+				<TextBlock>Создать новый ряд</TextBlock> {isCreatingRow && <Spinner />}
 			</ButtonBlock>
-			{isCreatingRow && <Spinner />}
+			
 		</CardBlock>
 	);
 }
 
-export default CreateRowComponent;
+export default CreateRowForm;

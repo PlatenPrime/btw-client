@@ -1,36 +1,33 @@
 import React, { useEffect } from 'react';
-import { useRowStore } from './rowStore';
+import { useRowStore } from './stocksStore';
+import { CardBlock, TextBlock } from '../../components';
+import RowBage from '../Row/Row/RowBage';
 
 
-function RowList() {
-	const { rows, setRows, getRows } = useRowStore((state) => ({
-		rows: state.rows,
-		setRows: state.setRows,
-		getRows: state.getRows,
-
-	}));
-
+export function RowList() {
+	const rows = useRowStore((state) => state.rows);
+	const getAllRows = useRowStore((state) => state.getAllRows);
 
 	useEffect(() => {
-		getRows();
-	}, []); // Empty dependency array to run it once on mount
-
-	console.log(rows)
-
+		// При монтировании компонента получите все Row
+		getAllRows();
+	}, []);
 
 	return (
-		<div>
-			<h1>List of Rows</h1>
-			{/* <ul>
-				{rows?.map((row) => (
-					<li key={row._id}>
-						{row.title}
+		<CardBlock
+			className="p-2 space-y-2"
+		>
+			<TextBlock
+			className="text-2xl"
+			>Ряды
+			</TextBlock>
 
-					</li>
-				))}
-			</ul> */}
-		</div>
+			{rows.map((row) => (
+				<RowBage row={row} key={row._id} />
+			))}
+
+		</CardBlock>
 	);
 }
 
-export default RowList;
+
