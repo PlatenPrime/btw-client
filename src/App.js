@@ -12,7 +12,7 @@ import PalletPage from "./pages/Pallet/PalletPage";
 import AddPalletPage from "./pages/Pallet/AddPalletPage";
 
 import RowsPage from "./pages/Row/RowsPage";
-import RowPage from "./pages/Row/RowPage";
+
 
 
 
@@ -31,6 +31,7 @@ import CompsListPage from "./pages/Competitors/pages/CompsListPage";
 import CompsLogsPage from "./pages/Competitors/pages/CompsLogsPage";
 import CompsAddPage from "./pages/Competitors/pages/CompsAddPage";
 import StocksPage from "./pages/Stocks/StocksPage";
+import RowPage from "./pages/Stocks/RowPage";
 
 
 
