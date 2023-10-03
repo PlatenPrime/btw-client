@@ -39,48 +39,53 @@ export default function RowPage() {
 	}
 
 	async function handleDeleteRowById() {
-
-	}
-
-
-
-
-	useEffect(() => {
-		fetchRow(params.id)
-		fetchRowPallets(params.id)
-	}, [params.id]);
+		try {
+			await deleteRowById(row._id);
+		} catch (error) {
+			console.error('Ошибка при удалении Row:', error);
+		}
+	};
 
 
 
 
-	return (
-		<PageBTW>
-			<HeaderBlock
-				className="bg-orange-500/50"
+
+useEffect(() => {
+	fetchRow(params.id)
+	fetchRowPallets(params.id)
+}, [params.id]);
+
+
+
+
+return (
+	<PageBTW>
+		<HeaderBlock
+			className="bg-orange-500/50"
+		>
+			{row?.title}
+		</HeaderBlock>
+
+		<CardBlock>
+			<ButtonBlock
+				className="edit-c"
 			>
-				{row?.title}
-			</HeaderBlock>
+				Редактировать название ряда
+			</ButtonBlock>
+			<ButtonBlock
+				className="delete-c"
+			>
+				Удалить ряд
+			</ButtonBlock>
 
-			<CardBlock>
-				<ButtonBlock
-					className="edit-c"
-				>
-					Редактировать название ряда
-				</ButtonBlock>
-				<ButtonBlock
-					className="delete-c"
-				>
-					Удалить ряд
-				</ButtonBlock>
-
-			</CardBlock>
+		</CardBlock>
 
 
 
 
-			<CardBlock>
-				{pallets?.map((pallet) => <TextBlock>{pallet.title}</TextBlock>)}
-			</CardBlock>
+		<CardBlock>
+			{pallets?.map((pallet) => <TextBlock>{pallet.title}</TextBlock>)}
+		</CardBlock>
 
 
 
@@ -89,6 +94,6 @@ export default function RowPage() {
 
 
 
-		</PageBTW>
-	)
+	</PageBTW>
+)
 }
