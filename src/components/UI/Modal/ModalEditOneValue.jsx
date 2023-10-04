@@ -1,11 +1,12 @@
-import { useRef } from "react";
+
+import { useRef, useState } from "react";
 import ButtonBlock from "../../blocks/ButtonBlock";
+import InputBlock from "../../blocks/InputBlock";
+
+export default function ModalEditOneValue({ value, onConfirm, onCancel }) {
 
 
-
-
-
-export default function ModalConfirm({ ask, onConfirm, onCancel }) {
+	const [newValue, setNewValue] = useState(value)
 
 	const modalRef = useRef();
 
@@ -15,7 +16,6 @@ export default function ModalConfirm({ ask, onConfirm, onCancel }) {
 			onCancel();
 		}
 	};
-
 
 	return (
 		<div
@@ -28,23 +28,32 @@ export default function ModalConfirm({ ask, onConfirm, onCancel }) {
 			>
 
 
-				<p className="text-lg font-semibold mb-4">{ask}</p>
+
+
+				<InputBlock
+					placeholder="Введи значение..."
+					value={newValue}
+					onChange={(e) => { setNewValue(e.target.value) }}
+
+
+				/>
+
+
 				<div className="flex justify-evenly">
 					<ButtonBlock
-						onClick={() => onConfirm()}
+						onClick={() => onConfirm(newValue)}
 						className="success-c px-4"
 					>
-						Да
+						Подтвердить
 					</ButtonBlock>
 					<ButtonBlock
 						onClick={() => onCancel()}
 						className="cancel-c px-4"
 					>
-						Нет
+						Отмена
 					</ButtonBlock>
 				</div>
 			</div>
 		</div>
-
-	);
+	)
 }

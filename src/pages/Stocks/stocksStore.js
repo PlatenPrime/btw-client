@@ -52,6 +52,7 @@ export const useRowStore = create((set) => ({
 	updateRowById: async (id, title) => {
 		try {
 			const response = await axios.put(`rows/${id}`, { title });
+			console.log(response)
 			set((state) => ({
 				rows: state.rows.map((row) =>
 					row._id === id ? { ...row, title: response.data.title } : row

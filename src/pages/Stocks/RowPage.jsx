@@ -1,8 +1,9 @@
 import React, { useEffect, useRef, useState } from 'react'
 import { useRowStore } from './stocksStore';
 import { useNavigate, useParams } from 'react-router-dom';
-import { ButtonBlock, CardBlock, HeaderBlock, PageBTW, TextBlock } from '../../components';
+import { ButtonBlock, CardBlock, HeaderBlock, ModalConfirm, PageBTW, TextBlock } from '../../components';
 import { toast } from 'react-toastify';
+import ModalEditOneValue from '../../components/UI/Modal/ModalEditOneValue';
 
 export default function RowPage() {
 	const getRowById = useRowStore((state) => state.getRowById);
@@ -15,9 +16,10 @@ export default function RowPage() {
 	const navigate = useNavigate()
 
 	const [row, setRow] = useState(null)
+	const [title, setTitle] = useState(row?.title)
 	const [pallets, setPallets] = useState([])
-	const [newTitle, setNewTitle] = useState("")
 	const [showModalDeleteRow, setShowModalDeleteRow] = useState(false);
+	const [showModalUpdateRow, setShowModalUpdateRow] = useState(false);
 
 
 
@@ -40,13 +42,31 @@ export default function RowPage() {
 		setShowModalDeleteRow(false);
 	}
 
-	async function handleUpdateRowById() {
+
+	function closeModalUpdateRow() {
+		setShowModalUpdateRow(false);
+	}
+
+
+
+	async function handleUpdateRowById(newTitle) {
+
+		try {
+			await updateRowById(row._id, newTitle);
+			setTitle(newTitle)
+
+		} catch (error) {
+			console.error('Ошибка при изменении ряда:', error);
+		} finally {
+			setShowModalUpdateRow(false)
+
+		}
 
 	}
 
-	async function handleDeleteRowById() {
+	async function handleDeleteRowById(value) {
 		try {
-			
+
 			// await deleteRowById(row._id);
 			toast.success("Ряд удален")
 		} catch (error) {
@@ -75,12 +95,13 @@ export default function RowPage() {
 			<HeaderBlock
 				className="bg-orange-500/50"
 			>
-				{row?.title}
+				{title}
 			</HeaderBlock>
 
 			<CardBlock>
 				<ButtonBlock
 					className="edit-c"
+					onClick={() => { setShowModalUpdateRow(true); }}
 				>
 					Редактировать название ряда
 				</ButtonBlock>
@@ -95,10 +116,20 @@ export default function RowPage() {
 			</CardBlock>
 
 
-			{showModalDeleteRow && <Modal
+			{showModalDeleteRow && <ModalConfirm
 				ask="Удалить этот ряд?"
 				onConfirm={handleDeleteRowById}
-				onCancel={closeModalDeleteRow} />}
+				onCancel={closeModalDeleteRow}
+			/>}
+
+			{
+				showModalUpdateRow && <ModalEditOneValue
+					value={row.title}
+					onConfirm={(value) => { handleUpdateRowById(value) }}
+					onCancel={closeModalUpdateRow}
+				/>
+			}
+
 
 
 
@@ -119,49 +150,3 @@ export default function RowPage() {
 }
 
 
-
-
-
-function Modal(props) {
-
-	const modalRef = useRef();
-
-	const handleModalClick = (e) => {
-		// Проверяем, был ли клик по внешней области модального окна
-		if (modalRef.current && !modalRef.current.contains(e.target)) {
-			props.onCancel();
-		}
-	};
-
-
-	return (
-		<div
-			className="fixed bg-sky-500/10 inset-0 z-50 flex items-center justify-center backdrop-blur backdrop-filter bg-opacity-60"
-			onClick={handleModalClick}
-		>
-
-			<div className="relative  bg-sky-500/20 border border-sky-500 min-w-fit  max-w-2xl p-6 rounded-lg shadow-lg"
-				ref={modalRef}
-			>
-
-
-				<p className="text-lg font-semibold mb-4">{props.ask}</p>
-				<div className="flex justify-evenly">
-					<ButtonBlock
-						onClick={props.onConfirm}
-						className="success-c px-4"
-					>
-						Да
-					</ButtonBlock>
-					<ButtonBlock
-						onClick={props.onCancel}
-						className="cancel-c px-4"
-					>
-						Нет
-					</ButtonBlock>
-				</div>
-			</div>
-		</div>
-
-	);
-}

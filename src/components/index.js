@@ -7,6 +7,7 @@ export { default as HeaderBlock } from './blocks/HeaderBlock';
 export { default as TextBlock } from './blocks/TextBlock';
 export { default as RowBlock } from './blocks/RowBlock';
 export { default as ImageBlock } from './blocks/ImageBlock';
+export { default as ModalConfirm } from "./UI/Modal/ModalConfirm"
 
 
 
