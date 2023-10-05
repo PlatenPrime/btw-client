@@ -127,7 +127,9 @@ export default function RowPage() {
 				{title}
 			</HeaderBlock>
 
-			<CardBlock>
+			<CardBlock
+			className="flex flex-wrap justify-end p-2"
+			>
 				<ButtonBlock
 					className="create-c"
 					onClick={() => { setShowModalCreatePallet(true); }}
@@ -184,7 +186,7 @@ export default function RowPage() {
 
 
 			<CardBlock
-				className="space-y-4 bg-sky-500/5 p-2"
+				className="space-y-4 bg-sky-500/5 p-2 "
 			>
 				<TextBlock
 					className="text-3xl  "
@@ -193,7 +195,7 @@ export default function RowPage() {
 				</TextBlock>
 
 				<CardBlock
-					className="flex flex-wrap gap-2"
+					className="flex flex-wrap gap-2 justify-start "
 				>
 
 					{palletsStore?.map((pallet) => <PalletBage

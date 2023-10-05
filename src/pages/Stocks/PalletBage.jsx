@@ -5,7 +5,7 @@ export default function PalletBage({ title, id }) {
 	return (
 		<Link
 			className='
-			w-full xl:w-1/6 lg:w-1/4 md:w-1/2
+			w-full lg:w-fit
 				flex items-center justify-center
 				  p-3 rounded 
 				border-2 border-sky-500 
