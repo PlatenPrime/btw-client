@@ -4,6 +4,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { ButtonBlock, CardBlock, HeaderBlock, ModalConfirm, PageBTW, TextBlock } from '../../components';
 import { toast } from 'react-toastify';
 import ModalEditOneValue from '../../components/UI/Modal/ModalEditOneValue';
+import PalletBage from './PalletBage';
 
 export default function RowPage() {
 	const getRowById = useRowStore((state) => state.getRowById);
@@ -134,11 +135,27 @@ export default function RowPage() {
 
 
 
-			<CardBlock>
-				{pallets?.map((pallet) => <TextBlock>{pallet.title}</TextBlock>)}
+
+			<CardBlock
+			className="space-y-4 bg-sky-500/5 p-2"
+			>
+				<TextBlock
+				className="text-3xl  "
+				>
+					Паллеты
+				</TextBlock>
+
+				<CardBlock
+					className="flex flex-wrap gap-2"
+				>
+
+					{pallets?.map((pallet) => <PalletBage
+						title={pallet.title}
+						id={pallet._id}
+					/>)}
+				</CardBlock>
+
 			</CardBlock>
-
-
 
 
 
