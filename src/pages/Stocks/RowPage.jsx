@@ -10,7 +10,8 @@ import ModalCreate from '../../components/UI/Modal/ModalCreate';
 
 export default function RowPage() {
 	const getRowById = useRowStore((state) => state.getRowById);
-	const getRowPallets = useRowStore((state) => state.getRowPallets);
+	const getRowPallets = usePalletStore((state) => state.getRowPallets);
+	const palletsStore = usePalletStore((state) => state.pallets);
 	const updateRowById = useRowStore((state) => state.updateRowById);
 	const deleteRowById = useRowStore((state) => state.deleteRowById);
 	const createPallet = usePalletStore((state) => state.createPallet);
@@ -22,11 +23,9 @@ export default function RowPage() {
 
 	const [row, setRow] = useState(null)
 	const [title, setTitle] = useState(row?.title)
-	const [pallets, setPallets] = useState([])
 	const [showModalDeleteRow, setShowModalDeleteRow] = useState(false);
 	const [showModalUpdateRow, setShowModalUpdateRow] = useState(false);
 	const [showModalCreatePallet, setShowModalCreatePallet] = useState(false);
-
 
 
 
@@ -39,8 +38,7 @@ export default function RowPage() {
 
 	async function fetchRowPallets(id) {
 		const pallets = await getRowPallets(id)
-		setPallets(pallets)
-		console.log(pallets)
+		
 	}
 
 
@@ -63,7 +61,7 @@ export default function RowPage() {
 	async function handleCreatePallet(palletTitle) {
 
 		try {
-			await createPallet(row._id, palletTitle);
+			await createPallet(palletTitle, row._id);
 
 
 		} catch (error) {
@@ -114,6 +112,9 @@ export default function RowPage() {
 		fetchRow(params.id)
 		fetchRowPallets(params.id)
 	}, [params.id]);
+
+
+
 
 
 
@@ -195,7 +196,7 @@ export default function RowPage() {
 					className="flex flex-wrap gap-2"
 				>
 
-					{pallets?.map((pallet) => <PalletBage
+					{palletsStore?.map((pallet) => <PalletBage
 						title={pallet.title}
 						id={pallet._id}
 					/>)}

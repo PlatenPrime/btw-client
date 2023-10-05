@@ -63,13 +63,4 @@ export const useRowStore = create((set) => ({
 		}
 	},
 
-	// Функция для получения Pallets для конкретного Row по ID
-	getRowPallets: async (id) => {
-		try {
-			const response = await axios.get(`rows/pallets/${id}`);
-			return response.data;
-		} catch (error) {
-			throw error;
-		}
-	},
 }));

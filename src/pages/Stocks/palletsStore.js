@@ -1,11 +1,14 @@
-import {create} from 'zustand';
-import axios from 'axios';
+import { create } from 'zustand';
+import axios from '../../utils/axios';
 
 const usePalletStore = create((set) => ({
 	pallets: [],
 	createPallet: async (title, rowId) => {
 		try {
+			console.log(title)
+			console.log(rowId)
 			const response = await axios.post('pallets', { title, rowId });
+			console.log(response)
 
 			if (response.status === 201) {
 				const newPallet = response.data;
@@ -93,6 +96,26 @@ const usePalletStore = create((set) => ({
 			console.error('Ошибка получения коробок для Pallet:', error);
 		}
 	},
+
+	// Функция для получения Pallets для конкретного Row по ID
+	getRowPallets: async (id) => {
+		try {
+			const response = await axios.get(`rows/pallets/${id}`);
+			set((state) => ({
+				pallets: [ ...response.data],
+			}));
+
+			return response.data;
+		} catch (error) {
+			throw error;
+		}
+	},
 }));
+
+
+
+
+
+
 
 export default usePalletStore;
