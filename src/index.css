@@ -224,7 +224,7 @@ transition ease-in-out duration-300
 
 .edit-c {
 	@apply 
-	 border border-blue-500  text-blue-500 
+	 border border-blue-500  text-blue-100 
 	 bg-transparent hover:bg-blue-400 active:bg-blue-800 
 	  hover:text-white focus:text-white active:text-white
 	  shadow-2xl hover:shadow-blue-500

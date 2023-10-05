@@ -5,12 +5,16 @@ import { ButtonBlock, CardBlock, HeaderBlock, ModalConfirm, PageBTW, TextBlock }
 import { toast } from 'react-toastify';
 import ModalEditOneValue from '../../components/UI/Modal/ModalEditOneValue';
 import PalletBage from './PalletBage';
+import usePalletStore from './palletsStore';
+import ModalCreate from '../../components/UI/Modal/ModalCreate';
 
 export default function RowPage() {
 	const getRowById = useRowStore((state) => state.getRowById);
 	const getRowPallets = useRowStore((state) => state.getRowPallets);
 	const updateRowById = useRowStore((state) => state.updateRowById);
 	const deleteRowById = useRowStore((state) => state.deleteRowById);
+	const createPallet = usePalletStore((state) => state.createPallet);
+
 
 
 	const params = useParams()
@@ -21,6 +25,7 @@ export default function RowPage() {
 	const [pallets, setPallets] = useState([])
 	const [showModalDeleteRow, setShowModalDeleteRow] = useState(false);
 	const [showModalUpdateRow, setShowModalUpdateRow] = useState(false);
+	const [showModalCreatePallet, setShowModalCreatePallet] = useState(false);
 
 
 
@@ -29,6 +34,7 @@ export default function RowPage() {
 	async function fetchRow(id) {
 		const row = await getRowById(id);
 		setRow(row)
+		setTitle(row.title)
 	}
 
 	async function fetchRowPallets(id) {
@@ -46,6 +52,27 @@ export default function RowPage() {
 
 	function closeModalUpdateRow() {
 		setShowModalUpdateRow(false);
+	}
+
+	function closeModalCreatePallet() {
+		setShowModalCreatePallet(false);
+	}
+
+
+
+	async function handleCreatePallet(palletTitle) {
+
+		try {
+			await createPallet(row._id, palletTitle);
+
+
+		} catch (error) {
+			console.error('Ошибка при создании паллеты:', error);
+		} finally {
+			setShowModalCreatePallet(false)
+
+		}
+
 	}
 
 
@@ -101,6 +128,12 @@ export default function RowPage() {
 
 			<CardBlock>
 				<ButtonBlock
+					className="create-c"
+					onClick={() => { setShowModalCreatePallet(true); }}
+				>
+					Создать паллету
+				</ButtonBlock>
+				<ButtonBlock
 					className="edit-c"
 					onClick={() => { setShowModalUpdateRow(true); }}
 				>
@@ -114,14 +147,19 @@ export default function RowPage() {
 				</ButtonBlock>
 
 
+
+
+
 			</CardBlock>
 
 
-			{showModalDeleteRow && <ModalConfirm
-				ask="Удалить этот ряд?"
-				onConfirm={handleDeleteRowById}
-				onCancel={closeModalDeleteRow}
+			{showModalCreatePallet && <ModalCreate
+				title="Создание новой паллеты"
+				onConfirm={(palletTitle) => { handleCreatePallet(palletTitle) }}
+				onCancel={closeModalCreatePallet}
+
 			/>}
+
 
 			{
 				showModalUpdateRow && <ModalEditOneValue
@@ -132,15 +170,23 @@ export default function RowPage() {
 			}
 
 
+			{showModalDeleteRow && <ModalConfirm
+				ask="Удалить этот ряд?"
+				onConfirm={handleDeleteRowById}
+				onCancel={closeModalDeleteRow}
+			/>}
+
+
+
 
 
 
 
 			<CardBlock
-			className="space-y-4 bg-sky-500/5 p-2"
+				className="space-y-4 bg-sky-500/5 p-2"
 			>
 				<TextBlock
-				className="text-3xl  "
+					className="text-3xl  "
 				>
 					Паллеты
 				</TextBlock>
