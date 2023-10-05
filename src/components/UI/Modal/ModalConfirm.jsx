@@ -1,5 +1,6 @@
 import { useRef } from "react";
 import ButtonBlock from "../../blocks/ButtonBlock";
+import TextBlock from "../../blocks/TextBlock";
 
 
 
@@ -23,27 +24,33 @@ export default function ModalConfirm({ ask, onConfirm, onCancel }) {
 			onClick={handleModalClick}
 		>
 
-			<div className="relative bg-sky-500/50 border border-sky-500 min-w-fit  max-w-2xl p-6 rounded-lg shadow-lg"
+			<div className="relative space-y-8 bg-sky-700/80 border border-sky-500 min-w-fit  max-w-2xl p-4 rounded-lg shadow-lg"
 				ref={modalRef}
 			>
 
 
-				<p className="text-lg font-semibold mb-4">{ask}</p>
-				<div className="flex justify-evenly">
+				<TextBlock
+					className="text-3xl font-semibold mb-4 "
+
+				>{ask}
+				</TextBlock>
+
+				<div className="flex justify-evenly  ">
 					<ButtonBlock
 						onClick={() => onConfirm()}
-						className="success-c px-4"
+						className="success-c px-4 text-2xl w-1/3"
 					>
 						Да
 					</ButtonBlock>
 					<ButtonBlock
 						onClick={() => onCancel()}
-						className="cancel-c px-4"
+						className="cancel-c px-4 text-2xl w-1/3"
 					>
 						Нет
 					</ButtonBlock>
 				</div>
 			</div>
+
 		</div>
 
 	);

@@ -13,12 +13,14 @@ export function RowList() {
 		getAllRows();
 	}, []);
 
+
+	console.log(rows)
 	return (
 		<CardBlock
-			className="p-2 space-y-2"
+			className="p-2 space-y-2 bg-orange-500/5"
 		>
 			<TextBlock
-			className="text-2xl"
+			className="text-3xl"
 			>Ряды
 			</TextBlock>
 

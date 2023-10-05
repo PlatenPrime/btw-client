@@ -24,17 +24,22 @@ export default function ModalCreate({ title, onConfirm, onCancel }) {
 			onClick={handleModalClick}
 		>
 
-			<div className="relative bg-sky-500/50 border border-sky-500 min-w-fit  max-w-2xl p-6 rounded-lg shadow-lg"
+			<div className="relative bg-sky-700/80 border border-sky-500 min-w-fit  max-w-2xl p-6 rounded-lg shadow-lg
+			space-y-4 flex flex-col 
+			"
 				ref={modalRef}
 			>
 
-				<TextBlock>{title}</TextBlock>
+				<TextBlock
+				className="text-3xl"
+				>{title}</TextBlock>
 
 
 				<InputBlock
-					placeholder="Введи значение..."
+					placeholder="Введи название..."
 					value={newValue}
 					onChange={(e) => { setNewValue(e.target.value) }}
+					className="text-2xl text-center mx-auto"
 
 
 				/>
@@ -43,13 +48,14 @@ export default function ModalCreate({ title, onConfirm, onCancel }) {
 				<div className="flex justify-evenly">
 					<ButtonBlock
 						onClick={() => onConfirm(newValue)}
-						className="success-c px-4"
+						className="success-c "
+						disabled={!newValue}
 					>
 						Подтвердить
 					</ButtonBlock>
 					<ButtonBlock
 						onClick={() => onCancel()}
-						className="cancel-c px-4"
+						className="cancel-c "
 					>
 						Отмена
 					</ButtonBlock>

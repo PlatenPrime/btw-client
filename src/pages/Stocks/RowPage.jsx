@@ -37,8 +37,8 @@ export default function RowPage() {
 	}
 
 	async function fetchRowPallets(id) {
-		const pallets = await getRowPallets(id)
-		
+		await getRowPallets(id)
+
 	}
 
 
@@ -93,8 +93,8 @@ export default function RowPage() {
 	async function handleDeleteRowById(value) {
 		try {
 
-			// await deleteRowById(row._id);
-			toast.success("Ряд удален")
+			await deleteRowById(row._id);
+			toast.success(`Ряд ${row.title} удален`)
 		} catch (error) {
 			console.error('Ошибка при удалении Row:', error);
 		} finally {
@@ -128,7 +128,7 @@ export default function RowPage() {
 			</HeaderBlock>
 
 			<CardBlock
-			className="flex flex-wrap justify-end p-2"
+				className="flex flex-wrap justify-end p-2"
 			>
 				<ButtonBlock
 					className="create-c"
