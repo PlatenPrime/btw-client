@@ -21,6 +21,7 @@ export const useRowStore = create((set) => ({
 		try {
 			const response = await axios.get('rows');
 			set({ rows: response.data.rows });
+			return response.data.rows
 		} catch (error) {
 			throw error;
 		}

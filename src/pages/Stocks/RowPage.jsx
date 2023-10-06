@@ -134,7 +134,7 @@ export default function RowPage() {
 	return (
 		<PageBTW>
 			<HeaderBlock
-				className="bg-orange-500/50"
+				className="bg-orange-500/20 border border-orange-500"
 			>
 				{title}
 			</HeaderBlock>
@@ -214,7 +214,7 @@ export default function RowPage() {
 						?
 						<TextBlock
 							className="text-2xl"
-						>На этом ряду нет паллет </TextBlock>
+						>В этом ряду нет паллет </TextBlock>
 						:
 						<CardBlock
 							className="flex flex-wrap gap-2 justify-start "

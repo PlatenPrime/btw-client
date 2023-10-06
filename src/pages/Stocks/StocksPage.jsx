@@ -39,7 +39,7 @@ export default function StocksPage() {
 	return (
 		<PageBTW>
 
-			<HeaderBlock className="bg-slate-500/50" >
+			<HeaderBlock className="bg-slate-500/20 border border-slate-500" >
 				Запасы
 			</HeaderBlock>
 
@@ -65,6 +65,8 @@ export default function StocksPage() {
 
 
 			<RowList />
+
+			
 		</PageBTW>
 	)
 }
