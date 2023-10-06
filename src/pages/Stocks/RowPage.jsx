@@ -7,6 +7,7 @@ import ModalEditOneValue from '../../components/UI/Modal/ModalEditOneValue';
 import PalletBage from './PalletBage';
 import usePalletStore from './palletsStore';
 import ModalCreate from '../../components/UI/Modal/ModalCreate';
+import Spinner from '../../components/Spinner/Spinner';
 
 export default function RowPage() {
 	const getRowById = useRowStore((state) => state.getRowById);
@@ -26,6 +27,7 @@ export default function RowPage() {
 	const [showModalDeleteRow, setShowModalDeleteRow] = useState(false);
 	const [showModalUpdateRow, setShowModalUpdateRow] = useState(false);
 	const [showModalCreatePallet, setShowModalCreatePallet] = useState(false);
+	const [isRowPalletsLoading, setIsRowPalletsLoading] = useState(false)
 
 
 
@@ -37,7 +39,17 @@ export default function RowPage() {
 	}
 
 	async function fetchRowPallets(id) {
-		await getRowPallets(id)
+
+		try {
+			setIsRowPalletsLoading(true)
+			await getRowPallets(id)
+		} catch (error) {
+			console.log(error)
+		} finally {
+			setIsRowPalletsLoading(false)
+		}
+
+
 
 	}
 
@@ -194,15 +206,28 @@ export default function RowPage() {
 					Паллеты
 				</TextBlock>
 
-				<CardBlock
-					className="flex flex-wrap gap-2 justify-start "
-				>
+				{isRowPalletsLoading
+					?
+					<Spinner />
+					:
+					palletsStore.length === 0
+						?
+						<TextBlock
+							className="text-2xl"
+						>На этом ряду нет паллет </TextBlock>
+						:
+						<CardBlock
+							className="flex flex-wrap gap-2 justify-start "
+						>
 
-					{palletsStore?.map((pallet) => <PalletBage
-						title={pallet.title}
-						id={pallet._id}
-					/>)}
-				</CardBlock>
+							{palletsStore?.map((pallet) => <PalletBage
+								title={pallet.title}
+								id={pallet._id}
+							/>)}
+						</CardBlock>}
+
+
+
 
 			</CardBlock>
 
