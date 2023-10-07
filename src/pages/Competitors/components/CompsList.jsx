@@ -1,9 +1,9 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { useCompContext } from '../contexts/compContextProvider';  // Import the context hook
-import { ButtonBlock, CardBlock, ImageBlock, InputBlock, TextBlock } from '../../../components';
+import { ButtonBlock, CardBlock, ImageBlock, InputBlock, TextBlock, Spinner } from '../../../components';
 import { analyzeComp } from '../../../utils/analyzeComp';
 import { exportToExcelComps } from '../../../utils/exportExcel';
-import Spinner from '../../../components/Spinner/Spinner';
+
 
 import { IoAnalyticsOutline } from "react-icons/io5";
 import { SiMicrosoftexcel } from "react-icons/si";

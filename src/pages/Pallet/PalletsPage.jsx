@@ -12,11 +12,7 @@ import PageBTW from '../../components/UI/Page/PageBTW';
 
 import { getAllPallets } from '../../redux/features/pallet/palletSlice';
 
-
-import ButtonBlock from '../../components/blocks/ButtonBlock';
-import HeaderBlock from '../../components/blocks/HeaderBlock';
-import CardBlock from '../../components/blocks/CardBlock';
-
+import { ButtonBlock, CellBlock, InputBlock, RowBlock, TextBlock, CardBlock , HeaderBlock } from '../../components';
 
 
 

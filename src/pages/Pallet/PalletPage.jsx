@@ -12,14 +12,10 @@ import { checkIsAuth } from '../../redux/features/auth/authSlice';
 
 
 
+import {PageBTW, ButtonBlock, HeaderBlock, CellBlock, CardBlock   }from '../../components/';
 
 
-import PageBTW from '../../components/UI/Page/PageBTW';
 
-import ButtonBlock from '../../components/blocks/ButtonBlock';
-import HeaderBlock from '../../components/blocks/HeaderBlock';
-import CellBlock from '../../components/blocks/CellBlock';
-import CardBlock from '../../components/blocks/CardBlock';
 import PalletTitle from './Pallet/PalletTitle';
 import PalletPositionAdd from './Pallet/PalletPositionAdd';
 import PalletPositions from './Pallet/PalletPositions';

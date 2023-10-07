@@ -7,10 +7,7 @@ import { toast } from 'react-toastify';
 
 
 
-import PageBTW from '../../components/UI/Page/PageBTW';
-
-import HeaderBlock from '../../components/blocks/HeaderBlock';
-import { ButtonBlock } from "../../components"
+import { ButtonBlock, HeaderBlock, PageBTW } from "../../components"
 
 
 
@@ -38,7 +35,7 @@ const RowsPage = () => {
 			</HeaderBlock>
 
 
-		
+
 
 
 		</PageBTW >

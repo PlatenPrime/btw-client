@@ -1,26 +1,14 @@
 import React, { useEffect, useRef, useState } from 'react';
 
-import * as  XLSX from 'xlsx';
-
-
-
 import { useNavigate } from 'react-router-dom';
 import useArts from '../../hooks/useFetchArts';
 
 import PageBTW from '../../components/UI/Page/PageBTW';
 
-
 import axios from "../../utils/axios";
 import { toast } from 'react-toastify';
 
-import ButtonBlock from '../../components/blocks/ButtonBlock';
-import InputBlock from '../../components/blocks/InputBlock';
-import HeaderBlock from '../../components/blocks/HeaderBlock';
-import CardBlock from '../../components/blocks/CardBlock';
-import ImageBlock from '../../components/blocks/ImageBlock';
-import RowBlock from '../../components/blocks/RowBlock';
-import TextBlock from '../../components/blocks/TextBlock';
-
+import { ButtonBlock, InputBlock, TextBlock, CardBlock, HeaderBlock, ImageBlock, RowBlock } from "../../components";
 
 
 

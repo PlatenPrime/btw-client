@@ -6,14 +6,15 @@ import {
 	RowBlock,
 	TextBlock,
 	CardBlock,
-	ImageBlock
+	ImageBlock,
+	Spinner
 } from '../../../components';
 import { getArtDataSharte } from '../../../utils/getArtDataSharte';
 import { getArtDataBtrade } from '../../../utils/getArtDataBtrade';
 
 
 import axios from "../../../utils/axios"
-import Spinner from '../../../components/Spinner/Spinner';
+
 
 import { categories, subcategories, prods } from '../../../constants/compsData';
 

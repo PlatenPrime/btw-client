@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useRowStore } from './stocksStore';
-import { ButtonBlock, CardBlock, InputBlock, TextBlock } from '../../components';
-import Spinner from '../../components/Spinner/Spinner';
+import { ButtonBlock, CardBlock, InputBlock, TextBlock, Spinner } from '../../components';
+
 
 function CreateRowForm() {
 	const createRow = useRowStore((state) => state.createRow);

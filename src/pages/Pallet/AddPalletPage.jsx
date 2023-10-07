@@ -11,11 +11,9 @@ import { checkIsAuth } from '../../redux/features/auth/authSlice';
 
 
 
-import PageBTW from '../../components/UI/Page/PageBTW';
+import {PageBTW, ButtonBlock, HeaderBlock }from '../../components/';
 
 
-import ButtonBlock from '../../components/blocks/ButtonBlock';
-import HeaderBlock from '../../components/blocks/HeaderBlock';
 
 
 

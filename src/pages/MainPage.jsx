@@ -1,12 +1,10 @@
 import React, { useState } from 'react';
 
 
-import PageBTW from '../components/UI/Page/PageBTW';
-
-import { InputBlock, ButtonBlock, CardBlock, RowBlock, HeaderBlock, TextBlock } from "../components/index"
+import { InputBlock, ButtonBlock, CardBlock, RowBlock, HeaderBlock, TextBlock, Spinner, PageBTW } from "../components/index"
 
 
-import Spinner from '../components/Spinner/Spinner';
+
 import { getArtDataYumi } from '../utils/getArtDataYumi';
 import { getArtDataBtrade } from '../utils/getArtDataBtrade';
 import { getArtDataSharte } from '../utils/getArtDataSharte';

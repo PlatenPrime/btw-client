@@ -1,7 +1,6 @@
 
 import { useRef, useState } from "react";
-import ButtonBlock from "../../blocks/ButtonBlock";
-import InputBlock from "../../blocks/InputBlock";
+import { ButtonBlock, InputBlock, TextBlock } from "../../index";
 
 export default function ModalEditOneValue({ value, onConfirm, onCancel }) {
 

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import { ButtonBlock, CardBlock, ImageBlock, TextBlock } from '../../../components';
+import { ButtonBlock, CardBlock, ImageBlock, TextBlock, Spinner } from '../../../components';
 import { useCompContext } from '../contexts/compContextProvider';
-import Spinner from '../../../components/Spinner/Spinner';
+
 
 export default function CompsLogsPage() {
 	const { logsDB, loadingLogsDB, errorLogsDB } = useCompContext();

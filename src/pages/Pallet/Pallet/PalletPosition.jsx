@@ -1,16 +1,6 @@
 import React, { useEffect, useState } from 'react';
 
-
-
-
-import ButtonBlock from '../../../components/blocks/ButtonBlock';
-import CellBlock from '../../../components/blocks/CellBlock';
-import InputBlock from '../../../components/blocks/InputBlock';
-import RowBlock from '../../../components/blocks/RowBlock';
-
-
-import TextBlock from '../../../components/blocks/TextBlock';
-
+import { ButtonBlock, CellBlock, InputBlock, RowBlock, TextBlock } from '../../../components';
 
 
 import { BiSave } from "react-icons/bi";

@@ -3,9 +3,7 @@ import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { checkIsAuth } from '../../../redux/features/auth/authSlice';
 
-import SpinnerBlock from '../../blocks/SpinnerBlock';
-import CardBlock from '../../blocks/CardBlock';
-import TextBlock from '../../blocks/TextBlock';
+import { ButtonBlock, InputBlock, TextBlock, CardBlock } from "../../index";
 
 const PageBTW = ({ children, className }) => {
 

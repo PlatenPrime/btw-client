@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { useRowStore } from './stocksStore';
-import { CardBlock, TextBlock } from '../../components';
+import { CardBlock, TextBlock, Spinner } from '../../components';
 import RowBage from '../Row/Row/RowBage';
-import Spinner from '../../components/Spinner/Spinner';
+
 
 
 export function RowList() {

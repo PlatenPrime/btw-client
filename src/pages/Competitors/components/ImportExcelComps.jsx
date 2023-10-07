@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
-import { ButtonBlock, CardBlock, InputBlock, TextBlock } from '../../../components'
+import { ButtonBlock, CardBlock, InputBlock, TextBlock, Spinner } from '../../../components'
 import { importFromExcelComps } from "../../../utils/importExcel"
 import axios from '../../../utils/axios'
-import Spinner from '../../../components/Spinner/Spinner'
+
 
 export default function ImportExcelComps() {
 

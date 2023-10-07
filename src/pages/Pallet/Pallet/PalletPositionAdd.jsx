@@ -1,14 +1,9 @@
 import React from 'react';
 import { useState } from 'react';
 
+import { ButtonBlock, CellBlock, InputBlock, RowBlock, TextBlock } from '../../../components';
 
 
-
-
-import ButtonBlock from '../../../components/blocks/ButtonBlock';
-import InputBlock from '../../../components/blocks/InputBlock';
-import CellBlock from '../../../components/blocks/CellBlock';
-import RowBlock from '../../../components/blocks/RowBlock';
 
 
 

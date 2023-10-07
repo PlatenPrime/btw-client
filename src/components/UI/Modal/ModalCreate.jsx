@@ -1,8 +1,7 @@
 
 import { useRef, useState } from "react";
-import ButtonBlock from "../../blocks/ButtonBlock";
-import InputBlock from "../../blocks/InputBlock";
-import TextBlock from "../../blocks/TextBlock";
+import { ButtonBlock, InputBlock, TextBlock } from "../../index";
+
 
 export default function ModalCreate({ title, onConfirm, onCancel }) {
 
@@ -31,7 +30,7 @@ export default function ModalCreate({ title, onConfirm, onCancel }) {
 			>
 
 				<TextBlock
-				className="text-3xl"
+					className="text-3xl"
 				>{title}</TextBlock>
 
 

@@ -1,22 +1,13 @@
-import * as xlsx from "xlsx";
+
 import React, { useEffect, useState } from 'react';
 import useArts from "../../hooks/useFetchArts";
 
-
-
-import ButtonBlock from '../../components/blocks/ButtonBlock';
 
 import { toast } from 'react-toastify';
 import axios from '../../utils/axios';
 import { excelToJSONArts } from '../../utils/importExcel';
 
-import InputBlock from "../../components/blocks/InputBlock";
-import HeaderBlock from "../../components/blocks/HeaderBlock";
-import CardBlock from "../../components/blocks/CardBlock";
-import TextBlock from "../../components/blocks/TextBlock";
-import ImageBlock from "../../components/blocks/ImageBlock";
-import PageBTW from "../../components/UI/Page/PageBTW";
-
+import { ButtonBlock, InputBlock, TextBlock, CardBlock, HeaderBlock, ImageBlock, RowBlock, PageBTW } from "../../components";
 
 
 

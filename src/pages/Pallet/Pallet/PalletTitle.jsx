@@ -1,12 +1,7 @@
 import React, { useEffect, useState } from 'react';
 
+import { ButtonBlock, CellBlock, InputBlock, RowBlock, TextBlock} from '../../../components';
 
-
-import ButtonBlock from '../../../components/blocks/ButtonBlock';
-import InputBlock from '../../../components/blocks/InputBlock';
-import RowBlock from '../../../components/blocks/RowBlock';
-import TextBlock from '../../../components/blocks/TextBlock';
-import CellBlock from '../../../components/blocks/CellBlock';
 
 
 

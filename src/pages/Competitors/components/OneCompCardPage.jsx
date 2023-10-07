@@ -1,11 +1,11 @@
 import React, { useState } from 'react'
-import { ButtonBlock, CardBlock, ImageBlock, InputBlock, RowBlock, TextBlock } from '../../../components'
+import { ButtonBlock, CardBlock, ImageBlock, InputBlock, RowBlock, TextBlock, Spinner } from '../../../components'
 import { useCompContext } from '../contexts/compContextProvider';
 import { Link, useNavigate } from 'react-router-dom';
 
 
 import axios from "../../../utils/axios"
-import Spinner from '../../../components/Spinner/Spinner';
+
 
 
 

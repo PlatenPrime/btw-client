@@ -1,8 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import RowBlock from '../../../components/blocks/RowBlock';
-import TextBlock from '../../../components/blocks/TextBlock';
-
+import { ButtonBlock, CellBlock, InputBlock, RowBlock, TextBlock, CardBlock } from '../../../components';
 
 
 
@@ -24,7 +22,7 @@ const RowBage = ({ row }) => {
 
 	return (
 
-		<RowBlock  className='w-full'  >
+		<RowBlock className='w-full'  >
 
 			<Link
 

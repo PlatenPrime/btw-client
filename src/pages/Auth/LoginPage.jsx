@@ -3,12 +3,10 @@ import { Link, useNavigate } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { checkIsAuth, loginUser } from '../../redux/features/auth/authSlice'
 import { toast } from 'react-toastify'
-import ButtonBlock from '../../components/blocks/ButtonBlock'
-import InputBlock from '../../components/blocks/InputBlock'
+
 
 import PageAuthBTW from '../../components/UI/Page/PageAuthBTW'
-import CardBlock from '../../components/blocks/CardBlock'
-import TextBlock from '../../components/blocks/TextBlock'
+import { ButtonBlock, InputBlock, TextBlock, CardBlock } from "../../components";
 
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';

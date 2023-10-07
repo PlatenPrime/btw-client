@@ -1,9 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import PalletPosition from './PalletPosition';
-import CellBlock from '../../../components/blocks/CellBlock';
-import CardBlock from '../../../components/blocks/CardBlock';
-import TextBlock from '../../../components/blocks/TextBlock';
-
+import { ButtonBlock, CellBlock, InputBlock, RowBlock, TextBlock, CardBlock  } from '../../../components';
 
 
 

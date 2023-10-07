@@ -1,13 +1,16 @@
-import React, { useEffect, useRef, useState } from 'react'
-import { useRowStore } from './stocksStore';
+import React, { useEffect,  useState } from 'react'
+
 import { useNavigate, useParams } from 'react-router-dom';
-import { ButtonBlock, CardBlock, HeaderBlock, ModalConfirm, PageBTW, TextBlock } from '../../components';
+
+import { ButtonBlock, CardBlock, HeaderBlock, ModalConfirm, ModalCreate, ModalEditOneValue, PageBTW, TextBlock, Spinner } from '../../components';
 import { toast } from 'react-toastify';
-import ModalEditOneValue from '../../components/UI/Modal/ModalEditOneValue';
+
 import PalletBage from './PalletBage';
+
+import { useRowStore } from './stocksStore';
 import usePalletStore from './palletsStore';
-import ModalCreate from '../../components/UI/Modal/ModalCreate';
-import Spinner from '../../components/Spinner/Spinner';
+
+
 
 export default function RowPage() {
 	const getRowById = useRowStore((state) => state.getRowById);

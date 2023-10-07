@@ -3,13 +3,7 @@ import { Link, useNavigate, useParams } from 'react-router-dom';
 
 
 import axios from "../../utils/axios"
-import HeaderBlock from '../../components/blocks/HeaderBlock';
-import ImageBlock from '../../components/blocks/ImageBlock';
-import CardBlock from '../../components/blocks/CardBlock';
-import RowBlock from '../../components/blocks/RowBlock';
-import TextBlock from '../../components/blocks/TextBlock';
-import CellBlock from '../../components/blocks/CellBlock';
-import PageBTW from '../../components/UI/Page/PageBTW';
+import { ButtonBlock, InputBlock, TextBlock, CardBlock, HeaderBlock, ImageBlock, RowBlock, PageBTW, CellBlock } from "../../components";
 
 
 

@@ -1,6 +1,6 @@
 import { useRef } from "react";
-import ButtonBlock from "../../blocks/ButtonBlock";
-import TextBlock from "../../blocks/TextBlock";
+import {ButtonBlock, TextBlock  } from "../../../components";
+
 
 
 

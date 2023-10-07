@@ -4,9 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Link, NavLink } from "react-router-dom";
 import { checkIsAuth, logout } from '../../../redux/features/auth/authSlice';
 import { toast } from 'react-toastify';
-import TextBlock from '../../blocks/TextBlock';
-import CardBlock from '../../blocks/CardBlock';
-import ButtonBlock from '../../blocks/ButtonBlock';
+import { ButtonBlock, InputBlock, TextBlock, CardBlock } from "../../index";
 
 
 const SidebarMobileBTW = ({ onClose }) => {

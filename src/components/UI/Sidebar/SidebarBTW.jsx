@@ -4,10 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Link, NavLink } from "react-router-dom";
 import { checkIsAuth, logout } from '../../../redux/features/auth/authSlice';
 import { toast } from 'react-toastify';
-import ButtonBlock from '../../blocks/ButtonBlock';
-import CardBlock from '../../blocks/CardBlock';
-import TextBlock from '../../blocks/TextBlock';
-
+import { ButtonBlock, InputBlock, TextBlock, CardBlock } from "../../index";
 
 const SidebarBTW = () => {
 
