@@ -394,6 +394,7 @@ transition ease-in-out duration-300
 	@apply
 	border border-gray-300 bg-transparent text-gray-300 
 hover:text-gray-300  hover:border-gray-300  hover:bg-transparent
+shadow-md  active:shadow-transparent
 
 	
 }

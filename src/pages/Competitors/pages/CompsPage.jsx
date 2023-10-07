@@ -3,9 +3,6 @@ import React, { useEffect, useState } from 'react'
 
 import {
 	PageBTW,
-	MainBTW,
-	ContentMain,
-	ControlBTW,
 	HeaderBlock,
 	CardBlock,
 	TextBlock,
@@ -16,8 +13,7 @@ import {
 
 
 import { CompContextProvider } from '../contexts/compContextProvider'
-import AddCompForm from '../components/AddCompForm';
-import CompList from '../components/CompsList';
+
 import { Link, NavLink, Outlet, useNavigate } from 'react-router-dom';
 
 
@@ -147,7 +143,7 @@ export default function CompsPage() {
 
 
 				<CardBlock
-				className="p-4">
+					className="p-4">
 
 					<Outlet />
 
