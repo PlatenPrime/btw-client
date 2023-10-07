@@ -10,6 +10,7 @@ import { getArtDataBtrade } from '../utils/getArtDataBtrade';
 import { getArtDataSharte } from '../utils/getArtDataSharte';
 import { getArtDataAir } from '../utils/getArtDataAir';
 import { getArtDataBest } from '../utils/getArtDataBest';
+import ModalInfo from '../components/UI/Modal/ModalInfo';
 
 
 
@@ -18,6 +19,12 @@ import { getArtDataBest } from '../utils/getArtDataBest';
 
 
 const MainPage = () => {
+
+
+	const [showModalInfo, setShowModalInfo] = useState(false)
+
+
+
 
 
 	const [artikul, setArtikul] = useState("")
@@ -125,7 +132,9 @@ const MainPage = () => {
 
 
 
-			<CardBlock  >
+			<CardBlock
+				className="flex flex-col"
+			>
 
 
 
@@ -142,145 +151,129 @@ const MainPage = () => {
 
 
 
-			<CardBlock
-				className="flex flex-col items-center space-y-2 border border-violet-500 p-2"
-			>
 
-				<CardBlock
-					className="flex space-x-2"
+			<CardBlock>
+				<ButtonBlock
+					className="add-c"
+					onClick={() => { setShowModalInfo(true) }}
 				>
-					<InputBlock
-						onChange={(e) => { setArtikul(e.target.value) }}
-						value={artikul}
-						placeholder="Введи ссылку yumi"
-					/>
-					<ButtonBlock
-						className="add-c"
-						onClick={() => { handleFetch(artikul) }}
-					>
-						Анализ
-					</ButtonBlock>
-					<TextBlock>{price}</TextBlock>
-					<TextBlock>{quant}</TextBlock>
-				</CardBlock>
+					Анализировать ссылки конкурентов
+				</ButtonBlock>
 
-
-				<CardBlock
-					className="flex space-x-2"
-				>
-					<InputBlock
-						onChange={(e) => { setArtikulBtrade(e.target.value) }}
-						value={artikulBtrade}
-						placeholder="Введи артикул btrade"
-					/>
-					<ButtonBlock
-						className="add-c"
-						onClick={() => { handleFetchBtrade(artikulBtrade) }}
-					// onClick={testFetch}
-					>
-						Анализ
-					</ButtonBlock>
-					<TextBlock>{priceBtrade}</TextBlock>
-					<TextBlock>{quantBtrade}</TextBlock>
-				</CardBlock>
-
-
-				<CardBlock
-					className="flex space-x-2"
-
-				>
-					<InputBlock
-						onChange={(e) => { setArtikulSharte(e.target.value) }}
-						value={artikulSharte}
-						placeholder="Введи ссылку sharte"
-					/>
-					<ButtonBlock
-						className="add-c"
-						onClick={() => { handleFetchSharte(artikulSharte) }}
-					>
-						Анализ
-					</ButtonBlock>
-					<TextBlock>{priceSharte}</TextBlock>
-					<TextBlock>{isAvailableSharte ? "Есть" : isAvailableSharte === false ? "Нет" : ""}</TextBlock>
-				</CardBlock>
-
-
-				<CardBlock
-					className="flex space-x-2"
-				>
-					<InputBlock
-						onChange={(e) => { setArtikulAir(e.target.value) }}
-						value={artikulAir}
-						placeholder="Введи ссылку air"
-					/>
-					<ButtonBlock
-						className="add-c"
-						onClick={() => { handleFetchAir(artikulAir) }}
+				{showModalInfo && <CardBlock>
+					<ModalInfo
+						onCancel={() => { setShowModalInfo(false) }}
 
 					>
-						Анализ
-					</ButtonBlock>
-					<TextBlock>{priceAir}</TextBlock>
-					<TextBlock>{isAvailableAir ? "Есть" : isAvailableAir === false ? "Нет" : ""}</TextBlock>
-				</CardBlock>
+						<CardBlock
+							className="flex flex-col items-center space-y-2 border border-violet-500 p-2"
+						>
+
+							<CardBlock
+								className="flex space-x-2"
+							>
+								<InputBlock
+									onChange={(e) => { setArtikul(e.target.value) }}
+									value={artikul}
+									placeholder="Введи ссылку yumi"
+								/>
+								<ButtonBlock
+									className="add-c"
+									onClick={() => { handleFetch(artikul) }}
+								>
+									Анализ
+								</ButtonBlock>
+								<TextBlock>{price}</TextBlock>
+								<TextBlock>{quant}</TextBlock>
+							</CardBlock>
+
+
+							<CardBlock
+								className="flex space-x-2"
+							>
+								<InputBlock
+									onChange={(e) => { setArtikulBtrade(e.target.value) }}
+									value={artikulBtrade}
+									placeholder="Введи артикул btrade"
+								/>
+								<ButtonBlock
+									className="add-c"
+									onClick={() => { handleFetchBtrade(artikulBtrade) }}
+								// onClick={testFetch}
+								>
+									Анализ
+								</ButtonBlock>
+								<TextBlock>{priceBtrade}</TextBlock>
+								<TextBlock>{quantBtrade}</TextBlock>
+							</CardBlock>
+
+
+							<CardBlock
+								className="flex space-x-2"
+
+							>
+								<InputBlock
+									onChange={(e) => { setArtikulSharte(e.target.value) }}
+									value={artikulSharte}
+									placeholder="Введи ссылку sharte"
+								/>
+								<ButtonBlock
+									className="add-c"
+									onClick={() => { handleFetchSharte(artikulSharte) }}
+								>
+									Анализ
+								</ButtonBlock>
+								<TextBlock>{priceSharte}</TextBlock>
+								<TextBlock>{isAvailableSharte ? "Есть" : isAvailableSharte === false ? "Нет" : ""}</TextBlock>
+							</CardBlock>
+
+
+							<CardBlock
+								className="flex space-x-2"
+							>
+								<InputBlock
+									onChange={(e) => { setArtikulAir(e.target.value) }}
+									value={artikulAir}
+									placeholder="Введи ссылку air"
+								/>
+								<ButtonBlock
+									className="add-c"
+									onClick={() => { handleFetchAir(artikulAir) }}
+
+								>
+									Анализ
+								</ButtonBlock>
+								<TextBlock>{priceAir}</TextBlock>
+								<TextBlock>{isAvailableAir ? "Есть" : isAvailableAir === false ? "Нет" : ""}</TextBlock>
+							</CardBlock>
 
 
 
-				<CardBlock
-					className="flex space-x-2"
-				>
-					<InputBlock
-						onChange={(e) => { setArtikulBest(e.target.value) }}
-						value={artikulBest}
-						placeholder="Введи ссылку best"
-					/>
-					<ButtonBlock
-						className="add-c"
-						onClick={() => { handleFetchBest(artikulBest) }}
+							<CardBlock
+								className="flex space-x-2"
+							>
+								<InputBlock
+									onChange={(e) => { setArtikulBest(e.target.value) }}
+									value={artikulBest}
+									placeholder="Введи ссылку best"
+								/>
+								<ButtonBlock
+									className="add-c"
+									onClick={() => { handleFetchBest(artikulBest) }}
 
-					>
-						Анализ
-					</ButtonBlock>
-					<TextBlock>{priceBest}</TextBlock>
-					<TextBlock>{isAvailableBest ? "Есть" : isAvailableBest === false ? "Нет" : ""}</TextBlock>
-				</CardBlock>
+								>
+									Анализ
+								</ButtonBlock>
+								<TextBlock>{priceBest}</TextBlock>
+								<TextBlock>{isAvailableBest ? "Есть" : isAvailableBest === false ? "Нет" : ""}</TextBlock>
+							</CardBlock>
 
+						</CardBlock>
+
+
+					</ModalInfo>
+				</CardBlock>}
 			</CardBlock>
-
-
-
-
-			{/* <TextBlock className="text-4xl" >Icons</TextBlock>
-
-			<CardBlock className="grid md:grid-cols-3" >
-				<ButtonBlock className='edit'   >Edit</ButtonBlock>
-				<ButtonBlock className='create' >Create</ButtonBlock>
-				<ButtonBlock className='cancel' >Cancel</ButtonBlock>
-				<ButtonBlock className='success' >Success</ButtonBlock>
-				<ButtonBlock className='delete' >Delete</ButtonBlock>
-				<ButtonBlock className='confirm' >Confirm</ButtonBlock>
-				<ButtonBlock className='add' >Add</ButtonBlock>
-				<ButtonBlock className='search' >Search</ButtonBlock>
-			</CardBlock>
-
-
-
-			<TextBlock className="text-4xl" >Buttons</TextBlock>
-
-			<ButtonBlock className='edit-c ' >Edit-c</ButtonBlock>
-			<ButtonBlock className='create-c ' >Create-c</ButtonBlock>
-			<ButtonBlock className='cancel-c ' >Cancel-c</ButtonBlock>
-			<ButtonBlock className='success-c ' >Success-c</ButtonBlock>
-			<ButtonBlock className='delete-c ' >Delete-c</ButtonBlock>
-			<ButtonBlock className='confirm-c ' >Confirm-c</ButtonBlock>
-			<ButtonBlock className='add-c ' >Add-c</ButtonBlock>
-			<ButtonBlock className='search-c ' >Search-c</ButtonBlock>
-
-
- */}
-
-
-
 
 
 		</PageBTW>

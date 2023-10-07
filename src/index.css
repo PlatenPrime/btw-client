@@ -110,11 +110,12 @@ table {
 
 .ButtonBlock {
 	@apply
-	p-2 m-1  rounded-xl 
-	border-2 border-gray-900
-	bg-gray-100 text-gray-900
+	p-2 rounded-xl 
+	border-2 border-gray-900 active:border-white
+	bg-gray-300 text-gray-900
 	hover:bg-white 
-	active:bg-gray-900 active:text-white
+	active:bg-gray-200 
+	shadow-md  active:shadow-white
 	transition ease-in-out duration-300
 }
 
