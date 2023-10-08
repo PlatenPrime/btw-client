@@ -7,6 +7,11 @@ import { getArtDataBest } from '../../../utils/getArtDataBest'
 import { ButtonBlock, CardBlock, InputBlock, TextBlock } from '../../../components'
 import ModalInfo from '../../../components/UI/Modal/ModalInfo'
 
+import { BsClipboardCheck } from 'react-icons/bs';
+
+
+
+
 export default function CheckCompLinks() {
 
 	const [showModalInfo, setShowModalInfo] = useState(false)
@@ -104,10 +109,13 @@ export default function CheckCompLinks() {
 
 		<CardBlock>
 			<ButtonBlock
-				className="confirm-c"
+				className="confirm-c flex"
 				onClick={() => { setShowModalInfo(true) }}
 			>
-				Перевірити посилання
+				<BsClipboardCheck 
+				className='text-2xl'
+				/>
+				<TextBlock>Перевірити посилання</TextBlock>
 			</ButtonBlock>
 
 			{showModalInfo && <CardBlock>

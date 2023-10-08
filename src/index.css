@@ -339,7 +339,7 @@ transition ease-in-out duration-300
 .confirm-c {
 	@apply
  
-	border border-yellow-500  text-yellow-500  
+	border border-yellow-500  text-gray-100  
 	bg-transparent hover:bg-yellow-400 active:bg-yellow-600  
 	  hover:text-white focus:text-white active:text-white
 	  shadow-2xl hover:shadow-yellow-500
