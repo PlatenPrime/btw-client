@@ -7,9 +7,12 @@ import 'react-toastify/dist/ReactToastify.css';
 
 import MainPage from "./pages/MainPage";
 
-import PalletsPage from "./pages/Pallet/PalletsPage";
-import PalletPage from "./pages/Pallet/PalletPage";
-import AddPalletPage from "./pages/Pallet/AddPalletPage";
+
+
+import PalletPage from "./pages/Stocks/PalletPage";
+
+
+
 
 import RowsPage from "./pages/Row/RowsPage";
 
@@ -65,10 +68,8 @@ function App() {
 				<Route path="login" element={<LoginPage />} />
 				<Route path="register" element={<RegisterPage />} />
 
-				<Route path="pallets" element={<PalletsPage />} />
-				<Route path="pallets/:id" element={<PalletPage />} />
-				<Route path="pallets/new" element={<AddPalletPage />} />
 
+				<Route path="pallets/:id" element={<PalletPage />} />
 
 
 

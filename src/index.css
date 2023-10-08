@@ -132,6 +132,7 @@ table {
 .HeaderBlock {
 	@apply
 	w-full h-16 p-4
+	rounded-md
 		flex justify-center items-center   
 		 bg-gray-800  text-white
 	transition ease-in-out duration-300		
