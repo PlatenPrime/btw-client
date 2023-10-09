@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import usePalletStore from './palletsStore';
-import useBoxStore from './boxesStore';
+import usePosesStore from './posesStore';
 import { ButtonBlock, CardBlock, HeaderBlock, ModalConfirm, ModalEditOneValue, PageBTW, Spinner, TextBlock } from '../../components';
 import { toast } from 'react-toastify';
 
@@ -17,8 +17,8 @@ export default function PalletPage() {
 
 	const [pallet, setPallet] = useState(null);
 	const [title, setTitle] = useState("");
-	const [boxes, setBoxes] = useState([]);
-	const [isBoxesLoading, setIsBoxesLoading] = useState(false);
+	const [poses, setPoses] = useState([]);
+	const [isPosesLoading, setIsPosesLoading] = useState(false);
 
 	const [showModalPalletDelete, setShowModalPalletDelete] = useState(false)
 	const [showModalRenamePallet, setShowModalRenamePallet] = useState(false);
@@ -44,11 +44,11 @@ export default function PalletPage() {
 	useEffect(() => {
 		async function fetchBoxes() {
 			if (pallet) {
-				setIsBoxesLoading(true);
+				setIsPosesLoading(true);
 				const fetchedBoxes = await getPalletBoxes(pallet._id);
 				console.log(fetchedBoxes)
-				setBoxes(fetchedBoxes);
-				setIsBoxesLoading(false);
+				setPoses(fetchedBoxes);
+				setIsPosesLoading(false);
 			}
 		}
 
@@ -165,22 +165,22 @@ export default function PalletPage() {
 					Всего позиций {pallet?.boxes.length}
 				</TextBlock>
 
-				{isBoxesLoading ? (
+				{isPosesLoading ? (
 					<Spinner />
-				) : boxes.length === 0 ? (
+				) : poses.length === 0 ? (
 					<p>Нет коробок на этой паллете</p>
 				) : (
 					<ul className='grid grid-cols-1 
 					md:grid-cols-3 
 					lg:grid-cols-4 
 					xl:grid-cols-4 gap-2 p-4'>
-						{boxes.map((box, i) => {
-							const arrayOfArticuls = Object.entries(box.articuls);
+						{poses.map((pos, i) => {
+
 							return (
-								<li className='border border-green-500 p-2' key={box._id}>
+								<li className='border border-green-500 p-2' key={pos._id}>
 									<TextBlock>{i} или отметка коробки</TextBlock>
-									<TextBlock>{box._id}</TextBlock>
-									<TextBlock>Дата: {box.date}</TextBlock>
+									<TextBlock>{pos._id}</TextBlock>
+									<TextBlock>Дата: {pos.date}</TextBlock>
 									<TextBlock>Артикул: ХХХХ-ХХХХ</TextBlock>
 									<TextBlock>Количество: ХХХХ</TextBlock>
 								</li>
