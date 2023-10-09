@@ -11,7 +11,7 @@ export default function PalletPage() {
 	const navigate = useNavigate()
 
 	const getPalletById = usePalletStore((state) => state.getPalletById);
-	const getPalletBoxes = usePalletStore((state) => state.getPalletBoxes);
+	const getPalletPoses = usePalletStore((state) => state.getPalletPoses);
 	const deletePalletById = usePalletStore((state) => state.deletePalletById);
 	const updatePalletById = usePalletStore((state) => state.updatePalletById);
 
@@ -22,7 +22,7 @@ export default function PalletPage() {
 
 	const [showModalPalletDelete, setShowModalPalletDelete] = useState(false)
 	const [showModalRenamePallet, setShowModalRenamePallet] = useState(false);
-	const [showModalCreateBox, setShowModalCreateBox] = useState(false);
+	const [showModalCreatePos, setShowModalCreatePos] = useState(false);
 
 
 	useEffect(() => {
@@ -38,22 +38,22 @@ export default function PalletPage() {
 		}
 
 		fetchData();
-	}, [id]);
+	}, [id, getPalletById]);
 
 
 	useEffect(() => {
 		async function fetchBoxes() {
 			if (pallet) {
 				setIsPosesLoading(true);
-				const fetchedBoxes = await getPalletBoxes(pallet._id);
-				console.log(fetchedBoxes)
-				setPoses(fetchedBoxes);
+				const fetchedPoses = await getPalletPoses(pallet._id);
+				console.log(fetchedPoses)
+				setPoses(fetchedPoses);
 				setIsPosesLoading(false);
 			}
 		}
 
 		fetchBoxes();
-	}, [pallet]);
+	}, [pallet, getPalletPoses]);
 
 
 	async function handleDeletePalletById() {
@@ -162,19 +162,19 @@ export default function PalletPage() {
 				</TextBlock>
 
 				<TextBlock>
-					Всего позиций {pallet?.boxes.length}
+					Всего позиций {pallet?.poses.length}
 				</TextBlock>
 
 				{isPosesLoading ? (
 					<Spinner />
-				) : poses.length === 0 ? (
+				) : poses?.length === 0 ? (
 					<p>Нет коробок на этой паллете</p>
 				) : (
 					<ul className='grid grid-cols-1 
 					md:grid-cols-3 
 					lg:grid-cols-4 
 					xl:grid-cols-4 gap-2 p-4'>
-						{poses.map((pos, i) => {
+						{poses?.map((pos, i) => {
 
 							return (
 								<li className='border border-green-500 p-2' key={pos._id}>

@@ -82,18 +82,18 @@ const usePalletStore = create((set) => ({
 			console.error('Ошибка удаления Pallet по ID:', error);
 		}
 	},
-	getPalletBoxes: async (id) => {
+	getPalletPoses: async (id) => {
 		try {
-			const response = await axios.get(`pallets/boxes/${id}`);
+			const response = await axios.get(`pallets/poses/${id}`);
 
 			if (response.status === 200) {
 				const data = response.data;
-				return data.boxes;
+				return data.poses;
 			} else {
-				throw new Error('Ошибка получения коробок для Pallet');
+				throw new Error('Ошибка получения позиций для Pallet');
 			}
 		} catch (error) {
-			console.error('Ошибка получения коробок для Pallet:', error);
+			console.error('Ошибка получения позиций для Pallet:', error);
 		}
 	},
 
