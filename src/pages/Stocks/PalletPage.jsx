@@ -168,7 +168,7 @@ export default function PalletPage() {
 				{isPosesLoading ? (
 					<Spinner />
 				) : poses?.length === 0 ? (
-					<p>Нет коробок на этой паллете</p>
+					<p></p>
 				) : (
 					<ul className='grid grid-cols-1 
 					md:grid-cols-3 
