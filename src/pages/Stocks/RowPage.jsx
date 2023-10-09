@@ -105,7 +105,7 @@ export default function RowPage() {
 
 	}
 
-	async function handleDeleteRowById(value) {
+	async function handleDeleteRowById() {
 		try {
 
 			await deleteRowById(row._id);

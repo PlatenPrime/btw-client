@@ -1,18 +1,24 @@
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import usePalletStore from './palletsStore';
 import useBoxStore from './boxesStore';
-import { HeaderBlock, PageBTW, TextBlock } from '../../components';
+import { ButtonBlock, CardBlock, HeaderBlock, ModalConfirm, PageBTW, Spinner, TextBlock } from '../../components';
+import { toast } from 'react-toastify';
 
 export default function PalletPage() {
 
 	const { id } = useParams();
+	const navigate = useNavigate()
+
 	const getPalletById = usePalletStore((state) => state.getPalletById);
 	const getPalletBoxes = usePalletStore((state) => state.getPalletBoxes);
+	const deletePalletById = usePalletStore((state) => state.deletePalletById);
 
 	const [pallet, setPallet] = useState(null);
 	const [boxes, setBoxes] = useState([]);
 	const [isBoxesLoading, setIsBoxesLoading] = useState(false);
+
+	const [showModalPalletDelete, setShowModalPalletDelete] = useState(false)
 
 
 	useEffect(() => {
@@ -45,6 +51,20 @@ export default function PalletPage() {
 	}, [pallet]);
 
 
+	async function handleDeletePalletById() {
+		try {
+			await deletePalletById(pallet._id)
+			toast.success(`Паллета ${pallet.title} удалена`)
+
+		} catch (error) {
+			console.error('Ошибка при удалении Pallet:', error);
+		} finally {
+			setShowModalPalletDelete(false)
+			navigate(`/rows/${pallet.row}`)
+		}
+
+	}
+
 
 
 
@@ -59,36 +79,66 @@ export default function PalletPage() {
 
 
 
-			{isBoxesLoading ? (
-				<p>Загрузка коробок...</p>
-			) : boxes.length === 0 ? (
-				<p>Нет коробок в этой паллете</p>
-			) : (
-				<ul>
-					{
-						boxes.map((box) => {
+			<CardBlock
+				className="flex justify-end flex-wrap p-2"
+			>
+				<ButtonBlock
+					className="delete-c"
+					onClick={() => { setShowModalPalletDelete(true) }}
+				>
+					Удалить паллету
+				</ButtonBlock>
+			</CardBlock>
 
-							const arrayOfArticuls = Object.entries(box.articuls);
 
-							return <li key={box._id}>
-								{box.date}
-								<TextBlock>
-									{arrayOfArticuls.map((artikul) => {
-									<>{artikul[0]}</>	
-									}
-									)}
-								</TextBlock>
+			<CardBlock>
 
-							</li>
+				{showModalPalletDelete && <ModalConfirm
+					ask="Удалить эту паллету?"
+					onConfirm={handleDeletePalletById}
+					onCancel={() => { setShowModalPalletDelete(false) }}
+				/>}
+
+			</CardBlock>
+
+
+
+
+
+
+			<CardBlock>
+
+				{isBoxesLoading ? (
+					<Spinner />
+
+				) : boxes.length === 0 ? (
+					<p>Нет коробок на этой паллете</p>
+				) : (
+					<ul>
+						{
+							boxes.map((box) => {
+
+								const arrayOfArticuls = Object.entries(box.articuls);
+
+								return <li key={box._id}>
+									{box.date}
+									<TextBlock>
+										{arrayOfArticuls.map((artikul) => {
+											<>{artikul[0]}</>
+										}
+										)}
+									</TextBlock>
+
+								</li>
+							}
+
+							)
+
 						}
+					</ul>
+				)}
 
-						)
-
-					}
-				</ul>
-			)}
-
-
+			</CardBlock>
 
 
 
