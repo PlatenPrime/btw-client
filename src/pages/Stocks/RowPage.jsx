@@ -1,4 +1,4 @@
-import React, { useEffect,  useState } from 'react'
+import React, { useEffect, useState } from 'react'
 
 import { useNavigate, useParams } from 'react-router-dom';
 
@@ -143,7 +143,7 @@ export default function RowPage() {
 			</HeaderBlock>
 
 			<CardBlock
-				className="flex flex-wrap justify-end p-2"
+				className="flex flex-wrap justify-end p-2 space-x-2"
 			>
 				<ButtonBlock
 					className="create-c"
@@ -155,7 +155,7 @@ export default function RowPage() {
 					className="edit-c"
 					onClick={() => { setShowModalUpdateRow(true); }}
 				>
-					Редактировать название ряда
+					Переименовать
 				</ButtonBlock>
 				<ButtonBlock
 					className="delete-c"

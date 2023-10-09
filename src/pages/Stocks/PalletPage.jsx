@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import usePalletStore from './palletsStore';
 import useBoxStore from './boxesStore';
-import { ButtonBlock, CardBlock, HeaderBlock, ModalConfirm, PageBTW, Spinner, TextBlock } from '../../components';
+import { ButtonBlock, CardBlock, HeaderBlock, ModalConfirm, ModalEditOneValue, PageBTW, Spinner, TextBlock } from '../../components';
 import { toast } from 'react-toastify';
 
 export default function PalletPage() {
@@ -13,12 +13,16 @@ export default function PalletPage() {
 	const getPalletById = usePalletStore((state) => state.getPalletById);
 	const getPalletBoxes = usePalletStore((state) => state.getPalletBoxes);
 	const deletePalletById = usePalletStore((state) => state.deletePalletById);
+	const updatePalletById = usePalletStore((state) => state.updatePalletById);
 
 	const [pallet, setPallet] = useState(null);
+	const [title, setTitle] = useState("");
 	const [boxes, setBoxes] = useState([]);
 	const [isBoxesLoading, setIsBoxesLoading] = useState(false);
 
 	const [showModalPalletDelete, setShowModalPalletDelete] = useState(false)
+	const [showModalRenamePallet, setShowModalRenamePallet] = useState(false);
+	const [showModalCreateBox, setShowModalCreateBox] = useState(false);
 
 
 	useEffect(() => {
@@ -27,6 +31,7 @@ export default function PalletPage() {
 				const fetchedPallet = await getPalletById(id);
 				console.log(fetchedPallet)
 				setPallet(fetchedPallet);
+				setTitle(fetchedPallet.title)
 			} catch (error) {
 				console.error('Ошибка при получении паллеты:', error);
 			}
@@ -66,6 +71,27 @@ export default function PalletPage() {
 	}
 
 
+	async function handleRenamePalletById(newTitle) {
+		try {
+
+
+
+			const updateData = { ...pallet, title: newTitle }
+
+
+			await updatePalletById(pallet._id, updateData);
+			setTitle(newTitle)
+
+		} catch (error) {
+			console.error('Ошибка при изменении  названия паллеты:', error);
+		} finally {
+			setShowModalRenamePallet(false)
+
+		}
+
+	}
+
+
 
 
 	return (
@@ -74,14 +100,23 @@ export default function PalletPage() {
 			<HeaderBlock
 				className="bg-sky-500/40 border border-sky-500"
 			>
-				{pallet?.title}
+				{title}
 			</HeaderBlock>
 
 
 
 			<CardBlock
-				className="flex justify-end flex-wrap p-2"
+				className="flex justify-end flex-wrap p-2 space-x-2 "
 			>
+
+				<ButtonBlock
+					className="edit-c"
+					onClick={() => { setShowModalRenamePallet(true); }}
+				>
+					Переименовать
+				</ButtonBlock>
+
+
 				<ButtonBlock
 					className="delete-c"
 					onClick={() => { setShowModalPalletDelete(true) }}
@@ -99,6 +134,17 @@ export default function PalletPage() {
 					onCancel={() => { setShowModalPalletDelete(false) }}
 				/>}
 
+				{showModalRenamePallet && <ModalEditOneValue
+
+					value={title}
+					onConfirm={(title) => { handleRenamePalletById(title) }}
+					onCancel={() => { setShowModalRenamePallet(false) }}
+
+				/>}
+
+
+
+
 			</CardBlock>
 
 
@@ -106,7 +152,18 @@ export default function PalletPage() {
 
 
 
-			<CardBlock>
+			<CardBlock
+				className="bg-green-500/5"
+			>
+				<TextBlock
+					className="text-green-500 text-3xl"
+				>
+					Позиции
+				</TextBlock>
+
+				<TextBlock>
+					Всего позиций {pallet?.boxes.length}
+				</TextBlock>
 
 				{isBoxesLoading ? (
 					<Spinner />
@@ -114,20 +171,41 @@ export default function PalletPage() {
 				) : boxes.length === 0 ? (
 					<p>Нет коробок на этой паллете</p>
 				) : (
-					<ul>
+					<ul
+						className='
+					flex flex-wrap gap-2 p-4 
+			
+					'
+					>
 						{
-							boxes.map((box) => {
+							boxes.map((box, i) => {
 
 								const arrayOfArticuls = Object.entries(box.articuls);
 
-								return <li key={box._id}>
-									{box.date}
+								return <li
+									className='border border-green-500 p-2'
+									key={box._id}>
+
 									<TextBlock>
-										{arrayOfArticuls.map((artikul) => {
-											<>{artikul[0]}</>
-										}
-										)}
+										{i} или отметка коробки
 									</TextBlock>
+									<TextBlock>
+										{box._id}
+									</TextBlock>
+
+									<TextBlock>
+										Дата: {box.date}
+									</TextBlock>
+									<TextBlock>
+										Артикул: ХХХХ-ХХХХ
+									</TextBlock>
+									<TextBlock>
+										Количество: ХХХХ
+									</TextBlock>
+
+
+
+
 
 								</li>
 							}

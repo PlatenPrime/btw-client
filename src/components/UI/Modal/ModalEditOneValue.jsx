@@ -22,7 +22,7 @@ export default function ModalEditOneValue({ value, onConfirm, onCancel }) {
 			onClick={handleModalClick}
 		>
 
-			<div className="relative bg-sky-500/50 border border-sky-500 min-w-fit  max-w-2xl p-6 rounded-lg shadow-lg"
+			<div className="relative space-y-4 bg-sky-500/50 border border-sky-500 min-w-fit  max-w-2xl p-6 rounded-lg shadow-lg"
 				ref={modalRef}
 			>
 
@@ -33,12 +33,13 @@ export default function ModalEditOneValue({ value, onConfirm, onCancel }) {
 					placeholder="Введи значение..."
 					value={newValue}
 					onChange={(e) => { setNewValue(e.target.value) }}
+					className="text-center"
 
 
 				/>
 
 
-				<div className="flex justify-evenly">
+				<div className="flex justify-evenly space-x-2">
 					<ButtonBlock
 						onClick={() => onConfirm(newValue)}
 						className="success-c px-4"
