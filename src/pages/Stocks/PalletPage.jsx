@@ -98,7 +98,7 @@ export default function PalletPage() {
 		<PageBTW>
 
 			<HeaderBlock
-				className="bg-sky-500/40 border border-sky-500"
+				className="bg-sky-500/20 border border-sky-500"
 			>
 				{title}
 			</HeaderBlock>
@@ -167,54 +167,28 @@ export default function PalletPage() {
 
 				{isBoxesLoading ? (
 					<Spinner />
-
 				) : boxes.length === 0 ? (
 					<p>Нет коробок на этой паллете</p>
 				) : (
-					<ul
-						className='
-					flex flex-wrap gap-2 p-4 
-			
-					'
-					>
-						{
-							boxes.map((box, i) => {
-
-								const arrayOfArticuls = Object.entries(box.articuls);
-
-								return <li
-									className='border border-green-500 p-2'
-									key={box._id}>
-
-									<TextBlock>
-										{i} или отметка коробки
-									</TextBlock>
-									<TextBlock>
-										{box._id}
-									</TextBlock>
-
-									<TextBlock>
-										Дата: {box.date}
-									</TextBlock>
-									<TextBlock>
-										Артикул: ХХХХ-ХХХХ
-									</TextBlock>
-									<TextBlock>
-										Количество: ХХХХ
-									</TextBlock>
-
-
-
-
-
+					<ul className='grid grid-cols-1 
+					md:grid-cols-3 
+					lg:grid-cols-4 
+					xl:grid-cols-4 gap-2 p-4'>
+						{boxes.map((box, i) => {
+							const arrayOfArticuls = Object.entries(box.articuls);
+							return (
+								<li className='border border-green-500 p-2' key={box._id}>
+									<TextBlock>{i} или отметка коробки</TextBlock>
+									<TextBlock>{box._id}</TextBlock>
+									<TextBlock>Дата: {box.date}</TextBlock>
+									<TextBlock>Артикул: ХХХХ-ХХХХ</TextBlock>
+									<TextBlock>Количество: ХХХХ</TextBlock>
 								</li>
-							}
-
-							)
-
-						}
+							);
+						})}
 					</ul>
 				)}
+
 
 			</CardBlock>
 
