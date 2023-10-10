@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-import CreateRowForm from './CreateRowForm'
 import { ButtonBlock, CardBlock, HeaderBlock, PageBTW, TextBlock } from '../../components'
 import { RowList } from './RowList'
 import { useRowStore } from './stocksStore';
@@ -22,7 +21,7 @@ export default function StocksPage() {
 
 
 		} catch (error) {
-			console.error('Ошибка при создании паллеты:', error);
+			console.error('Ошибка при создании ряда:', error);
 		} finally {
 			setShowModalCreateRow(false)
 

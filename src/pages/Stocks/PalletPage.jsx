@@ -2,8 +2,9 @@ import React, { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import usePalletStore from './palletsStore';
 import usePosesStore from './posesStore';
-import { ButtonBlock, CardBlock, HeaderBlock, ModalConfirm, ModalEditOneValue, PageBTW, Spinner, TextBlock } from '../../components';
+import { ButtonBlock, CardBlock, HeaderBlock, ModalConfirm, ModalEditOneValue, PageBTW, Spinner, TextBlock, ModalWrapper } from '../../components';
 import { toast } from 'react-toastify';
+
 
 export default function PalletPage() {
 
@@ -19,6 +20,16 @@ export default function PalletPage() {
 	const [title, setTitle] = useState("");
 	const [poses, setPoses] = useState([]);
 	const [isPosesLoading, setIsPosesLoading] = useState(false);
+
+
+	const [newPos, setNewPos] = useState({
+		pallet: '',
+		artikul: '',
+		quant: '',
+		box: '',
+		date: ''
+	});
+
 
 	const [showModalPalletDelete, setShowModalPalletDelete] = useState(false)
 	const [showModalRenamePallet, setShowModalRenamePallet] = useState(false);
@@ -110,6 +121,20 @@ export default function PalletPage() {
 			>
 
 				<ButtonBlock
+					className="
+					border border-green-500 
+					bg-transparent hover:bg-green-500
+					text-gray-100 hover:text-white
+					 hover:shadow-lg hover:shadow-green-500
+					"
+					onClick={() => { setShowModalCreatePos(true); }}
+				>
+					Добавить позицию
+				</ButtonBlock>
+
+
+
+				<ButtonBlock
 					className="edit-c"
 					onClick={() => { setShowModalRenamePallet(true); }}
 				>
@@ -141,6 +166,31 @@ export default function PalletPage() {
 					onCancel={() => { setShowModalRenamePallet(false) }}
 
 				/>}
+
+
+				{
+					showModalCreatePos && <ModalWrapper
+
+						onCancel={() => { setShowModalCreatePos(false) }}
+					>
+<p className='text-3xl' >grgikregijgwegegegeg gjeroigjiejgeirgjerj gjegoegjerg</p>
+<p className='text-3xl' >grgikregijgwegegegeg gjeroigjiejgeirgjerj gjegoegjerg</p>
+<p className='text-3xl' >grgikregijgwegegegeg gjeroigjiejgeirgjerj gjegoegjerg</p>
+<p className='text-3xl' >grgikregijgwegegegeg gjeroigjiejgeirgjerj gjegoegjerg</p>
+<p className='text-3xl' >grgikregijgwegegegeg gjeroigjiejgeirgjerj gjegoegjerg</p>
+<p className='text-3xl' >grgikregijgwegegegeg gjeroigjiejgeirgjerj gjegoegjerg</p>
+<p className='text-3xl' >grgikregijgwegegegeg gjeroigjiejgeirgjerj gjegoegjerg</p>
+<p className='text-3xl' >grgikregijgwegegegeg gjeroigjiejgeirgjerj gjegoegjerg</p>
+<p className='text-3xl' >grgikregijgwegegegeg gjeroigjiejgeirgjerj gjegoegjerg</p>
+<p className='text-3xl' >grgikregijgwegegegeg gjeroigjiejgeirgjerj gjegoegjerg</p>
+<p className='text-3xl' >grgikregijgwegegegeg gjeroigjiejgeirgjerj gjegoegjerg</p>
+<p className='text-3xl' >grgikregijgwegegegeg gjeroigjiejgeirgjerj gjegoegjerg</p>
+<p className='text-3xl' >grgikregijgwegegegeg gjeroigjiejgeirgjerj gjegoegjerg</p>
+<p className='text-3xl' >grgikregijgwegegegeg gjeroigjiejgeirgjerj gjegoegjerg</p>
+<p className='text-3xl' >grgikregijgwegegegeg gjeroigjiejgeirgjerj gjegoegjerg</p>
+<p className='text-3xl' >grgikregijgwegegegeg gjeroigjiejgeirgjerj gjegoegjerg</p>
+					</ModalWrapper>
+				}
 
 
 
