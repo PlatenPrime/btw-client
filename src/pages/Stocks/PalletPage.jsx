@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import usePalletStore from './palletsStore';
 import usePosesStore from './posesStore';
-import { ButtonBlock, CardBlock, HeaderBlock, ModalConfirm, ModalEditOneValue, PageBTW, Spinner, TextBlock, ModalWrapper } from '../../components';
+import { ButtonBlock, CardBlock, HeaderBlock, ModalConfirm, ModalEditOneValue, PageBTW, Spinner, TextBlock, ModalWrapper, InputBlock } from '../../components';
 import { toast } from 'react-toastify';
 
 
@@ -16,14 +16,16 @@ export default function PalletPage() {
 	const deletePalletById = usePalletStore((state) => state.deletePalletById);
 	const updatePalletById = usePalletStore((state) => state.updatePalletById);
 
+	const createPos = usePosesStore((state) => state.createPos);
+
 	const [pallet, setPallet] = useState(null);
 	const [title, setTitle] = useState("");
 	const [poses, setPoses] = useState([]);
 	const [isPosesLoading, setIsPosesLoading] = useState(false);
+	const [isPosCreating, setIsPosCreating] = useState(false);
 
 
 	const [newPos, setNewPos] = useState({
-		pallet: '',
 		artikul: '',
 		quant: '',
 		box: '',
@@ -53,7 +55,7 @@ export default function PalletPage() {
 
 
 	useEffect(() => {
-		async function fetchBoxes() {
+		async function fetchPoses() {
 			if (pallet) {
 				setIsPosesLoading(true);
 				const fetchedPoses = await getPalletPoses(pallet._id);
@@ -63,7 +65,7 @@ export default function PalletPage() {
 			}
 		}
 
-		fetchBoxes();
+		fetchPoses();
 	}, [pallet, getPalletPoses]);
 
 
@@ -102,6 +104,41 @@ export default function PalletPage() {
 
 	}
 
+
+	const handleInputPosChange = (event) => {
+		const { name, value } = event.target;
+		setNewPos({ ...newPos, [name]: value });
+		console.log(newPos)
+	};
+
+	// Обработчик отправки формы
+	const handleCreatePos = async () => {
+
+		try {
+
+			const resCreatePos = await createPos(pallet._id, newPos)
+			console.log(resCreatePos)
+
+		} catch (error) {
+			console.log(error)
+		} finally {
+
+
+			setShowModalCreatePos(false)
+			setNewPos({
+				pallet: '',
+				artikul: '',
+				quant: '',
+				box: '',
+				date: ''
+			});
+		}
+
+
+
+
+
+	};
 
 
 
@@ -173,22 +210,84 @@ export default function PalletPage() {
 
 						onCancel={() => { setShowModalCreatePos(false) }}
 					>
-<p className='text-3xl' >grgikregijgwegegegeg gjeroigjiejgeirgjerj gjegoegjerg</p>
-<p className='text-3xl' >grgikregijgwegegegeg gjeroigjiejgeirgjerj gjegoegjerg</p>
-<p className='text-3xl' >grgikregijgwegegegeg gjeroigjiejgeirgjerj gjegoegjerg</p>
-<p className='text-3xl' >grgikregijgwegegegeg gjeroigjiejgeirgjerj gjegoegjerg</p>
-<p className='text-3xl' >grgikregijgwegegegeg gjeroigjiejgeirgjerj gjegoegjerg</p>
-<p className='text-3xl' >grgikregijgwegegegeg gjeroigjiejgeirgjerj gjegoegjerg</p>
-<p className='text-3xl' >grgikregijgwegegegeg gjeroigjiejgeirgjerj gjegoegjerg</p>
-<p className='text-3xl' >grgikregijgwegegegeg gjeroigjiejgeirgjerj gjegoegjerg</p>
-<p className='text-3xl' >grgikregijgwegegegeg gjeroigjiejgeirgjerj gjegoegjerg</p>
-<p className='text-3xl' >grgikregijgwegegegeg gjeroigjiejgeirgjerj gjegoegjerg</p>
-<p className='text-3xl' >grgikregijgwegegegeg gjeroigjiejgeirgjerj gjegoegjerg</p>
-<p className='text-3xl' >grgikregijgwegegegeg gjeroigjiejgeirgjerj gjegoegjerg</p>
-<p className='text-3xl' >grgikregijgwegegegeg gjeroigjiejgeirgjerj gjegoegjerg</p>
-<p className='text-3xl' >grgikregijgwegegegeg gjeroigjiejgeirgjerj gjegoegjerg</p>
-<p className='text-3xl' >grgikregijgwegegegeg gjeroigjiejgeirgjerj gjegoegjerg</p>
-<p className='text-3xl' >grgikregijgwegegegeg gjeroigjiejgeirgjerj gjegoegjerg</p>
+
+						<CardBlock
+
+							className='space-y-2'
+						>
+
+							<CardBlock
+								className="flex justify-between items-center space-x-4"
+							>
+								<label htmlFor="artikul">Artikul:</label>
+								<InputBlock
+									type="text"
+									id="artikul"
+									name="artikul"
+									value={newPos.artikul}
+									onChange={handleInputPosChange}
+								/>
+							</CardBlock>
+							<CardBlock
+								className="flex justify-between items-center space-x-4"
+							>
+								<label htmlFor="quant">Quant:</label>
+								<InputBlock
+									type="text"
+									id="quant"
+									name="quant"
+									value={newPos.quant}
+									onChange={handleInputPosChange}
+								/>
+							</CardBlock>
+							<CardBlock
+								className="flex justify-between items-center space-x-4"
+							>
+								<label htmlFor="box">Box:</label>
+								<InputBlock
+									type="text"
+									id="box"
+									name="box"
+									value={newPos.box}
+									onChange={handleInputPosChange}
+								/>
+							</CardBlock>
+							<CardBlock
+								className="flex justify-between items-center space-x-4"
+							>
+								<label htmlFor="date">Date:</label>
+								<InputBlock
+									type="text"
+									id="date"
+									name="date"
+									value={newPos.date}
+									onChange={handleInputPosChange}
+								/>
+							</CardBlock>
+							<CardBlock
+								className="flex justify-between "
+							>
+								<ButtonBlock
+									type="submit"
+									className="create-c"
+									onClick={handleCreatePos}
+								>
+									Создать
+								</ButtonBlock>
+
+								<ButtonBlock
+									type="button"
+									className="cancel-c"
+									onClick={() => {
+										setNewPos({});
+										setShowModalCreatePos(false);
+									}}>
+									Отмена
+								</ButtonBlock>
+							</CardBlock>
+						</CardBlock>
+
+
 					</ModalWrapper>
 				}
 
@@ -228,11 +327,11 @@ export default function PalletPage() {
 
 							return (
 								<li className='border border-green-500 p-2' key={pos._id}>
-									<TextBlock>{i} или отметка коробки</TextBlock>
-									<TextBlock>{pos._id}</TextBlock>
+									<TextBlock>{pos.box || i}</TextBlock>
+									<TextBlock>{pos._id.slice(-8, -1)}</TextBlock>
 									<TextBlock>Дата: {pos.date}</TextBlock>
-									<TextBlock>Артикул: ХХХХ-ХХХХ</TextBlock>
-									<TextBlock>Количество: ХХХХ</TextBlock>
+									<TextBlock>Артикул: {pos.artikul}</TextBlock>
+									<TextBlock>Количество: {pos.quant}</TextBlock>
 								</li>
 							);
 						})}

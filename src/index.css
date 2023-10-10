@@ -61,22 +61,22 @@ table {
 }
 
 ::-webkit-scrollbar {
-	width: 16px; /* Width of the scrollbar */
-	height: 16px;
+	width: 8px; /* Width of the scrollbar */
+	height: 8px;
   }
   
   ::-webkit-scrollbar-thumb {
 	
 
 	border: 2px solid rgb(72, 167, 255);
-	border-radius: 4px; /* Roundness of the scrollbar thumb */
+	border-radius: 8px; /* Roundness of the scrollbar thumb */
 	
   }
 
 
   
   ::-webkit-scrollbar-track {
-	background-color: #33333336; /* Color of the scrollbar track */
+	background-color: #00153dbd; /* Color of the scrollbar track */
 	border-radius: 8px; /* Roundness of the scrollbar track */
   }
 

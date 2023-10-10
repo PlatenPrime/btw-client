@@ -1,7 +1,7 @@
 import { create } from 'zustand';
 import axios from '../../utils/axios';
 
-const usePosStore = create((set) => ({
+const usePosesStore = create((set) => ({
 	poses: [],
 
 	createPos: async (palletId, posData) => {
@@ -63,4 +63,4 @@ const usePosStore = create((set) => ({
 	},
 }));
 
-export default usePosStore;
+export default usePosesStore;
