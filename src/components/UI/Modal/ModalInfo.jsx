@@ -22,7 +22,7 @@ export default function ModalInfo({ children, onCancel }) {
 			onClick={handleModalClick}
 		>
 
-			<div className="relative space-y-8 bg-sky-900/90 border border-sky-500 min-w-fit  max-w-2xl p-4 rounded-lg shadow-lg"
+			<div className="relative space-y-8 bg-slate-900 backdrop-blur backdrop-filter bg-opacity-80 min-w-fit  max-w-3xl p-4 rounded-lg shadow-lg"
 				ref={modalRef}
 			>
 
@@ -35,7 +35,7 @@ export default function ModalInfo({ children, onCancel }) {
 						className="cancel-c px-2 text-md "
 					>
 						<AiOutlineClose />
-					
+
 					</ButtonBlock>
 				</RowBlock>
 

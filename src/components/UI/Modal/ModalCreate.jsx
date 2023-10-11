@@ -23,14 +23,12 @@ export default function ModalCreate({ title, onConfirm, onCancel }) {
 			onClick={handleModalClick}
 		>
 
-			<div className="relative bg-sky-700/80 border border-sky-500 min-w-fit  max-w-2xl p-6 rounded-lg shadow-lg
-			space-y-4 flex flex-col 
-			"
+			<div className="relative flex flex-col space-y-8 bg-slate-900 backdrop-blur backdrop-filter bg-opacity-80 min-w-fit  max-w-3xl p-4 rounded-lg shadow-lg"
 				ref={modalRef}
 			>
 
 				<TextBlock
-					className="text-3xl"
+					className="text-3xl mx-auto"
 				>{title}</TextBlock>
 
 

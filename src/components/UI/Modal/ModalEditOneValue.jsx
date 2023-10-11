@@ -22,7 +22,7 @@ export default function ModalEditOneValue({ value, onConfirm, onCancel }) {
 			onClick={handleModalClick}
 		>
 
-			<div className="relative space-y-4 bg-sky-500/50 border border-sky-500 min-w-fit  max-w-2xl p-6 rounded-lg shadow-lg"
+			<div className="relative flex flex-col space-y-8 bg-slate-900 backdrop-blur backdrop-filter bg-opacity-80 min-w-fit  max-w-3xl p-4 rounded-lg shadow-lg"
 				ref={modalRef}
 			>
 
