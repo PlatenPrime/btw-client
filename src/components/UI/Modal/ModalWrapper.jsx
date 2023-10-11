@@ -1,6 +1,6 @@
 import { useRef } from "react";
 import { ButtonBlock, RowBlock } from "../../../components";
-
+import { AiOutlineClose } from "react-icons/ai";
 
 
 export default function ModalWrapper({ children, onCancel }) {
@@ -38,7 +38,7 @@ export default function ModalWrapper({ children, onCancel }) {
 							onClick={() => onCancel()}
 							className="cancel-c px-2 text-md rounded-full"
 						>
-							X
+							<AiOutlineClose />
 						</ButtonBlock>
 					</RowBlock>
 

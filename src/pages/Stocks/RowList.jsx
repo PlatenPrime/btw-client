@@ -30,7 +30,6 @@ export function RowList() {
 	}, []);
 
 
-	console.log(rows)
 	return (
 		<CardBlock
 			className="p-2 space-y-2 bg-orange-500/5"

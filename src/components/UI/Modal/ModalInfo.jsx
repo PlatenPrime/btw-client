@@ -1,5 +1,6 @@
 import { useRef } from "react";
 import { ButtonBlock, RowBlock, TextBlock } from "../../../components";
+import { AiOutlineClose } from "react-icons/ai";
 
 
 
@@ -27,13 +28,14 @@ export default function ModalInfo({ children, onCancel }) {
 
 
 				<RowBlock
-				className="flex justify-end"
+					className="flex justify-end"
 				>
 					<ButtonBlock
 						onClick={() => onCancel()}
 						className="cancel-c px-2 text-md "
 					>
-						Закрыть
+						<AiOutlineClose />
+					
 					</ButtonBlock>
 				</RowBlock>
 
