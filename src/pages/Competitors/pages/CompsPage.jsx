@@ -61,15 +61,15 @@ export default function CompsPage() {
 
 			<PageBTW className='max-h-screen ' >
 
-				<HeaderBlock className="bg-violet-500/50 ">
+				<HeaderBlock className="bg-violet-500/20 ">
 
 
 					<NavLink
 						to={""}
-						style={({ isActive }) => isActive ? activeStyles : inActiveStyles}
+
 
 					>
-						Анализ конкурентов
+						Аналіз конкурентів
 					</NavLink>
 
 				</HeaderBlock>
@@ -90,7 +90,7 @@ export default function CompsPage() {
 							style={({ isActive }) => isActive ? activeStyles : inActiveStyles}
 
 						>
-							Артикулы
+							Артикули
 						</NavLink>
 					</TextBlock>
 
@@ -105,7 +105,7 @@ export default function CompsPage() {
 							style={({ isActive }) => isActive ? activeStyles : inActiveStyles}
 
 						>
-							Изменения
+							Журнал змін
 						</NavLink>
 					</TextBlock>
 
@@ -120,7 +120,7 @@ export default function CompsPage() {
 							style={({ isActive }) => isActive ? activeStyles : inActiveStyles}
 
 						>
-							Проверка
+							Перевірка
 						</NavLink>
 					</TextBlock>
 
@@ -133,7 +133,7 @@ export default function CompsPage() {
 							style={({ isActive }) => isActive ? activeStyles : inActiveStyles}
 
 						>
-							Добавление
+							Додавання
 						</NavLink>
 					</TextBlock>
 
