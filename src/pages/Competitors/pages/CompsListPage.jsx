@@ -395,19 +395,18 @@ export default function CompListPage() {
 									<tr
 										className="bg-black 
 										odd:bg-opacity-50  even:bg-opacity-0 
-										hover:bg-gray-700 transition duration-300 ease-in-out 
-										
-										"
+										hover:bg-gray-700 transition duration-300 ease-in-out 							"
 										key={comp._id.$oid}
 
 
 
 									>
-										<td className='flex bg-rose-500/5 items-center justify-start space-x-1 ' >
+										<td className=' bg-rose-500/5  space-x-1 shadow-lg hover:bg-violet-500   hover:shadow-violet-500 transition duration-300 ease-in-out  ' >
 
 
 											<CardBlock
-												className="flex items-center justify-start space-x-1"
+												className="flex items-center justify-start space-x-1 w-full cursor-pointer  "
+												onClick={() => { window.alert(`${comp.artikul}, "Попался! Подожди немного и поклацаешь уже по этому артикулу, будет модалка с информацией и возможностью редактирования и удаления))"`) }}
 											>
 
 												<ImageBlock
@@ -420,7 +419,7 @@ export default function CompListPage() {
 												/>
 
 												<TextBlock
-													className="text-left   "
+													className="text-left  "
 
 												>
 													{comp.nameukr}
