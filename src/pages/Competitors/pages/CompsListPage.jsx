@@ -352,23 +352,23 @@ export default function CompListPage() {
 						<thead className=" border border-violet-500  ">
 
 							<tr >
-								<th className="w-1/3 bg-rose-500/10" rowSpan="2">Артикул</th>
-								<th className="w-1/3 bg-sky-500/10  " colSpan="5">Наявність</th>
-								<th className="w-1/3 bg-yellow-500/10 " colSpan="5">Ціна</th>
+								<th className="w-1/3 bg-rose-500/5 border border-violet-500 " rowSpan="2">Артикул</th>
+								<th className="w-1/3 bg-sky-500/10 border border-violet-500 " colSpan="5">Наявність</th>
+								<th className="w-1/3  bg-yellow-500/10 border border-violet-500" colSpan="5">Ціна</th>
 							</tr>
 
 							<tr>
 
-								<th className="bg-sky-500/10">Btrade</th>
-								<th className="bg-sky-500/10">Sharte</th>
-								<th className="bg-sky-500/10">Yumi</th>
-								<th className="bg-sky-500/10">Air</th>
-								<th className="bg-sky-500/10">Best</th>
-								<th className="bg-yellow-500/10">Btrade</th>
-								<th className="bg-yellow-500/10">Sharte</th>
-								<th className="bg-yellow-500/10">Yumi</th>
-								<th className="bg-yellow-500/10">Air</th>
-								<th className="bg-yellow-500/10">Best</th>
+								<th className="bg-sky-500/10 border border-violet-500">Btrade</th>
+								<th className="bg-sky-500/10 border border-violet-500">Sharte</th>
+								<th className="bg-sky-500/10 border border-violet-500">Yumi</th>
+								<th className="bg-sky-500/10 border border-violet-500">Air</th>
+								<th className="bg-sky-500/10 border border-violet-500">Best</th>
+								<th className="bg-yellow-500/10 border border-violet-500">Btrade</th>
+								<th className="bg-yellow-500/10 border border-violet-500">Sharte</th>
+								<th className="bg-yellow-500/10 border border-violet-500">Yumi</th>
+								<th className="bg-yellow-500/10 border border-violet-500">Air</th>
+								<th className="bg-yellow-500/10 border border-violet-500">Best</th>
 
 							</tr>
 
@@ -393,26 +393,40 @@ export default function CompListPage() {
 
 								.map((comp) => (
 									<tr
-										className="bg-black odd:bg-opacity-50  even:bg-opacity-0 "
+										className="bg-black 
+										odd:bg-opacity-50  even:bg-opacity-0 
+										hover:bg-gray-700 transition duration-300 ease-in-out 
+										
+										"
 										key={comp._id.$oid}
 
 
 
 									>
-										<td className='flex bg-rose-500/20 items-center justify-start space-x-1 ' >
+										<td className='flex bg-rose-500/5 items-center justify-start space-x-1 ' >
 
-											<ImageBlock
-												src={`https://sharik.ua/images/elements_big/${comp.artikul}_m1.jpg`}
-												width={50}
-												height={50}
-												alt="Фото артикула"
-												className="rounded hover:scale-150 hover:translate-x-1"
 
-											/>
-											<TextBlock
-												className="text-left   "
+											<CardBlock
+												className="flex items-center justify-start space-x-1"
+											>
 
-											>{comp.nameukr}</TextBlock>
+												<ImageBlock
+													src={`https://sharik.ua/images/elements_big/${comp.artikul}_m1.jpg`}
+													width={50}
+													height={50}
+													alt="Фото артикула"
+													className="rounded hover:scale-150 hover:translate-x-1"
+
+												/>
+
+												<TextBlock
+													className="text-left   "
+
+												>
+													{comp.nameukr}
+												</TextBlock>
+
+											</CardBlock>
 
 										</td>
 
