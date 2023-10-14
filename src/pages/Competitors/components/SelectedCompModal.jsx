@@ -1,0 +1,137 @@
+import React, { useState } from 'react'
+import { ButtonBlock, CardBlock, ImageBlock, Spinner, TextBlock } from '../../../components'
+import { Link } from 'react-router-dom'
+import axios from "../../../utils/axios"
+import { toast } from 'react-toastify'
+
+export default function SelectedCompModal({ selectedComp: comp }) {
+
+	const [isDeleting, setIsDeleting] = useState(false)
+
+	const handleDelete = async () => {
+		try {
+
+			setIsDeleting(true)
+			const res = await axios.delete(`comps/${comp._id}`);
+			console.log(res);
+			toast.info("Артикул удален")
+
+
+		} catch (error) {
+			console.log(error);
+		} finally {
+			setIsDeleting(false)
+		}
+	}
+
+
+
+	return (
+		<CardBlock
+		>
+
+			<CardBlock
+				className="flex space-x-6 bg-gray-700/10 p-2"
+			>
+
+				<ImageBlock
+					src={`https://sharik.ua/images/elements_big/${comp.artikul}_m1.jpg`}
+					width={100}
+					height={100}
+					alt="Фото артикула"
+					className="rounded hover:scale-110 "
+
+				/>
+
+				<TextBlock
+					className="text-xl text-slate-100"
+				>{comp.nameukr}</TextBlock>
+
+			</CardBlock>
+
+			<table>
+
+
+				<th
+					className="text-lg text-center w-full"
+					colSpan={2}
+				>
+
+
+
+					Посилання
+
+				</th>
+
+
+				<tr>
+					<td
+						className='text-left'
+					> Sharte:</td>
+					<td
+						className='text-left'
+					>
+						<a href={comp.competitorsLinks.sharteLink} target='blanked'>
+							{comp.competitorsLinks.sharteLink.slice(0, 50)}...
+						</a>
+					</td>
+				</tr>
+
+				<tr>
+					<td
+						className='text-left'
+					> Yumi:</td>
+					<td
+						className='text-left'
+					>
+						<a href={comp.competitorsLinks.yumiLink} target='blanked'>
+							{comp.competitorsLinks.yumiLink ? comp.competitorsLinks.yumiLink.slice(0, 50) + "..." : "-"}
+						</a>
+					</td>
+				</tr>
+
+				<tr>
+					<td
+						className='text-left'
+					> Air:</td>
+					<td
+						className='text-left'
+					>
+						<a href={comp.competitorsLinks.airLink} target='blanked'>
+							{comp.competitorsLinks.airLink ? comp.competitorsLinks.airLink.slice(0, 50) + "..." : "-"}
+						</a>
+					</td>
+				</tr>
+
+
+				<tr>
+					<td
+						className='text-left'
+					> Best:</td>
+					<td
+						className='text-left'
+					>
+						<a href={comp.competitorsLinks.bestLink} target='blanked'>
+							{comp.competitorsLinks.bestLink ? comp.competitorsLinks.bestLink.slice(0, 50) + "..." : "-"}
+						</a>
+					</td>
+				</tr>
+
+
+			</table>
+
+
+			<ButtonBlock
+				className="delete-c flex items-center space-x-2 mx-auto"
+				onClick={handleDelete}
+			>
+				<TextBlock>Видалити артикул з бази</TextBlock>
+				{isDeleting && <Spinner color="red" />}
+			</ButtonBlock>
+
+
+
+
+		</CardBlock>
+	)
+}

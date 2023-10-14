@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { useCompContext } from '../contexts/compContextProvider';  // Import the context hook
-import { ButtonBlock, CardBlock, ImageBlock, InputBlock, TextBlock, Spinner } from '../../../components';
+import { ButtonBlock, CardBlock, ImageBlock, InputBlock, TextBlock, Spinner, ModalWrapper } from '../../../components';
 import { analyzeComp } from '../../../utils/analyzeComp';
 import { exportToExcelComps } from '../../../utils/exportExcel';
 
@@ -16,6 +16,7 @@ import { LuFilter } from "react-icons/lu";
 
 import { prods, categoriesList, subcategoriesList, sizesList } from '../../../constants/compsData';
 import CheckCompLinks from '../components/CheckCompLinks';
+import SelectedCompModal from '../components/SelectedCompModal';
 
 
 const prodOptions = prods;
@@ -36,13 +37,17 @@ export default function CompListPage() {
 	const [selectedCategory, setSelectedCategory] = useState("");
 	const [selectedSubcategory, setSelectedSubcategory] = useState("");
 	const [filter, setFilter] = useState({
-		// Initialize your filter criteria here
 		prod: '',
 		category: "",
 		subcategory: "",
 		size: "",
 
 	});
+
+	const [selectedComp, setSelectedComp] = useState(null)
+	const [showModalComp, setShowModalComp] = useState(false)
+
+
 
 	const prodOptions = prods;
 	const categoryOptions = categoriesList;
@@ -197,7 +202,26 @@ export default function CompListPage() {
 
 
 
-			<CardBlock>
+
+
+
+			{showModalComp && <ModalWrapper
+				onCancel={() => { setShowModalComp(false) }}
+				title={selectedComp?.artikul}
+			>
+
+				<SelectedCompModal selectedComp={selectedComp} />
+
+			</ModalWrapper>}
+
+
+
+
+
+
+			<CardBlock
+				className=""
+			>
 
 				{isAnalyzing &&
 					<CardBlock>
@@ -228,27 +252,29 @@ export default function CompListPage() {
 
 
 			{isFilterOpen && <CardBlock
-				className="flex justify-between border border-rose-500 p-2 bg-rose-500/10"
+				className="flex flex-col items-center justify-between space-x-2 border border-rose-500 p-2 bg-rose-500/10"
 			>
 
 
 				<CardBlock
-					className="flex items-center"
+					className="flex items-center  flex-nowrap space-x-1"
 				>
+
 					<TextBlock
 						className="text-xl"
 					>
-						Вибрано артикулів: {filteredComps.length} / {compsDB.length}
+						Вибрано артикулів:	{filteredComps.length} із {compsDB.length}
 					</TextBlock>
+
 				</CardBlock>
 
 
 
 				<CardBlock
-					className={`flex justify-end p-4 space-x-4 `}>
+					className="flex justify-between p-4 space-x-4 flex-wrap">
 
 					<select
-						className="InputBlock focus:bg-rose-900 "
+						className="InputBlock focus:bg-slate-900 text-lg "
 						value={filter.prod}
 						onChange={(e) => setFilter({ ...filter, prod: e.target.value })}
 					>
@@ -264,7 +290,7 @@ export default function CompListPage() {
 					</select>
 
 					<select
-						className="InputBlock focus:bg-rose-900 "
+						className="InputBlock focus:bg-slate-900 text-lg  "
 						value={filter.category}
 						onChange={(e) => {
 							setSelectedCategory(e.target.value);
@@ -284,7 +310,7 @@ export default function CompListPage() {
 					</select>
 
 					<select
-						className="InputBlock focus:bg-rose-900 "
+						className="InputBlock focus:bg-slate-900 text-lg "
 						value={filter.subcategory}
 						onChange={(e) => {
 							setSelectedSubcategory(e.target.value);
@@ -304,7 +330,7 @@ export default function CompListPage() {
 
 
 					<select
-						className="InputBlock focus:bg-rose-900 "
+						className="InputBlock focus:bg-slate-900 text-lg "
 						value={filter.size}
 						onChange={(e) => setFilter({ ...filter, size: e.target.value })}
 					>
@@ -401,12 +427,19 @@ export default function CompListPage() {
 
 
 									>
-										<td className=' bg-rose-500/5  space-x-1 shadow-lg hover:bg-violet-500   hover:shadow-violet-500 transition duration-300 ease-in-out  ' >
+										<td
+											className=' bg-rose-500/5  space-x-1 shadow-lg hover:bg-violet-500   hover:shadow-violet-500 transition duration-300 ease-in-out  '
+
+
+										>
 
 
 											<CardBlock
 												className="flex items-center justify-start space-x-1 w-full cursor-pointer  "
-												onClick={() => { window.alert(`${comp.artikul}, "Попался! Подожди немного и поклацаешь уже по этому артикулу, будет модалка с информацией и возможностью редактирования и удаления))"`) }}
+												onClick={() => {
+													setShowModalComp(true);
+													setSelectedComp(comp)
+												}}
 											>
 
 												<ImageBlock
@@ -420,6 +453,7 @@ export default function CompListPage() {
 
 												<TextBlock
 													className="text-left  "
+
 
 												>
 													{comp.nameukr}

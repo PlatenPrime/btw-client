@@ -1,9 +1,10 @@
 import { useRef } from "react";
-import { ButtonBlock, RowBlock } from "../../../components";
+import { ButtonBlock, RowBlock, TextBlock } from "../../../components";
 import { AiOutlineClose } from "react-icons/ai";
 
 
-export default function ModalWrapper({ children, onCancel }) {
+export default function ModalWrapper({ children, onCancel, title }) {
+
 
 	const modalRef = useRef();
 
@@ -27,13 +28,19 @@ export default function ModalWrapper({ children, onCancel }) {
 			<div className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 overflow-y-auto max-h-full">
 
 
-				<div className="relative space-y-8 bg-slate-900 backdrop-blur backdrop-filter bg-opacity-80 min-w-fit  max-w-3xl p-4 rounded-lg shadow-lg"
+				<div className="relative space-y-8 bg-slate-900 backdrop-blur backdrop-filter bg-opacity-90 min-w-fit  max-w-3xl p-4 rounded-lg shadow-lg"
 					ref={modalRef}
 				>
 
 					<RowBlock
-						className="flex justify-end"
+						className="flex justify-between bg-gray-800 p-1"
 					>
+						<TextBlock></TextBlock>
+
+						<TextBlock
+							className="text-white text-3xl"
+						>{title}</TextBlock>
+
 						<ButtonBlock
 							onClick={() => onCancel()}
 							className="cancel-c px-2 text-md rounded-full"
