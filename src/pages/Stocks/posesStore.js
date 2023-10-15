@@ -6,11 +6,20 @@ const usePosesStore = create((set) => ({
 
 	createPos: async (palletId, posData) => {
 		try {
+
 			const response = await axios.post('poses', { palletId, ...posData });
-			set((state) => ({
-				poses: [...state.poses, response.data],
-			}));
-			return response.data;
+			console.log(response)
+
+			if (response.status === 201) {
+				const newPos = response.data
+				set((state) => ({
+					poses: [...state.poses, newPos],
+				}));
+
+			} else {
+				throw new Error('Ошибка создания Pos')
+			}
+
 		} catch (error) {
 			console.error('Ошибка при создании позиции:', error);
 			throw error;
@@ -61,6 +70,26 @@ const usePosesStore = create((set) => ({
 			throw error;
 		}
 	},
+
+	getPalletPoses: async (id) => {
+		try {
+			const response = await axios.get(`pallets/poses/${id}`);
+
+			set((state) => ({
+				poses: [...response.data.poses],
+			}));
+			
+			return response.data;
+		} catch (error) {
+			throw error;
+		}
+	},
+
+
+
+
+
+
 }));
 
 export default usePosesStore;

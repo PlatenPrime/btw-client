@@ -36,10 +36,16 @@ export default function RowPage() {
 
 
 	async function fetchRow(id) {
-		const row = await getRowById(id);
-		setRow(row)
-		setTitle(row.title)
+
+		try {
+			const row = await getRowById(id);
+			setRow(row)
+			setTitle(row.title)
+		} catch (error) {
+			console.error('Ошибка при получении ряда:', error);
+		}
 	}
+	
 
 	async function fetchRowPallets(id) {
 
@@ -52,9 +58,18 @@ export default function RowPage() {
 			setIsRowPalletsLoading(false)
 		}
 
-
-
 	}
+
+
+	useEffect(() => {
+		fetchRow(params.id)
+		fetchRowPallets(params.id)
+	}, [params.id]);
+
+
+
+
+
 
 
 
@@ -122,11 +137,6 @@ export default function RowPage() {
 
 
 
-
-	useEffect(() => {
-		fetchRow(params.id)
-		fetchRowPallets(params.id)
-	}, [params.id]);
 
 
 

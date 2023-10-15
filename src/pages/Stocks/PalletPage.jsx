@@ -4,8 +4,6 @@ import usePalletStore from './palletsStore';
 import usePosesStore from './posesStore';
 import { ButtonBlock, CardBlock, HeaderBlock, ModalConfirm, ModalEditOneValue, PageBTW, Spinner, TextBlock, ModalWrapper, InputBlock } from '../../components';
 import { toast } from 'react-toastify';
-import { AiOutlineClose } from "react-icons/ai";
-import { ImMoveUp } from "react-icons/im";
 import PositionBage from './PositionBage';
 
 
@@ -16,11 +14,17 @@ export default function PalletPage() {
 	const navigate = useNavigate()
 
 	const getPalletById = usePalletStore((state) => state.getPalletById);
-	const getPalletPoses = usePalletStore((state) => state.getPalletPoses);
+
 	const deletePalletById = usePalletStore((state) => state.deletePalletById);
 	const updatePalletById = usePalletStore((state) => state.updatePalletById);
 
 	const createPos = usePosesStore((state) => state.createPos);
+	const deletePosById = usePosesStore((state) => state.deletePosById);
+	const getPalletPoses = usePosesStore((state) => state.getPalletPoses);
+	const posesInStore = usePosesStore((state) => state.poses);
+
+	console.log(posesInStore)
+
 
 	const [pallet, setPallet] = useState(null);
 	const [title, setTitle] = useState("");
@@ -28,6 +32,7 @@ export default function PalletPage() {
 	const [isPosesLoading, setIsPosesLoading] = useState(false);
 	const [isPosCreating, setIsPosCreating] = useState(false);
 
+	const [selectedPos, setSelectedPos] = useState(null)
 
 	const [newPos, setNewPos] = useState({
 		artikul: '',
@@ -43,35 +48,39 @@ export default function PalletPage() {
 	const [showModalDeletePos, setShowModalDeletePos] = useState(false);
 
 
-	useEffect(() => {
-		async function fetchData() {
-			try {
-				const fetchedPallet = await getPalletById(id);
-				console.log(fetchedPallet)
-				setPallet(fetchedPallet);
-				setTitle(fetchedPallet.title)
-			} catch (error) {
-				console.error('Ошибка при получении паллеты:', error);
-			}
+	async function fetchPallet(id) {
+		try {
+			const fetchedPallet = await getPalletById(id);
+			console.log(fetchedPallet)
+			setPallet(fetchedPallet);
+			setTitle(fetchedPallet.title)
+		} catch (error) {
+			console.error('Ошибка при получении паллеты:', error);
+		}
+	}
+
+
+	async function fetchPoses(id) {
+
+		try {
+			setIsPosesLoading(true);
+			await getPalletPoses(id);
+		} catch (error) {
+			console.log(error)
+		} finally {
+			setIsPosesLoading(false);
 		}
 
-		fetchData();
-	}, [id, getPalletById]);
+	}
+
 
 
 	useEffect(() => {
-		async function fetchPoses() {
-			if (pallet) {
-				setIsPosesLoading(true);
-				const fetchedPoses = await getPalletPoses(pallet._id);
-				console.log(fetchedPoses)
-				setPoses(fetchedPoses);
-				setIsPosesLoading(false);
-			}
-		}
+		fetchPallet(id);
+		fetchPoses(id);
+	}, [id]);
 
-		fetchPoses();
-	}, [pallet, getPalletPoses]);
+
 
 
 	async function handleDeletePalletById() {
@@ -91,12 +100,7 @@ export default function PalletPage() {
 
 	async function handleRenamePalletById(newTitle) {
 		try {
-
-
-
 			const updateData = { ...pallet, title: newTitle }
-
-
 			await updatePalletById(pallet._id, updateData);
 			setTitle(newTitle)
 
@@ -104,10 +108,10 @@ export default function PalletPage() {
 			console.error('Ошибка при изменении  названия паллеты:', error);
 		} finally {
 			setShowModalRenamePallet(false)
-
 		}
-
 	}
+
+
 
 
 	const handleInputPosChange = (event) => {
@@ -116,19 +120,17 @@ export default function PalletPage() {
 		console.log(newPos)
 	};
 
+
+
+
 	// Обработчик отправки формы
 	const handleCreatePos = async () => {
 
 		try {
-
-			const resCreatePos = await createPos(pallet._id, newPos)
-			console.log(resCreatePos)
-
+			await createPos(pallet._id, newPos)
 		} catch (error) {
 			console.log(error)
 		} finally {
-
-
 			setShowModalCreatePos(false)
 			setNewPos({
 				pallet: '',
@@ -138,12 +140,20 @@ export default function PalletPage() {
 				date: ''
 			});
 		}
-
-
-
-
-
 	};
+
+
+	async function handleDeletePosById(id) {
+		try {
+			const resDeletePos = await deletePosById(id)
+			console.log(resDeletePos)
+
+		} catch (error) {
+			console.log(error)
+		} finally {
+			setShowModalDeletePos(false)
+		}
+	}
 
 
 
@@ -306,6 +316,7 @@ export default function PalletPage() {
 				{showModalDeletePos && <ModalConfirm
 					ask="Видалити цю позицію?"
 					onCancel={() => { setShowModalDeletePos(false) }}
+					onConfirm={() => handleDeletePosById(selectedPos._id)}
 				/>}
 
 
@@ -328,12 +339,12 @@ export default function PalletPage() {
 				</TextBlock>
 
 				<TextBlock>
-					Всего позиций {pallet?.poses.length}
+					Всего позиций {posesInStore.length}
 				</TextBlock>
 
 				{isPosesLoading ? (
 					<Spinner />
-				) : poses?.length === 0 ? (
+				) : posesInStore?.length === 0 ? (
 					<p></p>
 				) : (
 					<ul className='grid grid-cols-1 
@@ -343,12 +354,18 @@ export default function PalletPage() {
 					
 					
 					'>
-						{poses?.map((pos) => {
+
+
+						{posesInStore?.map((pos) => {
 
 							return (
 								<PositionBage
 									pos={pos}
-									onDelete={() => { setShowModalDeletePos(true) }}
+									onDelete={() => {
+										setShowModalDeletePos(true)
+										setSelectedPos(pos)
+									}}
+
 								/>
 							);
 						})}

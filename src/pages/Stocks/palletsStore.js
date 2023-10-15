@@ -3,12 +3,13 @@ import axios from '../../utils/axios';
 
 const usePalletStore = create((set) => ({
 	pallets: [],
+
+
 	createPallet: async (title, rowId) => {
 		try {
-			console.log(title)
-			console.log(rowId)
+			
 			const response = await axios.post('pallets', { title, rowId });
-			console.log(response)
+		
 
 			if (response.status === 201) {
 				const newPallet = response.data;
@@ -20,6 +21,9 @@ const usePalletStore = create((set) => ({
 			console.error('Ошибка создания Pallet:', error);
 		}
 	},
+
+
+
 	getAllPallets: async () => {
 		try {
 			const response = await axios.get('pallets');
@@ -34,6 +38,8 @@ const usePalletStore = create((set) => ({
 			console.error('Ошибка получения Pallets:', error);
 		}
 	},
+
+
 	getPalletById: async (id) => {
 		try {
 			const response = await axios.get(`pallets/${id}`);
@@ -82,20 +88,7 @@ const usePalletStore = create((set) => ({
 			console.error('Ошибка удаления Pallet по ID:', error);
 		}
 	},
-	getPalletPoses: async (id) => {
-		try {
-			const response = await axios.get(`pallets/poses/${id}`);
 
-			if (response.status === 200) {
-				const data = response.data;
-				return data.poses;
-			} else {
-				throw new Error('Ошибка получения позиций для Pallet');
-			}
-		} catch (error) {
-			console.error('Ошибка получения позиций для Pallet:', error);
-		}
-	},
 
 	// Функция для получения Pallets для конкретного Row по ID
 	getRowPallets: async (id) => {
