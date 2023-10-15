@@ -17,8 +17,8 @@ export default function PositionBage({ pos, onDelete, onEdit, artsDB }) {
 
 	return (
 		<li className='
-		border border-green-500 p-2 relative
-	shadow hover:shadow-green-500
+	 relative
+	shadow-lg hover:shadow-green-500
 		flex flex-col lg:flex-row lg:justify-between
 		rounded
 		transition ease-in-out duration-300	
@@ -42,7 +42,7 @@ export default function PositionBage({ pos, onDelete, onEdit, artsDB }) {
 
 
 			<CardBlock
-				className="flex space-x-4 justify-center bg-white"
+				className="flex space-x-4 justify-center bg-gray-300/10"
 			>
 
 				<ImageBlock
@@ -58,15 +58,23 @@ export default function PositionBage({ pos, onDelete, onEdit, artsDB }) {
 			</CardBlock>
 
 
-			<table 
-			className = "bg-green-500/10"
+			<table
+				className="bg-green-500/10"
 			>
 
 				<tr>
-					<th>Позиція</th>
-					<th>Артикул</th>
-					<th>Кількість</th>
-					<th>Коробок</th>
+					<th
+						className="w-1/5"
+					>Позиція</th>
+					<th
+						className="w-2/5"
+					>Артикул</th>
+					<th
+						className="w-1/5"
+					>Кількість</th>
+					<th
+						className="w-1/5"
+					>Коробок</th>
 				</tr>
 
 
@@ -89,7 +97,7 @@ export default function PositionBage({ pos, onDelete, onEdit, artsDB }) {
 
 					<td>
 						<TextBlock>
-						{pos.quant}
+							{pos.quant}
 						</TextBlock>
 					</td>
 
