@@ -39,14 +39,14 @@ export default function ModalConfirm({ ask, onConfirm, onCancel }) {
 
 					<ButtonBlock
 						onClick={() => onCancel()}
-						className="cancel-c px-4 text-xl w-1/3"
+						className=" success-c px-4 text-xl w-1/3"
 					>
 						Ні
 					</ButtonBlock>
 
 					<ButtonBlock
 						onClick={() => onConfirm()}
-						className="success-c px-4 text-xl w-1/3"
+						className=" cancel-c px-4 text-xl w-1/3"
 					>
 						Так
 					</ButtonBlock>

@@ -40,9 +40,9 @@ const SidebarMobileBTW = ({ onClose }) => {
 		<CardBlock
 			onClick={onClose}
 
-			className='fixed lg:hidden  min-h-screen w-full 
+			className='fixed z-50 lg:hidden  min-h-screen w-full 
 		
-		 bg-gray-600 bg-opacity-50 '>
+		 bg-gray-600/50 '>
 
 			<CardBlock
 				onClick={(e) => e.stopPropagation()}
@@ -50,7 +50,7 @@ const SidebarMobileBTW = ({ onClose }) => {
 			flex flex-col justify-start items-center space-y-2 p-4
 			h-full min-h-screen w-1/2
 			bg-black bg-opacity-90 hover:bg-black
-			
+			z-1000
 			'>
 
 				<NavLink

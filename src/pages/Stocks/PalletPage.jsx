@@ -5,6 +5,7 @@ import usePosesStore from './posesStore';
 import { ButtonBlock, CardBlock, HeaderBlock, ModalConfirm, ModalEditOneValue, PageBTW, Spinner, TextBlock, ModalWrapper, InputBlock } from '../../components';
 import { toast } from 'react-toastify';
 import PositionBage from './PositionBage';
+import useFetchArts from '../../hooks/useFetchArts';
 
 
 
@@ -23,7 +24,8 @@ export default function PalletPage() {
 	const getPalletPoses = usePosesStore((state) => state.getPalletPoses);
 	const posesInStore = usePosesStore((state) => state.poses);
 
-	console.log(posesInStore)
+
+	const { artsDB, loadingArtsDB, errorArtsDB } = useFetchArts()
 
 
 	const [pallet, setPallet] = useState(null);
@@ -37,7 +39,7 @@ export default function PalletPage() {
 	const [newPos, setNewPos] = useState({
 		artikul: '',
 		quant: '',
-		box: '',
+		boxes: '',
 		date: ''
 	});
 
@@ -133,10 +135,10 @@ export default function PalletPage() {
 		} finally {
 			setShowModalCreatePos(false)
 			setNewPos({
-				pallet: '',
+		
 				artikul: '',
 				quant: '',
-				box: '',
+				boxes: '',
 				date: ''
 			});
 		}
@@ -181,7 +183,7 @@ export default function PalletPage() {
 					"
 					onClick={() => { setShowModalCreatePos(true); }}
 				>
-					Добавить позицию
+					Додати позицію
 				</ButtonBlock>
 
 
@@ -190,7 +192,7 @@ export default function PalletPage() {
 					className="edit-c"
 					onClick={() => { setShowModalRenamePallet(true); }}
 				>
-					Переименовать
+					Перейменувати
 				</ButtonBlock>
 
 
@@ -198,7 +200,7 @@ export default function PalletPage() {
 					className="delete-c"
 					onClick={() => { setShowModalPalletDelete(true) }}
 				>
-					Удалить паллету
+					Видалити палету
 				</ButtonBlock>
 			</CardBlock>
 
@@ -263,10 +265,10 @@ export default function PalletPage() {
 								<label htmlFor="box">Кількість коробок:</label>
 								<InputBlock
 									type="number"
-									id="box"
-									name="box"
+									id="boxes"
+									name="boxes"
 									autoComplete="off"
-									value={newPos.box}
+									value={newPos.boxes}
 									onChange={handleInputPosChange}
 								/>
 							</CardBlock>
@@ -335,11 +337,11 @@ export default function PalletPage() {
 				<TextBlock
 					className="text-green-500 text-3xl"
 				>
-					Позиции
+					Позиції
 				</TextBlock>
 
 				<TextBlock>
-					Всего позиций {posesInStore.length}
+					Всього позицій {posesInStore.length}
 				</TextBlock>
 
 				{isPosesLoading ? (
@@ -347,13 +349,7 @@ export default function PalletPage() {
 				) : posesInStore?.length === 0 ? (
 					<p></p>
 				) : (
-					<ul className='grid grid-cols-1 
-					md:grid-cols-3 
-					lg:grid-cols-4 
-					xl:grid-cols-4 gap-2 p-4
-					
-					
-					'>
+					<ul className='p-2 space-y-2'>
 
 
 						{posesInStore?.map((pos) => {
@@ -365,6 +361,7 @@ export default function PalletPage() {
 										setShowModalDeletePos(true)
 										setSelectedPos(pos)
 									}}
+									artsDB={artsDB}
 
 								/>
 							);
