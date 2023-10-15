@@ -4,6 +4,10 @@ import usePalletStore from './palletsStore';
 import usePosesStore from './posesStore';
 import { ButtonBlock, CardBlock, HeaderBlock, ModalConfirm, ModalEditOneValue, PageBTW, Spinner, TextBlock, ModalWrapper, InputBlock } from '../../components';
 import { toast } from 'react-toastify';
+import { AiOutlineClose } from "react-icons/ai";
+import { ImMoveUp } from "react-icons/im";
+import PositionBage from './PositionBage';
+
 
 
 export default function PalletPage() {
@@ -36,6 +40,7 @@ export default function PalletPage() {
 	const [showModalPalletDelete, setShowModalPalletDelete] = useState(false)
 	const [showModalRenamePallet, setShowModalRenamePallet] = useState(false);
 	const [showModalCreatePos, setShowModalCreatePos] = useState(false);
+	const [showModalDeletePos, setShowModalDeletePos] = useState(false);
 
 
 	useEffect(() => {
@@ -207,7 +212,7 @@ export default function PalletPage() {
 
 				{
 					showModalCreatePos && <ModalWrapper
-
+						title="Додавання позиції"
 						onCancel={() => { setShowModalCreatePos(false) }}
 					>
 
@@ -219,11 +224,12 @@ export default function PalletPage() {
 							<CardBlock
 								className="flex justify-between items-center space-x-4"
 							>
-								<label htmlFor="artikul">Artikul:</label>
+								<label htmlFor="artikul">Артикул:</label>
 								<InputBlock
 									type="text"
 									id="artikul"
 									name="artikul"
+									autoComplete="off"
 									value={newPos.artikul}
 									onChange={handleInputPosChange}
 								/>
@@ -231,11 +237,12 @@ export default function PalletPage() {
 							<CardBlock
 								className="flex justify-between items-center space-x-4"
 							>
-								<label htmlFor="quant">Quant:</label>
+								<label htmlFor="quant">Кількість артикулу:</label>
 								<InputBlock
-									type="text"
+									type="number"
 									id="quant"
 									name="quant"
+									autoComplete="off"
 									value={newPos.quant}
 									onChange={handleInputPosChange}
 								/>
@@ -243,11 +250,12 @@ export default function PalletPage() {
 							<CardBlock
 								className="flex justify-between items-center space-x-4"
 							>
-								<label htmlFor="box">Box:</label>
+								<label htmlFor="box">Кількість коробок:</label>
 								<InputBlock
-									type="text"
+									type="number"
 									id="box"
 									name="box"
+									autoComplete="off"
 									value={newPos.box}
 									onChange={handleInputPosChange}
 								/>
@@ -255,11 +263,12 @@ export default function PalletPage() {
 							<CardBlock
 								className="flex justify-between items-center space-x-4"
 							>
-								<label htmlFor="date">Date:</label>
+								<label htmlFor="date">Дата:</label>
 								<InputBlock
 									type="text"
 									id="date"
 									name="date"
+									autoComplete="off"
 									value={newPos.date}
 									onChange={handleInputPosChange}
 								/>
@@ -268,28 +277,36 @@ export default function PalletPage() {
 								className="flex justify-between "
 							>
 								<ButtonBlock
-									type="submit"
-									className="create-c"
-									onClick={handleCreatePos}
-								>
-									Создать
-								</ButtonBlock>
-
-								<ButtonBlock
 									type="button"
 									className="cancel-c"
 									onClick={() => {
 										setNewPos({});
 										setShowModalCreatePos(false);
 									}}>
-									Отмена
+									Скасувати
 								</ButtonBlock>
+
+								<ButtonBlock
+									type="submit"
+									className="create-c"
+									onClick={handleCreatePos}
+								>
+									Створити
+								</ButtonBlock>
+
+
 							</CardBlock>
 						</CardBlock>
 
 
 					</ModalWrapper>
 				}
+
+
+				{showModalDeletePos && <ModalConfirm
+					ask="Видалити цю позицію?"
+					onCancel={() => { setShowModalDeletePos(false) }}
+				/>}
 
 
 
@@ -322,17 +339,17 @@ export default function PalletPage() {
 					<ul className='grid grid-cols-1 
 					md:grid-cols-3 
 					lg:grid-cols-4 
-					xl:grid-cols-4 gap-2 p-4'>
-						{poses?.map((pos, i) => {
+					xl:grid-cols-4 gap-2 p-4
+					
+					
+					'>
+						{poses?.map((pos) => {
 
 							return (
-								<li className='border border-green-500 p-2' key={pos._id}>
-									<TextBlock>{pos.box || i}</TextBlock>
-									<TextBlock>{pos._id.slice(-8, -1)}</TextBlock>
-									<TextBlock>Дата: {pos.date}</TextBlock>
-									<TextBlock>Артикул: {pos.artikul}</TextBlock>
-									<TextBlock>Количество: {pos.quant}</TextBlock>
-								</li>
+								<PositionBage
+									pos={pos}
+									onDelete={() => { setShowModalDeletePos(true) }}
+								/>
 							);
 						})}
 					</ul>

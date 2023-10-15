@@ -36,18 +36,21 @@ export default function ModalConfirm({ ask, onConfirm, onCancel }) {
 				</TextBlock>
 
 				<div className="flex justify-evenly  ">
-					<ButtonBlock
-						onClick={() => onConfirm()}
-						className="success-c px-4 text-xl w-1/3"
-					>
-						Да
-					</ButtonBlock>
+
 					<ButtonBlock
 						onClick={() => onCancel()}
 						className="cancel-c px-4 text-xl w-1/3"
 					>
-						Нет
+						Ні
 					</ButtonBlock>
+
+					<ButtonBlock
+						onClick={() => onConfirm()}
+						className="success-c px-4 text-xl w-1/3"
+					>
+						Так
+					</ButtonBlock>
+
 				</div>
 			</div>
 

@@ -33,17 +33,17 @@ export default function ModalWrapper({ children, onCancel, title }) {
 				>
 
 					<RowBlock
-						className="flex justify-between bg-gray-800 p-1"
+						className="flex justify-center  p-1"
 					>
-						<TextBlock></TextBlock>
+						
 
 						<TextBlock
-							className="text-white text-3xl"
+							className="text-white bg-gray-800 text-3xl p-1 rounded"
 						>{title}</TextBlock>
 
 						<ButtonBlock
 							onClick={() => onCancel()}
-							className="cancel-c px-2 text-md rounded-full"
+							className="cancel-c px-2 text-md rounded-full absolute top-1 right-1"
 						>
 							<AiOutlineClose />
 						</ButtonBlock>
