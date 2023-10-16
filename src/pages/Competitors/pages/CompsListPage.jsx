@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { useCompContext } from '../contexts/compContextProvider';  // Import the context hook
-import { ButtonBlock, CardBlock, ImageBlock, InputBlock, TextBlock, Spinner, ModalWrapper } from '../../../components';
+import { ButtonBlock, CardBlock, ImageBlock, InputBlock, TextBlock, Spinner, ModalWrapper, ImageArt } from '../../../components';
 import { analyzeComp } from '../../../utils/analyzeComp';
 import { exportToExcelComps } from '../../../utils/exportExcel';
 
@@ -436,20 +436,23 @@ export default function CompListPage() {
 
 											<CardBlock
 												className="flex items-center justify-start space-x-1 w-full cursor-pointer  "
-												onClick={() => {
+												onClick={(e) => {
+													e.stopPropagation()
 													setShowModalComp(true);
 													setSelectedComp(comp)
 												}}
+
 											>
 
-												<ImageBlock
-													src={`https://sharik.ua/images/elements_big/${comp.artikul}_m1.jpg`}
-													width={50}
-													height={50}
-													alt="Фото артикула"
-													className="rounded hover:scale-150 hover:translate-x-1"
 
+
+												<ImageArt
+													artikul={comp.artikul}
+													size={50}
+													className="rounded"
 												/>
+
+
 
 												<TextBlock
 													className="text-left  "

@@ -1,6 +1,6 @@
 import React from 'react';
 
-const TextBlock = ({ children, className }) => {
+const TextBlock = ({ children, className, onClick }) => {
 
 	const style = `
 
@@ -11,7 +11,10 @@ const TextBlock = ({ children, className }) => {
 `
 
 	return (
-		<p className={style} >
+		<p
+			className={style}
+			onClick={onClick}
+		>
 			{children}
 		</p>
 	);

@@ -1,6 +1,6 @@
 import React from 'react';
 
-const ImageBlock = ({ src, alt, width, height, className }) => {
+const ImageBlock = ({ src, alt, width, height, className, onClick }) => {
 
 
 	const style = `
@@ -14,7 +14,14 @@ const ImageBlock = ({ src, alt, width, height, className }) => {
 
 
 	return (
-		<img src={src } alt={alt} width={width} height={height} className={style}       >
+		<img
+			src={src}
+			alt={alt}
+			width={width}
+			height={height}
+			className={style}
+			onClick={onClick}
+		>
 
 		</img>
 	);

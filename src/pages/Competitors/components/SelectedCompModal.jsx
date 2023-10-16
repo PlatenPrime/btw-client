@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { ButtonBlock, CardBlock, ImageBlock, Spinner, TextBlock } from '../../../components'
+import { ButtonBlock, CardBlock, ImageArt, ImageBlock, Spinner, TextBlock } from '../../../components'
 import { Link } from 'react-router-dom'
 import axios from "../../../utils/axios"
 import { toast } from 'react-toastify'
@@ -34,13 +34,11 @@ export default function SelectedCompModal({ selectedComp: comp }) {
 				className="flex space-x-6 bg-gray-700/10 p-2"
 			>
 
-				<ImageBlock
-					src={`https://sharik.ua/images/elements_big/${comp.artikul}_m1.jpg`}
-					width={100}
-					height={100}
-					alt="Фото артикула"
-					className="rounded hover:scale-110 "
 
+				<ImageArt
+					artikul={comp.artikul}
+					size={100}
+					className="rounded"
 				/>
 
 				<TextBlock

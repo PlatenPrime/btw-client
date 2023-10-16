@@ -14,6 +14,7 @@ export { default as ModalEditOneValue } from "./UI/Modal/ModalEditOneValue"
 export { default as ModalInfo } from "./UI/Modal/ModalInfo"
 export { default as ModalWrapper } from "./UI/Modal/ModalWrapper"
 export { default as Spinner } from "./UI/Spinner/Spinner";
+export { default as ImageArt } from "./UI/Image/ImageArt";
 
 
 

@@ -18,7 +18,7 @@ export default function ModalWrapper({ children, onCancel, title }) {
 
 	return (
 		<div
-			className="fixed p-2 bg-sky-500/10 inset-0 z-50 flex items-center justify-center backdrop-blur backdrop-filter bg-opacity-60"
+			className="fixed p-2 bg-sky-500/10 inset-0 z-40 flex items-center justify-center backdrop-blur backdrop-filter bg-opacity-60"
 			onClick={handleModalClick}
 		>
 
@@ -35,11 +35,13 @@ export default function ModalWrapper({ children, onCancel, title }) {
 					<RowBlock
 						className="flex justify-center  px-6"
 					>
-						
+
 
 						<TextBlock
-							className="text-white bg-gray-800 text-3xl  rounded"
-						>{title}</TextBlock>
+							className="text-white bg-gray-800 text-2xl  rounded"
+						>
+							{title}
+						</TextBlock>
 
 						<ButtonBlock
 							onClick={() => onCancel()}

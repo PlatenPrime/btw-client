@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { ButtonBlock, CardBlock, ImageBlock, TextBlock } from '../../components'
+import { ButtonBlock, CardBlock, ImageArt, ImageBlock, TextBlock } from '../../components'
 import { ImMoveDown } from 'react-icons/im'
 import { MdDeleteForever } from "react-icons/md";
 
@@ -44,14 +44,14 @@ export default function PositionBage({ pos, onDelete, onEdit, artsDB }) {
 				className="flex w-1/2 items-center space-x-4 justify-between "
 			>
 
-				<ImageBlock
-					src={`https://sharik.ua/images/elements_big/${artikul ? pos.artikul : defaultImageArtikul}_m1.jpg`}
-					width={100}
-					height={100}
-					alt="Фото артикула"
-					className={`rounded  `}
+			
 
+				<ImageArt
+					size={100}
+					artikul={artikul ? pos.artikul : ""}
+					className="rounded-lg"
 				/>
+
 
 
 				<CardBlock
