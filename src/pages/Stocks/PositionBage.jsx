@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { ButtonBlock, CardBlock, ImageBlock, TextBlock } from '../../components'
-import { ImMoveUp } from 'react-icons/im'
+import { ImMoveDown } from 'react-icons/im'
 import { MdDeleteForever } from "react-icons/md";
 
 
@@ -41,7 +41,7 @@ export default function PositionBage({ pos, onDelete, onEdit, artsDB }) {
 
 
 			<CardBlock
-				className="flex items-center space-x-4 justify-center bg-gray-300/10"
+				className="flex w-1/2 items-center space-x-4 justify-between "
 			>
 
 				<ImageBlock
@@ -54,24 +54,40 @@ export default function PositionBage({ pos, onDelete, onEdit, artsDB }) {
 				/>
 
 
+				<CardBlock
+					className="flex w-full "
+
+				>
+
+					<TextBlock
+						className=" text-2xl w-1/2"
+					>
+						{pos.artikul}
+					</TextBlock>
+
+					<TextBlock
+						className=" italic  w-1/2"
+					>
+						{artikul ? artikul?.nameukr.slice(9) : "-"}
+					</TextBlock>
+
+				</CardBlock>
+
 			</CardBlock>
 
 
+
+
 			<table
-				className="bg-green-500/10"
+				className="bg-green-500/10 w-1/2"
 			>
 
 				<thead
-					className="bg-green-900"
+					className="bg-green-900 max-w-full "
 				>
 
 					<tr>
-						<th
-							className="w-1/5"
-						>Позиція</th>
-						<th
-							className="w-2/5"
-						>Артикул</th>
+
 						<th
 							className="w-1/5"
 						>Кількість</th>
@@ -84,20 +100,6 @@ export default function PositionBage({ pos, onDelete, onEdit, artsDB }) {
 
 				<tr>
 
-					<td>
-						<TextBlock
-							className="flex flex-nowrap text-xl"
-						>
-							{pos.artikul}
-						</TextBlock>
-					</td>
-
-
-					<td>
-						<TextBlock>
-							{artikul ? artikul?.nameukr.slice(9) : "-"}
-						</TextBlock>
-					</td>
 
 					<td>
 						<TextBlock>
@@ -121,13 +123,13 @@ export default function PositionBage({ pos, onDelete, onEdit, artsDB }) {
 
 
 			<CardBlock
-				className="flex  space-x-1 justify-evenly lg:items-center border border-sky-500 p-2 ">
+				className="flex  space-x-1 justify-evenly lg:items-center border-4 border-sky-500/20 p-2  ">
 
 				<ButtonBlock
 					className=" edit-c text-3xl"
 					onClick={onEdit}
 				>
-					<ImMoveUp />
+					<ImMoveDown />
 				</ButtonBlock>
 
 				<ButtonBlock
