@@ -23,6 +23,7 @@ export default function PalletPage() {
 	const deletePosById = usePosesStore((state) => state.deletePosById);
 	const getPalletPoses = usePosesStore((state) => state.getPalletPoses);
 	const posesInStore = usePosesStore((state) => state.poses);
+	const updatePosById = usePosesStore((state) => state.updatePosById);
 
 
 	const { artsDB, loadingArtsDB, errorArtsDB } = useFetchArts()
@@ -30,11 +31,13 @@ export default function PalletPage() {
 
 	const [pallet, setPallet] = useState(null);
 	const [title, setTitle] = useState("");
-	const [poses, setPoses] = useState([]);
 	const [isPosesLoading, setIsPosesLoading] = useState(false);
-	const [isPosCreating, setIsPosCreating] = useState(false);
+
 
 	const [selectedPos, setSelectedPos] = useState(null)
+
+	const [newPosQuantValue, setNewPosQuantValue] = useState(0)
+	const [newPosBoxesValue, setNewPosBoxesValue] = useState(0)
 
 	const [newPos, setNewPos] = useState({
 		artikul: '',
@@ -48,6 +51,7 @@ export default function PalletPage() {
 	const [showModalRenamePallet, setShowModalRenamePallet] = useState(false);
 	const [showModalCreatePos, setShowModalCreatePos] = useState(false);
 	const [showModalDeletePos, setShowModalDeletePos] = useState(false);
+	const [showModalEditPos, setShowModalEditPos] = useState(false);
 
 
 	async function fetchPallet(id) {
@@ -135,7 +139,7 @@ export default function PalletPage() {
 		} finally {
 			setShowModalCreatePos(false)
 			setNewPos({
-		
+
 				artikul: '',
 				quant: '',
 				boxes: '',
@@ -154,6 +158,22 @@ export default function PalletPage() {
 			console.log(error)
 		} finally {
 			setShowModalDeletePos(false)
+		}
+	}
+
+
+	async function handleUpdatePosById(id) {
+		try {
+
+			const updatedData = 1
+
+
+			const resUpdatePos = await updatePosById(id, updatedData)
+
+		} catch (error) {
+
+		} finally {
+			setShowModalEditPos(false)
 		}
 	}
 
@@ -322,6 +342,71 @@ export default function PalletPage() {
 				/>}
 
 
+				{showModalEditPos && <ModalWrapper
+					title={`Редагування позиції ${selectedPos.artikul} `}
+					onCancel={() => { setShowModalEditPos(false) }}
+
+				>
+
+					<CardBlock
+						className="flex justify-between"
+					>
+
+						<TextBlock>
+							Кількість:
+						</TextBlock>
+
+						<InputBlock
+							name="newPosQuantValue"
+							value={newPosQuantValue}
+							placeholder="Введи нове значення кількості..."
+							onChange={(e) => { setNewPosQuantValue(e.target.value) }}
+						/>
+
+					</CardBlock>
+
+
+					<CardBlock
+						className="flex justify-between"
+					>
+
+						<TextBlock>
+							Коробки:
+						</TextBlock>
+
+						<InputBlock
+							name="newPosBoxesValue"
+							value={newPosBoxesValue}
+							placeholder="Введи нове значення коробок..."
+							onChange={(e) => { setNewPosBoxesValue(e.target.value) }}
+						/>
+
+					</CardBlock>
+
+
+					<CardBlock
+						className="flex justify-between"
+					>
+						<ButtonBlock
+							className="cancel-c"
+							onClick={() => { setShowModalEditPos(false) }}
+						>
+							Скасувати
+						</ButtonBlock>
+						<ButtonBlock
+							className="success-c"
+
+						>
+							Підтвердити
+						</ButtonBlock>
+
+
+					</CardBlock>
+
+
+				</ModalWrapper>}
+
+
 
 
 			</CardBlock>
@@ -360,6 +445,12 @@ export default function PalletPage() {
 									onDelete={() => {
 										setShowModalDeletePos(true)
 										setSelectedPos(pos)
+									}}
+									onEdit={() => {
+										setShowModalEditPos(true)
+										setSelectedPos(pos)
+										setNewPosBoxesValue(pos.boxes)
+										setNewPosQuantValue(pos.quant)
 									}}
 									artsDB={artsDB}
 

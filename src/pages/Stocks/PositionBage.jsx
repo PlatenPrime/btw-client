@@ -2,34 +2,33 @@ import React, { useEffect, useState } from 'react'
 import { ButtonBlock, CardBlock, ImageBlock, TextBlock } from '../../components'
 import { ImMoveUp } from 'react-icons/im'
 import { MdDeleteForever } from "react-icons/md";
-import useFetchArts from '../../hooks/useFetchArts';
+
 
 export default function PositionBage({ pos, onDelete, onEdit, artsDB }) {
 
 
 	const defaultImageArtikul = "1102-3092"
-
 	const artikul = artsDB?.find((art) => art.artikul === pos.artikul)
 
-	console.log(pos)
+
 
 
 
 	return (
 		<li className='
-	 relative
+	 relative border border-green-500
 	shadow-lg hover:shadow-green-500
 		flex flex-col lg:flex-row lg:justify-between
 		rounded
 		transition ease-in-out duration-300	
-		space-y-2
+		
 		'
 			key={pos._id}
 		>
 
 			<TextBlock
 				className={`
-					absolute top-0 left-0 z-50 bg-red-500 rounded
+					absolute top-0 left-0 z-10 bg-red-500 rounded
 					${pos.date ? "p-1" : ""}
 					
 					`}
@@ -42,7 +41,7 @@ export default function PositionBage({ pos, onDelete, onEdit, artsDB }) {
 
 
 			<CardBlock
-				className="flex space-x-4 justify-center bg-gray-300/10"
+				className="flex items-center space-x-4 justify-center bg-gray-300/10"
 			>
 
 				<ImageBlock
@@ -62,27 +61,32 @@ export default function PositionBage({ pos, onDelete, onEdit, artsDB }) {
 				className="bg-green-500/10"
 			>
 
-				<tr>
-					<th
-						className="w-1/5"
-					>Позиція</th>
-					<th
-						className="w-2/5"
-					>Артикул</th>
-					<th
-						className="w-1/5"
-					>Кількість</th>
-					<th
-						className="w-1/5"
-					>Коробок</th>
-				</tr>
+				<thead
+					className="bg-green-900"
+				>
+
+					<tr>
+						<th
+							className="w-1/5"
+						>Позиція</th>
+						<th
+							className="w-2/5"
+						>Артикул</th>
+						<th
+							className="w-1/5"
+						>Кількість</th>
+						<th
+							className="w-1/5"
+						>Коробки</th>
+					</tr>
+				</thead>
 
 
 				<tr>
 
 					<td>
 						<TextBlock
-							className="flex flex-nowrap"
+							className="flex flex-nowrap text-xl"
 						>
 							{pos.artikul}
 						</TextBlock>
@@ -121,6 +125,7 @@ export default function PositionBage({ pos, onDelete, onEdit, artsDB }) {
 
 				<ButtonBlock
 					className=" edit-c text-3xl"
+					onClick={onEdit}
 				>
 					<ImMoveUp />
 				</ButtonBlock>

@@ -33,12 +33,12 @@ export default function ModalWrapper({ children, onCancel, title }) {
 				>
 
 					<RowBlock
-						className="flex justify-center  p-1"
+						className="flex justify-center  px-6"
 					>
 						
 
 						<TextBlock
-							className="text-white bg-gray-800 text-3xl p-1 rounded"
+							className="text-white bg-gray-800 text-3xl  rounded"
 						>{title}</TextBlock>
 
 						<ButtonBlock
