@@ -38,6 +38,7 @@ export default function PalletPage() {
 
 	const [newPosQuantValue, setNewPosQuantValue] = useState(0)
 	const [newPosBoxesValue, setNewPosBoxesValue] = useState(0)
+	const [newPosDateValue, setNewPosDateValue] = useState("")
 
 	const [newPos, setNewPos] = useState({
 		artikul: '',
@@ -165,7 +166,11 @@ export default function PalletPage() {
 	async function handleUpdatePosById(id) {
 		try {
 
-			const updatedData = 1
+			const updatedData = {
+				quant: newPosQuantValue,
+				boxes: newPosBoxesValue,
+				date: newPosDateValue
+			}
 
 
 			const resUpdatePos = await updatePosById(id, updatedData)
@@ -348,58 +353,91 @@ export default function PalletPage() {
 
 				>
 
-					<CardBlock
-						className="flex justify-between"
-					>
-
-						<TextBlock>
-							Кількість:
-						</TextBlock>
-
-						<InputBlock
-							name="newPosQuantValue"
-							value={newPosQuantValue}
-							placeholder="Введи нове значення кількості..."
-							onChange={(e) => { setNewPosQuantValue(e.target.value) }}
-						/>
-
-					</CardBlock>
-
 
 					<CardBlock
-						className="flex justify-between"
+						className="space-y-4 "
+
 					>
 
-						<TextBlock>
-							Коробки:
-						</TextBlock>
 
-						<InputBlock
-							name="newPosBoxesValue"
-							value={newPosBoxesValue}
-							placeholder="Введи нове значення коробок..."
-							onChange={(e) => { setNewPosBoxesValue(e.target.value) }}
-						/>
-
-					</CardBlock>
-
-
-					<CardBlock
-						className="flex justify-between"
-					>
-						<ButtonBlock
-							className="cancel-c"
-							onClick={() => { setShowModalEditPos(false) }}
+						<CardBlock
+							className="flex justify-between space-x-2"
 						>
-							Скасувати
-						</ButtonBlock>
-						<ButtonBlock
-							className="success-c"
 
+							<TextBlock>
+								Кількість:
+							</TextBlock>
+
+							<InputBlock
+								name="newPosQuantValue"
+								value={newPosQuantValue}
+								placeholder="Введи нове значення кількості..."
+								onChange={(e) => { setNewPosQuantValue(e.target.value) }}
+							/>
+
+						</CardBlock>
+
+
+						<CardBlock
+							className="flex justify-between space-x-2"
 						>
-							Підтвердити
-						</ButtonBlock>
 
+							<TextBlock>
+								Коробки:
+							</TextBlock>
+
+							<InputBlock
+								name="newPosBoxesValue"
+								value={newPosBoxesValue}
+								placeholder="Введи нове значення коробок..."
+								onChange={(e) => { setNewPosBoxesValue(e.target.value) }}
+							/>
+
+						</CardBlock>
+
+
+						<CardBlock
+							className="flex justify-between space-x-2"
+						>
+
+							<TextBlock>
+								Дата:
+							</TextBlock>
+
+							<InputBlock
+								name="newPosDataValue"
+								value={newPosDateValue}
+								placeholder="Введи нове значення дати..."
+								onChange={(e) => { setNewPosDateValue(e.target.value) }}
+							/>
+
+						</CardBlock>
+
+
+
+
+
+
+
+
+						<CardBlock
+							className="flex justify-between"
+						>
+							<ButtonBlock
+								className="cancel-c"
+								onClick={() => { setShowModalEditPos(false) }}
+							>
+								Скасувати
+							</ButtonBlock>
+							<ButtonBlock
+								className="success-c"
+								onClick={() => { handleUpdatePosById(selectedPos._id) }}
+							>
+								Підтвердити
+							</ButtonBlock>
+
+
+						</CardBlock>
 
 					</CardBlock>
 
