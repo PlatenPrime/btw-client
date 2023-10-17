@@ -134,7 +134,24 @@ export default function PalletPage() {
 	const handleCreatePos = async () => {
 
 		try {
-			await createPos(pallet._id, newPos)
+
+			const existingPos = posesInStore.find(pos => pos.artikul === newPos.artikul);
+
+			if (existingPos) {
+
+				const updatedData = {
+					quant: +existingPos.quant + +newPos.quant,
+					boxes: +existingPos.boxes + +newPos.boxes
+				}
+
+				await updatePosById(existingPos._id, updatedData)
+
+			} else {
+				await createPos(pallet._id, newPos)
+			}
+
+
+
 		} catch (error) {
 			console.log(error)
 		} finally {
@@ -255,7 +272,7 @@ export default function PalletPage() {
 
 
 						<CardBlock
-						className="flex space-x-2"
+							className="flex space-x-2"
 						>
 							<ImageArt
 								size={100}
@@ -263,7 +280,7 @@ export default function PalletPage() {
 							/>
 
 							<TextBlock
-							className = "text-xl"
+								className="text-xl"
 							>
 								{artsDB.find((art) => art.artikul === newPos.artikul)?.nameukr}
 							</TextBlock>

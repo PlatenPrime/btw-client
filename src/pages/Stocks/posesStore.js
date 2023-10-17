@@ -29,7 +29,7 @@ const usePosesStore = create((set) => ({
 	getAllPoses: async () => {
 		try {
 			const response = await axios.get('poses');
-			set({ poses: response.data.poses });
+			set({ poses: response.data.poses.sort((a, b) => a.artikul - b.artikul) });
 		} catch (error) {
 			console.error('Ошибка при получении всех позиций:', error);
 		}
@@ -74,11 +74,17 @@ const usePosesStore = create((set) => ({
 	getPalletPoses: async (id) => {
 		try {
 			const response = await axios.get(`pallets/poses/${id}`);
+			const fetchedPoses = response.data.poses.sort((a, b) => {
+				const aArtikul = Number(a.artikul.replace(/-/g, ''));
+				const bArtikul = Number(b.artikul.replace(/-/g, ''));
+				return aArtikul - bArtikul;
+			});
+			console.log(fetchedPoses)
 
 			set((state) => ({
-				poses: [...response.data.poses],
+				poses: [...fetchedPoses],
 			}));
-			
+
 			return response.data;
 		} catch (error) {
 			throw error;

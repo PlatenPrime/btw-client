@@ -98,30 +98,34 @@ export default function PositionBage({ pos, onDelete, onEdit, artsDB }) {
 				</thead>
 
 
-				<tr>
+				<tbody>
+
+					<tr>
 
 
-					<td
-						className="bg-sky-500/10"
-					>
-						<TextBlock
-							className="text-sky-500 text-xl rounded"
+						<td
+							className="bg-sky-500/10"
 						>
-							{pos.quant}
-						</TextBlock>
-					</td>
+							<TextBlock
+								className="text-sky-500 text-2xl rounded"
+							>
+								{pos.quant}
+							</TextBlock>
+						</td>
 
-					<td
-						className="bg-amber-600/10"
-					>
-						<TextBlock
-							className="text-amber-600 text-xl rounded"
+						<td
+							className="bg-amber-600/10"
 						>
-							{pos.boxes}
-						</TextBlock>
-					</td>
+							<TextBlock
+								className="text-amber-600 text-2xl rounded"
+							>
+								{pos.boxes}
+							</TextBlock>
+						</td>
 
-				</tr>
+					</tr>
+
+				</tbody>
 
 			</table>
 
@@ -131,7 +135,7 @@ export default function PositionBage({ pos, onDelete, onEdit, artsDB }) {
 
 
 			<CardBlock
-				className="flex  space-x-1 justify-evenly lg:items-center border-4 border-sky-500/40 p-2  bg-slate-900">
+				className="flex  space-x-1 justify-evenly lg:items-center rounded-b-xl rounded-r-xl p-2  bg-slate-900 hover:bg-slate-800">
 
 				<ButtonBlock
 					className=" edit-c text-3xl"
