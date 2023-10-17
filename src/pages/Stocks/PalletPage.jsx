@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import usePalletStore from './palletsStore';
 import usePosesStore from './posesStore';
-import { ButtonBlock, CardBlock, HeaderBlock, ModalConfirm, ModalEditOneValue, PageBTW, Spinner, TextBlock, ModalWrapper, InputBlock } from '../../components';
+import { ButtonBlock, CardBlock, HeaderBlock, ModalConfirm, ModalEditOneValue, PageBTW, Spinner, TextBlock, ModalWrapper, InputBlock, ImageArt } from '../../components';
 import { toast } from 'react-toastify';
 import PositionBage from './PositionBage';
 import useFetchArts from '../../hooks/useFetchArts';
@@ -253,6 +253,23 @@ export default function PalletPage() {
 						onCancel={() => { setShowModalCreatePos(false) }}
 					>
 
+
+						<CardBlock
+						className="flex space-x-2"
+						>
+							<ImageArt
+								size={100}
+								artikul={newPos.artikul.length === 9 ? newPos.artikul : "1102-3092"}
+							/>
+
+							<TextBlock
+							className = "text-xl"
+							>
+								{artsDB.find((art) => art.artikul === newPos.artikul)?.nameukr}
+							</TextBlock>
+
+						</CardBlock>
+
 						<CardBlock
 
 							className='space-y-2'
@@ -455,7 +472,7 @@ export default function PalletPage() {
 
 
 			<CardBlock
-				className="bg-green-500/5"
+				className=""
 			>
 				<TextBlock
 					className="text-green-500 text-3xl"
@@ -463,8 +480,10 @@ export default function PalletPage() {
 					Позиції
 				</TextBlock>
 
-				<TextBlock>
-					Всього позицій {posesInStore.length}
+				<TextBlock
+					className="text-green-500 text-3xl"
+				>
+					{posesInStore.length}
 				</TextBlock>
 
 				{isPosesLoading ? (
@@ -472,7 +491,7 @@ export default function PalletPage() {
 				) : posesInStore?.length === 0 ? (
 					<p></p>
 				) : (
-					<ul className='p-2 space-y-2'>
+					<ul className='p-2 space-y-4'>
 
 
 						{posesInStore?.map((pos) => {

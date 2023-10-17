@@ -16,10 +16,10 @@ export default function PositionBage({ pos, onDelete, onEdit, artsDB }) {
 
 	return (
 		<li className='
-	 relative border border-green-500
+	 relative border-2 border-green-500
 	shadow-lg hover:shadow-green-500
 		flex flex-col lg:flex-row lg:justify-between
-		rounded
+		rounded-xl
 		transition ease-in-out duration-300	
 		
 		'
@@ -28,7 +28,7 @@ export default function PositionBage({ pos, onDelete, onEdit, artsDB }) {
 
 			<TextBlock
 				className={`
-					absolute top-0 left-0 z-10 bg-red-500 rounded
+					absolute top-0 left-0 z-10 bg-red-500 rounded-xl
 					${pos.date ? "p-1" : ""}
 					
 					`}
@@ -41,10 +41,10 @@ export default function PositionBage({ pos, onDelete, onEdit, artsDB }) {
 
 
 			<CardBlock
-				className="flex w-1/2 items-center space-x-4 justify-between "
+				className="flex lg:w-1/2 items-center space-x-4 justify-between "
 			>
 
-			
+
 
 				<ImageArt
 					size={100}
@@ -55,7 +55,7 @@ export default function PositionBage({ pos, onDelete, onEdit, artsDB }) {
 
 
 				<CardBlock
-					className="flex w-full "
+					className="flex w-full   "
 
 				>
 
@@ -79,20 +79,20 @@ export default function PositionBage({ pos, onDelete, onEdit, artsDB }) {
 
 
 			<table
-				className="bg-green-500/10 w-1/2"
+				className="  w-full lg:w-1/2"
 			>
 
 				<thead
-					className="bg-green-900 max-w-full "
+					className=" max-w-full "
 				>
 
 					<tr>
 
 						<th
-							className="w-1/5"
+							className="bg-sky-500/10"
 						>Кількість</th>
 						<th
-							className="w-1/5"
+							className="bg-amber-600/10"
 						>Коробки</th>
 					</tr>
 				</thead>
@@ -101,14 +101,22 @@ export default function PositionBage({ pos, onDelete, onEdit, artsDB }) {
 				<tr>
 
 
-					<td>
-						<TextBlock>
+					<td
+						className="bg-sky-500/10"
+					>
+						<TextBlock
+							className="text-sky-500 text-xl rounded"
+						>
 							{pos.quant}
 						</TextBlock>
 					</td>
 
-					<td>
-						<TextBlock>
+					<td
+						className="bg-amber-600/10"
+					>
+						<TextBlock
+							className="text-amber-600 text-xl rounded"
+						>
 							{pos.boxes}
 						</TextBlock>
 					</td>
@@ -123,7 +131,7 @@ export default function PositionBage({ pos, onDelete, onEdit, artsDB }) {
 
 
 			<CardBlock
-				className="flex  space-x-1 justify-evenly lg:items-center border-4 border-sky-500/20 p-2  ">
+				className="flex  space-x-1 justify-evenly lg:items-center border-4 border-sky-500/40 p-2  bg-slate-900">
 
 				<ButtonBlock
 					className=" edit-c text-3xl"
