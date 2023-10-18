@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import usePalletStore from './palletsStore';
 import usePosesStore from './posesStore';
-import { ButtonBlock, CardBlock, HeaderBlock, ModalConfirm, ModalEditOneValue, PageBTW, Spinner, TextBlock, ModalWrapper, InputBlock, ImageArt } from '../../components';
+import { ButtonBlock, CardBlock, HeaderBlock, ModalConfirm, ModalEditOneValue, PageBTW, Spinner, TextBlock, ModalWrapper, InputBlock, ImageArt, Breadcrumbs } from '../../components';
 import { toast } from 'react-toastify';
 import PositionBage from './PositionBage';
 import useFetchArts from '../../hooks/useFetchArts';
@@ -201,6 +201,16 @@ export default function PalletPage() {
 
 
 
+
+	const breadcrumbPaths = [
+
+		{ text: 'Запаси', link: '/stocks' },
+		{ text: `Ряд`, link: `/rows/${pallet?.row}` },
+		{ text: `Палета ${title}` },
+	];
+
+
+
 	return (
 		<PageBTW>
 
@@ -209,6 +219,10 @@ export default function PalletPage() {
 			>
 				{title}
 			</HeaderBlock>
+
+
+
+			<Breadcrumbs paths={breadcrumbPaths} />
 
 
 
@@ -405,7 +419,7 @@ export default function PalletPage() {
 							<InputBlock
 								name="newPosQuantValue"
 								value={newPosQuantValue}
-								placeholder="Введи нове значення кількості..."
+
 								onChange={(e) => { setNewPosQuantValue(e.target.value) }}
 							/>
 
@@ -423,7 +437,7 @@ export default function PalletPage() {
 							<InputBlock
 								name="newPosBoxesValue"
 								value={newPosBoxesValue}
-								placeholder="Введи нове значення коробок..."
+
 								onChange={(e) => { setNewPosBoxesValue(e.target.value) }}
 							/>
 
@@ -441,7 +455,7 @@ export default function PalletPage() {
 							<InputBlock
 								name="newPosDataValue"
 								value={newPosDateValue}
-								placeholder="Введи нове значення дати..."
+								placeholder="12-2000..."
 								onChange={(e) => { setNewPosDateValue(e.target.value) }}
 							/>
 
@@ -491,17 +505,20 @@ export default function PalletPage() {
 			<CardBlock
 				className=""
 			>
-				<TextBlock
-					className="text-green-500 text-3xl"
-				>
-					Позиції
-				</TextBlock>
 
-				<TextBlock
-					className="text-green-500 text-3xl"
-				>
-					{posesInStore.length}
-				</TextBlock>
+
+				<CardBlock>
+
+					<TextBlock
+						className="text-green-500 text-3xl"
+					>
+						Позиції: {posesInStore.length}
+					</TextBlock>
+
+
+
+
+				</CardBlock>
 
 				{isPosesLoading ? (
 					<Spinner />

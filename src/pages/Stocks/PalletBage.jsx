@@ -7,7 +7,7 @@ export default function PalletBage({ title, id }) {
 			className='
 			w-full lg:w-fit
 				flex items-center justify-center
-				  p-3 rounded 
+				  p-3 rounded text-2xl
 				border-2 border-sky-500 
 				 bg-transparent  hover:bg-sky-500/20
 				text-sky-100 hover:text-white

@@ -144,7 +144,7 @@ table {
 .InputBlock {
 	@apply
 	  p-1.5
-	  w-full
+	  
 	  font-bold
 	  text-center
 	  text-white

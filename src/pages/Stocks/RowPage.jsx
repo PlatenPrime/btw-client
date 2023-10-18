@@ -45,7 +45,7 @@ export default function RowPage() {
 			console.error('Ошибка при получении ряда:', error);
 		}
 	}
-	
+
 
 	async function fetchRowPallets(id) {
 
@@ -159,19 +159,19 @@ export default function RowPage() {
 					className="create-c"
 					onClick={() => { setShowModalCreatePallet(true); }}
 				>
-					Создать паллету
+					Створити палету
 				</ButtonBlock>
 				<ButtonBlock
 					className="edit-c"
 					onClick={() => { setShowModalUpdateRow(true); }}
 				>
-					Переименовать
+					Перейменувати
 				</ButtonBlock>
 				<ButtonBlock
 					className="delete-c"
 					onClick={() => { setShowModalDeleteRow(true); }}
 				>
-					Удалить ряд
+					Видалити ряд
 				</ButtonBlock>
 
 
@@ -182,7 +182,7 @@ export default function RowPage() {
 
 
 			{showModalCreatePallet && <ModalCreate
-				title="Создание новой паллеты"
+				title="Створення нової палети"
 				onConfirm={(palletTitle) => { handleCreatePallet(palletTitle) }}
 				onCancel={closeModalCreatePallet}
 
@@ -199,7 +199,7 @@ export default function RowPage() {
 
 
 			{showModalDeleteRow && <ModalConfirm
-				ask="Удалить этот ряд?"
+				ask="Видалити цей ряд?"
 				onConfirm={handleDeleteRowById}
 				onCancel={closeModalDeleteRow}
 			/>}
@@ -214,9 +214,9 @@ export default function RowPage() {
 				className="space-y-4 bg-sky-500/5 p-2 "
 			>
 				<TextBlock
-					className="text-3xl  "
+					className="text-3xl text-sky-500 "
 				>
-					Паллеты
+					Палети
 				</TextBlock>
 
 				{isRowPalletsLoading
@@ -227,10 +227,10 @@ export default function RowPage() {
 						?
 						<TextBlock
 							className="text-2xl"
-						>В этом ряду нет паллет </TextBlock>
+						>Цей ряд не містить палети </TextBlock>
 						:
 						<CardBlock
-							className="flex flex-wrap gap-2 justify-start "
+							className="flex flex-wrap gap-3 justify-start "
 						>
 
 							{palletsStore?.map((pallet) => <PalletBage
