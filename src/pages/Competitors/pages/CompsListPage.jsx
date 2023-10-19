@@ -470,10 +470,10 @@ export default function CompListPage() {
 
 
 										<td className=' w-1/12 bg-sky-500/10'>
-											{comp.avail.btrade
+											{comp?.avail?.btrade
 												?
 												<span className='bg-sky-500 p-2 rounded' >
-													{comp.avail.btrade}
+													{comp?.avail?.btrade}
 												</span>
 												:
 												<span className='bg-rose-500 p-2 rounded' >
@@ -482,13 +482,13 @@ export default function CompListPage() {
 										</td>
 
 										<td className=' w-1/12 bg-sky-500/10' >
-											{comp.avail.sharte
+											{comp?.avail?.sharte
 												?
 												<span className='bg-green-500 p-2 rounded' >
 													Є
 												</span>
 												:
-												(comp.avail.sharte === false)
+												(comp?.avail?.sharte === false)
 
 													?
 													<span className='bg-red-500 p-2 rounded' >
@@ -506,15 +506,15 @@ export default function CompListPage() {
 
 
 										<td className=' w-1/12 bg-sky-500/10'>
-											{comp.avail.yumi ? <span className='bg-sky-500 p-2 rounded' >{comp.avail.yumi}</span> : <span className=' p-2 rounded' >-</span>}
+											{comp?.avail?.yumi ? <span className='bg-sky-500 p-2 rounded' >{comp.avail.yumi}</span> : <span className=' p-2 rounded' >-</span>}
 										</td>
 
 										<td className=' w-1/12 bg-sky-500/10' >
-											{comp.avail.air ? <span className='bg-green-500 p-2 rounded' >Є</span> : <span className=' p-2 rounded' >-</span>}
+											{comp?.avail?.air ? <span className='bg-green-500 p-2 rounded' >Є</span> : <span className=' p-2 rounded' >-</span>}
 										</td>
 
 										<td className=' w-1/12 bg-sky-500/10' >
-											{comp.avail.best ? <span className='bg-green-500 p-2 rounded' >Є</span> : <span className=' p-2 rounded' >-</span>}
+											{comp?.avail?.best ? <span className='bg-green-500 p-2 rounded' >Є</span> : <span className=' p-2 rounded' >-</span>}
 										</td>
 
 
@@ -523,21 +523,21 @@ export default function CompListPage() {
 
 
 										<td className='text-green-500 w-1/12 bg-yellow-500/10' >
-											{comp.price.btrade}
+											{comp?.price?.btrade}
 										</td>
 
 										<td className='text-yellow-400 w-1/12 bg-yellow-500/10' >
-											{comp.price.sharte}
+											{comp?.price?.sharte}
 										</td>
 
 										<td className='text-yellow-400 w-1/12 bg-yellow-500/10' >
-											{comp.price.yumi ? comp.price.yumi : "-"}
+											{comp?.price?.yumi ? comp?.price?.yumi : "-"}
 										</td>
 										<td className='text-yellow-400 w-1/12 bg-yellow-500/10' >
-											{comp.price.air ? comp.price.air : "-"}
+											{comp?.price?.air ? comp?.price?.air : "-"}
 										</td>
 										<td className='text-yellow-400 w-1/12 bg-yellow-500/10' >
-											{comp.price.best ? comp.price.best : "-"}
+											{comp?.price?.best ? comp?.price?.best : "-"}
 										</td>
 
 
