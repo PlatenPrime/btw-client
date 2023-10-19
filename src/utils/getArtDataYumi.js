@@ -60,7 +60,7 @@ function extractProductPriceFromString(valueString, pack = 1) {
 }
 
 function extractQuantityInPackFromString(valueString) {
-	const regex = /В упаковці (\d+)шт/;
+	const regex = /(\d+)шт/;
 	const match = valueString.match(regex);
 
 	if (match && match[1]) {
@@ -92,6 +92,7 @@ export async function getArtDataYumi(yumiLink) {
 
 		if (!price) {
 			let pack = extractQuantityInPackFromString(responseString)
+			pack ? pack = pack : pack = 1
 			console.log(pack)
 
 
