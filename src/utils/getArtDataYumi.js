@@ -39,6 +39,40 @@ function extractPriceFromString(valueString) {
 	return extractedPrice ? parseFloat(extractedPrice).toFixed(2) : null;
 }
 
+function extractProductPriceFromString(valueString, pack = 1) {
+	const searchPriceValue = '₴';
+	const index = valueString.indexOf(searchPriceValue);
+	if (index === -1) {
+		return null; // Цена не найдена
+	}
+
+	const substring = valueString.slice(index - 50, index);
+	const match = substring.match(/(\d+,\d+)/);
+
+	if (match) {
+		const priceWithComma = match[0];
+		const priceFloat = parseFloat(priceWithComma.replace(',', '.'));
+		const adjustedPrice = priceFloat / pack; // Делим цену на значение из переменной pack
+		return adjustedPrice.toFixed(2);
+	} else {
+		return null;
+	}
+}
+
+function extractQuantityInPackFromString(valueString) {
+	const regex = /В упаковці (\d+)шт/;
+	const match = valueString.match(regex);
+
+	if (match && match[1]) {
+		return parseInt(match[1], 10);
+	} else {
+		return null; // Если не найдено числового значения
+	}
+}
+
+
+
+
 export async function getArtDataYumi(yumiLink) {
 	const urlCA = 'https://corsproxy.io/?';
 	const corsUrl = `${urlCA}${yumiLink}`;
@@ -49,12 +83,26 @@ export async function getArtDataYumi(yumiLink) {
 			throw new NetworkError('Network response was not ok');
 		}
 		const responseString = await response.text();
-		
+
 
 		const quant = extractQuantFromString(responseString);
-		const price = extractPriceFromString(responseString);
+		let price = extractPriceFromString(responseString);
 
 		console.log(price);
+
+		if (!price) {
+			let pack = extractQuantityInPackFromString(responseString)
+			console.log(pack)
+
+
+			price = extractProductPriceFromString(responseString, pack)
+
+		}
+
+		console.log(price)
+
+
+
 
 		return { price, quant };
 

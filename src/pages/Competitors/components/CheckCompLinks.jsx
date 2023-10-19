@@ -121,7 +121,7 @@ export default function CheckCompLinks() {
 			{showModalInfo && <CardBlock>
 				<ModalWrapper
 					onCancel={() => { setShowModalInfo(false) }}
-title="Перевірка посилань"
+					title="Перевірка посилань"
 				>
 
 
@@ -176,7 +176,7 @@ title="Перевірка посилань"
 										</ButtonBlock>
 									</td>
 									<td><TextBlock>Цена: {priceYumi ? priceYumi : "-"}</TextBlock></td>
-									<td><TextBlock>Количество: {quantYumi ? quantYumi : "-"}</TextBlock></td>
+									<td><TextBlock>Количество: {quantYumi || quantYumi === 0 ? quantYumi : "-"}</TextBlock></td>
 								</CardBlock>
 
 							</tr>
