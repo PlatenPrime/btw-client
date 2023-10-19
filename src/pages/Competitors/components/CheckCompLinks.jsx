@@ -17,8 +17,8 @@ export default function CheckCompLinks() {
 	const [showModalInfo, setShowModalInfo] = useState(false)
 
 	const [artikulYumi, setArtikulYumi] = useState("")
-	const [price, setPrice] = useState("")
-	const [quant, setQuant] = useState(null)
+	const [priceYumi, setPriceYumi] = useState("")
+	const [quantYumi, setQuantYumi] = useState(null)
 
 	const [artikulBtrade, setArtikulBtrade] = useState("")
 	const [priceBtrade, setPriceBtrade] = useState("")
@@ -40,14 +40,14 @@ export default function CheckCompLinks() {
 
 
 
-	const handleFetch = async (artikulYumi) => {
+	const handleFetchYumi = async (artikulYumi) => {
 		console.log(artikulYumi)
 
 		const { price, quant } = await getArtDataYumi(artikulYumi)
 		console.log(price)
 		console.log(quant)
-		setPrice(price)
-		setQuant(quant)
+		setPriceYumi(price)
+		setQuantYumi(quant)
 
 	}
 
@@ -121,39 +121,18 @@ export default function CheckCompLinks() {
 			{showModalInfo && <CardBlock>
 				<ModalWrapper
 					onCancel={() => { setShowModalInfo(false) }}
-
+title="Перевірка посилань"
 				>
 
 
 					<table>
 						<tbody>
-							<tr>
 
-								<CardBlock className="flex w-full ">
-									<td><TextBlock>Yumi</TextBlock></td>
-									<td>
-										<InputBlock
-											onChange={(e) => { setArtikulYumi(e.target.value) }}
-											value={artikulYumi}
-											placeholder="Введи ссылку yumi"
-										/>
-									</td>
-									<td>
-										<ButtonBlock
-											className="search-c"
-											onClick={() => { handleFetch(artikulYumi) }}
-											disabled={!artikulYumi}
-										>
-											Проверить
-										</ButtonBlock>
-									</td>
-									<td><TextBlock>{price}</TextBlock></td>
-									<td><TextBlock>{quant}</TextBlock></td>
-								</CardBlock>
+							<tr
 
-							</tr>
-							<tr>
-								<CardBlock className="flex w-full">
+
+							>
+								<CardBlock className="flex border border-slate-500 items-center w-full">
 									<td><TextBlock>Btrade</TextBlock></td>
 									<td>
 										<InputBlock
@@ -171,12 +150,39 @@ export default function CheckCompLinks() {
 											Проверить
 										</ButtonBlock>
 									</td>
-									<td><TextBlock>{priceBtrade}</TextBlock></td>
-									<td><TextBlock>{quantBtrade}</TextBlock></td>
+									<td><TextBlock>Цена: {priceBtrade ? priceBtrade : "-"}</TextBlock></td>
+									<td><TextBlock>Количество: {quantBtrade ? quantBtrade : "-"}</TextBlock></td>
 								</CardBlock>
 							</tr>
+
 							<tr>
-								<CardBlock className="flex w-full ">
+
+								<CardBlock className="flex border border-slate-500 items-center w-full">
+									<td><TextBlock>Yumi</TextBlock></td>
+									<td>
+										<InputBlock
+											onChange={(e) => { setArtikulYumi(e.target.value) }}
+											value={artikulYumi}
+											placeholder="Введи ссылку yumi"
+										/>
+									</td>
+									<td>
+										<ButtonBlock
+											className="search-c"
+											onClick={() => { handleFetchYumi(artikulYumi) }}
+											disabled={!artikulYumi}
+										>
+											Проверить
+										</ButtonBlock>
+									</td>
+									<td><TextBlock>Цена: {priceYumi ? priceYumi : "-"}</TextBlock></td>
+									<td><TextBlock>Количество: {quantYumi ? quantYumi : "-"}</TextBlock></td>
+								</CardBlock>
+
+							</tr>
+
+							<tr>
+								<CardBlock className="flex border border-slate-500 items-center w-full">
 									<td><TextBlock>Sharte</TextBlock></td>
 									<td>
 										<InputBlock
@@ -194,13 +200,14 @@ export default function CheckCompLinks() {
 											Проверить
 										</ButtonBlock>
 									</td>
-									<td><TextBlock>{priceSharte}</TextBlock></td>
-									<td><TextBlock>{isAvailableSharte ? "Есть" : isAvailableSharte === false ? "Нет" : ""}</TextBlock>
+									<td><TextBlock>Цена: {priceSharte ? priceSharte : "-"}</TextBlock></td>
+									<td><TextBlock>Наличие: {isAvailableSharte ? "Есть" : isAvailableSharte === false ? "Нет" : "-"}</TextBlock>
 									</td>
 								</CardBlock>
 							</tr>
+
 							<tr>
-								<CardBlock className="flex ">
+								<CardBlock className="flex border border-slate-500 items-center w-full">
 									<td><TextBlock>Air</TextBlock></td>
 									<td>
 										<InputBlock
@@ -218,12 +225,12 @@ export default function CheckCompLinks() {
 											Проверить
 										</ButtonBlock>
 									</td>
-									<td><TextBlock>{priceAir}</TextBlock></td>
-									<td><TextBlock>{isAvailableAir ? "Есть" : isAvailableAir === false ? "Нет" : ""}</TextBlock></td>
+									<td><TextBlock>Цена:  {priceAir ? priceAir : "-"}</TextBlock></td>
+									<td><TextBlock>Наличие: {isAvailableAir ? "Есть" : isAvailableAir === false ? "Нет" : "-"}</TextBlock></td>
 								</CardBlock>
 							</tr>
 							<tr>
-								<CardBlock className="flex ">
+								<CardBlock className="flex border border-slate-500 items-center w-full">
 									<td><TextBlock>Best</TextBlock></td>
 									<td>
 										<InputBlock
@@ -241,8 +248,8 @@ export default function CheckCompLinks() {
 											Проверить
 										</ButtonBlock>
 									</td>
-									<td><TextBlock>{priceBest}</TextBlock></td>
-									<td><TextBlock>{isAvailableBest ? "Есть" : isAvailableBest === false ? "Нет" : ""}</TextBlock></td>
+									<td><TextBlock>Цена: {priceBest ? priceBest : "-"}</TextBlock></td>
+									<td><TextBlock> Наличие:{isAvailableBest ? "Есть" : isAvailableBest === false ? "Нет" : "-"}</TextBlock></td>
 								</CardBlock>
 							</tr>
 						</tbody>
