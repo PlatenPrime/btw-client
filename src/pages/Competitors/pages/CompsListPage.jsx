@@ -487,7 +487,7 @@ export default function CompListPage() {
 													</span>
 													:
 													<span className='bg-rose-500 p-2 rounded' >
-														Немає
+														-
 													</span>}
 										</td>
 
@@ -519,7 +519,7 @@ export default function CompListPage() {
 											{comp?.avail?.yumi
 												?
 												<span className='bg-sky-500 p-2 rounded' >
-													{comp.avail.yumi}
+													{comp?.avail?.yumi}
 												</span>
 												:
 												comp?.avail?.yumi === 0
