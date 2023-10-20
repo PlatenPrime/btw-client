@@ -385,16 +385,16 @@ export default function CompListPage() {
 
 							<tr>
 
-								<th className="bg-sky-500/10 border border-violet-500">Btrade</th>
-								<th className="bg-sky-500/10 border border-violet-500">Sharte</th>
-								<th className="bg-sky-500/10 border border-violet-500">Yumi</th>
-								<th className="bg-sky-500/10 border border-violet-500">Air</th>
-								<th className="bg-sky-500/10 border border-violet-500">Best</th>
-								<th className="bg-yellow-500/10 border border-violet-500">Btrade</th>
-								<th className="bg-yellow-500/10 border border-violet-500">Sharte</th>
-								<th className="bg-yellow-500/10 border border-violet-500">Yumi</th>
-								<th className="bg-yellow-500/10 border border-violet-500">Air</th>
-								<th className="bg-yellow-500/10 border border-violet-500">Best</th>
+								<th className="bg-blue-600 ">Btrade</th>
+								<th className="bg-sky-500 ">Sharte</th>
+								<th className="bg-amber-600 ">Yumi</th>
+								<th className="bg-lime-600 ">Air</th>
+								<th className="bg-pink-500 ">Best</th>
+								<th className="bg-blue-600  ">Btrade</th>
+								<th className="bg-sky-500 ">Sharte</th>
+								<th className="bg-amber-600 ">Yumi</th>
+								<th className="bg-lime-600 ">Air</th>
+								<th className="bg-pink-500  ">Best</th>
 
 							</tr>
 
@@ -421,7 +421,7 @@ export default function CompListPage() {
 									<tr
 										className="bg-black 
 										odd:bg-opacity-50  even:bg-opacity-0 
-										hover:bg-gray-700 transition duration-300 ease-in-out 							"
+										hover:bg-gray-800 transition duration-300 ease-in-out 							"
 										key={comp._id.$oid}
 
 
@@ -469,19 +469,29 @@ export default function CompListPage() {
 
 
 
-										<td className=' w-1/12 bg-sky-500/10'>
+										<td className=' 
+										w-1/12 
+										shadow-inner inset-2 shadow-blue-600
+										
+										'>
 											{comp?.avail?.btrade
 												?
 												<span className='bg-sky-500 p-2 rounded' >
 													{comp?.avail?.btrade}
 												</span>
 												:
-												<span className='bg-rose-500 p-2 rounded' >
-													Немає
-												</span>}
+												comp?.avail?.btrade === 0
+													?
+													<span className='bg-rose-500 p-2 rounded' >
+														0
+													</span>
+													:
+													<span className='bg-rose-500 p-2 rounded' >
+														Немає
+													</span>}
 										</td>
 
-										<td className=' w-1/12 bg-sky-500/10' >
+										<td className=' w-1/12 shadow-inner inset-2 shadow-sky-500' >
 											{comp?.avail?.sharte
 												?
 												<span className='bg-green-500 p-2 rounded' >
@@ -505,16 +515,59 @@ export default function CompListPage() {
 										</td>
 
 
-										<td className=' w-1/12 bg-sky-500/10'>
-											{comp?.avail?.yumi ? <span className='bg-sky-500 p-2 rounded' >{comp.avail.yumi}</span> : <span className=' p-2 rounded' >-</span>}
+										<td className=' w-1/12 shadow-inner inset-2 shadow-amber-600'>
+											{comp?.avail?.yumi
+												?
+												<span className='bg-sky-500 p-2 rounded' >
+													{comp.avail.yumi}
+												</span>
+												:
+												comp?.avail?.yumi === 0
+													?
+													<span className='bg-rose-500 p-2 rounded' >
+														0
+													</span>
+													:
+													<span className=' p-2 rounded' >
+														-
+													</span>}
 										</td>
 
-										<td className=' w-1/12 bg-sky-500/10' >
-											{comp?.avail?.air ? <span className='bg-green-500 p-2 rounded' >Є</span> : <span className=' p-2 rounded' >-</span>}
+										<td className=' w-1/12 shadow-inner inset-2 shadow-lime-600' >
+											{comp?.avail?.air
+												?
+												<span className='bg-green-500 p-2 rounded' >
+													Є
+												</span>
+												:
+												(comp?.avail?.air === false)
+
+													?
+													<span className='bg-red-500 p-2 rounded' >
+														Немає
+													</span>
+													:
+													<span className=' p-2 rounded' >
+														-
+													</span>}
 										</td>
 
-										<td className=' w-1/12 bg-sky-500/10' >
-											{comp?.avail?.best ? <span className='bg-green-500 p-2 rounded' >Є</span> : <span className=' p-2 rounded' >-</span>}
+										<td className=' w-1/12 shadow-inner inset-2 shadow-pink-600' >
+											{comp?.avail?.best
+												?
+												<span className='bg-green-500 p-2 rounded' >
+													Є</span>
+												:
+												(comp?.avail?.best === false)
+
+													?
+													<span className='bg-red-500 p-2 rounded' >
+														Немає
+													</span>
+													:
+													<span className=' p-2 rounded' >
+														-
+													</span>}
 										</td>
 
 
@@ -522,21 +575,21 @@ export default function CompListPage() {
 
 
 
-										<td className='text-green-500 w-1/12 bg-yellow-500/10' >
+										<td className='text-green-500 w-1/12 shadow-inner inset-2 shadow-blue-600' >
 											{comp?.price?.btrade}
 										</td>
 
-										<td className='text-yellow-400 w-1/12 bg-yellow-500/10' >
+										<td className='text-yellow-400 w-1/12 shadow-inner inset-2 shadow-sky-500' >
 											{comp?.price?.sharte}
 										</td>
 
-										<td className='text-yellow-400 w-1/12 bg-yellow-500/10' >
+										<td className='text-yellow-400 w-1/12 shadow-inner inset-2 shadow-amber-600' >
 											{comp?.price?.yumi ? comp?.price?.yumi : "-"}
 										</td>
-										<td className='text-yellow-400 w-1/12 bg-yellow-500/10' >
+										<td className='text-yellow-400 w-1/12 shadow-inner inset-2 shadow-lime-600' >
 											{comp?.price?.air ? comp?.price?.air : "-"}
 										</td>
-										<td className='text-yellow-400 w-1/12 bg-yellow-500/10' >
+										<td className='text-yellow-400 w-1/12 shadow-inner inset-2 shadow-pink-600' >
 											{comp?.price?.best ? comp?.price?.best : "-"}
 										</td>
 
