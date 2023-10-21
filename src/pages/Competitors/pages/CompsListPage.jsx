@@ -147,7 +147,7 @@ export default function CompListPage() {
 
 
 			<CardBlock
-				className="flex justify-start flex-wrap space-x-1 "
+				className="flex justify-start flex-wrap gap-1 "
 			>
 
 				<CheckCompLinks />
@@ -378,9 +378,9 @@ export default function CompListPage() {
 						<thead className=" border border-violet-500  ">
 
 							<tr >
-								<th className="w-1/3 bg-rose-500/5 border border-violet-500 " rowSpan="2">Артикул</th>
-								<th className="w-1/3 bg-sky-500/10 border border-violet-500 " colSpan="5">Наявність</th>
-								<th className="w-1/3  bg-yellow-500/10 border border-violet-500" colSpan="5">Ціна</th>
+								<th className=" bg-rose-500/5 border border-violet-500 " rowSpan="2" colSpan="2">Артикул</th>
+								<th className=" bg-sky-500/10 border border-violet-500 " colSpan="5">Наявність</th>
+								<th className=" bg-yellow-500/10 border border-violet-500" colSpan="5">Ціна</th>
 							</tr>
 
 							<tr>
@@ -424,9 +424,18 @@ export default function CompListPage() {
 										hover:bg-gray-800 transition duration-300 ease-in-out 							"
 										key={comp._id.$oid}
 
-
-
 									>
+
+										<td>
+										<ImageArt
+													artikul={comp.artikul}
+													size={50}
+													className="rounded cursor-pointer"
+												/>
+
+										</td>
+
+
 										<td
 											className=' bg-rose-500/5  space-x-1 shadow-lg hover:bg-violet-500   hover:shadow-violet-500 transition duration-300 ease-in-out  '
 
@@ -446,12 +455,7 @@ export default function CompListPage() {
 
 
 
-												<ImageArt
-													artikul={comp.artikul}
-													size={50}
-													className="rounded"
-												/>
-
+											
 
 
 												<TextBlock
@@ -471,7 +475,7 @@ export default function CompListPage() {
 
 										<td className=' 
 										w-1/12 
-										shadow-inner inset-2 shadow-blue-600
+										shadow-inner inset-2 shadow-blue-600 bg-blue-600/30
 										
 										'>
 											{comp?.avail?.btrade
@@ -491,7 +495,7 @@ export default function CompListPage() {
 													</span>}
 										</td>
 
-										<td className=' w-1/12 shadow-inner inset-2 shadow-sky-500' >
+										<td className=' w-1/12 shadow-inner inset-2 shadow-sky-500  bg-sky-600/30' >
 											{comp?.avail?.sharte
 												?
 												<span className='bg-green-500 p-2 rounded' >
@@ -515,7 +519,7 @@ export default function CompListPage() {
 										</td>
 
 
-										<td className=' w-1/12 shadow-inner inset-2 shadow-amber-600'>
+										<td className=' w-1/12 shadow-inner inset-2 shadow-amber-600 bg-amber-600/30 '>
 											{comp?.avail?.yumi
 												?
 												<span className='bg-sky-500 p-2 rounded' >
@@ -533,7 +537,7 @@ export default function CompListPage() {
 													</span>}
 										</td>
 
-										<td className=' w-1/12 shadow-inner inset-2 shadow-lime-600' >
+										<td className=' w-1/12 shadow-inner inset-2 shadow-lime-600 bg-lime-600/30' >
 											{comp?.avail?.air
 												?
 												<span className='bg-green-500 p-2 rounded' >
@@ -552,7 +556,7 @@ export default function CompListPage() {
 													</span>}
 										</td>
 
-										<td className=' w-1/12 shadow-inner inset-2 shadow-pink-600' >
+										<td className=' w-1/12 shadow-inner inset-2 shadow-pink-600 bg-pink-600/30' >
 											{comp?.avail?.best
 												?
 												<span className='bg-green-500 p-2 rounded' >
@@ -575,21 +579,21 @@ export default function CompListPage() {
 
 
 
-										<td className='text-green-500 w-1/12 shadow-inner inset-2 shadow-blue-600' >
+										<td className='text-green-500 w-1/12 shadow-inner inset-2 shadow-blue-600 bg-blue-600/30 ' >
 											{comp?.price?.btrade}
 										</td>
 
-										<td className='text-yellow-400 w-1/12 shadow-inner inset-2 shadow-sky-500' >
+										<td className='text-yellow-400 w-1/12 shadow-inner inset-2 shadow-sky-500 bg-sky-600/30' >
 											{comp?.price?.sharte}
 										</td>
 
-										<td className='text-yellow-400 w-1/12 shadow-inner inset-2 shadow-amber-600' >
+										<td className='text-yellow-400 w-1/12 shadow-inner inset-2 shadow-amber-600 bg-amber-600/30' >
 											{comp?.price?.yumi ? comp?.price?.yumi : "-"}
 										</td>
-										<td className='text-yellow-400 w-1/12 shadow-inner inset-2 shadow-lime-600' >
+										<td className='text-yellow-400 w-1/12 shadow-inner inset-2 shadow-lime-600 bg-lime-600/30' >
 											{comp?.price?.air ? comp?.price?.air : "-"}
 										</td>
-										<td className='text-yellow-400 w-1/12 shadow-inner inset-2 shadow-pink-600' >
+										<td className='text-yellow-400 w-1/12 shadow-inner inset-2 shadow-pink-600 bg-pink-600/30' >
 											{comp?.price?.best ? comp?.price?.best : "-"}
 										</td>
 

@@ -128,7 +128,12 @@ export default function SelectedCompModal({ selectedComp: comp }) {
 						<td
 							className='text-left'
 						>
-							<a href={comp.competitorsLinks.sharteLink} target='blanked'>
+							<a 
+							
+							href={comp.competitorsLinks.sharteLink} target='blanked'
+							className='hover:text-blue-600'
+							
+							>
 								{comp.competitorsLinks.sharteLink.slice(0, 50)}...
 							</a>
 						</td>
@@ -143,7 +148,9 @@ export default function SelectedCompModal({ selectedComp: comp }) {
 						<td
 							className='text-left'
 						>
-							<a href={comp.competitorsLinks.yumiLink} target='blanked'>
+							<a href={comp.competitorsLinks.yumiLink} target='blanked'
+							className='hover:text-blue-600'
+							>
 								{comp.competitorsLinks.yumiLink ? comp.competitorsLinks.yumiLink.slice(0, 50) + "..." : "-"}
 							</a>
 						</td>
@@ -158,7 +165,9 @@ export default function SelectedCompModal({ selectedComp: comp }) {
 						<td
 							className='text-left'
 						>
-							<a href={comp.competitorsLinks.airLink} target='blanked'>
+							<a href={comp.competitorsLinks.airLink} target='blanked'
+							className='hover:text-blue-600'
+							>
 								{comp.competitorsLinks.airLink ? comp.competitorsLinks.airLink.slice(0, 50) + "..." : "-"}
 							</a>
 						</td>
@@ -174,7 +183,9 @@ export default function SelectedCompModal({ selectedComp: comp }) {
 						<td
 							className='text-left'
 						>
-							<a href={comp.competitorsLinks.bestLink} target='blanked'>
+							<a href={comp.competitorsLinks.bestLink} target='blanked'
+							className='hover:text-blue-600'
+							>
 								{comp.competitorsLinks.bestLink ? comp.competitorsLinks.bestLink.slice(0, 50) + "..." : "-"}
 							</a>
 						</td>
