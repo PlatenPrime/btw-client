@@ -14,11 +14,25 @@ export default function PalletPage() {
 	const { id } = useParams();
 	const navigate = useNavigate()
 
-	const getPalletById = usePalletStore((state) => state.getPalletById);
+	const { artsDB, loadingArtsDB, errorArtsDB } = useFetchArts()
 
+
+	// ROW STORE
+
+
+
+
+	// PALLET STORE
+
+	const getPalletById = usePalletStore((state) => state.getPalletById);
 	const deletePalletById = usePalletStore((state) => state.deletePalletById);
 	const updatePalletById = usePalletStore((state) => state.updatePalletById);
+	const clearPalletById = usePalletStore((state) => state.clearPalletById);
+	const movePalletContent = usePalletStore((state) => state.movePalletContent);
 
+	// POS STORE
+
+	const clearPosesStore = usePosesStore((state) => state.clearPosesStore);
 	const createPos = usePosesStore((state) => state.createPos);
 	const deletePosById = usePosesStore((state) => state.deletePosById);
 	const getPalletPoses = usePosesStore((state) => state.getPalletPoses);
@@ -26,7 +40,7 @@ export default function PalletPage() {
 	const updatePosById = usePosesStore((state) => state.updatePosById);
 
 
-	const { artsDB, loadingArtsDB, errorArtsDB } = useFetchArts()
+	// STATES
 
 
 	const [pallet, setPallet] = useState(null);
@@ -48,12 +62,17 @@ export default function PalletPage() {
 	});
 
 
+	// MODALS
+
 	const [showModalPalletDelete, setShowModalPalletDelete] = useState(false)
 	const [showModalRenamePallet, setShowModalRenamePallet] = useState(false);
 	const [showModalCreatePos, setShowModalCreatePos] = useState(false);
 	const [showModalDeletePos, setShowModalDeletePos] = useState(false);
 	const [showModalEditPos, setShowModalEditPos] = useState(false);
+	const [showModalClearPallet, setShowModalClearPallet] = useState(false);
 
+
+	// HANDLERS
 
 	async function fetchPallet(id) {
 		try {
@@ -200,6 +219,23 @@ export default function PalletPage() {
 	}
 
 
+	async function handleClearPalletById(id) {
+		try {
+
+			const resClear = await clearPalletById(id)
+			console.log(resClear)
+			clearPosesStore()
+
+		} catch (error) {
+			console.log(error)
+		} finally {
+			setShowModalClearPallet(false)
+		}
+	}
+
+
+
+	// BREADCRUMBS
 
 
 	const breadcrumbPaths = [
@@ -251,12 +287,19 @@ export default function PalletPage() {
 					Перейменувати
 				</ButtonBlock>
 
+				<ButtonBlock
+					onClick={() => { setShowModalClearPallet(true) }}
+					className=" confirm-c"
+				>
+					Очистити
+				</ButtonBlock>
+
 
 				<ButtonBlock
 					className="delete-c"
 					onClick={() => { setShowModalPalletDelete(true) }}
 				>
-					Видалити палету
+					Видалити
 				</ButtonBlock>
 			</CardBlock>
 
@@ -492,6 +535,13 @@ export default function PalletPage() {
 
 				</ModalWrapper>}
 
+
+				{showModalClearPallet && <ModalConfirm
+					ask={`Очистити палету ${pallet?.title}?`}
+					onConfirm={() => { handleClearPalletById(id) }}
+					onCancel={() => { setShowModalClearPallet(false) }}
+
+				/>}
 
 
 

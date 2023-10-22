@@ -4,6 +4,12 @@ import axios from '../../utils/axios';
 const usePosesStore = create((set) => ({
 	poses: [],
 
+
+	clearPosesStore: () => set(() => ({
+		poses: [],
+	})),
+
+
 	createPos: async (palletId, posData) => {
 		try {
 

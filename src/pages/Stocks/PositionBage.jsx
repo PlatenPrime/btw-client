@@ -46,16 +46,20 @@ export default function PositionBage({ pos, onDelete, onEdit, artsDB }) {
 
 
 
-				<ImageArt
-					size={100}
-					artikul={artikul ? pos.artikul : ""}
-					className="rounded-lg"
-				/>
+				<CardBlock
+					className="bg-white h-full flex items-center justify-center"
+				>
 
+					<ImageArt
+						size={100}
+						artikul={artikul ? pos.artikul : ""}
+						className="rounded-lg"
+					/>
 
+				</CardBlock>
 
 				<CardBlock
-					className="flex w-full   "
+					className="flex w-full space-x-1  "
 
 				>
 
@@ -89,10 +93,10 @@ export default function PositionBage({ pos, onDelete, onEdit, artsDB }) {
 					<tr>
 
 						<th
-							className="bg-sky-500/10"
+							className="bg-emerald-500/50"
 						>Кількість</th>
 						<th
-							className="bg-amber-600/10"
+							className="bg-emerald-500/50"
 						>Коробки</th>
 					</tr>
 				</thead>

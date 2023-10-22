@@ -6,7 +6,7 @@ import { ButtonBlock, TextBlock } from "../../../components";
 
 
 
-export default function ModalConfirm({ ask, onConfirm, onCancel }) {
+export default function ModalDelete({ ask, onDelete, onCancel }) {
 
 	const modalRef = useRef();
 
@@ -39,14 +39,14 @@ export default function ModalConfirm({ ask, onConfirm, onCancel }) {
 
 					<ButtonBlock
 						onClick={() => onCancel()}
-						className=" cancel-c px-4 text-xl w-1/3"
+						className=" success-c px-4 text-xl w-1/3"
 					>
 						Ні
 					</ButtonBlock>
 
 					<ButtonBlock
-						onClick={() => onConfirm()}
-						className=" success-c px-4 text-xl w-1/3"
+						onClick={() => onDelete()}
+						className=" delete-c px-4 text-xl w-1/3"
 					>
 						Так
 					</ButtonBlock>

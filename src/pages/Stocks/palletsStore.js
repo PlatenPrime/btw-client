@@ -7,9 +7,9 @@ const usePalletStore = create((set) => ({
 
 	createPallet: async (title, rowId) => {
 		try {
-			
+
 			const response = await axios.post('pallets', { title, rowId });
-		
+
 
 			if (response.status === 201) {
 				const newPallet = response.data;
@@ -95,7 +95,7 @@ const usePalletStore = create((set) => ({
 		try {
 			const response = await axios.get(`rows/pallets/${id}`);
 			set((state) => ({
-				pallets: [ ...response.data],
+				pallets: [...response.data],
 			}));
 
 			return response.data;
@@ -103,7 +103,53 @@ const usePalletStore = create((set) => ({
 			throw error;
 		}
 	},
+
+	clearPalletById: async (id) => {
+		try {
+			const response = await axios.put(`pallets/clear/${id}`);
+
+			if (response.status === 200) {
+				const message = response.data.message;
+				
+				return message;
+			} else {
+				throw new Error('Ошибка при очистке Pallet по ID');
+			}
+		} catch (error) {
+			console.error('Ошибка при очистке Pallet по ID:', error);
+		}
+	},
+
+
+	movePalletContent: async (currentPalletId, targetPalletId) => {
+		try {
+			const response = await axios.put('pallets/move', {
+				currentPalletId,
+				targetPalletId,
+			});
+
+			if (response.status === 200) {
+				const message = response.data.message;
+				
+				return message;
+			} else {
+				throw new Error('Ошибка при перемещении содержимого Pallet');
+			}
+		} catch (error) {
+			console.error('Ошибка при перемещении содержимого Pallet:', error);
+		}
+	},
+
+
+
+
+
+
+
 }));
+
+
+
 
 
 
