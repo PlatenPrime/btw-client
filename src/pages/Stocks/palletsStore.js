@@ -94,6 +94,7 @@ const usePalletStore = create((set) => ({
 	getRowPallets: async (id) => {
 		try {
 			const response = await axios.get(`rows/pallets/${id}`);
+			console.log(response)
 			set((state) => ({
 				pallets: [...response.data],
 			}));
@@ -110,7 +111,7 @@ const usePalletStore = create((set) => ({
 
 			if (response.status === 200) {
 				const message = response.data.message;
-				
+
 				return message;
 			} else {
 				throw new Error('Ошибка при очистке Pallet по ID');
@@ -130,7 +131,7 @@ const usePalletStore = create((set) => ({
 
 			if (response.status === 200) {
 				const message = response.data.message;
-				
+
 				return message;
 			} else {
 				throw new Error('Ошибка при перемещении содержимого Pallet');

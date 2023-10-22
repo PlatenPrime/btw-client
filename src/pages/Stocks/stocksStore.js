@@ -1,7 +1,7 @@
 import { create } from 'zustand';
 import axios from "../../utils/axios"
 
-export const useRowStore = create((set) => ({
+export  const useRowStore = create((set) => ({
 	rows: [],
 
 	// Функция для создания нового Row

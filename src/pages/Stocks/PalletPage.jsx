@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import usePalletStore from './palletsStore';
 import usePosesStore from './posesStore';
+import { useRowStore } from './stocksStore';
 import { ButtonBlock, CardBlock, HeaderBlock, ModalConfirm, ModalEditOneValue, PageBTW, Spinner, TextBlock, ModalWrapper, InputBlock, ImageArt, Breadcrumbs } from '../../components';
 import { toast } from 'react-toastify';
 import PositionBage from './PositionBage';
@@ -19,8 +20,9 @@ export default function PalletPage() {
 
 	// ROW STORE
 
-
-
+	const getRowById = useRowStore((state) => state.getRowById);
+	const getAllRows = useRowStore((state) => state.getAllRows);
+	const rows = useRowStore((state) => state.rows)
 
 	// PALLET STORE
 
@@ -29,6 +31,7 @@ export default function PalletPage() {
 	const updatePalletById = usePalletStore((state) => state.updatePalletById);
 	const clearPalletById = usePalletStore((state) => state.clearPalletById);
 	const movePalletContent = usePalletStore((state) => state.movePalletContent);
+	const getRowPallets = usePalletStore((state) => state.getRowPallets);
 
 	// POS STORE
 
@@ -44,11 +47,16 @@ export default function PalletPage() {
 
 
 	const [pallet, setPallet] = useState(null);
+	const [row, setRow] = useState(null);
 	const [title, setTitle] = useState("");
+
 	const [isPosesLoading, setIsPosesLoading] = useState(false);
 
 
 	const [selectedPos, setSelectedPos] = useState(null)
+	const [selectedRowId, setSelectedRowId] = useState(null)
+	const [selectedRowPallets, setSelectedRowPallets] = useState(null)
+	const [selectedPalletId, setSelectedPalletId] = useState(null)
 
 	const [newPosQuantValue, setNewPosQuantValue] = useState(0)
 	const [newPosBoxesValue, setNewPosBoxesValue] = useState(0)
@@ -70,14 +78,21 @@ export default function PalletPage() {
 	const [showModalDeletePos, setShowModalDeletePos] = useState(false);
 	const [showModalEditPos, setShowModalEditPos] = useState(false);
 	const [showModalClearPallet, setShowModalClearPallet] = useState(false);
+	const [showModalMovePalletContent, setShowModalMovePalletContent] = useState(false);
 
 
-	// HANDLERS
+	// EFFECTS
 
 	async function fetchPallet(id) {
 		try {
 			const fetchedPallet = await getPalletById(id);
 			console.log(fetchedPallet)
+
+			if (fetchPallet) {
+				const fetchedRow = await getRowById(fetchedPallet?.row)
+				setRow(fetchedRow)
+			}
+
 			setPallet(fetchedPallet);
 			setTitle(fetchedPallet.title)
 		} catch (error) {
@@ -100,6 +115,43 @@ export default function PalletPage() {
 	}
 
 
+	useEffect(() => {
+
+
+		const fetchAllRows = async () => {
+			try {
+				const rows = await getAllRows()
+				setSelectedRowId(rows[0]._id)
+			} catch (error) {
+				console.log(error)
+			}
+		}
+
+		fetchAllRows()
+
+	}, [])
+
+
+	useEffect(() => {
+
+		const fetchRowPallets = async () => {
+			try {
+				const pallets = await getRowPallets(selectedRowId)
+				console.log(pallets)
+				setSelectedRowPallets(pallets)
+			} catch (error) {
+				console.log(error)
+			} finally {
+
+			}
+		}
+
+
+		fetchRowPallets()
+
+	}, [selectedRowId])
+
+
 
 	useEffect(() => {
 		fetchPallet(id);
@@ -107,7 +159,7 @@ export default function PalletPage() {
 	}, [id]);
 
 
-
+	// HANDLERS
 
 	async function handleDeletePalletById() {
 		try {
@@ -235,13 +287,31 @@ export default function PalletPage() {
 
 
 
+	async function handleMovePalletContent(currentPalletId, targetPalletId) {
+
+		try {
+			const message = await movePalletContent(currentPalletId, targetPalletId);
+			console.log(message); // Выводим сообщение об успешном перемещении
+			clearPosesStore()
+			// Дополнительные действия или обновление интерфейса, если необходимо
+		} catch (error) {
+			console.error('Ошибка при перемещении содержимого Pallet:', error);
+			// Обработка ошибки, если что-то пошло не так
+		} finally {
+			setShowModalMovePalletContent(false)
+		}
+
+
+	}
+
+
 	// BREADCRUMBS
 
 
 	const breadcrumbPaths = [
 
 		{ text: 'Запаси', link: '/stocks' },
-		{ text: `Ряд`, link: `/rows/${pallet?.row}` },
+		{ text: `Ряд ${row?.title ? row?.title : ""}`, link: `/rows/${pallet?.row}` },
 		{ text: `Палета ${title}` },
 	];
 
@@ -285,6 +355,13 @@ export default function PalletPage() {
 					onClick={() => { setShowModalRenamePallet(true); }}
 				>
 					Перейменувати
+				</ButtonBlock>
+
+				<ButtonBlock
+					className="add-c"
+					onClick={() => { setShowModalMovePalletContent(true); }}
+				>
+					Переставити
 				</ButtonBlock>
 
 				<ButtonBlock
@@ -542,6 +619,87 @@ export default function PalletPage() {
 					onCancel={() => { setShowModalClearPallet(false) }}
 
 				/>}
+
+
+				{showModalMovePalletContent && <ModalWrapper
+					title={`Переставити позиції з палети ${pallet?.title}`}
+					onCancel={() => { setShowModalMovePalletContent(false) }}
+				>
+
+					<CardBlock
+						className="flex gap-2"
+					>
+						<TextBlock className="text-xl">Виберіть ряд:</TextBlock>
+						<select
+							className="InputBlock"
+							onChange={(e) => {
+								setSelectedRowId(e.target.value)
+
+							}}
+						>
+
+
+							{rows?.map((row) => (
+								<option key={row._id} value={row._id}>
+									{row.title}
+								</option>
+							))}
+						</select>
+					</CardBlock>
+
+					<CardBlock
+						className="flex gap-2"
+					>
+						<TextBlock className="text-xl">Виберіть палету:</TextBlock>
+						<select
+							className="InputBlock "
+							onChange={(e) => {
+								setSelectedPalletId(e.target.value)
+
+							}}
+						>
+							{selectedRowId && selectedRowPallets?.length > 0 ? (
+								selectedRowPallets.map((pallet) => (
+									<option
+										key={pallet._id}
+										value={pallet._id}
+										className="bg-sky-900 text-xl"
+									>
+										{pallet.title}
+									</option>
+								))
+							) : (
+								<option value="">Ряд не має палет</option>
+							)}
+						</select>
+					</CardBlock>
+
+					<CardBlock
+						className="flex justify-evenly"
+					>
+						<ButtonBlock
+							type="button"
+							className="cancel-c"
+							onClick={() => {
+								setShowModalMovePalletContent(false);
+							}}
+						>
+							Скасувати
+						</ButtonBlock>
+						<ButtonBlock
+							disabled={!selectedPalletId}
+							type="button"
+							className="success-c"
+							onClick={() => {
+
+								handleMovePalletContent(id, selectedPalletId);
+							}}
+						>
+							Підтвердити
+						</ButtonBlock>
+					</CardBlock>
+
+				</ModalWrapper>}
 
 
 
