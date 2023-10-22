@@ -18,7 +18,8 @@ color: aliceblue;
 
   body::before {
 	content: "";
-	background-image: url('https://wallpaper-mania.com/wp-content/uploads/2018/09/High_resolution_wallpaper_background_ID_77700343287.jpg');
+	/* background-image: url('https://wallpaper-mania.com/wp-content/uploads/2018/09/High_resolution_wallpaper_background_ID_77700343287.jpg'); */
+	background-image: url("/public/back6.jpg");
 	background-size: cover;
 	filter: blur(5px); 
 	position: fixed; /* Фиксированная позиция, чтобы размытое изображение было под фоном */
@@ -111,7 +112,7 @@ table {
 .ButtonBlock {
 	@apply
 	p-2 rounded-xl 
-	border-2 border-gray-900 active:border-white
+	border-2 border-gray-900 
 	bg-gray-300 text-gray-900
 	hover:bg-white 
 	active:bg-gray-200 
@@ -213,7 +214,7 @@ transition ease-in-out duration-300
 
 
 
-/* COLORS */
+/* Buttons roles */
 
 .edit {
 	@apply 
@@ -400,6 +401,254 @@ shadow-md  active:shadow-transparent
 
 	
 }
+
+
+
+/* Buttons colors */
+
+.slate-b {
+	@apply
+ 
+	border border-slate-500  text-slate-500
+	bg-transparent  hover:bg-slate-400 active:bg-slate-600  
+	  hover:text-white focus:text-white active:text-white
+	  shadow-2xl hover:shadow-slate-500
+	 
+}
+
+
+.gray-b {
+	@apply
+ 
+	border border-gray-500  text-gray-500
+	bg-transparent  hover:bg-gray-400 active:bg-gray-600  
+	  hover:text-white focus:text-white active:text-white
+	  shadow-2xl hover:shadow-gray-500
+	 
+}
+
+.zinc-b {
+	@apply
+ 
+	border border-zinc-500  text-zinc-500
+	bg-transparent  hover:bg-zinc-400 active:bg-zinc-600  
+	  hover:text-white focus:text-white active:text-white
+	  shadow-2xl hover:shadow-zinc-500
+	 
+}
+
+.neutral-b {
+	@apply
+ 
+	border border-neutral-500  text-neutral-500
+	bg-transparent  hover:bg-neutral-400 active:bg-neutral-600  
+	  hover:text-white focus:text-white active:text-white
+	  shadow-2xl hover:shadow-neutral-500
+	 
+}
+
+
+.stone-b {
+	@apply
+ 
+	border border-stone-500  text-stone-500
+	bg-transparent  hover:bg-stone-400 active:bg-stone-600  
+	  hover:text-white focus:text-white active:text-white
+	  shadow-2xl hover:shadow-stone-500
+	 
+}
+
+
+.red-b {
+	@apply
+ 
+	border border-red-500  text-red-500
+	bg-transparent  hover:bg-red-400 active:bg-red-600  
+	  hover:text-white focus:text-white active:text-white
+	  shadow-2xl hover:shadow-red-500
+	 
+}
+
+
+.orange-b {
+	@apply
+ 
+	border border-orange-500  text-orange-500
+	bg-transparent  hover:bg-orange-400 active:bg-orange-600  
+	  hover:text-white focus:text-white active:text-white
+	  shadow-2xl hover:shadow-orange-500
+	 
+}
+
+.amber-b {
+	@apply
+ 
+	border border-amber-500  text-amber-500
+	bg-transparent  hover:bg-amber-400 active:bg-amber-600  
+	  hover:text-white focus:text-white active:text-white
+	  shadow-2xl hover:shadow-amber-500
+	 
+}
+
+.yellow-b {
+	@apply
+ 
+	border border-yellow-500  text-yellow-500
+	bg-transparent  hover:bg-yellow-400 active:bg-yellow-600  
+	  hover:text-white focus:text-white active:text-white
+	  shadow-2xl hover:shadow-yellow-500
+	 
+}
+
+.lime-b {
+	@apply
+ 
+	border border-lime-500  text-lime-500
+	bg-transparent  hover:bg-lime-400 active:bg-lime-600  
+	  hover:text-white focus:text-white active:text-white
+	  shadow-2xl hover:shadow-lime-500
+	 
+}
+
+.green-b {
+	@apply
+ 
+	border border-green-500  text-green-500
+	bg-transparent  hover:bg-green-400 active:bg-green-600  
+	  hover:text-white focus:text-white active:text-white
+	  shadow-2xl hover:shadow-green-500
+	 
+}
+
+
+.emerald-b {
+	@apply
+ 
+	border border-emerald-500  text-emerald-500
+	bg-transparent  hover:bg-emerald-400 active:bg-emerald-600  
+	  hover:text-white focus:text-white active:text-white
+	  shadow-2xl hover:shadow-emerald-500
+	 
+}
+
+.teal-b {
+	@apply
+ 
+	border border-teal-500  text-teal-500
+	bg-transparent  hover:bg-teal-400 active:bg-teal-600  
+	  hover:text-white focus:text-white active:text-white
+	  shadow-2xl hover:shadow-teal-500
+	 
+}
+
+.cyan-b {
+	@apply
+ 
+	border border-cyan-500  text-cyan-500
+	bg-transparent  hover:bg-cyan-400 active:bg-cyan-600  
+	  hover:text-white focus:text-white active:text-white
+	  shadow-2xl hover:shadow-cyan-500
+	 
+}
+
+
+
+.sky-b {
+	@apply
+ 
+	border border-sky-500  text-sky-500
+	bg-transparent  hover:bg-sky-400 active:bg-sky-600  
+	  hover:text-white focus:text-white active:text-white
+	  shadow-2xl hover:shadow-sky-500
+	 
+}
+
+.blue-b {
+	@apply
+ 
+	border border-blue-500  text-blue-500
+	bg-transparent  hover:bg-blue-400 active:bg-blue-600  
+	  hover:text-white focus:text-white active:text-white
+	  shadow-2xl hover:shadow-blue-500
+	 
+}
+
+
+.indigo-b {
+	@apply
+ 
+	border border-indigo-500  text-indigo-500
+	bg-transparent  hover:bg-indigo-400 active:bg-indigo-600  
+	  hover:text-white focus:text-white active:text-white
+	  shadow-2xl hover:shadow-indigo-500
+	 
+}
+
+
+.violet-b {
+	@apply
+ 
+	border border-violet-500  text-violet-500
+	bg-transparent  hover:bg-violet-400 active:bg-violet-600  
+	  hover:text-white focus:text-white active:text-white
+	  shadow-2xl hover:shadow-violet-500
+	 
+}
+
+.purple-b {
+	@apply
+ 
+	border border-purple-500  text-purple-500
+	bg-transparent  hover:bg-purple-400 active:bg-purple-600  
+	  hover:text-white focus:text-white active:text-white
+	  shadow-2xl hover:shadow-purple-500
+	 
+}
+
+
+.fuchsia-b {
+	@apply
+ 
+	border border-fuchsia-500  text-fuchsia-500
+	bg-transparent  hover:bg-fuchsia-400 active:bg-fuchsia-600  
+	  hover:text-white focus:text-white active:text-white
+	  shadow-2xl hover:shadow-fuchsia-500
+	 
+}
+
+
+.pink-b {
+	@apply
+ 
+	border border-pink-500  text-pink-500
+	bg-transparent  hover:bg-pink-400 active:bg-pink-600  
+	  hover:text-white focus:text-white active:text-white
+	  shadow-2xl hover:shadow-pink-500
+	 
+}
+
+
+.rose-b {
+	@apply
+ 
+	border border-rose-500  text-rose-500
+	bg-transparent  hover:bg-rose-400 active:bg-rose-600  
+	  hover:text-white focus:text-white active:text-white
+	  shadow-2xl hover:shadow-rose-500
+	 
+}
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

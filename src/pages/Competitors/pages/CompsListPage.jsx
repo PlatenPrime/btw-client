@@ -475,7 +475,7 @@ export default function CompListPage() {
 
 										<td className=' 
 										w-1/12 
-										shadow-inner inset-2 shadow-blue-600 bg-blue-600/30
+										shadow-inner inset-2 shadow-blue-600 bg-blue-600/10
 										
 										'>
 											{comp?.avail?.btrade
@@ -495,7 +495,7 @@ export default function CompListPage() {
 													</span>}
 										</td>
 
-										<td className=' w-1/12 shadow-inner inset-2 shadow-sky-500  bg-sky-600/30' >
+										<td className=' w-1/12 shadow-inner inset-2 shadow-sky-500  bg-sky-600/10' >
 											{comp?.avail?.sharte
 												?
 												<span className='bg-green-500 p-2 rounded' >
@@ -519,7 +519,7 @@ export default function CompListPage() {
 										</td>
 
 
-										<td className=' w-1/12 shadow-inner inset-2 shadow-amber-600 bg-amber-600/30 '>
+										<td className=' w-1/12 shadow-inner inset-2 shadow-amber-600 bg-amber-600/10 '>
 											{comp?.avail?.yumi
 												?
 												<span className='bg-sky-500 p-2 rounded' >
@@ -537,7 +537,7 @@ export default function CompListPage() {
 													</span>}
 										</td>
 
-										<td className=' w-1/12 shadow-inner inset-2 shadow-lime-600 bg-lime-600/30' >
+										<td className=' w-1/12 shadow-inner inset-2 shadow-lime-600 bg-lime-600/10' >
 											{comp?.avail?.air
 												?
 												<span className='bg-green-500 p-2 rounded' >
@@ -556,7 +556,7 @@ export default function CompListPage() {
 													</span>}
 										</td>
 
-										<td className=' w-1/12 shadow-inner inset-2 shadow-pink-600 bg-pink-600/30' >
+										<td className=' w-1/12 shadow-inner inset-2 shadow-pink-600 bg-pink-600/10' >
 											{comp?.avail?.best
 												?
 												<span className='bg-green-500 p-2 rounded' >
@@ -579,21 +579,21 @@ export default function CompListPage() {
 
 
 
-										<td className='text-green-500 w-1/12 shadow-inner inset-2 shadow-blue-600 bg-blue-600/30 ' >
+										<td className='text-green-500 w-1/12 shadow-inner inset-2 shadow-blue-600 bg-blue-600/10 ' >
 											{comp?.price?.btrade}
 										</td>
 
-										<td className='text-yellow-400 w-1/12 shadow-inner inset-2 shadow-sky-500 bg-sky-600/30' >
+										<td className='text-yellow-400 w-1/12 shadow-inner inset-2 shadow-sky-500 bg-sky-600/10' >
 											{comp?.price?.sharte}
 										</td>
 
-										<td className='text-yellow-400 w-1/12 shadow-inner inset-2 shadow-amber-600 bg-amber-600/30' >
+										<td className='text-yellow-400 w-1/12 shadow-inner inset-2 shadow-amber-600 bg-amber-600/10' >
 											{comp?.price?.yumi ? comp?.price?.yumi : "-"}
 										</td>
-										<td className='text-yellow-400 w-1/12 shadow-inner inset-2 shadow-lime-600 bg-lime-600/30' >
+										<td className='text-yellow-400 w-1/12 shadow-inner inset-2 shadow-lime-600 bg-lime-600/10' >
 											{comp?.price?.air ? comp?.price?.air : "-"}
 										</td>
-										<td className='text-yellow-400 w-1/12 shadow-inner inset-2 shadow-pink-600 bg-pink-600/30' >
+										<td className='text-yellow-400 w-1/12 shadow-inner inset-2 shadow-pink-600 bg-pink-600/10' >
 											{comp?.price?.best ? comp?.price?.best : "-"}
 										</td>
 
