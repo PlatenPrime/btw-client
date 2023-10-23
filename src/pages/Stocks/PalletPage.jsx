@@ -57,6 +57,7 @@ export default function PalletPage() {
 	const [selectedRowId, setSelectedRowId] = useState(null)
 	const [selectedRowPallets, setSelectedRowPallets] = useState(null)
 	const [selectedPalletId, setSelectedPalletId] = useState(null)
+	const [selectedPallet, setSelectedPallet] = useState(null)
 
 	const [newPosQuantValue, setNewPosQuantValue] = useState(0)
 	const [newPosBoxesValue, setNewPosBoxesValue] = useState(0)
@@ -157,6 +158,24 @@ export default function PalletPage() {
 		fetchPallet(id);
 		fetchPoses(id);
 	}, [id]);
+
+
+
+	useEffect(() => {
+
+		const fetchSelectedPallet = async () => {
+			try {
+				const selectedPallet = await getPalletById(selectedPalletId)
+				console.log(selectedPallet)
+				setSelectedPallet(selectedPallet)
+			} catch (error) {
+				console.log(error)
+			}
+		}
+
+		fetchSelectedPallet()
+
+	}, [selectedPalletId])
 
 
 	// HANDLERS
@@ -640,7 +659,11 @@ export default function PalletPage() {
 
 
 							{rows?.map((row) => (
-								<option key={row._id} value={row._id}>
+								<option
+									key={row._id}
+									value={row._id}
+									className="bg-sky-900 text-xl"
+								>
 									{row.title}
 								</option>
 							))}
@@ -672,6 +695,23 @@ export default function PalletPage() {
 								<option value="">Ряд не має палет</option>
 							)}
 						</select>
+					</CardBlock>
+
+					<CardBlock>
+						{pallet._id === selectedPalletId &&
+							<TextBlock
+								className="border border-rose-500 p-2 text-rose-500"
+							>
+								Вибрана ця ж сама палета
+							</TextBlock>}
+					</CardBlock>
+					<CardBlock>
+						{pallet._id !== selectedPalletId && selectedPallet?.poses.length > 0 &&
+							<TextBlock
+								className="border border-rose-500 p-2 text-rose-500"
+							>
+								Вибрана паллета нe пуста. Переміщення видалить всі наявні позиції на ній
+							</TextBlock>}
 					</CardBlock>
 
 					<CardBlock
