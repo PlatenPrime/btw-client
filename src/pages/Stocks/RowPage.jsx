@@ -230,7 +230,13 @@ export default function RowPage() {
 						>Цей ряд не містить палети </TextBlock>
 						:
 						<CardBlock
-							className="flex flex-wrap gap-3 justify-start "
+							className=" gap-3 grid 
+							grid-cols-1 
+							md:grid-cols-2 
+							lg:grid-cols-4 
+							xl:grid-cols-6 
+							justify-items-stretch 
+							justify-around  "
 						>
 
 							{palletsStore?.map((pallet) => <PalletBage
