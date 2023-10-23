@@ -9,6 +9,7 @@ export { default as TextBlock } from './UI/blocks/TextBlock';
 export { default as RowBlock } from './UI/blocks/RowBlock';
 export { default as ImageBlock } from './UI/blocks/ImageBlock';
 export { default as ModalConfirm } from "./UI/Modal/ModalConfirm"
+export { default as ModalDelete } from "./UI/Modal/ModalDelete"
 export { default as ModalCreate } from "./UI/Modal/ModalCreate"
 export { default as ModalEditOneValue } from "./UI/Modal/ModalEditOneValue"
 export { default as ModalInfo } from "./UI/Modal/ModalInfo"

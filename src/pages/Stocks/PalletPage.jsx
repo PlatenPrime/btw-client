@@ -7,6 +7,13 @@ import { ButtonBlock, CardBlock, HeaderBlock, ModalConfirm, ModalEditOneValue, P
 import { toast } from 'react-toastify';
 import PositionBage from './PositionBage';
 import useFetchArts from '../../hooks/useFetchArts';
+import ModalPalletDelete from './PalletPageModals/ModalDeletePallet';
+import ModalRenamePallet from './PalletPageModals/ModalRenamePallet';
+import ModalCreatePos from './PalletPageModals/ModalCreatePos';
+import ModalDeletePos from './PalletPageModals/ModalDeletePos';
+import ModalEditPos from './PalletPageModals/ModalEditPos';
+import ModalClearPallet from './PalletPageModals/ModalClearPallet';
+import ModalMovePalletContent from './PalletPageModals/ModalMovePalletContent';
 
 
 
@@ -73,7 +80,7 @@ export default function PalletPage() {
 
 	// MODALS
 
-	const [showModalPalletDelete, setShowModalPalletDelete] = useState(false)
+	const [showModalDeletePallet, setShowModalDeletePallet] = useState(false);
 	const [showModalRenamePallet, setShowModalRenamePallet] = useState(false);
 	const [showModalCreatePos, setShowModalCreatePos] = useState(false);
 	const [showModalDeletePos, setShowModalDeletePos] = useState(false);
@@ -188,7 +195,7 @@ export default function PalletPage() {
 		} catch (error) {
 			console.error('Ошибка при удалении Pallet:', error);
 		} finally {
-			setShowModalPalletDelete(false)
+			setShowModalDeletePallet(false)
 			navigate(`/rows/${pallet.row}`)
 		}
 
@@ -393,7 +400,7 @@ export default function PalletPage() {
 
 				<ButtonBlock
 					className="delete-c"
-					onClick={() => { setShowModalPalletDelete(true) }}
+					onClick={() => { setShowModalDeletePallet(true) }}
 				>
 					Видалити
 				</ButtonBlock>
@@ -402,344 +409,80 @@ export default function PalletPage() {
 
 			<CardBlock>
 
-				{showModalPalletDelete && <ModalConfirm
-					ask="Удалить эту паллету?"
-					onConfirm={handleDeletePalletById}
-					onCancel={() => { setShowModalPalletDelete(false) }}
-				/>}
 
-				{showModalRenamePallet && <ModalEditOneValue
+				<ModalPalletDelete
+					show={showModalDeletePallet}
+					onDelete={handleDeletePalletById}
+					onCancel={() => { setShowModalDeletePallet(false) }}
+				/>
 
+				<ModalRenamePallet
+					show={showModalRenamePallet}
 					value={title}
 					onConfirm={(title) => { handleRenamePalletById(title) }}
 					onCancel={() => { setShowModalRenamePallet(false) }}
 
-				/>}
+				/>
 
 
-				{
-					showModalCreatePos && <ModalWrapper
-						title="Додавання позиції"
-						onCancel={() => { setShowModalCreatePos(false) }}
-					>
+				<ModalCreatePos
+					show={showModalCreatePos}
+					newPos={newPos}
+					artsDB={artsDB}
+					handleInputPosChange={handleInputPosChange}
+					handleCreatePos={handleCreatePos}
+					onCancel={() => { setShowModalCreatePos(false) }}
+				/>
 
 
-						<CardBlock
-							className="flex space-x-2"
-						>
-							<ImageArt
-								size={100}
-								artikul={newPos.artikul.length === 9 ? newPos.artikul : "1102-3092"}
-							/>
-
-							<TextBlock
-								className="text-xl"
-							>
-								{artsDB.find((art) => art.artikul === newPos.artikul)?.nameukr}
-							</TextBlock>
-
-						</CardBlock>
-
-						<CardBlock
-
-							className='space-y-2'
-						>
-
-							<CardBlock
-								className="flex justify-between items-center space-x-4"
-							>
-								<label htmlFor="artikul">Артикул:</label>
-								<InputBlock
-									type="text"
-									id="artikul"
-									name="artikul"
-									autoComplete="off"
-									value={newPos.artikul}
-									onChange={handleInputPosChange}
-								/>
-							</CardBlock>
-							<CardBlock
-								className="flex justify-between items-center space-x-4"
-							>
-								<label htmlFor="quant">Кількість артикулу:</label>
-								<InputBlock
-									type="number"
-									id="quant"
-									name="quant"
-									autoComplete="off"
-									value={newPos.quant}
-									onChange={handleInputPosChange}
-								/>
-							</CardBlock>
-							<CardBlock
-								className="flex justify-between items-center space-x-4"
-							>
-								<label htmlFor="box">Кількість коробок:</label>
-								<InputBlock
-									type="number"
-									id="boxes"
-									name="boxes"
-									autoComplete="off"
-									value={newPos.boxes}
-									onChange={handleInputPosChange}
-								/>
-							</CardBlock>
-							<CardBlock
-								className="flex justify-between items-center space-x-4"
-							>
-								<label htmlFor="date">Дата:</label>
-								<InputBlock
-									type="text"
-									id="date"
-									name="date"
-									autoComplete="off"
-									value={newPos.date}
-									onChange={handleInputPosChange}
-								/>
-							</CardBlock>
-							<CardBlock
-								className="flex justify-between "
-							>
-								<ButtonBlock
-									type="button"
-									className="cancel-c"
-									onClick={() => {
-										setNewPos({});
-										setShowModalCreatePos(false);
-									}}>
-									Скасувати
-								</ButtonBlock>
-
-								<ButtonBlock
-									type="submit"
-									className="create-c"
-									onClick={handleCreatePos}
-								>
-									Створити
-								</ButtonBlock>
-
-
-							</CardBlock>
-						</CardBlock>
-
-
-					</ModalWrapper>
-				}
-
-
-				{showModalDeletePos && <ModalConfirm
-					ask="Видалити цю позицію?"
+				<ModalDeletePos
+					show={showModalDeletePos}
 					onCancel={() => { setShowModalDeletePos(false) }}
-					onConfirm={() => handleDeletePosById(selectedPos._id)}
-				/>}
+					onDelete={() => handleDeletePosById(selectedPos._id)}
+					selectedPos={selectedPos}
+				/>
 
 
-				{showModalEditPos && <ModalWrapper
-					title={`Редагування позиції ${selectedPos.artikul} `}
+				<ModalEditPos
+					show={showModalEditPos}
+					selectedPos={selectedPos}
+					newPosQuantValue={newPosQuantValue}
+					setNewPosQuantValue={setNewPosQuantValue}
+					newPosBoxesValue={newPosBoxesValue}
+					setNewPosBoxesValue={setNewPosBoxesValue}
+					newPosDateValue={newPosDateValue}
+					setNewPosDateValue={setNewPosDateValue}
+					handleUpdatePosById={handleUpdatePosById}
 					onCancel={() => { setShowModalEditPos(false) }}
 
-				>
+				/>
 
 
-					<CardBlock
-						className="space-y-4 "
-
-					>
-
-
-						<CardBlock
-							className="flex justify-between space-x-2"
-						>
-
-							<TextBlock>
-								Кількість:
-							</TextBlock>
-
-							<InputBlock
-								name="newPosQuantValue"
-								value={newPosQuantValue}
-
-								onChange={(e) => { setNewPosQuantValue(e.target.value) }}
-							/>
-
-						</CardBlock>
-
-
-						<CardBlock
-							className="flex justify-between space-x-2"
-						>
-
-							<TextBlock>
-								Коробки:
-							</TextBlock>
-
-							<InputBlock
-								name="newPosBoxesValue"
-								value={newPosBoxesValue}
-
-								onChange={(e) => { setNewPosBoxesValue(e.target.value) }}
-							/>
-
-						</CardBlock>
-
-
-						<CardBlock
-							className="flex justify-between space-x-2"
-						>
-
-							<TextBlock>
-								Дата:
-							</TextBlock>
-
-							<InputBlock
-								name="newPosDataValue"
-								value={newPosDateValue}
-								placeholder="12-2000..."
-								onChange={(e) => { setNewPosDateValue(e.target.value) }}
-							/>
-
-						</CardBlock>
-
-
-
-
-
-
-
-
-						<CardBlock
-							className="flex justify-between"
-						>
-							<ButtonBlock
-								className="cancel-c"
-								onClick={() => { setShowModalEditPos(false) }}
-							>
-								Скасувати
-							</ButtonBlock>
-							<ButtonBlock
-								className="success-c"
-								onClick={() => { handleUpdatePosById(selectedPos._id) }}
-							>
-								Підтвердити
-							</ButtonBlock>
-
-
-						</CardBlock>
-
-					</CardBlock>
-
-
-				</ModalWrapper>}
-
-
-				{showModalClearPallet && <ModalConfirm
+				<ModalClearPallet
+					show={showModalClearPallet}
 					ask={`Очистити палету ${pallet?.title}?`}
 					onConfirm={() => { handleClearPalletById(id) }}
 					onCancel={() => { setShowModalClearPallet(false) }}
 
-				/>}
+				/>
 
 
-				{showModalMovePalletContent && <ModalWrapper
-					title={`Переставити позиції з палети ${pallet?.title}`}
+
+				<ModalMovePalletContent
+					show={showModalMovePalletContent}
+					id={id}
+					pallet={pallet}
+					rows={rows}
+					selectedRowPallets={selectedRowPallets}
+					selectedRowId={selectedRowId}
+					selectedPalletId={selectedPalletId}
+					selectedPallet={selectedPallet}
+					handleMovePalletContent={handleMovePalletContent}
+					setSelectedRowId={setSelectedRowId}
+					setSelectedPalletId={setSelectedPalletId}
 					onCancel={() => { setShowModalMovePalletContent(false) }}
-				>
 
-					<CardBlock
-						className="flex gap-2"
-					>
-						<TextBlock className="text-xl">Виберіть ряд:</TextBlock>
-						<select
-							className="InputBlock"
-							onChange={(e) => {
-								setSelectedRowId(e.target.value)
-
-							}}
-						>
-
-
-							{rows?.map((row) => (
-								<option
-									key={row._id}
-									value={row._id}
-									className="bg-sky-900 text-xl"
-								>
-									{row.title}
-								</option>
-							))}
-						</select>
-					</CardBlock>
-
-					<CardBlock
-						className="flex gap-2"
-					>
-						<TextBlock className="text-xl">Виберіть палету:</TextBlock>
-						<select
-							className="InputBlock "
-							onChange={(e) => {
-								setSelectedPalletId(e.target.value)
-
-							}}
-						>
-							{selectedRowId && selectedRowPallets?.length > 0 ? (
-								selectedRowPallets.map((pallet) => (
-									<option
-										key={pallet._id}
-										value={pallet._id}
-										className="bg-sky-900 text-xl"
-									>
-										{pallet.title}
-									</option>
-								))
-							) : (
-								<option value="">Ряд не має палет</option>
-							)}
-						</select>
-					</CardBlock>
-
-					<CardBlock>
-						{pallet._id === selectedPalletId &&
-							<TextBlock
-								className="border border-rose-500 p-2 text-rose-500"
-							>
-								Вибрана ця ж сама палета
-							</TextBlock>}
-					</CardBlock>
-					<CardBlock>
-						{pallet._id !== selectedPalletId && selectedPallet?.poses.length > 0 &&
-							<TextBlock
-								className="border border-rose-500 p-2 text-rose-500"
-							>
-								Вибрана паллета нe пуста. Переміщення видалить всі наявні позиції на ній
-							</TextBlock>}
-					</CardBlock>
-
-					<CardBlock
-						className="flex justify-evenly"
-					>
-						<ButtonBlock
-							type="button"
-							className="cancel-c"
-							onClick={() => {
-								setShowModalMovePalletContent(false);
-							}}
-						>
-							Скасувати
-						</ButtonBlock>
-						<ButtonBlock
-							disabled={!selectedPalletId}
-							type="button"
-							className="success-c"
-							onClick={() => {
-
-								handleMovePalletContent(id, selectedPalletId);
-							}}
-						>
-							Підтвердити
-						</ButtonBlock>
-					</CardBlock>
-
-				</ModalWrapper>}
+				/>
 
 
 
