@@ -41,6 +41,11 @@ export async function getArtDataBest(bestLink) {
 
 		const isAvailable = !availabilityMatch;
 
+
+		console.log("Цена Best: ", price)
+		console.log("Наличие Best", isAvailable)
+
+
 		return { price, isAvailable };
 	} catch (error) {
 		if (error instanceof NetworkError) {

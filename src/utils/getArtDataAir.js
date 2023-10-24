@@ -49,6 +49,10 @@ export async function getArtDataAir(airLink) {
 		const price = extractPriceFromString(priceText);
 		const isAvailable = extractAvailabilityFromString(availabilityText);
 
+		console.log("Цена Air: ", price)
+		console.log("Наличие Air", isAvailable)
+
+
 		return { price, isAvailable };
 	} catch (error) {
 		if (error instanceof NetworkError) {

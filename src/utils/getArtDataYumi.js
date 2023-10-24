@@ -100,12 +100,15 @@ export async function getArtDataYumi(yumiLink) {
 
 		}
 
-		console.log(price)
 
 
-
+		console.log("Цена Yumi", price);
+		console.log("Наличие Yumi", quant);
 
 		return { price, quant };
+
+
+
 
 	} catch (error) {
 		if (error instanceof NetworkError) {
