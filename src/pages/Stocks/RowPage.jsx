@@ -7,8 +7,8 @@ import { toast } from 'react-toastify';
 
 import PalletBage from './PalletBage';
 
-import { useRowStore } from './stocksStore';
-import usePalletStore from './palletsStore';
+import { useRowStore } from './stores/rowsStore';
+import usePalletStore from './stores/palletsStore';
 
 
 

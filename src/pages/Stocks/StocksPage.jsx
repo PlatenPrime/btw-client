@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { ButtonBlock, CardBlock, HeaderBlock, PageBTW, TextBlock } from '../../components'
 import { RowList } from './RowList'
-import { useRowStore } from './stocksStore';
+import { useRowStore } from './stores/rowsStore';
 import ModalCreate from '../../components/UI/Modal/ModalCreate';
 
 export default function StocksPage() {

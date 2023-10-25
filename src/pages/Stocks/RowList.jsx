@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useRowStore } from './stocksStore';
+import { useRowStore } from './stores/rowsStore';
 import { CardBlock, TextBlock, Spinner } from '../../components';
 import RowBage from '../Row/Row/RowBage';
 

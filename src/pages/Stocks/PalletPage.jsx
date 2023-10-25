@@ -1,19 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
-import usePalletStore from './palletsStore';
-import usePosesStore from './posesStore';
-import { useRowStore } from './stocksStore';
-import { ButtonBlock, CardBlock, HeaderBlock, ModalConfirm, ModalEditOneValue, PageBTW, Spinner, TextBlock, ModalWrapper, InputBlock, ImageArt, Breadcrumbs } from '../../components';
+import usePalletStore from './stores/palletsStore';
+import usePosesStore from './stores/posesStore';
+import { useRowStore } from './stores/rowsStore';
+import { ButtonBlock, CardBlock, HeaderBlock, PageBTW, Spinner, TextBlock, Breadcrumbs } from '../../components';
 import { toast } from 'react-toastify';
 import PositionBage from './PositionBage';
 import useFetchArts from '../../hooks/useFetchArts';
-import ModalPalletDelete from './PalletPageModals/ModalDeletePallet';
-import ModalRenamePallet from './PalletPageModals/ModalRenamePallet';
-import ModalCreatePos from './PalletPageModals/ModalCreatePos';
-import ModalDeletePos from './PalletPageModals/ModalDeletePos';
-import ModalEditPos from './PalletPageModals/ModalEditPos';
-import ModalClearPallet from './PalletPageModals/ModalClearPallet';
-import ModalMovePalletContent from './PalletPageModals/ModalMovePalletContent';
+import {ModalDeletePallet, ModalRenamePallet, ModalCreatePos, ModalDeletePos , ModalEditPos, ModalClearPallet, ModalMovePalletContent} from './PalletPageModals/index.js';
+
 
 
 
@@ -410,7 +405,7 @@ export default function PalletPage() {
 			<CardBlock>
 
 
-				<ModalPalletDelete
+				<ModalDeletePallet
 					show={showModalDeletePallet}
 					onDelete={handleDeletePalletById}
 					onCancel={() => { setShowModalDeletePallet(false) }}
