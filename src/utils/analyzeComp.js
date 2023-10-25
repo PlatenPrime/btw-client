@@ -101,7 +101,7 @@ export async function analyzeComp(comp) {
 			}
 		};
 
-		console.log(updateComp)
+		console.log("Update Comp: ", updateComp)
 
 		const updateCompRes = await axios.post("comps/update", updateComp);
 
