@@ -370,34 +370,37 @@ export default function CompListPage() {
 				:
 
 				<CardBlock
-					className="flex-grow overflow-auto mb-1 "
+					className="flex-grow overflow-auto mb-1 relative "
 				>
 
-					<table className="min-w-full border border-violet-500"  >
+					<table className="min-w-full border border-violet-500 max-h-screen"  >
 
-						<thead className=" border border-violet-500  ">
-
-							<tr >
-								<th className=" bg-rose-500/5 border border-violet-500 " rowSpan="2" colSpan="2">Артикул</th>
-								<th className=" bg-sky-500/10 border border-violet-500 " colSpan="5">Наявність</th>
-								<th className=" bg-yellow-500/10 border border-violet-500" colSpan="5">Ціна</th>
-							</tr>
-
+						<thead className=" border border-violet-500">
 							<tr>
-
-								<th className="bg-blue-600 ">Btrade</th>
-								<th className="bg-sky-500 ">Sharte</th>
-								<th className="bg-amber-600 ">Yumi</th>
-								<th className="bg-lime-600 ">Air</th>
-								<th className="bg-pink-500 ">Best</th>
-								<th className="bg-blue-600  ">Btrade</th>
-								<th className="bg-sky-500 ">Sharte</th>
-								<th className="bg-amber-600 ">Yumi</th>
-								<th className="bg-lime-600 ">Air</th>
-								<th className="bg-pink-500  ">Best</th>
-
+								{/* Заголовки таблицы */}
+								<th className="sticky top-0 bg-rose-500/5 border border-violet-500" rowSpan="2" colSpan="2">
+									Артикул
+								</th>
+								<th className="sticky top-0 bg-sky-500/10 border border-violet-500" colSpan="5">
+									Наявність
+								</th>
+								<th className="sticky top-0 bg-yellow-500/10 border border-violet-500" colSpan="5">
+									Ціна
+								</th>
 							</tr>
-
+							<tr>
+								{/* Заголовки для данных */}
+								<th className="sticky top-0 bg-blue-600">Btrade</th>
+								<th className="sticky top-0 bg-sky-500">Sharte</th>
+								<th className="sticky top-0 bg-amber-600">Yumi</th>
+								<th className="sticky top-0 bg-lime-600">Air</th>
+								<th className="sticky top-0 bg-pink-500">Best</th>
+								<th className="sticky top-0 bg-blue-600">Btrade</th>
+								<th className="sticky top-0 bg-sky-500">Sharte</th>
+								<th className="sticky top-0 bg-amber-600">Yumi</th>
+								<th className="sticky top-0 bg-lime-600">Air</th>
+								<th className="sticky top-0 bg-pink-500">Best</th>
+							</tr>
 						</thead>
 
 
@@ -427,11 +430,11 @@ export default function CompListPage() {
 									>
 
 										<td>
-										<ImageArt
-													artikul={comp.artikul}
-													size={50}
-													className="rounded cursor-pointer"
-												/>
+											<ImageArt
+												artikul={comp.artikul}
+												size={50}
+												className="rounded cursor-pointer"
+											/>
 
 										</td>
 
@@ -455,7 +458,7 @@ export default function CompListPage() {
 
 
 
-											
+
 
 
 												<TextBlock

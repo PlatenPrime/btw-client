@@ -52,6 +52,12 @@ table {
 	
 	font-weight: bold;
   }
+
+  th {
+	position: sticky;
+	top: 0;
+
+  }
   
 
 
