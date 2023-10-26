@@ -143,11 +143,11 @@ export default function CompListPage() {
 
 
 	return (
-		<CardBlock className="flex flex-col space-y-2 " >
+		<CardBlock className="flex flex-col space-y-2 relative  " >
 
 
 			<CardBlock
-				className="flex justify-start flex-wrap gap-1 "
+				className="flex justify-start flex-wrap gap-1  "
 			>
 
 				<CheckCompLinks />
@@ -373,239 +373,250 @@ export default function CompListPage() {
 					className="flex-grow overflow-auto mb-1 relative "
 				>
 
-					<table className="min-w-full border border-violet-500 max-h-screen"  >
-
-						<thead className=" border border-violet-500">
-							<tr>
-								{/* Заголовки таблицы */}
-								<th className="sticky top-0 bg-rose-500/5 border border-violet-500" rowSpan="2" colSpan="2">
-									Артикул
-								</th>
-								<th className="sticky top-0 bg-sky-500/10 border border-violet-500" colSpan="5">
-									Наявність
-								</th>
-								<th className="sticky top-0 bg-yellow-500/10 border border-violet-500" colSpan="5">
-									Ціна
-								</th>
-							</tr>
-							<tr>
-								{/* Заголовки для данных */}
-								<th className="sticky top-0 bg-blue-600">Btrade</th>
-								<th className="sticky top-0 bg-sky-500">Sharte</th>
-								<th className="sticky top-0 bg-amber-600">Yumi</th>
-								<th className="sticky top-0 bg-lime-600">Air</th>
-								<th className="sticky top-0 bg-pink-500">Best</th>
-								<th className="sticky top-0 bg-blue-600">Btrade</th>
-								<th className="sticky top-0 bg-sky-500">Sharte</th>
-								<th className="sticky top-0 bg-amber-600">Yumi</th>
-								<th className="sticky top-0 bg-lime-600">Air</th>
-								<th className="sticky top-0 bg-pink-500">Best</th>
-							</tr>
-						</thead>
+					<div
+						className='max-h-screen'
+					>
 
 
 
-						<tbody className='' >
-							{compsDB
+						<table className="min-w-full  max-h-screen table-fixed "  >
+
+							<thead className="  sticky top-0">
+								<tr className=''>
+									{/* Заголовки таблицы */}
+									<th className=" bg-slate-900 " rowSpan="2" colSpan="2">
+										Артикул
+									</th>
+									<th className=" bg-sky-900 " colSpan="5">
+										Наявність
+									</th>
+									<th className=" bg-teal-900 " colSpan="5">
+										Ціна
+									</th>
+								</tr>
+								<tr>
+									{/* Заголовки для данных */}
+									<th className=" bg-blue-600">Btrade</th>
+									<th className=" bg-sky-500">Sharte</th>
+									<th className=" bg-amber-600">Yumi</th>
+									<th className=" bg-lime-600">Air</th>
+									<th className=" bg-pink-500">Best</th>
+									<th className=" bg-blue-600">Btrade</th>
+									<th className=" bg-sky-500">Sharte</th>
+									<th className=" bg-amber-600">Yumi</th>
+									<th className=" bg-lime-600">Air</th>
+									<th className=" bg-pink-500">Best</th>
+								</tr>
+							</thead>
 
 
-								.filter((comp) => {
-									// Filter based on criteria
-									return (
-										(filter.prod === '' || comp.prod === filter.prod) &&
-										(filter.category === '' || comp.category === filter.category) &&
-										(filter.subcategory === '' || comp.subcategory === filter.subcategory) &&
-										(filter.size === '' || comp.size === filter.size)
-									);
-								})
+
+							<tbody className=' ' >
+								{compsDB
 
 
-								.map((comp) => (
-									<tr
-										className="bg-black 
+									.filter((comp) => {
+										// Filter based on criteria
+										return (
+											(filter.prod === '' || comp.prod === filter.prod) &&
+											(filter.category === '' || comp.category === filter.category) &&
+											(filter.subcategory === '' || comp.subcategory === filter.subcategory) &&
+											(filter.size === '' || comp.size === filter.size)
+										);
+									})
+
+
+									.map((comp) => (
+										<tr
+											className="bg-black 
 										odd:bg-opacity-50  even:bg-opacity-0 
 										hover:bg-gray-800 transition duration-300 ease-in-out 							"
-										key={comp._id.$oid}
-
-									>
-
-										<td>
-											<ImageArt
-												artikul={comp.artikul}
-												size={50}
-												className="rounded cursor-pointer"
-											/>
-
-										</td>
-
-
-										<td
-											className=' bg-rose-500/5  space-x-1 shadow-lg hover:bg-violet-500   hover:shadow-violet-500 transition duration-300 ease-in-out  '
-
+											key={comp._id.$oid}
 
 										>
 
 
-											<CardBlock
-												className="flex items-center justify-start space-x-1 w-full cursor-pointer  "
-												onClick={(e) => {
-													e.stopPropagation()
-													setShowModalComp(true);
-													setSelectedComp(comp)
-												}}
+
+
+
+											<td>
+												<ImageArt
+													artikul={comp.artikul}
+													size={50}
+													className="rounded cursor-pointer"
+												/>
+
+											</td>
+
+
+											<td
+												className=' bg-rose-500/5  space-x-1 shadow-lg hover:bg-violet-500   hover:shadow-violet-500 transition duration-300 ease-in-out  '
 
 											>
 
 
-
-
-
-
-												<TextBlock
-													className="text-left  "
-
+												<CardBlock
+													className="flex items-center justify-start space-x-1 w-full cursor-pointer  "
+													onClick={(e) => {
+														e.stopPropagation()
+														setShowModalComp(true);
+														setSelectedComp(comp)
+													}}
 
 												>
-													{comp.nameukr}
-												</TextBlock>
-
-											</CardBlock>
-
-										</td>
 
 
 
 
-										<td className=' 
+
+
+													<TextBlock
+														className="text-left  "
+
+
+													>
+														{comp.nameukr}
+													</TextBlock>
+
+												</CardBlock>
+
+											</td>
+
+
+
+
+
+
+											<td className=' 
 										w-1/12 
 										shadow-inner inset-2 shadow-blue-600 bg-blue-600/10
 										
 										'>
-											{comp?.avail?.btrade
-												?
-												<span className='bg-sky-500 p-2 rounded' >
-													{comp?.avail?.btrade}
-												</span>
-												:
-												comp?.avail?.btrade === 0
+												{comp?.avail?.btrade
 													?
-													<span className='bg-rose-500 p-2 rounded' >
-														0
+													<span className='bg-sky-500 p-2 rounded' >
+														{comp?.avail?.btrade}
 													</span>
 													:
-													<span className='bg-rose-500 p-2 rounded' >
-														-
-													</span>}
-										</td>
+													comp?.avail?.btrade === 0
+														?
+														<span className='bg-rose-500 p-2 rounded' >
+															0
+														</span>
+														:
+														<span className='bg-rose-500 p-2 rounded' >
+															-
+														</span>}
+											</td>
 
-										<td className=' w-1/12 shadow-inner inset-2 shadow-sky-500  bg-sky-600/10' >
-											{comp?.avail?.sharte
-												?
-												<span className='bg-green-500 p-2 rounded' >
-													Є
-												</span>
-												:
-												(comp?.avail?.sharte === false)
-
+											<td className=' w-1/12 shadow-inner inset-2 shadow-sky-500  bg-sky-600/10' >
+												{comp?.avail?.sharte
 													?
-													<span className='bg-red-500 p-2 rounded' >
-														Немає
+													<span className='bg-green-500 p-2 rounded' >
+														Є
 													</span>
 													:
-													<span className='' >
-														-
-													</span>
+													(comp?.avail?.sharte === false)
+
+														?
+														<span className='bg-red-500 p-2 rounded' >
+															Немає
+														</span>
+														:
+														<span className='' >
+															-
+														</span>
 
 
 
-											}
-										</td>
+												}
+											</td>
 
 
-										<td className=' w-1/12 shadow-inner inset-2 shadow-amber-600 bg-amber-600/10 '>
-											{comp?.avail?.yumi
-												?
-												<span className='bg-sky-500 p-2 rounded' >
-													{comp?.avail?.yumi}
-												</span>
-												:
-												comp?.avail?.yumi === 0
+											<td className=' w-1/12 shadow-inner inset-2 shadow-amber-600 bg-amber-600/10 '>
+												{comp?.avail?.yumi
 													?
-													<span className='bg-rose-500 p-2 rounded' >
-														0
+													<span className='bg-sky-500 p-2 rounded' >
+														{comp?.avail?.yumi}
 													</span>
 													:
-													<span className=' p-2 rounded' >
-														-
-													</span>}
-										</td>
+													comp?.avail?.yumi === 0
+														?
+														<span className='bg-rose-500 p-2 rounded' >
+															0
+														</span>
+														:
+														<span className=' p-2 rounded' >
+															-
+														</span>}
+											</td>
 
-										<td className=' w-1/12 shadow-inner inset-2 shadow-lime-600 bg-lime-600/10' >
-											{comp?.avail?.air
-												?
-												<span className='bg-green-500 p-2 rounded' >
-													Є
-												</span>
-												:
-												(comp?.avail?.air === false)
-
+											<td className=' w-1/12 shadow-inner inset-2 shadow-lime-600 bg-lime-600/10' >
+												{comp?.avail?.air
 													?
-													<span className='bg-red-500 p-2 rounded' >
-														Немає
+													<span className='bg-green-500 p-2 rounded' >
+														Є
 													</span>
 													:
-													<span className=' p-2 rounded' >
-														-
-													</span>}
-										</td>
+													(comp?.avail?.air === false)
 
-										<td className=' w-1/12 shadow-inner inset-2 shadow-pink-600 bg-pink-600/10' >
-											{comp?.avail?.best
-												?
-												<span className='bg-green-500 p-2 rounded' >
-													Є</span>
-												:
-												(comp?.avail?.best === false)
+														?
+														<span className='bg-red-500 p-2 rounded' >
+															Немає
+														</span>
+														:
+														<span className=' p-2 rounded' >
+															-
+														</span>}
+											</td>
 
+											<td className=' w-1/12 shadow-inner inset-2 shadow-pink-600 bg-pink-600/10' >
+												{comp?.avail?.best
 													?
-													<span className='bg-red-500 p-2 rounded' >
-														Немає
-													</span>
+													<span className='bg-green-500 p-2 rounded' >
+														Є</span>
 													:
-													<span className=' p-2 rounded' >
-														-
-													</span>}
-										</td>
+													(comp?.avail?.best === false)
+
+														?
+														<span className='bg-red-500 p-2 rounded' >
+															Немає
+														</span>
+														:
+														<span className=' p-2 rounded' >
+															-
+														</span>}
+											</td>
 
 
 
 
 
 
-										<td className='text-green-500 w-1/12 shadow-inner inset-2 shadow-blue-600 bg-blue-600/10 ' >
-											{comp?.price?.btrade}
-										</td>
+											<td className='text-green-500 w-1/12 shadow-inner inset-2 shadow-blue-600 bg-blue-600/10 ' >
+												{comp?.price?.btrade}
+											</td>
 
-										<td className='text-yellow-400 w-1/12 shadow-inner inset-2 shadow-sky-500 bg-sky-600/10' >
-											{comp?.price?.sharte}
-										</td>
+											<td className='text-yellow-400 w-1/12 shadow-inner inset-2 shadow-sky-500 bg-sky-600/10' >
+												{comp?.price?.sharte}
+											</td>
 
-										<td className='text-yellow-400 w-1/12 shadow-inner inset-2 shadow-amber-600 bg-amber-600/10' >
-											{comp?.price?.yumi ? comp?.price?.yumi : "-"}
-										</td>
-										<td className='text-yellow-400 w-1/12 shadow-inner inset-2 shadow-lime-600 bg-lime-600/10' >
-											{comp?.price?.air ? comp?.price?.air : "-"}
-										</td>
-										<td className='text-yellow-400 w-1/12 shadow-inner inset-2 shadow-pink-600 bg-pink-600/10' >
-											{comp?.price?.best ? comp?.price?.best : "-"}
-										</td>
+											<td className='text-yellow-400 w-1/12 shadow-inner inset-2 shadow-amber-600 bg-amber-600/10' >
+												{comp?.price?.yumi ? comp?.price?.yumi : "-"}
+											</td>
+											<td className='text-yellow-400 w-1/12 shadow-inner inset-2 shadow-lime-600 bg-lime-600/10' >
+												{comp?.price?.air ? comp?.price?.air : "-"}
+											</td>
+											<td className='text-yellow-400 w-1/12 shadow-inner inset-2 shadow-pink-600 bg-pink-600/10' >
+												{comp?.price?.best ? comp?.price?.best : "-"}
+											</td>
 
 
-									</tr>
-								))}
-						</tbody>
-					</table>
-
+										</tr>
+									))}
+							</tbody>
+						</table>
+					</div>
 				</CardBlock>
 
 
