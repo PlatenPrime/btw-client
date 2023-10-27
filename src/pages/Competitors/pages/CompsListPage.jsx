@@ -439,48 +439,53 @@ export default function CompListPage() {
 
 
 
-											<td>
-												<ImageArt
-													artikul={comp.artikul}
-													size={50}
-													className="rounded cursor-pointer"
-												/>
-
-											</td>
-
-
 											<td
-												className=' bg-rose-500/5  space-x-1 shadow-lg hover:bg-violet-500   hover:shadow-violet-500 transition duration-300 ease-in-out  '
-
+												colSpan="2"
+												className='p-0'
 											>
 
-
 												<CardBlock
-													className="flex items-center justify-start space-x-1 w-full cursor-pointer  "
-													onClick={(e) => {
-														e.stopPropagation()
-														setShowModalComp(true);
-														setSelectedComp(comp)
-													}}
-
+													className="flex space-x-1 items-center p-0"
 												>
 
 
 
+													<ImageArt
+														artikul={comp.artikul}
+														size={50}
+														className="rounded cursor-pointer"
+													/>
 
 
-
-													<TextBlock
-														className="text-left  "
-
+													<CardBlock
+														className="flex items-center justify-start w-full cursor-pointer 
+														hover:bg-violet-500 hover:shadow-lg hover:shadow-violet-500 p-1 "
+														onClick={(e) => {
+															e.stopPropagation()
+															setShowModalComp(true);
+															setSelectedComp(comp)
+														}}
 
 													>
-														{comp.nameukr}
-													</TextBlock>
+
+
+
+														<TextBlock
+															className="text-left  "
+
+
+														>
+															{comp.nameukr}
+														</TextBlock>
+
+													</CardBlock>
+
 
 												</CardBlock>
 
 											</td>
+
+
 
 
 
