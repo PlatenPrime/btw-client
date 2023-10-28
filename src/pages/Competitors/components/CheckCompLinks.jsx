@@ -109,7 +109,7 @@ export default function CheckCompLinks() {
 
 		<CardBlock>
 			<ButtonBlock
-				className="confirm-c flex"
+				className="yellow-b flex"
 				onClick={() => { setShowModalInfo(true) }}
 			>
 				<BsClipboardCheck
@@ -143,15 +143,15 @@ export default function CheckCompLinks() {
 									</td>
 									<td>
 										<ButtonBlock
-											className="search-c"
+											className="cyan-b"
 											onClick={() => { handleFetchBtrade(artikulBtrade) }}
 											disabled={!artikulBtrade}
 										>
-											Проверить
+											Перевірити
 										</ButtonBlock>
 									</td>
-									<td><TextBlock>Цена: {priceBtrade ? priceBtrade : "-"}</TextBlock></td>
-									<td><TextBlock>Количество: {quantBtrade ? quantBtrade : "-"}</TextBlock></td>
+									<td><TextBlock>Ціна: {priceBtrade ? priceBtrade : "-"}</TextBlock></td>
+									<td><TextBlock>Кількість: {quantBtrade ? quantBtrade : "-"}</TextBlock></td>
 								</CardBlock>
 							</tr>
 
@@ -168,15 +168,15 @@ export default function CheckCompLinks() {
 									</td>
 									<td>
 										<ButtonBlock
-											className="search-c"
+											className="cyan-b"
 											onClick={() => { handleFetchYumi(artikulYumi) }}
 											disabled={!artikulYumi}
 										>
-											Проверить
+											Перевірити
 										</ButtonBlock>
 									</td>
-									<td><TextBlock>Цена: {priceYumi ? priceYumi : "-"}</TextBlock></td>
-									<td><TextBlock>Количество: {quantYumi || quantYumi === 0 ? quantYumi : "-"}</TextBlock></td>
+									<td><TextBlock>Ціна: {priceYumi ? priceYumi : "-"}</TextBlock></td>
+									<td><TextBlock>Кількість: {quantYumi || quantYumi === 0 ? quantYumi : "-"}</TextBlock></td>
 								</CardBlock>
 
 							</tr>
@@ -193,15 +193,15 @@ export default function CheckCompLinks() {
 									</td>
 									<td>
 										<ButtonBlock
-											className="search-c"
+											className="cyan-b"
 											onClick={() => { handleFetchSharte(artikulSharte) }}
 											disabled={!artikulSharte}
 										>
-											Проверить
+											Перевірити
 										</ButtonBlock>
 									</td>
-									<td><TextBlock>Цена: {priceSharte ? priceSharte : "-"}</TextBlock></td>
-									<td><TextBlock>Наличие: {isAvailableSharte ? "Есть" : isAvailableSharte === false ? "Нет" : "-"}</TextBlock>
+									<td><TextBlock>Ціна: {priceSharte ? priceSharte : "-"}</TextBlock></td>
+									<td><TextBlock>Наявність: {isAvailableSharte ? "Есть" : isAvailableSharte === false ? "Нет" : "-"}</TextBlock>
 									</td>
 								</CardBlock>
 							</tr>
@@ -218,15 +218,15 @@ export default function CheckCompLinks() {
 									</td>
 									<td>
 										<ButtonBlock
-											className="search-c"
+											className="cyan-b"
 											onClick={() => { handleFetchAir(artikulAir) }}
 											disabled={!artikulAir}
 										>
-											Проверить
+											Перевірити
 										</ButtonBlock>
 									</td>
-									<td><TextBlock>Цена:  {priceAir ? priceAir : "-"}</TextBlock></td>
-									<td><TextBlock>Наличие: {isAvailableAir ? "Есть" : isAvailableAir === false ? "Нет" : "-"}</TextBlock></td>
+									<td><TextBlock>Ціна:  {priceAir ? priceAir : "-"}</TextBlock></td>
+									<td><TextBlock>Наявність: {isAvailableAir ? "Есть" : isAvailableAir === false ? "Нет" : "-"}</TextBlock></td>
 								</CardBlock>
 							</tr>
 							<tr>
@@ -241,15 +241,15 @@ export default function CheckCompLinks() {
 									</td>
 									<td>
 										<ButtonBlock
-											className="search-c"
+											className="cyan-b"
 											onClick={() => { handleFetchBest(artikulBest) }}
 											disabled={!artikulBest}
 										>
-											Проверить
+											Перевірити
 										</ButtonBlock>
 									</td>
-									<td><TextBlock>Цена: {priceBest ? priceBest : "-"}</TextBlock></td>
-									<td><TextBlock> Наличие:{isAvailableBest ? "Есть" : isAvailableBest === false ? "Нет" : "-"}</TextBlock></td>
+									<td><TextBlock>Ціна: {priceBest ? priceBest : "-"}</TextBlock></td>
+									<td><TextBlock> Наявність:{isAvailableBest ? "Есть" : isAvailableBest === false ? "Нет" : "-"}</TextBlock></td>
 								</CardBlock>
 							</tr>
 						</tbody>

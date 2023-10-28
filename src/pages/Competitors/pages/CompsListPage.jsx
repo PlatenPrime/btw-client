@@ -156,7 +156,7 @@ export default function CompListPage() {
 
 				<ButtonBlock
 					onClick={() => exportToExcelComps(compsDB)}
-					className=" success-c flex items-center space-x-1  "
+					className=" green-b flex items-center space-x-1  "
 				>
 					< SiMicrosoftexcel className='text-2xl' />
 					<TextBlock>
@@ -168,7 +168,7 @@ export default function CompListPage() {
 
 				<ButtonBlock
 					onClick={handleAnalyze}
-					className=" add-c flex items-center space-x-1  "
+					className=" violet-b flex items-center space-x-1  "
 				>
 					< MdOutlineAnalytics className='text-2xl' />
 					<TextBlock>
@@ -179,7 +179,7 @@ export default function CompListPage() {
 
 				<ButtonBlock
 					onClick={() => handleAnalyzeOnFilter(filteredComps)}
-					className=" create-c flex items-center space-x-1  "
+					className=" cyan-b flex items-center space-x-1  "
 				>
 					< IoAnalyticsOutline className='text-2xl ' />
 					<TextBlock>
@@ -191,7 +191,7 @@ export default function CompListPage() {
 
 
 				<ButtonBlock
-					className="add-c flex  items-center space-x-1   border-rose-400 hover:bg-rose-400 hover:shadow-rose-400 active:bg-rose-600 hover:text-white"
+					className="rose-b flex  items-center space-x-1  "
 					onClick={() => { setIsFilterOpen(prev => !prev) }}
 				>
 					<LuFilter className=' text-2xl' />
@@ -384,7 +384,7 @@ export default function CompListPage() {
 							<thead className="  sticky top-0">
 								<tr className=''>
 									{/* Заголовки таблицы */}
-									<th className=" bg-slate-900 " rowSpan="2" colSpan="2">
+									<th className=" bg-slate-700 " rowSpan="2" colSpan="2">
 										Артикул
 									</th>
 									<th className=" bg-sky-900 " colSpan="5">
@@ -429,8 +429,8 @@ export default function CompListPage() {
 									.map((comp) => (
 										<tr
 											className="bg-black 
-										odd:bg-opacity-50  even:bg-opacity-0 
-										hover:bg-gray-800 transition duration-300 ease-in-out 							"
+										odd:bg-opacity-100 even:bg-sky-900/20 
+										hover:bg-gray-800 transition duration-300 ease-in-out 			"
 											key={comp._id.$oid}
 
 										>
@@ -441,7 +441,7 @@ export default function CompListPage() {
 
 											<td
 												colSpan="2"
-												className='p-0'
+												className='p-0 bg-indigo-900/40'
 											>
 
 												<CardBlock
