@@ -16,7 +16,12 @@ function ModalEditPos({
     return (
         show && (
             <ModalWrapper title={`Редагування позиції ${selectedPos.artikul}`} onCancel={onCancel}>
+
+
+
                 <CardBlock className="space-y-4">
+
+					
                     <CardBlock className="flex justify-between space-x-2">
                         <TextBlock>Кількість:</TextBlock>
                         <InputBlock
@@ -38,19 +43,21 @@ function ModalEditPos({
                         <InputBlock
                             name="newPosDataValue"
                             value={newPosDateValue}
-                            placeholder="12-2000..."
+                            placeholder="12-2023..."
                             onChange={(e) => { setNewPosDateValue(e.target.value) }}
                         />
                     </CardBlock>
+
+
                     <CardBlock className="flex justify-between">
                         <ButtonBlock
-                            className="cancel-c"
+                            className="pink-b"
                             onClick={() => { onCancel(); }}
                         >
                             Скасувати
                         </ButtonBlock>
                         <ButtonBlock
-                            className="success-c"
+                            className="green-b"
                             onClick={() => { handleUpdatePosById(selectedPos._id); }}
                         >
                             Підтвердити

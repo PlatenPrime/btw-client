@@ -147,7 +147,7 @@ export default function RowPage() {
 	return (
 		<PageBTW>
 			<HeaderBlock
-				className="bg-orange-500/20 border border-orange-500"
+				className="border border-orange-500 bg-orange-500/10 shadow-2xl shadow-orange-500/50"
 			>
 				{title}
 			</HeaderBlock>
@@ -156,19 +156,19 @@ export default function RowPage() {
 				className="flex flex-wrap justify-end p-2 space-x-2"
 			>
 				<ButtonBlock
-					className="create-c"
+					className="emerald-b"
 					onClick={() => { setShowModalCreatePallet(true); }}
 				>
 					Створити палету
 				</ButtonBlock>
 				<ButtonBlock
-					className="edit-c"
+					className="blue-b"
 					onClick={() => { setShowModalUpdateRow(true); }}
 				>
 					Перейменувати
 				</ButtonBlock>
 				<ButtonBlock
-					className="delete-c"
+					className="red-b"
 					onClick={() => { setShowModalDeleteRow(true); }}
 				>
 					Видалити ряд

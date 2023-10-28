@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { ButtonBlock, CardBlock, ImageArt, ImageBlock, TextBlock } from '../../components'
 import { ImMoveDown } from 'react-icons/im'
 import { MdDeleteForever } from "react-icons/md";
+import { BsBalloon, BsBoxSeam } from "react-icons/bs";
 
 
 export default function PositionBage({ pos, onDelete, onEdit, artsDB }) {
@@ -16,8 +17,8 @@ export default function PositionBage({ pos, onDelete, onEdit, artsDB }) {
 
 	return (
 		<li className='
-	 relative border-2 border-green-500
-	shadow-lg hover:shadow-green-500
+	 relative border-2 border-teal-500
+	shadow-lg hover:shadow-teal-500
 		flex flex-col lg:flex-row lg:justify-between
 		rounded-xl
 		transition ease-in-out duration-300	
@@ -41,7 +42,7 @@ export default function PositionBage({ pos, onDelete, onEdit, artsDB }) {
 
 
 			<CardBlock
-				className="flex lg:w-1/2 items-center space-x-4 justify-between "
+				className="flex lg:w-3/4 items-center space-x-4 justify-between "
 			>
 
 
@@ -64,13 +65,13 @@ export default function PositionBage({ pos, onDelete, onEdit, artsDB }) {
 				>
 
 					<TextBlock
-						className=" text-2xl w-1/2"
+						className=" text-2xl w-1/3"
 					>
 						{pos.artikul}
 					</TextBlock>
 
 					<TextBlock
-						className=" italic  w-1/2"
+						className=" italic text-lg flex justify-start p-1  w-2/3"
 					>
 						{artikul ? artikul?.nameukr.slice(9) : "-"}
 					</TextBlock>
@@ -83,45 +84,55 @@ export default function PositionBage({ pos, onDelete, onEdit, artsDB }) {
 
 
 			<table
-				className="  w-full lg:w-1/2"
+				className="  w-full lg:w-1/4"
 			>
 
 				<thead
 					className=" max-w-full "
 				>
 
-					<tr>
+					<tr
+						className=""
+					>
 
 						<th
-							className="bg-emerald-500/50"
-						>Кількість</th>
-						<th
-							className="bg-emerald-500/50"
-						>Коробки</th>
-					</tr>
-				</thead>
-
-
-				<tbody>
-
-					<tr>
+							className="text-sky-500  text-3xl w-1/3"
+						><BsBalloon /></th>
 
 
 						<td
-							className="bg-sky-500/10"
+
 						>
 							<TextBlock
-								className="text-sky-500 text-2xl rounded"
+								className="text-sky-500  font-bold text-2xl  rounded"
 							>
 								{pos.quant}
 							</TextBlock>
 						</td>
 
+
+					</tr>
+
+
+				</thead>
+
+
+				<tbody>
+
+					<tr
+						className="bg-teal-900/10"
+					>
+
+						<th
+							className="text-amber-500  text-3xl  w-1/3"
+						><BsBoxSeam /></th>
+
+
 						<td
-							className="bg-amber-600/10"
+							className=""
 						>
 							<TextBlock
-								className="text-amber-600 text-2xl rounded"
+								className="text-amber-500 font-bold text-2xl rounded"
 							>
 								{pos.boxes}
 							</TextBlock>
@@ -142,14 +153,14 @@ export default function PositionBage({ pos, onDelete, onEdit, artsDB }) {
 				className="flex  space-x-1 justify-evenly lg:items-center rounded-b-xl rounded-r-xl p-2  bg-slate-900 hover:bg-slate-800">
 
 				<ButtonBlock
-					className=" edit-c text-3xl"
+					className=" blue-b text-3xl"
 					onClick={onEdit}
 				>
 					<ImMoveDown />
 				</ButtonBlock>
 
 				<ButtonBlock
-					className="delete-c text-3xl "
+					className="red-b text-3xl "
 					onClick={onDelete}
 				>
 					<MdDeleteForever />

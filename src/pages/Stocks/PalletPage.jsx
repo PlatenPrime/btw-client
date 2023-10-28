@@ -7,7 +7,7 @@ import { ButtonBlock, CardBlock, HeaderBlock, PageBTW, Spinner, TextBlock, Bread
 import { toast } from 'react-toastify';
 import PositionBage from './PositionBage';
 import useFetchArts from '../../hooks/useFetchArts';
-import {ModalDeletePallet, ModalRenamePallet, ModalCreatePos, ModalDeletePos , ModalEditPos, ModalClearPallet, ModalMovePalletContent} from './PalletPageModals/index.js';
+import { ModalDeletePallet, ModalRenamePallet, ModalCreatePos, ModalDeletePos, ModalEditPos, ModalClearPallet, ModalMovePalletContent } from './PalletPageModals/index.js';
 
 
 
@@ -354,32 +354,22 @@ export default function PalletPage() {
 
 
 			<CardBlock
-				className="flex justify-end flex-wrap p-2 space-x-2 "
+				className="flex justify-start flex-wrap p-2 space-x-2 "
 			>
 
-				<ButtonBlock
-					className="
-					border border-green-500 
-					bg-transparent hover:bg-green-500
-					text-gray-100 hover:text-white
-					 hover:shadow-lg hover:shadow-green-500
-					"
-					onClick={() => { setShowModalCreatePos(true); }}
-				>
-					Додати позицію
-				</ButtonBlock>
+
 
 
 
 				<ButtonBlock
-					className="edit-c"
+					className="blue-b"
 					onClick={() => { setShowModalRenamePallet(true); }}
 				>
 					Перейменувати
 				</ButtonBlock>
 
 				<ButtonBlock
-					className="add-c"
+					className="amber-b"
 					onClick={() => { setShowModalMovePalletContent(true); }}
 				>
 					Переставити
@@ -387,14 +377,14 @@ export default function PalletPage() {
 
 				<ButtonBlock
 					onClick={() => { setShowModalClearPallet(true) }}
-					className=" confirm-c"
+					className=" rose-b"
 				>
 					Очистити
 				</ButtonBlock>
 
 
 				<ButtonBlock
-					className="delete-c"
+					className="red-b"
 					onClick={() => { setShowModalDeletePallet(true) }}
 				>
 					Видалити
@@ -496,7 +486,7 @@ export default function PalletPage() {
 				<CardBlock>
 
 					<TextBlock
-						className="text-green-500 text-3xl"
+						className="text-green-500 text-3xl justify-start p-1"
 					>
 						Позиції: {posesInStore.length}
 					</TextBlock>
@@ -505,6 +495,20 @@ export default function PalletPage() {
 
 
 				</CardBlock>
+
+
+
+				<CardBlock
+					className="flex justify-center items-center "
+				>
+					<ButtonBlock
+						className="teal-b  p-4"
+						onClick={() => { setShowModalCreatePos(true); }}
+					>
+						Додати позицію
+					</ButtonBlock>
+				</CardBlock>
+
 
 				{isPosesLoading ? (
 					<Spinner />
@@ -528,6 +532,7 @@ export default function PalletPage() {
 										setSelectedPos(pos)
 										setNewPosBoxesValue(pos.boxes)
 										setNewPosQuantValue(pos.quant)
+										setNewPosDateValue(pos.date)
 									}}
 									artsDB={artsDB}
 

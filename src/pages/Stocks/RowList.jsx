@@ -36,7 +36,7 @@ export function RowList() {
 		>
 			<TextBlock
 				className="text-3xl"
-			>Ряды
+			>Ряди
 			</TextBlock>
 
 			{isRowLoading ? <Spinner color="rgb(249 115 22)" /> :

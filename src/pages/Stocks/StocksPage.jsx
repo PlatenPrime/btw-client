@@ -38,8 +38,8 @@ export default function StocksPage() {
 	return (
 		<PageBTW>
 
-			<HeaderBlock className="bg-slate-500/20 border border-slate-500" >
-				Запасы
+			<HeaderBlock className="bg-slate-500/20  border-slate-500" >
+				Запаси
 			</HeaderBlock>
 
 			<CardBlock
@@ -48,9 +48,9 @@ export default function StocksPage() {
 
 				<ButtonBlock
 					onClick={() => { setShowModalCreateRow(true) }}
-					className="create-c flex items-center justify-center "
+					className="emerald-b flex items-center justify-center "
 				>
-					<TextBlock>Создать новый ряд</TextBlock>
+					<TextBlock>Створити новий ряд</TextBlock>
 				</ButtonBlock>
 
 			</CardBlock>

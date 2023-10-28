@@ -45,7 +45,7 @@ export default function ModalWrapper({ children, onCancel, title }) {
 
 						<ButtonBlock
 							onClick={() => onCancel()}
-							className="cancel-c px-2 text-md rounded-full absolute top-1 right-1"
+							className="red-b px-2 text-md rounded-full absolute top-1 right-1"
 						>
 							<AiOutlineClose />
 						</ButtonBlock>

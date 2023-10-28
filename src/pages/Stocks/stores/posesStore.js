@@ -19,7 +19,7 @@ const usePosesStore = create((set) => ({
 			if (response.status === 201) {
 				const newPos = response.data
 				set((state) => ({
-					poses: [...state.poses, newPos],
+					poses: [newPos, ...state.poses],
 				}));
 
 			} else {

@@ -75,8 +75,9 @@ const MainPage = () => {
 				<ButtonBlock className="purple-b">Purple</ButtonBlock>
 				<ButtonBlock className="fuchsia-b">Fuchsia</ButtonBlock>
 				<ButtonBlock className="pink-b ">Pink</ButtonBlock>
-				<ButtonBlock className="rose-b shadow-2xl hover:shadow-lg shadow-rose-500">Rose</ButtonBlock>
-
+				<ButtonBlock className="rose-b ">Rose</ButtonBlock>
+		
+	
 			</CardBlock>
 
 
