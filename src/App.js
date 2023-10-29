@@ -27,6 +27,7 @@ import { checkIsAuth, getMe } from "./redux/features/auth/authSlice";
 import { useEffect, useLayoutEffect } from "react";
 import ArtFindPage from "./pages/Art/ArtFindPage";
 import ArtPage from "./pages/Art/ArtPage";
+import ArtsPage from "./pages/Stocks/ArtsPage";
 import ArtsZonesLoadingPage from "./pages/Art/ArtsZonesLoadingPage";
 import CompsPage from "./pages/Competitors/pages/CompsPage";
 import CompsEditPage from "./pages/Competitors/pages/CompsEditPage";
@@ -79,7 +80,7 @@ function App() {
 
 
 
-				<Route path="arts" element={<ArtFindPage />} />
+				<Route path="arts" element={<ArtsPage />} />
 				<Route path="arts/:id" element={<ArtPage />} />
 
 

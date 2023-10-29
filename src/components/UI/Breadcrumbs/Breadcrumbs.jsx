@@ -4,7 +4,7 @@ import TextBlock from '../blocks/TextBlock';
 
 const Breadcrumbs = ({ paths }) => {
 	return (
-		<div className="flex bg-slate-800 border border-sky-600 rounded p-3 space-x-2">
+		<div className="flex  border border-slate-600 rounded p-3 space-x-2">
 			{paths.map((path, index) => (
 				<span
 
@@ -13,7 +13,7 @@ const Breadcrumbs = ({ paths }) => {
 					{path.link
 						?
 						<Link
-							className=" text-xl border  border-sky-500 hover:bg-sky-500 p-2 rounded-md transition ease-in-out duration-300 "
+							className=" text-xl border  border-slate-500 hover:bg-slate-500 p-2 rounded-md transition ease-in-out duration-300 "
 							to={path.link}>
 							{path.text}
 						</Link>

@@ -42,7 +42,7 @@ const SidebarBTW = () => {
 
 		bg-white bg-opacity-0
 
-
+p-4
 		space-y-2
 
 		 '>
@@ -70,7 +70,7 @@ const SidebarBTW = () => {
 			<CardBlock className='space-y-1' >
 
 
-				<TextBlock className="border border-slate-500 hover:bg-slate-500/50 rounded" >
+				<TextBlock className="border border-orange-500 hover:bg-orange-500/50 rounded" >
 					<NavLink
 						to={"stocks"}
 						style={({ isActive }) => isActive ? {
@@ -78,7 +78,7 @@ const SidebarBTW = () => {
 							padding: "12px",
 							width: "100%",
 
-							background: "rgb(100 116 139)",
+							background: "rgb(249 115 22)",
 						} : inActiveStyles}
 					>
 						Запасы
@@ -86,14 +86,14 @@ const SidebarBTW = () => {
 				</TextBlock>
 
 
-				<TextBlock className="border border-rose-500 hover:bg-rose-500/50 rounded" >
+				<TextBlock className="border border-sky-500 hover:bg-sky-500/50 rounded" >
 					<NavLink
 						to={"arts"}
 						style={({ isActive }) => isActive ? {
 							color: "white",
 							padding: "12px",
 							width: "100%",
-							background: "rgb(244 63 94 )",
+							background: "rgb(14 165 233 )",
 						} : inActiveStyles}
 					>
 						Артикулы

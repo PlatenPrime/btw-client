@@ -374,12 +374,12 @@ export default function CompListPage() {
 				>
 
 					<div
-						className='max-h-screen'
+						className='max-h-screen  '
 					>
 
 
 
-						<table className="min-w-full  max-h-screen table-fixed "  >
+						<table className="min-w-full  table-fixed "  >
 
 							<thead className="  sticky top-0">
 								<tr className=''>

@@ -342,7 +342,7 @@ export default function PalletPage() {
 		<PageBTW>
 
 			<HeaderBlock
-				className="bg-sky-500/20 border border-sky-500"
+				className=" border border-amber-500"
 			>
 				{title}
 			</HeaderBlock>
@@ -486,7 +486,7 @@ export default function PalletPage() {
 				<CardBlock>
 
 					<TextBlock
-						className="text-green-500 text-3xl justify-start p-1"
+						className="text-teal-500 text-3xl justify-start p-1"
 					>
 						Позиції: {posesInStore.length}
 					</TextBlock>
