@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import { ButtonBlock, CardBlock, HeaderBlock, InputBlock, PageBTW } from '../../components'
 import useArtikulStore from './stores/artsStore';
-import { Link } from 'react-router-dom';
 import ArtBage from './ArtBage';
+import InfiniteScroll from 'react-infinite-scroll-component';
 
 export default function ArtsPage() {
 
@@ -12,8 +12,8 @@ export default function ArtsPage() {
 	// ART STORE
 
 	const getAllArtikuls = useArtikulStore((state) => state.getAllArtikuls);
-	const getArtikulById = useArtikulStore((state) => state.getArtikulById);
 	const artikuls = useArtikulStore((state) => state.artikuls);
+
 
 
 
@@ -22,29 +22,31 @@ export default function ArtsPage() {
 
 	const [searchArt, setSearchArt] = useState("")
 	const [searchedArts, setSearchedArts] = useState([])
-	const [searchedArtsFragment, setSearchedArtsFragment] = useState(1)
+
+	const [page, setPage] = useState(0);
+	const [displayedArts, setDisplayedArts] = useState([])
 
 	// EFFECTS 
 
 	useEffect(() => {
 
 		const fetchArtsFromDB = async () => {
-			await getAllArtikuls()
+			const artikuls = await getAllArtikuls()
+			console.log(artikuls)
 
 		}
 
 		fetchArtsFromDB()
 
-	}, [])
+	})
+
+
+
 
 
 
 
 	// HANDLERS
-
-
-
-
 
 
 
@@ -113,8 +115,19 @@ export default function ArtsPage() {
 				<CardBlock
 					className="space-y-1"
 				>
-					{artikuls?.slice(100, 120).map((art) => <ArtBage art={art} />)}
+					{artikuls?.slice(0, 10 * page).map((art) => <ArtBage art={art} />)}
+
+					<ButtonBlock
+						onClick={() => { setPage(prev => prev + 1) }}
+						className="sky-b"
+					>
+						Наступні
+					</ButtonBlock>
+
 				</CardBlock>
+
+
+
 
 
 

@@ -26,6 +26,7 @@ const useArtikulStore = create((set) => ({
 			if (response.status === 200) {
 				const data = response.data;
 				set({ artikuls: data.arts });
+				return data;
 			} else {
 				throw new Error('Ошибка получения Artikuls');
 			}
