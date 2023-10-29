@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useRowStore } from './stores/rowsStore';
 import { CardBlock, TextBlock, Spinner } from '../../components';
-import RowBage from '../Row/Row/RowBage';
+import RowBage from './RowBage';
 
 
 
@@ -27,7 +27,7 @@ export function RowList() {
 	useEffect(() => {
 		// При монтировании компонента получите все Row
 		fetchRows()
-	}, []);
+	});
 
 
 	return (

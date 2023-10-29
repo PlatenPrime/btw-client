@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { ButtonBlock, CardBlock, HeaderBlock, InputBlock, PageBTW } from '../../components'
 import useArtikulStore from './stores/artsStore';
 import { Link } from 'react-router-dom';
+import ArtBage from './ArtBage';
 
 export default function ArtsPage() {
 
@@ -60,7 +61,9 @@ export default function ArtsPage() {
 				Артикули
 			</HeaderBlock>
 
-			<CardBlock>
+			<CardBlock
+				className="p-1 space-y-2"
+			>
 
 
 
@@ -69,12 +72,18 @@ export default function ArtsPage() {
 
 
 				<CardBlock
-					className="p-1 flex flex-wrap"
+					className="p-1 flex items-center flex-wrap space-x-1 "
 				>
 					<ButtonBlock
 						className="lime-b"
 					>
 						Запит на зняття
+					</ButtonBlock>
+
+					<ButtonBlock
+						className="orange-b"
+					>
+						Встановлення зон
 					</ButtonBlock>
 
 				</CardBlock>
@@ -101,15 +110,10 @@ export default function ArtsPage() {
 
 
 
-				<CardBlock>
-					{artikuls?.slice(0, 20).map((art) => <CardBlock><Link
-						className=""
-						to={`/arts/${art?._id}`}
-					>
-						{art?.artikul}
-					</Link>
-					</CardBlock>
-					)}
+				<CardBlock
+					className="space-y-1"
+				>
+					{artikuls?.slice(100, 120).map((art) => <ArtBage art={art} />)}
 				</CardBlock>
 
 
