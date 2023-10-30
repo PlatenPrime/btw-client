@@ -3,16 +3,15 @@ import { ButtonBlock, CardBlock, HeaderBlock, InputBlock, PageBTW } from '../../
 import useArtikulStore from './stores/artsStore';
 import ArtBage from './ArtBage';
 import InfiniteScroll from 'react-infinite-scroll-component';
+import { useArtContext } from '../../ArtContext';
 
 export default function ArtsPage() {
 
-
-
+	const { artsDB, loadingArtsDB, errorArtsDB } = useArtContext();
 
 	// ART STORE
 
-	const getAllArtikuls = useArtikulStore((state) => state.getAllArtikuls);
-	const artikuls = useArtikulStore((state) => state.artikuls);
+
 
 
 
@@ -23,26 +22,10 @@ export default function ArtsPage() {
 	const [searchArt, setSearchArt] = useState("")
 	const [searchedArts, setSearchedArts] = useState([])
 
-	const [page, setPage] = useState(0);
+	const [page, setPage] = useState(1);
 	const [displayedArts, setDisplayedArts] = useState([])
 
 	// EFFECTS 
-
-	useEffect(() => {
-
-		const fetchArtsFromDB = async () => {
-			const artikuls = await getAllArtikuls()
-			console.log(artikuls)
-
-		}
-
-		fetchArtsFromDB()
-
-	})
-
-
-
-
 
 
 
@@ -115,7 +98,7 @@ export default function ArtsPage() {
 				<CardBlock
 					className="space-y-1"
 				>
-					{artikuls?.slice(0, 10 * page).map((art) => <ArtBage art={art} />)}
+					{artsDB?.slice(0, 10 * page).map((art) => <ArtBage art={art} />)}
 
 					<ButtonBlock
 						onClick={() => { setPage(prev => prev + 1) }}

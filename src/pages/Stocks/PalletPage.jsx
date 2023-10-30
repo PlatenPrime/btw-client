@@ -6,8 +6,9 @@ import { useRowStore } from './stores/rowsStore';
 import { ButtonBlock, CardBlock, HeaderBlock, PageBTW, Spinner, TextBlock, Breadcrumbs } from '../../components';
 import { toast } from 'react-toastify';
 import PositionBage from './PositionBage';
-import useFetchArts from '../../hooks/useFetchArts';
+
 import { ModalDeletePallet, ModalRenamePallet, ModalCreatePos, ModalDeletePos, ModalEditPos, ModalClearPallet, ModalMovePalletContent } from './PalletPageModals/index.js';
+import { useArtContext } from '../../ArtContext';
 
 
 
@@ -17,7 +18,8 @@ export default function PalletPage() {
 	const { id } = useParams();
 	const navigate = useNavigate()
 
-	const { artsDB, loadingArtsDB, errorArtsDB } = useFetchArts()
+	const { artsDB, loadingArtsDB, errorArtsDB } = useArtContext();
+	
 
 
 	// ROW STORE

@@ -1,6 +1,6 @@
 import Layout from "./components/Layout";
 import { Routes, Route, useNavigate } from "react-router-dom";
-
+import { ArtProvider } from './ArtContext';
 import { ToastContainer } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -61,61 +61,61 @@ function App() {
 
 	return (
 
+		<ArtProvider>
+			<Layout>
 
-		<Layout>
-
-			<Routes>
-				<Route path="/" element={<MainPage />} />
-				<Route path="login" element={<LoginPage />} />
-				<Route path="register" element={<RegisterPage />} />
-
-
-				<Route path="pallets/:id" element={<PalletPage />} />
+				<Routes>
+					<Route path="/" element={<MainPage />} />
+					<Route path="login" element={<LoginPage />} />
+					<Route path="register" element={<RegisterPage />} />
 
 
-
-				<Route path="stocks" element={<StocksPage />} />
-				<Route path="rows" element={<RowsPage />} />
-				<Route path="rows/:id" element={<RowPage />} />
+					<Route path="pallets/:id" element={<PalletPage />} />
 
 
 
-				<Route path="arts" element={<ArtsPage />} />
-				<Route path="arts/:id" element={<ArtPage />} />
+					<Route path="stocks" element={<StocksPage />} />
+					<Route path="rows" element={<RowsPage />} />
+					<Route path="rows/:id" element={<RowPage />} />
 
 
 
-				<Route path="zones" element={<ArtsZonesLoadingPage />} />
-
-
-				<Route path="comps" element={<CompsPage />} >
-					<Route path="edit" element={<CompsEditPage />} />
-					<Route path="list" element={<CompsListPage />} />
-					<Route path="logs" element={<CompsLogsPage />} />
-					<Route path="add" element={<CompsAddPage />} />
-				</Route>
+					<Route path="arts" element={<ArtsPage />} />
+					<Route path="arts/:id" element={<ArtPage />} />
 
 
 
+					<Route path="zones" element={<ArtsZonesLoadingPage />} />
 
 
-			</Routes>
+					<Route path="comps" element={<CompsPage />} >
+						<Route path="edit" element={<CompsEditPage />} />
+						<Route path="list" element={<CompsListPage />} />
+						<Route path="logs" element={<CompsLogsPage />} />
+						<Route path="add" element={<CompsAddPage />} />
+					</Route>
 
-			<ToastContainer
-				position="bottom-right"
-				autoClose={5000}
-				hideProgressBar={false}
-				newestOnTop={false}
-				closeOnClick
-				rtl={false}
-				pauseOnFocusLoss
-				draggable
-				pauseOnHover
-				theme="colored"
-			/>
 
-		</Layout>
 
+
+
+				</Routes>
+
+				<ToastContainer
+					position="bottom-right"
+					autoClose={5000}
+					hideProgressBar={false}
+					newestOnTop={false}
+					closeOnClick
+					rtl={false}
+					pauseOnFocusLoss
+					draggable
+					pauseOnHover
+					theme="colored"
+				/>
+
+			</Layout>
+		</ArtProvider>
 
 
 

@@ -1,6 +1,6 @@
 
 import React, { useEffect, useState } from 'react';
-import useArts from "../../hooks/useFetchArts";
+
 
 
 import { toast } from 'react-toastify';
@@ -8,6 +8,7 @@ import axios from '../../utils/axios';
 import { excelToJSONArts } from '../../utils/importExcel';
 
 import { ButtonBlock, InputBlock, TextBlock, CardBlock, HeaderBlock, ImageBlock, RowBlock, PageBTW } from "../../components";
+import { useArtContext } from '../../ArtContext';
 
 
 
@@ -15,7 +16,7 @@ const ArtsZonesLoadingPage = () => {
 
 
 
-	const { artsDB, loadingArtsDB, errorArtsDB } = useArts('arts');
+	const { artsDB, loadingArtsDB, errorArtsDB } = useArtContext();
 	const [arts, setArts] = useState([]);
 	const [claster, setClaster] = useState(0);
 	const [isUpload, setIsUpload] = useState(false);

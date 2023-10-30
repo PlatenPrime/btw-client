@@ -27,7 +27,7 @@ export function RowList() {
 	useEffect(() => {
 		// При монтировании компонента получите все Row
 		fetchRows()
-	});
+	}, []);
 
 
 	return (
