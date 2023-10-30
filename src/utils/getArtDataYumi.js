@@ -92,7 +92,7 @@ export async function getArtDataYumi(yumiLink) {
 
 		if (!price) {
 			let pack = extractQuantityInPackFromString(responseString)
-			pack ? pack = pack : pack = 1
+			pack = pack || 1
 			console.log(pack)
 
 

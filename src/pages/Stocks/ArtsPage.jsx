@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { ButtonBlock, CardBlock, HeaderBlock, InputBlock, PageBTW } from '../../components'
+import { ButtonBlock, CardBlock, HeaderBlock, InputBlock, PageBTW, Spinner, TextBlock } from '../../components'
 import useArtikulStore from './stores/artsStore';
 import ArtBage from './ArtBage';
 import InfiniteScroll from 'react-infinite-scroll-component';
@@ -9,9 +9,9 @@ export default function ArtsPage() {
 
 	const { artsDB, loadingArtsDB, errorArtsDB } = useArtContext();
 
-	// ART STORE
+	// CONSTANTS
 
-
+	const step = 10
 
 
 
@@ -19,11 +19,10 @@ export default function ArtsPage() {
 	// STATES
 
 
-	const [searchArt, setSearchArt] = useState("")
-	const [searchedArts, setSearchedArts] = useState([])
-
+	const [searchValue, setSearchValue] = useState("")
+	const [filteredArts, setFilteredArts] = useState([]);
 	const [page, setPage] = useState(1);
-	const [displayedArts, setDisplayedArts] = useState([])
+
 
 	// EFFECTS 
 
@@ -31,7 +30,15 @@ export default function ArtsPage() {
 
 	// HANDLERS
 
-
+	function handleFilterArts() {
+		const filtered = artsDB.filter((art) =>
+			art.artikul.toLowerCase().includes(searchValue.toLowerCase()) ||
+			art.nameukr.toLowerCase().includes(searchValue.toLowerCase()) ||
+			art.namerus.toLowerCase().includes(searchValue.toLowerCase())
+		);
+		setFilteredArts(filtered);
+		setPage(1)
+	}
 
 
 
@@ -74,41 +81,87 @@ export default function ArtsPage() {
 				</CardBlock>
 
 				<CardBlock
-					className="mx-auto flex items-center justify-center space-x-3"
+
 				>
 
-
-					<InputBlock
-						onChange={(e) => { setSearchArt(e.target.value) }}
-						placeholder="Введи артикул або назву..."
-					/>
-
-					<ButtonBlock
-						className="indigo-b"
+					<form
+						className="mx-auto flex items-center justify-center space-x-3"
+						onSubmit={(e) => {
+							e.preventDefault()
+							handleFilterArts()
+						}}
 					>
-						Пошук
-					</ButtonBlock>
 
+						<InputBlock
+							onChange={(e) => {
+								setSearchValue(e.target.value);
+
+							}}
+							placeholder="Введи артикул або назву..."
+						/>
+
+						<ButtonBlock
+							className="indigo-b"
+						>
+							Пошук
+						</ButtonBlock>
+					</form>
 
 				</CardBlock>
-
 
 
 
 				<CardBlock
-					className="space-y-1"
+					className="flex justify-between"
 				>
-					{artsDB?.slice(0, 10 * page).map((art) => <ArtBage art={art} />)}
 
-					<ButtonBlock
-						onClick={() => { setPage(prev => prev + 1) }}
-						className="sky-b"
+					{filteredArts.length > 0 && <TextBlock>
+						Знайдено: {filteredArts?.length}
+					</TextBlock>}
+
+					<TextBlock>
+						Сторінка: {page}
+					</TextBlock>
+
+
+					<TextBlock>
+						Артикули: {step * page - step + 1} - {step * page < filteredArts.length ? step * page : filteredArts.length}
+					</TextBlock>
+
+
+
+					<CardBlock
+						className="space-x-1"
 					>
-						Наступні
-					</ButtonBlock>
+
+						<ButtonBlock onClick={() => setPage((prev) => prev - 1)} className="sky-b" disabled={page === 1}>
+							Попередні
+						</ButtonBlock>
+
+						<ButtonBlock onClick={() => setPage((prev) => prev + 1)} className="sky-b" disabled={filteredArts.length / step < 1}>
+							Наступні
+						</ButtonBlock>
+
+					</CardBlock>
 
 				</CardBlock>
 
+				{loadingArtsDB ?
+					<Spinner color="lightblue" />
+					:
+					<CardBlock className="space-y-1">
+						{filteredArts?.length === 0
+							? artsDB?.slice(step * page - step, step * page).map((art) => <ArtBage art={art} />)
+							: filteredArts?.slice(step * page - step, step * page).map((art) => <ArtBage art={art} />)}
+
+
+
+
+
+
+					</CardBlock>
+
+				}
 
 
 
