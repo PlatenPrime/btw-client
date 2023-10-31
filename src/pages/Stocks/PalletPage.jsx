@@ -19,7 +19,7 @@ export default function PalletPage() {
 	const navigate = useNavigate()
 
 	const { artsDB, loadingArtsDB, errorArtsDB } = useArtContext();
-	
+
 
 
 	// ROW STORE
@@ -346,12 +346,19 @@ export default function PalletPage() {
 			<HeaderBlock
 				className=" border border-amber-500"
 			>
-				{title}
+				<TextBlock>{title}</TextBlock>
+
+
+				<CardBlock
+					className="flex justify-start w-full"
+				>
+					<Breadcrumbs paths={breadcrumbPaths} />
+				</CardBlock>
 			</HeaderBlock>
 
 
 
-			<Breadcrumbs paths={breadcrumbPaths} />
+
 
 
 
@@ -481,7 +488,7 @@ export default function PalletPage() {
 
 
 			<CardBlock
-				className=""
+				className="p-2 space-y-2 "
 			>
 
 
@@ -493,9 +500,6 @@ export default function PalletPage() {
 						Позиції: {posesInStore.length}
 					</TextBlock>
 
-
-
-
 				</CardBlock>
 
 
@@ -504,7 +508,7 @@ export default function PalletPage() {
 					className="flex justify-center items-center "
 				>
 					<ButtonBlock
-						className="teal-b  p-4"
+						className="teal-b  p-4  border-dashed"
 						onClick={() => { setShowModalCreatePos(true); }}
 					>
 						Додати позицію
@@ -517,7 +521,7 @@ export default function PalletPage() {
 				) : posesInStore?.length === 0 ? (
 					<p></p>
 				) : (
-					<ul className='p-2 space-y-4'>
+					<ul className=' space-y-4'>
 
 
 						{posesInStore?.map((pos) => {

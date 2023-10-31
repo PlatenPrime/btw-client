@@ -42,30 +42,35 @@ export default function StocksPage() {
 				Запаси
 			</HeaderBlock>
 
+
 			<CardBlock
-				className="flex justify-end p-2"
+			className = "min-h-screen"
 			>
 
-				<ButtonBlock
-					onClick={() => { setShowModalCreateRow(true) }}
-					className="emerald-b flex items-center justify-center "
+				<CardBlock
+					className="flex justify-start p-2"
 				>
-					<TextBlock>Створити новий ряд</TextBlock>
-				</ButtonBlock>
 
+					<ButtonBlock
+						onClick={() => { setShowModalCreateRow(true) }}
+						className="emerald-b flex items-center justify-center "
+					>
+						<TextBlock>Створити новий ряд</TextBlock>
+					</ButtonBlock>
+
+				</CardBlock>
+
+				{showModalCreateRow && <ModalCreate
+					title="Создание нового ряда"
+					onConfirm={(rowTitle) => { handleCreateRow(rowTitle) }}
+					onCancel={closeModalCreateRow}
+
+				/>}
+
+
+				<RowList />
 			</CardBlock>
 
-			{showModalCreateRow && <ModalCreate
-				title="Создание нового ряда"
-				onConfirm={(rowTitle) => { handleCreateRow(rowTitle) }}
-				onCancel={closeModalCreateRow}
-
-			/>}
-
-
-			<RowList />
-
-			
 		</PageBTW>
 	)
 }

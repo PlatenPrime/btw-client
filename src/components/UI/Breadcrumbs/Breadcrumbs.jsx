@@ -4,7 +4,7 @@ import TextBlock from '../blocks/TextBlock';
 
 const Breadcrumbs = ({ paths }) => {
 	return (
-		<div className="flex  border border-slate-600 rounded p-3 space-x-2">
+		<div className="flex flex-wrap  rounded p-3 space-x-2">
 			{paths.map((path, index) => (
 				<span
 

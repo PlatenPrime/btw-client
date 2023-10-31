@@ -153,105 +153,110 @@ export default function RowPage() {
 			</HeaderBlock>
 
 			<CardBlock
-				className="flex flex-wrap justify-end p-2 space-x-2"
+			className = "min-h-screen"
 			>
-				<ButtonBlock
-					className="emerald-b"
-					onClick={() => { setShowModalCreatePallet(true); }}
+
+
+				<CardBlock
+					className="flex flex-wrap justify-start p-2 space-x-2"
 				>
-					Створити палету
-				</ButtonBlock>
-				<ButtonBlock
-					className="blue-b"
-					onClick={() => { setShowModalUpdateRow(true); }}
+					<ButtonBlock
+						className="emerald-b"
+						onClick={() => { setShowModalCreatePallet(true); }}
+					>
+						Створити палету
+					</ButtonBlock>
+					<ButtonBlock
+						className="blue-b"
+						onClick={() => { setShowModalUpdateRow(true); }}
+					>
+						Перейменувати
+					</ButtonBlock>
+					<ButtonBlock
+						className="red-b"
+						onClick={() => { setShowModalDeleteRow(true); }}
+					>
+						Видалити ряд
+					</ButtonBlock>
+
+
+
+
+
+				</CardBlock>
+
+
+				{showModalCreatePallet && <ModalCreate
+					title="Створення нової палети"
+					onConfirm={(palletTitle) => { handleCreatePallet(palletTitle) }}
+					onCancel={closeModalCreatePallet}
+
+				/>}
+
+
+				{
+					showModalUpdateRow && <ModalEditOneValue
+						value={row.title}
+						onConfirm={(value) => { handleUpdateRowById(value) }}
+						onCancel={closeModalUpdateRow}
+					/>
+				}
+
+
+				{showModalDeleteRow && <ModalConfirm
+					ask="Видалити цей ряд?"
+					onConfirm={handleDeleteRowById}
+					onCancel={closeModalDeleteRow}
+				/>}
+
+
+
+
+
+
+
+				<CardBlock
+					className="space-y-4 bg-sky-500/5 p-2 "
 				>
-					Перейменувати
-				</ButtonBlock>
-				<ButtonBlock
-					className="red-b"
-					onClick={() => { setShowModalDeleteRow(true); }}
-				>
-					Видалити ряд
-				</ButtonBlock>
+					<TextBlock
+						className="text-3xl text-sky-500 "
+					>
+						Палети
+					</TextBlock>
 
-
-
-
-
-			</CardBlock>
-
-
-			{showModalCreatePallet && <ModalCreate
-				title="Створення нової палети"
-				onConfirm={(palletTitle) => { handleCreatePallet(palletTitle) }}
-				onCancel={closeModalCreatePallet}
-
-			/>}
-
-
-			{
-				showModalUpdateRow && <ModalEditOneValue
-					value={row.title}
-					onConfirm={(value) => { handleUpdateRowById(value) }}
-					onCancel={closeModalUpdateRow}
-				/>
-			}
-
-
-			{showModalDeleteRow && <ModalConfirm
-				ask="Видалити цей ряд?"
-				onConfirm={handleDeleteRowById}
-				onCancel={closeModalDeleteRow}
-			/>}
-
-
-
-
-
-
-
-			<CardBlock
-				className="space-y-4 bg-sky-500/5 p-2 "
-			>
-				<TextBlock
-					className="text-3xl text-sky-500 "
-				>
-					Палети
-				</TextBlock>
-
-				{isRowPalletsLoading
-					?
-					<Spinner />
-					:
-					palletsStore.length === 0
+					{isRowPalletsLoading
 						?
-						<TextBlock
-							className="text-2xl"
-						>Цей ряд не містить палети </TextBlock>
+						<Spinner />
 						:
-						<CardBlock
-							className=" gap-3 grid 
+						palletsStore.length === 0
+							?
+							<TextBlock
+								className="text-2xl"
+							>Цей ряд не містить палети </TextBlock>
+							:
+							<CardBlock
+								className=" gap-3 grid 
 							grid-cols-1 
 							md:grid-cols-2 
 							lg:grid-cols-4 
 							xl:grid-cols-6 
 							justify-items-stretch 
 							justify-around  "
-						>
+							>
 
-							{palletsStore?.map((pallet) => <PalletBage
-								title={pallet.title}
-								id={pallet._id}
-							/>)}
-						</CardBlock>}
+								{palletsStore?.map((pallet) => <PalletBage
+									title={pallet.title}
+									id={pallet._id}
+								/>)}
+							</CardBlock>}
 
 
+
+
+				</CardBlock>
 
 
 			</CardBlock>
-
-
-
 
 
 
