@@ -5,10 +5,13 @@ import InfiniteScroll from 'react-infinite-scroll-component';
 import { useArtContext } from '../../ArtContext';
 import { toast } from 'react-toastify';
 import { AiOutlineArrowLeft, AiOutlineArrowRight, AiOutlineDoubleLeft, AiOutlineDoubleRight } from "react-icons/ai";
+import useFetchRemains from '../../hooks/useFetchRemains';
 
 export default function ArtsPage() {
 
 	const { artsDB, loadingArtsDB, errorArtsDB } = useArtContext();
+	const { remains } = useFetchRemains()
+	console.log(remains)
 
 	// CONSTANTS
 
@@ -58,9 +61,29 @@ export default function ArtsPage() {
 		>
 
 			<HeaderBlock
-				className="border border-sky-500 shadow-md shadow-sky-500"
+				className="border border-sky-500 shadow-md shadow-sky-500 "
 			>
-				Артикули
+				<TextBlock className = "flex justify-center">
+					Артикули
+				</TextBlock>
+
+				<CardBlock
+					className="p-1 flex items-center justify-start flex-wrap space-x-1 "
+				>
+					<ButtonBlock
+						className="lime-b text-base"
+					>
+						Запит на зняття
+					</ButtonBlock>
+
+					<ButtonBlock
+						className="orange-b text-base"
+					>
+						Встановлення зон
+					</ButtonBlock>
+
+				</CardBlock>
+
 			</HeaderBlock>
 
 			<CardBlock
@@ -72,25 +95,10 @@ export default function ArtsPage() {
 
 
 				<CardBlock
-					className="flex flex-wrap justify-between"
+					className="flex flex-wrap justify-center"
 				>
 
-					<CardBlock
-						className="p-1 flex items-center flex-wrap space-x-1 "
-					>
-						<ButtonBlock
-							className="lime-b"
-						>
-							Запит на зняття
-						</ButtonBlock>
 
-						<ButtonBlock
-							className="orange-b"
-						>
-							Встановлення зон
-						</ButtonBlock>
-
-					</CardBlock>
 
 					<CardBlock
 
@@ -110,7 +118,7 @@ export default function ArtsPage() {
 
 								}}
 								placeholder="Введи артикул або назву..."
-								className=" bg-indigo-900 bg-opacity-50 border-indigo-600 focus:border-indigo-500 focus:shadow-lg  focus:shadow-indigo-600 p-3"
+								className=" bg-indigo-900 bg-opacity-5 border-indigo-600 focus:border-indigo-500 focus:shadow-lg  focus:shadow-indigo-600 p-3"
 							/>
 
 							<ButtonBlock
@@ -229,7 +237,7 @@ export default function ArtsPage() {
 								<AiOutlineArrowRight />
 							</ButtonBlock>
 
-							<ButtonBlock onClick={() => setPage(Math.ceil(filteredArts?.length / step))} className="indigo-b" disabled={filteredArts?.length / step / page  < 1}>
+							<ButtonBlock onClick={() => setPage(Math.ceil(filteredArts?.length / step))} className="indigo-b" disabled={filteredArts?.length / step / page < 1}>
 								<AiOutlineDoubleRight />
 
 							</ButtonBlock>
@@ -252,8 +260,8 @@ export default function ArtsPage() {
 					:
 					<CardBlock className="space-y-1">
 						{filteredArts?.length === 0
-							? artsDB?.slice(step * page - step, step * page).map((art) => <ArtBage art={art} />)
-							: filteredArts?.slice(step * page - step, step * page).map((art) => <ArtBage art={art} />)}
+							? artsDB?.slice(step * page - step, step * page).map((art) => <ArtBage art={art} remains={remains} />)
+							: filteredArts?.slice(step * page - step, step * page).map((art) => <ArtBage art={art} remains={remains} />)}
 
 					</CardBlock>
 

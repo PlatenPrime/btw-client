@@ -1,12 +1,16 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { CardBlock, ImageArt, TextBlock } from '../../components';
+import { VscLocation } from "react-icons/vsc";
+import { BsBalloon } from "react-icons/bs";
 
 
 
 
 
-const ArtBage = ({ art }) => {
+const ArtBage = ({ art, remains }) => {
+
+
 
 
 
@@ -18,6 +22,8 @@ const ArtBage = ({ art }) => {
 		)
 	}
 
+
+	const title = art?.artikul
 
 
 	return (
@@ -61,8 +67,8 @@ const ArtBage = ({ art }) => {
 				<CardBlock
 					className="flex flex-wrap justify-between"
 				>
-					<TextBlock className=" text-xl font-bold  bg-orange-500 px-1 rounded" >{art?.zone}</TextBlock>
-					<TextBlock className=" text-xl font-bold " >Залишок</TextBlock>
+					<TextBlock className=" text-xl font-bold  bg-orange-500 p-1 rounded" ><VscLocation />{art?.zone}</TextBlock>
+					<TextBlock className=" text-xl font-bold " > <BsBalloon /> {remains ? remains[title] : ""}</TextBlock>
 				</CardBlock>
 
 			</Link>
@@ -71,20 +77,25 @@ const ArtBage = ({ art }) => {
 
 
 			<Link
-				className="hidden lg:flex  w-full  "
+				className="hidden lg:flex items-center justify-between w-full  "
 				to={`/arts/${art?._id}`}
 			>
 
-				<TextBlock className="w-2/3 justify-start text-xl" >{art?.nameukr}</TextBlock>
-				<TextBlock className="w-1/6 text-xl font-bold text-orange-500" >{art?.zone}</TextBlock>
-				<TextBlock className="w-1/6 text-xl font-bold " >Залишок</TextBlock>
+				<TextBlock className=" justify-start text-xl" >{art?.nameukr}</TextBlock>
+
+				<CardBlock
+				className = "flex w-1/3 justify-between px-2"
+				>
+					<TextBlock className="  text-xl font-bold border border-orange-500 p-1 rounded text-orange-500" ><VscLocation />{art?.zone}</TextBlock>
+					<TextBlock className=" text-xl font-bold " ><BsBalloon />  {remains ? remains[title] : ""}</TextBlock>
+				</CardBlock>
 
 			</Link>
 
 
 
 
-		
+
 
 
 
