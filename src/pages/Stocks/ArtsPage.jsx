@@ -4,7 +4,7 @@ import ArtBage from './ArtBage';
 import InfiniteScroll from 'react-infinite-scroll-component';
 import { useArtContext } from '../../ArtContext';
 import { toast } from 'react-toastify';
-import { AiOutlineArrowLeft, AiOutlineArrowRight } from "react-icons/ai";
+import { AiOutlineArrowLeft, AiOutlineArrowRight, AiOutlineDoubleLeft, AiOutlineDoubleRight } from "react-icons/ai";
 
 export default function ArtsPage() {
 
@@ -97,7 +97,7 @@ export default function ArtsPage() {
 					>
 
 						<form
-							className=" flex flex-wrap items-center justify-end space-x-3"
+							className=" flex flex-wrap  justify-end space-x-3"
 							onSubmit={(e) => {
 								e.preventDefault()
 								handleFilterArts()
@@ -110,7 +110,7 @@ export default function ArtsPage() {
 
 								}}
 								placeholder="Введи артикул або назву..."
-								className=" bg-indigo-900 bg-opacity-20 border-indigo-600/50 focus:border-indigo-600"
+								className=" bg-indigo-900 bg-opacity-50 border-indigo-600 focus:border-indigo-500 focus:shadow-lg  focus:shadow-indigo-600 p-3"
 							/>
 
 							<ButtonBlock
@@ -156,19 +156,29 @@ export default function ArtsPage() {
 							className="space-x-3 flex flex-wrap"
 						>
 
+							<ButtonBlock onClick={() => setPage(1)} className="sky-b " disabled={page === 1}>
+								<AiOutlineDoubleLeft />
+							</ButtonBlock>
+
 							<ButtonBlock onClick={() => setPage((prev) => prev - 1)} className="sky-b" disabled={page === 1}>
 								<AiOutlineArrowLeft />
-
 							</ButtonBlock>
 
 							<TextBlock>
 								Сторінка: {page}
 							</TextBlock>
 
-							<ButtonBlock onClick={() => setPage((prev) => prev + 1)} className="sky-b" disabled={artsDB?.length / step < 1}>
+							<ButtonBlock onClick={() => setPage((prev) => prev + 1)} className="sky-b" disabled={artsDB?.length / step / page < 1}>
 								<AiOutlineArrowRight />
 
 							</ButtonBlock>
+
+							<ButtonBlock onClick={() => setPage(Math.ceil(artsDB?.length / step))} className="sky-b" disabled={artsDB?.length / step / page < 1}>
+								<AiOutlineDoubleRight />
+
+							</ButtonBlock>
+
+
 
 						</CardBlock>
 
@@ -202,6 +212,10 @@ export default function ArtsPage() {
 							className="space-x-3 flex flex-wrap"
 						>
 
+							<ButtonBlock onClick={() => setPage(1)} className="indigo-b " disabled={page === 1}>
+								<AiOutlineDoubleLeft />
+							</ButtonBlock>
+
 							<ButtonBlock onClick={() => setPage((prev) => prev - 1)} className="indigo-b" disabled={page === 1}>
 								<AiOutlineArrowLeft />
 							</ButtonBlock>
@@ -213,6 +227,11 @@ export default function ArtsPage() {
 
 							<ButtonBlock onClick={() => setPage((prev) => prev + 1)} className="indigo-b" disabled={filteredArts?.length / step / page < 1}>
 								<AiOutlineArrowRight />
+							</ButtonBlock>
+
+							<ButtonBlock onClick={() => setPage(Math.ceil(filteredArts?.length / step))} className="indigo-b" disabled={filteredArts?.length / step / page  < 1}>
+								<AiOutlineDoubleRight />
+
 							</ButtonBlock>
 
 						</CardBlock>
