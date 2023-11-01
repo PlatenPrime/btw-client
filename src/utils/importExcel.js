@@ -80,6 +80,7 @@ export const importFromExcelComps = async (e) => {
 				category: item["category"] ?? "",
 				subcategory: item["subcategory"] ?? "",
 				size: item["size"] ?? "",
+				abc: item["abc"] ?? "",
 				competitorsLinks: {
 					sharteLink: item["competitorsLinks.sharteLink"] ?? "",
 					airLink: item["competitorsLinks.airLink"] ?? "",

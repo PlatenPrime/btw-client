@@ -20,6 +20,7 @@ export function exportToExcelComps(data) {
 		category: item?.category,
 		subcategory: item?.subcategory,
 		size: item?.size,
+		abc: item?.abc,
 		"competitorsLinks.sharteLink": item?.competitorsLinks?.sharteLink,
 		"competitorsLinks.airLink": item?.competitorsLinks?.airLink,
 		"competitorsLinks.yumiLink": item?.competitorsLinks?.yumiLink,
