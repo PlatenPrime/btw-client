@@ -79,13 +79,13 @@ export default function ArtsPage() {
 					className="p-1 flex items-center justify-start flex-wrap space-x-1 "
 				>
 					<ButtonBlock
-						className="lime-b text-base"
+						className="lime-b text-base hidden xl:flex"
 					>
 						Запит на зняття
 					</ButtonBlock>
 
 					<ButtonBlock
-						className="orange-b text-base"
+						className="orange-b text-base hidden xl:flex"
 					>
 						Встановлення зон
 					</ButtonBlock>
