@@ -133,6 +133,7 @@ table {
 
 .HeaderBlock {
 	@apply
+	flex justify-center
 	w-full p-4
 	rounded-md
  text-white

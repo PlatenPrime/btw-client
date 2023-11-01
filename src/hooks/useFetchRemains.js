@@ -3,7 +3,8 @@ import { useState, useEffect } from 'react';
 
 const useFetchRemains = () => {
 	const [remains, setRemains] = useState(null);
-
+	const [loadingRemains, setLoadingRemains] = useState(true);
+	const [errorRemains, setErrorRemains] = useState(null);
 
 
 
@@ -26,17 +27,39 @@ const useFetchRemains = () => {
 				});
 
 				setRemains(data)
-
+				// Сохраняем полученные данные в localStorage
+				localStorage.setItem('remainsData', JSON.stringify(data))
 
 			} catch (error) {
-				console.error('Ошибка:', error)
+				setErrorRemains(error)
 			} finally {
-
+				setLoadingRemains(false)
 			}
 		};
 
-		fetchData()
 
+
+		const updateData = () => {
+			// Периодически обновляем данные из сервера, например, каждые 5 минут
+			fetchData();
+		};
+
+		// Попытка получить данные из localStorage при загрузке
+		const cachedData = localStorage.getItem('remainsData');
+		if (cachedData) {
+			setRemains(JSON.parse(cachedData));
+			setLoadingRemains(false); // Устанавливаем loading в false, так как есть данные
+		} else {
+			fetchData();
+		}
+
+		// Запускаем периодическое обновление данных
+		const updateInterval = setInterval(updateData, 300000); // 300000 миллисекунд (5 минут)
+
+		return () => {
+			// Очищаем интервал при размонтировании компонента
+			clearInterval(updateInterval);
+		};
 
 
 
@@ -49,7 +72,7 @@ const useFetchRemains = () => {
 
 
 
-	return { remains };
+	return { remains, loadingRemains, errorRemains };
 };
 
 export default useFetchRemains;

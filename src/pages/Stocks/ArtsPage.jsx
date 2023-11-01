@@ -63,9 +63,17 @@ export default function ArtsPage() {
 			<HeaderBlock
 				className="border border-sky-500 shadow-md shadow-sky-500 "
 			>
-				<TextBlock className = "flex justify-center">
+				<TextBlock className="">
 					Артикули
 				</TextBlock>
+
+
+
+			</HeaderBlock>
+
+			<CardBlock
+				className="p-1 space-y-2 min-h-screen"
+			>
 
 				<CardBlock
 					className="p-1 flex items-center justify-start flex-wrap space-x-1 "
@@ -83,14 +91,6 @@ export default function ArtsPage() {
 					</ButtonBlock>
 
 				</CardBlock>
-
-			</HeaderBlock>
-
-			<CardBlock
-				className="p-1 space-y-2 min-h-screen"
-			>
-
-
 
 
 

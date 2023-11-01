@@ -6,7 +6,7 @@ import { useParams } from "react-router-dom";
 import usePosesStore from "./stores/posesStore";
 
 
-export default function ArtsPage() {
+export default function ArtPage() {
 
 	const { artsDB, loadingArtsDB, errorArtsDB } = useArtContext();
 	const { id } = useParams()
@@ -57,7 +57,7 @@ export default function ArtsPage() {
 		const fetchPosesByArtikul = async () => {
 			try {
 				setIsLoadingPoses(true)
-				const posesByArtikul = await getPosesByArtikul(artikul.artikul)
+				const posesByArtikul = await getPosesByArtikul(artikul?.artikul)
 				console.log(posesByArtikul)
 
 			} catch (error) {
