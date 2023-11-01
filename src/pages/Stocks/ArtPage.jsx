@@ -3,6 +3,7 @@ import { useArtContext } from "../../ArtContext";
 import { CardBlock, HeaderBlock, PageBTW, Spinner } from "../../components";
 import useArtikulStore from "./stores/artsStore";
 import { useParams } from "react-router-dom";
+import usePosesStore from "./stores/posesStore";
 
 
 export default function ArtsPage() {
@@ -11,6 +12,9 @@ export default function ArtsPage() {
 	const { id } = useParams()
 	const getArtikulById = useArtikulStore((state) => state.getArtikulById);
 
+	const getPosesByArtikul = usePosesStore((state) => state.getPosesByArtikul);
+	const posesWithArtikul = usePosesStore((state) => state.posesWithArtikul);
+
 
 
 
@@ -18,6 +22,10 @@ export default function ArtsPage() {
 
 	const [artikul, setArtikul] = useState(null)
 	const [isLoadingArtikul, setIsLoadingArtikul] = useState(false)
+
+
+	const [isLoadingPoses, setIsLoadingPoses] = useState(false)
+
 
 
 
@@ -41,6 +49,34 @@ export default function ArtsPage() {
 		fetchArtikul()
 
 	}, [id])
+
+
+	useEffect(() => {
+
+
+		const fetchPosesByArtikul = async () => {
+			try {
+				setIsLoadingPoses(true)
+				const posesByArtikul = await getPosesByArtikul(artikul.artikul)
+				console.log(posesByArtikul)
+
+			} catch (error) {
+				console.log(error)
+			} finally {
+				setIsLoadingPoses(false)
+			}
+
+		}
+
+		fetchPosesByArtikul()
+
+	}, [artikul])
+
+
+
+
+
+
 
 
 
