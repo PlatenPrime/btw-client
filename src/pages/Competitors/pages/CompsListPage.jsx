@@ -17,6 +17,7 @@ import { LuFilter } from "react-icons/lu";
 import { prods, categoriesList, subcategoriesList, sizesList } from '../../../constants/compsData';
 import CheckCompLinks from '../components/CheckCompLinks';
 import SelectedCompModal from '../components/SelectedCompModal';
+import { toast } from 'react-toastify';
 
 
 const prodOptions = prods;
@@ -36,11 +37,13 @@ export default function CompListPage() {
 	const [isFilterOpen, setIsFilterOpen] = useState(false)
 	const [selectedCategory, setSelectedCategory] = useState("");
 	const [selectedSubcategory, setSelectedSubcategory] = useState("");
+
 	const [filter, setFilter] = useState({
 		prod: '',
 		category: "",
 		subcategory: "",
 		size: "",
+		abcLetter: "",
 
 	});
 
@@ -66,12 +69,45 @@ export default function CompListPage() {
 			(filter.prod === '' || comp.prod === filter.prod) &&
 			(filter.category === '' || comp.category === filter.category) &&
 			(filter.subcategory === '' || comp.subcategory === filter.subcategory) &&
-			(filter.size === '' || comp.size === filter.size)
+			(filter.size === '' || comp.size === filter.size) &&
+			(filter.abcLetter === '' || comp.abc?.includes(filter.abcLetter))
 		);
 	});
 
 
 
+
+	const handleSortCompsByABC = () => {
+
+		function compareABCValues(a, b) {
+			const letterA = a.match(/[A-Z]+/)[0];
+			const letterB = b.match(/[A-Z]+/)[0];
+
+			if (letterA < letterB) return -1;
+			if (letterA > letterB) return 1;
+
+			const numberA = parseInt(a.match(/\d+/)[0]);
+			const numberB = parseInt(b.match(/\d+/)[0]);
+
+			return numberA - numberB;
+		}
+
+		filteredComps?.sort((a, b) => compareABCValues(a.abc, b.abc));
+	}
+
+	const handleSortCompsByArtikul = () => {
+		
+		filteredComps.sort((a, b) => {
+			// Сортируйте сначала по букве, а затем по числу
+			if (a.artikul < b.artikul) {
+				return -1;
+			}
+			if (a.artikul > b.artikul) {
+				return 1;
+			}
+			return 0;
+		});
+	}
 
 
 
@@ -275,6 +311,23 @@ export default function CompListPage() {
 
 					<select
 						className="InputBlock focus:bg-slate-900 text-lg "
+						value={filter.abcLetter}
+						onChange={(e) => setFilter({ ...filter, abcLetter: e.target.value })}
+					>
+						<option value="">Буква (ще не працює)</option>
+						<option value="A">A</option>
+						<option value="B">B</option>
+						<option value="C">C</option>
+						<option value="D">D</option>
+						<option value="E">E</option>
+						<option value="F">F</option>
+
+					</select>
+
+
+
+					<select
+						className="InputBlock focus:bg-slate-900 text-lg "
 						value={filter.prod}
 						onChange={(e) => setFilter({ ...filter, prod: e.target.value })}
 					>
@@ -350,7 +403,6 @@ export default function CompListPage() {
 
 
 
-
 				</CardBlock>
 
 
@@ -384,8 +436,20 @@ export default function CompListPage() {
 							<thead className="  sticky top-0">
 								<tr className=''>
 									{/* Заголовки таблицы */}
-									<th className=" bg-slate-700 " rowSpan="2" colSpan="2">
+									<th
+										className=" bg-purple-700 "
+										rowSpan="2"
+										colSpan="2"
+										onClick={handleSortCompsByArtikul}
+									>
 										Артикул
+									</th>
+									<th
+										className=" bg-indigo-700 "
+										rowSpan="2"
+										onClick={handleSortCompsByABC}
+									>
+										ABC
 									</th>
 									<th className=" bg-sky-900 " colSpan="5">
 										Наявність
@@ -412,21 +476,9 @@ export default function CompListPage() {
 
 
 							<tbody className=' ' >
-								{compsDB
+								{
 
-
-									.filter((comp) => {
-										// Filter based on criteria
-										return (
-											(filter.prod === '' || comp.prod === filter.prod) &&
-											(filter.category === '' || comp.category === filter.category) &&
-											(filter.subcategory === '' || comp.subcategory === filter.subcategory) &&
-											(filter.size === '' || comp.size === filter.size)
-										);
-									})
-
-
-									.map((comp) => (
+									filteredComps?.map((comp) => (
 										<tr
 											className="bg-black 
 										odd:bg-opacity-100 even:bg-sky-900/20 
@@ -487,7 +539,9 @@ export default function CompListPage() {
 
 
 
-
+											<td>
+												{comp?.abc}
+											</td>
 
 
 
