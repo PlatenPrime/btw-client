@@ -9,6 +9,7 @@ import { IoAnalyticsOutline } from "react-icons/io5";
 import { SiMicrosoftexcel } from "react-icons/si";
 import { MdOutlineAnalytics } from "react-icons/md";
 import { LuFilter } from "react-icons/lu";
+import { BsSortAlphaDown } from "react-icons/bs";
 
 
 
@@ -312,7 +313,7 @@ export default function CompListPage() {
 
 
 			{isFilterOpen && <CardBlock
-				className="flex flex-col items-center justify-between space-x-2 border border-rose-500 p-2 bg-rose-500/10"
+				className="flex flex-col items-center justify-between space-y-2  p-2 "
 			>
 
 
@@ -331,14 +332,14 @@ export default function CompListPage() {
 
 
 				<CardBlock
-					className="flex justify-between p-4 space-x-4 flex-wrap">
+					className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-1">
 
 					<select
 						className="InputBlock focus:bg-slate-900 text-lg "
 						value={filter.abcLetter}
 						onChange={(e) => setFilter({ ...filter, abcLetter: e.target.value })}
 					>
-						<option value="">Буква (ще не працює)</option>
+						<option value="">Буква</option>
 						<option value="A">A</option>
 						<option value="B">B</option>
 						<option value="C">C</option>
@@ -461,24 +462,55 @@ export default function CompListPage() {
 								<tr className=''>
 									{/* Заголовки таблицы */}
 									<th
-										className=" bg-purple-700 "
+										className="  violet-b bg-black border-0 transition ease-in-out duration-300 cursor-pointer	 "
 										rowSpan="2"
 										colSpan="2"
 										onClick={handleSortCompsByArtikul}
 									>
-										Артикул
+										<TextBlock
+											className="space-x-2"
+										>
+
+											<TextBlock
+											>
+												Артикул
+											</TextBlock>
+
+											<TextBlock
+												className={`text-xl  ${sortWord === "artikul" ? "text-green-500" : ""}`}
+											>
+												<BsSortAlphaDown />
+											</TextBlock>
+
+										</TextBlock>
+
 									</th>
 									<th
-										className=" bg-indigo-700 "
+										className=" violet-b bg-black border-0 transition ease-in-out duration-300	cursor-pointer	 "
 										rowSpan="2"
 										onClick={handleSortCompsByABC}
 									>
-										ABC
+										<TextBlock
+											className="space-x-2"
+										>
+
+											<TextBlock
+											>
+												ABC
+											</TextBlock>
+
+											<TextBlock
+												className={`text-xl  ${sortWord === "artikul" ? "" : "text-green-500"}`}
+											>
+												<BsSortAlphaDown />
+											</TextBlock>
+
+										</TextBlock>
 									</th>
-									<th className=" bg-sky-900 " colSpan="5">
+									<th className=" bg-black  " colSpan="5">
 										Наявність
 									</th>
-									<th className=" bg-teal-900 " colSpan="5">
+									<th className=" bg-black  " colSpan="5">
 										Ціна
 									</th>
 								</tr>
@@ -504,7 +536,7 @@ export default function CompListPage() {
 
 									filteredComps?.map((comp) => (
 										<tr
-											className="bg-black 
+											className="bg-slate-900 
 										odd:bg-opacity-100 even:bg-sky-900/20 
 										hover:bg-gray-800 transition duration-300 ease-in-out 			"
 											key={comp._id.$oid}
@@ -572,7 +604,7 @@ export default function CompListPage() {
 
 											<td className=' 
 										w-1/12 
-										shadow-inner inset-2 shadow-blue-600 bg-blue-600/10
+										shadow-inner inset-2 shadow-blue-600 bg-slate-900
 										
 										'>
 												{comp?.avail?.btrade
@@ -592,7 +624,7 @@ export default function CompListPage() {
 														</span>}
 											</td>
 
-											<td className=' w-1/12 shadow-inner inset-2 shadow-sky-500  bg-sky-600/10' >
+											<td className=' w-1/12 shadow-inner inset-2 shadow-sky-500  bg-slate-900' >
 												{comp?.avail?.sharte
 													?
 													<span className='bg-green-500 p-2 rounded' >
@@ -616,7 +648,7 @@ export default function CompListPage() {
 											</td>
 
 
-											<td className=' w-1/12 shadow-inner inset-2 shadow-amber-600 bg-amber-600/10 '>
+											<td className=' w-1/12 shadow-inner inset-2 shadow-amber-600 bg-slate-900'>
 												{comp?.avail?.yumi
 													?
 													<span className='bg-sky-500 p-2 rounded' >
@@ -634,7 +666,7 @@ export default function CompListPage() {
 														</span>}
 											</td>
 
-											<td className=' w-1/12 shadow-inner inset-2 shadow-lime-600 bg-lime-600/10' >
+											<td className=' w-1/12 shadow-inner inset-2 shadow-lime-600 bg-slate-900' >
 												{comp?.avail?.air
 													?
 													<span className='bg-green-500 p-2 rounded' >
@@ -653,7 +685,7 @@ export default function CompListPage() {
 														</span>}
 											</td>
 
-											<td className=' w-1/12 shadow-inner inset-2 shadow-pink-600 bg-pink-600/10' >
+											<td className=' w-1/12 shadow-inner inset-2 shadow-pink-600 bg-slate-900' >
 												{comp?.avail?.best
 													?
 													<span className='bg-green-500 p-2 rounded' >
@@ -676,21 +708,21 @@ export default function CompListPage() {
 
 
 
-											<td className='text-green-500 w-1/12 shadow-inner inset-2 shadow-blue-600 bg-blue-600/10 ' >
+											<td className='text-green-500 w-1/12 shadow-inner inset-2 shadow-blue-600 bg-slate-900 ' >
 												{comp?.price?.btrade}
 											</td>
 
-											<td className='text-yellow-400 w-1/12 shadow-inner inset-2 shadow-sky-500 bg-sky-600/10' >
+											<td className='text-yellow-400 w-1/12 shadow-inner inset-2 shadow-sky-500 bg-slate-900' >
 												{comp?.price?.sharte}
 											</td>
 
-											<td className='text-yellow-400 w-1/12 shadow-inner inset-2 shadow-amber-600 bg-amber-600/10' >
+											<td className='text-yellow-400 w-1/12 shadow-inner inset-2 shadow-amber-600 bg-slate-900' >
 												{comp?.price?.yumi ? comp?.price?.yumi : "-"}
 											</td>
-											<td className='text-yellow-400 w-1/12 shadow-inner inset-2 shadow-lime-600 bg-lime-600/10' >
+											<td className='text-yellow-400 w-1/12 shadow-inner inset-2 shadow-lime-600 bg-slate-900' >
 												{comp?.price?.air ? comp?.price?.air : "-"}
 											</td>
-											<td className='text-yellow-400 w-1/12 shadow-inner inset-2 shadow-pink-600 bg-pink-600/10' >
+											<td className='text-yellow-400 w-1/12 shadow-inner inset-2 shadow-pink-600 bg-slate-900' >
 												{comp?.price?.best ? comp?.price?.best : "-"}
 											</td>
 
