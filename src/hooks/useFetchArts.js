@@ -41,6 +41,8 @@ const useFetchArts = () => {
 		return () => {
 			// Очищаем интервал при размонтировании компонента
 			clearInterval(updateInterval);
+			// Очищаем данные из localStorage при размонтировании
+			localStorage.removeItem('artsData');
 		};
 	}, []);
 
