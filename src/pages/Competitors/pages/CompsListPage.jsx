@@ -50,6 +50,7 @@ export default function CompListPage() {
 	const [selectedComp, setSelectedComp] = useState(null)
 	const [showModalComp, setShowModalComp] = useState(false)
 
+	const [sortWord, setSortWord] = useState("artikul")
 
 
 	const prodOptions = prods;
@@ -72,33 +73,14 @@ export default function CompListPage() {
 			(filter.size === '' || comp.size === filter.size) &&
 			(filter.abcLetter === '' || comp.abc?.includes(filter.abcLetter))
 		);
-	});
+	})
+		.sort((a, b) => sortComps(a, b))
 
 
 
+	function sortComps(a, b) {
 
-	const handleSortCompsByABC = () => {
-
-		function compareABCValues(a, b) {
-			const letterA = a.match(/[A-Z]+/)[0];
-			const letterB = b.match(/[A-Z]+/)[0];
-
-			if (letterA < letterB) return -1;
-			if (letterA > letterB) return 1;
-
-			const numberA = parseInt(a.match(/\d+/)[0]);
-			const numberB = parseInt(b.match(/\d+/)[0]);
-
-			return numberA - numberB;
-		}
-
-		filteredComps?.sort((a, b) => compareABCValues(a.abc, b.abc));
-	}
-
-	const handleSortCompsByArtikul = () => {
-		
-		filteredComps.sort((a, b) => {
-			// Сортируйте сначала по букве, а затем по числу
+		if (sortWord === "artikul") {
 			if (a.artikul < b.artikul) {
 				return -1;
 			}
@@ -106,7 +88,34 @@ export default function CompListPage() {
 				return 1;
 			}
 			return 0;
-		});
+		}
+
+		if (sortWord === "abc") {
+			const letterA = a?.abc?.match(/[A-Z]+/)[0];
+			const letterB = b?.abc?.match(/[A-Z]+/)[0];
+
+			if (letterA < letterB) return -1;
+			if (letterA > letterB) return 1;
+
+			const numberA = parseInt(a?.abc?.match(/\d+/)[0]);
+			const numberB = parseInt(b?.abc?.match(/\d+/)[0]);
+
+			return numberA - numberB;
+		}
+
+
+	}
+
+
+
+
+
+	const handleSortCompsByABC = () => {
+		setSortWord("abc")
+	}
+
+	const handleSortCompsByArtikul = () => {
+		setSortWord("artikul")
 	}
 
 
