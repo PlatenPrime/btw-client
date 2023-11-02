@@ -79,31 +79,46 @@ export default function CompListPage() {
 
 
 	function sortComps(a, b) {
+		try {
+			if (a && b && typeof a.abc === 'string' && typeof b.abc === 'string') {
+				if (sortWord === "artikul") {
+					console.log("Sorted comp a", a.artikul);
+					console.log("Sorted comp b", b.artikul);
+					if (a.artikul < b.artikul) {
+						return -1;
+					}
+					if (a.artikul > b.artikul) {
+						return 1;
+					}
+					return 0;
+				}
 
-		if (sortWord === "artikul") {
-			if (a.artikul < b.artikul) {
-				return -1;
-			}
-			if (a.artikul > b.artikul) {
-				return 1;
+				if (sortWord === "abc") {
+					console.log("Sorted by abc comp a", a.abc);
+					console.log("Sorted by abc comp b", b.abc);
+
+					const letterA = a.abc.match(/([A-Z]+)/);
+					console.log(letterA)
+					const letterB = b.abc.match(/([A-Z]+)/);
+					console.log(letterB)
+
+
+
+					if (letterA < letterB) return -1;
+					if (letterA > letterB) return 1;
+
+					const numberA = parseInt(a.abc);
+					const numberB = parseInt(b.abc);
+
+					if (numberA < numberB) return -1;
+					if (numberA > numberB) return 1;
+
+				}
 			}
 			return 0;
+		} catch (error) {
+			console.log(error);
 		}
-
-		if (sortWord === "abc") {
-			const letterA = a?.abc?.match(/[A-Z]+/)[0];
-			const letterB = b?.abc?.match(/[A-Z]+/)[0];
-
-			if (letterA < letterB) return -1;
-			if (letterA > letterB) return 1;
-
-			const numberA = parseInt(a?.abc?.match(/\d+/)[0]);
-			const numberB = parseInt(b?.abc?.match(/\d+/)[0]);
-
-			return numberA - numberB;
-		}
-
-
 	}
 
 

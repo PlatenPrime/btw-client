@@ -44,6 +44,7 @@ export default function ImportExcelComps() {
 					subcategory,
 					competitorsLinks,
 					size,
+					abc,
 					artikul,
 					nameukr
 				} = { ...comp }
@@ -53,6 +54,7 @@ export default function ImportExcelComps() {
 					subcategory,
 					competitorsLinks,
 					size,
+					abc,
 					artikul,
 					nameukr)
 
@@ -63,6 +65,7 @@ export default function ImportExcelComps() {
 					subcategory,
 					competitorsLinks,
 					size,
+					abc,
 					artikul,
 					nameukr
 				});
@@ -172,6 +175,7 @@ export default function ImportExcelComps() {
 							<th>Категория</th>
 							<th>Подкатегория</th>
 							<th>Размер</th>
+							<th>ABC</th>
 
 							<th className="px-4 py-2">Ссылка Sharte</th>
 							<th className="px-4 py-2">Ссылка Yumi</th>
@@ -183,10 +187,11 @@ export default function ImportExcelComps() {
 						{uploadData.map((item, index) => (
 							<tr key={index} className={index % 2 === 0 ? 'bg-gray-200' : 'bg-slate-100'}>
 
-								<td className="px-4 py-2 text-left">{item.nameukr}</td>
-								<td className="px-4 py-2 text-left">{item.category}</td>
-								<td className="px-4 py-2 text-left">{item.subcategory}</td>
-								<td className="px-4 py-2 text-left">{item.size}</td>
+								<td className="px-4 py-2 text-left">{item?.nameukr}</td>
+								<td className="px-4 py-2 text-left">{item?.category}</td>
+								<td className="px-4 py-2 text-left">{item?.subcategory}</td>
+								<td className="px-4 py-2 text-left">{item?.size}</td>
+								<td className="px-4 py-2 text-left">{item?.abc}</td>
 
 								<td className="px-4 py-2">
 									<a href={item.competitorsLinks.sharteLink} target="_blank" rel="noopener noreferrer">
