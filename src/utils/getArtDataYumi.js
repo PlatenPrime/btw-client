@@ -1,3 +1,7 @@
+import axios from './axios'
+
+
+
 class NetworkError extends Error {
 	constructor(message) {
 		super(message);
@@ -74,15 +78,17 @@ function extractQuantityInPackFromString(valueString) {
 
 
 export async function getArtDataYumi(yumiLink) {
-	const urlCA = 'https://corsproxy.io/?';
-	const corsUrl = `${urlCA}${yumiLink}`;
+
+	const link = yumiLink
 
 	try {
-		const response = await fetch(corsUrl);
-		if (!response.ok) {
-			throw new NetworkError('Network response was not ok');
-		}
-		const responseString = await response.text();
+
+		console.log(encodeURIComponent(link))
+
+		const response = await axios.get(`comps/linkpage/${encodeURIComponent(link)}`)
+		console.log(response)
+
+		const responseString = response?.data?.html
 
 
 		const quant = extractQuantFromString(responseString);

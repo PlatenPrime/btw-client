@@ -34,38 +34,29 @@ function extractAvailabilityFromResponse(responseString) {
 export async function getArtDataSharte(link) {
 	try {
 		const searchValuePrice = "title";
-		const urlProxy = 'https://corsproxy.io/?';
-		const superLink = `${urlProxy}${link}`;
+	
 
-		console.log("Before")
+	
 
+		const response = await axios.get(`comps/linkpage/${encodeURIComponent(link)}`)
 
-		console.log(encodeURIComponent(link))
-
-
-
-		const pageFromServer = await axios.get(`comps/linkpage/${encodeURIComponent(link)}`)
-		console.log(encodeURIComponent(link))
-		console.log("After")
-		console.log(pageFromServer)
+		const responseString = response?.data?.html
 
 
-		// const response = await fetch(superLink);
-		// const responseString = await response.text();
-		// console.log(responseString)
+	
 
-		// const indexPrice = responseString.indexOf(searchValuePrice);
-		// const indexPrice2 = responseString.indexOf(searchValuePrice, indexPrice + searchValuePrice.length);
-		// const title = responseString.slice(indexPrice, indexPrice2 + searchValuePrice.length);
+		const indexPrice = responseString.indexOf(searchValuePrice);
+		const indexPrice2 = responseString.indexOf(searchValuePrice, indexPrice + searchValuePrice.length);
+		const title = responseString.slice(indexPrice, indexPrice2 + searchValuePrice.length);
 
-		// const price = extractPriceFromTitle(title);
+		const price = extractPriceFromTitle(title);
 
-		// const isAvailable = extractAvailabilityFromResponse(responseString);
+		const isAvailable = extractAvailabilityFromResponse(responseString);
 
-		// console.log(price ? `Цена: ${price} грн` : "Цена не найдена");
-		// console.log(isAvailable ? "Товар в наличии" : "Товара нет в наличии");
+		console.log(price ? `Цена: ${price} грн` : "Цена не найдена");
+		console.log(isAvailable ? "Товар в наличии" : "Товара нет в наличии");
 
-		// return { price, isAvailable };
+		return { price, isAvailable };
 
 	} catch (error) {
 		console.error(error);
