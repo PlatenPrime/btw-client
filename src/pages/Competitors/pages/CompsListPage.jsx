@@ -34,6 +34,7 @@ export default function CompListPage() {
 
 
 	const [isAnalyzing, setIsAnalyzing] = useState(false)
+	const [currentAnalyzeItem, setCurrentAnalyzeItem] = useState(1)
 	const [progress, setProgress] = useState(0)
 	const [isFilterOpen, setIsFilterOpen] = useState(false)
 	const [selectedCategory, setSelectedCategory] = useState("");
@@ -159,6 +160,7 @@ export default function CompListPage() {
 				console.log(comp)
 				await analyzeComp(comp);
 				completedItems++;
+				setCurrentAnalyzeItem(prev => prev + 1)
 				const progressValue = (completedItems / totalItems) * 100;
 				setProgress(progressValue)
 			}
@@ -187,6 +189,7 @@ export default function CompListPage() {
 				console.log(comp)
 				await analyzeComp(comp);
 				completedItems++;
+				setCurrentAnalyzeItem(prev => prev + 1)
 				const progressValue = (completedItems / totalItems) * 100;
 				setProgress(progressValue)
 			}
@@ -297,14 +300,22 @@ export default function CompListPage() {
 
 
 						<div className="relative pt-1 px-4">
+
+
 							<div className="flex px-4 mb-2 items-center justify-between">
 
-								<div className="text-right">
+							
 									<span className="text-sm font-semibold inline-block text-violet-100">
 										{progress.toFixed(2)}%
 									</span>
-								</div>
+
+									<span>{currentAnalyzeItem} / {compsDB?.length}</span>
+
+								
+
 							</div>
+
+
 							<div className="flex h-2 mb-4 overflow-hidden text-xs bg-violet-200">
 								<div
 									style={{ width: `${progress}%` }}
@@ -339,8 +350,8 @@ export default function CompListPage() {
 						className="red-b flex items-center space-x-1"
 						onClick={resetFilter}
 					>
-						<TextBlock 
-						className = "text-2xl"
+						<TextBlock
+							className="text-2xl"
 						>
 							<LuFilterX />
 						</TextBlock>

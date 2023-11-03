@@ -37,41 +37,41 @@ export default function CompsLogsPage() {
 						</thead>
 						<tbody className='relative'>
 							{getCurrentPageData().map(item => (
-								<tr className="bg-violet-500 even:bg-opacity-25 odd:bg-opacity-10 " key={item._id}>
-									<td>{new Date(item.timestamp).toLocaleDateString()}</td>
+								<tr className="bg-violet-500 even:bg-opacity-25 odd:bg-opacity-10 " key={item?._id}>
+									<td>{new Date(item?.timestamp).toLocaleDateString()}</td>
 
 
 									<td className='flex items-center justify-center'>
 										<ImageBlock
-											src={`https://sharik.ua/images/elements_big/${item.artikul}_m1.jpg`}
+											src={`https://sharik.ua/images/elements_big/${item?.artikul}_m1.jpg`}
 											width={30}
 											height={30}
 											alt="Фото артикула"
 											className="rounded "
 
 										/>
-										{item.artikul}
+										{item?.artikul}
 
 
 									</td>
 
 
-									{item.change.field === "avail.sharte" &&
+									{item?.change?.field === "avail.sharte" &&
 										<td>Наличие Шарте</td>
 									}
-									{item.change.field === "avail.yumi" &&
+									{item?.change?.field === "avail.yumi" &&
 										<td>Наличие Yumi</td>
 									}
-									{item.change.field === "price.sharte" &&
+									{item?.change?.field === "price.sharte" &&
 										<td>Цена Шарте</td>
 									}
-									{item.change.field === "price.yumi" &&
+									{item?.change?.field === "price.yumi" &&
 										<td>Цена Yumi</td>
 									}
 
 
-									<td>{item.change.oldValue.toString()}</td>
-									<td>{item.change.newValue.toString()}</td>
+									<td>{item?.change?.oldValue?.toString()}</td>
+									<td>{item?.change?.newValue?.toString()}</td>
 								</tr>
 							))}
 						</tbody>
