@@ -8,7 +8,7 @@ import { exportToExcelComps } from '../../../utils/exportExcel';
 import { IoAnalyticsOutline } from "react-icons/io5";
 import { SiMicrosoftexcel } from "react-icons/si";
 import { MdOutlineAnalytics } from "react-icons/md";
-import { LuFilter } from "react-icons/lu";
+import { LuFilter, LuFilterX } from "react-icons/lu";
 import { BsSortAlphaDown } from "react-icons/bs";
 
 
@@ -135,7 +135,15 @@ export default function CompListPage() {
 	}
 
 
-
+	const resetFilter = () => {
+		setFilter({
+			prod: '',
+			category: '',
+			subcategory: '',
+			size: '',
+			abcLetter: '',
+		});
+	};
 
 
 
@@ -318,7 +326,7 @@ export default function CompListPage() {
 
 
 				<CardBlock
-					className="flex items-center  flex-nowrap space-x-1"
+					className="flex items-center justify-between w-full px-3   space-x-1"
 				>
 
 					<TextBlock
@@ -326,6 +334,17 @@ export default function CompListPage() {
 					>
 						Вибрано артикулів:	{filteredComps.length} із {compsDB.length}
 					</TextBlock>
+
+					<ButtonBlock
+						className="red-b flex items-center space-x-1"
+						onClick={resetFilter}
+					>
+						<TextBlock 
+						className = "text-2xl"
+						>
+							<LuFilterX />
+						</TextBlock>
+					</ButtonBlock>
 
 				</CardBlock>
 
@@ -339,7 +358,7 @@ export default function CompListPage() {
 						value={filter.abcLetter}
 						onChange={(e) => setFilter({ ...filter, abcLetter: e.target.value })}
 					>
-						<option value="">Буква</option>
+						<option value="">ABC</option>
 						<option value="A">A</option>
 						<option value="B">B</option>
 						<option value="C">C</option>
@@ -462,7 +481,7 @@ export default function CompListPage() {
 								<tr className=''>
 									{/* Заголовки таблицы */}
 									<th
-										className="  violet-b bg-black border-0 transition ease-in-out duration-300 cursor-pointer	 "
+										className="   bg-black hover:bg-green-900 border-0 transition ease-in-out duration-300 cursor-pointer	 "
 										rowSpan="2"
 										colSpan="2"
 										onClick={handleSortCompsByArtikul}
@@ -477,7 +496,7 @@ export default function CompListPage() {
 											</TextBlock>
 
 											<TextBlock
-												className={`text-xl  ${sortWord === "artikul" ? "text-green-500" : ""}`}
+												className={`text-3xl  ${sortWord === "artikul" ? "text-green-500" : ""}`}
 											>
 												<BsSortAlphaDown />
 											</TextBlock>
@@ -486,7 +505,7 @@ export default function CompListPage() {
 
 									</th>
 									<th
-										className=" violet-b bg-black border-0 transition ease-in-out duration-300	cursor-pointer	 "
+										className="  bg-black hover:bg-green-900 border-0 transition ease-in-out duration-300	cursor-pointer	 "
 										rowSpan="2"
 										onClick={handleSortCompsByABC}
 									>
@@ -500,7 +519,7 @@ export default function CompListPage() {
 											</TextBlock>
 
 											<TextBlock
-												className={`text-xl  ${sortWord === "artikul" ? "" : "text-green-500"}`}
+												className={`text-3xl  ${sortWord === "artikul" ? "" : "text-green-500"}`}
 											>
 												<BsSortAlphaDown />
 											</TextBlock>
