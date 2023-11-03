@@ -52,7 +52,7 @@ export default function CompListPage() {
 	const [selectedComp, setSelectedComp] = useState(null)
 	const [showModalComp, setShowModalComp] = useState(false)
 
-	const [sortWord, setSortWord] = useState("artikul")
+	const [sortWord, setSortWord] = useState("")
 
 
 	const prodOptions = prods;
@@ -304,14 +304,14 @@ export default function CompListPage() {
 
 							<div className="flex px-4 mb-2 items-center justify-between">
 
-							
-									<span className="text-sm font-semibold inline-block text-violet-100">
-										{progress.toFixed(2)}%
-									</span>
 
-									<span>{currentAnalyzeItem} / {compsDB?.length}</span>
+								<span className="text-sm font-semibold inline-block text-violet-100">
+									{progress.toFixed(2)}%
+								</span>
 
-								
+								<span>{currentAnalyzeItem} / {compsDB?.length}</span>
+
+
 
 							</div>
 
@@ -507,7 +507,7 @@ export default function CompListPage() {
 											</TextBlock>
 
 											<TextBlock
-												className={`text-3xl  ${sortWord === "artikul" ? "text-green-500" : ""}`}
+												className={`text-3xl  ${sortWord === "artikul" && "text-green-500"}`}
 											>
 												<BsSortAlphaDown />
 											</TextBlock>
@@ -530,7 +530,7 @@ export default function CompListPage() {
 											</TextBlock>
 
 											<TextBlock
-												className={`text-3xl  ${sortWord === "artikul" ? "" : "text-green-500"}`}
+												className={`text-3xl  ${sortWord === "abc" && "text-green-500"}`}
 											>
 												<BsSortAlphaDown />
 											</TextBlock>
