@@ -1,3 +1,7 @@
+import axios from './axios'
+
+
+
 class NetworkError extends Error {
 	constructor(message) {
 		super(message);
@@ -33,21 +37,28 @@ export async function getArtDataSharte(link) {
 		const urlProxy = 'https://corsproxy.io/?';
 		const superLink = `${urlProxy}${link}`;
 
-		const response = await fetch(superLink);
-		const responseString = await response.text();
+		console.log("Before")
+		const pageFromServer = await axios.get("comps/linkpage", { link })
+		console.log("After")
+		console.log(pageFromServer)
 
-		const indexPrice = responseString.indexOf(searchValuePrice);
-		const indexPrice2 = responseString.indexOf(searchValuePrice, indexPrice + searchValuePrice.length);
-		const title = responseString.slice(indexPrice, indexPrice2 + searchValuePrice.length);
 
-		const price = extractPriceFromTitle(title);
+		// const response = await fetch(superLink);
+		// const responseString = await response.text();
+		// console.log(responseString)
 
-		const isAvailable = extractAvailabilityFromResponse(responseString);
+		// const indexPrice = responseString.indexOf(searchValuePrice);
+		// const indexPrice2 = responseString.indexOf(searchValuePrice, indexPrice + searchValuePrice.length);
+		// const title = responseString.slice(indexPrice, indexPrice2 + searchValuePrice.length);
 
-		console.log(price ? `Цена: ${price} грн` : "Цена не найдена");
-		console.log(isAvailable ? "Товар в наличии" : "Товара нет в наличии");
+		// const price = extractPriceFromTitle(title);
 
-		return { price, isAvailable };
+		// const isAvailable = extractAvailabilityFromResponse(responseString);
+
+		// console.log(price ? `Цена: ${price} грн` : "Цена не найдена");
+		// console.log(isAvailable ? "Товар в наличии" : "Товара нет в наличии");
+
+		// return { price, isAvailable };
 
 	} catch (error) {
 		console.error(error);

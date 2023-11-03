@@ -2,6 +2,8 @@ import axios from 'axios'
 
 const instance = axios.create({
 	baseURL: 'https://btw-server.up.railway.app/api',
+	// baseURL: 'http://localhost:3002/api/',
+
 	
 })
 
