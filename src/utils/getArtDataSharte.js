@@ -38,8 +38,14 @@ export async function getArtDataSharte(link) {
 		const superLink = `${urlProxy}${link}`;
 
 		console.log("Before")
-		const encodedLink = encodeURIComponent(link);
-		const pageFromServer = await axios.get(`comps/linkpage/${encodedLink}`)
+
+
+		console.log(encodeURIComponent(link))
+
+
+
+		const pageFromServer = await axios.get(`comps/linkpage/${encodeURIComponent(link)}`)
+		console.log(encodeURIComponent(link))
 		console.log("After")
 		console.log(pageFromServer)
 
