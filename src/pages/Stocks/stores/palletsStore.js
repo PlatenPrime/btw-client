@@ -31,6 +31,7 @@ const usePalletStore = create((set) => ({
 			if (response.status === 200) {
 				const data = response.data;
 				set({ pallets: data.pallets });
+				return data.pallets
 			} else {
 				throw new Error('Ошибка получения Pallets');
 			}

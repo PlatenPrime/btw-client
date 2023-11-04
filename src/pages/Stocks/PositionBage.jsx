@@ -96,7 +96,7 @@ export default function PositionBage({ pos, onDelete, onEdit, artsDB }) {
 					>
 
 						<th
-							className="text-sky-500  text-3xl w-1/3"
+							className="text-sky-300  text-3xl w-1/3"
 						><BsBalloon /></th>
 
 
@@ -104,7 +104,7 @@ export default function PositionBage({ pos, onDelete, onEdit, artsDB }) {
 
 						>
 							<TextBlock
-								className="text-sky-500  font-bold text-2xl  rounded"
+								className="text-sky-300  font-bold text-2xl  rounded"
 							>
 								{pos.quant}
 							</TextBlock>
@@ -124,7 +124,7 @@ export default function PositionBage({ pos, onDelete, onEdit, artsDB }) {
 					>
 
 						<th
-							className="text-amber-500  text-3xl  w-1/3"
+							className="text-amber-300  text-3xl  w-1/3"
 						><BsBoxSeam /></th>
 
 
@@ -132,7 +132,7 @@ export default function PositionBage({ pos, onDelete, onEdit, artsDB }) {
 							className=""
 						>
 							<TextBlock
-								className="text-amber-500 font-bold text-2xl rounded"
+								className="text-amber-300 font-bold text-2xl rounded"
 							>
 								{pos.boxes}
 							</TextBlock>

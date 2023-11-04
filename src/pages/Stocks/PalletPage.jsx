@@ -335,7 +335,7 @@ export default function PalletPage() {
 
 		{ text: 'Запаси', link: '/stocks' },
 		{ text: `Ряд ${row?.title ? row?.title : ""}`, link: `/rows/${pallet?.row}` },
-		{ text: `Палета ${title}` },
+		
 	];
 
 
