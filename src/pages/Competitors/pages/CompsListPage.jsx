@@ -34,6 +34,8 @@ export default function CompListPage() {
 
 
 	const [isAnalyzing, setIsAnalyzing] = useState(false)
+	const [isAnalyzingOnFilter, setIsAnalyzingOnFilter] = useState(false)
+
 	const [currentAnalyzeItem, setCurrentAnalyzeItem] = useState(1)
 	const [progress, setProgress] = useState(0)
 	const [isFilterOpen, setIsFilterOpen] = useState(false)
@@ -164,13 +166,14 @@ export default function CompListPage() {
 				const progressValue = (completedItems / totalItems) * 100;
 				setProgress(progressValue)
 			}
-			window.location.reload();
+			// window.location.reload();
 		} catch (error) {
 			console.log(error);
 
 		} finally {
 			setIsAnalyzing(false)
 			setProgress(0)
+			setCurrentAnalyzeItem(1)
 		}
 	}
 
@@ -183,7 +186,7 @@ export default function CompListPage() {
 			const totalItems = filteredComps.length;
 			let completedItems = 0;
 
-			setIsAnalyzing(true)
+			setIsAnalyzingOnFilter(true)
 
 			for (const comp of filteredComps) {
 				console.log(comp)
@@ -193,13 +196,14 @@ export default function CompListPage() {
 				const progressValue = (completedItems / totalItems) * 100;
 				setProgress(progressValue)
 			}
-			window.location.reload();
+			// window.location.reload();
 		} catch (error) {
 			console.log(error);
 
 		} finally {
-			setIsAnalyzing(false)
+			setIsAnalyzingOnFilter(false)
 			setProgress(0)
+			setCurrentAnalyzeItem(1)
 		}
 	}
 
@@ -227,7 +231,7 @@ export default function CompListPage() {
 
 
 				<ButtonBlock
-					onClick={() => exportToExcelComps(compsDB)}
+					onClick={() => exportToExcelComps(filteredComps)}
 					className=" green-b flex items-center space-x-1  "
 				>
 					< SiMicrosoftexcel className='text-2xl' />
@@ -308,6 +312,7 @@ export default function CompListPage() {
 								<span className="text-sm font-semibold inline-block text-violet-100">
 									{progress.toFixed(2)}%
 								</span>
+								<span>{compsDB[currentAnalyzeItem - 1]?.nameukr}</span>
 
 								<span>{currentAnalyzeItem} / {compsDB?.length}</span>
 
@@ -327,6 +332,45 @@ export default function CompListPage() {
 					</CardBlock>
 
 				}
+
+				{isAnalyzingOnFilter &&
+					<CardBlock>
+
+
+						<div className="relative pt-1 px-4">
+
+
+							<div className="flex px-4 mb-2 items-center justify-between">
+
+
+								<span className="text-sm font-semibold inline-block text-cyan-100">
+									{progress.toFixed(2)}%
+								</span>
+								<span>{filteredComps[currentAnalyzeItem - 1]?.nameukr}</span>
+
+								<span>{currentAnalyzeItem} / {filteredComps?.length}</span>
+
+
+
+							</div>
+
+
+							<div className="flex h-2 mb-4 overflow-hidden text-xs bg-cyan-200">
+								<div
+									style={{ width: `${progress}%` }}
+									className="flex flex-col justify-center text-center text-white bg-cyan-500 shadow-none whitespace-nowrap"
+								></div>
+							</div>
+						</div>
+
+					</CardBlock>
+
+				}
+
+
+
+
+
 
 			</CardBlock>
 
@@ -492,7 +536,7 @@ export default function CompListPage() {
 								<tr className=''>
 									{/* Заголовки таблицы */}
 									<th
-										className="   bg-black hover:bg-green-900 border-0 transition ease-in-out duration-300 cursor-pointer	 "
+										className="   bg-black  shadow-inner shadow-black hover:shadow-violet-500 border-0 transition ease-in-out duration-300 cursor-pointer	 "
 										rowSpan="2"
 										colSpan="2"
 										onClick={handleSortCompsByArtikul}
@@ -516,7 +560,7 @@ export default function CompListPage() {
 
 									</th>
 									<th
-										className="  bg-black hover:bg-green-900 border-0 transition ease-in-out duration-300	cursor-pointer	 "
+										className="  bg-black  shadow-inner shadow-black hover:shadow-green-500 border-0 transition ease-in-out duration-300	cursor-pointer	 "
 										rowSpan="2"
 										onClick={handleSortCompsByABC}
 									>
