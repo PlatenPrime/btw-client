@@ -79,16 +79,16 @@ const SidebarMobileBTW = ({ onClose }) => {
 							padding: "12px",
 							width: "100%",
 
-							background: "rgb(244 63 94 )",
+							background: "rgb(249 115 22)",
 						} : inActiveStyles}
 					>
-						Запасы
+						Запаси
 					</NavLink>
 				</TextBlock>
 
 
 
-				<TextBlock className="w-full text-center border border-rose-500 hover:bg-rose-500/50 rounded" >
+				<TextBlock className="w-full text-center border border-sky-500 hover:bg-sky-500/50 rounded" >
 					<NavLink
 						onClick={onClose}
 						to={"arts"}
@@ -99,7 +99,7 @@ const SidebarMobileBTW = ({ onClose }) => {
 							background: "rgb(20 184 166)",
 						} : inActiveStyles}
 					>
-						Артикулы
+						Артикули
 					</NavLink>
 				</TextBlock>
 
@@ -115,7 +115,7 @@ const SidebarMobileBTW = ({ onClose }) => {
 							background: "rgb(6 182 212)",
 						} : inActiveStyles}
 					>
-						Зоны
+						Зони
 					</NavLink>
 				</TextBlock>
 
@@ -130,7 +130,7 @@ const SidebarMobileBTW = ({ onClose }) => {
 							background: "rgb(139 92 246)",
 						} : inActiveStyles}
 					>
-						Конкуренты
+						Конкуренти
 					</NavLink>
 				</TextBlock>
 
@@ -139,9 +139,9 @@ const SidebarMobileBTW = ({ onClose }) => {
 				{isAuth ?
 					<ButtonBlock
 						className="cancel-c w-full text-center"
-						onClick={logoutHandler} >Выйти
+						onClick={logoutHandler} >Вийти
 					</ButtonBlock> :
-					<Link to={"/login"}>Войти</Link>
+					<Link to={"/login"}>Вхід</Link>
 				}
 
 			</CardBlock>

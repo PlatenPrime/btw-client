@@ -81,7 +81,7 @@ p-4
 							background: "rgb(249 115 22)",
 						} : inActiveStyles}
 					>
-						Запасы
+						Запаси
 					</NavLink>
 				</TextBlock>
 
@@ -96,7 +96,7 @@ p-4
 							background: "rgb(14 165 233 )",
 						} : inActiveStyles}
 					>
-						Артикулы
+						Артикули
 					</NavLink>
 				</TextBlock>
 
@@ -113,7 +113,7 @@ p-4
 							background: "rgb(6 182 212)",
 						} : inActiveStyles}
 					>
-						Зоны
+						Зони
 					</NavLink>
 				</TextBlock>
 
@@ -129,7 +129,7 @@ p-4
 							background: "rgb(139 92 246)",
 						} : inActiveStyles}
 					>
-						Конкуренты
+						Конкуренти
 					</NavLink>
 				</TextBlock>
 
@@ -142,14 +142,14 @@ p-4
 				isAuth ?
 					<ButtonBlock
 						className="cancel-c "
-						onClick={logoutHandler} >Выйти</ButtonBlock>
+						onClick={logoutHandler} >Вийти</ButtonBlock>
 
 					:
 
 					<ButtonBlock
 						className="search-c"
 					>
-						<Link to={"/login"}>Войти</Link>
+						<Link to={"/login"}>Вхід</Link>
 					</ButtonBlock>
 
 

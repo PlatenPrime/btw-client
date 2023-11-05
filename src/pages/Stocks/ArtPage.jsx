@@ -132,7 +132,8 @@ export default function ArtPage() {
 				{isLoadingArtikul ? <Spinner color="white" /> : <>{artikul?.artikul}</>}
 			</HeaderBlock>
 
-			<CardBlock
+
+			{isLoadingArtikul ? <Spinner color="white" /> : <CardBlock
 				className="p-1 space-y-2 min-h-screen"
 			>
 
@@ -163,7 +164,7 @@ export default function ArtPage() {
 						>
 
 							<TextBlock className="  text-3xl font-bold  p-1 rounded text-orange-300" ><VscLocation />{artikul?.zone}</TextBlock>
-						
+
 
 							<CardBlock
 								className="flex space-x-2"
@@ -310,7 +311,7 @@ export default function ArtPage() {
 
 
 
-			</CardBlock>
+			</CardBlock>}
 
 		</PageBTW>
 	)
