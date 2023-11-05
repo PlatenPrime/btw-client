@@ -7,6 +7,8 @@ import usePosesStore from "./stores/posesStore";
 import usePalletStore from "./stores/palletsStore";
 import { BsBalloon, BsBoxSeam } from "react-icons/bs";
 import useFetchRemains from "../../hooks/useFetchRemains";
+import { VscLocation } from "react-icons/vsc";
+import { getArtDataBtrade } from "../../utils/getArtDataBtrade";
 
 
 export default function ArtPage() {
@@ -29,10 +31,13 @@ export default function ArtPage() {
 
 
 
+
+
 	// STATES
 
 	const [artikul, setArtikul] = useState(null)
 	const [isLoadingArtikul, setIsLoadingArtikul] = useState(false)
+	const [ostatok, setOstatok] = useState(null)
 
 
 	const [isLoadingPoses, setIsLoadingPoses] = useState(false)
@@ -48,7 +53,9 @@ export default function ArtPage() {
 			try {
 				setIsLoadingArtikul(true)
 				const artikul = await getArtikulById(id)
+				const { quant: ostatok } = await getArtDataBtrade(artikul?.artikul)
 				setArtikul(artikul)
+				setOstatok(ostatok)
 			} catch (error) {
 				console.log(error)
 			} finally {
@@ -69,8 +76,6 @@ export default function ArtPage() {
 			try {
 				setIsLoadingPoses(true)
 				const posesByArtikul = await getPosesByArtikul(artikul?.artikul)
-				console.log(posesByArtikul)
-
 
 			} catch (error) {
 				console.log(error)
@@ -101,8 +106,8 @@ export default function ArtPage() {
 			} finally {
 
 			}
-
 		}
+
 
 		fetchPallets()
 
@@ -132,24 +137,68 @@ export default function ArtPage() {
 			>
 
 				<CardBlock
-					className="flex flex-col lg:flex-row"
+					className="flex flex-col lg:flex-row lg:justify-start space-y-2 lg:space-x-2 border"
 				>
 
-					<ImageArt size={100} artikul={artikul?.artikul} />
-
 					<CardBlock
-						className="flex flex-col items-start"
+						className="w-full lg:w-fit flex justify-center items-start lg:justify-start"
 					>
 
-						<TextBlock>
+						<ImageArt size={200} artikul={artikul?.artikul} />
+					</CardBlock>
+
+					<CardBlock
+						className="flex flex-col items-start space-y-2"
+					>
+
+						<TextBlock
+							className="text-2xl lg:text-4xl p-1 text-center lg:text-left"
+						>
 							{artikul?.nameukr}
 						</TextBlock>
-						<TextBlock>
-							Зона: {artikul?.zone}
-						</TextBlock>
-						<TextBlock>
-							Остаток по базе: {remains ? remains[title] : ""}
-						</TextBlock>
+
+
+						<CardBlock
+							className="w-full flex flex-col lg:flex-row lg:space-x-2 p-1"
+						>
+
+							<TextBlock className="  text-3xl font-bold  p-1 rounded text-orange-300" ><VscLocation />{artikul?.zone}</TextBlock>
+						
+
+							<CardBlock
+								className="flex space-x-2"
+							>
+								<TextBlock
+									className="text-green-300  text-3xl">
+									<BsBalloon />
+								</TextBlock>
+								<TextBlock
+									className="text-green-300  font-bold text-3xl  rounded"
+								>
+
+									{remains ? remains[title] : ""}
+								</TextBlock>
+							</CardBlock>
+
+
+
+							<CardBlock
+								className="flex space-x-2"
+							>
+								<TextBlock
+									className="text-rose-300  text-3xl">
+									<BsBalloon />
+								</TextBlock>
+								<TextBlock
+									className="text-rose-300  font-bold text-3xl  rounded"
+								>
+
+									{ostatok}
+								</TextBlock>
+							</CardBlock>
+
+						</CardBlock>
+
 
 					</CardBlock>
 
@@ -158,7 +207,7 @@ export default function ArtPage() {
 
 
 				<CardBlock
-					className=" "
+					className="space-y-2 "
 				>
 					<TextBlock
 						className="text-amber-500 text-3xl"
@@ -167,75 +216,93 @@ export default function ArtPage() {
 					</TextBlock>
 
 
-					<CardBlock
-						className="flex flex-col space-y-2"
-					>
+					{isLoadingPoses ?
+						<Spinner color="rgb(245 158 11)" />
+						:
 
-						{posesWithArtikul?.map((pos) => <Link
-							className='
+						posesWithArtikul.length > 0 ?
+
+
+							<CardBlock
+								className="flex flex-col space-y-2"
+							>
+
+								{posesWithArtikul?.map((pos) => <Link
+									className='
 			flex flex-col lg:flex-row justify-between
-				  p-3 rounded text-2xl
+				  p-1 rounded text-2xl space-y-2 lg:space-y-0
 				border-2 border-amber-500 
 				 bg-transparent  hover:bg-amber-500/20
 				text-amber-100 hover:text-white
 				 shadow-inner hover:shadow-amber-500
 			transition ease-in-out duration-300
 			'
-							to={`/pallets/${pallets?.find((pallet) => pallet._id === pos?.pallet)?._id}`}
-						>
-							<TextBlock
-								className="w-1/2 flex justify-start"
-							> Паллета: {pallets?.find((pallet) => pallet._id === pos?.pallet)?.title}</TextBlock>
-
-							<CardBlock
-								className="  w-full flex justify-evenly "
-							>
-
-
-
-								<CardBlock
-									className="flex space-x-2"
+									to={`/pallets/${pallets?.find((pallet) => pallet._id === pos?.pallet)?._id}`}
 								>
 									<TextBlock
-										className="text-amber-300  text-3xl">
-										<BsBoxSeam />
-									</TextBlock>
-									<TextBlock
-										className="text-amber-300 font-bold text-2xl rounded"
-									>
-										{pos?.boxes}
-									</TextBlock>
-								</CardBlock>
+										className="lg:w-1/2 flex  lg:justify-start"
+									> Палета: {pallets?.find((pallet) => pallet._id === pos?.pallet)?.title}</TextBlock>
 
 
-								<CardBlock
-									className="flex space-x-2"
-								>
-									<TextBlock
-										className="text-sky-300  text-3xl">
-										<BsBalloon />
-									</TextBlock>
-									<TextBlock
-										className="text-sky-300  font-bold text-2xl  rounded"
+
+
+
+
+									<CardBlock
+										className="  w-full flex justify-between "
 									>
 
-										{pos?.quant}
-									</TextBlock>
-								</CardBlock>
+										<CardBlock
+											className="flex justify-center w-1/2 space-x-2"
+										>
+											<TextBlock
+												className="text-amber-300  text-3xl">
+												<BsBoxSeam />
+											</TextBlock>
+											<TextBlock
+												className="text-amber-300 font-bold text-2xl rounded"
+											>
+												{pos?.boxes}
+											</TextBlock>
+										</CardBlock>
+
+
+										<CardBlock
+											className="flex justify-center w-1/2 space-x-2"
+										>
+											<TextBlock
+												className="text-sky-300  text-3xl">
+												<BsBalloon />
+											</TextBlock>
+											<TextBlock
+												className="text-sky-300  font-bold text-2xl  rounded"
+											>
+
+												{pos?.quant}
+											</TextBlock>
+										</CardBlock>
 
 
 
 
+									</CardBlock>
+
+
+
+
+
+								</Link>
+								)}
 							</CardBlock>
+							:
+							<TextBlock
+								className="text-amber-500 text-xl"
+							>
+								Позиції немає на запасах
+							</TextBlock>
 
 
-
-
-
-						</Link>
-						)}
-					</CardBlock>
-
+					}
 
 				</CardBlock>
 
