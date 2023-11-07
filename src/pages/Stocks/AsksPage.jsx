@@ -54,7 +54,7 @@ export default function AsksPage() {
 
 	return (
 		<PageBTW
-			className="space-y-2"
+			className="space-y-8"
 		>
 
 			<HeaderBlock
@@ -68,16 +68,7 @@ export default function AsksPage() {
 
 				{/* BUTTONS */}
 
-				<CardBlock
-					className="p-1"
-				>
-					<ButtonBlock
-						className="yellow-b"
-						onClick={() => setShowModalCreateAsk(true)}
-					>
-						Створити запит
-					</ButtonBlock>
-				</CardBlock>
+
 
 
 				{/* MODALS */}
@@ -100,28 +91,31 @@ export default function AsksPage() {
 
 
 				<CardBlock
-					className="space-y-8"
+					className="space-y-4 "
 				>
 
-					<TextBlock
-						className="text-yellow-500 text-3xl"
+					<CardBlock
+						className="p-1 flex"
 					>
-						Запити на зняття
-					</TextBlock>
+						<ButtonBlock
+							className="yellow-b p-4 mx-auto"
+							onClick={() => setShowModalCreateAsk(true)}
+						>
+							Створити запит
+						</ButtonBlock>
+					</CardBlock>
 
 
 					<CardBlock
 						className=" space-y-2"
 					>
 
-						{asks?.map((ask) => <Link
-							key={ask._id}
-							to={`/asks/${ask._id}`}
+						{asks?.map((ask) =>
 
-						>
-							<CardBlock
-
-								className=" grid overflow-auto grid-cols-4 border border-yellow-500 p-2 "
+							<Link
+								key={ask._id}
+								to={`/asks/${ask._id}`}
+								className=" grid overflow-auto grid-cols-3 border border-yellow-500 p-2 "
 							>
 								<TextBlock
 									className=""
@@ -138,19 +132,15 @@ export default function AsksPage() {
 								<TextBlock
 									className=""
 								>
-									{ask?.asker.slice(0, 10)}
-								</TextBlock>
-								<TextBlock
-									className=""
-								>
-									{ask?.asker.slice(0, 10)}
+									{ask?.completed ? "Так" : "Ні"}
 								</TextBlock>
 
 
 
 
-							</CardBlock>
-						</Link>
+							</Link>
+
+
 						)
 						}
 
