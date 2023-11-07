@@ -521,22 +521,22 @@ export default function CompListPage() {
 				:
 
 				<CardBlock
-					className="flex-grow overflow-auto mb-1 relative "
+					className="flex-grow overflow-auto  mb-1 relative "
 				>
 
 					<div
-						className='max-h-screen  '
+						className='max-h-screen   '
 					>
 
 
 
-						<table className="min-w-full  table-fixed "  >
+						<table className="min-w-full  "  >
 
 							<thead className="  sticky top-0">
 								<tr className=''>
 									{/* Заголовки таблицы */}
 									<th
-										className="   bg-black  shadow-inner shadow-black hover:shadow-violet-500 border-0 transition ease-in-out duration-300 cursor-pointer	 "
+										className=" lg:w-1/4  bg-black  shadow-inner shadow-black hover:shadow-violet-500 border-0 transition ease-in-out duration-300 cursor-pointer	 "
 										rowSpan="2"
 										colSpan="2"
 										onClick={handleSortCompsByArtikul}
