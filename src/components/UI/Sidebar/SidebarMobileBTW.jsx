@@ -70,7 +70,7 @@ const SidebarMobileBTW = ({ onClose }) => {
 
 
 
-				<TextBlock className="w-full text-center border border-slate-500 hover:bg-slate-500/50  rounded" >
+				<TextBlock className="w-full text-center border border-slate-500 hover:bg-slate-500/90  rounded" >
 					<NavLink
 						onClick={onClose}
 						to={"stocks"}
@@ -88,7 +88,8 @@ const SidebarMobileBTW = ({ onClose }) => {
 
 
 
-				<TextBlock className="w-full text-center border border-sky-500 hover:bg-sky-500/50 rounded" >
+
+				<TextBlock className="w-full text-center border border-sky-500 hover:bg-sky-500/90  rounded" >
 					<NavLink
 						onClick={onClose}
 						to={"arts"}
@@ -96,7 +97,7 @@ const SidebarMobileBTW = ({ onClose }) => {
 							color: "white",
 							padding: "12px",
 							width: "100%",
-							background: "rgb(20 184 166)",
+							background: "rgb(14 165 233)",
 						} : inActiveStyles}
 					>
 						Артикули
@@ -104,7 +105,33 @@ const SidebarMobileBTW = ({ onClose }) => {
 				</TextBlock>
 
 
-				<TextBlock className="w-full text-center border border-cyan-500 hover:bg-cyan-500/50 rounded">
+
+
+
+
+				<TextBlock className="w-full text-center border border-yellow-500 hover:bg-yellow-500/90 rounded" >
+					<NavLink
+						onClick={onClose}
+						to={"asks"}
+						style={({ isActive }) => isActive ? {
+							color: "white",
+							padding: "12px",
+							width: "100%",
+							background: "rgb(234 179 8)",
+						} : inActiveStyles}
+					>
+						Запити
+					</NavLink>
+				</TextBlock>
+
+
+
+
+
+
+
+
+				<TextBlock className="w-full text-center border border-cyan-500 hover:bg-cyan-500/90 rounded">
 					<NavLink
 						onClick={onClose}
 						to={"zones"}
@@ -119,7 +146,7 @@ const SidebarMobileBTW = ({ onClose }) => {
 					</NavLink>
 				</TextBlock>
 
-				<TextBlock className="w-full text-center border border-violet-500 hover:bg-violet-500/50 rounded " >
+				<TextBlock className="w-full text-center border border-violet-500 hover:bg-violet-500/90 rounded " >
 					<NavLink
 						onClick={onClose}
 						to={"comps"}

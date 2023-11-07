@@ -18,7 +18,7 @@ export default function ModalWrapper({ children, onCancel, title }) {
 
 	return (
 		<div
-			className="fixed p-2 bg-sky-500/10 inset-0 z-40 flex items-center justify-center backdrop-blur backdrop-filter bg-opacity-60"
+			className="fixed  overflow-auto p-2 bg-sky-500/10 inset-0 z-40 flex items-center justify-center backdrop-blur backdrop-filter bg-opacity-60"
 			onClick={handleModalClick}
 		>
 

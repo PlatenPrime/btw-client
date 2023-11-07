@@ -50,27 +50,19 @@ p-4
 
 			<NavLink
 				to={"/"}
-
-
 			>
-
 				<CardBlock className='flex items-center justify-center w-full h-16 text-5xl text-gray-100  '>
 
 					BTW
 
 				</CardBlock>
-
-
-
-
-
 			</NavLink>
 
 
 			<CardBlock className='space-y-1' >
 
 
-				<TextBlock className="border border-orange-500 hover:bg-orange-500/50 rounded" >
+				<TextBlock className="border border-orange-500 hover:bg-orange-500/90 rounded" >
 					<NavLink
 						to={"stocks"}
 						style={({ isActive }) => isActive ? {
@@ -86,7 +78,7 @@ p-4
 				</TextBlock>
 
 
-				<TextBlock className="border border-sky-500 hover:bg-sky-500/50 rounded" >
+				<TextBlock className="border border-sky-500 hover:bg-sky-500/90 rounded" >
 					<NavLink
 						to={"arts"}
 						style={({ isActive }) => isActive ? {
@@ -100,10 +92,28 @@ p-4
 					</NavLink>
 				</TextBlock>
 
+				<TextBlock className="border border-yellow-500 hover:bg-yellow-500/90 rounded" >
+					<NavLink
+						to={"asks"}
+						style={({ isActive }) => isActive ? {
+							color: "white",
+							padding: "12px",
+							width: "100%",
+							background: "rgb(234 179 8 )",
+						} : inActiveStyles}
+					>
+						Запити
+					</NavLink>
+				</TextBlock>
 
 
 
-				<TextBlock className="border border-cyan-500 hover:bg-cyan-500/50 rounded">
+
+
+
+
+
+				<TextBlock className="border border-cyan-500 hover:bg-cyan-500/90 rounded">
 					<NavLink
 						to={"zones"}
 						style={({ isActive }) => isActive ? {
@@ -119,7 +129,7 @@ p-4
 
 
 
-				<TextBlock className="border border-violet-500 hover:bg-violet-500/50 rounded " >
+				<TextBlock className="border border-violet-500 hover:bg-violet-500/90 rounded " >
 					<NavLink
 						to={"comps"}
 						style={({ isActive }) => isActive ? {

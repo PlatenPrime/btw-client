@@ -1,10 +1,10 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import { ButtonBlock, CardBlock, HeaderBlock, InputBlock, PageBTW, Spinner, TextBlock } from '../../components'
 import ArtBage from './ArtBage';
 import InfiniteScroll from 'react-infinite-scroll-component';
 import { useArtContext } from '../../ArtContext';
 import { toast } from 'react-toastify';
-import { AiOutlineArrowLeft, AiOutlineArrowRight, AiOutlineDoubleLeft, AiOutlineDoubleRight } from "react-icons/ai";
+import { AiOutlineArrowLeft, AiOutlineArrowRight, AiOutlineDoubleLeft, AiOutlineDoubleRight, AiOutlineSearch } from "react-icons/ai";
 import useFetchRemains from '../../hooks/useFetchRemains';
 
 export default function ArtsPage() {
@@ -105,7 +105,7 @@ export default function ArtsPage() {
 					>
 
 						<form
-							className=" flex flex-wrap  justify-end space-x-3"
+							className=" flex flex-wrap  justify-center space-y-2 sm:space-y-0 sm:space-x-3"
 							onSubmit={(e) => {
 								e.preventDefault()
 								handleFilterArts()
@@ -118,13 +118,15 @@ export default function ArtsPage() {
 
 								}}
 								placeholder="Введи артикул або назву..."
-								className=" bg-indigo-900 bg-opacity-5 border-indigo-600 focus:border-indigo-500 focus:shadow-lg  focus:shadow-indigo-600 p-3"
+								className="text-3xl bg-indigo-900 bg-opacity-5 border-indigo-600 focus:border-indigo-500 focus:shadow-lg  focus:shadow-indigo-600 p-3"
 							/>
 
 							<ButtonBlock
-								className="indigo-b"
+								className="indigo-b text-4xl px-6 "
+								
 							>
-								Пошук
+								
+								<AiOutlineSearch />
 							</ButtonBlock>
 						</form>
 
@@ -260,8 +262,8 @@ export default function ArtsPage() {
 					:
 					<CardBlock className="space-y-1">
 						{filteredArts?.length === 0
-							? artsDB?.slice(step * page - step, step * page).map((art) => <ArtBage art={art} remains={remains} />)
-							: filteredArts?.slice(step * page - step, step * page).map((art) => <ArtBage art={art} remains={remains} />)}
+							? artsDB?.slice(step * page - step, step * page).map((art) => <ArtBage key={art._id} art={art} remains={remains} />)
+							: filteredArts?.slice(step * page - step, step * page).map((art) => <ArtBage key={art._id} art={art} remains={remains} />)}
 
 					</CardBlock>
 

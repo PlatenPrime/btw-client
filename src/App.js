@@ -25,7 +25,6 @@ import { RegisterPage } from "./pages/Auth/RegisterPage";
 import { useDispatch, useSelector } from "react-redux";
 import { checkIsAuth, getMe } from "./redux/features/auth/authSlice";
 import { useEffect, useLayoutEffect } from "react";
-import ArtFindPage from "./pages/Art/ArtFindPage";
 import ArtPage from "./pages/Stocks/ArtPage";
 import ArtsPage from "./pages/Stocks/ArtsPage";
 import ArtsZonesLoadingPage from "./pages/Art/ArtsZonesLoadingPage";
@@ -36,6 +35,8 @@ import CompsLogsPage from "./pages/Competitors/pages/CompsLogsPage";
 import CompsAddPage from "./pages/Competitors/pages/CompsAddPage";
 import StocksPage from "./pages/Stocks/StocksPage";
 import RowPage from "./pages/Stocks/RowPage";
+import AsksPage from "./pages/Stocks/AsksPage";
+import AskPage from "./pages/Stocks/AskPage";
 
 
 
@@ -82,6 +83,10 @@ function App() {
 
 					<Route path="arts" element={<ArtsPage />} />
 					<Route path="arts/:id" element={<ArtPage />} />
+
+
+					<Route path="asks" element={<AsksPage />} />
+					<Route path="asks/:id" element={<AskPage />} />
 
 
 
