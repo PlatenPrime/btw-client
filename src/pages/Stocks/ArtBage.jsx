@@ -40,7 +40,7 @@ const ArtBage = ({ art, remains }) => {
 		border-2 border-sky-500 
 		 hover:shadow-2xl hover:shadow-sky-500 
 		 hover:bg-sky-500 transition ease-in-out duration-300
-		 transition ease-in-out duration-300
+	
 		'
 
 		>

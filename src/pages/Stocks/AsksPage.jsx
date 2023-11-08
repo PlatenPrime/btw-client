@@ -227,12 +227,24 @@ export default function AsksPage() {
 							<Link
 								key={ask._id}
 								to={`/asks/${ask._id}`}
-								className=" grid overflow-auto grid-cols-3 border border-yellow-500 p-2 "
+								className=" grid overflow-auto grid-cols-4 border border-yellow-500 p-2 
+								text-yellow-100 lg:text-2xl
+								hover:shadow-2xl hover:shadow-yellow-500 
+								hover:bg-yellow-500 transition ease-in-out duration-500
+								
+								
+								"
 							>
+
+								<ImageArt size={50} artikul={ask.artikul} />
+
+
+
 								<TextBlock
 									className=""
 								>
-									{ask?.artikul}
+									
+									{artsDB?.find((art) => ask?.artikul === art?.artikul)?.nameukr}
 								</TextBlock>
 
 								<TextBlock
