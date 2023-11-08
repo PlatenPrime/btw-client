@@ -8,13 +8,14 @@ import usePalletStore from "./stores/palletsStore";
 import { BsBalloon, BsBoxSeam } from "react-icons/bs";
 import useFetchRemains from "../../hooks/useFetchRemains";
 import { VscLocation } from "react-icons/vsc";
+import { FaWarehouse } from "react-icons/fa6";
 import { getArtDataBtrade } from "../../utils/getArtDataBtrade";
 
 
 export default function ArtPage() {
 
 
-	const { remains, loadingRemains, errorRemains } = useFetchRemains()
+	const { remains } = useFetchRemains()
 
 
 
@@ -149,21 +150,42 @@ export default function ArtPage() {
 					</CardBlock>
 
 					<CardBlock
-						className="flex flex-col items-start space-y-2"
+						className="flex flex-col items-center space-y-2"
 					>
 
 						<TextBlock
-							className="text-2xl lg:text-4xl p-1 text-center lg:text-left"
+							className="text-2xl  lg:text-4xl p-1 justify-center lg:text-left"
 						>
 							{artikul?.nameukr}
 						</TextBlock>
 
 
 						<CardBlock
-							className="w-full flex flex-col lg:flex-row lg:space-x-2 p-1"
+							className="w-full flex items-center flex-col lg:flex-row lg:space-x-2 p-1"
 						>
 
 							<TextBlock className="  text-3xl font-bold  p-1 rounded text-orange-300" ><VscLocation />{artikul?.zone}</TextBlock>
+
+
+							<CardBlock
+								className="flex space-x-2"
+							>
+								<TextBlock
+
+									className="text-rose-300  text-3xl"
+								>
+
+									<BsBalloon />
+								</TextBlock>
+								<TextBlock
+									className="text-rose-300  font-bold text-3xl  rounded"
+
+								>
+
+									{remains ? remains[title] : ""}
+								</TextBlock>
+							</CardBlock>
+
 
 
 							<CardBlock
@@ -177,26 +199,30 @@ export default function ArtPage() {
 									className="text-green-300  font-bold text-3xl  rounded"
 								>
 
-									{remains ? remains[title] : ""}
+									{ostatok}
 								</TextBlock>
 							</CardBlock>
-
 
 
 							<CardBlock
 								className="flex space-x-2"
 							>
-								<TextBlock
-									className="text-rose-300  text-3xl">
-									<BsBalloon />
-								</TextBlock>
-								<TextBlock
-									className="text-rose-300  font-bold text-3xl  rounded"
-								>
 
-									{ostatok}
+
+								<TextBlock
+									className="text-blue-300  text-3xl">
+									<FaWarehouse />
+								</TextBlock>
+
+								<TextBlock
+									className="text-blue-300  text-3xl">
+
+									{posesWithArtikul?.reduce((a, b) => a + parseInt(b.quant), 0)}
+
 								</TextBlock>
 							</CardBlock>
+
+
 
 						</CardBlock>
 
