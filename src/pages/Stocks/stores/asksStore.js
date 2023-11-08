@@ -6,14 +6,18 @@ const useAskStore = create((set) => ({
 
 	createAsk: async (askData) => {
 		try {
-			const response = await axios.post('asks', { askData });
-
+			console.log(askData )
+			const response = await axios.post('asks',  askData );
+			console.log(response)
+			
 			if (response.status === 201) {
 				const newAsk = response.data;
 				set((state) => ({ asks: [newAsk, ...state.asks] }));
 			} else {
 				throw new Error('Ошибка создания запроса на снятие');
 			}
+
+
 		} catch (error) {
 			console.error('Ошибка создания запроса на снятие:', error);
 		}
