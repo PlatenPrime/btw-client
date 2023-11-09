@@ -3,6 +3,8 @@ import { ButtonBlock, CardBlock, HeaderBlock, ImageArt, ModalWrapper, PageBTW, S
 import { BsBalloon, BsBoxSeam } from "react-icons/bs";
 import { VscLocation } from "react-icons/vsc";
 import { FaWarehouse } from "react-icons/fa6";
+import { LiaPalletSolid } from "react-icons/lia";
+import { ImMoveDown } from 'react-icons/im'
 import useAskStore from './stores/asksStore'
 import { Link, useParams } from 'react-router-dom'
 import { useArtContext } from '../../ArtContext'
@@ -37,6 +39,9 @@ export default function AskPage() {
 	const [isLoadingPoses, setIsLoadingPoses] = useState(false)
 	const [ostatok, setOstatok] = useState(null)
 	const [isLoadingAsk, setIsLoadingAsk] = useState(false)
+
+
+	const [showModalAsk, setShowModalAsk] = useState(false)
 
 
 	const artikul = artsDB?.find((art) => art.artikul === ask?.artikul)
@@ -142,6 +147,18 @@ export default function AskPage() {
 				>
 
 
+					{showModalAsk && <ModalWrapper
+						onCancel={() => setShowModalAsk(false)}
+						title="Знімання позицій"
+
+					>
+						<CardBlock>
+
+
+						</CardBlock>
+					</ModalWrapper>}
+
+
 					<CardBlock
 						className="flex flex-col lg:flex-row lg:justify-start space-y-2 lg:space-x-2 border"
 					>
@@ -165,14 +182,14 @@ export default function AskPage() {
 
 
 							<CardBlock
-								className="w-full flex items-center flex-col lg:flex-row lg:space-x-2 p-1"
+								className="w-full flex items-center flex-col lg:flex-row lg:space-x-4 p-1"
 							>
 
 								<TextBlock className="  text-3xl font-bold  p-1 rounded text-orange-300" ><VscLocation />{artikul?.zone}</TextBlock>
 
 
 								<CardBlock
-									className="flex space-x-2"
+									className="flex"
 								>
 									<TextBlock
 
@@ -193,7 +210,7 @@ export default function AskPage() {
 
 
 								<CardBlock
-									className="flex space-x-2"
+									className="flex "
 								>
 									<TextBlock
 										className="text-green-300  text-3xl">
@@ -209,7 +226,7 @@ export default function AskPage() {
 
 
 								<CardBlock
-									className="flex space-x-2"
+									className="flex items-center "
 								>
 									<TextBlock
 										className="text-blue-300  text-3xl">
@@ -217,8 +234,8 @@ export default function AskPage() {
 									</TextBlock>
 
 									<TextBlock
-										className="text-blue-300  text-3xl">
-									
+										className="text-blue-300 font-bold   text-3xl">
+
 										{posesWithArtikul?.reduce((a, b) => a + parseInt(b.quant), 0)}
 
 									</TextBlock>
@@ -259,22 +276,35 @@ export default function AskPage() {
 										className='
 	grid grid-cols-1 lg:grid-cols-3 space-y-2 lg:space-y-0
 p-2 border
-
+justify-center
 
 			transition ease-in-out duration-300
 			'
 
 									>
-										<TextBlock
-											className="lg:min-w-1/3 text-xl justify-items-start"
-										>
-											Палета: {pallets?.find((pallet) => pallet._id === pos?.pallet)?.title}
-										</TextBlock>
 
+										<CardBlock
+											className="flex items-center  font-bold "
+										>
+
+											<TextBlock
+												className="text-yellow-300 text-3xl"
+											>
+												<LiaPalletSolid />
+											</TextBlock>
+
+
+											<TextBlock
+												className="lg:min-w-1/3 text-2xl  lg:justify-items-start items-center text-yellow-300"
+											>
+												{pallets?.find((pallet) => pallet._id === pos?.pallet)?.title}
+											</TextBlock>
+
+										</CardBlock>
 
 
 										<CardBlock
-											className="  grid grid-cols-2  lg:justify-items-start  "
+											className="  grid grid-cols-2  lg:justify-items-start "
 										>
 
 											<CardBlock
@@ -312,13 +342,25 @@ p-2 border
 										</CardBlock>
 
 										<CardBlock>
-											Кнопки управления
+
+											<ButtonBlock
+												className=" blue-b text-3xl"
+												onClick={() => setShowModalAsk(true)}
+											>
+												<ImMoveDown />
+											</ButtonBlock>
+
+
 										</CardBlock>
 
 
 
 									</CardBlock>
 									)}
+
+
+
+
 								</CardBlock>
 								:
 								<TextBlock
@@ -338,7 +380,13 @@ p-2 border
 						className="flex justify-center"
 					>
 
-						Кнопки подтвердить выполнение запроса
+
+						<ButtonBlock
+							className="green-b"
+						>
+							Підтвердити виконання
+						</ButtonBlock>
+
 
 					</CardBlock>
 

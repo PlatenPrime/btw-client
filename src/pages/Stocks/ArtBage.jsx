@@ -49,7 +49,7 @@ const ArtBage = ({ art, remains }) => {
 
 
 			<CardBlock
-				className="h-full bg-white"
+				className="flex items-center bg-white"
 			>
 
 				<ImageArt size={80} artikul={art?.artikul} />

@@ -78,11 +78,7 @@ export default function ArtsPage() {
 				<CardBlock
 					className="p-1 flex items-center justify-start flex-wrap space-x-1 "
 				>
-					<ButtonBlock
-						className="lime-b text-base hidden xl:flex"
-					>
-						Запит на зняття
-					</ButtonBlock>
+
 
 					<ButtonBlock
 						className="orange-b text-base hidden xl:flex"
@@ -118,14 +114,16 @@ export default function ArtsPage() {
 
 								}}
 								placeholder="Введи артикул або назву..."
-								className="text-3xl bg-indigo-900 bg-opacity-5 border-indigo-600 focus:border-indigo-500 focus:shadow-lg  focus:shadow-indigo-600 p-3"
+								className="text-3xl bg-sky-900 bg-opacity-5 border-sky-600 focus:border-sky-500 focus:shadow-lg  focus:shadow-sky-600 p-3
+								placeholder:text-sky-300/50 placeholder:font-light
+								"
 							/>
 
 							<ButtonBlock
-								className="indigo-b text-4xl px-6 "
-								
+								className="sky-b text-sky-500 text-4xl px-6 hover:bg-sky-500/10 "
+
 							>
-								
+
 								<AiOutlineSearch />
 							</ButtonBlock>
 						</form>
@@ -197,7 +195,7 @@ export default function ArtsPage() {
 					:
 
 					<CardBlock
-						className="flex flex-wrap justify-between p-2 border  border-indigo-500 rounded bg-indigo-500/20"
+						className="flex flex-wrap justify-between p-2 border  border-sky-500 rounded bg-sky-500/20"
 					>
 
 
