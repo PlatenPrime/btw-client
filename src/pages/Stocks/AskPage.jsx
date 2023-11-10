@@ -41,9 +41,9 @@ export default function AskPage() {
 	const [isLoadingAsk, setIsLoadingAsk] = useState(false)
 
 	const [selectedPos, setSelectedPos] = useState(null)
-	const [finalValuePosBox, setFinalValuePosBox] = useState(0)
+	const [finalValuePosBoxes, setFinalValuePosBoxes] = useState(0)
 	const [finalValuePosQuant, setFinalValuePosQuant] = useState(0)
-	const [askValuePosBox, setAskValuePosBox] = useState(0)
+	const [askValuePosBoxes, setAskValuePosBoxes] = useState(0)
 	const [askValuePosQuant, setAskValuePosQuant] = useState(0)
 
 
@@ -127,7 +127,11 @@ export default function AskPage() {
 
 	}, [])
 
+	// HANDLERS 
 
+	function handleAskingPos() {
+
+	}
 
 
 	return (
@@ -159,8 +163,11 @@ export default function AskPage() {
 
 					>
 						<CardBlock
-							className="space-y-2 border p-3"
+							className="space-y-4 border p-3"
 						>
+
+
+
 
 							<CardBlock
 								className="flex justify-center  font-bold "
@@ -174,7 +181,7 @@ export default function AskPage() {
 
 
 								<TextBlock
-									className="lg:min-w-1/3 text-2xl  lg:justify-items-start items-center text-yellow-300"
+									className="lg:min-w-1/3 text-3xl  lg:justify-items-start items-center text-yellow-300"
 								>
 									{pallets?.find((pallet) => pallet._id === selectedPos?.pallet)?.title}
 								</TextBlock>
@@ -236,13 +243,16 @@ export default function AskPage() {
 									className="flex justify-center  space-x-2"
 								>
 									<TextBlock
-										className="text-teal-300  text-3xl">
+										className={finalValuePosBoxes < 0 ? "text-red-600  text-3xl" : "text-teal-300  text-3xl"}>
+
+
 										<BsBoxSeam />
 									</TextBlock>
 									<TextBlock
-										className="text-teal-300 font-bold text-2xl rounded"
-									>
-										{finalValuePosBox}
+
+										className={finalValuePosBoxes < 0 ? "text-red-600  text-2xl" : "text-teal-300  text-2xl"}>
+
+										{finalValuePosBoxes}
 									</TextBlock>
 								</CardBlock>
 
@@ -251,11 +261,11 @@ export default function AskPage() {
 									className="flex justify-center  space-x-2"
 								>
 									<TextBlock
-										className="text-teal-300  text-3xl">
+										className={finalValuePosQuant < 0 ? "text-red-600  text-3xl" : "text-teal-300  text-3xl"}>
 										<BsBalloon />
 									</TextBlock>
 									<TextBlock
-										className="text-teal-300 font-bold text-2xl  rounded"
+										className={finalValuePosQuant < 0 ? "text-red-600  text-2xl" : "text-teal-300  text-2xl"}
 									>
 
 										{finalValuePosQuant}
@@ -265,6 +275,26 @@ export default function AskPage() {
 
 							</CardBlock>
 
+
+							<CardBlock>
+
+								{finalValuePosBoxes < 0 && <TextBlock
+									className="border border-red-600 text-red-600 p-2 rounded"
+								>
+									Коробки в мінусі
+								</TextBlock>}
+
+							</CardBlock>
+
+							<CardBlock>
+
+								{finalValuePosQuant < 0 && <TextBlock
+									className="border border-red-600 text-red-600 p-2 rounded"
+								>
+									Недостатньо позиції
+								</TextBlock>}
+
+							</CardBlock>
 
 
 
@@ -284,10 +314,10 @@ export default function AskPage() {
 										id="quant"
 										name="quant"
 										autoComplete="off"
-										value={askValuePosBox}
+										value={askValuePosBoxes}
 										onChange={(e) => {
-											setAskValuePosBox(e.target.value)
-											setFinalValuePosBox(selectedPos?.boxes - e.target.value)
+											setAskValuePosBoxes(e.target.value)
+											setFinalValuePosBoxes(selectedPos?.boxes - e.target.value)
 										}}
 									/>
 								</CardBlock>
@@ -317,7 +347,29 @@ export default function AskPage() {
 
 
 							</CardBlock>
-							<CardBlock>Кнопки</CardBlock>
+
+
+
+							<CardBlock
+								className="grid grid-cols-2 space-x-2"
+							>
+
+								<ButtonBlock
+									className="red-b"
+									onClick={() => setShowModalAsk(false)}
+								>
+									Скасувати
+								</ButtonBlock>
+
+								<ButtonBlock
+									className="green-b"
+								>
+									Зняти
+								</ButtonBlock>
+
+
+
+							</CardBlock>
 
 
 
@@ -519,9 +571,9 @@ justify-center
 												onClick={() => {
 													setShowModalAsk(true);
 													setSelectedPos(pos)
-													setFinalValuePosBox(pos?.boxes)
+													setFinalValuePosBoxes(pos?.boxes)
 													setFinalValuePosQuant(pos?.quant)
-													setAskValuePosBox(0);
+													setAskValuePosBoxes(0);
 													setAskValuePosQuant(0);
 												}
 
