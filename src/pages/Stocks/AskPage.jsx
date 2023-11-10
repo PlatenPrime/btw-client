@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { ButtonBlock, CardBlock, HeaderBlock, ImageArt, ModalWrapper, PageBTW, Spinner, TextBlock } from "../../components"
+import { ButtonBlock, CardBlock, HeaderBlock, ImageArt, InputBlock, ModalWrapper, PageBTW, Spinner, TextBlock } from "../../components"
 import { BsBalloon, BsBoxSeam } from "react-icons/bs";
 import { VscLocation } from "react-icons/vsc";
 import { FaWarehouse } from "react-icons/fa6";
@@ -39,6 +39,12 @@ export default function AskPage() {
 	const [isLoadingPoses, setIsLoadingPoses] = useState(false)
 	const [ostatok, setOstatok] = useState(null)
 	const [isLoadingAsk, setIsLoadingAsk] = useState(false)
+
+	const [selectedPos, setSelectedPos] = useState(null)
+	const [finalValuePosBox, setFinalValuePosBox] = useState(0)
+	const [finalValuePosQuant, setFinalValuePosQuant] = useState(0)
+	const [askValuePosBox, setAskValuePosBox] = useState(0)
+	const [askValuePosQuant, setAskValuePosQuant] = useState(0)
 
 
 	const [showModalAsk, setShowModalAsk] = useState(false)
@@ -152,7 +158,172 @@ export default function AskPage() {
 						title="Знімання позицій"
 
 					>
-						<CardBlock>
+						<CardBlock
+							className="space-y-2 border p-3"
+						>
+
+							<CardBlock
+								className="flex justify-center  font-bold "
+							>
+
+								<TextBlock
+									className="text-yellow-300 text-3xl"
+								>
+									<LiaPalletSolid />
+								</TextBlock>
+
+
+								<TextBlock
+									className="lg:min-w-1/3 text-2xl  lg:justify-items-start items-center text-yellow-300"
+								>
+									{pallets?.find((pallet) => pallet._id === selectedPos?.pallet)?.title}
+								</TextBlock>
+
+							</CardBlock>
+
+
+							<CardBlock
+								className="flex space-x-2"
+							>
+								<TextBlock
+									className="text-2xl"
+								>
+									Зараз:
+								</TextBlock>
+								<CardBlock
+									className="flex justify-center  space-x-2"
+								>
+									<TextBlock
+										className="text-amber-300  text-3xl">
+										<BsBoxSeam />
+									</TextBlock>
+									<TextBlock
+										className="text-amber-300 font-bold text-2xl rounded"
+									>
+										{selectedPos?.boxes}
+									</TextBlock>
+								</CardBlock>
+
+
+								<CardBlock
+									className="flex justify-center  space-x-2"
+								>
+									<TextBlock
+										className="text-sky-300  text-3xl">
+										<BsBalloon />
+									</TextBlock>
+									<TextBlock
+										className="text-sky-300  font-bold text-2xl  rounded"
+									>
+
+										{selectedPos?.quant}
+									</TextBlock>
+								</CardBlock>
+
+
+							</CardBlock>
+
+
+							<CardBlock
+								className="flex space-x-2"
+							>
+								<TextBlock
+									className="text-2xl "
+								>
+									Стане:
+								</TextBlock>
+								<CardBlock
+									className="flex justify-center  space-x-2"
+								>
+									<TextBlock
+										className="text-teal-300  text-3xl">
+										<BsBoxSeam />
+									</TextBlock>
+									<TextBlock
+										className="text-teal-300 font-bold text-2xl rounded"
+									>
+										{finalValuePosBox}
+									</TextBlock>
+								</CardBlock>
+
+
+								<CardBlock
+									className="flex justify-center  space-x-2"
+								>
+									<TextBlock
+										className="text-teal-300  text-3xl">
+										<BsBalloon />
+									</TextBlock>
+									<TextBlock
+										className="text-teal-300 font-bold text-2xl  rounded"
+									>
+
+										{finalValuePosQuant}
+									</TextBlock>
+								</CardBlock>
+
+
+							</CardBlock>
+
+
+
+
+							<CardBlock
+								className="space-y-2"
+
+							>
+
+
+								<CardBlock className="flex justify-between items-center space-x-4">
+									<TextBlock
+										className="text-rose-500  text-3xl">
+										<BsBoxSeam />
+									</TextBlock>
+									<InputBlock
+										type="number"
+										id="quant"
+										name="quant"
+										autoComplete="off"
+										value={askValuePosBox}
+										onChange={(e) => {
+											setAskValuePosBox(e.target.value)
+											setFinalValuePosBox(selectedPos?.boxes - e.target.value)
+										}}
+									/>
+								</CardBlock>
+
+
+
+
+								<CardBlock className="flex justify-between items-center space-x-4">
+									<TextBlock
+										className="text-rose-500  text-3xl">
+										<BsBalloon />
+									</TextBlock>
+									<InputBlock
+										type="number"
+										id="quant"
+										name="quant"
+										autoComplete="off"
+										value={askValuePosQuant}
+										onChange={(e) => {
+											setAskValuePosQuant(e.target.value)
+											setFinalValuePosQuant(selectedPos?.quant - e.target.value)
+										}}
+									/>
+								</CardBlock>
+
+
+
+
+							</CardBlock>
+							<CardBlock>Кнопки</CardBlock>
+
+
+
+
+
+
 
 
 						</CardBlock>
@@ -345,7 +516,16 @@ justify-center
 
 											<ButtonBlock
 												className=" blue-b text-3xl"
-												onClick={() => setShowModalAsk(true)}
+												onClick={() => {
+													setShowModalAsk(true);
+													setSelectedPos(pos)
+													setFinalValuePosBox(pos?.boxes)
+													setFinalValuePosQuant(pos?.quant)
+													setAskValuePosBox(0);
+													setAskValuePosQuant(0);
+												}
+
+												}
 											>
 												<ImMoveDown />
 											</ButtonBlock>

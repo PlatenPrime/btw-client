@@ -157,7 +157,7 @@ export default function AsksPage() {
 
 
 							<CardBlock className="flex justify-between items-center space-x-4">
-								<label htmlFor="artikul">Кількість:</label>
+								<label htmlFor="quant">Кількість:</label>
 								<InputBlock
 									type="number"
 									id="quant"
