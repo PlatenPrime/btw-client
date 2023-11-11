@@ -29,6 +29,7 @@ export default function AskPage() {
 
 	const getPosesByArtikul = usePosesStore((state) => state.getPosesByArtikul);
 	const posesWithArtikul = usePosesStore((state) => state.posesWithArtikul);
+	const updatePosWithArtikulById = usePosesStore((state) => state.updatePosWithArtikulById);
 	console.log(posesWithArtikul)
 
 	const pallets = usePalletStore((state) => state.pallets);
@@ -36,8 +37,9 @@ export default function AskPage() {
 
 
 	const [ask, setAsk] = useState(null)
-	const [isLoadingPoses, setIsLoadingPoses] = useState(false)
 	const [ostatok, setOstatok] = useState(null)
+	const [isLoadingPoses, setIsLoadingPoses] = useState(false)
+	const [isUpdatingPos, setIsUpdatingPos] = useState(false)
 	const [isLoadingAsk, setIsLoadingAsk] = useState(false)
 
 	const [selectedPos, setSelectedPos] = useState(null)
@@ -129,7 +131,28 @@ export default function AskPage() {
 
 	// HANDLERS 
 
-	function handleAskingPos() {
+	async function handleAskingPos() {
+
+		try {
+			setIsUpdatingPos(true)
+
+			const updateData = {
+				boxes: finalValuePosBoxes,
+				quant: finalValuePosQuant
+
+			}
+
+			const updatedPos = await updatePosWithArtikulById(selectedPos._id, updateData)
+			console.log(updatedPos)
+
+
+
+		} catch (error) {
+			console.log(error)
+		} finally {
+			setIsUpdatingPos(false)
+			setShowModalAsk(false)
+		}
 
 	}
 
@@ -159,7 +182,7 @@ export default function AskPage() {
 
 					{showModalAsk && <ModalWrapper
 						onCancel={() => setShowModalAsk(false)}
-						title="Знімання позицій"
+						title="Зняття позицій"
 
 					>
 						<CardBlock
@@ -306,7 +329,7 @@ export default function AskPage() {
 
 								<CardBlock className="flex justify-between items-center space-x-4">
 									<TextBlock
-										className="text-rose-500  text-3xl">
+										className="text-cyan-500  text-3xl">
 										<BsBoxSeam />
 									</TextBlock>
 									<InputBlock
@@ -327,7 +350,7 @@ export default function AskPage() {
 
 								<CardBlock className="flex justify-between items-center space-x-4">
 									<TextBlock
-										className="text-rose-500  text-3xl">
+										className="text-cyan-500   text-3xl">
 										<BsBalloon />
 									</TextBlock>
 									<InputBlock
@@ -350,6 +373,8 @@ export default function AskPage() {
 
 
 
+
+
 							<CardBlock
 								className="grid grid-cols-2 space-x-2"
 							>
@@ -363,8 +388,25 @@ export default function AskPage() {
 
 								<ButtonBlock
 									className="green-b"
+									disabled={finalValuePosQuant < 0 ||
+										finalValuePosBoxes < 0 ||
+										askValuePosQuant <= 0 ||
+										askValuePosBoxes < 0
+									}
+									onClick={handleAskingPos}
 								>
-									Зняти
+
+
+									{isUpdatingPos ?
+										<CardBlock>
+											<Spinner color="" />
+										</CardBlock>
+										:
+										<TextBlock>
+											Зняти
+										</TextBlock>}
+
+
 								</ButtonBlock>
 
 

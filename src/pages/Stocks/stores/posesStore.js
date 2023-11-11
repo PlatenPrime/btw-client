@@ -53,9 +53,9 @@ const usePosesStore = create((set) => ({
 		}
 	},
 
-	updatePosById: async (id, updatedData) => {
+	updatePosById: async (id, updateData) => {
 		try {
-			const response = await axios.put(`poses/${id}`, updatedData);
+			const response = await axios.put(`poses/${id}`, updateData);
 			set((state) => ({
 				poses: state.poses.map((pos) => (pos._id === id ? response.data : pos)),
 			}));
@@ -65,6 +65,24 @@ const usePosesStore = create((set) => ({
 			throw error;
 		}
 	},
+
+	updatePosWithArtikulById: async (id, updateData) => {
+		try {
+			const response = await axios.put(`poses/${id}`, updateData);
+			set((state) => ({
+				posesWithArtikul: state.posesWithArtikul.map((pos) => (pos._id === id ? response.data : pos)),
+			}));
+			return response.data;
+		} catch (error) {
+			console.error('Ошибка при обновлении позиции:', error);
+			throw error;
+		}
+	},
+
+
+
+
+
 
 	deletePosById: async (id) => {
 		try {
