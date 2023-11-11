@@ -549,7 +549,7 @@ justify-center
 									>
 
 										<CardBlock
-											className="flex items-center  font-bold "
+											className="flex items-center justify-self-center   lg:justify-self-start  font-bold "
 										>
 
 											<TextBlock
@@ -560,7 +560,7 @@ justify-center
 
 
 											<TextBlock
-												className="lg:min-w-1/3 text-2xl  lg:justify-items-start items-center text-yellow-300"
+												className="lg:min-w-1/3 text-4xl lg:text-2xl justify-self-center  lg:justify-items-start items-center text-yellow-300"
 											>
 												{pallets?.find((pallet) => pallet._id === pos?.pallet)?.title}
 											</TextBlock>
@@ -606,10 +606,12 @@ justify-center
 
 										</CardBlock>
 
-										<CardBlock>
+										<CardBlock
+											className="justify-self-center lg:justify-self-end"
+										>
 
 											<ButtonBlock
-												className=" blue-b text-3xl"
+												className=" blue-b text-3xl "
 												onClick={() => {
 													setShowModalAsk(true);
 													setSelectedPos(pos)

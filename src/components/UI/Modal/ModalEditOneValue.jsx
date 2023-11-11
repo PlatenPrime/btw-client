@@ -22,7 +22,7 @@ export default function ModalEditOneValue({ value, onConfirm, onCancel }) {
 			onClick={handleModalClick}
 		>
 
-			<div className="relative flex flex-col space-y-8 bg-slate-900 backdrop-blur backdrop-filter bg-opacity-80 min-w-fit  max-w-3xl p-4 rounded-lg shadow-lg"
+			<div className="relative flex flex-col space-y-8 bg-slate-900 backdrop-blur backdrop-filter bg-opacity-80 min-w-fit  max-w-3xl rounded-lg shadow-lg p-8"
 				ref={modalRef}
 			>
 
@@ -30,28 +30,30 @@ export default function ModalEditOneValue({ value, onConfirm, onCancel }) {
 
 
 				<InputBlock
-					placeholder="Введи значение..."
+					placeholder="Введи нове значення..."
 					value={newValue}
 					onChange={(e) => { setNewValue(e.target.value) }}
-					className="text-center"
+					className="text-center text-xl"
 
 
 				/>
 
 
-				<div className="flex justify-evenly space-x-2">
-					<ButtonBlock
-						onClick={() => onConfirm(newValue)}
-						className="success-c px-4"
-					>
-						Подтвердить
-					</ButtonBlock>
+				<div className="grid grid-cols-2 space-x-2">
 					<ButtonBlock
 						onClick={() => onCancel()}
-						className="cancel-c px-4"
+						className="red-b px-4"
 					>
-						Отмена
+						Скасувати
 					</ButtonBlock>
+					<ButtonBlock
+						onClick={() => onConfirm(newValue)}
+						className="green-b px-4"
+						disabled={newValue?.length < 1}
+					>
+						Змінити
+					</ButtonBlock>
+
 				</div>
 			</div>
 		</div>

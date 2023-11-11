@@ -17,11 +17,11 @@ function ModalMovePalletContent({
 }) {
 	return (
 		show && (
-			<ModalWrapper title={`Переставити позиції з палети ${pallet?.title}`} onCancel={onCancel}>
-				<CardBlock className="flex gap-2">
-					<TextBlock className="text-xl">Виберіть ряд:</TextBlock>
+			<ModalWrapper title={`Переставити позицій з палети ${pallet?.title}`} onCancel={onCancel}>
+				<CardBlock className="grid grid-cols-2">
+					<TextBlock className="text-xl justify-self-start">Виберіть ряд:</TextBlock>
 					<select
-						className="InputBlock"
+						className="InputBlock w-full text-xl"
 						onChange={(e) => {
 							setSelectedRowId(e.target.value)
 
@@ -39,10 +39,10 @@ function ModalMovePalletContent({
 					</select>
 				</CardBlock>
 
-				<CardBlock className="flex gap-2">
-					<TextBlock className="text-xl">Виберіть палету:</TextBlock>
+				<CardBlock className="grid grid-cols-2">
+					<TextBlock className="text-xl justify-self-start">Виберіть палету:</TextBlock>
 					<select
-						className="InputBlock "
+						className="InputBlock w-full text-xl "
 						onChange={(e) => {
 							setSelectedPalletId(e.target.value)
 
@@ -80,7 +80,7 @@ function ModalMovePalletContent({
 					)}
 				</CardBlock>
 
-				<CardBlock className="flex justify-evenly">
+				<CardBlock className="grid grid-cols-2 space-x-2">
 					<ButtonBlock
 						type="button"
 						className="cancel-c"

@@ -14,11 +14,6 @@ import PalletPage from "./pages/Stocks/PalletPage";
 
 
 
-import RowsPage from "./pages/Row/RowsPage";
-
-
-
-
 
 import { LoginPage } from "./pages/Auth/LoginPage";
 import { RegisterPage } from "./pages/Auth/RegisterPage";
@@ -76,7 +71,6 @@ function App() {
 
 
 					<Route path="stocks" element={<StocksPage />} />
-					<Route path="rows" element={<RowsPage />} />
 					<Route path="rows/:id" element={<RowPage />} />
 
 

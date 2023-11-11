@@ -33,7 +33,7 @@ export default function ModalCreate({ title, onConfirm, onCancel }) {
 
 
 				<InputBlock
-					placeholder="Введи название..."
+					placeholder="Введи назву..."
 					value={newValue}
 					onChange={(e) => { setNewValue(e.target.value) }}
 					className="text-2xl text-center mx-auto"
@@ -42,20 +42,21 @@ export default function ModalCreate({ title, onConfirm, onCancel }) {
 				/>
 
 
-				<div className="flex justify-evenly">
+				<div className="grid grid-cols-2 space-x-2">
+					<ButtonBlock
+						onClick={() => onCancel()}
+						className="cancel-c "
+					>
+						Скасувати
+					</ButtonBlock>
 					<ButtonBlock
 						onClick={() => onConfirm(newValue)}
 						className="success-c "
 						disabled={!newValue}
 					>
-						Подтвердить
+						Створити
 					</ButtonBlock>
-					<ButtonBlock
-						onClick={() => onCancel()}
-						className="cancel-c "
-					>
-						Отмена
-					</ButtonBlock>
+
 				</div>
 			</div>
 		</div>

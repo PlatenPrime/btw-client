@@ -44,7 +44,7 @@ export default function StocksPage() {
 
 
 			<CardBlock
-			className = "min-h-screen"
+				className="min-h-screen"
 			>
 
 				<CardBlock
@@ -61,7 +61,7 @@ export default function StocksPage() {
 				</CardBlock>
 
 				{showModalCreateRow && <ModalCreate
-					title="Создание нового ряда"
+					title="Створення нового ряду"
 					onConfirm={(rowTitle) => { handleCreateRow(rowTitle) }}
 					onCancel={closeModalCreateRow}
 

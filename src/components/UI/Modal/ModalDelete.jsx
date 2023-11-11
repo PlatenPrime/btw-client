@@ -35,18 +35,18 @@ export default function ModalDelete({ ask, onDelete, onCancel }) {
 				>{ask}
 				</TextBlock>
 
-				<div className="flex justify-evenly  ">
+				<div className="grid grid-cols-2 space-x-2">
 
 					<ButtonBlock
 						onClick={() => onCancel()}
-						className=" success-c px-4 text-xl w-1/3"
+						className=" red-b px-4 text-xl"
 					>
 						Ні
 					</ButtonBlock>
 
 					<ButtonBlock
 						onClick={() => onDelete()}
-						className=" delete-c px-4 text-xl w-1/3"
+						className=" green-b px-4 text-xl "
 					>
 						Так
 					</ButtonBlock>

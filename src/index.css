@@ -96,7 +96,7 @@ table {
 
 	.PageBTW {
 		@apply
-		w-full  flex flex-col max-h-screen bg-sky-500/5
+		w-full  flex flex-col max-h-screen bg-sky-500/5 pb-4
 	}
 
 
