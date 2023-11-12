@@ -6,3 +6,4 @@ export { default as ClearIcon } from './ClearIcon';
 export { default as CancelIcon } from './CancelIcon';
 export { default as OkIcon } from './OkIcon';
 export { default as SearchIcon } from './SearchIcon';
+export { default as BackIcon } from './BackIcon';

@@ -9,7 +9,7 @@ import PositionBage from './PositionBage';
 
 import { ModalDeletePallet, ModalRenamePallet, ModalCreatePos, ModalDeletePos, ModalEditPos, ModalClearPallet, ModalMovePalletContent } from './PalletPageModals/index.js';
 import { useArtContext } from '../../ArtContext';
-import { RenameIcon, MoveIcon, DeleteIcon, ClearIcon, AddIcon } from '../../components/UI/Icons/';
+import { RenameIcon, MoveIcon, DeleteIcon, ClearIcon, AddIcon, BackIcon } from '../../components/UI/Icons/';
 import ButtonGroup from '../../components/UI/ButtonGroup.jsx';
 
 
@@ -336,7 +336,6 @@ export default function PalletPage() {
 
 	const breadcrumbPaths = [
 
-		{ text: 'Запаси', link: '/stocks' },
 		{ text: `Ряд ${row?.title ? row?.title : ""}`, link: `/rows/${pallet?.row}` },
 
 	];
@@ -347,15 +346,24 @@ export default function PalletPage() {
 		<PageBTW>
 
 			<HeaderBlock
-				className=" border border-amber-500"
-			>
-				<TextBlock>{title}</TextBlock>
+				className=" border border-amber-500 "
 
+			>
 
 				<CardBlock
-					className="flex justify-start w-full"
+					className="w-full grid grid-cols-1 sm:grid-cols-3"
 				>
-					<Breadcrumbs paths={breadcrumbPaths} />
+					<CardBlock
+						className="flex items-center justify-start"
+					>
+						<BackIcon />
+						<Breadcrumbs paths={breadcrumbPaths} />
+					</CardBlock>
+
+					<TextBlock>{title}</TextBlock>
+
+
+
 				</CardBlock>
 			</HeaderBlock>
 
