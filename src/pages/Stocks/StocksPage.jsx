@@ -3,6 +3,7 @@ import { ButtonBlock, CardBlock, HeaderBlock, PageBTW, TextBlock } from '../../c
 import { RowList } from './RowList'
 import { useRowStore } from './stores/rowsStore';
 import ModalCreate from '../../components/UI/Modal/ModalCreate';
+import {AddIcon} from '../../components/UI/Icons/';
 
 export default function StocksPage() {
 
@@ -55,6 +56,8 @@ export default function StocksPage() {
 						onClick={() => { setShowModalCreateRow(true) }}
 						className="emerald-b flex items-center justify-center "
 					>
+
+						<TextBlock className = "text-2xl"><AddIcon /></TextBlock>
 						<TextBlock>Створити новий ряд</TextBlock>
 					</ButtonBlock>
 

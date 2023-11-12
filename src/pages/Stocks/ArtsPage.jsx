@@ -6,6 +6,7 @@ import { useArtContext } from '../../ArtContext';
 import { toast } from 'react-toastify';
 import { AiOutlineArrowLeft, AiOutlineArrowRight, AiOutlineDoubleLeft, AiOutlineDoubleRight, AiOutlineSearch } from "react-icons/ai";
 import useFetchRemains from '../../hooks/useFetchRemains';
+import { SearchIcon } from '../../components/UI/Icons';
 
 export default function ArtsPage() {
 
@@ -101,7 +102,7 @@ export default function ArtsPage() {
 					>
 
 						<form
-							className=" flex flex-wrap  justify-center space-y-2 sm:space-y-0 sm:space-x-3"
+							className=" flex flex-col sm:flex-row justify-center space-y-2  sm:space-y-0 sm:space-x-3"
 							onSubmit={(e) => {
 								e.preventDefault()
 								handleFilterArts()
@@ -124,7 +125,7 @@ export default function ArtsPage() {
 
 							>
 
-								<AiOutlineSearch />
+								<SearchIcon />
 							</ButtonBlock>
 						</form>
 

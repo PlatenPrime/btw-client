@@ -9,6 +9,9 @@ import PositionBage from './PositionBage';
 
 import { ModalDeletePallet, ModalRenamePallet, ModalCreatePos, ModalDeletePos, ModalEditPos, ModalClearPallet, ModalMovePalletContent } from './PalletPageModals/index.js';
 import { useArtContext } from '../../ArtContext';
+import { RenameIcon, MoveIcon, DeleteIcon, ClearIcon, AddIcon } from '../../components/UI/Icons/';
+import ButtonGroup from '../../components/UI/ButtonGroup.jsx';
+
 
 
 
@@ -335,7 +338,7 @@ export default function PalletPage() {
 
 		{ text: 'Запаси', link: '/stocks' },
 		{ text: `Ряд ${row?.title ? row?.title : ""}`, link: `/rows/${pallet?.row}` },
-		
+
 	];
 
 
@@ -362,43 +365,48 @@ export default function PalletPage() {
 
 
 
-			<CardBlock
-				className="flex justify-start flex-wrap p-2 space-x-2 "
-			>
-
-
+			<ButtonGroup>
 
 
 
 				<ButtonBlock
-					className="blue-b"
+					className="lime-b flex"
 					onClick={() => { setShowModalRenamePallet(true); }}
 				>
-					Перейменувати
+					<TextBlock className="text-2xl"><RenameIcon /></TextBlock>
+					<TextBlock>Перейменувати</TextBlock>
+
 				</ButtonBlock>
 
 				<ButtonBlock
-					className="amber-b"
+					className="blue-b flex"
 					onClick={() => { setShowModalMovePalletContent(true); }}
 				>
-					Переставити
+					<TextBlock className="text-2xl"><MoveIcon /></TextBlock>
+					<TextBlock>Переставити</TextBlock>
+
+
 				</ButtonBlock>
 
 				<ButtonBlock
 					onClick={() => { setShowModalClearPallet(true) }}
-					className=" rose-b"
+					className=" rose-b flex justify-center items-center"
 				>
-					Очистити
+					<TextBlock className="text-2xl"><ClearIcon /></TextBlock>
+					<TextBlock className="">Очистити</TextBlock>
+
 				</ButtonBlock>
 
 
 				<ButtonBlock
-					className="red-b"
+					className="red-b flex"
 					onClick={() => { setShowModalDeletePallet(true) }}
 				>
-					Видалити
+					<TextBlock className="text-2xl"><DeleteIcon /></TextBlock>
+					<TextBlock className="">Видалити</TextBlock>
 				</ButtonBlock>
-			</CardBlock>
+			</ButtonGroup>
+
 
 
 			<CardBlock>
@@ -497,7 +505,17 @@ export default function PalletPage() {
 					<TextBlock
 						className="text-teal-500 text-3xl justify-start p-1"
 					>
-						Позиції: {posesInStore.length}
+						Позицій: {posesInStore?.length}
+					</TextBlock>
+
+				</CardBlock>
+
+				<CardBlock>
+
+					<TextBlock
+						className="text-amber-500 text-xl justify-start p-1"
+					>
+						Коробок всього: {posesInStore?.reduce((a, b) => a + b.boxes, 0)}
 					</TextBlock>
 
 				</CardBlock>
@@ -508,10 +526,12 @@ export default function PalletPage() {
 					className="flex justify-center items-center "
 				>
 					<ButtonBlock
-						className="teal-b  p-4  border-dashed"
+						className="teal-b  p-4 flex  border-dashed"
 						onClick={() => { setShowModalCreatePos(true); }}
 					>
-						Додати позицію
+						<TextBlock className="text-2xl"><AddIcon /></TextBlock>
+						<TextBlock className="">Додати позицію</TextBlock>
+
 					</ButtonBlock>
 				</CardBlock>
 

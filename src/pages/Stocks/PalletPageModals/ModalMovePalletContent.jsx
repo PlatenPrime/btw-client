@@ -1,5 +1,6 @@
 import React from 'react';
 import { ModalWrapper, InputBlock, ButtonBlock, CardBlock, TextBlock } from '../../../components';
+import { CancelIcon, OkIcon } from '../../../components/UI/Icons';
 
 function ModalMovePalletContent({
 	show,
@@ -82,22 +83,24 @@ function ModalMovePalletContent({
 
 				<CardBlock className="grid grid-cols-2 space-x-2">
 					<ButtonBlock
-						type="button"
-						className="cancel-c"
-						onClick={onCancel}
+						className="red-b f"
+						onClick={() => { onCancel(); }}
 					>
-						Скасувати
+						<TextBlock className="text-2xl"><CancelIcon /></TextBlock>
+						<TextBlock className=""> Скасувати</TextBlock>
+
 					</ButtonBlock>
 					<ButtonBlock
 						disabled={!selectedPalletId}
-						type="button"
-						className="success-c"
+						className="green-b "
 						onClick={() => {
 							handleMovePalletContent(id, selectedPalletId);
 						}}
 					>
-						Підтвердити
+						<TextBlock className="text-2xl"><OkIcon /></TextBlock>
+						<TextBlock className=""> Переставити</TextBlock>
 					</ButtonBlock>
+
 				</CardBlock>
 			</ModalWrapper>
 		)

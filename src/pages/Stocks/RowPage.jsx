@@ -3,12 +3,15 @@ import React, { useEffect, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom';
 
 import { ButtonBlock, CardBlock, HeaderBlock, ModalConfirm, ModalCreate, ModalEditOneValue, PageBTW, TextBlock, Spinner } from '../../components';
+import { AddIcon, DeleteIcon, RenameIcon } from '../../components/UI/Icons/';
+
 import { toast } from 'react-toastify';
 
 import PalletBage from './PalletBage';
 
 import { useRowStore } from './stores/rowsStore';
 import usePalletStore from './stores/palletsStore';
+
 
 
 
@@ -153,7 +156,7 @@ export default function RowPage() {
 			</HeaderBlock>
 
 			<CardBlock
-			className = "min-h-screen"
+				className="min-h-screen"
 			>
 
 
@@ -161,22 +164,29 @@ export default function RowPage() {
 					className="flex flex-wrap justify-start p-2 space-x-2"
 				>
 					<ButtonBlock
-						className="emerald-b"
+						className="emerald-b flex"
 						onClick={() => { setShowModalCreatePallet(true); }}
 					>
-						Створити палету
+						<TextBlock className="text-2xl"><AddIcon /></TextBlock>
+						<TextBlock className="">Створити палету</TextBlock>
+
 					</ButtonBlock>
 					<ButtonBlock
-						className="blue-b"
+						className="lime-b flex"
 						onClick={() => { setShowModalUpdateRow(true); }}
 					>
-						Перейменувати
+						<TextBlock className="text-2xl"><RenameIcon /></TextBlock>
+						<TextBlock className="">Перейменувати</TextBlock>
+
 					</ButtonBlock>
 					<ButtonBlock
-						className="red-b"
+						className="red-b flex items-center"
 						onClick={() => { setShowModalDeleteRow(true); }}
 					>
-						Видалити ряд
+						<TextBlock className="text-2xl"><DeleteIcon /></TextBlock>
+						<TextBlock className="">Видалити ряд</TextBlock>
+
+
 					</ButtonBlock>
 
 
@@ -219,7 +229,7 @@ export default function RowPage() {
 					className="space-y-4 bg-sky-500/5 p-2 "
 				>
 					<TextBlock
-						className="text-3xl text-sky-500 "
+						className="text-3xl text-amber-300 "
 					>
 						Палети
 					</TextBlock>

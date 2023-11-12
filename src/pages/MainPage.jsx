@@ -2,6 +2,7 @@ import React from 'react';
 
 
 import { ButtonBlock, CardBlock, HeaderBlock, TextBlock, PageBTW } from "../components/index"
+import AddIcon from '../components/UI/Icons/AddIcon';
 
 
 
@@ -76,8 +77,15 @@ const MainPage = () => {
 				<ButtonBlock className="fuchsia-b">Fuchsia</ButtonBlock>
 				<ButtonBlock className="pink-b ">Pink</ButtonBlock>
 				<ButtonBlock className="rose-b ">Rose</ButtonBlock>
-		
-	
+
+
+			</CardBlock>
+
+
+			<CardBlock
+				className="flex"
+			>
+				<AddIcon />
 			</CardBlock>
 
 

@@ -82,67 +82,36 @@ export default function PositionBage({ pos, onDelete, onEdit, artsDB }) {
 
 
 
+			<CardBlock
+				className="grid grid-cols-2 p-4 gap-2">
 
-			<table
-				className="  w-full lg:w-1/4"
-			>
+				<TextBlock
+					className="text-sky-300  text-3xl"
+				><BsBalloon /></TextBlock>
 
-				<thead
-					className=" max-w-full "
+				<TextBlock
+					className="text-sky-300  font-bold text-2xl  rounded"
 				>
-
-					<tr
-						className=""
-					>
-
-						<th
-							className="text-sky-300  text-3xl w-1/3"
-						><BsBalloon /></th>
+					{pos.quant}
+				</TextBlock>
 
 
-						<td
+				<TextBlock
+					className="text-amber-300  text-3xl "
+				><BsBoxSeam /></TextBlock>
 
-						>
-							<TextBlock
-								className="text-sky-300  font-bold text-2xl  rounded"
-							>
-								{pos.quant}
-							</TextBlock>
-						</td>
-
-
-					</tr>
+				<TextBlock
+					className="text-amber-300  font-bold text-2xl  rounded"
+				>
+					{pos.boxes}
+				</TextBlock>
 
 
-				</thead>
 
 
-				<tbody>
-
-					<tr
-						className="bg-teal-900/10"
-					>
-
-						<th
-							className="text-amber-300  text-3xl  w-1/3"
-						><BsBoxSeam /></th>
+			</CardBlock>
 
 
-						<td
-							className=""
-						>
-							<TextBlock
-								className="text-amber-300 font-bold text-2xl rounded"
-							>
-								{pos.boxes}
-							</TextBlock>
-						</td>
-
-					</tr>
-
-				</tbody>
-
-			</table>
 
 
 
