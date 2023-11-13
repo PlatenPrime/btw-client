@@ -8,7 +8,7 @@ const NavbarBTW = ({ onClickSide, onClickControl, mobileControl }) => {
 
 	return (
 		
-		<div className='h-16 w-full p-4 lg:hidden
+		<div className='h-16 w-full p-4 xl:hidden
 		flex justify-between items-center
 		bg-sky-900/20 text-white' >
 

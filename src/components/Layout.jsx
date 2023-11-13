@@ -43,10 +43,10 @@ const Layout = ({ children }) => {
 
 
 
-			<div className='flex h-full w-full justify-center'>
+			<div className='flex h-fit w-full justify-center'>
 
 
-				<div className='w-60  xl:w-72  hidden lg:flex'>
+				<div className='w-60  xl:w-72  hidden xl:flex'>
 
 					<SidebarBTW />
 

@@ -5,7 +5,7 @@ import { Link, NavLink } from "react-router-dom";
 import { checkIsAuth, logout } from '../../../redux/features/auth/authSlice';
 import { toast } from 'react-toastify';
 import { ButtonBlock, InputBlock, TextBlock, CardBlock } from "../../index";
-import { FcBinoculars } from 'react-icons/fc';
+import { FcBinoculars, FcDeployment, FcLibrary, FcOrganization, FcPackage } from 'react-icons/fc';
 
 const SidebarBTW = () => {
 
@@ -15,6 +15,9 @@ const SidebarBTW = () => {
 		color: "white",
 		padding: "12px",
 		width: "100%",
+		display: "flex",
+		justifyContent: "start",
+		
 	}
 
 
@@ -36,13 +39,11 @@ const SidebarBTW = () => {
 
 	return (
 
-		<CardBlock className='hidden  min-h-screen lg:min-w-fit  lg:w-40 xl:w-56
-		lg:flex flex-col justify-start items-stratch text-center 
+		<CardBlock className='hidden  min-h-screen h-full lg:min-w-fit   xl:w-56
+		xl:flex flex-col justify-start items-stratch text-center 
 shadow-inner shadow-white
 		sticky top-0 left-0
-
-		bg-white bg-opacity-0
-
+		bg-white/5
 p-4
 		space-y-10
 
@@ -63,7 +64,7 @@ p-4
 			<CardBlock className='space-y-4' >
 
 
-				<TextBlock className="border border-orange-500 hover:bg-orange-500/90 rounded" >
+				<TextBlock className="border border-orange-500 hover:bg-orange-500/90 rounded justify-start w-full" >
 					<NavLink
 						to={"stocks"}
 						style={({ isActive }) => isActive ? {
@@ -76,9 +77,10 @@ p-4
 					>
 
 						<TextBlock
-							className="flex"
+							className="flex text-2xl space-x-1"
 						>
-							Запаси
+							<FcLibrary />
+							<TextBlock>Запаси</TextBlock>
 						</TextBlock>
 
 					</NavLink>
@@ -95,7 +97,13 @@ p-4
 							background: "rgb(14 165 233 )",
 						} : inActiveStyles}
 					>
-						Артикули
+						<TextBlock
+							className="flex text-2xl space-x-1"
+						>
+							<FcOrganization />
+							<TextBlock>Артикули</TextBlock>
+						</TextBlock>
+
 					</NavLink>
 				</TextBlock>
 
@@ -109,7 +117,15 @@ p-4
 							background: "rgb(234 179 8 )",
 						} : inActiveStyles}
 					>
-						Запити
+						<TextBlock
+							className="flex text-2xl space-x-1"
+						>
+							<FcDeployment />
+							<TextBlock>Запити</TextBlock>
+						</TextBlock>
+
+
+
 					</NavLink>
 				</TextBlock>
 
@@ -147,9 +163,9 @@ p-4
 						} : inActiveStyles}
 					>
 						<TextBlock
-							className="flex text-2xl"
+							className="flex text-2xl space-x-1"
 						>
-							<FcBinoculars /> Конкуренти
+							<FcBinoculars /> <TextBlock>Конкуренти</TextBlock>
 						</TextBlock>
 
 					</NavLink>
