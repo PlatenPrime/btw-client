@@ -87,7 +87,7 @@ export default function ArtsPage() {
 						<Link
 							to="/arts/updating"
 						>
-							Оновлення артикулів
+							Оновлення даних
 						</Link>
 					</ButtonBlock>
 
