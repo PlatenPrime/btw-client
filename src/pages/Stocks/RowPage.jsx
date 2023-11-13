@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 
 import { useNavigate, useParams } from 'react-router-dom';
 
-import { ButtonBlock, CardBlock, HeaderBlock, ModalConfirm, ModalCreate, ModalEditOneValue, PageBTW, TextBlock, Spinner } from '../../components';
+import { ButtonBlock, CardBlock, HeaderBlock, ModalConfirm, ModalCreate, ModalEditOneValue, PageBTW, TextBlock, Spinner, ButtonGroup } from '../../components';
 import { AddIcon, DeleteIcon, RenameIcon } from '../../components/UI/Icons/';
 
 import { toast } from 'react-toastify';
@@ -160,8 +160,8 @@ export default function RowPage() {
 			>
 
 
-				<CardBlock
-					className="flex flex-wrap justify-start p-2 space-x-2"
+				<ButtonGroup
+
 				>
 					<ButtonBlock
 						className="emerald-b flex"
@@ -189,11 +189,7 @@ export default function RowPage() {
 
 					</ButtonBlock>
 
-
-
-
-
-				</CardBlock>
+				</ButtonGroup>
 
 
 				{showModalCreatePallet && <ModalCreate

@@ -17,6 +17,7 @@ export { default as ModalWrapper } from "./UI/Modal/ModalWrapper"
 export { default as Spinner } from "./UI/Spinner/Spinner";
 export { default as ImageArt } from "./UI/Image/ImageArt";
 export { default as Breadcrumbs } from "./UI/Breadcrumbs/Breadcrumbs";
+export { default as ButtonGroup } from "./UI/ButtonGroup";
 
 
 

@@ -136,6 +136,7 @@ table {
 	@apply
 	flex justify-center
 	w-full p-4
+	text-3xl
 	rounded-md
  text-white
 	transition ease-in-out duration-300		

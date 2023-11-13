@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useNavigate, useParams } from 'react-router-dom';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 import usePalletStore from './stores/palletsStore';
 import usePosesStore from './stores/posesStore';
 import { useRowStore } from './stores/rowsStore';
@@ -346,25 +346,36 @@ export default function PalletPage() {
 		<PageBTW>
 
 			<HeaderBlock
-				className=" border border-amber-500 "
+				className="border border-amber-500 shadow-md shadow-amber-500 "
 
 			>
+
 
 				<CardBlock
 					className="w-full grid grid-cols-1 sm:grid-cols-3"
 				>
-					<CardBlock
-						className="flex items-center justify-start"
+
+					<Link
+						to={`/rows/${pallet?.row}`}
+						className="flex items-center justify-start text-xl "
 					>
-						<BackIcon />
-						<Breadcrumbs paths={breadcrumbPaths} />
-					</CardBlock>
+
+						<TextBlock
+							className="hover:bg-amber-500/25 rounded p-1 border"
+						>
+							<BackIcon />
+							{`Ряд ${row?.title ? row?.title : ""}`}
+						</TextBlock>
+					</Link>
+
 
 					<TextBlock>{title}</TextBlock>
 
 
 
 				</CardBlock>
+
+
 			</HeaderBlock>
 
 
@@ -534,7 +545,7 @@ export default function PalletPage() {
 					className="flex justify-center items-center "
 				>
 					<ButtonBlock
-						className="teal-b  p-4 flex  border-dashed"
+						className="teal-b  p-4 flex  border-dashed w-full"
 						onClick={() => { setShowModalCreatePos(true); }}
 					>
 						<TextBlock className="text-2xl"><AddIcon /></TextBlock>

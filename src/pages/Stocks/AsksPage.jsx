@@ -3,6 +3,7 @@ import { ButtonBlock, CardBlock, HeaderBlock, ImageArt, InputBlock, ModalWrapper
 import useAskStore from './stores/asksStore'
 import { useArtContext } from '../../ArtContext';
 import { Link } from 'react-router-dom';
+import { AddIcon } from '../../components/UI/Icons';
 
 
 
@@ -210,9 +211,10 @@ export default function AsksPage() {
 						className="p-1 flex"
 					>
 						<ButtonBlock
-							className="yellow-b p-4 mx-auto"
+							className="yellow-b text-xl  p-4 flex  border-dashed w-full"
 							onClick={() => setShowModalCreateAsk(true)}
 						>
+							<AddIcon />
 							Створити запит
 						</ButtonBlock>
 					</CardBlock>
@@ -243,7 +245,7 @@ export default function AsksPage() {
 								<TextBlock
 									className=""
 								>
-									
+
 									{artsDB?.find((art) => ask?.artikul === art?.artikul)?.nameukr}
 								</TextBlock>
 

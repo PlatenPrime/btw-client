@@ -1,9 +1,10 @@
 import React, { useState } from 'react'
-import { ButtonBlock, CardBlock, HeaderBlock, PageBTW, TextBlock } from '../../components'
+import { ButtonBlock, CardBlock, HeaderBlock, PageBTW, TextBlock, ButtonGroup } from '../../components'
 import { RowList } from './RowList'
 import { useRowStore } from './stores/rowsStore';
 import ModalCreate from '../../components/UI/Modal/ModalCreate';
-import {AddIcon} from '../../components/UI/Icons/';
+import { AddIcon } from '../../components/UI/Icons/';
+
 
 export default function StocksPage() {
 
@@ -39,7 +40,9 @@ export default function StocksPage() {
 	return (
 		<PageBTW>
 
-			<HeaderBlock className="bg-slate-500/20  border-slate-500" >
+			<HeaderBlock
+				className="border border-slate-500 bg-slate-500/10 shadow-2xl shadow-slate-500/50"
+			>
 				Запаси
 			</HeaderBlock>
 
@@ -48,7 +51,7 @@ export default function StocksPage() {
 				className="min-h-screen"
 			>
 
-				<CardBlock
+				<ButtonGroup
 					className="flex justify-start p-2"
 				>
 
@@ -57,11 +60,11 @@ export default function StocksPage() {
 						className="emerald-b flex items-center justify-center "
 					>
 
-						<TextBlock className = "text-2xl"><AddIcon /></TextBlock>
+						<TextBlock className="text-2xl"><AddIcon /></TextBlock>
 						<TextBlock>Створити новий ряд</TextBlock>
 					</ButtonBlock>
 
-				</CardBlock>
+				</ButtonGroup>
 
 				{showModalCreateRow && <ModalCreate
 					title="Створення нового ряду"

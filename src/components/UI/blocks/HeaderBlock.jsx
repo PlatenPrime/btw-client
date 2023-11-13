@@ -14,7 +14,7 @@ const HeaderBlock = ({ children, className }) => {
 	return (
 
 		<div className={style} >
-			<div className='text-3xl w-full'>{children} </div>
+			{children}
 		</div>
 	);
 };
