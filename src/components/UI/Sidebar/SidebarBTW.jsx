@@ -5,6 +5,7 @@ import { Link, NavLink } from "react-router-dom";
 import { checkIsAuth, logout } from '../../../redux/features/auth/authSlice';
 import { toast } from 'react-toastify';
 import { ButtonBlock, InputBlock, TextBlock, CardBlock } from "../../index";
+import { FcBinoculars } from 'react-icons/fc';
 
 const SidebarBTW = () => {
 
@@ -37,13 +38,13 @@ const SidebarBTW = () => {
 
 		<CardBlock className='hidden  min-h-screen lg:min-w-fit  lg:w-40 xl:w-56
 		lg:flex flex-col justify-start items-stratch text-center 
-
+shadow-inner shadow-white
 		sticky top-0 left-0
 
 		bg-white bg-opacity-0
 
 p-4
-		space-y-2
+		space-y-10
 
 		 '>
 
@@ -59,7 +60,7 @@ p-4
 			</NavLink>
 
 
-			<CardBlock className='space-y-1' >
+			<CardBlock className='space-y-4' >
 
 
 				<TextBlock className="border border-orange-500 hover:bg-orange-500/90 rounded" >
@@ -73,7 +74,13 @@ p-4
 							background: "rgb(249 115 22)",
 						} : inActiveStyles}
 					>
-						Запаси
+
+						<TextBlock
+							className="flex"
+						>
+							Запаси
+						</TextBlock>
+
 					</NavLink>
 				</TextBlock>
 
@@ -139,7 +146,12 @@ p-4
 							background: "rgb(139 92 246)",
 						} : inActiveStyles}
 					>
-						Конкуренти
+						<TextBlock
+							className="flex text-2xl"
+						>
+							<FcBinoculars /> Конкуренти
+						</TextBlock>
+
 					</NavLink>
 				</TextBlock>
 

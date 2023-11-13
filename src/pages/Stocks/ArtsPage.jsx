@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { ButtonBlock, CardBlock, HeaderBlock, InputBlock, PageBTW, Spinner, TextBlock } from '../../components'
+import { ButtonBlock, ButtonGroup, CardBlock, HeaderBlock, InputBlock, PageBTW, Spinner, TextBlock } from '../../components'
 import ArtBage from './ArtBage';
 import InfiniteScroll from 'react-infinite-scroll-component';
 import { useArtContext } from '../../ArtContext';
@@ -7,6 +7,7 @@ import { toast } from 'react-toastify';
 import { AiOutlineArrowLeft, AiOutlineArrowRight, AiOutlineDoubleLeft, AiOutlineDoubleRight, AiOutlineSearch } from "react-icons/ai";
 import useFetchRemains from '../../hooks/useFetchRemains';
 import { SearchIcon } from '../../components/UI/Icons';
+import { Link } from 'react-router-dom';
 
 export default function ArtsPage() {
 
@@ -76,18 +77,21 @@ export default function ArtsPage() {
 				className="p-1 space-y-2 min-h-screen"
 			>
 
-				<CardBlock
-					className="p-1 flex items-center justify-start flex-wrap space-x-1 "
+				<ButtonGroup
 				>
 
 
 					<ButtonBlock
-						className="orange-b text-base hidden xl:flex"
+						className="emerald-b "
 					>
-						Встановлення зон
+						<Link
+							to="/arts/updating"
+						>
+							Оновлення артикулів
+						</Link>
 					</ButtonBlock>
 
-				</CardBlock>
+				</ButtonGroup>
 
 
 

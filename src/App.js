@@ -32,6 +32,7 @@ import StocksPage from "./pages/Stocks/StocksPage";
 import RowPage from "./pages/Stocks/RowPage";
 import AsksPage from "./pages/Stocks/AsksPage";
 import AskPage from "./pages/Stocks/AskPage";
+import ArtsUpdatingPage from "./pages/Stocks/ArtsUpdatingPage";
 
 
 
@@ -76,6 +77,7 @@ function App() {
 
 
 					<Route path="arts" element={<ArtsPage />} />
+					<Route path="arts/updating" element={<ArtsUpdatingPage />} />
 					<Route path="arts/:id" element={<ArtPage />} />
 
 
