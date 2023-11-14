@@ -82,12 +82,7 @@ const MainPage = () => {
 			</CardBlock>
 
 
-			<CardBlock
-				className="flex"
-			>
-				<AddIcon />
-			</CardBlock>
-
+		
 
 
 		</PageBTW>
