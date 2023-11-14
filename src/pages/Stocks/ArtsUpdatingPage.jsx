@@ -26,6 +26,7 @@ export default function ArtsUpdatingPage() {
 	const [arts, setArts] = useState(null);
 	const [artTest, setArtTest] = useState(null);
 	const [currentArt, setCurrentArt] = useState(0);
+	const [progress, setProgress] = useState(0)
 	const [isUpdating, setIsUpdating] = useState(false)
 
 
@@ -59,7 +60,8 @@ export default function ArtsUpdatingPage() {
 
 		try {
 
-			// await axios.post(`arts/update`, { ...art });
+			await axios.post(`arts/update`, { ...art });
+
 
 		} catch (error) {
 			console.log(error)
@@ -71,23 +73,33 @@ export default function ArtsUpdatingPage() {
 	async function handleUploadingArts() {
 
 
-		if (!arts) return
+		try {
+
+			if (!arts) return
 
 
-		let interval = setInterval(() => {
-			setCurrentArt(currentArt => {
-				if (currentArt < arts?.length) {
-					setIsUpdating(true)
-					setArtTest(arts[currentArt])
-					createOrUpdateArt(arts[currentArt])
-					return currentArt + 1;
-				} else {
-					setIsUpdating(false)
-					clearInterval(interval);
-					return currentArt;
-				}
-			});
-		}, 10);
+			let interval = setInterval(() => {
+				setCurrentArt(currentArt => {
+					if (currentArt < arts?.length) {
+						setIsUpdating(true)
+						setArtTest(arts[currentArt])
+						createOrUpdateArt(arts[currentArt])
+						return currentArt + 1;
+					} else {
+						setIsUpdating(false)
+						clearInterval(interval);
+						return currentArt;
+					}
+				});
+			}, 10);
+
+		} catch (error) {
+			console.log(error)
+		} finally {
+			localStorage.removeItem('artsData');
+		}
+
+
 
 
 	}
@@ -112,7 +124,7 @@ export default function ArtsUpdatingPage() {
 
 
 			<CardBlock
-				className="p-1 space-y-2 min-h-screen"
+				className="p-1  min-h-screen space-y-4"
 			>
 
 				<ButtonGroup>
@@ -132,40 +144,73 @@ export default function ArtsUpdatingPage() {
 				<CardBlock>
 
 
-					<CardBlock className=" flex justify-center items-center space-x-2 p-6 border border-green-500 rounded bg-green-500/10 ">
+					<CardBlock className=" flex flex-col justify-center items-center space-y-2  p-6 border border-green-500 rounded bg-green-500/10 ">
 
-						<InputBlock
-							className="p-2"
-							type="file"
-							name="upload"
-							id="upload"
-							onChange={handleChangeExcelInput}
-						/>
+						{arts && <TextBlock>
+							Файл містить {arts?.length} артикулів для оновлення
+						</TextBlock>}
 
-						<ButtonBlock
-							className="green-b"
-							disabled={!arts}
-							onClick={handleUploadingArts}
+
+						<CardBlock
+							className="flex space-x-2"
 						>
 
-							Вивантажити дані
-						</ButtonBlock>
+							<InputBlock
+								className="p-2"
+								type="file"
+								name="upload"
+								id="upload"
+								onChange={handleChangeExcelInput}
+							/>
+
+							<ButtonBlock
+								className="green-b"
+								disabled={!arts}
+								onClick={handleUploadingArts}
+							>
+
+								Вивантажити дані
+							</ButtonBlock>
+						</CardBlock>
 
 
 					</CardBlock>
 
 
 
-					<CardBlock>
-						<TextBlock>Тестові значення</TextBlock>
-						<TextBlock>Номер: {currentArt}</TextBlock>
-						<TextBlock>Назва: {artTest?.name}</TextBlock>
-						<TextBlock>Артикул: {artTest?.title}</TextBlock>
-						<TextBlock>Зона: {artTest?.zone}</TextBlock>
-					</CardBlock>
+					{isUpdating &&
+						<CardBlock>
+
+
+							<div className="relative pt-1 px-4">
+
+
+								<div className="flex px-4 mb-2 items-center justify-between">
+
+
+									<span className="text-sm font-semibold inline-block text-green-100">
+										{((currentArt / arts?.length) * 100).toFixed(2)}%
+									</span>
+									<span>{arts[currentArt]?.nameukr}</span>
+
+									<span>{currentArt} / {arts?.length}</span>
 
 
 
+								</div>
+
+
+								<div className="flex h-2 mb-4 overflow-hidden text-xs bg-violet-200">
+									<div
+										style={{ width: `${(currentArt / arts?.length) * 100}%` }}
+										className="flex flex-col justify-center text-center text-white bg-green-500 shadow-none whitespace-nowrap"
+									></div>
+								</div>
+							</div>
+
+						</CardBlock>
+
+					}
 
 
 				</CardBlock>
