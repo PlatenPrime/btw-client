@@ -5,6 +5,7 @@ import axios from '../../utils/axios';
 import { toast } from 'react-toastify';
 import { useArtContext } from '../../ArtContext';
 import { excelToJSONArts } from '../../utils/importExcel';
+import { BackIcon } from "../../components/UI/Icons"
 
 
 
@@ -120,7 +121,9 @@ export default function ArtsUpdatingPage() {
 					>
 						<Link
 							to="/arts"
+							className='flex'
 						>
+							<BackIcon />
 							Артикули
 						</Link>
 					</ButtonBlock>
@@ -129,7 +132,7 @@ export default function ArtsUpdatingPage() {
 				<CardBlock>
 
 
-					<CardBlock className=" flex justify-center items-center ">
+					<CardBlock className=" flex justify-center items-center space-x-2 p-6 border border-green-500 rounded bg-green-500/10 ">
 
 						<InputBlock
 							className="p-2"
@@ -139,17 +142,18 @@ export default function ArtsUpdatingPage() {
 							onChange={handleChangeExcelInput}
 						/>
 
-					</CardBlock>
-
-					<CardBlock>
 						<ButtonBlock
 							className="green-b"
 							disabled={!arts}
 							onClick={handleUploadingArts}
 						>
+
 							Вивантажити дані
 						</ButtonBlock>
+
+
 					</CardBlock>
+
 
 
 					<CardBlock>
