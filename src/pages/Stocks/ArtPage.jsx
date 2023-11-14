@@ -10,6 +10,7 @@ import useFetchRemains from "../../hooks/useFetchRemains";
 import { VscLocation } from "react-icons/vsc";
 import { FaWarehouse } from "react-icons/fa6";
 import { getArtDataBtrade } from "../../utils/getArtDataBtrade";
+import { PalletIcon } from "../../components/UI/Icons";
 
 
 export default function ArtPage() {
@@ -257,7 +258,7 @@ export default function ArtPage() {
 								{posesWithArtikul?.map((pos) => <Link
 									className='
 			flex flex-col lg:flex-row justify-between
-				  p-1 rounded text-2xl space-y-2 lg:space-y-0
+				  p-4 rounded text-2xl space-y-2 lg:space-y-0
 				border-2 border-amber-500 
 				 bg-transparent  hover:bg-amber-500/20
 				text-amber-100 hover:text-white
@@ -268,7 +269,12 @@ export default function ArtPage() {
 								>
 									<TextBlock
 										className="lg:w-1/2 flex  lg:justify-start"
-									> Палета: {pallets?.find((pallet) => pallet._id === pos?.pallet)?.title}</TextBlock>
+									>
+										<PalletIcon />
+										<TextBlock>
+											{pallets?.find((pallet) => pallet._id === pos?.pallet)?.title}
+										</TextBlock>
+									</TextBlock>
 
 
 

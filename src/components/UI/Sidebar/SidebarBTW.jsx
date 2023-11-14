@@ -41,9 +41,9 @@ const SidebarBTW = () => {
 
 		<CardBlock className='hidden  min-h-screen h-full lg:min-w-fit   xl:w-56
 		xl:flex flex-col justify-start items-stratch text-center 
-shadow-inner shadow-white
+shadow-inner shadow-sky-500/50
 		sticky top-0 left-0
-		bg-white/5
+		bg-sky-500/10
 p-4
 		space-y-10
 
@@ -129,26 +129,6 @@ p-4
 					</NavLink>
 				</TextBlock>
 
-
-
-
-
-
-
-
-				<TextBlock className="border border-cyan-500 hover:bg-cyan-500/90 rounded">
-					<NavLink
-						to={"zones"}
-						style={({ isActive }) => isActive ? {
-							color: "white",
-							padding: "12px",
-							width: "100%",
-							background: "rgb(6 182 212)",
-						} : inActiveStyles}
-					>
-						Зони
-					</NavLink>
-				</TextBlock>
 
 
 

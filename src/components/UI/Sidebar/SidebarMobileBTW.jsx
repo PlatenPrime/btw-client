@@ -126,26 +126,6 @@ const SidebarMobileBTW = ({ onClose }) => {
 
 
 
-
-
-
-
-
-				<TextBlock className="w-full text-center border border-cyan-500 hover:bg-cyan-500/90 rounded">
-					<NavLink
-						onClick={onClose}
-						to={"zones"}
-						style={({ isActive }) => isActive ? {
-							color: "white",
-							padding: "12px",
-							width: "100%",
-							background: "rgb(6 182 212)",
-						} : inActiveStyles}
-					>
-						Зони
-					</NavLink>
-				</TextBlock>
-
 				<TextBlock className="w-full text-center border border-violet-500 hover:bg-violet-500/90 rounded " >
 					<NavLink
 						onClick={onClose}

@@ -22,7 +22,7 @@ import { checkIsAuth, getMe } from "./redux/features/auth/authSlice";
 import { useEffect, useLayoutEffect } from "react";
 import ArtPage from "./pages/Stocks/ArtPage";
 import ArtsPage from "./pages/Stocks/ArtsPage";
-import ArtsZonesLoadingPage from "./pages/Art/ArtsZonesLoadingPage";
+
 import CompsPage from "./pages/Competitors/pages/CompsPage";
 import CompsEditPage from "./pages/Competitors/pages/CompsEditPage";
 import CompsListPage from "./pages/Competitors/pages/CompsListPage";
@@ -84,9 +84,6 @@ function App() {
 					<Route path="asks" element={<AsksPage />} />
 					<Route path="asks/:id" element={<AskPage />} />
 
-
-
-					<Route path="zones" element={<ArtsZonesLoadingPage />} />
 
 
 					<Route path="comps" element={<CompsPage />} >
