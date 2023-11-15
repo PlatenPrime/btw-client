@@ -523,7 +523,7 @@ export default function AskPage() {
 
 
 					<CardBlock
-						className="flex justify-center w-full space-y-2"
+						className="flex justify-center w-full space-y-4"
 					>
 
 						{isLoadingPoses ?
@@ -534,38 +534,42 @@ export default function AskPage() {
 
 
 								<CardBlock
-									className="flex flex-col space-y-2 w-full"
+									className="flex flex-col space-y-8 w-full"
 								>
 
 									{posesWithArtikul?.map((pos) => <CardBlock
 										className='
-	grid grid-cols-1 lg:grid-cols-3 space-y-2 lg:space-y-0
-p-2 border
+	grid grid-cols-1 lg:grid-cols-3 space-y-2 gap-8 lg:space-y-0
+p-4 border border-yellow-300
 justify-center
-
+ hover:shadow-md hover:shadow-yellow-300
 			transition ease-in-out duration-300
 			'
 
 									>
 
+
+
 										<CardBlock
-											className="flex items-center justify-self-center   lg:justify-self-start  font-bold "
+											className=" flex justify-center  lg:justify-start  font-bold bg-yellow-300/90 "
 										>
 
 											<TextBlock
-												className="text-yellow-300 text-3xl"
+												className="text-black text-5xl"
 											>
 												<LiaPalletSolid />
 											</TextBlock>
 
 
 											<TextBlock
-												className="lg:min-w-1/3 text-4xl lg:text-2xl justify-self-center  lg:justify-items-start items-center text-yellow-300"
+												className="grid place-content-center text-black text-4xl"
 											>
 												{pallets?.find((pallet) => pallet._id === pos?.pallet)?.title}
 											</TextBlock>
 
 										</CardBlock>
+
+
 
 
 										<CardBlock
@@ -580,7 +584,7 @@ justify-center
 													<BsBoxSeam />
 												</TextBlock>
 												<TextBlock
-													className="text-amber-300 font-bold text-2xl rounded"
+													className="text-amber-300 font-bold text-3xl "
 												>
 													{pos?.boxes}
 												</TextBlock>
@@ -595,23 +599,22 @@ justify-center
 													<BsBalloon />
 												</TextBlock>
 												<TextBlock
-													className="text-sky-300  font-bold text-2xl  rounded"
+													className="text-sky-300  font-bold text-3xl "
 												>
 
 													{pos?.quant}
 												</TextBlock>
 											</CardBlock>
 
-
-
 										</CardBlock>
 
-										<CardBlock
-											className="justify-self-center lg:justify-self-end"
-										>
 
+
+										<CardBlock
+											className="justify-self-center w-full "
+										>
 											<ButtonBlock
-												className=" blue-b text-3xl "
+												className=" blue-b flex text-3xl w-full "
 												onClick={() => {
 													setShowModalAsk(true);
 													setSelectedPos(pos)
@@ -624,14 +627,11 @@ justify-center
 												}
 											>
 												<ImMoveDown />
+												<TextBlock>Зняти</TextBlock>
 											</ButtonBlock>
-
-
 										</CardBlock>
-
-
-
 									</CardBlock>
+
 									)}
 
 
@@ -648,9 +648,19 @@ justify-center
 
 						}
 
-
-
 					</CardBlock>
+
+
+
+
+					<CardBlock>
+						<TextBlock>Рендер масиву записів дій з палетами</TextBlock>
+					</CardBlock>
+
+
+
+
+
 
 					<CardBlock
 						className="flex justify-center"
@@ -658,7 +668,7 @@ justify-center
 
 
 						<ButtonBlock
-							className="green-b"
+							className="green-b text-3xl"
 						>
 							Підтвердити виконання
 						</ButtonBlock>
