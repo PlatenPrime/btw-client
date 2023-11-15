@@ -127,12 +127,16 @@ export default function AsksPage() {
 						className="flex flex-col space-y-8 min-w-fit max-w-lg "
 					>
 
-						<CardBlock className="flex flex-col items-center space-y-2">
-							<ImageArt
-								size={100}
-								artikul={newAskArtikul?.length === 9 ? newAskArtikul : "1102-3092"}
-							/>
-							<TextBlock className="text-xl">
+						<CardBlock className="grid grid-cols-1 gap-1">
+							<CardBlock
+								className="grid justify-self-center"
+							>
+								<ImageArt
+									size={150}
+									artikul={newAskArtikul?.length === 9 ? newAskArtikul : "1102-3092"}
+								/>
+							</CardBlock>
+							<TextBlock className="text-xl grid justify-self-center italic">
 								{artsDB?.find((art) => art.artikul === newAskArtikul)?.nameukr}
 							</TextBlock>
 						</CardBlock>
@@ -141,8 +145,8 @@ export default function AsksPage() {
 						<CardBlock className="space-y-2">
 
 
-							<CardBlock className="flex justify-between items-center space-x-4">
-								<label htmlFor="artikul">Артикул:</label>
+							<CardBlock className="grid grid-rows-2 ">
+								<label className="justify-self-center text-xl" htmlFor="artikul">Артикул:</label>
 								<InputBlock
 									type="text"
 									id="artikul"
@@ -157,8 +161,8 @@ export default function AsksPage() {
 
 
 
-							<CardBlock className="flex justify-between items-center space-x-4">
-								<label htmlFor="quant">Кількість:</label>
+							<CardBlock className="grid grid-rows-2 ">
+								<label className="justify-self-center text-xl" htmlFor="quant">Кількість:</label>
 								<InputBlock
 									type="number"
 									id="quant"
@@ -173,17 +177,18 @@ export default function AsksPage() {
 
 
 
-						<CardBlock className="flex justify-between">
+						<CardBlock className="grid grid-cols-2 space-x-2">
 							<ButtonBlock
 								type="button"
-								className="cancel-c"
+								className="red-b"
 								onClick={() => setShowModalCreateAsk(false)}
 							>
 								Скасувати
 							</ButtonBlock>
 							<ButtonBlock
+								disabled={!newAskArtikul}
 								type="submit"
-								className="create-c"
+								className="green-b"
 								onClick={handleCreateAsk}
 							>
 								Створити
@@ -229,39 +234,55 @@ export default function AsksPage() {
 							<Link
 								key={ask._id}
 								to={`/asks/${ask._id}`}
-								className=" grid overflow-auto grid-cols-4 border border-yellow-500 p-2 
+								className=" 
+								grid overflow-auto grid-cols-1 lg:grid-cols-2 
+								border border-yellow-500 p-2 
 								text-yellow-100 lg:text-2xl
 								hover:shadow-2xl hover:shadow-yellow-500 
 								hover:bg-yellow-500 transition ease-in-out duration-500
-								
-								
 								"
 							>
 
-								<ImageArt size={50} artikul={ask.artikul} />
+								<CardBlock
+									className="grid grid-cols-1 lg:grid-cols-2"
+								>
+									<CardBlock
+										className=" place-self-center bg-white "
+									>
+
+										<ImageArt size={100} artikul={ask.artikul} />
+									</CardBlock>
+
+									<TextBlock
+										className=" justify-center"
+									>
+
+										{artsDB?.find((art) => ask?.artikul === art?.artikul)?.nameukr}
+									</TextBlock>
+
+								</CardBlock>
 
 
 
-								<TextBlock
-									className=""
+
+
+								<CardBlock
+									className="grid grid-cols-1 lg:grid-cols-2"
 								>
 
-									{artsDB?.find((art) => ask?.artikul === art?.artikul)?.nameukr}
-								</TextBlock>
+									<TextBlock
+										className=""
+									>
+										{ask?.quant}
+									</TextBlock>
 
-								<TextBlock
-									className=""
-								>
-									{ask?.quant}
-								</TextBlock>
+									<TextBlock
+										className=""
+									>
+										{ask?.completed ? "Так" : "Ні"}
+									</TextBlock>
 
-								<TextBlock
-									className=""
-								>
-									{ask?.completed ? "Так" : "Ні"}
-								</TextBlock>
-
-
+								</CardBlock>
 
 
 							</Link>

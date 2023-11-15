@@ -150,9 +150,10 @@ table {
 	  p-1.5
 	  font-bold
 	  text-center
-	  text-white
+	  text-sky-100
 	  bg-sky-900 bg-opacity-20
-	  
+	  italic
+
 	  border-2 border-solid border-sky-600/50 focus:border-sky-600
 	  rounded-2xl
 	  transition ease-in-out duration-300
