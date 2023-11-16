@@ -37,6 +37,7 @@ export default function AskPage() {
 
 
 	const [ask, setAsk] = useState(null)
+	const [newAction, setNewAction] = useState("")
 	const [ostatok, setOstatok] = useState(null)
 	const [isLoadingPoses, setIsLoadingPoses] = useState(false)
 	const [isUpdatingPos, setIsUpdatingPos] = useState(false)
@@ -138,9 +139,13 @@ export default function AskPage() {
 
 			const updateData = {
 				boxes: finalValuePosBoxes,
-				quant: finalValuePosQuant
+				quant: finalValuePosQuant,
+				actions: [...ask.actions, newAction]
 
 			}
+
+
+			
 
 			const updatedPos = await updatePosWithArtikulById(selectedPos._id, updateData)
 			console.log(updatedPos)
@@ -654,7 +659,18 @@ justify-center
 
 
 					<CardBlock>
-						<TextBlock>Рендер масиву записів дій з палетами</TextBlock>
+						<TextBlock>
+
+							Рендер масиву записів дій з палетами
+						</TextBlock>
+						<CardBlock>
+							{ask?.actions?.map((action) => <TextBlock
+								className="border border-green-700"
+
+							>
+								{action}
+							</TextBlock>)}
+						</CardBlock>
 					</CardBlock>
 
 
