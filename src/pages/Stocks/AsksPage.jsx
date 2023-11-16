@@ -70,7 +70,7 @@ export default function AsksPage() {
 			const newAskData = {
 				artikul: newAskArtikul,
 				quant: newAskQuant,
-				completed: false
+				status: "new"
 			}
 
 			await createAsk(newAskData)

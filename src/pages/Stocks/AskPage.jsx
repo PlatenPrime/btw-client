@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { ButtonBlock, CardBlock, HeaderBlock, ImageArt, InputBlock, ModalWrapper, PageBTW, Spinner, TextBlock } from "../../components"
+import { ButtonBlock, ButtonGroup, CardBlock, HeaderBlock, ImageArt, InputBlock, ModalWrapper, PageBTW, Spinner, TextBlock } from "../../components"
 import { BsBalloon, BsBoxSeam } from "react-icons/bs";
 import { VscLocation } from "react-icons/vsc";
 import { FaWarehouse } from "react-icons/fa6";
@@ -26,6 +26,7 @@ export default function AskPage() {
 
 
 	const getAskById = useAskStore((state) => state.getAskById)
+	const updateAskById = useAskStore((state) => state.updateAskById)
 
 	const getPosesByArtikul = usePosesStore((state) => state.getPosesByArtikul);
 	const posesWithArtikul = usePosesStore((state) => state.posesWithArtikul);
@@ -44,6 +45,7 @@ export default function AskPage() {
 	const [isLoadingAsk, setIsLoadingAsk] = useState(false)
 
 	const [selectedPos, setSelectedPos] = useState(null)
+	const [selectedPosPalletTitle, setSelectedPosPalletTitle] = useState(null)
 	const [finalValuePosBoxes, setFinalValuePosBoxes] = useState(0)
 	const [finalValuePosQuant, setFinalValuePosQuant] = useState(0)
 	const [askValuePosBoxes, setAskValuePosBoxes] = useState(0)
@@ -56,6 +58,7 @@ export default function AskPage() {
 	const artikul = artsDB?.find((art) => art.artikul === ask?.artikul)
 	const title = artikul?.artikul
 
+	console.log(ask)
 
 	useEffect(() => {
 
@@ -137,18 +140,30 @@ export default function AskPage() {
 		try {
 			setIsUpdatingPos(true)
 
-			const updateData = {
+			const posUpdateData = {
 				boxes: finalValuePosBoxes,
 				quant: finalValuePosQuant,
-				actions: [...ask.actions, newAction]
 
 			}
 
+			const askUpdateData = {
+				...ask,
+				actions: [...ask?.actions, `
+				З палети ${selectedPosPalletTitle} було знято: кульок  ${askValuePosQuant}, 
+				коробок ${askValuePosBoxes}
+				`]
+			}
 
-			
+			console.log(askUpdateData);
 
-			const updatedPos = await updatePosWithArtikulById(selectedPos._id, updateData)
+			const updatedPos = await updatePosWithArtikulById(selectedPos._id, posUpdateData)
 			console.log(updatedPos)
+
+
+			const updatedAsk = await updateAskById(id, askUpdateData)
+			console.log(updatedAsk)
+			if (updatedAsk) setAsk(updatedAsk)
+
 
 
 
@@ -178,10 +193,24 @@ export default function AskPage() {
 
 
 
+			<ButtonGroup>
+				<ButtonBlock>
+					Видалити запит
+				</ButtonBlock>
+				<ButtonBlock>
+					Позначити виконаним
+				</ButtonBlock>
+				<ButtonBlock>
+					Позначити невиконаним
+				</ButtonBlock>
+			</ButtonGroup>
+
+
+
 
 			{isLoadingAsk ? <Spinner color="yellow" /> :
 				<CardBlock
-					className="w-full space-y-2"
+					className="w-full space-y-8p-4"
 				>
 
 
@@ -534,20 +563,18 @@ export default function AskPage() {
 						{isLoadingPoses ?
 							<Spinner color="rgb(234 179 8 )" />
 							:
-
 							posesWithArtikul.length > 0 ?
-
-
 								<CardBlock
-									className="flex flex-col space-y-8 w-full"
+									className="flex flex-col space-y-4 w-full"
 								>
 
 									{posesWithArtikul?.map((pos) => <CardBlock
 										className='
-	grid grid-cols-1 lg:grid-cols-3 space-y-2 gap-8 lg:space-y-0
-p-4 border border-yellow-300
+	grid grid-cols-1 lg:grid-cols-3 space-y-2  lg:space-y-0
+p-4 lg:gap-8
 justify-center
- hover:shadow-md hover:shadow-yellow-300
+bg-sky-900/20 hover:bg-sky-900/40
+
 			transition ease-in-out duration-300
 			'
 
@@ -578,7 +605,7 @@ justify-center
 
 
 										<CardBlock
-											className="  grid grid-cols-2  lg:justify-items-start "
+											className="  grid grid-cols-2  lg:justify-items-start border p-1 bg-slate-900 "
 										>
 
 											<CardBlock
@@ -616,10 +643,10 @@ justify-center
 
 
 										<CardBlock
-											className="justify-self-center w-full "
+											className="justify-self-end w-full lg:w-fit "
 										>
 											<ButtonBlock
-												className=" blue-b flex text-3xl w-full "
+												className=" blue-b flex text-3xl w-full lg:w-fit  "
 												onClick={() => {
 													setShowModalAsk(true);
 													setSelectedPos(pos)
@@ -627,12 +654,15 @@ justify-center
 													setFinalValuePosQuant(pos?.quant)
 													setAskValuePosBoxes(0);
 													setAskValuePosQuant(0);
+													setSelectedPosPalletTitle(pallets?.find((pallet) => pallet._id === pos?.pallet)?.title)
 												}
 
 												}
 											>
 												<ImMoveDown />
-												<TextBlock>Зняти</TextBlock>
+												<TextBlock
+													className="text-2xl"
+												>Зняти</TextBlock>
 											</ButtonBlock>
 										</CardBlock>
 									</CardBlock>
@@ -659,13 +689,16 @@ justify-center
 
 
 					<CardBlock>
-						<TextBlock>
-
-							Рендер масиву записів дій з палетами
+						<TextBlock
+							className="text-3xl"
+						>
+							Історія змін
 						</TextBlock>
-						<CardBlock>
+						<CardBlock
+							className="space-y-2"
+						>
 							{ask?.actions?.map((action) => <TextBlock
-								className="border border-green-700"
+								className="border border-green-700 p-2 text-green-200 rounded"
 
 							>
 								{action}
@@ -676,27 +709,9 @@ justify-center
 
 
 
-
-
-					<CardBlock
-						className="flex justify-center"
-					>
-
-
-						<ButtonBlock
-							className="green-b text-3xl"
-						>
-							Підтвердити виконання
-						</ButtonBlock>
-
-
-					</CardBlock>
-
-
-
 				</CardBlock>}
 
 
-		</PageBTW>
+		</PageBTW >
 	)
 }
