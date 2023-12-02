@@ -100,8 +100,6 @@ export default function ArtPage() {
 			try {
 
 				const pallets = await getAllPallets()
-				console.log(pallets)
-
 
 			} catch (error) {
 				console.log(error)

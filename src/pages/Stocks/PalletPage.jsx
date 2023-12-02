@@ -96,7 +96,7 @@ export default function PalletPage() {
 			const fetchedPallet = await getPalletById(id);
 			console.log(fetchedPallet)
 
-			if (fetchPallet) {
+			if (fetchedPallet) {
 				const fetchedRow = await getRowById(fetchedPallet?.row)
 				setRow(fetchedRow)
 			}
@@ -201,6 +201,8 @@ export default function PalletPage() {
 
 	}
 
+
+	
 
 	async function handleRenamePalletById(newTitle) {
 		try {
