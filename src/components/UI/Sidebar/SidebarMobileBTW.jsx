@@ -1,8 +1,6 @@
 
 import React from 'react';
-import { useDispatch, useSelector } from 'react-redux';
 import { Link, NavLink } from "react-router-dom";
-import { checkIsAuth, logout } from '../../../redux/features/auth/authSlice';
 import { toast } from 'react-toastify';
 import { ButtonBlock, InputBlock, TextBlock, CardBlock } from "../../index";
 
@@ -20,19 +18,6 @@ const SidebarMobileBTW = ({ onClose }) => {
 		padding: "12px",
 		width: "100%",
 	}
-
-
-
-	const isAuth = useSelector(checkIsAuth);
-	const dispatch = useDispatch();
-
-
-	const logoutHandler = () => {
-		dispatch(logout())
-		window.localStorage.removeItem('token')
-		toast('Вы вышли из системы')
-	}
-
 
 
 
@@ -143,13 +128,13 @@ const SidebarMobileBTW = ({ onClose }) => {
 
 
 
-				{isAuth ?
+				{/* {isAuth ?
 					<ButtonBlock
 						className="cancel-c w-full text-center"
 						onClick={logoutHandler} >Вийти
 					</ButtonBlock> :
 					<Link to={"/login"}>Вхід</Link>
-				}
+				} */}
 
 			</CardBlock>
 

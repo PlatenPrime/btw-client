@@ -1,8 +1,7 @@
 
 import React from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+
 import { Link, NavLink } from "react-router-dom";
-import { checkIsAuth, logout } from '../../../redux/features/auth/authSlice';
 import { toast } from 'react-toastify';
 import { ButtonBlock, InputBlock, TextBlock, CardBlock } from "../../index";
 import { FcBinoculars, FcDeployment, FcLibrary, FcOrganization, FcPackage } from 'react-icons/fc';
@@ -21,18 +20,6 @@ const SidebarBTW = () => {
 	}
 
 
-
-
-
-	const isAuth = useSelector(checkIsAuth);
-	const dispatch = useDispatch();
-
-
-	const logoutHandler = () => {
-		dispatch(logout())
-		window.localStorage.removeItem('token')
-		toast('Вы вышли из системы')
-	}
 
 
 
@@ -155,7 +142,7 @@ p-4
 			</CardBlock>
 
 
-
+{/* 
 			{
 				isAuth ?
 					<ButtonBlock
@@ -171,7 +158,7 @@ p-4
 					</ButtonBlock>
 
 
-			}
+			} */}
 
 
 		</CardBlock >
