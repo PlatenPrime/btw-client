@@ -1,13 +1,23 @@
 
-import React from 'react';
+import React, { useState } from 'react';
 
 import { Link, NavLink } from "react-router-dom";
 import { toast } from 'react-toastify';
 import { ButtonBlock, InputBlock, TextBlock, CardBlock } from "../../index";
 import { FcBinoculars, FcDeployment, FcLibrary, FcOrganization, FcPackage } from 'react-icons/fc';
+import useAuthStore from '../../../pages/Auth/authStore';
+
+
+
 
 const SidebarBTW = () => {
 
+
+
+	const { user, logout } = useAuthStore()
+
+
+	const [isLogouting, setIsLogouting] = useState(false);
 
 
 	const inActiveStyles = {
@@ -16,10 +26,24 @@ const SidebarBTW = () => {
 		width: "100%",
 		display: "flex",
 		justifyContent: "start",
-		
+
 	}
 
+	const handleLogout = async () => {
+		try {
+			setIsLogouting(true)
 
+			await logout()
+
+
+		} catch (error) {
+			console.error('Login error:', error);
+		} finally {
+			setIsLogouting(false)
+		}
+	};
+
+	console.log(user);
 
 
 
@@ -46,6 +70,16 @@ p-4
 
 				</CardBlock>
 			</NavLink>
+
+
+			{user
+				?
+				<TextBlock
+					className="bg-sky-500 p-3 rounded-xl"
+				>{user.fullname}</TextBlock>
+				:
+				null}
+
 
 
 			<CardBlock className='space-y-4' >
@@ -142,12 +176,12 @@ p-4
 			</CardBlock>
 
 
-{/* 
+
 			{
-				isAuth ?
+				user ?
 					<ButtonBlock
 						className="cancel-c "
-						onClick={logoutHandler} >Вийти</ButtonBlock>
+						onClick={handleLogout} >Вийти</ButtonBlock>
 
 					:
 
@@ -158,7 +192,7 @@ p-4
 					</ButtonBlock>
 
 
-			} */}
+			}
 
 
 		</CardBlock >

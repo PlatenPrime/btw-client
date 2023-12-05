@@ -1,12 +1,12 @@
 import React from 'react';
 
-const ButtonBlock = ({ className, onClick, disabled, children, type }) => {
+const ButtonBlock = ({ className, onClick, disabled, children, type, disabledClassName }) => {
 
 
 
 
 	const style = disabled ?
-		`ButtonBlock disabled`
+		`ButtonBlock disabled ${disabledClassName}`
 		:
 		`ButtonBlock ${className}`
 

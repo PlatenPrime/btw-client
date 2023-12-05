@@ -7,7 +7,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import { useAuthStore } from './pages/Auth/authStore'
 
 
-// import { LoginPage } from "./pages/Auth/LoginPage";
+import LoginPage from "./pages/Auth/LoginPage";
 // import { RegisterPage } from "./pages/Auth/RegisterPage";
 
 import { useEffect, useLayoutEffect } from "react";
@@ -27,14 +27,14 @@ import RowPage from "./pages/Stocks/RowPage";
 import AsksPage from "./pages/Stocks/AsksPage";
 import AskPage from "./pages/Stocks/AskPage";
 import ArtsUpdatingPage from "./pages/Stocks/ArtsUpdatingPage";
-
+import useCheckAuth from "./hooks/useCheckAuth";
 
 
 
 
 function App() {
 
-
+	useCheckAuth()
 
 
 
@@ -47,8 +47,8 @@ function App() {
 
 				<Routes>
 					<Route path="/" element={<MainPage />} />
-					{/* <Route path="login" element={<LoginPage />} />
-					<Route path="register" element={<RegisterPage />} /> */}
+					<Route path="login" element={<LoginPage />} />
+
 
 
 					<Route path="pallets/:id" element={<PalletPage />} />

@@ -1,8 +1,10 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
 
 import { ButtonBlock, CardBlock, HeaderBlock, TextBlock, PageBTW } from "../components/index"
-import AddIcon from '../components/UI/Icons/AddIcon';
+import { useNavigate } from 'react-router-dom';
+import useAuthStore from './Auth/authStore';
+import useCheckAuth from '../hooks/useCheckAuth';
 
 
 
@@ -14,7 +16,7 @@ import AddIcon from '../components/UI/Icons/AddIcon';
 const MainPage = () => {
 
 
-
+	useCheckAuth()
 
 
 
@@ -82,7 +84,7 @@ const MainPage = () => {
 			</CardBlock>
 
 
-		
+
 
 
 		</PageBTW>
