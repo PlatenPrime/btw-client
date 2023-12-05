@@ -8,7 +8,7 @@ const useCheckAuth = () => {
 
 	const navigate = useNavigate()
 
-	const { getMe, user } = useAuthStore();
+	const { getMe, setUser, setToken } = useAuthStore();
 
 
 	useEffect(() => {
@@ -17,9 +17,15 @@ const useCheckAuth = () => {
 		const checkAuth = async () => {
 			try {
 
+				const user = JSON.parse(localStorage.getItem('user'))
+
+
+
 				if (!user) {
 					navigate('/login')
 				}
+
+				setUser(user)
 
 				await getMe();
 
@@ -32,7 +38,7 @@ const useCheckAuth = () => {
 		checkAuth();
 
 
-	}, [getMe, navigate, user]);
+	}, [getMe, navigate]);
 
 }
 

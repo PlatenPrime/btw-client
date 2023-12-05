@@ -1,7 +1,7 @@
 
 import React, { useState } from 'react';
 
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import { toast } from 'react-toastify';
 import { ButtonBlock, InputBlock, TextBlock, CardBlock } from "../../index";
 import { FcBinoculars, FcDeployment, FcLibrary, FcOrganization, FcPackage } from 'react-icons/fc';
@@ -12,7 +12,7 @@ import useAuthStore from '../../../pages/Auth/authStore';
 
 const SidebarBTW = () => {
 
-
+	const navigate = useNavigate()
 
 	const { user, logout } = useAuthStore()
 
@@ -34,6 +34,8 @@ const SidebarBTW = () => {
 			setIsLogouting(true)
 
 			await logout()
+
+			navigate("/")
 
 
 		} catch (error) {

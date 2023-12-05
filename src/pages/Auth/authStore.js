@@ -3,11 +3,14 @@ import axios from '../../utils/axios';
 
 
 const useAuthStore = create((set) => ({
-	user: JSON.parse(localStorage.getItem('user')) || null,
+	user:  null,
 	token: localStorage.getItem('token') || null,
 	error: null,
 
 	setUser: (user) => set({ user }),
+	setToken: (token) => set({ token }),
+
+
 	setTokenToLS: (token) => {
 		set({ token });
 		localStorage.setItem('token', token);
@@ -16,6 +19,12 @@ const useAuthStore = create((set) => ({
 		set({ user });
 		localStorage.setItem('user', user);
 	},
+
+
+
+
+
+	
 	setError: (error) => set({ error }),
 
 	login: async (formData) => {
@@ -23,8 +32,8 @@ const useAuthStore = create((set) => ({
 			const response = await axios.post('/auth/login', formData);
 			console.log(response);
 			set({ user: response.data.user, token: response.data.token, error: null });
-			// useAuthStore.getState().setTokenToLS(response.data.token)
-			// useAuthStore.getState().setUserToLS(JSON.stringify(response.data.user))
+			useAuthStore.getState().setTokenToLS(response.data.token)
+			useAuthStore.getState().setUserToLS(JSON.stringify(response.data.user))
 			return response.data.user
 		} catch (error) {
 			set({ error: 'Login error. Please check your credentials.' });
