@@ -1,11 +1,20 @@
 
-import React from 'react';
-import { Link, NavLink } from "react-router-dom";
-import { toast } from 'react-toastify';
-import { ButtonBlock, InputBlock, TextBlock, CardBlock } from "../../index";
+import React, { useState } from 'react';
+import { Link, NavLink, useNavigate } from "react-router-dom";
+import { ButtonBlock, TextBlock, CardBlock, Spinner } from "../../index";
+import useAuthStore from '../../../pages/Auth/authStore';
 
 
 const SidebarMobileBTW = ({ onClose }) => {
+
+
+	const navigate = useNavigate()
+	const { user, logout } = useAuthStore()
+	const [isLogouting, setIsLogouting] = useState(false);
+
+
+
+
 
 
 	const activeStyles = {
@@ -17,7 +26,33 @@ const SidebarMobileBTW = ({ onClose }) => {
 		color: "white",
 		padding: "12px",
 		width: "100%",
+
 	}
+
+
+
+
+	const handleLogout = async () => {
+		try {
+			setIsLogouting(true)
+
+			await logout()
+
+			navigate("/login")
+
+
+		} catch (error) {
+			console.error('Login error:', error);
+		} finally {
+			setIsLogouting(false)
+		}
+	};
+
+	console.log(user);
+
+
+
+
 
 
 
@@ -44,7 +79,10 @@ const SidebarMobileBTW = ({ onClose }) => {
 					style={({ isActive }) => isActive ? activeStyles : undefined}
 				>
 
-					<CardBlock className='flex items-center h-16 w-full'>
+					<CardBlock
+						className='flex items-center justify-center w-full h-16 text-5xl text-gray-100 
+					hover:text-sky-500
+					'>
 
 						BTW
 
@@ -55,7 +93,7 @@ const SidebarMobileBTW = ({ onClose }) => {
 
 
 
-				<TextBlock className="w-full text-center border border-slate-500 hover:bg-slate-500/90  rounded" >
+				<TextBlock className="w-full text-xl text-center border border-orange-500 hover:bg-orange-500/90 rounded font-bold" >
 					<NavLink
 						onClick={onClose}
 						to={"stocks"}
@@ -63,7 +101,6 @@ const SidebarMobileBTW = ({ onClose }) => {
 							color: "white",
 							padding: "12px",
 							width: "100%",
-
 							background: "rgb(249 115 22)",
 						} : inActiveStyles}
 					>
@@ -74,7 +111,7 @@ const SidebarMobileBTW = ({ onClose }) => {
 
 
 
-				<TextBlock className="w-full text-center border border-sky-500 hover:bg-sky-500/90  rounded" >
+				<TextBlock className="w-full text-xl text-center border border-sky-500 hover:bg-sky-500/90  rounded font-bold" >
 					<NavLink
 						onClick={onClose}
 						to={"arts"}
@@ -94,7 +131,7 @@ const SidebarMobileBTW = ({ onClose }) => {
 
 
 
-				<TextBlock className="w-full text-center border border-yellow-500 hover:bg-yellow-500/90 rounded" >
+				<TextBlock className="w-full text-xl text-center border border-indigo-500 hover:bg-indigo-500/90 rounded font-bold" >
 					<NavLink
 						onClick={onClose}
 						to={"asks"}
@@ -102,7 +139,7 @@ const SidebarMobileBTW = ({ onClose }) => {
 							color: "white",
 							padding: "12px",
 							width: "100%",
-							background: "rgb(234 179 8)",
+							background: "rgb(99 102 241)",
 						} : inActiveStyles}
 					>
 						Запити
@@ -111,7 +148,7 @@ const SidebarMobileBTW = ({ onClose }) => {
 
 
 
-				<TextBlock className="w-full text-center border border-violet-500 hover:bg-violet-500/90 rounded " >
+				<TextBlock className="w-full text-xl text-center border border-rose-500 hover:bg-rose-500/90 rounded font-bold " >
 					<NavLink
 						onClick={onClose}
 						to={"comps"}
@@ -119,7 +156,7 @@ const SidebarMobileBTW = ({ onClose }) => {
 							color: "white",
 							padding: "12px",
 							width: "100%",
-							background: "rgb(139 92 246)",
+							background: "rgb(244 63 94 )",
 						} : inActiveStyles}
 					>
 						Конкуренти
@@ -128,19 +165,44 @@ const SidebarMobileBTW = ({ onClose }) => {
 
 
 
-				{/* {isAuth ?
-					<ButtonBlock
-						className="cancel-c w-full text-center"
-						onClick={logoutHandler} >Вийти
-					</ButtonBlock> :
-					<Link to={"/login"}>Вхід</Link>
-				} */}
+				{
+					user ?
+						<ButtonBlock
+							className="cancel-c px-8 text-4xl  "
+							onClick={() => {
+								onClose()
+								handleLogout();
+
+							}}
+						>
+							{isLogouting ?
+								< Spinner color="red" />
+								:
+								"Вийти"
+
+							}
+
+						</ButtonBlock>
+
+						:
+
+						<ButtonBlock
+							onClick={onClose}
+							className="green-b px-8 text-4xl "
+						>
+							<Link to={"/login"}>Вхід</Link>
+						</ButtonBlock>
+
+
+				}
+
+
 
 			</CardBlock>
 
 
 
-		</CardBlock>
+		</CardBlock >
 	);
 };
 

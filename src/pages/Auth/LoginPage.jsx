@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { ButtonBlock, CardBlock, HeaderBlock, InputBlock, PageBTW, TextBlock } from '../../components'
+import { ButtonBlock, CardBlock, HeaderBlock, InputBlock, PageBTW, Spinner, TextBlock } from '../../components'
 import useAuthStore from './authStore';
 import { useNavigate } from 'react-router-dom';
 import { IoMdEye, IoMdEyeOff } from "react-icons/io";
@@ -82,7 +82,7 @@ export default function LoginPage() {
 
 
 				<CardBlock
-					className="space-y-4 p-36 border border-white shadow-md shadow-white rounded-3xl"
+					className="space-y-4 p-6 border border-white shadow-md shadow-white rounded-3xl"
 				>
 
 					<CardBlock
@@ -162,9 +162,15 @@ export default function LoginPage() {
 						disabled={!formData.username}
 						disabledClassName="w-full text-4xl"
 					>
-						Вхід
-					</ButtonBlock>
+						{isLogining
+							?
+							<Spinner color="lightgreen" />
 
+							:
+							"Вхід"
+						}
+
+					</ButtonBlock>
 
 
 
@@ -172,6 +178,9 @@ export default function LoginPage() {
 					<TextBlock>
 						{error}
 					</TextBlock>
+
+
+
 
 
 				</CardBlock>

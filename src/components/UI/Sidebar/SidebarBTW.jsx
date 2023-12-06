@@ -2,8 +2,7 @@
 import React, { useState } from 'react';
 
 import { Link, NavLink, useNavigate } from "react-router-dom";
-import { toast } from 'react-toastify';
-import { ButtonBlock, InputBlock, TextBlock, CardBlock } from "../../index";
+import { ButtonBlock, TextBlock, CardBlock, Spinner } from "../../index";
 import { FcBinoculars, FcDeployment, FcLibrary, FcOrganization, FcPackage } from 'react-icons/fc';
 import useAuthStore from '../../../pages/Auth/authStore';
 
@@ -35,7 +34,7 @@ const SidebarBTW = () => {
 
 			await logout()
 
-			navigate("/")
+			navigate("/login")
 
 
 		} catch (error) {
@@ -66,7 +65,9 @@ p-4
 			<NavLink
 				to={"/"}
 			>
-				<CardBlock className='flex items-center justify-center w-full h-16 text-5xl text-gray-100  '>
+				<CardBlock className='flex items-center justify-center w-full h-16 text-5xl text-gray-100  
+				hover:text-sky-500
+				'>
 
 					BTW
 
@@ -94,7 +95,6 @@ p-4
 							color: "white",
 							padding: "12px",
 							width: "100%",
-
 							background: "rgb(249 115 22)",
 						} : inActiveStyles}
 					>
@@ -130,14 +130,14 @@ p-4
 					</NavLink>
 				</TextBlock>
 
-				<TextBlock className="border border-yellow-500 hover:bg-yellow-500/90 rounded" >
+				<TextBlock className="border border-indigo-500 hover:bg-indigo-500/90 rounded" >
 					<NavLink
 						to={"asks"}
 						style={({ isActive }) => isActive ? {
 							color: "white",
 							padding: "12px",
 							width: "100%",
-							background: "rgb(234 179 8 )",
+							background: "rgb(99 102 241)",
 						} : inActiveStyles}
 					>
 						<TextBlock
@@ -155,14 +155,14 @@ p-4
 
 
 
-				<TextBlock className="border border-violet-500 hover:bg-violet-500/90 rounded " >
+				<TextBlock className="border border-rose-500 hover:bg-rose-500/90 rounded " >
 					<NavLink
 						to={"comps"}
 						style={({ isActive }) => isActive ? {
 							color: "white",
 							padding: "12px",
 							width: "100%",
-							background: "rgb(139 92 246)",
+							background: "rgb(244 63 94 )",
 						} : inActiveStyles}
 					>
 						<TextBlock
@@ -182,13 +182,21 @@ p-4
 			{
 				user ?
 					<ButtonBlock
-						className="cancel-c "
-						onClick={handleLogout} >Вийти</ButtonBlock>
+						className="cancel-c px-8 text-4xl "
+						onClick={handleLogout} >
+						{isLogouting ?
+							< Spinner color="red" />
+							:
+							"Вийти"
+
+						}
+
+					</ButtonBlock>
 
 					:
 
 					<ButtonBlock
-						className="search-c"
+						className="green-b px-8 text-4xl "
 					>
 						<Link to={"/login"}>Вхід</Link>
 					</ButtonBlock>
