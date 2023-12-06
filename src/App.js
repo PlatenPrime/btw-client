@@ -28,6 +28,8 @@ import AsksPage from "./pages/Stocks/AsksPage";
 import AskPage from "./pages/Stocks/AskPage";
 import ArtsUpdatingPage from "./pages/Stocks/ArtsUpdatingPage";
 import useCheckAuth from "./hooks/useCheckAuth";
+import CreateUserPage from "./pages/Auth/CreateUserPage";
+import SettingsPage from "./pages/Settings/SettingsPage";
 
 
 
@@ -48,6 +50,7 @@ function App() {
 				<Routes>
 					<Route path="/" element={<MainPage />} />
 					<Route path="login" element={<LoginPage />} />
+					<Route path="createuser" element={<CreateUserPage />} />
 
 
 
@@ -76,6 +79,10 @@ function App() {
 						<Route path="logs" element={<CompsLogsPage />} />
 						<Route path="add" element={<CompsAddPage />} />
 					</Route>
+
+
+
+					<Route path="settings" element={<SettingsPage />} />
 
 
 

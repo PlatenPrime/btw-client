@@ -3,7 +3,8 @@ import React, { useState } from 'react';
 
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import { ButtonBlock, TextBlock, CardBlock, Spinner } from "../../index";
-import { FcBinoculars, FcDeployment, FcLibrary, FcOrganization, FcPackage } from 'react-icons/fc';
+import { FcBinoculars, FcDeployment, FcLibrary, FcOrganization, FcSettings } from 'react-icons/fc';
+
 import useAuthStore from '../../../pages/Auth/authStore';
 
 
@@ -175,14 +176,49 @@ p-4
 				</TextBlock>
 
 
+
+				{user?.role === "PRIME" ?
+					<TextBlock className="border border-slate-500 hover:bg-slate-500/90 rounded " >
+						<NavLink
+							to={"settings"}
+							style={({ isActive }) => isActive ? {
+								color: "white",
+								padding: "12px",
+								width: "100%",
+								background: "rgb(100 116 139 )",
+							} : inActiveStyles}
+						>
+							<TextBlock
+								className="flex text-2xl space-x-1"
+							>
+								<FcSettings /><TextBlock>Налаштування</TextBlock>
+							</TextBlock>
+
+						</NavLink>
+					</TextBlock>
+					:
+					null}
+
+
+
+
+
+
+
+
+
 			</CardBlock>
+
+
+
+
 
 
 
 			{
 				user ?
 					<ButtonBlock
-						className="cancel-c px-8 text-4xl "
+						className="cancel-c px-8 text-3xl "
 						onClick={handleLogout} >
 						{isLogouting ?
 							< Spinner color="red" />
@@ -196,7 +232,7 @@ p-4
 					:
 
 					<ButtonBlock
-						className="green-b px-8 text-4xl "
+						className="green-b px-8 text-3xl "
 					>
 						<Link to={"/login"}>Вхід</Link>
 					</ButtonBlock>

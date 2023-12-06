@@ -3,7 +3,9 @@ import axios from '../../utils/axios';
 
 
 const useAuthStore = create((set) => ({
-	user:  null,
+	user: null,
+	users: null,
+	roles: null,
 	token: localStorage.getItem('token') || null,
 	error: null,
 
@@ -23,8 +25,6 @@ const useAuthStore = create((set) => ({
 
 
 
-
-	
 	setError: (error) => set({ error }),
 
 	login: async (formData) => {
@@ -49,7 +49,7 @@ const useAuthStore = create((set) => ({
 	registration: async (formData) => {
 		try {
 			const response = await axios.post('/auth/registration', formData);
-			set({ user: response.data.user, token: response.data.token, error: null });
+			set((state) => ({ users: [...state.users, response.data] }));
 		} catch (error) {
 			set({ error: 'Registration error. Please check your input data.' });
 		}
@@ -69,11 +69,25 @@ const useAuthStore = create((set) => ({
 	getUsers: async () => {
 		try {
 			const response = await axios.get('/auth/users');
+			set({ users: response.data })
 			return response.data;
 		} catch (error) {
 			set({ error: 'Error while fetching users.' });
 		}
 	},
+
+
+	getRoles: async () => {
+		try {
+			const response = await axios.get('/auth/roles');
+			set({ roles: response.data })
+			return response.data;
+		} catch (error) {
+			set({ error: 'Error while fetching users.' });
+		}
+	},
+
+
 
 	getUserById: async (id) => {
 		try {
