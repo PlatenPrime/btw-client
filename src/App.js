@@ -30,6 +30,7 @@ import ArtsUpdatingPage from "./pages/Stocks/ArtsUpdatingPage";
 import useCheckAuth from "./hooks/useCheckAuth";
 import CreateUserPage from "./pages/Auth/CreateUserPage";
 import SettingsPage from "./pages/Settings/SettingsPage";
+import DefsPage from "./pages/Stocks/DefsPage";
 
 
 
@@ -60,6 +61,7 @@ function App() {
 
 					<Route path="stocks" element={<StocksPage />} />
 					<Route path="rows/:id" element={<RowPage />} />
+					<Route path="stocks/defs" element={<DefsPage />} />
 
 
 

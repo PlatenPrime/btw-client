@@ -4,6 +4,7 @@ import { RowList } from './RowList'
 import { useRowStore } from './stores/rowsStore';
 import ModalCreate from '../../components/UI/Modal/ModalCreate';
 import { AddIcon } from '../../components/UI/Icons/';
+import { Link } from 'react-router-dom';
 
 
 export default function StocksPage() {
@@ -63,6 +64,20 @@ export default function StocksPage() {
 						<TextBlock className="text-2xl"><AddIcon /></TextBlock>
 						<TextBlock>Створити новий ряд</TextBlock>
 					</ButtonBlock>
+
+					<ButtonBlock
+						className="pink-b "
+					>
+						<Link
+							to="defs"
+						>
+							Дефіцити
+						</Link>
+					</ButtonBlock>
+
+
+
+
 
 				</ButtonGroup>
 
