@@ -1,14 +1,14 @@
 import React, { useState } from 'react'
 import { ButtonBlock, CardBlock, HeaderBlock, InputBlock, PageBTW, TextBlock } from '../../components'
 import useAuthStore from './authStore';
-import axios from "../../utils/axios"
 import { useNavigate } from 'react-router-dom';
-import PageAuthBTW from '../../components/UI/Page/PageAuthBTW';
+import { IoMdEye, IoMdEyeOff } from "react-icons/io";
+
 
 export default function LoginPage() {
 
 
-	const { setUser, user, token, login, logout } = useAuthStore();
+	const { login } = useAuthStore();
 	const navigate = useNavigate()
 
 	const [formData, setFormData] = useState({
@@ -17,12 +17,10 @@ export default function LoginPage() {
 	});
 
 	const [isLogining, setIsLogining] = useState(false);
-	const [isLogouting, setIsLogouting] = useState(false);
 	const [error, setError] = useState(null);
+	const [showPassword, setShowPassword] = useState(false);
 
 
-	console.log(user);
-	console.log(token);
 
 
 
@@ -57,21 +55,9 @@ export default function LoginPage() {
 	};
 
 
-
-	const handleLogout = async () => {
-		try {
-			setIsLogouting(true)
-
-			await logout()
-
-
-		} catch (error) {
-			console.error('Login error:', error);
-		} finally {
-			setIsLogouting(false)
-		}
+	const toggleShowPassword = () => {
+		setShowPassword(!showPassword);
 	};
-
 
 
 
@@ -82,7 +68,7 @@ export default function LoginPage() {
 			<HeaderBlock
 				className="border border-white shadow-md shadow-white"
 			>
-				Авторизация
+				Авторизація
 			</HeaderBlock>
 
 
@@ -96,14 +82,16 @@ export default function LoginPage() {
 
 
 				<CardBlock
-					className="space-y-4 p-36 border rounded-3xl"
+					className="space-y-4 p-36 border border-white shadow-md shadow-white rounded-3xl"
 				>
 
 					<CardBlock
-						className="flex space-x-2 items-center justify-end"
+						className=" space-y-2 items-center justify-center"
 					>
 
-						<TextBlock>
+						<TextBlock
+							className="text-3xl"
+						>
 							Логін:
 						</TextBlock>
 
@@ -112,6 +100,7 @@ export default function LoginPage() {
 							name="username"
 							value={formData.username}
 							onChange={handleChange}
+							className="text-4xl"
 
 						/>
 					</CardBlock>
@@ -119,28 +108,59 @@ export default function LoginPage() {
 
 
 					<CardBlock
-						className="flex space-x-2 items-center justify-end"
+						className="space-y-2  items-center justify-end"
 					>
 
-						<TextBlock>
-							Логин:
-						</TextBlock>
+						<CardBlock
+							className="flex items-center justify-center space-x-2 "
+						>
+
+
+							<ButtonBlock
+								className="p-2 sky-b"
+								onClick={toggleShowPassword}>
+								{showPassword ?
+									<IoMdEye />
+									:
+									<IoMdEyeOff />
+								}
+							</ButtonBlock>
+
+							<TextBlock
+								className="text-3xl"
+							>
+								Пароль:
+							</TextBlock>
+
+						</CardBlock>
+
 
 						<InputBlock
-							type="password"
+							type={showPassword ? 'text' : 'password'}
 							name="password"
 							value={formData.password}
 							onChange={handleChange}
+							className="text-4xl"
 						/>
+
+
 
 					</CardBlock>
 
 
+
+
+
+
+
+
+
+
 					<ButtonBlock
 						onClick={handleLogin}
-						className="green-b w-full flex items-center justify-center"
+						className="green-b w-full flex items-center justify-center text-4xl"
 						disabled={!formData.username}
-						disabledClassName="w-full"
+						disabledClassName="w-full text-4xl"
 					>
 						Вхід
 					</ButtonBlock>
