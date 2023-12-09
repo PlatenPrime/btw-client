@@ -141,9 +141,9 @@ export default function DefsPage() {
 					</TextBlock>
 
 
-					<TextBlock>
+					{/* <TextBlock>
 						Залишки: {remains ? remains["1102-0260"] : null}
-					</TextBlock>
+					</TextBlock> */}
 
 					<TextBlock>
 						Запаси: {stocks?.length}
