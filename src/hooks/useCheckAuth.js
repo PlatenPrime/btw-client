@@ -8,7 +8,7 @@ const useCheckAuth = () => {
 
 	const navigate = useNavigate()
 
-	const { getMe, setUser, setToken } = useAuthStore();
+	const { getMe, setUser } = useAuthStore();
 
 
 	useEffect(() => {

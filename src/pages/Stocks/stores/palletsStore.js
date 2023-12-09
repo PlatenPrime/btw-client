@@ -5,10 +5,10 @@ const usePalletStore = create((set) => ({
 	pallets: [],
 
 
-	createPallet: async (title, rowId) => {
+	createPallet: async (title, rowId, com) => {
 		try {
 
-			const response = await axios.post('pallets', { title, rowId });
+			const response = await axios.post('pallets', { title, rowId, com });
 
 
 			if (response.status === 201) {

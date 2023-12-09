@@ -30,6 +30,7 @@ export default function RowPage() {
 
 	const [row, setRow] = useState(null)
 	const [title, setTitle] = useState(row?.title)
+	const [com, setCom] = useState("")
 	const [showModalDeleteRow, setShowModalDeleteRow] = useState(false);
 	const [showModalUpdateRow, setShowModalUpdateRow] = useState(false);
 	const [showModalCreatePallet, setShowModalCreatePallet] = useState(false);
@@ -94,7 +95,7 @@ export default function RowPage() {
 	async function handleCreatePallet(palletTitle) {
 
 		try {
-			await createPallet(palletTitle, row._id);
+			await createPallet(palletTitle, row._id, com);
 
 
 		} catch (error) {

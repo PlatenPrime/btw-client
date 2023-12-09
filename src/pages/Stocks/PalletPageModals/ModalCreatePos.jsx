@@ -81,6 +81,45 @@ function ModalCreatePos({
 							/>
 						</CardBlock>
 
+
+						<CardBlock className="grid grid-cols-1 md:grid-cols-2 space-x-2">
+							<label className=" justify-self-center md:justify-self-start" htmlFor="sklad">Склад:</label>
+
+
+							<select
+								className="InputBlock focus:bg-slate-900 text-lg "
+								value={newPos.sklad}
+								onChange={handleInputPosChange}
+								id="sklad"
+								name="sklad"
+							>
+								<option value="pogrebi">Погреби</option>
+								<option value="merezhi">Мережі</option>
+
+
+							</select>
+
+
+
+						</CardBlock>
+
+						<CardBlock className="grid grid-cols-1 md:grid-cols-2 space-x-2">
+							<label className=" justify-self-center md:justify-self-start" htmlFor="com">Комент:</label>
+
+
+							<InputBlock
+								type="text"
+								id="com"
+								name="com"
+								autoComplete="off"
+								value={newPos.com}
+								onChange={handleInputPosChange}
+							/>
+						</CardBlock>
+
+
+
+
 					</CardBlock>
 
 					<CardBlock className="grid grid-cols-2 space-x-2">

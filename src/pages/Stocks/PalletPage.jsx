@@ -74,7 +74,9 @@ export default function PalletPage() {
 		artikul: '',
 		quant: '',
 		boxes: '',
-		date: ''
+		date: '',
+		sklad: "pogrebi",
+		com: ""
 	});
 
 
@@ -202,7 +204,7 @@ export default function PalletPage() {
 	}
 
 
-	
+
 
 	async function handleRenamePalletById(newTitle) {
 		try {
@@ -260,7 +262,9 @@ export default function PalletPage() {
 				artikul: '',
 				quant: '',
 				boxes: '',
-				date: ''
+				date: '',
+				sklad: "pogrebi",
+				com: ""
 			});
 		}
 	};
