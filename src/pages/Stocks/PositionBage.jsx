@@ -59,6 +59,10 @@ export default function PositionBage({ pos, onDelete, onEdit, artsDB }) {
 
 				</CardBlock>
 
+
+
+
+
 				<CardBlock
 					className="flex w-full space-x-1  "
 
@@ -83,7 +87,34 @@ export default function PositionBage({ pos, onDelete, onEdit, artsDB }) {
 
 
 			<CardBlock
-				className="grid grid-cols-2 p-4 gap-2">
+				className="flex flex-col  space-x-1  "
+
+			>
+
+				<TextBlock
+					className=" text-2xl  "
+				>
+					{pos.sklad}
+				</TextBlock>
+
+				<TextBlock
+					className=" text-2xl  "
+				>
+					{pos.com}
+				</TextBlock>
+
+
+
+			</CardBlock>
+
+
+
+
+
+
+
+			<CardBlock
+				className="grid grid-cols-2 p-2 gap-2">
 
 				<TextBlock
 					className="text-sky-300  text-3xl"
