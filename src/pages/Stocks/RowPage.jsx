@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 
 import { useNavigate, useParams } from 'react-router-dom';
 
-import { ButtonBlock, CardBlock, HeaderBlock, ModalConfirm, ModalCreate, ModalEditOneValue, PageBTW, TextBlock, Spinner, ButtonGroup } from '../../components';
+import { ButtonBlock, CardBlock, HeaderBlock, ModalConfirm, ModalCreate, ModalEditOneValue, PageBTW, TextBlock, Spinner, ButtonGroup, ModalWrapper, InputBlock } from '../../components';
 import { AddIcon, DeleteIcon, RenameIcon } from '../../components/UI/Icons/';
 
 import { toast } from 'react-toastify';
@@ -11,6 +11,7 @@ import PalletBage from './PalletBage';
 
 import { useRowStore } from './stores/rowsStore';
 import usePalletStore from './stores/palletsStore';
+import usePosesStore from './stores/posesStore';
 
 
 
@@ -25,12 +26,20 @@ export default function RowPage() {
 
 
 
+	const { poses, getAllPoses } = usePosesStore()
+
+
+
 	const params = useParams()
 	const navigate = useNavigate()
 
 	const [row, setRow] = useState(null)
 	const [title, setTitle] = useState(row?.title)
-	const [com, setCom] = useState("")
+	const [newPalletTitle, setNewPalletTitle] = useState("")
+	const [newPalletCom, setNewPalletCom] = useState("")
+
+
+
 	const [showModalDeleteRow, setShowModalDeleteRow] = useState(false);
 	const [showModalUpdateRow, setShowModalUpdateRow] = useState(false);
 	const [showModalCreatePallet, setShowModalCreatePallet] = useState(false);
@@ -56,6 +65,8 @@ export default function RowPage() {
 		try {
 			setIsRowPalletsLoading(true)
 			await getRowPallets(id)
+			await getAllPoses()
+
 		} catch (error) {
 			console.log(error)
 		} finally {
@@ -63,6 +74,13 @@ export default function RowPage() {
 		}
 
 	}
+
+
+
+
+
+
+
 
 
 	useEffect(() => {
@@ -92,10 +110,12 @@ export default function RowPage() {
 
 
 
-	async function handleCreatePallet(palletTitle) {
+	async function handleCreatePallet() {
 
 		try {
-			await createPallet(palletTitle, row._id, com);
+
+
+			await createPallet(newPalletTitle, row._id, newPalletCom);
 
 
 		} catch (error) {
@@ -193,12 +213,87 @@ export default function RowPage() {
 				</ButtonGroup>
 
 
-				{showModalCreatePallet && <ModalCreate
-					title="Створення нової палети"
-					onConfirm={(palletTitle) => { handleCreatePallet(palletTitle) }}
-					onCancel={closeModalCreatePallet}
+			
 
-				/>}
+				{showModalCreatePallet && <ModalWrapper
+					title="Створення нової палети"
+					onCancel={closeModalCreatePallet}
+				>
+
+					<CardBlock
+						className="space-y-3"
+					>
+
+
+
+						<CardBlock
+							className="grid grid-cols-2"
+						>
+
+							<TextBlock>
+								Назва палети
+							</TextBlock>
+							<InputBlock
+								value={newPalletTitle}
+								name="newPalletTitle"
+								type="text"
+								placeholder="XX-XX-X-X"
+								onChange={(e) => setNewPalletTitle(e.target.value)}
+							/>
+						</CardBlock>
+
+
+						<CardBlock
+							className="grid grid-cols-2"
+						>
+
+							<TextBlock>
+								Коментарій
+							</TextBlock>
+							<InputBlock
+								value={newPalletCom}
+								name="newPalletCom"
+								type="text"
+								placeholder="....."
+								onChange={(e) => setNewPalletCom(e.target.value)}
+							/>
+						</CardBlock>
+
+
+					</CardBlock>
+
+					<CardBlock
+						className="grid grid-cols-2 gap-4"
+					>
+						<ButtonBlock
+							className="red-b"
+							onClick={closeModalCreatePallet}
+						>
+							Скасувати
+						</ButtonBlock>
+
+
+						<ButtonBlock
+							className="green-b"
+							onClick={handleCreatePallet}
+						>
+							Створити
+						</ButtonBlock>
+
+
+					</CardBlock>
+
+
+				</ModalWrapper>}
+
+
+
+
+
+
+
+
+
 
 
 				{
@@ -210,11 +305,13 @@ export default function RowPage() {
 				}
 
 
-				{showModalDeleteRow && <ModalConfirm
-					ask="Видалити цей ряд?"
-					onConfirm={handleDeleteRowById}
-					onCancel={closeModalDeleteRow}
-				/>}
+				{
+					showModalDeleteRow && <ModalConfirm
+						ask="Видалити цей ряд?"
+						onConfirm={handleDeleteRowById}
+						onCancel={closeModalDeleteRow}
+					/>
+				}
 
 
 
@@ -242,19 +339,15 @@ export default function RowPage() {
 							>Цей ряд не містить палети </TextBlock>
 							:
 							<CardBlock
-								className=" gap-3 grid 
-							grid-cols-1 
-							md:grid-cols-2 
-							lg:grid-cols-4 
-							xl:grid-cols-6 
-							justify-items-stretch 
-							justify-around  "
+								className="space-y-2 "
 							>
 
 								{palletsStore?.map((pallet) => <PalletBage
-									title={pallet.title}
-									id={pallet._id}
-								/>)}
+									pallet={pallet}
+									key={pallet._id}
+									poses={poses?.filter((pos) => pos.pallet === pallet._id)}
+								/>
+								)}
 							</CardBlock>}
 
 
@@ -263,11 +356,11 @@ export default function RowPage() {
 				</CardBlock>
 
 
-			</CardBlock>
+			</CardBlock >
 
 
 
-		</PageBTW>
+		</PageBTW >
 	)
 }
 
