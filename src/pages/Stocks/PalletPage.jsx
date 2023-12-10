@@ -403,6 +403,16 @@ export default function PalletPage() {
 
 				</ButtonBlock>
 
+
+				<ButtonBlock
+					className="yellow-b flex"
+					onClick={() => { setShowModalRenamePallet(true); }}
+				>
+					<TextBlock className="text-2xl"><RenameIcon /></TextBlock>
+					<TextBlock>Коментарій</TextBlock>
+
+				</ButtonBlock>
+
 				<ButtonBlock
 					className="blue-b flex"
 					onClick={() => { setShowModalMovePalletContent(true); }}
@@ -450,6 +460,11 @@ export default function PalletPage() {
 					onCancel={() => { setShowModalRenamePallet(false) }}
 
 				/>
+
+
+
+
+				
 
 
 				<ModalCreatePos
