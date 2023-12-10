@@ -238,7 +238,7 @@ export default function PalletPage() {
 
 			const existingPos = posesInStore.find(pos => pos.artikul === newPos.artikul);
 
-			if (existingPos && existingPos.sklad === newPos.sklad && existingPos.date === newPos.date) {
+			if (existingPos && existingPos.sklad === newPos.sklad && existingPos.date === newPos.date && existingPos.com === newPos.com) {
 
 				const updatedData = {
 					quant: +existingPos.quant + +newPos.quant,
@@ -464,7 +464,7 @@ export default function PalletPage() {
 
 
 
-				
+
 
 
 				<ModalCreatePos
