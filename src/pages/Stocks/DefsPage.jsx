@@ -23,20 +23,23 @@ export default function DefsPage() {
 
 
 	const calculateDefs = () => {
-		const transformedArray = poses.reduce((result, currentObj) => {
+		const transformedArray = poses
+
+			.filter((pos) => pos.sklad === "pogrebi")
+			.reduce((result, currentObj) => {
 
 
-			const existingObj = result.find((obj) => obj.artikul === currentObj.artikul);
+				const existingObj = result.find((obj) => obj.artikul === currentObj.artikul);
 
-			if (existingObj) {
-				// Если объект с таким artikul уже есть, обновляем quant
-				existingObj.quant += currentObj.quant;
-			} else {
-				// Если нет, добавляем новый объект
-				result.push({ artikul: currentObj.artikul, quant: currentObj.quant });
-			}
-			return result;
-		}, []);
+				if (existingObj) {
+					// Если объект с таким artikul уже есть, обновляем quant
+					existingObj.quant += currentObj.quant;
+				} else {
+					// Если нет, добавляем новый объект
+					result.push({ artikul: currentObj.artikul, quant: currentObj.quant });
+				}
+				return result;
+			}, []);
 
 
 		setStocks(transformedArray)
@@ -166,8 +169,10 @@ export default function DefsPage() {
 						className="grid grid-cols-3 p-2 border border-pink-500 rounded-xl"
 					>
 						<CardBlock >
-
-							Art Card
+							<TextBlock>
+								{def.artikul}
+							</TextBlock>
+							<TextBlock>{def.quant}</TextBlock>
 						</CardBlock>
 						<CardBlock>{def.dif}</CardBlock>
 						<ButtonBlock
