@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { ButtonBlock, ButtonGroup, CardBlock, HeaderBlock, PageBTW, Spinner, TextBlock } from '../../components'
+import { ButtonBlock, ButtonGroup, CardBlock, HeaderBlock, ImageArt, ImageBlock, PageBTW, Spinner, TextBlock } from '../../components'
 import { Link } from 'react-router-dom'
 import useFetchRemains from '../../hooks/useFetchRemains'
 import useFetchArts from '../../hooks/useFetchArts'
@@ -20,6 +20,7 @@ export default function DefsPage() {
 	const [stocks, setStocks] = useState(null)
 	const [defs, setDefs] = useState(null)
 
+	console.log(defs);
 
 
 	const calculateDefs = () => {
@@ -170,11 +171,19 @@ export default function DefsPage() {
 					>
 						<CardBlock >
 							<TextBlock>
-								{def.artikul}
+								Артикул:	{def.artikul}
 							</TextBlock>
-							<TextBlock>{def.quant}</TextBlock>
+							<ImageArt size={80} artikul={def.artikul} />
+							<TextBlock>
+								{artsDB.find(art => art.artikul === def.artikul)?.nameukr}
+							</TextBlock>
+							<TextBlock> Кількість артикула на запасах {def.quant}</TextBlock>
 						</CardBlock>
-						<CardBlock>{def.dif}</CardBlock>
+
+						<CardBlock
+							className="justify-self-center"
+						>Дефіцит: {def.dif}</CardBlock>
+
 						<ButtonBlock
 							className="indigo-b"
 						>
