@@ -1,5 +1,6 @@
 export { default as ModalDeletePallet } from './ModalDeletePallet';
 export { default as ModalRenamePallet } from './ModalRenamePallet';
+export { default as ModalChangePalletCom } from './ModalChangePalletCom';
 export { default as ModalCreatePos } from './ModalCreatePos';
 export { default as ModalDeletePos } from './ModalDeletePos';
 export { default as ModalEditPos } from './ModalEditPos';

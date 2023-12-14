@@ -7,7 +7,7 @@ import { ButtonBlock, CardBlock, HeaderBlock, PageBTW, Spinner, TextBlock, Bread
 import { toast } from 'react-toastify';
 import PositionBage from './PositionBage';
 
-import { ModalDeletePallet, ModalRenamePallet, ModalCreatePos, ModalDeletePos, ModalEditPos, ModalClearPallet, ModalMovePalletContent } from './PalletPageModals/index.js';
+import { ModalDeletePallet, ModalRenamePallet, ModalCreatePos, ModalDeletePos, ModalEditPos, ModalClearPallet, ModalMovePalletContent, ModalChangePalletCom } from './PalletPageModals/index.js';
 import { useArtContext } from '../../ArtContext';
 import { RenameIcon, MoveIcon, DeleteIcon, ClearIcon, AddIcon, BackIcon } from '../../components/UI/Icons/';
 import ButtonGroup from '../../components/UI/ButtonGroup.jsx';
@@ -56,6 +56,8 @@ export default function PalletPage() {
 	const [pallet, setPallet] = useState(null);
 	const [row, setRow] = useState(null);
 	const [title, setTitle] = useState("");
+	const [newCom, setNewCom] = useState("");
+
 
 	const [isPosesLoading, setIsPosesLoading] = useState(false);
 
@@ -84,6 +86,7 @@ export default function PalletPage() {
 
 	const [showModalDeletePallet, setShowModalDeletePallet] = useState(false);
 	const [showModalRenamePallet, setShowModalRenamePallet] = useState(false);
+	const [showModalChangePalletCom, setShowModalChangePalletCom] = useState(false);
 	const [showModalCreatePos, setShowModalCreatePos] = useState(false);
 	const [showModalDeletePos, setShowModalDeletePos] = useState(false);
 	const [showModalEditPos, setShowModalEditPos] = useState(false);
@@ -104,7 +107,8 @@ export default function PalletPage() {
 			}
 
 			setPallet(fetchedPallet);
-			setTitle(fetchedPallet.title)
+			setTitle(fetchedPallet?.title)
+			setNewCom(fetchedPallet?.com)
 		} catch (error) {
 			console.error('Ошибка при получении паллеты:', error);
 		}
@@ -216,6 +220,21 @@ export default function PalletPage() {
 			console.error('Ошибка при изменении  названия паллеты:', error);
 		} finally {
 			setShowModalRenamePallet(false)
+		}
+	}
+
+
+
+	async function handleChangePalletComentById(newCom) {
+		try {
+			const updateData = { ...pallet, com: newCom }
+			await updatePalletById(pallet._id, updateData);
+			setNewCom(newCom)
+
+		} catch (error) {
+			console.error('Ошибка при изменении  комментария паллеты:', error);
+		} finally {
+			setShowModalChangePalletCom(false)
 		}
 	}
 
@@ -406,7 +425,7 @@ export default function PalletPage() {
 
 				<ButtonBlock
 					className="yellow-b flex"
-					onClick={() => { setShowModalRenamePallet(true); }}
+					onClick={() => { setShowModalChangePalletCom(true); }}
 				>
 					<TextBlock className="text-2xl"><RenameIcon /></TextBlock>
 					<TextBlock>Коментарій</TextBlock>
@@ -458,6 +477,14 @@ export default function PalletPage() {
 					value={title}
 					onConfirm={(title) => { handleRenamePalletById(title) }}
 					onCancel={() => { setShowModalRenamePallet(false) }}
+
+				/>
+
+				<ModalChangePalletCom
+					show={showModalChangePalletCom}
+					value={newCom}
+					onConfirm={(newCom) => { handleChangePalletComentById(newCom) }}
+					onCancel={() => { setShowModalChangePalletCom(false) }}
 
 				/>
 
@@ -540,6 +567,19 @@ export default function PalletPage() {
 			>
 
 
+				<CardBlock
+				className="flex items-center justify-center"
+				>
+
+					<TextBlock
+						className="text-teal-100 text-center text-3xl justify-start p-1"
+					>
+						{newCom}
+					</TextBlock>
+
+				</CardBlock>
+
+
 				<CardBlock>
 
 					<TextBlock
@@ -553,7 +593,7 @@ export default function PalletPage() {
 				<CardBlock>
 
 					<TextBlock
-						className="text-amber-500 text-xl justify-start p-1"
+						className="text-amber-500 text-3xl justify-start p-1"
 					>
 						Коробок всього: {posesInStore?.reduce((a, b) => a + b.boxes, 0)}
 					</TextBlock>
