@@ -68,9 +68,15 @@ export default function PalletPage() {
 	const [selectedPalletId, setSelectedPalletId] = useState(null)
 	const [selectedPallet, setSelectedPallet] = useState(null)
 
-	const [newPosQuantValue, setNewPosQuantValue] = useState(0)
-	const [newPosBoxesValue, setNewPosBoxesValue] = useState(0)
-	const [newPosDateValue, setNewPosDateValue] = useState("")
+	const [updatePosQuantValue, setUpdatePosQuantValue] = useState(0)
+	const [updatePosBoxesValue, setUpdatePosBoxesValue] = useState(0)
+	const [updatePosDateValue, setUpdatePosDateValue] = useState("")
+	const [updatePosSkladValue, setUpdatePosSkladValue] = useState("")
+	const [updatePosComValue, setUpdatePosComValue] = useState("")
+
+
+
+
 
 	const [newPos, setNewPos] = useState({
 		artikul: '',
@@ -306,9 +312,11 @@ export default function PalletPage() {
 		try {
 
 			const updatedData = {
-				quant: newPosQuantValue,
-				boxes: newPosBoxesValue,
-				date: newPosDateValue
+				quant: updatePosQuantValue,
+				boxes: updatePosBoxesValue,
+				date: updatePosDateValue,
+				sklad: updatePosSkladValue,
+				com: updatePosComValue,
 			}
 
 
@@ -515,12 +523,19 @@ export default function PalletPage() {
 				<ModalEditPos
 					show={showModalEditPos}
 					selectedPos={selectedPos}
-					newPosQuantValue={newPosQuantValue}
-					setNewPosQuantValue={setNewPosQuantValue}
-					newPosBoxesValue={newPosBoxesValue}
-					setNewPosBoxesValue={setNewPosBoxesValue}
-					newPosDateValue={newPosDateValue}
-					setNewPosDateValue={setNewPosDateValue}
+					updatePosQuantValue={updatePosQuantValue}
+					setUpdatePosQuantValue={setUpdatePosQuantValue}
+					updatePosBoxesValue={updatePosBoxesValue}
+					setUpdatePosBoxesValue={setUpdatePosBoxesValue}
+					updatePosDateValue={updatePosDateValue}
+					setUpdatePosDateValue={setUpdatePosDateValue}
+
+					updatePosSkladValue={updatePosSkladValue}
+					setUpdatePosSkladValue={setUpdatePosSkladValue}
+					updatePosComValue={updatePosComValue}
+					setUpdatePosComValue={setUpdatePosComValue}
+
+
 					handleUpdatePosById={handleUpdatePosById}
 					onCancel={() => { setShowModalEditPos(false) }}
 
@@ -568,7 +583,7 @@ export default function PalletPage() {
 
 
 				<CardBlock
-				className="flex items-center justify-center"
+					className="flex items-center justify-center"
 				>
 
 					<TextBlock
@@ -636,9 +651,11 @@ export default function PalletPage() {
 									onEdit={() => {
 										setShowModalEditPos(true)
 										setSelectedPos(pos)
-										setNewPosBoxesValue(pos.boxes)
-										setNewPosQuantValue(pos.quant)
-										setNewPosDateValue(pos.date)
+										setUpdatePosBoxesValue(pos.boxes)
+										setUpdatePosQuantValue(pos.quant)
+										setUpdatePosDateValue(pos.date)
+										setUpdatePosSkladValue(pos.sklad)
+										setUpdatePosComValue(pos.com)
 									}}
 									artsDB={artsDB}
 

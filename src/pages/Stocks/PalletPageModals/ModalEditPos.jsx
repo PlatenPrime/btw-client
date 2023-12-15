@@ -5,12 +5,18 @@ import { CancelIcon, ClearIcon, OkIcon } from '../../../components/UI/Icons';
 function ModalEditPos({
 	show,
 	selectedPos,
-	newPosQuantValue,
-	setNewPosQuantValue,
-	newPosBoxesValue,
-	setNewPosBoxesValue,
-	newPosDateValue,
-	setNewPosDateValue,
+	updatePosQuantValue,
+	setUpdatePosQuantValue,
+	updatePosBoxesValue,
+	setUpdatePosBoxesValue,
+	updatePosDateValue,
+	setUpdatePosDateValue,
+
+	updatePosSkladValue,
+	setUpdatePosSkladValue,
+	updatePosComValue,
+	setUpdatePosComValue,
+
 	handleUpdatePosById,
 	onCancel,
 }) {
@@ -26,28 +32,67 @@ function ModalEditPos({
 					<CardBlock className="flex justify-between space-x-2">
 						<TextBlock>Кількість:</TextBlock>
 						<InputBlock
-							name="newPosQuantValue"
-							value={newPosQuantValue}
-							onChange={(e) => { setNewPosQuantValue(e.target.value) }}
+							name="updatePosQuantValue"
+							value={updatePosQuantValue}
+							onChange={(e) => { setUpdatePosQuantValue(e.target.value) }}
 						/>
 					</CardBlock>
+
+
 					<CardBlock className="flex justify-between space-x-2">
 						<TextBlock>Коробки:</TextBlock>
 						<InputBlock
-							name="newPosBoxesValue"
-							value={newPosBoxesValue}
-							onChange={(e) => { setNewPosBoxesValue(e.target.value) }}
+							name="updatePosBoxesValue"
+							value={updatePosBoxesValue}
+							onChange={(e) => { setUpdatePosBoxesValue(e.target.value) }}
 						/>
 					</CardBlock>
+
 					<CardBlock className="flex justify-between space-x-2">
 						<TextBlock>Дата:</TextBlock>
 						<InputBlock
-							name="newPosDataValue"
-							value={newPosDateValue}
+							name="updatePosDateValue"
+							value={updatePosDateValue}
 							placeholder="12-2023..."
-							onChange={(e) => { setNewPosDateValue(e.target.value) }}
+							onChange={(e) => { setUpdatePosDateValue(e.target.value) }}
 						/>
 					</CardBlock>
+
+
+
+					<CardBlock className="grid grid-cols-1 md:grid-cols-2 space-x-2">
+						<label className=" justify-self-center md:justify-self-start" htmlFor="sklad">Склад:</label>
+						<select
+							className="InputBlock focus:bg-slate-900 text-lg "
+							value={updatePosSkladValue}
+							onChange={(e) => { setUpdatePosSkladValue(e.target.value) }}
+							id="sklad"
+							name="sklad"
+						>
+							<option value="pogrebi">Погреби</option>
+							<option value="merezhi">Мережі</option>
+
+						</select>
+					</CardBlock>
+
+
+
+
+					<CardBlock className="flex justify-between space-x-2">
+						<TextBlock>Комент:</TextBlock>
+						<InputBlock
+							name="updatePosComValue"
+							value={updatePosComValue}
+							placeholder="..."
+							onChange={(e) => { setUpdatePosComValue(e.target.value) }}
+						/>
+					</CardBlock>
+
+
+
+
+
+
 
 
 					<CardBlock className="grid grid-cols-2 space-x-2">
@@ -65,7 +110,7 @@ function ModalEditPos({
 						>
 							<TextBlock className="text-2xl"><OkIcon /></TextBlock>
 							<TextBlock className=""> Зберегти</TextBlock>
-							
+
 						</ButtonBlock>
 					</CardBlock>
 				</CardBlock>
