@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { ButtonBlock, CardBlock, HeaderBlock, ImageArt, InputBlock, ModalWrapper, PageBTW, TextBlock } from "../../components"
+import { ButtonBlock, ButtonGroup, CardBlock, HeaderBlock, ImageArt, InputBlock, ModalWrapper, PageBTW, TextBlock } from "../../components"
 import useAskStore from './stores/asksStore'
 import { useArtContext } from '../../ArtContext';
 import { Link } from 'react-router-dom';
@@ -111,6 +111,18 @@ export default function AsksPage() {
 
 				{/* BUTTONS */}
 
+				<ButtonGroup>
+
+					<ButtonBlock
+						className="pink-b "
+					>
+						<Link
+							to="/defs"
+						>
+							Дефіцити
+						</Link>
+					</ButtonBlock>
+				</ButtonGroup>
 
 
 

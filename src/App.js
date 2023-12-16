@@ -61,7 +61,7 @@ function App() {
 
 					<Route path="stocks" element={<StocksPage />} />
 					<Route path="rows/:id" element={<RowPage />} />
-					<Route path="stocks/defs" element={<DefsPage />} />
+					
 
 
 
@@ -72,7 +72,7 @@ function App() {
 
 					<Route path="asks" element={<AsksPage />} />
 					<Route path="asks/:id" element={<AskPage />} />
-
+					<Route path="defs" element={<DefsPage />} />
 
 
 					<Route path="comps" element={<CompsPage />} >

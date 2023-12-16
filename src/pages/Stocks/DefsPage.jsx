@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react'
-import { ButtonBlock, ButtonGroup, CardBlock, HeaderBlock, ImageArt, ImageBlock, PageBTW, Spinner, TextBlock } from '../../components'
+import { ButtonBlock, ButtonGroup, CardBlock, HeaderBlock, ImageArt, ImageBlock, InputBlock, ModalWrapper, PageBTW, Spinner, TextBlock } from '../../components'
 import { Link } from 'react-router-dom'
 import useFetchRemains from '../../hooks/useFetchRemains'
 import useFetchArts from '../../hooks/useFetchArts'
 import usePosesStore from './stores/posesStore'
+import useAskStore from './stores/asksStore'
 
 export default function DefsPage() {
 
@@ -14,11 +15,23 @@ export default function DefsPage() {
 	const { artsDB, loadingArtsDB, errorArtsDB } = useFetchArts()
 
 	const { poses, getAllPoses, clearPosesStore } = usePosesStore()
+	const { createAsk } = useAskStore()
+
 
 
 	const [isFetchingPoses, setIsFetchingPoses] = useState(false)
 	const [stocks, setStocks] = useState(null)
 	const [defs, setDefs] = useState(null)
+
+	const [newAskArtikul, setNewAskArtikul] = useState('')
+	const [newAskQuant, setNewAskQuant] = useState('')
+
+
+	const [showModalCreateAsk, setShowModalCreateAsk] = useState(false)
+
+
+
+
 
 	console.log(defs);
 
@@ -62,6 +75,35 @@ export default function DefsPage() {
 
 
 
+	async function handleCreateAsk() {
+		try {
+			const newAskData = {
+				artikul: newAskArtikul,
+				quant: newAskQuant,
+				status: "new"
+			}
+
+			const newAsk = await createAsk(newAskData)
+
+
+
+		} catch (error) {
+			console.log(error)
+		} finally {
+			setShowModalCreateAsk(false)
+		}
+
+
+
+	}
+
+
+
+
+
+
+
+
 
 
 
@@ -93,7 +135,7 @@ export default function DefsPage() {
 
 	useEffect(() => {
 
-		if (poses) { calculateDefs() }
+		if (poses && remains) { calculateDefs() }
 		return async () => {
 		}
 
@@ -123,11 +165,109 @@ export default function DefsPage() {
 				<ButtonGroup>
 
 
-
+				<ButtonBlock
+						className="indigo-b "
+					>
+						<Link
+							to="/asks"
+						>
+							Запити
+						</Link>
+					</ButtonBlock>
 
 				</ButtonGroup>
 
 			</CardBlock>
+
+
+			{showModalCreateAsk && <ModalWrapper
+				onCancel={() => setShowModalCreateAsk(false)}
+				title="Створення запиту на зняття "
+			>
+
+
+				<CardBlock
+					className="flex flex-col space-y-8 min-w-fit max-w-lg "
+				>
+
+					<CardBlock className="grid grid-cols-1 gap-1">
+						<CardBlock
+							className="grid justify-self-center"
+						>
+							<ImageArt
+								size={150}
+								artikul={newAskArtikul?.length === 9 ? newAskArtikul : "1102-3092"}
+							/>
+						</CardBlock>
+						<TextBlock className="text-xl grid justify-self-center italic">
+							{artsDB?.find((art) => art.artikul === newAskArtikul)?.nameukr}
+						</TextBlock>
+					</CardBlock>
+
+
+					<CardBlock className="space-y-2">
+
+
+						<CardBlock className="grid grid-rows-2 ">
+							<label className="justify-self-center text-xl" htmlFor="artikul">Артикул:</label>
+							<InputBlock
+								type="text"
+								id="artikul"
+								name="artikul"
+								autoComplete="off"
+								value={newAskArtikul}
+								onChange={(e) => setNewAskArtikul(e.target.value)}
+							/>
+						</CardBlock>
+
+
+
+
+
+						<CardBlock className="grid grid-rows-2 ">
+							<label className="justify-self-center text-xl" htmlFor="quant">Кількість:</label>
+							<InputBlock
+								type="number"
+								id="quant"
+								name="quant"
+								autoComplete="off"
+								value={newAskQuant}
+								onChange={(e) => setNewAskQuant(e.target.value)}
+							/>
+						</CardBlock>
+
+					</CardBlock>
+
+
+
+					<CardBlock className="grid grid-cols-2 space-x-2">
+						<ButtonBlock
+							type="button"
+							className="red-b"
+							onClick={() => setShowModalCreateAsk(false)}
+						>
+							Скасувати
+						</ButtonBlock>
+						<ButtonBlock
+							disabled={!newAskArtikul}
+							type="submit"
+							className="green-b"
+							onClick={handleCreateAsk}
+						>
+							Створити
+						</ButtonBlock>
+					</CardBlock>
+
+
+
+				</CardBlock>
+			</ModalWrapper>
+			}
+
+
+
+
+
 
 
 			{isFetchingPoses
@@ -165,8 +305,9 @@ export default function DefsPage() {
 			<CardBlock
 				className="space-y-2"
 			>
-				{defs?.map(def =>
+				{defs?.map((def, i) =>
 					<CardBlock
+						key={i}
 						className="grid grid-cols-3 p-2 border border-pink-500 rounded-xl"
 					>
 						<CardBlock >
@@ -175,7 +316,7 @@ export default function DefsPage() {
 							</TextBlock>
 							<ImageArt size={80} artikul={def.artikul} />
 							<TextBlock>
-								{artsDB.find(art => art.artikul === def.artikul)?.nameukr}
+								{artsDB?.find(art => art.artikul === def.artikul)?.nameukr}
 							</TextBlock>
 							<TextBlock> Кількість артикула на запасах {def.quant}</TextBlock>
 						</CardBlock>
@@ -186,6 +327,10 @@ export default function DefsPage() {
 
 						<ButtonBlock
 							className="indigo-b"
+							onClick={() => {
+								setShowModalCreateAsk(true)
+								setNewAskArtikul(def.artikul)
+							}}
 						>
 							Створити запит
 						</ButtonBlock>

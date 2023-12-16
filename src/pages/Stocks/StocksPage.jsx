@@ -65,15 +65,7 @@ export default function StocksPage() {
 						<TextBlock>Створити новий ряд</TextBlock>
 					</ButtonBlock>
 
-					<ButtonBlock
-						className="pink-b "
-					>
-						<Link
-							to="defs"
-						>
-							Дефіцити
-						</Link>
-					</ButtonBlock>
+				
 
 
 

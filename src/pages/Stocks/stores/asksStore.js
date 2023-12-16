@@ -13,6 +13,7 @@ const useAskStore = create((set) => ({
 			if (response.status === 201) {
 				const newAsk = response.data;
 				set((state) => ({ asks: [newAsk, ...state.asks] }));
+				return newAsk
 			} else {
 				throw new Error('Ошибка создания запроса на снятие');
 			}
