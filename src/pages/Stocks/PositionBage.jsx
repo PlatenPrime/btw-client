@@ -16,46 +16,72 @@ export default function PositionBage({ pos, onDelete, onEdit, artsDB }) {
 
 
 	return (
-		<li className='
+
+		<>
+			<li className='hidden lg:grid grid-cols-6
 	 relative border-2 border-teal-500
 	shadow-lg hover:shadow-teal-500
-		flex flex-col lg:flex-row lg:justify-between
+	
 		rounded-xl
 		transition ease-in-out duration-300	
 		
 		'
-			key={pos._id}
-		>
+				key={pos._id}
+			>
 
-			<TextBlock
-				className={`
+				<TextBlock
+					className={`
 					absolute top-0 left-0 z-10 bg-red-500 rounded-xl
 					${pos.date ? "p-1" : ""}
 					
 					`}
-			>
-				{pos.date}
-			</TextBlock>
-
-
-
-
-
-			<CardBlock
-				className="flex lg:w-3/4 items-center space-x-4 justify-between "
-			>
-
+				>
+					{pos.date}
+				</TextBlock>
 
 
 				<CardBlock
-					className="bg-white h-full flex items-center justify-center"
+					className="col-span-3 grid grid-cols-3"
 				>
 
-					<ImageArt
-						size={100}
-						artikul={artikul ? pos.artikul : ""}
-						className="rounded-lg"
-					/>
+
+					<CardBlock
+						className="col-span-1 bg-white rounded-l-xl grid "
+					>
+
+						<ImageArt
+							size={150}
+							artikul={artikul ? pos.artikul : ""}
+							className="rounded-lg justify-self-center self-center"
+						/>
+
+					</CardBlock>
+
+
+
+
+
+					<CardBlock
+						className="grid grid-rows-2 col-span-2  p-2 "
+
+					>
+
+						<TextBlock
+							className=" text-3xl text-center self-center justify-self-center  "
+						>
+							{pos.artikul}
+						</TextBlock>
+
+						<TextBlock
+							className=" italic text-center text-lg self-center justify-self-center p-1 "
+						>
+							{artikul ? artikul?.nameukr.slice(9) : "-"}
+						</TextBlock>
+
+					</CardBlock>
+
+
+
 
 				</CardBlock>
 
@@ -63,116 +89,105 @@ export default function PositionBage({ pos, onDelete, onEdit, artsDB }) {
 
 
 
-				<CardBlock
-					className="flex w-full space-x-1  "
 
+
+				<CardBlock
+					className="col-span-2"
 				>
 
-					<TextBlock
-						className=" text-2xl w-1/3"
-					>
-						{pos.artikul}
-					</TextBlock>
+					<CardBlock
+						className="grid grid-cols-2 p-2 gap-2">
 
-					<TextBlock
-						className=" italic text-lg flex justify-start p-1  w-2/3"
+
+						<CardBlock
+							className="flex justify-center items-center"
+						>
+
+							<TextBlock
+								className="text-sky-300  text-3xl"
+							><BsBalloon /></TextBlock>
+
+							<TextBlock
+								className="text-sky-300  font-bold text-2xl  rounded"
+							>
+								{pos.quant}
+							</TextBlock>
+
+						</CardBlock>
+
+
+						<CardBlock
+							className="flex justify-center items-center"
+						>
+							<TextBlock
+								className="text-amber-300  text-3xl "
+							><BsBoxSeam /></TextBlock>
+
+							<TextBlock
+								className="text-amber-300  font-bold text-2xl  rounded"
+							>
+								{pos.boxes}
+							</TextBlock>
+						</CardBlock>
+
+
+
+
+					</CardBlock>
+
+
+					<CardBlock
+						className="flex flex-col  space-x-1  "
+
 					>
-						{artikul ? artikul?.nameukr.slice(9) : "-"}
-					</TextBlock>
+
+						<TextBlock
+							className=" text-2xl  "
+						>
+							{pos.sklad === "pogrebi" ? "Погреби" : pos.sklad === "merezhi" ? "Мережі" : null}
+						</TextBlock>
+
+						<TextBlock
+							className=" text-2xl  "
+						>
+							{pos.com}
+						</TextBlock>
+
+
+
+					</CardBlock>
 
 				</CardBlock>
 
-			</CardBlock>
 
 
 
-			<CardBlock
-				className="flex flex-col  space-x-1  "
+				<CardBlock
+					className="col-span-1 flex  space-x-1 justify-evenly lg:items-center rounded-b-xl rounded-r-xl p-2  bg-slate-900 hover:bg-slate-800">
 
-			>
+					<ButtonBlock
+						className=" blue-b text-3xl"
+						onClick={onEdit}
+					>
+						<ImMoveDown />
+					</ButtonBlock>
 
-				<TextBlock
-					className=" text-2xl  "
-				>
-					{pos.sklad}
-				</TextBlock>
-
-				<TextBlock
-					className=" text-2xl  "
-				>
-					{pos.com}
-				</TextBlock>
-
-
-
-			</CardBlock>
+					<ButtonBlock
+						className="red-b text-3xl "
+						onClick={onDelete}
+					>
+						<MdDeleteForever />
+					</ButtonBlock>
 
 
+				</CardBlock>
 
 
 
 
+			</li>
 
-			<CardBlock
-				className="grid grid-cols-2 p-2 gap-2">
+		</>
 
-				<TextBlock
-					className="text-sky-300  text-3xl"
-				><BsBalloon /></TextBlock>
-
-				<TextBlock
-					className="text-sky-300  font-bold text-2xl  rounded"
-				>
-					{pos.quant}
-				</TextBlock>
-
-
-				<TextBlock
-					className="text-amber-300  text-3xl "
-				><BsBoxSeam /></TextBlock>
-
-				<TextBlock
-					className="text-amber-300  font-bold text-2xl  rounded"
-				>
-					{pos.boxes}
-				</TextBlock>
-
-
-
-
-			</CardBlock>
-
-
-
-
-
-
-
-
-			<CardBlock
-				className="flex  space-x-1 justify-evenly lg:items-center rounded-b-xl rounded-r-xl p-2  bg-slate-900 hover:bg-slate-800">
-
-				<ButtonBlock
-					className=" blue-b text-3xl"
-					onClick={onEdit}
-				>
-					<ImMoveDown />
-				</ButtonBlock>
-
-				<ButtonBlock
-					className="red-b text-3xl "
-					onClick={onDelete}
-				>
-					<MdDeleteForever />
-				</ButtonBlock>
-
-
-			</CardBlock>
-
-
-
-
-
-		</li>
 	)
 }
