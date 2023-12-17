@@ -6,10 +6,10 @@ const useAskStore = create((set) => ({
 
 	createAsk: async (askData) => {
 		try {
-			console.log(askData )
-			const response = await axios.post('asks',  askData );
+			console.log(askData)
+			const response = await axios.post('asks', askData);
 			console.log(response)
-			
+
 			if (response.status === 201) {
 				const newAsk = response.data;
 				set((state) => ({ asks: [newAsk, ...state.asks] }));

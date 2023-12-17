@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
-import { ButtonBlock, ButtonGroup, CardBlock, HeaderBlock, ImageArt, InputBlock, ModalWrapper, PageBTW, TextBlock } from "../../components"
+import { ButtonBlock, ButtonGroup, CardBlock, HeaderBlock, ImageArt, InputBlock, ModalConfirm, ModalWrapper, PageBTW, Spinner, TextBlock } from "../../components"
 import useAskStore from './stores/asksStore'
+import useAuthStore from "../Auth/authStore"
 import { useArtContext } from '../../ArtContext';
 import { Link } from 'react-router-dom';
 import { AddIcon } from '../../components/UI/Icons';
@@ -13,9 +14,8 @@ export default function AsksPage() {
 	const { artsDB, loadingArtsDB, errorArtsDB } = useArtContext()
 
 
-	const asks = useAskStore((state) => state.asks)
-	const getAllAsks = useAskStore((state) => state.getAllAsks)
-	const createAsk = useAskStore((state) => state.createAsk)
+	const { asks, getAllAsks, createAsk } = useAskStore()
+	const { user, users, getUsers } = useAuthStore()
 
 
 
@@ -25,13 +25,12 @@ export default function AsksPage() {
 	const [newAskQuant, setNewAskQuant] = useState('')
 
 
-
-
-
-
 	const [showModalCreateAsk, setShowModalCreateAsk] = useState(false)
 
 
+
+	const [isAsksLoading, setIsAsksLoading] = useState(false)
+	const [isAskCreating, setIsAskCreating] = useState(false)
 
 
 
@@ -45,10 +44,15 @@ export default function AsksPage() {
 		const fetchAsks = async () => {
 
 			try {
+				setIsAsksLoading(true)
+
 				const asks = await getAllAsks()
+				await getUsers()
 
 			} catch (error) {
 				console.log(error)
+			} finally {
+				setIsAsksLoading(false)
 			}
 		}
 
@@ -67,10 +71,13 @@ export default function AsksPage() {
 
 	async function handleCreateAsk() {
 		try {
+			setIsAskCreating(true)
+
 			const newAskData = {
 				artikul: newAskArtikul,
 				quant: newAskQuant,
-				status: "new"
+				status: "new",
+				asker: user?._id
 			}
 
 			await createAsk(newAskData)
@@ -80,10 +87,12 @@ export default function AsksPage() {
 		} catch (error) {
 			console.log(error)
 		} finally {
+			setIsAskCreating(true)
 			setShowModalCreateAsk(false)
+			setNewAskArtikul("")
+			setNewAskQuant("")
+
 		}
-
-
 
 	}
 
@@ -101,7 +110,7 @@ export default function AsksPage() {
 		>
 
 			<HeaderBlock
-				className="border border-yellow-500 shadow-md shadow-yellow-500"
+				className="border border-indigo-500 shadow-md shadow-indigo-500"
 			>
 				Запити
 			</HeaderBlock>
@@ -217,6 +226,10 @@ export default function AsksPage() {
 
 
 
+
+
+
+
 				{/* ASKS */}
 
 
@@ -228,7 +241,7 @@ export default function AsksPage() {
 						className="p-1 flex"
 					>
 						<ButtonBlock
-							className="yellow-b text-xl  p-4 flex  border-dashed w-full"
+							className="indigo-b text-xl  p-4 flex  border-dashed w-full"
 							onClick={() => setShowModalCreateAsk(true)}
 						>
 							<AddIcon />
@@ -237,73 +250,111 @@ export default function AsksPage() {
 					</CardBlock>
 
 
-					<CardBlock
-						className=" space-y-2"
-					>
 
-						{asks?.map((ask) =>
 
-							<Link
-								key={ask._id}
-								to={`/asks/${ask._id}`}
-								className=" 
+					{isAsksLoading
+						?
+						<Spinner color="#6366f1" />
+						:
+						<CardBlock
+							className=" space-y-2"
+						>
+
+							{asks?.map((ask) =>
+
+								<Link
+									key={ask._id}
+									to={`/asks/${ask._id}`}
+									className=" 
 								grid overflow-auto grid-cols-1 lg:grid-cols-2 
-								border border-yellow-500 p-2 
-								text-yellow-100 lg:text-2xl
-								hover:shadow-2xl hover:shadow-yellow-500 
-								hover:bg-yellow-500 transition ease-in-out duration-500
+								border border-indigo-500 p-2 
+								text-indigo-100 lg:text-2xl
+								hover:shadow-2xl hover:shadow-indigo-500 
+								hover:bg-indigo-500 transition ease-in-out duration-500
 								"
-							>
-
-								<CardBlock
-									className="grid grid-cols-1 lg:grid-cols-2"
 								>
-									<CardBlock
-										className=" place-self-center bg-white "
-									>
 
-										<ImageArt size={100} artikul={ask.artikul} />
+									<CardBlock
+										className="grid grid-cols-1 lg:grid-cols-2"
+									>
+										<CardBlock
+											className=" place-self-center bg-white "
+										>
+
+											<ImageArt size={100} artikul={ask.artikul} />
+										</CardBlock>
+
+										<TextBlock
+											className=" justify-center"
+										>
+
+											{artsDB?.find((art) => ask?.artikul === art?.artikul)?.nameukr}
+										</TextBlock>
+
 									</CardBlock>
 
-									<TextBlock
-										className=" justify-center"
-									>
-
-										{artsDB?.find((art) => ask?.artikul === art?.artikul)?.nameukr}
-									</TextBlock>
-
-								</CardBlock>
 
 
 
 
-
-								<CardBlock
-									className="grid grid-cols-1 lg:grid-cols-2"
-								>
-
-									<TextBlock
+									<CardBlock
 										className=""
 									>
-										{ask?.quant}
-									</TextBlock>
 
-									<TextBlock
-										className=""
-									>
-										{ask?.completed ? "Так" : "Ні"}
-									</TextBlock>
+										<TextBlock
+											className=""
+										>
+											{ask?.quant}
+										</TextBlock>
 
-								</CardBlock>
+										<TextBlock
+											className=""
+										>
+											{ask?.status === "new"
+												?
+												"Новий"
+												: ask?.status === "solved"
+													? "Виконано"
+													: ask?.status === "fail"
+														? "Відмовлено"
+														: null
+											}
+										</TextBlock>
+
+										<TextBlock
+											className=""
+										>
+										Запит:	{users?.find(user => user._id === ask?.asker)?.fullname}
+										</TextBlock>
+
+										<TextBlock
+											className=""
+										>
+										Виконав:	{users?.find(user => user._id === ask?.solver)?.fullname}
+										</TextBlock>
 
 
-							</Link>
 
 
-						)
-						}
+									</CardBlock>
 
-					</CardBlock>
+
+
+
+
+
+
+								</Link>
+
+
+							)
+							}
+
+						</CardBlock>
+
+					}
+
+
 
 				</CardBlock>
 
