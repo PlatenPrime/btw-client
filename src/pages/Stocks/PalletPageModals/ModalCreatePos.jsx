@@ -1,5 +1,6 @@
 import React from 'react';
 import { ModalWrapper, InputBlock, ButtonBlock, CardBlock, TextBlock, ImageArt } from '../../../components';
+import { CancelIcon, OkIcon } from '../../../components/UI/Icons';
 
 function ModalCreatePos({
 	show,
@@ -17,20 +18,62 @@ function ModalCreatePos({
 				<CardBlock
 					className="space-y-4"
 				>
-					<CardBlock className="grid grid-cols-1 space-y-2">
+
+
+
+
+
+
+
+
+					<CardBlock className="
+					grid grid-cols-1 space-y-2
+					border
+
+					
+					">
 
 						<CardBlock
-							className="justify-self-center"
+							className="grid justify-self-center bg-white w-full "
 						>
-							<ImageArt
-								size={150}
-								artikul={newPos.artikul.length === 9 ? newPos.artikul : "1102-3092"}
-							/>
+
+							<CardBlock
+								className=" justify-self-center"
+							>
+								<ImageArt
+									size={150}
+									artikul={newPos.artikul.length === 9 ? newPos.artikul : "1102-3092"}
+								/>
+
+							</CardBlock>
+
 						</CardBlock>
-						<TextBlock className="text-xl">
+
+
+
+
+						<TextBlock className="text-xl text-center">
 							{artsDB.find((art) => art.artikul === newPos.artikul)?.nameukr}
 						</TextBlock>
+
+
+						<TextBlock className="text-xl text-orange-500">
+							{artsDB.find((art) => art.artikul === newPos.artikul)?.zone}
+						</TextBlock>
+
+
+
 					</CardBlock>
+
+
+
+
+
+
+
+
+
+
 
 					<CardBlock className="space-y-2">
 						<CardBlock className="grid grid-cols-1 md:grid-cols-2 space-x-2">
@@ -120,20 +163,21 @@ function ModalCreatePos({
 
 					<CardBlock className="grid grid-cols-2 space-x-2">
 						<ButtonBlock
-							type="button"
-							className="red-b"
-							onClick={() => {
-								onCancel();
-							}}
+							className="red-b flex justify-center items-center"
+							onClick={() => { onCancel(); }}
 						>
-							Скасувати
+							<TextBlock className="text-2xl"><CancelIcon /></TextBlock>
+							<TextBlock className=""> Скасувати</TextBlock>
+
 						</ButtonBlock>
 						<ButtonBlock
-							type="submit"
-							className="green-b"
+							className="green-b flex justify-center items-center"
 							onClick={handleCreatePos}
+							disabled={!newPos.artikul || !newPos.boxes || !newPos.quant}
 						>
-							Створити
+							<TextBlock className="text-2xl"><OkIcon /></TextBlock>
+							<TextBlock className=""> 	Створити</TextBlock>
+
 						</ButtonBlock>
 					</CardBlock>
 
