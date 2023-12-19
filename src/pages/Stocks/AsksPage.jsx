@@ -23,6 +23,7 @@ export default function AsksPage() {
 
 	const [newAskArtikul, setNewAskArtikul] = useState('')
 	const [newAskQuant, setNewAskQuant] = useState('')
+	const [newAskCom, setNewAskCom] = useState('')
 
 
 	const [showModalCreateAsk, setShowModalCreateAsk] = useState(false)
@@ -77,6 +78,7 @@ export default function AsksPage() {
 				artikul: newAskArtikul,
 				quant: newAskQuant,
 				status: "new",
+				com: newAskCom,
 				asker: user?._id
 			}
 
@@ -91,6 +93,7 @@ export default function AsksPage() {
 			setShowModalCreateAsk(false)
 			setNewAskArtikul("")
 			setNewAskQuant("")
+			setNewAskCom("")
 
 		}
 
@@ -193,6 +196,27 @@ export default function AsksPage() {
 									onChange={(e) => setNewAskQuant(e.target.value)}
 								/>
 							</CardBlock>
+
+
+							<CardBlock className="grid grid-rows-2 ">
+								<label className="justify-self-center text-xl" htmlFor="com">Коментарій:</label>
+								<InputBlock
+									type="text"
+									id="com"
+									name="com"
+									autoComplete="off"
+									value={newAskCom}
+									onChange={(e) => setNewAskCom(e.target.value)}
+								/>
+							</CardBlock>
+
+
+
+
+
+
+
+
 
 						</CardBlock>
 
@@ -324,13 +348,13 @@ export default function AsksPage() {
 										<TextBlock
 											className=""
 										>
-										Запит:	{users?.find(user => user._id === ask?.asker)?.fullname}
+											Запит:	{users?.find(user => user._id === ask?.asker)?.fullname}
 										</TextBlock>
 
 										<TextBlock
 											className=""
 										>
-										Виконав:	{users?.find(user => user._id === ask?.solver)?.fullname}
+											Виконав:	{users?.find(user => user._id === ask?.solver)?.fullname}
 										</TextBlock>
 
 
