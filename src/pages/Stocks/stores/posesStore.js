@@ -1,8 +1,11 @@
 import { create } from 'zustand';
 import axios from '../../../utils/axios';
 
+
+
 const usePosesStore = create((set) => ({
 	poses: [],
+	allPoses: [],
 
 	posesWithArtikul: [],
 
@@ -16,7 +19,7 @@ const usePosesStore = create((set) => ({
 		try {
 
 			const response = await axios.post('poses', { palletId, ...posData });
-			console.log(response)
+			// console.log(response)
 
 			if (response.status === 201) {
 				const newPos = response.data
@@ -37,11 +40,26 @@ const usePosesStore = create((set) => ({
 	getAllPoses: async () => {
 		try {
 			const response = await axios.get('poses');
-			set({ poses: response.data.poses.sort((a, b) => a.artikul - b.artikul) });
+			const data = response.data.poses.sort((a, b) => a.artikul - b.artikul)
+			set({ allPoses: data });
+			return data
 		} catch (error) {
 			console.error('Ошибка при получении всех позиций:', error);
 		}
 	},
+
+
+	addNewPosToAllPoses: async (newPos) => {
+		try {
+			set((state) => ({
+				allPoses: [newPos, ...state.allPoses],
+			}));
+		} catch (error) {
+			console.error('Ошибка при добавлении новой позиции ко всем позициям:', error);
+		}
+	},
+
+
 
 	getPosById: async (id) => {
 		try {
@@ -105,7 +123,7 @@ const usePosesStore = create((set) => ({
 				const bArtikul = Number(b.artikul.replace(/-/g, ''));
 				return aArtikul - bArtikul;
 			});
-			console.log(fetchedPoses)
+			// console.log(fetchedPoses)
 
 			set((state) => ({
 				poses: [...fetchedPoses],
@@ -120,7 +138,6 @@ const usePosesStore = create((set) => ({
 	getPosesByArtikul: async (artikul) => {
 		try {
 			const response = await axios.get(`poses/artikul/${artikul}`);
-			console.log(response)
 			set({ posesWithArtikul: response.data.positions });
 			return response.data.positions
 		} catch (error) {
@@ -128,9 +145,13 @@ const usePosesStore = create((set) => ({
 		}
 	},
 
-
-
-
 }));
+
+
+
+
+
+
+
 
 export default usePosesStore;

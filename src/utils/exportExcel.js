@@ -2,6 +2,7 @@ import * as  XLSX from 'xlsx';
 
 
 
+
 export function exportToExcel(data) {
 	const ws = XLSX.utils.json_to_sheet(data);
 	const wb = XLSX.utils.book_new();
@@ -51,6 +52,60 @@ export function exportToExcelComps(data) {
 
 	// Создаем название файла, объединяя "konkurenty" и текущую дату
 	const fileName = `konkurenty_${currentDate}.xlsx`;
+	// Записываем файл с новым названием
+	XLSX.writeFile(wb, fileName);
+}
+
+
+
+
+
+export async function exportToExcelPoses(allPoses) {
+
+
+
+
+
+	const data = allPoses.reduce((result, currentObj) => {
+
+
+		const existingObj = result.find((obj) => obj.artikul === currentObj.artikul);
+
+		if (existingObj) {
+			// Если объект с таким artikul уже есть, обновляем quant
+			existingObj.quant += currentObj.quant;
+		} else {
+			// Если нет, добавляем новый объект
+			result.push({ artikul: currentObj.artikul, quant: currentObj.quant });
+		}
+		return result;
+	}, []);
+
+
+
+
+
+
+	// Преобразование данных для экспорта
+	const transformedData = data.map(item => ({
+		"Артикул": item?.artikul,
+		"Кількість": item?.quant,
+	}));
+
+
+
+
+	const ws = XLSX.utils.json_to_sheet(transformedData);
+	const wb = XLSX.utils.book_new();
+	XLSX.utils.book_append_sheet(wb, ws, 'Sheet1');
+
+
+
+	// Получаем текущую дату в формате ГГГГ-ММ-ДД
+	const currentDate = new Date().toISOString().slice(0, 10);
+
+	// Создаем название файла, объединяя "konkurenty" и текущую дату
+	const fileName = `stocks_${currentDate}.xlsx`;
 	// Записываем файл с новым названием
 	XLSX.writeFile(wb, fileName);
 }

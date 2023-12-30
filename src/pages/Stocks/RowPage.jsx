@@ -26,7 +26,7 @@ export default function RowPage() {
 
 
 
-	const { poses, getAllPoses } = usePosesStore()
+	const { allPoses, getAllPoses } = usePosesStore()
 
 
 
@@ -345,7 +345,7 @@ export default function RowPage() {
 								{palletsStore?.map((pallet) => <PalletBage
 									pallet={pallet}
 									key={pallet._id}
-									poses={poses?.filter((pos) => pos.pallet === pallet._id)}
+									poses={allPoses?.filter((pos) => pos.pallet === pallet._id)}
 								/>
 								)}
 							</CardBlock>}

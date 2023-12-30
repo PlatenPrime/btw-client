@@ -1,16 +1,65 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { ButtonBlock, CardBlock, HeaderBlock, PageBTW, TextBlock, ButtonGroup } from '../../components'
 import { RowList } from './RowList'
 import { useRowStore } from './stores/rowsStore';
 import ModalCreate from '../../components/UI/Modal/ModalCreate';
 import { AddIcon } from '../../components/UI/Icons/';
 import { Link } from 'react-router-dom';
+import { exportToExcelPoses } from '../../utils/exportExcel';
+import { SiMicrosoftexcel } from 'react-icons/si';
+import usePosesStore from './stores/posesStore';
 
 
 export default function StocksPage() {
 
 	const createRow = useRowStore((state) => state.createRow);
+	const { getAllPoses, allPoses } = usePosesStore()
+
+
+
+
+
+
+
+
 	const [showModalCreateRow, setShowModalCreateRow] = useState(false)
+
+
+
+
+
+	useEffect(() => {
+
+
+		const fetchAllPoses = async () => {
+			try {
+				
+
+				const allPoses = await getAllPoses()
+				console.log(allPoses);
+
+			} catch (error) {
+				console.log(error);
+
+			}
+		}
+
+		fetchAllPoses()
+
+
+	}, [])
+
+
+
+
+
+
+
+
+
+
+
+
 
 	function closeModalCreateRow() {
 		setShowModalCreateRow(false);
@@ -65,7 +114,15 @@ export default function StocksPage() {
 						<TextBlock>Створити новий ряд</TextBlock>
 					</ButtonBlock>
 
-				
+					<ButtonBlock
+						onClick={() => exportToExcelPoses(allPoses)}
+						className=" green-b flex items-center space-x-1  "
+					>
+						< SiMicrosoftexcel className='text-2xl' />
+						<TextBlock>
+							Експорт в Excel
+						</TextBlock>
+					</ButtonBlock>
 
 
 

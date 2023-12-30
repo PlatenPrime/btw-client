@@ -14,7 +14,7 @@ export default function DefsPage() {
 	const { remains, loadingRemains, errorRemains } = useFetchRemains()
 	const { artsDB, loadingArtsDB, errorArtsDB } = useFetchArts()
 
-	const { poses, getAllPoses, clearPosesStore } = usePosesStore()
+	const { allPoses, getAllPoses, clearPosesStore } = usePosesStore()
 	const { createAsk } = useAskStore()
 
 
@@ -37,7 +37,7 @@ export default function DefsPage() {
 
 
 	const calculateDefs = () => {
-		const transformedArray = poses
+		const transformedArray = allPoses
 
 			.filter((pos) => pos.sklad === "pogrebi")
 			.reduce((result, currentObj) => {
@@ -135,11 +135,11 @@ export default function DefsPage() {
 
 	useEffect(() => {
 
-		if (poses && remains) { calculateDefs() }
+		if (allPoses && remains) { calculateDefs() }
 		return async () => {
 		}
 
-	}, [poses])
+	}, [allPoses])
 
 
 
@@ -165,7 +165,7 @@ export default function DefsPage() {
 				<ButtonGroup>
 
 
-				<ButtonBlock
+					<ButtonBlock
 						className="indigo-b "
 					>
 						<Link
@@ -278,7 +278,7 @@ export default function DefsPage() {
 				<CardBlock>
 
 					<TextBlock>
-						Позицій: {poses?.length}
+						Позицій всього: {allPoses?.length}
 					</TextBlock>
 					<TextBlock>
 						Артикулів: {artsDB?.length}
@@ -294,7 +294,7 @@ export default function DefsPage() {
 					</TextBlock>
 
 					<TextBlock>
-						Дифіцити: {defs?.length}
+						Дефіцити: {defs?.length}
 					</TextBlock>
 
 				</CardBlock>

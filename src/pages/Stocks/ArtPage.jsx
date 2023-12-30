@@ -264,6 +264,7 @@ export default function ArtPage() {
 			transition ease-in-out duration-300
 			'
 									to={`/pallets/${pallets?.find((pallet) => pallet._id === pos?.pallet)?._id}`}
+									key={pos._id}
 								>
 									<TextBlock
 										className="lg:w-1/2 flex  lg:justify-start"
