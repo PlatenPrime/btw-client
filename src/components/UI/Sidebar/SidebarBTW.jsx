@@ -155,25 +155,27 @@ p-4
 
 
 
-
-				<TextBlock className="border border-rose-500 hover:bg-rose-500/90 rounded " >
-					<NavLink
-						to={"comps"}
-						style={({ isActive }) => isActive ? {
-							color: "white",
-							padding: "12px",
-							width: "100%",
-							background: "rgb(244 63 94 )",
-						} : inActiveStyles}
-					>
-						<TextBlock
-							className="flex text-2xl space-x-1"
+				{user?.role === "PRIME" || user?.role === "ADMIN" ?
+					<TextBlock className="border border-rose-500 hover:bg-rose-500/90 rounded " >
+						<NavLink
+							to={"comps"}
+							style={({ isActive }) => isActive ? {
+								color: "white",
+								padding: "12px",
+								width: "100%",
+								background: "rgb(244 63 94 )",
+							} : inActiveStyles}
 						>
-							<FcBinoculars /> <TextBlock>Конкуренти</TextBlock>
-						</TextBlock>
+							<TextBlock
+								className="flex text-2xl space-x-1"
+							>
+								<FcBinoculars /> <TextBlock>Конкуренти</TextBlock>
+							</TextBlock>
 
-					</NavLink>
-				</TextBlock>
+						</NavLink>
+					</TextBlock>
+					:
+					null}
 
 
 

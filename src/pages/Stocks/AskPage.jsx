@@ -216,7 +216,7 @@ export default function AskPage() {
 			}
 
 			const updatedAsk = await updateAskById(id, askUpdateData)
-			setAsk(updatedAsk)
+			if (updatedAsk) setAsk(updatedAsk)
 
 
 
@@ -241,7 +241,7 @@ export default function AskPage() {
 			}
 
 			const updatedAsk = await updateAskById(id, askUpdateData)
-			setAsk(updatedAsk)
+			if (updatedAsk) setAsk(updatedAsk)
 
 
 
