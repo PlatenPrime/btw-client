@@ -147,21 +147,23 @@ const SidebarMobileBTW = ({ onClose }) => {
 				</TextBlock>
 
 
-
-				<TextBlock className="w-full text-xl text-center border border-rose-500 hover:bg-rose-500/90 rounded font-bold " >
-					<NavLink
-						onClick={onClose}
-						to={"comps"}
-						style={({ isActive }) => isActive ? {
-							color: "white",
-							padding: "12px",
-							width: "100%",
-							background: "rgb(244 63 94 )",
-						} : inActiveStyles}
-					>
-						Конкуренти
-					</NavLink>
-				</TextBlock>
+				{user?.role === "PRIME" || user?.role === "ADMIN" ?
+					<TextBlock className="w-full text-xl text-center border border-rose-500 hover:bg-rose-500/90 rounded font-bold " >
+						<NavLink
+							onClick={onClose}
+							to={"comps"}
+							style={({ isActive }) => isActive ? {
+								color: "white",
+								padding: "12px",
+								width: "100%",
+								background: "rgb(244 63 94 )",
+							} : inActiveStyles}
+						>
+							Конкуренти
+						</NavLink>
+					</TextBlock>
+					:
+					null}
 
 
 

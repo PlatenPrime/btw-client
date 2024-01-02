@@ -5,6 +5,8 @@ import useFetchRemains from '../../hooks/useFetchRemains'
 import useFetchArts from '../../hooks/useFetchArts'
 import usePosesStore from './stores/posesStore'
 import useAskStore from './stores/asksStore'
+import useAuthStore from '../Auth/authStore'
+import { toast } from 'react-toastify'
 
 export default function DefsPage() {
 
@@ -16,10 +18,18 @@ export default function DefsPage() {
 
 	const { allPoses, getAllPoses, clearPosesStore } = usePosesStore()
 	const { createAsk } = useAskStore()
+	const { user } = useAuthStore()
 
 
 
 	const [isFetchingPoses, setIsFetchingPoses] = useState(false)
+	const [isCreatingAsk, setIsCreatingAsk] = useState(false)
+
+
+
+
+
+
 	const [stocks, setStocks] = useState(null)
 	const [defs, setDefs] = useState(null)
 
@@ -77,19 +87,28 @@ export default function DefsPage() {
 
 	async function handleCreateAsk() {
 		try {
+
+			setIsCreatingAsk(true)
+
 			const newAskData = {
 				artikul: newAskArtikul,
 				quant: newAskQuant,
-				status: "new"
+				status: "new",
+				asker: user._id
 			}
 
 			const newAsk = await createAsk(newAskData)
 
 
+			if (newAsk) toast.success(`Запит на ${newAskArtikul} створено`)
+
+			console.log(newAsk);
+
 
 		} catch (error) {
 			console.log(error)
 		} finally {
+			setIsCreatingAsk(false)
 			setShowModalCreateAsk(false)
 		}
 
@@ -254,7 +273,22 @@ export default function DefsPage() {
 							className="green-b"
 							onClick={handleCreateAsk}
 						>
-							Створити
+
+
+							{isCreatingAsk ?
+
+								<Spinner color="green" />
+								:
+								<TextBlock>	Створити</TextBlock>
+							}
+
+
+
+
+
+
+
+
 						</ButtonBlock>
 					</CardBlock>
 
@@ -325,15 +359,22 @@ export default function DefsPage() {
 							className="justify-self-center"
 						>Дефіцит: {def.dif}</CardBlock>
 
-						<ButtonBlock
-							className="indigo-b"
-							onClick={() => {
-								setShowModalCreateAsk(true)
-								setNewAskArtikul(def.artikul)
-							}}
+
+						<CardBlock
+						className="flex justify-center items-center"
 						>
-							Створити запит
-						</ButtonBlock>
+
+							<ButtonBlock
+								className="indigo-b"
+								onClick={() => {
+									setShowModalCreateAsk(true)
+									setNewAskArtikul(def.artikul)
+								}}
+							>
+								Створити запит
+							</ButtonBlock>
+
+						</CardBlock>
 
 					</CardBlock>
 				)}
