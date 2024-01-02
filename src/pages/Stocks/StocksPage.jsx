@@ -8,6 +8,7 @@ import { Link } from 'react-router-dom';
 import { exportToExcelPoses } from '../../utils/exportExcel';
 import { SiMicrosoftexcel } from 'react-icons/si';
 import usePosesStore from './stores/posesStore';
+import useFetchArts from '../../hooks/useFetchArts';
 
 
 export default function StocksPage() {
@@ -16,8 +17,7 @@ export default function StocksPage() {
 	const { getAllPoses, allPoses } = usePosesStore()
 
 
-
-
+	const { artsDB, loadingArtsDB, errorArtsDB } = useFetchArts()
 
 
 
@@ -33,7 +33,7 @@ export default function StocksPage() {
 
 		const fetchAllPoses = async () => {
 			try {
-				
+
 
 				const allPoses = await getAllPoses()
 				console.log(allPoses);
@@ -115,7 +115,7 @@ export default function StocksPage() {
 					</ButtonBlock>
 
 					<ButtonBlock
-						onClick={() => exportToExcelPoses(allPoses)}
+						onClick={() => exportToExcelPoses(allPoses, artsDB)}
 						className=" green-b flex items-center space-x-1  "
 					>
 						< SiMicrosoftexcel className='text-2xl' />

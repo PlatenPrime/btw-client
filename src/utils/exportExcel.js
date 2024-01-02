@@ -60,23 +60,19 @@ export function exportToExcelComps(data) {
 
 
 
-export async function exportToExcelPoses(allPoses) {
-
-
+export async function exportToExcelPoses(allPoses, artsDB) {
 
 
 
 	const data = allPoses.reduce((result, currentObj) => {
-
-
-		const existingObj = result.find((obj) => obj.artikul === currentObj.artikul);
+		const existingObj = result.find((obj) => obj.artikul === currentObj.artikul && obj.sklad === currentObj.sklad);
 
 		if (existingObj) {
-			// Если объект с таким artikul уже есть, обновляем quant
+			// Если объект с таким artikul и sklad уже есть, обновляем quant
 			existingObj.quant += currentObj.quant;
 		} else {
 			// Если нет, добавляем новый объект
-			result.push({ artikul: currentObj.artikul, quant: currentObj.quant });
+			result.push({ artikul: currentObj.artikul, sklad: currentObj.sklad, quant: currentObj.quant });
 		}
 		return result;
 	}, []);
@@ -84,14 +80,13 @@ export async function exportToExcelPoses(allPoses) {
 
 
 
-
-
 	// Преобразование данных для экспорта
 	const transformedData = data.map(item => ({
 		"Артикул": item?.artikul,
+		"Повна назва": artsDB?.find(art => art?.artikul === item?.artikul)?.nameukr,
+		"Склад": item?.sklad === "pogrebi" ? "Погреби склад" : item?.sklad === "merezhi" ? "Мережі" : null,
 		"Кількість": item?.quant,
 	}));
-
 
 
 
@@ -104,7 +99,7 @@ export async function exportToExcelPoses(allPoses) {
 	// Получаем текущую дату в формате ГГГГ-ММ-ДД
 	const currentDate = new Date().toISOString().slice(0, 10);
 
-	// Создаем название файла, объединяя "konkurenty" и текущую дату
+	// Создаем название файла
 	const fileName = `stocks_${currentDate}.xlsx`;
 	// Записываем файл с новым названием
 	XLSX.writeFile(wb, fileName);
