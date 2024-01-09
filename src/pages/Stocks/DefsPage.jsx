@@ -33,6 +33,11 @@ export default function DefsPage() {
 	const [stocks, setStocks] = useState(null)
 	const [defs, setDefs] = useState(null)
 
+
+
+
+
+
 	const [newAskArtikul, setNewAskArtikul] = useState('')
 	const [newAskQuant, setNewAskQuant] = useState('')
 
@@ -91,7 +96,7 @@ export default function DefsPage() {
 					existingObj.quant += currentObj.quant;
 				} else {
 					// Если нет, добавляем новый объект
-					result.push({ artikul: currentObj.artikul, quant: currentObj.quant,  });
+					result.push({ artikul: currentObj.artikul, quant: currentObj.quant, });
 				}
 				return result;
 			}, []);
@@ -108,6 +113,7 @@ export default function DefsPage() {
 			.map((obj) => ({
 				...obj,
 				dif: obj.quant - remains[obj.artikul],
+				remain: remains[obj.artikul]
 			}));
 
 		setDefs(filteredArray)
@@ -185,9 +191,12 @@ export default function DefsPage() {
 
 	useEffect(() => {
 
-		if (allPoses && remains) { calculateDefs() }
-		return async () => {
+		if (allPoses && remains) {
+			calculateDefs()
+			console.log("Defs is calculated");
+			
 		}
+
 
 	}, [allPoses])
 
@@ -215,11 +224,19 @@ export default function DefsPage() {
 				<ButtonGroup>
 
 
-
+					<ButtonBlock
+						className="pink-b"
+						onClick={() => { }}
+					>
+						Актуалізація дефіцитів
+					</ButtonBlock>
 
 				</ButtonGroup>
 
 			</CardBlock>
+
+
+
 
 
 			{showModalCreateAsk && <ModalWrapper
@@ -378,7 +395,7 @@ export default function DefsPage() {
 				{defs?.map((def, i) =>
 					<CardBlock
 						key={i}
-						className="grid grid-cols-3 p-2 border border-pink-500 rounded-xl"
+						className="grid  lg:grid-cols-3 p-2 border border-pink-500 rounded-xl"
 					>
 						<CardBlock >
 
@@ -399,15 +416,20 @@ export default function DefsPage() {
 						</CardBlock>
 
 						<CardBlock
-							className="justify-self-center flex flex-col justify-around"
+							className="justify-self-center flex flex-col justify-around p-3"
 						>
 							<TextBlock
 								className="text-2xl text-center"
-							> Кількість артикула на запасах: {def.quant}</TextBlock>
+							> Кількість артикула на запасах: {def?.quant}</TextBlock>
 							<TextBlock
 								className="text-2xl text-center"
 							>
-								Дефіцит: {def.dif}
+								Дефіцит: {def?.dif}
+							</TextBlock>
+							<TextBlock
+								className="text-2xl text-center"
+							>
+								Залишок по базі: {def?.remain}
 							</TextBlock>
 
 						</CardBlock>
