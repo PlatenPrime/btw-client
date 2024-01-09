@@ -147,6 +147,31 @@ const SidebarMobileBTW = ({ onClose }) => {
 				</TextBlock>
 
 
+
+
+				{user?.role === "PRIME" || user?.role === "ADMIN" || user?.role === "SKLAD"  ?
+					<TextBlock className="w-full text-xl text-center border border-pink-500 hover:bg-pink-500/90 rounded font-bold " >
+						<NavLink
+							onClick={onClose}
+							to={"defs"}
+							style={({ isActive }) => isActive ? {
+								color: "white",
+								padding: "12px",
+								width: "100%",
+								background: "rgb(236 72 153 )",
+							} : inActiveStyles}
+						>
+						Дефіцити
+						</NavLink>
+					</TextBlock>
+					:
+					null}
+
+
+
+
+
+
 				{user?.role === "PRIME" || user?.role === "ADMIN" ?
 					<TextBlock className="w-full text-xl text-center border border-rose-500 hover:bg-rose-500/90 rounded font-bold " >
 						<NavLink

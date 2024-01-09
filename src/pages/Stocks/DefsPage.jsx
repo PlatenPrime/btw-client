@@ -46,10 +46,41 @@ export default function DefsPage() {
 	console.log(defs);
 
 
+
+
+
+
+	const isNewerThanThreeYears = (dateString) => {
+		if (!dateString) {
+			return true; // Если даты нет, считаем, что позиция актуальна
+		}
+
+		// Преобразование строки даты в объект Date
+		const dateParts = dateString.split('.');
+		const year = parseInt(dateParts[1], 10) + 2000; // Добавляем 2000 к году
+		const month = parseInt(dateParts[0], 10) - 1; // Вычитаем 1 из месяца (начинается с 0)
+
+		const posDate = new Date(year, month);
+
+		// Проверка, новее ли дата чем текущая дата минус 3 года
+		const threeYearsAgo = new Date();
+		threeYearsAgo.setFullYear(threeYearsAgo.getFullYear() - 3);
+
+		return posDate >= threeYearsAgo;
+	}
+
+
+
+
+
+
+
+
+
 	const calculateDefs = () => {
 		const transformedArray = allPoses
 
-			.filter((pos) => pos.sklad === "pogrebi")
+			.filter((pos) => pos.sklad === "pogrebi" && isNewerThanThreeYears(pos.date))
 			.reduce((result, currentObj) => {
 
 
@@ -60,7 +91,7 @@ export default function DefsPage() {
 					existingObj.quant += currentObj.quant;
 				} else {
 					// Если нет, добавляем новый объект
-					result.push({ artikul: currentObj.artikul, quant: currentObj.quant });
+					result.push({ artikul: currentObj.artikul, quant: currentObj.quant,  });
 				}
 				return result;
 			}, []);
@@ -184,15 +215,7 @@ export default function DefsPage() {
 				<ButtonGroup>
 
 
-					<ButtonBlock
-						className="indigo-b "
-					>
-						<Link
-							to="/asks"
-						>
-							Запити
-						</Link>
-					</ButtonBlock>
+
 
 				</ButtonGroup>
 
@@ -306,16 +329,25 @@ export default function DefsPage() {
 
 			{isFetchingPoses
 				?
-				<Spinner color="fuchsia" />
+				<CardBlock>
+					<Spinner color="fuchsia" />
+				</CardBlock>
 				:
 
-				<CardBlock>
+				<CardBlock
+					className="flex flex-col items-start  "
 
-					<TextBlock>
-						Позицій всього: {allPoses?.length}
+				>
+
+					<TextBlock
+						className="text-2xl text-teal-100"
+					>
+						Позиції всього: {allPoses?.length}
 					</TextBlock>
-					<TextBlock>
-						Артикулів: {artsDB?.length}
+					<TextBlock
+						className="text-2xl text-sky-100"
+					>
+						Артикули: {artsDB?.length}
 					</TextBlock>
 
 
@@ -323,11 +355,15 @@ export default function DefsPage() {
 						Залишки: {remains ? remains["1102-0260"] : null}
 					</TextBlock> */}
 
-					<TextBlock>
+					<TextBlock
+						className="text-2xl text-orange-100"
+					>
 						Запаси: {stocks?.length}
 					</TextBlock>
 
-					<TextBlock>
+					<TextBlock
+						className="text-2xl text-pink-100"
+					>
 						Дефіцити: {defs?.length}
 					</TextBlock>
 
@@ -345,23 +381,40 @@ export default function DefsPage() {
 						className="grid grid-cols-3 p-2 border border-pink-500 rounded-xl"
 					>
 						<CardBlock >
-							<TextBlock>
-								Артикул:	{def.artikul}
-							</TextBlock>
-							<ImageArt size={80} artikul={def.artikul} />
-							<TextBlock>
+
+							<CardBlock
+								className="bg-white flex justify-center "
+							>
+								<ImageArt size={200} artikul={def.artikul} />
+
+							</CardBlock>
+
+
+							<TextBlock
+								className="p-2 text-xl text-center italic bg-sky-500/20 "
+							>
 								{artsDB?.find(art => art.artikul === def.artikul)?.nameukr}
 							</TextBlock>
-							<TextBlock> Кількість артикула на запасах {def.quant}</TextBlock>
+
 						</CardBlock>
 
 						<CardBlock
-							className="justify-self-center"
-						>Дефіцит: {def.dif}</CardBlock>
+							className="justify-self-center flex flex-col justify-around"
+						>
+							<TextBlock
+								className="text-2xl text-center"
+							> Кількість артикула на запасах: {def.quant}</TextBlock>
+							<TextBlock
+								className="text-2xl text-center"
+							>
+								Дефіцит: {def.dif}
+							</TextBlock>
+
+						</CardBlock>
 
 
 						<CardBlock
-						className="flex justify-center items-center"
+							className="flex justify-center items-center"
 						>
 
 							<ButtonBlock

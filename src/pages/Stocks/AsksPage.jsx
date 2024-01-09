@@ -125,15 +125,7 @@ export default function AsksPage() {
 
 				<ButtonGroup>
 
-					<ButtonBlock
-						className="pink-b "
-					>
-						<Link
-							to="/defs"
-						>
-							Дефіцити
-						</Link>
-					</ButtonBlock>
+				
 				</ButtonGroup>
 
 

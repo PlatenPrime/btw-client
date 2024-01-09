@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import { ButtonBlock, TextBlock, CardBlock, Spinner } from "../../index";
-import { FcBinoculars, FcDeployment, FcLibrary, FcOrganization, FcSettings } from 'react-icons/fc';
+import { FcBinoculars, FcDeployment, FcLibrary, FcOrganization, FcSettings, FcLeave } from 'react-icons/fc';
 
 import useAuthStore from '../../../pages/Auth/authStore';
 
@@ -131,6 +131,12 @@ p-4
 					</NavLink>
 				</TextBlock>
 
+
+
+
+
+
+
 				<TextBlock className="border border-indigo-500 hover:bg-indigo-500/90 rounded" >
 					<NavLink
 						to={"asks"}
@@ -152,6 +158,36 @@ p-4
 
 					</NavLink>
 				</TextBlock>
+
+
+
+
+
+				{user?.role === "PRIME" || user?.role === "ADMIN" || user?.role === "SKLAD"  ?
+					<TextBlock className="border border-pink-500 hover:bg-pink-500/90 rounded " >
+						<NavLink
+							to={"defs"}
+							style={({ isActive }) => isActive ? {
+								color: "white",
+								padding: "12px",
+								width: "100%",
+								background: "rgb(236 72 153 )",
+							} : inActiveStyles}
+						>
+							<TextBlock
+								className="flex text-2xl space-x-1"
+							>
+								<FcLeave /> <TextBlock>Дефіцити</TextBlock>
+							</TextBlock>
+
+						</NavLink>
+					</TextBlock>
+					:
+					null}
+
+
+
+
 
 
 
