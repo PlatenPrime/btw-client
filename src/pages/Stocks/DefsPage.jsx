@@ -132,19 +132,28 @@ export default function DefsPage() {
 
 
 
-	async function filterStocksByDifCurrent(stocks) {
 
 
-		const fetchArtCurrentQuant = async (art) => {
-			try {
 
-				const { quant } = getArtDataBtrade(art)
-				return quant
-			} catch (error) {
-				console.log(error);
-			}
+	// ACTUALIZATION
+
+
+	const fetchArtCurrentQuant = async (art) => {
+		try {
+
+			const { quant } = await getArtDataBtrade(art)
+			console.log(art, quant);
+
+			return quant
+		} catch (error) {
+			console.log(error);
 		}
+	}
 
+
+
+
+	async function filterStocksByDifCurrent(stocks) {
 
 
 		return stocks
@@ -160,6 +169,16 @@ export default function DefsPage() {
 
 				return currentQuant && stock.quant > currentQuant;
 
+			}).map((def) => {
+				const currentQuant = fetchArtCurrentQuant(def.artikul)
+
+				return {
+					...def,
+					dif: def.quant - currentQuant,
+					remain: currentQuant
+				}
+
+
 			})
 
 	};
@@ -169,102 +188,82 @@ export default function DefsPage() {
 
 
 
-function calculateDefs() {
+	function calculateDefs() {
 
-	const reducedStocks = reduceStocks(allPoses)
-	setStocks(reducedStocks)
+		const reducedStocks = reduceStocks(allPoses)
+		setStocks(reducedStocks)
 
-	const defs = filterStocksByDif(reducedStocks)
-	setDefs(defs)
-}
-
-
-async function calculateDefsCurrent() {
-	const reducedStocks = reduceStocks(allPoses)
-	setStocks(reducedStocks)
-
-
-}
-
-
-
-async function handleCreateAsk() {
-	try {
-
-		setIsCreatingAsk(true)
-
-		const newAskData = {
-			artikul: newAskArtikul,
-			quant: newAskQuant,
-			status: "new",
-			asker: user._id
-		}
-
-		const newAsk = await createAsk(newAskData)
-
-
-		if (newAsk) toast.success(`Запит на ${newAskArtikul} створено`)
-
-		console.log(newAsk);
-
-
-	} catch (error) {
-		console.log(error)
-	} finally {
-		setIsCreatingAsk(false)
-		setShowModalCreateAsk(false)
+		const defs = filterStocksByDif(reducedStocks)
+		setDefs(defs)
 	}
 
 
+	async function calculateDefsCurrent() {
 
-}
-
-
-
-
-
-
-
-
-
-
-
-
-useEffect(() => {
-	const fetchPoses = async () => {
 
 		try {
-			setIsFetchingPoses(true)
-			await getAllPoses()
+			const reducedStocks = reduceStocks(allPoses)
+			setStocks(reducedStocks)
+
+			const defs = filterStocksByDifCurrent(reducedStocks)
+			console.log(defs);
+			setDefs(defs)
 
 		} catch (error) {
 			console.log(error);
 
+		}
+
+	}
+
+
+
+
+
+
+
+
+
+	// HANDLERS
+
+
+
+
+
+
+
+	async function handleCreateAsk() {
+		try {
+
+			setIsCreatingAsk(true)
+
+			const newAskData = {
+				artikul: newAskArtikul,
+				quant: newAskQuant,
+				status: "new",
+				asker: user._id
+			}
+
+			const newAsk = await createAsk(newAskData)
+
+
+			if (newAsk) toast.success(`Запит на ${newAskArtikul} створено`)
+
+			console.log(newAsk);
+
+
+		} catch (error) {
+			console.log(error)
 		} finally {
-			setIsFetchingPoses(false)
+			setIsCreatingAsk(false)
+			setShowModalCreateAsk(false)
 		}
-	}
-
-	fetchPoses()
-
-	return async () => {
-		await clearPosesStore()
-	}
-}, [])
 
 
-
-
-useEffect(() => {
-
-	if (allPoses && remains) {
-		calculateDefs()
-		console.log("Defs is calculated");
 
 	}
 
 
-}, [allPoses])
 
 
 
@@ -274,253 +273,298 @@ useEffect(() => {
 
 
 
-return (
-	<PageBTW
-		className="space-y-4"
-	>
-		<HeaderBlock
-			className="border border-slate-500 shadow-md shadow-slate-500"
+
+	useEffect(() => {
+		const fetchPoses = async () => {
+
+			try {
+				setIsFetchingPoses(true)
+				await getAllPoses()
+
+			} catch (error) {
+				console.log(error);
+
+			} finally {
+				setIsFetchingPoses(false)
+			}
+		}
+
+		fetchPoses()
+
+		return async () => {
+			await clearPosesStore()
+		}
+	}, [])
+
+
+
+
+	useEffect(() => {
+
+		if (allPoses && remains) {
+			calculateDefs()
+			console.log("Defs is calculated");
+
+		}
+
+
+	}, [allPoses])
+
+
+
+
+
+
+
+
+
+	return (
+		<PageBTW
+			className="space-y-4"
 		>
-			Дефіцити
-		</HeaderBlock>
-
-
-
-		<CardBlock>
-			<ButtonGroup>
-
-
-				<ButtonBlock
-					className="pink-b"
-					onClick={() => { }}
-				>
-					Актуалізація дефіцитів
-				</ButtonBlock>
-
-			</ButtonGroup>
-
-		</CardBlock>
-
-
-
-
-
-		{showModalCreateAsk && <ModalWrapper
-			onCancel={() => setShowModalCreateAsk(false)}
-			title="Створення запиту на зняття "
-		>
-
-
-			<CardBlock
-				className="flex flex-col space-y-8 min-w-fit max-w-lg "
+			<HeaderBlock
+				className="border border-slate-500 shadow-md shadow-slate-500"
 			>
-
-				<CardBlock className="grid grid-cols-1 gap-1">
-					<CardBlock
-						className="grid justify-self-center"
-					>
-						<ImageArt
-							size={150}
-							artikul={newAskArtikul?.length === 9 ? newAskArtikul : "1102-3092"}
-						/>
-					</CardBlock>
-					<TextBlock className="text-xl grid justify-self-center italic">
-						{artsDB?.find((art) => art.artikul === newAskArtikul)?.nameukr}
-					</TextBlock>
-				</CardBlock>
-
-
-				<CardBlock className="space-y-2">
-
-
-					<CardBlock className="grid grid-rows-2 ">
-						<label className="justify-self-center text-xl" htmlFor="artikul">Артикул:</label>
-						<InputBlock
-							type="text"
-							id="artikul"
-							name="artikul"
-							autoComplete="off"
-							value={newAskArtikul}
-							onChange={(e) => setNewAskArtikul(e.target.value)}
-						/>
-					</CardBlock>
+				Дефіцити
+			</HeaderBlock>
 
 
 
-
-
-					<CardBlock className="grid grid-rows-2 ">
-						<label className="justify-self-center text-xl" htmlFor="quant">Кількість:</label>
-						<InputBlock
-							type="number"
-							id="quant"
-							name="quant"
-							autoComplete="off"
-							value={newAskQuant}
-							onChange={(e) => setNewAskQuant(e.target.value)}
-						/>
-					</CardBlock>
-
-				</CardBlock>
-
-
-
-				<CardBlock className="grid grid-cols-2 space-x-2">
-					<ButtonBlock
-						type="button"
-						className="red-b"
-						onClick={() => setShowModalCreateAsk(false)}
-					>
-						Скасувати
-					</ButtonBlock>
-					<ButtonBlock
-						disabled={!newAskArtikul}
-						type="submit"
-						className="green-b"
-						onClick={handleCreateAsk}
-					>
-
-
-						{isCreatingAsk ?
-
-							<Spinner color="green" />
-							:
-							<TextBlock>	Створити</TextBlock>
-						}
-
-
-
-
-
-
-
-
-					</ButtonBlock>
-				</CardBlock>
-
-
-
-			</CardBlock>
-		</ModalWrapper>
-		}
-
-
-
-
-
-
-
-		{isFetchingPoses
-			?
 			<CardBlock>
-				<Spinner color="fuchsia" />
+				<ButtonGroup>
+
+
+					<ButtonBlock
+						className="pink-b"
+					// onClick={calculateDefsCurrent}
+					>
+						Актуалізація дефіцитів
+					</ButtonBlock>
+
+				</ButtonGroup>
+
 			</CardBlock>
-			:
 
-			<CardBlock
-				className="flex flex-col items-start  "
 
+
+
+
+			{showModalCreateAsk && <ModalWrapper
+				onCancel={() => setShowModalCreateAsk(false)}
+				title="Створення запиту на зняття "
 			>
 
-				<TextBlock
-					className="text-2xl text-teal-100"
+
+				<CardBlock
+					className="flex flex-col space-y-8 min-w-fit max-w-lg "
 				>
-					Позиції всього: {allPoses?.length}
-				</TextBlock>
-				<TextBlock
-					className="text-2xl text-sky-100"
-				>
-					Артикули: {artsDB?.length}
-				</TextBlock>
+
+					<CardBlock className="grid grid-cols-1 gap-1">
+						<CardBlock
+							className="grid justify-self-center"
+						>
+							<ImageArt
+								size={150}
+								artikul={newAskArtikul?.length === 9 ? newAskArtikul : "1102-3092"}
+							/>
+						</CardBlock>
+						<TextBlock className="text-xl grid justify-self-center italic">
+							{artsDB?.find((art) => art.artikul === newAskArtikul)?.nameukr}
+						</TextBlock>
+					</CardBlock>
 
 
-				{/* <TextBlock>
+					<CardBlock className="space-y-2">
+
+
+						<CardBlock className="grid grid-rows-2 ">
+							<label className="justify-self-center text-xl" htmlFor="artikul">Артикул:</label>
+							<InputBlock
+								type="text"
+								id="artikul"
+								name="artikul"
+								autoComplete="off"
+								value={newAskArtikul}
+								onChange={(e) => setNewAskArtikul(e.target.value)}
+							/>
+						</CardBlock>
+
+
+
+
+
+						<CardBlock className="grid grid-rows-2 ">
+							<label className="justify-self-center text-xl" htmlFor="quant">Кількість:</label>
+							<InputBlock
+								type="number"
+								id="quant"
+								name="quant"
+								autoComplete="off"
+								value={newAskQuant}
+								onChange={(e) => setNewAskQuant(e.target.value)}
+							/>
+						</CardBlock>
+
+					</CardBlock>
+
+
+
+					<CardBlock className="grid grid-cols-2 space-x-2">
+						<ButtonBlock
+							type="button"
+							className="red-b"
+							onClick={() => setShowModalCreateAsk(false)}
+						>
+							Скасувати
+						</ButtonBlock>
+						<ButtonBlock
+							disabled={!newAskArtikul}
+							type="submit"
+							className="green-b"
+							onClick={handleCreateAsk}
+						>
+
+
+							{isCreatingAsk ?
+
+								<Spinner color="green" />
+								:
+								<TextBlock>	Створити</TextBlock>
+							}
+
+
+
+
+
+
+
+
+						</ButtonBlock>
+					</CardBlock>
+
+
+
+				</CardBlock>
+			</ModalWrapper>
+			}
+
+
+
+
+
+
+
+			{isFetchingPoses
+				?
+				<CardBlock>
+					<Spinner color="fuchsia" />
+				</CardBlock>
+				:
+
+				<CardBlock
+					className="flex flex-col items-start  "
+
+				>
+
+					<TextBlock
+						className="text-2xl text-teal-100"
+					>
+						Позиції всього: {allPoses?.length}
+					</TextBlock>
+					<TextBlock
+						className="text-2xl text-sky-100"
+					>
+						Артикули: {artsDB?.length}
+					</TextBlock>
+
+
+					{/* <TextBlock>
 						Залишки: {remains ? remains["1102-0260"] : null}
 					</TextBlock> */}
 
-				<TextBlock
-					className="text-2xl text-orange-100"
-				>
-					Запаси: {stocks?.length}
-				</TextBlock>
+					<TextBlock
+						className="text-2xl text-orange-100"
+					>
+						Запаси: {stocks?.length}
+					</TextBlock>
 
-				<TextBlock
-					className="text-2xl text-pink-100"
-				>
-					Дефіцити: {defs?.length}
-				</TextBlock>
+					<TextBlock
+						className="text-2xl text-pink-100"
+					>
+						Дефіцити: {defs?.length}
+					</TextBlock>
 
-			</CardBlock>
-		}
+				</CardBlock>
+			}
 
 
 
-		<CardBlock
-			className="space-y-2"
-		>
-			{defs?.map((def, i) =>
-				<CardBlock
-					key={i}
-					className="grid  lg:grid-cols-3 p-2 border border-pink-500 rounded-xl"
-				>
-					<CardBlock >
+			<CardBlock
+				className="space-y-2"
+			>
+				{defs?.map((def, i) =>
+					<CardBlock
+						key={i}
+						className="grid  lg:grid-cols-3 p-2 border border-pink-500 rounded-xl"
+					>
+						<CardBlock >
+
+							<CardBlock
+								className="bg-white flex justify-center "
+							>
+								<ImageArt size={200} artikul={def.artikul} />
+
+							</CardBlock>
+
+
+							<TextBlock
+								className="p-2 text-xl text-center italic bg-sky-500/20 "
+							>
+								{artsDB?.find(art => art.artikul === def.artikul)?.nameukr}
+							</TextBlock>
+
+						</CardBlock>
 
 						<CardBlock
-							className="bg-white flex justify-center "
+							className="justify-self-center flex flex-col justify-around p-3"
 						>
-							<ImageArt size={200} artikul={def.artikul} />
+							<TextBlock
+								className="text-2xl text-center"
+							> Кількість артикула на запасах: {def?.quant}</TextBlock>
+							<TextBlock
+								className="text-2xl text-center"
+							>
+								Дефіцит: {def?.dif}
+							</TextBlock>
+							<TextBlock
+								className="text-2xl text-center"
+							>
+								Залишок по базі: {def?.remain}
+							</TextBlock>
 
 						</CardBlock>
 
 
-						<TextBlock
-							className="p-2 text-xl text-center italic bg-sky-500/20 "
+						<CardBlock
+							className="flex justify-center items-center"
 						>
-							{artsDB?.find(art => art.artikul === def.artikul)?.nameukr}
-						</TextBlock>
+
+							<ButtonBlock
+								className="indigo-b"
+								onClick={() => {
+									setShowModalCreateAsk(true)
+									setNewAskArtikul(def.artikul)
+								}}
+							>
+								Створити запит
+							</ButtonBlock>
+
+						</CardBlock>
 
 					</CardBlock>
+				)}
 
-					<CardBlock
-						className="justify-self-center flex flex-col justify-around p-3"
-					>
-						<TextBlock
-							className="text-2xl text-center"
-						> Кількість артикула на запасах: {def?.quant}</TextBlock>
-						<TextBlock
-							className="text-2xl text-center"
-						>
-							Дефіцит: {def?.dif}
-						</TextBlock>
-						<TextBlock
-							className="text-2xl text-center"
-						>
-							Залишок по базі: {def?.remain}
-						</TextBlock>
-
-					</CardBlock>
-
-
-					<CardBlock
-						className="flex justify-center items-center"
-					>
-
-						<ButtonBlock
-							className="indigo-b"
-							onClick={() => {
-								setShowModalCreateAsk(true)
-								setNewAskArtikul(def.artikul)
-							}}
-						>
-							Створити запит
-						</ButtonBlock>
-
-					</CardBlock>
-
-				</CardBlock>
-			)}
-
-		</CardBlock>
+			</CardBlock>
 
 
 
@@ -530,6 +574,6 @@ return (
 
 
 
-	</PageBTW >
-)
+		</PageBTW >
+	)
 }
