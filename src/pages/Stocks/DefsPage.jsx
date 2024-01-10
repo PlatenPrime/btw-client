@@ -62,6 +62,7 @@ export default function DefsPage() {
 
 
 	console.log(defs);
+	console.log(remains);
 
 
 

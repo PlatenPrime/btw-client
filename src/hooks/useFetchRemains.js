@@ -11,9 +11,13 @@ const useFetchRemains = () => {
 	useEffect(() => {
 		const fetchData = async () => {
 			try {
-				const response = await fetch("https://corsproxy.io/?https://sharik.ua/product_rests/1302-0065/");
+				const response = await fetch("https://corsproxy.io/?https://sharik.ua/product_rests/1302-0065/", {
+					cache: 'no-store', // Запрещаем кэширование
+				});
 
 				const responseText = await response.text();
+				
+
 				const lines = responseText.split('<pre>');
 				const data = {};
 
@@ -25,6 +29,7 @@ const useFetchRemains = () => {
 						data[key] = value;
 					}
 				});
+				console.log(data);
 
 				setRemains(data)
 				// Сохраняем полученные данные в localStorage
@@ -43,6 +48,9 @@ const useFetchRemains = () => {
 			// Периодически обновляем данные из сервера, например, каждые 5 минут
 			fetchData();
 		};
+
+
+
 
 		// Попытка получить данные из localStorage при загрузке
 		const cachedData = localStorage.getItem('remainsData');
@@ -70,6 +78,7 @@ const useFetchRemains = () => {
 
 
 
+	console.log(remains);
 
 
 
