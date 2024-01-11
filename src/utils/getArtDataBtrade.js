@@ -58,11 +58,18 @@ export async function getArtDataBtrade(art) {
 	const corsUrl = `${urlCA}${baseUrl}${apiRequest}`;
 
 	try {
-		const response = await fetch(corsUrl);
+		console.log("До запроса");
+
+		const response = await fetch(corsUrl, {
+			cache: 'no-store', // Запрещаем кэширование
+		});
+		console.log("После запроса");
 		if (!response.ok) {
 			throw new NetworkError('Network response was not ok');
 		}
 		const responseString = await response.text();
+		console.log(responseString);
+
 
 		const quant = extractQuantFromString(responseString);
 		const price = extractPriceFromString(responseString);
