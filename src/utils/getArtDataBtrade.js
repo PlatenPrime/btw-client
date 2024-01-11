@@ -1,3 +1,10 @@
+import axios from "./axios"
+
+
+
+
+
+
 class NetworkError extends Error {
 	constructor(message) {
 		super(message);
@@ -52,23 +59,39 @@ function extractPriceFromString(valueString) {
 }
 
 export async function getArtDataBtrade(art) {
+
+
+
+
+
 	const urlCA = 'https://corsproxy.io/?';
 	const baseUrl = "https://sharik.ua/ua";
 	const apiRequest = `/search/?q=${art}`;
 	const corsUrl = `${urlCA}${baseUrl}${apiRequest}`;
 
+
+
 	try {
 		console.log("До запроса");
 
-		const response = await fetch(corsUrl, {
-			cache: 'no-store', // Запрещаем кэширование
-		});
+	
+		const link = `https://sharik.ua/ua/search/?q=${art}`
+
+		console.log(encodeURIComponent(link))
+
+		const response = await axios.get(`comps/linkpage/${encodeURIComponent(link)}`)
+
+		const responseString = response?.data?.html
+
+
+		console.log(responseString)
+
 		console.log("После запроса");
-		if (!response.ok) {
-			throw new NetworkError('Network response was not ok');
-		}
-		const responseString = await response.text();
-		console.log(responseString);
+
+		
+
+		// const responseString = await response.text();
+		// console.log(responseString);
 
 
 		const quant = extractQuantFromString(responseString);

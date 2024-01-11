@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import axios from "../utils/axios";
 
 
 const useFetchRemains = () => {
@@ -11,12 +12,28 @@ const useFetchRemains = () => {
 	useEffect(() => {
 		const fetchData = async () => {
 			try {
-				const response = await fetch("https://corsproxy.io/?https://sharik.ua/product_rests/1302-0065/", {
-					cache: 'no-store', // Запрещаем кэширование
-				});
 
-				const responseText = await response.text();
-				
+
+
+				const link = `https://sharik.ua/product_rests/1302-0065/`
+
+				const response = await axios.get(`comps/linkpage/${encodeURIComponent(link)}`)
+				const responseText = response?.data?.html
+
+
+				// const response = await fetch(`"https://corsproxy.io/?https://sharik.ua/product_rests/1302-0065/"`, {
+				// 	cache: 'no-store', // Запрещаем кэширование
+				// });
+
+				// const responseText = await response.text();
+
+
+
+
+
+
+
+
 
 				const lines = responseText.split('<pre>');
 				const data = {};
