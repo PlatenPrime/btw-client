@@ -84,8 +84,6 @@ export async function getArtDataBtrade(art) {
 		const responseString = response?.data?.html
 
 
-		console.log(responseString)
-
 		console.log("После запроса");
 
 		

@@ -37,10 +37,11 @@ export default function DefsPage() {
 
 	const [isFetchingPoses, setIsFetchingPoses] = useState(false)
 	const [isCreatingAsk, setIsCreatingAsk] = useState(false)
+	const [isFetchingQuants, setIsFetchingQuants] = useState(false)
 
 
-
-
+	const [currentFetchingStock, setCurrentFetchingStock] = useState(1)
+	const [progress, setProgress] = useState(0)
 
 
 	const [stocks, setStocks] = useState(null)
@@ -62,7 +63,7 @@ export default function DefsPage() {
 
 
 	console.log(defs);
-	console.log(remains);
+
 
 
 
@@ -99,17 +100,18 @@ export default function DefsPage() {
 		return allPoses
 
 			.filter((pos) => pos.sklad === "pogrebi" && isNewerThanThreeYears(pos.date))
-			.reduce((result, currentObj) => {
+			.filter((stock) => { return /^\d{4}-\d{4}$/.test(stock.artikul) })
+			.reduce((result, currentStock) => {
 
 
-				const existingObj = result.find((obj) => obj.artikul === currentObj.artikul);
+				const existingStock = result.find((obj) => obj.artikul === currentStock.artikul);
 
-				if (existingObj) {
+				if (existingStock) {
 					// Если объект с таким artikul уже есть, обновляем quant
-					existingObj.quant += currentObj.quant;
+					existingStock.quant += currentStock.quant;
 				} else {
 					// Если нет, добавляем новый объект
-					result.push({ artikul: currentObj.artikul, quant: currentObj.quant, });
+					result.push({ artikul: currentStock.artikul, quant: currentStock.quant, });
 				}
 				return result;
 			}, []);
@@ -225,6 +227,11 @@ export default function DefsPage() {
 
 
 
+
+
+
+
+
 	// HANDLERS
 
 
@@ -263,6 +270,71 @@ export default function DefsPage() {
 
 
 	}
+
+
+
+
+
+	async function handleActualizeDefs() {
+
+		let newDefs = []
+
+
+		try {
+
+			const totalItems = stocks?.length
+			let completedItems = 0
+
+			setIsFetchingQuants(true)
+
+			for (const stock of stocks) {
+
+				console.log(stock)
+
+
+				const { quant } = await getArtDataBtrade(stock.artikul)
+
+				if (quant && stock.quant > quant) {
+					console.log("Добавляем: ", stock.artikul);
+
+					newDefs = [...newDefs, {
+						...stock,
+						currentQuant: quant,
+						dif: stock.quant - quant,
+						remain: quant
+
+					}]
+				}
+
+
+
+				completedItems++
+				setCurrentFetchingStock(prev => prev + 1)
+
+
+
+				const progressValue = (completedItems / totalItems) * 100
+
+				setProgress(progressValue)
+
+
+			}
+
+
+
+
+
+		} catch (error) {
+			console.log(error)
+
+		} finally {
+			setIsFetchingQuants(false)
+			setProgress(0)
+			setCurrentFetchingStock(1)
+			setDefs(newDefs)
+		}
+	}
+
 
 
 
@@ -337,7 +409,7 @@ export default function DefsPage() {
 
 					<ButtonBlock
 						className="pink-b"
-					// onClick={calculateDefsCurrent}
+						onClick={handleActualizeDefs}
 					>
 						Актуалізація дефіцитів
 					</ButtonBlock>
@@ -347,6 +419,11 @@ export default function DefsPage() {
 			</CardBlock>
 
 
+
+			<CardBlock>
+				<TextBlock>{progress.toFixed(2)}%</TextBlock>
+				<TextBlock>{currentFetchingStock} / {stocks?.length}</TextBlock>
+			</CardBlock>
 
 
 

@@ -46,7 +46,6 @@ const useFetchRemains = () => {
 						data[key] = value;
 					}
 				});
-				console.log(data);
 
 				setRemains(data)
 				// Сохраняем полученные данные в localStorage
@@ -94,8 +93,6 @@ const useFetchRemains = () => {
 	}, [])
 
 
-
-	console.log(remains);
 
 
 
