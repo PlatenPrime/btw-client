@@ -62,7 +62,7 @@ export default function DefsPage() {
 
 
 
-	console.log(defs);
+	console.log("Дефіцити: ", defs);
 
 
 
@@ -339,6 +339,11 @@ export default function DefsPage() {
 
 
 
+	function handleDeleteRemainsFromLS() {
+		localStorage.removeItem('remainsData');
+	}
+
+
 
 
 
@@ -414,16 +419,18 @@ export default function DefsPage() {
 						Актуалізація дефіцитів
 					</ButtonBlock>
 
+
+					<ButtonBlock
+						className="red-b"
+						onClick={handleDeleteRemainsFromLS}
+					>
+						Очистити LS
+					</ButtonBlock>
+
 				</ButtonGroup>
 
 			</CardBlock>
 
-
-
-			<CardBlock>
-				<TextBlock>{progress.toFixed(2)}%</TextBlock>
-				<TextBlock>{currentFetchingStock} / {stocks?.length}</TextBlock>
-			</CardBlock>
 
 
 
@@ -525,6 +532,48 @@ export default function DefsPage() {
 				</CardBlock>
 			</ModalWrapper>
 			}
+
+
+
+
+			{isFetchingQuants &&
+				<CardBlock>
+
+
+					<div className="relative pt-1 px-4">
+
+
+						<div className="flex px-4 mb-2 items-center justify-between">
+
+
+							<span className="text-sm font-semibold inline-block text-pink-100">
+								{progress.toFixed(2)}%
+							</span>
+							<span>{stocks[currentFetchingStock - 1]?.artikul}</span>
+
+							<span>{currentFetchingStock} / {stocks?.length}</span>
+
+
+
+						</div>
+
+
+						<div className="flex h-2 mb-4 overflow-hidden text-xs bg-violet-200">
+							<div
+								style={{ width: `${progress}%` }}
+								className="flex flex-col justify-center text-center text-white bg-pink-500 shadow-none whitespace-nowrap"
+							></div>
+						</div>
+					</div>
+
+				</CardBlock>
+
+			}
+
+
+
+
+
 
 
 
