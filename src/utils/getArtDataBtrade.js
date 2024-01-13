@@ -64,13 +64,6 @@ export async function getArtDataBtrade(art) {
 
 
 
-	const urlCA = 'https://corsproxy.io/?';
-	const baseUrl = "https://sharik.ua/ua";
-	const apiRequest = `/search/?q=${art}`;
-	const corsUrl = `${urlCA}${baseUrl}${apiRequest}`;
-
-
-
 	try {
 		console.log("До запроса");
 
