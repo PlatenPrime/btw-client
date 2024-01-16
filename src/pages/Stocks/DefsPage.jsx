@@ -71,6 +71,13 @@ export default function DefsPage() {
 
 
 
+
+
+
+
+
+
+
 	function isNewerThanThreeYears(dateString) {
 		if (!dateString) {
 			return true; // Если даты нет, считаем, что позиция актуальна
@@ -135,20 +142,45 @@ export default function DefsPage() {
 
 
 
-	const handleFilter = () => {
-		const filteredPoses = allPoses.filter((pos) => {
-			// Check if the pose's rowTitle is included in the selectedRowTitles
-			return selectedRowTitles.length === 0 || selectedRowTitles.includes(pos.rowTitle);
-		});
 
-		// Now you can use filteredPoses in your calculations or rendering logic
-		// For example, you might update the calculation of defs using the filteredPoses
-		const reducedStocks = reduceStocks(filteredPoses);
-		setStocks(reducedStocks);
 
-		const defs = filterStocksByDif(reducedStocks);
-		setDefs(defs);
-	};
+
+	function calculateDefs() {
+
+		const reducedStocks = reduceStocks(allPoses)
+		setStocks(reducedStocks)
+
+		const defs = filterStocksByDif(reducedStocks)
+		setDefs(defs)
+	}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	// const handleFilter = () => {
+	// 	const filteredPoses = allPoses.filter((pos) => {
+	// 		// Check if the pose's rowTitle is included in the selectedRowTitles
+	// 		return selectedRowTitles.length === 0 || selectedRowTitles.includes(pos.rowTitle);
+	// 	});
+
+	// 	// Now you can use filteredPoses in your calculations or rendering logic
+	// 	// For example, you might update the calculation of defs using the filteredPoses
+	// 	const reducedStocks = reduceStocks(filteredPoses);
+	// 	setStocks(reducedStocks);
+
+	// 	const defs = filterStocksByDif(reducedStocks);
+	// 	setDefs(defs);
+	// };
 
 
 
@@ -166,6 +198,15 @@ export default function DefsPage() {
 			console.log(error);
 		}
 	}
+
+
+
+
+
+
+
+
+
 
 
 
@@ -203,16 +244,6 @@ export default function DefsPage() {
 
 
 
-
-
-	function calculateDefs() {
-
-		const reducedStocks = reduceStocks(allPoses)
-		setStocks(reducedStocks)
-
-		const defs = filterStocksByDif(reducedStocks)
-		setDefs(defs)
-	}
 
 
 	async function calculateDefsCurrent() {
@@ -353,35 +384,48 @@ export default function DefsPage() {
 
 
 
+
+
+
+
+	// function handleRowTitleChange(e) {
+	// 	const title = e.target.value;
+	// 	setSelectedRowTitles((prev) => {
+	// 		if (prev.includes(title)) {
+	// 			return prev.filter((t) => t !== title);
+	// 		} else {
+	// 			return [...prev, title];
+	// 		}
+	// 	});
+	// 	console.log("selectedRowTitles: ", selectedRowTitles);
+
+	// };
+
+
+
+
+
+
 	function handleDeleteRemainsFromLS() {
 		localStorage.removeItem('remainsData');
 	}
 
 
-
-
-	function handleRowTitleChange(e) {
-		const title = e.target.value;
-		setSelectedRowTitles((prev) => {
-			if (prev.includes(title)) {
-				return prev.filter((t) => t !== title);
-			} else {
-				return [...prev, title];
-			}
-		});
-	};
+	// EFFECTS
 
 
 
 
 	useEffect(() => {
+
+
 		const fetchPoses = async () => {
 
 			try {
 				setIsFetchingPoses(true)
-				await getAllPoses()
-				const titles = [...new Set(allPoses.map(pos => pos.rowTitle))];
-				setUniqueRowTitles(titles);
+				const allPoses = await getAllPoses()
+
+
 			} catch (error) {
 				console.log(error);
 
@@ -392,10 +436,31 @@ export default function DefsPage() {
 
 		fetchPoses()
 
+
+
+
 		return async () => {
 			await clearPosesStore()
 		}
-	}, [allPoses])
+
+	}, [])
+
+
+
+
+	// Сделать набор рядов, если изменились запасы
+
+	// useEffect(() => {
+
+	// 	const titles = [...new Set(stocks.map(pos => pos.rowTitle))];
+	// 	setUniqueRowTitles(titles);
+	// 	console.log(titles);
+
+
+
+	// }, [stocks])
+
+
 
 
 
@@ -451,9 +516,9 @@ export default function DefsPage() {
 					</ButtonBlock>
 
 
-					<ButtonBlock className="green-b" onClick={handleFilter}>
+					{/* <ButtonBlock className="green-b" onClick={handleFilter}>
 						Фільтрувати
-					</ButtonBlock>
+					</ButtonBlock> */}
 
 
 
@@ -464,24 +529,25 @@ export default function DefsPage() {
 
 
 
+			{/* Список чекбоксов рядов для фильтра */}
 
 
-
-
-			<CardBlock className="space-y-2 space-x-2 ">
+{/* 
+			<CardBlock className="flex flex-wrap gap-4 ">
 				{uniqueRowTitles.map((title, index) => (
-					<label key={index} className="inline-flex items-center">
+					<CardBlock key={index} className="inline-flex items-center border border-pink-500 p-2">
 						<InputBlock
-							className=""
+							className="text-red-500"
 							type="checkbox"
 							value={title}
 							checked={selectedRowTitles.includes(title)}
 							onChange={handleRowTitleChange}
 						/>
 						<span className="ml-2">{title}</span>
-					</label>
+					</CardBlock>
 				))}
 			</CardBlock>
+ */}
 
 
 
@@ -492,8 +558,7 @@ export default function DefsPage() {
 
 
 
-
-
+			{/* MODAL CREATE ASK */}
 
 
 
@@ -599,6 +664,9 @@ export default function DefsPage() {
 
 
 
+
+
+			{/* Полоска анализа */}
 
 			{isFetchingQuants &&
 				<CardBlock>
