@@ -46,7 +46,8 @@ export default function DefsPage() {
 
 	const [stocks, setStocks] = useState(null)
 	const [defs, setDefs] = useState(null)
-
+	const [uniqueRowTitles, setUniqueRowTitles] = useState([]);
+	const [selectedRowTitles, setSelectedRowTitles] = useState([]);
 
 
 
@@ -134,7 +135,20 @@ export default function DefsPage() {
 
 
 
+	const handleFilter = () => {
+		const filteredPoses = allPoses.filter((pos) => {
+			// Check if the pose's rowTitle is included in the selectedRowTitles
+			return selectedRowTitles.length === 0 || selectedRowTitles.includes(pos.rowTitle);
+		});
 
+		// Now you can use filteredPoses in your calculations or rendering logic
+		// For example, you might update the calculation of defs using the filteredPoses
+		const reducedStocks = reduceStocks(filteredPoses);
+		setStocks(reducedStocks);
+
+		const defs = filterStocksByDif(reducedStocks);
+		setDefs(defs);
+	};
 
 
 
@@ -346,8 +360,16 @@ export default function DefsPage() {
 
 
 
-
-
+	function handleRowTitleChange(e) {
+		const title = e.target.value;
+		setSelectedRowTitles((prev) => {
+			if (prev.includes(title)) {
+				return prev.filter((t) => t !== title);
+			} else {
+				return [...prev, title];
+			}
+		});
+	};
 
 
 
@@ -358,7 +380,8 @@ export default function DefsPage() {
 			try {
 				setIsFetchingPoses(true)
 				await getAllPoses()
-
+				const titles = [...new Set(allPoses.map(pos => pos.rowTitle))];
+				setUniqueRowTitles(titles);
 			} catch (error) {
 				console.log(error);
 
@@ -372,7 +395,7 @@ export default function DefsPage() {
 		return async () => {
 			await clearPosesStore()
 		}
-	}, [])
+	}, [allPoses])
 
 
 
@@ -427,9 +450,50 @@ export default function DefsPage() {
 						Очистити LS
 					</ButtonBlock>
 
+
+					<ButtonBlock className="green-b" onClick={handleFilter}>
+						Фільтрувати
+					</ButtonBlock>
+
+
+
 				</ButtonGroup>
 
 			</CardBlock>
+
+
+
+
+
+
+
+
+			<CardBlock className="space-y-2 space-x-2 ">
+				{uniqueRowTitles.map((title, index) => (
+					<label key={index} className="inline-flex items-center">
+						<InputBlock
+							className=""
+							type="checkbox"
+							value={title}
+							checked={selectedRowTitles.includes(title)}
+							onChange={handleRowTitleChange}
+						/>
+						<span className="ml-2">{title}</span>
+					</label>
+				))}
+			</CardBlock>
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
