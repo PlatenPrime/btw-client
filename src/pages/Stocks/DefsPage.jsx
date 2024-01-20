@@ -1,4 +1,4 @@
-import React, { useEffect, useLayoutEffect, useState } from 'react'
+import React, { useCallback, useEffect, useLayoutEffect, useMemo, useState } from 'react'
 import { ButtonBlock, ButtonGroup, CardBlock, HeaderBlock, ImageArt, ImageBlock, InputBlock, ModalWrapper, PageBTW, Spinner, TextBlock } from '../../components'
 import { Link } from 'react-router-dom'
 import useFetchRemains from '../../hooks/useFetchRemains'
@@ -98,54 +98,69 @@ export default function DefsPage() {
 	}
 
 
-	function reduceStocks(allPoses) {
+	const reduceStocks = useMemo(() => {
+		return (allPoses) => {
 
-		return allPoses
-			.filter((pos) => selectedRowTitles.length === 0 || selectedRowTitles.includes(pos.rowTitle))
-			.filter((pos) => pos.sklad === "pogrebi" && isNewerThanThreeYears(pos.date))
-			.filter((stock) => { return /^\d{4}-\d{4}$/.test(stock.artikul) })
-			.reduce((result, currentStock) => {
-
-
-				const existingStock = result.find((obj) => obj.artikul === currentStock.artikul);
-
-				if (existingStock) {
-					// Если объект с таким artikul уже есть, обновляем quant
-					existingStock.quant += currentStock.quant;
-				} else {
-					// Если нет, добавляем новый объект
-					result.push({ artikul: currentStock.artikul, quant: currentStock.quant, });
-				}
-				return result;
-			}, []);
-
-	}
+			return allPoses
+				.filter((pos) => selectedRowTitles.length === 0 || selectedRowTitles.includes(pos.rowTitle))
+				.filter((pos) => pos.sklad === "pogrebi" && isNewerThanThreeYears(pos.date))
+				.filter((stock) => { return /^\d{4}-\d{4}$/.test(stock.artikul) })
+				.reduce((result, currentStock) => {
 
 
-	function filterStocksByDif(stocks) {
-		return stocks
-			.filter((stock) => {
-				const remainsQuant = remains[stock.artikul];
-				return remainsQuant && stock.quant >= remainsQuant;
-			})
-			.map((def) => ({
-				...def,
-				dif: def.quant - remains[def.artikul],
-				remain: remains[def.artikul]
-			}));
-	}
+					const existingStock = result.find((obj) => obj.artikul === currentStock.artikul);
+
+					if (existingStock) {
+						// Если объект с таким artikul уже есть, обновляем quant
+						existingStock.quant += currentStock.quant;
+					} else {
+						// Если нет, добавляем новый объект
+						result.push({ artikul: currentStock.artikul, quant: currentStock.quant, });
+					}
+					return result;
+				}, [])
+				.sort((a, b) => a.artikul.localeCompare(b.artikul))
+
+
+				;
+
+
+		}
+
+
+
+	}, [selectedRowTitles]);
 
 
 
 
-	function calculateDefs() {
+	const filterStocksByDif = useMemo(() => {
+		return (stocks) => {
+			return stocks
+				.filter((stock) => {
+					const remainsQuant = remains[stock.artikul];
+					return remainsQuant && stock.quant >= remainsQuant;
+				})
+				.map((def) => ({
+					...def,
+					dif: def.quant - remains[def.artikul],
+					remain: remains[def.artikul]
+				}));
+		}
+	}, [remains]);
 
-		const reducedStocks = reduceStocks(allPoses)
-		setStocks(reducedStocks)
 
-		const defs = filterStocksByDif(reducedStocks)
-		setDefs(defs)
-	}
+
+	const calculateDefs = useCallback(() => {
+		const reducedStocks = reduceStocks(allPoses);
+		console.log("reducedStocks: ", reducedStocks);
+
+		setStocks(reducedStocks);
+
+		const defs = filterStocksByDif(reducedStocks);
+		setDefs(defs);
+	}, [allPoses, reduceStocks, filterStocksByDif]);
+
 
 
 
@@ -192,49 +207,36 @@ export default function DefsPage() {
 	async function handleActualizeDefs() {
 
 		let newDefs = []
-
-
 		try {
-
 			const totalItems = stocks?.length
 			let completedItems = 0
 
 			setIsFetchingQuants(true)
 
+
+
+
+
+
 			for (const stock of stocks) {
-
 				console.log(stock)
-
-
 				const { quant } = await getArtDataBtrade(stock.artikul)
-
-				if (quant && stock.quant > quant) {
+				if (quant && stock.quant >= quant) {
 					console.log("Добавляем: ", stock.artikul);
-
 					newDefs = [...newDefs, {
 						...stock,
 						currentQuant: quant,
 						dif: stock.quant - quant,
 						remain: quant
-
 					}]
 				}
-
-
-
 				completedItems++
 				setCurrentFetchingStock(prev => prev + 1)
 
-
-
 				const progressValue = (completedItems / totalItems) * 100
-
 				setProgress(progressValue)
 
-
 			}
-
-
 		} catch (error) {
 			console.log(error)
 
@@ -262,6 +264,15 @@ export default function DefsPage() {
 		calculateDefs()
 
 	};
+
+
+
+
+
+
+
+
+
 
 
 	// EFFECTS
@@ -299,7 +310,7 @@ export default function DefsPage() {
 			await clearPosesStore()
 		}
 
-	}, [])
+	}, [getAllPoses, clearPosesStore])
 
 
 
@@ -337,8 +348,10 @@ export default function DefsPage() {
 
 		}
 
+		console.log(selectedRowTitles);
 
-	}, [allPoses, selectedRowTitles])
+
+	}, [allPoses, selectedRowTitles, calculateDefs])
 
 
 
@@ -348,10 +361,10 @@ export default function DefsPage() {
 
 	return (
 		<PageBTW
-			className="space-y-4"
+			className="space-y-4 "
 		>
 			<HeaderBlock
-				className="border border-slate-500 shadow-md shadow-slate-500"
+				className="border border-pink-500 shadow-md shadow-pink-500"
 			>
 				Дефіцити
 			</HeaderBlock>
@@ -381,10 +394,12 @@ export default function DefsPage() {
 			{/* Список чекбоксов рядов для фильтра */}
 
 
+		
+
 
 			<CardBlock className="flex flex-wrap gap-2 ">
 				{uniqueRowTitles.map((title, index) => (
-					<CardBlock key={index} className="inline-flex items-center border border-pink-500 p-2 gap-1">
+					<CardBlock key={index} className="inline-flex items-center bg-pink-500/20  p-2 gap-1">
 						<InputBlock
 							className="appearance-none  h-6 w-6 checked:bg-pink-500 rounded-lg border-none "
 							type="checkbox"
@@ -565,12 +580,12 @@ export default function DefsPage() {
 			{isFetchingPoses
 				?
 				<CardBlock>
-					<Spinner color="fuchsia" />
+					<Spinner color="rgb(236 72 153)" />
 				</CardBlock>
 				:
 
 				<CardBlock
-					className="flex flex-col items-start  "
+					className="flex flex-col items-start bg-pink-500/5 p-2 "
 
 				>
 
@@ -608,14 +623,16 @@ export default function DefsPage() {
 
 
 			<CardBlock
-				className="space-y-2"
+				className="space-y-2 pb-4"
 			>
 				{defs?.map((def, i) =>
 					<CardBlock
 						key={i}
-						className="grid  lg:grid-cols-3 p-2 border border-pink-500 rounded-xl"
+						className="grid  lg:grid-cols-3 p-2  bg-pink-500/10 rounded-xl"
 					>
-						<CardBlock >
+						<CardBlock
+							className=""
+						>
 
 							<CardBlock
 								className="bg-white flex justify-center "
