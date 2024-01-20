@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useLayoutEffect, useState } from 'react'
 import { ButtonBlock, ButtonGroup, CardBlock, HeaderBlock, ImageArt, ImageBlock, InputBlock, ModalWrapper, PageBTW, Spinner, TextBlock } from '../../components'
 import { Link } from 'react-router-dom'
 import useFetchRemains from '../../hooks/useFetchRemains'
@@ -75,7 +75,7 @@ export default function DefsPage() {
 
 
 
-
+	// Стартовый просчет дефицитов на основе остатков из remains. 
 
 
 	function isNewerThanThreeYears(dateString) {
@@ -98,15 +98,10 @@ export default function DefsPage() {
 	}
 
 
-
-
-
-
-
-
 	function reduceStocks(allPoses) {
-		return allPoses
 
+		return allPoses
+			.filter((pos) => selectedRowTitles.length === 0 || selectedRowTitles.includes(pos.rowTitle))
 			.filter((pos) => pos.sklad === "pogrebi" && isNewerThanThreeYears(pos.date))
 			.filter((stock) => { return /^\d{4}-\d{4}$/.test(stock.artikul) })
 			.reduce((result, currentStock) => {
@@ -131,7 +126,7 @@ export default function DefsPage() {
 		return stocks
 			.filter((stock) => {
 				const remainsQuant = remains[stock.artikul];
-				return remainsQuant && stock.quant > remainsQuant;
+				return remainsQuant && stock.quant >= remainsQuant;
 			})
 			.map((def) => ({
 				...def,
@@ -139,8 +134,6 @@ export default function DefsPage() {
 				remain: remains[def.artikul]
 			}));
 	}
-
-
 
 
 
@@ -156,131 +149,7 @@ export default function DefsPage() {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-	// const handleFilter = () => {
-	// 	const filteredPoses = allPoses.filter((pos) => {
-	// 		// Check if the pose's rowTitle is included in the selectedRowTitles
-	// 		return selectedRowTitles.length === 0 || selectedRowTitles.includes(pos.rowTitle);
-	// 	});
-
-	// 	// Now you can use filteredPoses in your calculations or rendering logic
-	// 	// For example, you might update the calculation of defs using the filteredPoses
-	// 	const reducedStocks = reduceStocks(filteredPoses);
-	// 	setStocks(reducedStocks);
-
-	// 	const defs = filterStocksByDif(reducedStocks);
-	// 	setDefs(defs);
-	// };
-
-
-
-	// ACTUALIZATION
-
-
-	const fetchArtCurrentQuant = async (art) => {
-		try {
-
-			const { quant } = await getArtDataBtrade(art)
-			console.log(art, quant);
-
-			return quant
-		} catch (error) {
-			console.log(error);
-		}
-	}
-
-
-
-
-
-
-
-
-
-
-
-
-
-	async function filterStocksByDifCurrent(stocks) {
-
-
-		return stocks
-			.filter((stock) => {
-
-				const regex = /^\d{4}-\d{4}$/;
-				const isValid = regex.test(stock.artikul)
-
-				if (!isValid) return false
-				if (!remains.hasOwnProperty(stock.artikul)) return false
-
-				const currentQuant = fetchArtCurrentQuant(stock.artikul)
-
-				return currentQuant && stock.quant > currentQuant;
-
-			}).map((def) => {
-				const currentQuant = fetchArtCurrentQuant(def.artikul)
-
-				return {
-					...def,
-					dif: def.quant - currentQuant,
-					remain: currentQuant
-				}
-
-
-			})
-
-	};
-
-
-
-
-
-
-	async function calculateDefsCurrent() {
-
-
-		try {
-			const reducedStocks = reduceStocks(allPoses)
-			setStocks(reducedStocks)
-
-			const defs = filterStocksByDifCurrent(reducedStocks)
-			console.log(defs);
-			setDefs(defs)
-
-		} catch (error) {
-			console.log(error);
-
-		}
-
-	}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 	// HANDLERS
-
-
-
 
 
 
@@ -366,9 +235,6 @@ export default function DefsPage() {
 			}
 
 
-
-
-
 		} catch (error) {
 			console.log(error)
 
@@ -383,32 +249,19 @@ export default function DefsPage() {
 
 
 
+	function handleRowTitleChange(e) {
+		const title = e.target.value;
+		setSelectedRowTitles((prev) => {
+			if (prev.includes(title)) {
+				return prev.filter((t) => t !== title);
+			} else {
+				return [...prev, title];
+			}
+		});
+		console.log("selectedRowTitles: ", selectedRowTitles);
+		calculateDefs()
 
-
-
-
-
-	// function handleRowTitleChange(e) {
-	// 	const title = e.target.value;
-	// 	setSelectedRowTitles((prev) => {
-	// 		if (prev.includes(title)) {
-	// 			return prev.filter((t) => t !== title);
-	// 		} else {
-	// 			return [...prev, title];
-	// 		}
-	// 	});
-	// 	console.log("selectedRowTitles: ", selectedRowTitles);
-
-	// };
-
-
-
-
-
-
-	function handleDeleteRemainsFromLS() {
-		localStorage.removeItem('remainsData');
-	}
+	};
 
 
 	// EFFECTS
@@ -437,6 +290,9 @@ export default function DefsPage() {
 		fetchPoses()
 
 
+		localStorage.removeItem('remainsData');
+
+
 
 
 		return async () => {
@@ -448,17 +304,6 @@ export default function DefsPage() {
 
 
 
-	// Сделать набор рядов, если изменились запасы
-
-	// useEffect(() => {
-
-	// 	const titles = [...new Set(stocks.map(pos => pos.rowTitle))];
-	// 	setUniqueRowTitles(titles);
-	// 	console.log(titles);
-
-
-
-	// }, [stocks])
 
 
 
@@ -467,16 +312,33 @@ export default function DefsPage() {
 
 	useEffect(() => {
 
-		if (allPoses && remains) {
-			calculateDefs()
-			console.log("Defs is calculated");
 
-		}
+		const titles = [...new Set(allPoses.map(pos => pos.rowTitle))];
+		setUniqueRowTitles(titles);
+		setSelectedRowTitles(titles)
+		console.log(titles);
+		console.log("selectedRowTitles Effect:", selectedRowTitles);
+
+
+
+
 
 
 	}, [allPoses])
 
 
+
+
+
+	useEffect(() => {
+		if (allPoses && remains) {
+			calculateDefs()
+			console.log("Defs is been calculated");
+
+		}
+
+
+	}, [allPoses, selectedRowTitles])
 
 
 
@@ -508,19 +370,6 @@ export default function DefsPage() {
 					</ButtonBlock>
 
 
-					<ButtonBlock
-						className="red-b"
-						onClick={handleDeleteRemainsFromLS}
-					>
-						Очистити LS
-					</ButtonBlock>
-
-
-					{/* <ButtonBlock className="green-b" onClick={handleFilter}>
-						Фільтрувати
-					</ButtonBlock> */}
-
-
 
 				</ButtonGroup>
 
@@ -532,22 +381,22 @@ export default function DefsPage() {
 			{/* Список чекбоксов рядов для фильтра */}
 
 
-{/* 
-			<CardBlock className="flex flex-wrap gap-4 ">
+
+			<CardBlock className="flex flex-wrap gap-2 ">
 				{uniqueRowTitles.map((title, index) => (
-					<CardBlock key={index} className="inline-flex items-center border border-pink-500 p-2">
+					<CardBlock key={index} className="inline-flex items-center border border-pink-500 p-2 gap-1">
 						<InputBlock
-							className="text-red-500"
+							className="appearance-none  h-6 w-6 checked:bg-pink-500 rounded-lg border-none "
 							type="checkbox"
 							value={title}
 							checked={selectedRowTitles.includes(title)}
 							onChange={handleRowTitleChange}
 						/>
-						<span className="ml-2">{title}</span>
+						<span className=" text-pink-100 text-lg">{title}</span>
 					</CardBlock>
 				))}
 			</CardBlock>
- */}
+
 
 
 

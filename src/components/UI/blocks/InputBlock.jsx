@@ -1,7 +1,7 @@
 import React from 'react';
 import { forwardRef } from 'react';
 
-const InputBlock = forwardRef(({ type, name, value, onChange, className, placeholder }, ref) => {
+const InputBlock = forwardRef(({ type, name, value, onChange, className, placeholder, checked }, ref) => {
 
 	const style = `
 
@@ -19,6 +19,7 @@ const InputBlock = forwardRef(({ type, name, value, onChange, className, placeho
 			value={value}
 			onChange={onChange}
 			placeholder={placeholder}
+			checked={checked}
 			ref={ref}
 
 		/>
