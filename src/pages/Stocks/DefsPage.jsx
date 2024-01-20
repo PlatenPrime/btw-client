@@ -48,6 +48,8 @@ export default function DefsPage() {
 	const [defs, setDefs] = useState(null)
 	const [uniqueRowTitles, setUniqueRowTitles] = useState([]);
 	const [selectedRowTitles, setSelectedRowTitles] = useState([]);
+	// Состояние для управления всеми чекбоксами
+	const [selectAll, setSelectAll] = useState(false);
 
 
 
@@ -266,7 +268,11 @@ export default function DefsPage() {
 	};
 
 
-
+	// Обработчик изменения состояния для чекбокса "Выбрать все"
+	const handleSelectAllChange = () => {
+		setSelectAll((prev) => !prev);
+		setSelectedRowTitles((prev) => (prev.length === uniqueRowTitles.length ? [] : [...uniqueRowTitles]));
+	};
 
 
 
@@ -394,10 +400,23 @@ export default function DefsPage() {
 			{/* Список чекбоксов рядов для фильтра */}
 
 
-		
+
 
 
 			<CardBlock className="flex flex-wrap gap-2 ">
+
+
+				<CardBlock className="inline-flex items-center bg-pink-500/20 p-2 gap-1">
+					<InputBlock
+						className="appearance-none h-6 w-6 checked:bg-pink-500 rounded-lg border-none"
+						type="checkbox"
+						checked={selectAll}
+						onChange={handleSelectAllChange}
+					/>
+					<span className="text-pink-100 text-lg">Вибрати всі</span>
+				</CardBlock>
+
+
 				{uniqueRowTitles.map((title, index) => (
 					<CardBlock key={index} className="inline-flex items-center bg-pink-500/20  p-2 gap-1">
 						<InputBlock
