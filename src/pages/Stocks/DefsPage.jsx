@@ -49,7 +49,7 @@ export default function DefsPage() {
 	const [uniqueRowTitles, setUniqueRowTitles] = useState([]);
 	const [selectedRowTitles, setSelectedRowTitles] = useState([]);
 	// Состояние для управления всеми чекбоксами
-	const [selectAll, setSelectAll] = useState(false);
+	const [selectAll, setSelectAll] = useState(true);
 
 
 
