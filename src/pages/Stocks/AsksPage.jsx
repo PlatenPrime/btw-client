@@ -125,7 +125,7 @@ export default function AsksPage() {
 
 				<ButtonGroup>
 
-				
+
 				</ButtonGroup>
 
 
@@ -281,31 +281,67 @@ export default function AsksPage() {
 								<Link
 									key={ask._id}
 									to={`/asks/${ask._id}`}
-									className=" 
-								grid overflow-auto grid-cols-1 lg:grid-cols-2 
-								border border-indigo-500 p-2 
-								text-indigo-100 lg:text-2xl
-								hover:shadow-2xl hover:shadow-indigo-500 
-								hover:bg-indigo-500 transition ease-in-out duration-500
-								"
+									className={`
+								grid overflow-auto grid-cols-1 lg:grid-cols-2 lg:text-2xl text-indigo-100 
+								border 
+								
+								${ask?.status === "new" ?
+											"border-indigo-500  hover:shadow-2xl hover:shadow-indigo-500 hover:bg-indigo-500 bg-indigo-500/20"
+											:
+											ask?.status === "solved" ?
+												"border-green-500  hover:shadow-2xl hover:shadow-green-500 hover:bg-green-500 bg-green-500/20  "
+												:
+												ask?.status === "fail" ?
+													"border-rose-500  hover:shadow-2xl hover:shadow-rose-500 hover:bg-rose-500  bg-rose-500/20 "
+													:
+													null
+										}
+								
+								
+								
+								
+								transition ease-in-out duration-500
+								rounded-lg
+								`}
 								>
 
 									<CardBlock
-										className="grid grid-cols-1 lg:grid-cols-2"
+										className="grid grid-cols-1 lg:grid-cols-2 gap-2 place-items-center "
 									>
+
+										
 										<CardBlock
-											className=" place-self-center bg-white "
+											className=" flex justify-center bg-white place-self-stretch "
 										>
 
 											<ImageArt size={100} artikul={ask.artikul} />
 										</CardBlock>
 
-										<TextBlock
-											className=" justify-center"
+
+
+										<CardBlock
+											className="flex flex-col items-center justify-center "
 										>
 
-											{artsDB?.find((art) => ask?.artikul === art?.artikul)?.nameukr}
-										</TextBlock>
+											<TextBlock
+												className=" justify-center text-3xl"
+											>
+
+												{ask?.artikul}
+											</TextBlock>
+
+											<TextBlock
+												className=" justify-center text-base italic"
+											>
+
+												{artsDB?.find((art) => ask?.artikul === art?.artikul)?.nameukr?.slice(10)}
+											</TextBlock>
+
+										</CardBlock>
+
+
+
+
 
 									</CardBlock>
 
@@ -317,37 +353,38 @@ export default function AsksPage() {
 										className=""
 									>
 
-										<TextBlock
-											className=""
-										>
-											{ask?.quant}
-										</TextBlock>
+
+										{ask?.quant ?
+											<TextBlock
+												className="text-base"
+											>
+											Кількість:	{ask?.quant}
+											</TextBlock>
+											:
+											null
+
+										}
+
+
+
+
 
 										<TextBlock
-											className=""
-										>
-											{ask?.status === "new"
-												?
-												"Новий"
-												: ask?.status === "solved"
-													? "Виконано"
-													: ask?.status === "fail"
-														? "Відмовлено"
-														: null
-											}
-										</TextBlock>
-
-										<TextBlock
-											className=""
+											className="text-base"
 										>
 											Запит:	{users?.find(user => user._id === ask?.asker)?.fullname}
 										</TextBlock>
 
-										<TextBlock
-											className=""
-										>
-											Виконав:	{users?.find(user => user._id === ask?.solver)?.fullname}
-										</TextBlock>
+
+										{ask?.solver ?
+											<TextBlock
+												className="text-base"
+											>
+												Виконав:	{users?.find(user => user._id === ask?.solver)?.fullname}
+											</TextBlock>
+											:
+											null
+										}
 
 
 
