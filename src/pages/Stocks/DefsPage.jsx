@@ -154,14 +154,23 @@ export default function DefsPage() {
 
 
 	const calculateDefs = useCallback(() => {
-		const reducedStocks = reduceStocks(allPoses);
-		console.log("reducedStocks: ", reducedStocks);
 
-		setStocks(reducedStocks);
 
-		const defs = filterStocksByDif(reducedStocks);
-		setDefs(defs);
-	}, [allPoses, reduceStocks, filterStocksByDif]);
+		if (allPoses && remains) {
+			const reducedStocks = reduceStocks(allPoses);
+			console.log("reducedStocks: ", reducedStocks);
+
+			setStocks(reducedStocks);
+
+			const defs = filterStocksByDif(reducedStocks);
+			setDefs(defs);
+		}
+
+
+
+
+
+	}, [allPoses, reduceStocks, filterStocksByDif, remains]);
 
 
 
@@ -346,25 +355,6 @@ export default function DefsPage() {
 
 
 
-
-	useEffect(() => {
-		if (allPoses && remains) {
-			calculateDefs()
-			console.log("Defs is been calculated");
-
-		}
-
-		console.log(selectedRowTitles);
-
-
-	}, [allPoses, selectedRowTitles, calculateDefs])
-
-
-
-
-
-
-
 	return (
 		<PageBTW
 			className="space-y-4 "
@@ -379,6 +369,15 @@ export default function DefsPage() {
 
 			<CardBlock>
 				<ButtonGroup>
+
+
+
+					<ButtonBlock
+						className="sky-b"
+						onClick={calculateDefs}
+					>
+						Показати ситуацію на ранок
+					</ButtonBlock>
 
 
 					<ButtonBlock
