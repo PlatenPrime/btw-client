@@ -167,9 +167,6 @@ export default function DefsPage() {
 		}
 
 
-
-
-
 	}, [allPoses, reduceStocks, filterStocksByDif, remains]);
 
 
@@ -371,12 +368,11 @@ export default function DefsPage() {
 				<ButtonGroup>
 
 
-
 					<ButtonBlock
 						className="sky-b"
 						onClick={calculateDefs}
 					>
-						Показати ситуацію на ранок
+						Показати дефіцити
 					</ButtonBlock>
 
 
@@ -409,7 +405,7 @@ export default function DefsPage() {
 					<InputBlock
 						className="appearance-none h-6 w-6 checked:bg-pink-500 rounded-lg border-none"
 						type="checkbox"
-						checked={selectAll}
+						checked={selectedRowTitles.length === uniqueRowTitles.length}
 						onChange={handleSelectAllChange}
 					/>
 					<span className="text-pink-100 text-lg">Вибрати всі</span>
