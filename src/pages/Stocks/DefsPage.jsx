@@ -282,7 +282,10 @@ export default function DefsPage() {
 
 
 
-
+	useEffect(() => {
+		console.log("selectedRowTitles: ", selectedRowTitles);
+		calculateDefs();
+	}, [selectedRowTitles]);
 
 
 
@@ -403,7 +406,7 @@ export default function DefsPage() {
 
 				<CardBlock className="inline-flex items-center bg-pink-500/20 p-2 gap-1">
 					<InputBlock
-						className="appearance-none h-6 w-6 checked:bg-pink-500 rounded-lg border-none"
+						className="appearance-none h-6 w-6 checked:bg-pink-500 rounded-sm border-none"
 						type="checkbox"
 						checked={selectedRowTitles.length === uniqueRowTitles.length}
 						onChange={handleSelectAllChange}
@@ -415,7 +418,7 @@ export default function DefsPage() {
 				{uniqueRowTitles.map((title, index) => (
 					<CardBlock key={index} className="inline-flex items-center bg-pink-500/20  p-2 gap-1">
 						<InputBlock
-							className="appearance-none  h-6 w-6 checked:bg-pink-500 rounded-lg border-none "
+							className="appearance-none  h-6 w-6 checked:bg-pink-500 rounded-xl border-none "
 							type="checkbox"
 							value={title}
 							checked={selectedRowTitles.includes(title)}
@@ -642,14 +645,14 @@ export default function DefsPage() {
 				{defs?.map((def, i) =>
 					<CardBlock
 						key={i}
-						className="grid  lg:grid-cols-3 p-2  bg-pink-500/10 rounded-xl"
+						className="grid  lg:grid-cols-3 p-2  bg-pink-500/20 rounded-2xl"
 					>
 						<CardBlock
 							className=""
 						>
 
 							<CardBlock
-								className="bg-white flex justify-center "
+								className="bg-white flex justify-center rounded-t-2xl"
 							>
 								<ImageArt size={200} artikul={def.artikul} />
 
@@ -657,7 +660,7 @@ export default function DefsPage() {
 
 
 							<TextBlock
-								className="p-2 text-xl text-center italic bg-sky-500/20 "
+								className="p-2 text-xl text-center italic bg-sky-500/50 rounded-b-2xl "
 							>
 								{artsDB?.find(art => art.artikul === def.artikul)?.nameukr}
 							</TextBlock>
