@@ -91,7 +91,7 @@ export default function ArtsUpdatingPage() {
 						return currentArt;
 					}
 				});
-			}, 10);
+			}, 50);
 
 		} catch (error) {
 			console.log(error)
