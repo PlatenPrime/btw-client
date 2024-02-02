@@ -415,18 +415,22 @@ export default function DefsPage() {
 				</CardBlock>
 
 
-				{uniqueRowTitles.map((title, index) => (
-					<CardBlock key={index} className="inline-flex items-center bg-pink-500/20  p-2 gap-1">
-						<InputBlock
-							className="appearance-none  h-6 w-6 checked:bg-pink-500 rounded-xl border-none "
-							type="checkbox"
-							value={title}
-							checked={selectedRowTitles.includes(title)}
-							onChange={handleRowTitleChange}
-						/>
-						<span className=" text-pink-100 text-lg">{title}</span>
-					</CardBlock>
-				))}
+				{uniqueRowTitles
+					.sort((a, b) => parseInt(a) - parseInt(b))
+
+
+					.map((title, index) => (
+						<CardBlock key={index} className="inline-flex items-center bg-pink-500/20  p-2 gap-1">
+							<InputBlock
+								className="appearance-none  h-6 w-6 checked:bg-pink-500 rounded-xl border-none "
+								type="checkbox"
+								value={title}
+								checked={selectedRowTitles.includes(title)}
+								onChange={handleRowTitleChange}
+							/>
+							<span className=" text-pink-100 text-lg">{title}</span>
+						</CardBlock>
+					))}
 			</CardBlock>
 
 
