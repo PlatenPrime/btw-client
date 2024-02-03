@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 
 import { useNavigate, useParams } from 'react-router-dom';
 
-import { ButtonBlock, CardBlock, HeaderBlock, ModalConfirm, ModalCreate, ModalEditOneValue, PageBTW, TextBlock, Spinner, ButtonGroup, ModalWrapper, InputBlock } from '../../components';
+import { ButtonBlock, CardBlock, HeaderBlock, ModalConfirm, ModalCreate, ModalEditOneValue, PageBTW, TextBlock, Spinner, ButtonGroup, ModalWrapper, InputBlock, ContainerBlock } from '../../components';
 import { AddIcon, DeleteIcon, RenameIcon } from '../../components/UI/Icons/';
 
 import { toast } from 'react-toastify';
@@ -169,17 +169,16 @@ export default function RowPage() {
 
 
 	return (
-		<PageBTW>
+		<PageBTW
+		
+		>
 			<HeaderBlock
 				className="border border-orange-500 bg-orange-500/10 shadow-2xl shadow-orange-500/50"
 			>
 				{title}
 			</HeaderBlock>
 
-			<CardBlock
-				className="min-h-screen"
-			>
-
+		
 
 				<ButtonGroup
 
@@ -319,8 +318,8 @@ export default function RowPage() {
 
 
 
-				<CardBlock
-					className="space-y-4 bg-sky-500/5 p-2 "
+				<ContainerBlock
+					className="space-y-4  "
 				>
 					<TextBlock
 						className="text-3xl text-amber-300 "
@@ -353,10 +352,10 @@ export default function RowPage() {
 
 
 
-				</CardBlock>
+				</ContainerBlock>
 
 
-			</CardBlock >
+	
 
 
 

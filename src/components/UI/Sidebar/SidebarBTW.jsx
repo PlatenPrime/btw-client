@@ -6,6 +6,7 @@ import { ButtonBlock, TextBlock, CardBlock, Spinner } from "../../index";
 import { FcBinoculars, FcDeployment, FcLibrary, FcOrganization, FcSettings, FcLeave } from 'react-icons/fc';
 
 import useAuthStore from '../../../pages/Auth/authStore';
+import ContainerBlock from '../blocks/ContainerBlock';
 
 
 
@@ -54,39 +55,39 @@ const SidebarBTW = () => {
 
 		<CardBlock className='hidden  min-h-screen h-full lg:min-w-fit   xl:w-56
 		xl:flex flex-col justify-start items-stratch text-center 
-shadow-inner shadow-sky-500/50
 		sticky top-0 left-0
-		bg-sky-500/10
 p-4
-		space-y-10
+		space-y-4
 
 		 '>
 
 
-			<NavLink
-				to={"/"}
-			>
-				<CardBlock className='flex items-center justify-center w-full h-16 text-5xl text-gray-100  
+			<ContainerBlock>
+
+				<NavLink
+					to={"/"}
+				>
+					<CardBlock className='flex items-center justify-center w-full h-16 text-5xl text-gray-100  
 				hover:text-sky-500
 				'>
 
-					BTW
+						BTW
 
-				</CardBlock>
-			</NavLink>
-
-
-			{user
-				?
-				<TextBlock
-					className="bg-sky-500 p-3 rounded-xl"
-				>{user.fullname}</TextBlock>
-				:
-				null}
+					</CardBlock>
+				</NavLink>
 
 
+				{user
+					?
+					<TextBlock
+						className="border border-sky-500 p-3 rounded-xl"
+					>{user.fullname}</TextBlock>
+					:
+					null}
 
-			<CardBlock className='space-y-4' >
+			</ContainerBlock>
+
+			<ContainerBlock className='space-y-2 p-4' >
 
 
 				<TextBlock className="border border-orange-500 hover:bg-orange-500/90 rounded justify-start w-full" >
@@ -101,7 +102,7 @@ p-4
 					>
 
 						<TextBlock
-							className="flex text-2xl space-x-1"
+							className="flex text-xl space-x-1"
 						>
 							<FcLibrary />
 							<TextBlock>Запаси</TextBlock>
@@ -122,7 +123,7 @@ p-4
 						} : inActiveStyles}
 					>
 						<TextBlock
-							className="flex text-2xl space-x-1"
+							className="flex text-xl space-x-1"
 						>
 							<FcOrganization />
 							<TextBlock>Артикули</TextBlock>
@@ -148,7 +149,7 @@ p-4
 						} : inActiveStyles}
 					>
 						<TextBlock
-							className="flex text-2xl space-x-1"
+							className="flex text-xl space-x-1"
 						>
 							<FcDeployment />
 							<TextBlock>Запити</TextBlock>
@@ -163,7 +164,7 @@ p-4
 
 
 
-				{user?.role === "PRIME" || user?.role === "ADMIN" || user?.role === "SKLAD"  ?
+				{user?.role === "PRIME" || user?.role === "ADMIN" || user?.role === "SKLAD" ?
 					<TextBlock className="border border-pink-500 hover:bg-pink-500/90 rounded " >
 						<NavLink
 							to={"defs"}
@@ -175,7 +176,7 @@ p-4
 							} : inActiveStyles}
 						>
 							<TextBlock
-								className="flex text-2xl space-x-1"
+								className="flex text-xl space-x-1"
 							>
 								<FcLeave /> <TextBlock>Дефіцити</TextBlock>
 							</TextBlock>
@@ -203,7 +204,7 @@ p-4
 							} : inActiveStyles}
 						>
 							<TextBlock
-								className="flex text-2xl space-x-1"
+								className="flex text-xl space-x-1"
 							>
 								<FcBinoculars /> <TextBlock>Конкуренти</TextBlock>
 							</TextBlock>
@@ -227,9 +228,10 @@ p-4
 							} : inActiveStyles}
 						>
 							<TextBlock
-								className="flex text-2xl space-x-1"
+								className="flex text-xl space-x-1"
 							>
-								<FcSettings /><TextBlock>Налаштування</TextBlock>
+								<FcSettings />
+								<TextBlock>Налаштування</TextBlock>
 							</TextBlock>
 
 						</NavLink>
@@ -245,7 +247,7 @@ p-4
 
 
 
-			</CardBlock>
+			</ContainerBlock>
 
 
 
@@ -256,7 +258,7 @@ p-4
 			{
 				user ?
 					<ButtonBlock
-						className="cancel-c px-8 text-3xl "
+						className="cancel-c px-8 text-xl "
 						onClick={handleLogout} >
 						{isLogouting ?
 							< Spinner color="red" />
@@ -270,7 +272,7 @@ p-4
 					:
 
 					<ButtonBlock
-						className="green-b px-8 text-3xl "
+						className="green-b px-8 text-xl "
 					>
 						<Link to={"/login"}>Вхід</Link>
 					</ButtonBlock>

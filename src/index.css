@@ -18,8 +18,6 @@ color: aliceblue;
 
   body::before {
 	content: "";
-	/* background-image: url('https://wallpaper-mania.com/wp-content/uploads/2018/09/High_resolution_wallpaper_background_ID_77700343287.jpg'); */
-	background-image: url("/public/back6.jpg");
 	background-size: cover;
 	filter: blur(5px); 
 	position: fixed; /* Фиксированная позиция, чтобы размытое изображение было под фоном */
@@ -96,7 +94,7 @@ table {
 
 	.PageBTW {
 		@apply
-		w-full  flex flex-col max-h-screen  pb-4
+		w-full  flex flex-col max-h-screen min-h-screen  pb-4 space-y-4
 	}
 
 

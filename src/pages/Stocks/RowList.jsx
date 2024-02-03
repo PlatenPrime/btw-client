@@ -33,7 +33,7 @@ export function RowList() {
 
 	return (
 		<CardBlock
-			className="p-2 space-y-2 bg-orange-500/5"
+			className="p-2 space-y-2 "
 		>
 			<TextBlock
 				className="text-3xl"

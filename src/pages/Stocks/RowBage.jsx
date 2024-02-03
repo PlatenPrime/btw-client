@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { RowBlock, TextBlock } from '../../components';
+import { CardBlock, RowBlock, TextBlock } from '../../components';
 
 
 
@@ -32,9 +32,9 @@ const RowBage = ({ row }) => {
 				className=' 
 			flex justify-center
 		w-full p-3
-			rounded
+			rounded-xl
 			 text-2xl text-orange-100 hover:text-white 
-			bg-orange-500/10 hover:bg-orange-500 
+			 hover:bg-orange-500 
 			border-2 border-orange-500 
 			 hover:shadow-2xl hover:shadow-orange-500 
 			 transition ease-in-out duration-300
@@ -42,9 +42,11 @@ const RowBage = ({ row }) => {
 			'
 			>
 
-
-				{row.title}
-
+				<TextBlock
+					className="text-black bg-white px-2 rounded-xl"
+				>
+					{row.title}
+				</TextBlock>
 
 
 			</Link>

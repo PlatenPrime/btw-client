@@ -3,7 +3,7 @@ import { Link, useNavigate, useParams } from 'react-router-dom';
 import usePalletStore from './stores/palletsStore';
 import usePosesStore from './stores/posesStore';
 import { useRowStore } from './stores/rowsStore';
-import { ButtonBlock, CardBlock, HeaderBlock, PageBTW, Spinner, TextBlock, Breadcrumbs } from '../../components';
+import { ButtonBlock, CardBlock, HeaderBlock, PageBTW, Spinner, TextBlock, Breadcrumbs, ContainerBlock } from '../../components';
 import { toast } from 'react-toastify';
 import PositionBage from './PositionBage';
 
@@ -394,7 +394,7 @@ export default function PalletPage() {
 					>
 
 						<TextBlock
-							className="hover:bg-amber-500/25 rounded p-1 border"
+							className=" rounded p-1 bg-orange-500"
 						>
 							<BackIcon />
 							{`Ряд ${row?.title ? row?.title : ""}`}
@@ -471,7 +471,6 @@ export default function PalletPage() {
 
 
 
-			<CardBlock>
 
 
 				<ModalDeletePallet
@@ -570,14 +569,14 @@ export default function PalletPage() {
 
 
 
-			</CardBlock>
+	
 
 
 
 
 
 
-			<CardBlock
+			<ContainerBlock
 				className="p-2 space-y-2 "
 			>
 
@@ -595,25 +594,25 @@ export default function PalletPage() {
 				</CardBlock>
 
 
-				<CardBlock>
+				<CardBlock
+				className="flex flex-col items-center justify-center lg:flex-row lg:justify-between"
+				>
 
 					<TextBlock
-						className="text-teal-500 text-3xl justify-start p-1"
+						className="text-teal-500 text-xl justify-start p-1"
 					>
 						Позицій: {posesInStore?.length}
 					</TextBlock>
 
-				</CardBlock>
-
-				<CardBlock>
-
 					<TextBlock
-						className="text-amber-500 text-3xl justify-start p-1"
+						className="text-amber-500 text-xl justify-start p-1"
 					>
 						Коробок всього: {posesInStore?.reduce((a, b) => a + b.boxes, 0)}
 					</TextBlock>
 
+
 				</CardBlock>
+
 
 
 
@@ -621,10 +620,10 @@ export default function PalletPage() {
 					className="flex justify-center items-center "
 				>
 					<ButtonBlock
-						className="teal-b  p-4 flex  border-dashed w-full"
+						className="teal-b  p-4 flex  border-dashed "
 						onClick={() => { setShowModalCreatePos(true); }}
 					>
-						<TextBlock className="text-2xl"><AddIcon /></TextBlock>
+						<TextBlock className="text-xl"><AddIcon /></TextBlock>
 						<TextBlock className="">Додати позицію</TextBlock>
 
 					</ButtonBlock>
@@ -636,7 +635,7 @@ export default function PalletPage() {
 				) : posesInStore?.length === 0 ? (
 					<p></p>
 				) : (
-					<ul className=' space-y-4'>
+					<ul className=' space-y-2'>
 
 
 						{posesInStore?.map((pos) => {
@@ -666,7 +665,7 @@ export default function PalletPage() {
 				)}
 
 
-			</CardBlock>
+			</ContainerBlock>
 
 
 

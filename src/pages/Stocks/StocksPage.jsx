@@ -9,6 +9,7 @@ import { exportToExcelPoses } from '../../utils/exportExcel';
 import { SiMicrosoftexcel } from 'react-icons/si';
 import usePosesStore from './stores/posesStore';
 import useFetchArts from '../../hooks/useFetchArts';
+import ContainerBlock from '../../components/UI/blocks/ContainerBlock';
 
 
 export default function StocksPage() {
@@ -88,7 +89,9 @@ export default function StocksPage() {
 
 
 	return (
-		<PageBTW>
+		<PageBTW
+		className=""
+		>
 
 			<HeaderBlock
 				className="border border-slate-500 bg-slate-500/10 shadow-2xl shadow-slate-500/50"
@@ -97,9 +100,6 @@ export default function StocksPage() {
 			</HeaderBlock>
 
 
-			<CardBlock
-				className="min-h-screen"
-			>
 
 				<ButtonGroup
 					className="flex justify-start p-2"
@@ -110,7 +110,7 @@ export default function StocksPage() {
 						className="emerald-b flex items-center justify-center "
 					>
 
-						<TextBlock className="text-2xl"><AddIcon /></TextBlock>
+						<TextBlock className="text-xl"><AddIcon /></TextBlock>
 						<TextBlock>Створити новий ряд</TextBlock>
 					</ButtonBlock>
 
@@ -118,7 +118,7 @@ export default function StocksPage() {
 						onClick={() => exportToExcelPoses(allPoses, artsDB)}
 						className=" green-b flex items-center space-x-1  "
 					>
-						< SiMicrosoftexcel className='text-2xl' />
+						< SiMicrosoftexcel className='text-xl' />
 						<TextBlock>
 							Експорт в Excel
 						</TextBlock>
@@ -138,8 +138,11 @@ export default function StocksPage() {
 				/>}
 
 
-				<RowList />
-			</CardBlock>
+				<ContainerBlock>
+					<RowList />
+				</ContainerBlock>
+
+
 
 		</PageBTW>
 	)

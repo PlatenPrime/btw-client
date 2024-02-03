@@ -47,7 +47,7 @@ export default function PositionBage({ pos, onDelete, onEdit, artsDB }) {
 
 
 				<CardBlock
-					className="w-full row-span-3 lg:row-span-1 lg:col-span-3 grid grid-cols-3 "
+					className="w-full row-span-3 col-span-3 lg:row-span-1 lg:col-span-3 grid grid-cols-3 "
 				>
 
 
@@ -56,7 +56,7 @@ export default function PositionBage({ pos, onDelete, onEdit, artsDB }) {
 					>
 
 						<ImageArt
-							size={150}
+							size={100}
 							artikul={artikul ? pos.artikul : ""}
 							className="rounded-lg justify-self-center self-center"
 						/>
@@ -68,12 +68,12 @@ export default function PositionBage({ pos, onDelete, onEdit, artsDB }) {
 
 
 					<CardBlock
-						className="grid   col-span-2  p-2 bg-blue-500/50"
+						className="grid  col-span-2  p-2 bg-blue-500/10"
 
 					>
 
 						<TextBlock
-							className=" text-3xl text-center self-center justify-self-center  "
+							className=" text-2xl font-bold text-center self-center justify-self-center  "
 						>
 							{pos.artikul}
 						</TextBlock>
@@ -104,7 +104,7 @@ export default function PositionBage({ pos, onDelete, onEdit, artsDB }) {
 
 
 				<CardBlock
-					className="col-span-3 row-span-2 lg:col-span-2 bg-teal-500/50"
+					className="col-span-3 row-span-2 lg:col-span-2 bg-teal-500/5"
 				>
 
 					<CardBlock
@@ -116,11 +116,11 @@ export default function PositionBage({ pos, onDelete, onEdit, artsDB }) {
 						>
 
 							<TextBlock
-								className="text-sky-300  text-4xl"
+								className="text-sky-300  text-xl"
 							><BsBalloon /></TextBlock>
 
 							<TextBlock
-								className="text-sky-300  font-bold text-4xl  rounded"
+								className="text-sky-300  font-bold text-xl  rounded"
 							>
 								{pos.quant}
 							</TextBlock>
@@ -132,11 +132,11 @@ export default function PositionBage({ pos, onDelete, onEdit, artsDB }) {
 							className="flex justify-center items-center"
 						>
 							<TextBlock
-								className="text-amber-300  text-4xl "
+								className="text-amber-300  text-xl "
 							><BsBoxSeam /></TextBlock>
 
 							<TextBlock
-								className="text-amber-300  font-bold text-4xl  rounded"
+								className="text-amber-300  font-bold text-xl  rounded"
 							>
 								{pos.boxes}
 							</TextBlock>
@@ -154,13 +154,13 @@ export default function PositionBage({ pos, onDelete, onEdit, artsDB }) {
 					>
 
 						<TextBlock
-							className=" text-2xl  "
+							className=" text-xl  "
 						>
 							{pos.sklad === "pogrebi" ? "Погреби" : pos.sklad === "merezhi" ? "Мережі" : null}
 						</TextBlock>
 
 						<TextBlock
-							className=" text-2xl  "
+							className=" text-xl  "
 						>
 							{pos.com}
 						</TextBlock>
@@ -178,14 +178,14 @@ export default function PositionBage({ pos, onDelete, onEdit, artsDB }) {
 					className="col-span-3 row-span-1 lg:col-span-1 flex  space-x-1 justify-evenly lg:items-center rounded-b-xl rounded-r-xl p-2  bg-slate-900 hover:bg-slate-800">
 
 					<ButtonBlock
-						className=" blue-b text-3xl"
+						className=" blue-b text-xl"
 						onClick={onEdit}
 					>
 						<ImMoveDown />
 					</ButtonBlock>
 
 					<ButtonBlock
-						className="red-b text-3xl "
+						className="red-b text-xl "
 						onClick={onDelete}
 					>
 						<MdDeleteForever />
