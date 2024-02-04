@@ -35,10 +35,7 @@ export function RowList() {
 		<CardBlock
 			className="p-2 space-y-2 "
 		>
-			<TextBlock
-				className="text-3xl"
-			>Ряди
-			</TextBlock>
+		
 
 			{isRowLoading ? <Spinner color="rgb(249 115 22)" /> :
 				<CardBlock

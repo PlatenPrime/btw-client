@@ -27,7 +27,7 @@ const MainPage = () => {
 
 		<PageBTW className="p-2 space-y-4 " >
 
-			<HeaderBlock className='bg-blue-500/50' >
+			<HeaderBlock className='' >
 
 				Главная страница
 
@@ -55,7 +55,7 @@ const MainPage = () => {
 			</CardBlock>
 
 			<CardBlock
-				className="flex gap-2 flex-wrap max-w-md mx-auto"
+				className="flex gap-8 flex-wrap max-w-md mx-auto"
 			>
 				<ButtonBlock className="slate-b">Slate</ButtonBlock>
 				<ButtonBlock className="gray-b">Gray</ButtonBlock>

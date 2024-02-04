@@ -94,9 +94,9 @@ export default function StocksPage() {
 		>
 
 			<HeaderBlock
-				className="border border-slate-500 bg-slate-500/10 shadow-2xl shadow-slate-500/50"
+				className="  shadow-md shadow-slate-500/50"
 			>
-				Запаси
+				Ряди
 			</HeaderBlock>
 
 

@@ -22,7 +22,7 @@ const ImageArt = ({ size, artikul, className }) => {
 				width={size}
 				height={size}
 				alt="Фото артикула"
-				className={`rounded ${className} `}
+				className={` ${className} `}
 				onClick={(e) => {
 					e.stopPropagation()
 					setShowModalFullImage(true)
@@ -40,7 +40,7 @@ const ImageArt = ({ size, artikul, className }) => {
 					width={500}
 					height={500}
 					alt="Фото артикула"
-					className={`rounded ${className} `}
+					className={` ${className} `}
 
 				/>
 

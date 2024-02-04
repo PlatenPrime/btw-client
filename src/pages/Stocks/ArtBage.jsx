@@ -34,10 +34,10 @@ const ArtBage = ({ art, remains }) => {
 			className=' 
 		flex  justify-center 
 	w-full  space-x-2
-		rounded
+		rounded-xl
 		 text-sky-100 hover:text-white 
-		bg-sky-500/10  
-		border-2 border-sky-500 
+	 
+		bg-sky-500/10 
 		 hover:shadow-2xl hover:shadow-sky-500 
 		 hover:bg-sky-500 transition ease-in-out duration-300
 	
@@ -49,10 +49,10 @@ const ArtBage = ({ art, remains }) => {
 
 
 			<CardBlock
-				className="flex items-center bg-white"
+				className="flex items-center bg-white rounded-l-xl rounded-r-none p-1"
 			>
 
-				<ImageArt size={80} artikul={art?.artikul} />
+				<ImageArt size={80} artikul={art?.artikul} className="rounded-l-xl" />
 
 			</CardBlock>
 

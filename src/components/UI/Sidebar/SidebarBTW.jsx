@@ -67,8 +67,8 @@ p-4
 				<NavLink
 					to={"/"}
 				>
-					<CardBlock className='flex items-center justify-center w-full h-16 text-5xl text-gray-100  
-				hover:text-sky-500
+					<CardBlock className='flex items-center justify-center w-full h-16 text-5xl text-sky-500  
+				hover:text-white
 				'>
 
 						BTW
@@ -253,32 +253,41 @@ p-4
 
 
 
+			<ContainerBlock
+			className="flex justify-center p-4"
+			>
+
+				{
+					user ?
+						<ButtonBlock
+							className="cancel-c px-8 text-xl w-full"
+							onClick={handleLogout} >
+							{isLogouting ?
+								< Spinner color="red" />
+								:
+								"Вийти"
+
+							}
+
+						</ButtonBlock>
+
+						:
+
+						<ButtonBlock
+							className="green-b px-8 text-xl "
+						>
+							<Link to={"/login"}>Вхід</Link>
+						</ButtonBlock>
 
 
-			{
-				user ?
-					<ButtonBlock
-						className="cancel-c px-8 text-xl "
-						onClick={handleLogout} >
-						{isLogouting ?
-							< Spinner color="red" />
-							:
-							"Вийти"
-
-						}
-
-					</ButtonBlock>
-
-					:
-
-					<ButtonBlock
-						className="green-b px-8 text-xl "
-					>
-						<Link to={"/login"}>Вхід</Link>
-					</ButtonBlock>
+				}
+			</ContainerBlock>
 
 
-			}
+
+
+
+
 
 
 		</CardBlock >

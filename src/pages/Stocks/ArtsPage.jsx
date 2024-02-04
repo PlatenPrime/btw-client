@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { ButtonBlock, ButtonGroup, CardBlock, HeaderBlock, InputBlock, PageBTW, Spinner, TextBlock } from '../../components'
+import { ButtonBlock, ButtonGroup, CardBlock, ContainerBlock, HeaderBlock, InputBlock, PageBTW, Spinner, TextBlock } from '../../components'
 import ArtBage from './ArtBage';
 import InfiniteScroll from 'react-infinite-scroll-component';
 import { useArtContext } from '../../ArtContext';
@@ -36,16 +36,13 @@ export default function ArtsPage() {
 
 	// HANDLERS
 
-	function handleFilterArts() {
+	function handleFilterArts(searchValue) {
 		const filtered = artsDB.filter((art) =>
 			art.artikul.toLowerCase().includes(searchValue.toLowerCase().trim()) ||
 			art.nameukr.toLowerCase().includes(searchValue.toLowerCase().trim()) ||
 			art.namerus.toLowerCase().includes(searchValue.toLowerCase().trim())
 		);
 
-		if (searchValue.length === 0) {
-			toast.error("Нічого не забув?")
-		}
 
 		if (filtered.length === 0) {
 			toast.info("По запиту нічого не знайдено")
@@ -59,11 +56,11 @@ export default function ArtsPage() {
 
 	return (
 		<PageBTW
-			className="space-y-4"
+			className="space-y-4 "
 		>
 
 			<HeaderBlock
-				className="border border-sky-500 shadow-md shadow-sky-500 "
+				className=" shadow-md shadow-sky-500 "
 			>
 				<TextBlock className="">
 					Артикули
@@ -73,67 +70,57 @@ export default function ArtsPage() {
 
 			</HeaderBlock>
 
-			<CardBlock
-				className="p-1 space-y-2 min-h-screen"
+
+
+			<ButtonGroup
 			>
 
-				<ButtonGroup
+
+				<ButtonBlock
+					className="emerald-b "
 				>
-
-
-					<ButtonBlock
-						className="emerald-b "
+					<Link
+						to="/arts/updating"
 					>
-						<Link
-							to="/arts/updating"
-						>
-							Оновлення даних
-						</Link>
-					</ButtonBlock>
+						Оновлення даних
+					</Link>
+				</ButtonBlock>
 
-				</ButtonGroup>
+			</ButtonGroup>
 
-
+			<ContainerBlock
+				className="space-y-4"
+			>
 
 				<CardBlock
-					className="flex flex-wrap justify-center"
+					className="flex flex-wrap justify-center  "
 				>
 
 
 
-					<CardBlock
-
+					<form
+						className=" flex flex-col sm:flex-row justify-center space-y-2  sm:space-y-0 sm:space-x-3"
+						onSubmit={(e) => {
+							e.preventDefault()
+							handleFilterArts()
+						}}
 					>
 
-						<form
-							className=" flex flex-col sm:flex-row justify-center space-y-2  sm:space-y-0 sm:space-x-3"
-							onSubmit={(e) => {
-								e.preventDefault()
-								handleFilterArts()
+						<InputBlock
+							onChange={(e) => {
+								setSearchValue(e.target.value);
+								handleFilterArts(e.target.value)
 							}}
-						>
-
-							<InputBlock
-								onChange={(e) => {
-									setSearchValue(e.target.value);
-
-								}}
-								placeholder="Введи артикул або назву..."
-								className="text-3xl bg-sky-900 bg-opacity-5 border-sky-600 focus:border-sky-500 focus:shadow-lg  focus:shadow-sky-600 p-3
-								placeholder:text-sky-300/50 placeholder:font-light
+							placeholder="Введи артикул або назву..."
+							className="text-xl outline-none border-none p-3 px-8
+								 placeholder:font-light
 								"
-							/>
+						/>
 
-							<ButtonBlock
-								className="sky-b text-sky-500 text-4xl px-6 hover:bg-sky-500/10 "
 
-							>
+					</form>
 
-								<SearchIcon />
-							</ButtonBlock>
-						</form>
 
-					</CardBlock>
 
 				</CardBlock>
 
@@ -145,18 +132,26 @@ export default function ArtsPage() {
 
 				{filteredArts?.length === 0 || filteredArts?.length === artsDB?.length ?
 					<CardBlock
-						className="flex flex-wrap justify-between p-2 border  border-sky-500 rounded"
+						className="flex flex-wrap justify-between p-2  rounded"
 					>
 
 						<TextBlock>
 							Всього: {artsDB?.length}
 						</TextBlock>
 
-						<TextBlock
-							className="text-xl"
-						>
-							{step * page - step + 1} - {step * page < artsDB?.length ? step * page : artsDB?.length}
-						</TextBlock>
+
+
+						{artsDB ?
+							<TextBlock
+								className="text-xl"
+							>
+								{step * page - step + 1} - {step * page < artsDB?.length ? step * page : artsDB?.length}
+							</TextBlock>
+
+							:
+							null
+						}
+
 
 
 
@@ -166,29 +161,38 @@ export default function ArtsPage() {
 
 
 						<CardBlock
-							className="space-x-3 flex flex-wrap"
+							className="space-x-3 flex flex-wrap "
 						>
 
-							<ButtonBlock onClick={() => setPage(1)} className="sky-b " disabled={page === 1}>
-								<AiOutlineDoubleLeft />
+							<ButtonBlock onClick={() => setPage(1)} className="sky-b border-none bg-sky-500/50 " disabled={page === 1}>
+								<TextBlock className="text-lg lg:text-2xl">
+									<AiOutlineDoubleLeft />
+								</TextBlock>
 							</ButtonBlock>
 
-							<ButtonBlock onClick={() => setPage((prev) => prev - 1)} className="sky-b" disabled={page === 1}>
-								<AiOutlineArrowLeft />
+							<ButtonBlock onClick={() => setPage((prev) => prev - 1)} className="sky-b border-none bg-sky-500/50" disabled={page === 1}>
+
+								<TextBlock className="text-lg lg:text-2xl">
+									<AiOutlineArrowLeft />
+								</TextBlock>
 							</ButtonBlock>
 
 							<TextBlock>
 								Сторінка: {page}
 							</TextBlock>
 
-							<ButtonBlock onClick={() => setPage((prev) => prev + 1)} className="sky-b" disabled={artsDB?.length / step / page < 1}>
-								<AiOutlineArrowRight />
+							<ButtonBlock onClick={() => setPage((prev) => prev + 1)} className="sky-b border-none bg-sky-500/50" disabled={artsDB?.length / step / page < 1}>
 
+								<TextBlock className="text-lg lg:text-2xl">
+									<AiOutlineArrowRight />
+								</TextBlock>
 							</ButtonBlock>
 
-							<ButtonBlock onClick={() => setPage(Math.ceil(artsDB?.length / step))} className="sky-b" disabled={artsDB?.length / step / page < 1}>
-								<AiOutlineDoubleRight />
+							<ButtonBlock onClick={() => setPage(Math.ceil(artsDB?.length / step))} className="sky-b border-none bg-sky-500/50 " disabled={artsDB?.length / step / page < 1}>
 
+								<TextBlock className="text-lg lg:text-2xl">
+									<AiOutlineDoubleRight />
+								</TextBlock>
 							</ButtonBlock>
 
 
@@ -200,7 +204,7 @@ export default function ArtsPage() {
 					:
 
 					<CardBlock
-						className="flex flex-wrap justify-between p-2 border  border-sky-500 rounded bg-sky-500/20"
+						className="flex flex-wrap justify-between p-2 "
 					>
 
 
@@ -225,12 +229,16 @@ export default function ArtsPage() {
 							className="space-x-3 flex flex-wrap"
 						>
 
-							<ButtonBlock onClick={() => setPage(1)} className="indigo-b " disabled={page === 1}>
-								<AiOutlineDoubleLeft />
+							<ButtonBlock onClick={() => setPage(1)} className="sky-b border-none bg-sky-500/50 " disabled={page === 1}>
+								<TextBlock className="text-lg lg:text-2xl">
+									<AiOutlineDoubleLeft />
+								</TextBlock>
 							</ButtonBlock>
 
-							<ButtonBlock onClick={() => setPage((prev) => prev - 1)} className="indigo-b" disabled={page === 1}>
-								<AiOutlineArrowLeft />
+							<ButtonBlock onClick={() => setPage((prev) => prev - 1)} className="sky-b border-none bg-sky-500/50 " disabled={page === 1}>
+								<TextBlock className="text-lg lg:text-2xl">
+									<AiOutlineArrowLeft />
+								</TextBlock>
 							</ButtonBlock>
 
 							<TextBlock>
@@ -238,12 +246,16 @@ export default function ArtsPage() {
 							</TextBlock>
 
 
-							<ButtonBlock onClick={() => setPage((prev) => prev + 1)} className="indigo-b" disabled={filteredArts?.length / step / page < 1}>
-								<AiOutlineArrowRight />
+							<ButtonBlock onClick={() => setPage((prev) => prev + 1)} className="sky-b border-none bg-sky-500/50 " disabled={filteredArts?.length / step / page < 1}>
+								<TextBlock className="text-lg lg:text-2xl">
+									<AiOutlineArrowRight />
+								</TextBlock>
 							</ButtonBlock>
 
-							<ButtonBlock onClick={() => setPage(Math.ceil(filteredArts?.length / step))} className="indigo-b" disabled={filteredArts?.length / step / page < 1}>
-								<AiOutlineDoubleRight />
+							<ButtonBlock onClick={() => setPage(Math.ceil(filteredArts?.length / step))} className="sky-b border-none bg-sky-500/50 " disabled={filteredArts?.length / step / page < 1}>
+								<TextBlock className="text-lg lg:text-2xl">
+									<AiOutlineDoubleRight />
+								</TextBlock>
 
 							</ButtonBlock>
 
@@ -263,7 +275,7 @@ export default function ArtsPage() {
 				{loadingArtsDB ?
 					<Spinner color="lightblue" />
 					:
-					<CardBlock className="space-y-1">
+					<CardBlock className="space-y-2">
 						{filteredArts?.length === 0
 							? artsDB?.slice(step * page - step, step * page).map((art) => <ArtBage key={art._id} art={art} remains={remains} />)
 							: filteredArts?.slice(step * page - step, step * page).map((art) => <ArtBage key={art._id} art={art} remains={remains} />)}
@@ -278,7 +290,12 @@ export default function ArtsPage() {
 
 
 
-			</CardBlock>
+			</ContainerBlock>
+
+
+
+
+
 		</PageBTW>
 	)
 }
