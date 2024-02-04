@@ -143,7 +143,7 @@ export default function ArtsPage() {
 
 						{artsDB ?
 							<TextBlock
-								className="text-xl"
+								className=""
 							>
 								{step * page - step + 1} - {step * page < artsDB?.length ? step * page : artsDB?.length}
 							</TextBlock>
@@ -164,13 +164,13 @@ export default function ArtsPage() {
 							className="space-x-3 flex flex-wrap "
 						>
 
-							<ButtonBlock onClick={() => setPage(1)} className="sky-b border-none bg-sky-500/50 " disabled={page === 1}>
+							<ButtonBlock onClick={() => setPage(1)} className="sky-b border-none bg-sky-500/10 " disabled={page === 1}>
 								<TextBlock className="text-lg lg:text-2xl">
 									<AiOutlineDoubleLeft />
 								</TextBlock>
 							</ButtonBlock>
 
-							<ButtonBlock onClick={() => setPage((prev) => prev - 1)} className="sky-b border-none bg-sky-500/50" disabled={page === 1}>
+							<ButtonBlock onClick={() => setPage((prev) => prev - 1)} className="sky-b border-none bg-sky-500/10" disabled={page === 1}>
 
 								<TextBlock className="text-lg lg:text-2xl">
 									<AiOutlineArrowLeft />
@@ -181,14 +181,14 @@ export default function ArtsPage() {
 								Сторінка: {page}
 							</TextBlock>
 
-							<ButtonBlock onClick={() => setPage((prev) => prev + 1)} className="sky-b border-none bg-sky-500/50" disabled={artsDB?.length / step / page < 1}>
+							<ButtonBlock onClick={() => setPage((prev) => prev + 1)} className="sky-b border-none bg-sky-500/10" disabled={artsDB?.length / step / page < 1}>
 
 								<TextBlock className="text-lg lg:text-2xl">
 									<AiOutlineArrowRight />
 								</TextBlock>
 							</ButtonBlock>
 
-							<ButtonBlock onClick={() => setPage(Math.ceil(artsDB?.length / step))} className="sky-b border-none bg-sky-500/50 " disabled={artsDB?.length / step / page < 1}>
+							<ButtonBlock onClick={() => setPage(Math.ceil(artsDB?.length / step))} className="sky-b border-none bg-sky-500/10 " disabled={artsDB?.length / step / page < 1}>
 
 								<TextBlock className="text-lg lg:text-2xl">
 									<AiOutlineDoubleRight />
@@ -229,13 +229,13 @@ export default function ArtsPage() {
 							className="space-x-3 flex flex-wrap"
 						>
 
-							<ButtonBlock onClick={() => setPage(1)} className="sky-b border-none bg-sky-500/50 " disabled={page === 1}>
+							<ButtonBlock onClick={() => setPage(1)} className="sky-b border-none bg-sky-500/10 " disabled={page === 1}>
 								<TextBlock className="text-lg lg:text-2xl">
 									<AiOutlineDoubleLeft />
 								</TextBlock>
 							</ButtonBlock>
 
-							<ButtonBlock onClick={() => setPage((prev) => prev - 1)} className="sky-b border-none bg-sky-500/50 " disabled={page === 1}>
+							<ButtonBlock onClick={() => setPage((prev) => prev - 1)} className="sky-b border-none bg-sky-500/10 " disabled={page === 1}>
 								<TextBlock className="text-lg lg:text-2xl">
 									<AiOutlineArrowLeft />
 								</TextBlock>
@@ -246,13 +246,13 @@ export default function ArtsPage() {
 							</TextBlock>
 
 
-							<ButtonBlock onClick={() => setPage((prev) => prev + 1)} className="sky-b border-none bg-sky-500/50 " disabled={filteredArts?.length / step / page < 1}>
+							<ButtonBlock onClick={() => setPage((prev) => prev + 1)} className="sky-b border-none bg-sky-500/10 " disabled={filteredArts?.length / step / page < 1}>
 								<TextBlock className="text-lg lg:text-2xl">
 									<AiOutlineArrowRight />
 								</TextBlock>
 							</ButtonBlock>
 
-							<ButtonBlock onClick={() => setPage(Math.ceil(filteredArts?.length / step))} className="sky-b border-none bg-sky-500/50 " disabled={filteredArts?.length / step / page < 1}>
+							<ButtonBlock onClick={() => setPage(Math.ceil(filteredArts?.length / step))} className="sky-b border-none bg-sky-500/10 " disabled={filteredArts?.length / step / page < 1}>
 								<TextBlock className="text-lg lg:text-2xl">
 									<AiOutlineDoubleRight />
 								</TextBlock>

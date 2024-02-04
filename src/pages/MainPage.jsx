@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 
 
-import { ButtonBlock, CardBlock, HeaderBlock, TextBlock, PageBTW } from "../components/index"
+import { ButtonBlock, CardBlock, HeaderBlock, TextBlock, PageBTW, ContainerBlock } from "../components/index"
 import { useNavigate } from 'react-router-dom';
 import useAuthStore from './Auth/authStore';
 import useCheckAuth from '../hooks/useCheckAuth';
@@ -25,11 +25,11 @@ const MainPage = () => {
 	return (
 
 
-		<PageBTW className="p-2 space-y-4 " >
+		<PageBTW className=" space-y-4 " >
 
-			<HeaderBlock className='' >
+			<HeaderBlock className='shadow-md shadow-sky-500' >
 
-				Главная страница
+				Головна
 
 			</HeaderBlock>
 
@@ -37,7 +37,7 @@ const MainPage = () => {
 
 
 
-			<CardBlock
+			<ContainerBlock
 				className="flex flex-col"
 			>
 
@@ -52,10 +52,10 @@ const MainPage = () => {
 					Balloon Trade Warehouse App
 				</TextBlock>
 
-			</CardBlock>
+			</ContainerBlock>
 
-			<CardBlock
-				className="flex gap-8 flex-wrap max-w-md mx-auto"
+			<ContainerBlock
+				className="flex gap-4 flex-wrap max-w-md mx-auto"
 			>
 				<ButtonBlock className="slate-b">Slate</ButtonBlock>
 				<ButtonBlock className="gray-b">Gray</ButtonBlock>
@@ -81,7 +81,7 @@ const MainPage = () => {
 				<ButtonBlock className="rose-b ">Rose</ButtonBlock>
 
 
-			</CardBlock>
+			</ContainerBlock>
 
 
 

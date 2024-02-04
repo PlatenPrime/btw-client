@@ -96,7 +96,7 @@ const SidebarMobileBTW = ({ onClose }) => {
 				<TextBlock className="w-full text-xl text-center border border-orange-500 hover:bg-orange-500/90 rounded font-bold" >
 					<NavLink
 						onClick={onClose}
-						to={"stocks"}
+						to={"rows"}
 						style={({ isActive }) => isActive ? {
 							color: "white",
 							padding: "12px",
@@ -104,7 +104,7 @@ const SidebarMobileBTW = ({ onClose }) => {
 							background: "rgb(249 115 22)",
 						} : inActiveStyles}
 					>
-						Запаси
+						Ряди
 					</NavLink>
 				</TextBlock>
 
@@ -149,7 +149,7 @@ const SidebarMobileBTW = ({ onClose }) => {
 
 
 
-				{user?.role === "PRIME" || user?.role === "ADMIN" || user?.role === "SKLAD"  ?
+				{user?.role === "PRIME" || user?.role === "ADMIN" || user?.role === "SKLAD" ?
 					<TextBlock className="w-full text-xl text-center border border-pink-500 hover:bg-pink-500/90 rounded font-bold " >
 						<NavLink
 							onClick={onClose}
@@ -161,7 +161,7 @@ const SidebarMobileBTW = ({ onClose }) => {
 								background: "rgb(236 72 153 )",
 							} : inActiveStyles}
 						>
-						Дефіцити
+							Дефіцити
 						</NavLink>
 					</TextBlock>
 					:

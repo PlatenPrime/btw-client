@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { ButtonBlock, ButtonGroup, CardBlock, HeaderBlock, ImageArt, InputBlock, ModalConfirm, ModalWrapper, PageBTW, Spinner, TextBlock } from "../../components"
+import { ButtonBlock, ButtonGroup, CardBlock, ContainerBlock, HeaderBlock, ImageArt, InputBlock, ModalConfirm, ModalWrapper, PageBTW, Spinner, TextBlock } from "../../components"
 import useAskStore from './stores/asksStore'
 import useAuthStore from "../Auth/authStore"
 import { useArtContext } from '../../ArtContext';
@@ -113,7 +113,7 @@ export default function AsksPage() {
 		>
 
 			<HeaderBlock
-				className="border border-indigo-500 shadow-md shadow-indigo-500"
+				className="shadow-md shadow-indigo-500"
 			>
 				Запити
 			</HeaderBlock>
@@ -123,10 +123,7 @@ export default function AsksPage() {
 
 				{/* BUTTONS */}
 
-				<ButtonGroup>
-
-
-				</ButtonGroup>
+			
 
 
 
@@ -249,15 +246,15 @@ export default function AsksPage() {
 				{/* ASKS */}
 
 
-				<CardBlock
+				<ContainerBlock
 					className="space-y-4 "
 				>
 
 					<CardBlock
-						className="p-1 flex"
+						className="p-1 flex justify-center"
 					>
 						<ButtonBlock
-							className="indigo-b text-xl  p-4 flex  border-dashed w-full"
+							className="indigo-b shadow-lg  p-4 flex  border-dashed "
 							onClick={() => setShowModalCreateAsk(true)}
 						>
 							<AddIcon />
@@ -283,7 +280,7 @@ export default function AsksPage() {
 									to={`/asks/${ask._id}`}
 									className={`
 								grid overflow-auto grid-cols-1 lg:grid-cols-2 lg:text-2xl text-indigo-100 
-								border 
+							
 								
 								${ask?.status === "new" ?
 											"border-indigo-500  hover:shadow-2xl hover:shadow-indigo-500 hover:bg-indigo-500 bg-indigo-500/20"
@@ -409,7 +406,7 @@ export default function AsksPage() {
 
 
 
-				</CardBlock>
+				</ContainerBlock>
 
 
 

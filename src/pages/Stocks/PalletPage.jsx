@@ -620,7 +620,7 @@ export default function PalletPage() {
 					className="flex justify-center items-center "
 				>
 					<ButtonBlock
-						className="teal-b  p-4 flex  border-dashed "
+						className="teal-b shadow-lg p-4 flex  border-dashed "
 						onClick={() => { setShowModalCreatePos(true); }}
 					>
 						<TextBlock className="text-xl"><AddIcon /></TextBlock>

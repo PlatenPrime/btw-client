@@ -1,5 +1,5 @@
 import React, { useCallback, useEffect, useLayoutEffect, useMemo, useState } from 'react'
-import { ButtonBlock, ButtonGroup, CardBlock, HeaderBlock, ImageArt, ImageBlock, InputBlock, ModalWrapper, PageBTW, Spinner, TextBlock } from '../../components'
+import { ButtonBlock, ButtonGroup, CardBlock, ContainerBlock, HeaderBlock, ImageArt, ImageBlock, InputBlock, ModalWrapper, PageBTW, Spinner, TextBlock } from '../../components'
 import { Link } from 'react-router-dom'
 import useFetchRemains from '../../hooks/useFetchRemains'
 import useFetchArts from '../../hooks/useFetchArts'
@@ -357,40 +357,40 @@ export default function DefsPage() {
 
 	return (
 		<PageBTW
-			className="space-y-4 "
+			className=" "
 		>
 			<HeaderBlock
-				className="border border-pink-500 shadow-md shadow-pink-500"
+				className=" shadow-md shadow-pink-500"
 			>
 				Дефіцити
 			</HeaderBlock>
 
 
 
-			<CardBlock>
-				<ButtonGroup>
+
+			<ButtonGroup>
 
 
-					<ButtonBlock
-						className="sky-b"
-						onClick={calculateDefs}
-					>
-						Показати дефіцити
-					</ButtonBlock>
+				<ButtonBlock
+					className="sky-b"
+					onClick={calculateDefs}
+				>
+					Показати дефіцити
+				</ButtonBlock>
 
 
-					<ButtonBlock
-						className="pink-b"
-						onClick={handleActualizeDefs}
-					>
-						Актуалізація дефіцитів
-					</ButtonBlock>
+				<ButtonBlock
+					className="pink-b"
+					onClick={handleActualizeDefs}
+				>
+					Актуалізація дефіцитів
+				</ButtonBlock>
 
 
 
-				</ButtonGroup>
+			</ButtonGroup>
 
-			</CardBlock>
+
 
 
 
@@ -401,7 +401,7 @@ export default function DefsPage() {
 
 
 
-			<CardBlock className="flex flex-wrap gap-2 ">
+			<ContainerBlock className="flex flex-wrap gap-2 ">
 
 
 				<CardBlock className="inline-flex items-center bg-pink-500/20 p-2 gap-1">
@@ -431,7 +431,7 @@ export default function DefsPage() {
 							<span className=" text-pink-100 text-lg">{title}</span>
 						</CardBlock>
 					))}
-			</CardBlock>
+			</ContainerBlock>
 
 
 
@@ -554,7 +554,7 @@ export default function DefsPage() {
 			{/* Полоска анализа */}
 
 			{isFetchingQuants &&
-				<CardBlock>
+				<ContainerBlock>
 
 
 					<div className="relative pt-1 px-4">
@@ -583,7 +583,7 @@ export default function DefsPage() {
 						</div>
 					</div>
 
-				</CardBlock>
+				</ContainerBlock>
 
 			}
 
@@ -600,23 +600,23 @@ export default function DefsPage() {
 
 			{isFetchingPoses
 				?
-				<CardBlock>
+				<ContainerBlock>
 					<Spinner color="rgb(236 72 153)" />
-				</CardBlock>
+				</ContainerBlock>
 				:
 
-				<CardBlock
-					className="flex flex-col items-start bg-pink-500/5 p-2 "
+				<ContainerBlock
+					className="flex flex-col items-start  p-2 "
 
 				>
 
 					<TextBlock
-						className="text-2xl text-teal-100"
+						className="text-xl text-teal-100"
 					>
 						Позиції всього: {allPoses?.length}
 					</TextBlock>
 					<TextBlock
-						className="text-2xl text-sky-100"
+						className="text-xl text-sky-100"
 					>
 						Артикули: {artsDB?.length}
 					</TextBlock>
@@ -627,92 +627,103 @@ export default function DefsPage() {
 					</TextBlock> */}
 
 					<TextBlock
-						className="text-2xl text-orange-100"
+						className="text-xl text-orange-100"
 					>
 						Запаси: {stocks?.length}
 					</TextBlock>
 
 					<TextBlock
-						className="text-2xl text-pink-100"
+						className="text-xl text-pink-100"
 					>
 						Дефіцити: {defs?.length}
 					</TextBlock>
 
-				</CardBlock>
+				</ContainerBlock>
 			}
 
 
 
-			<CardBlock
-				className="space-y-2 pb-4"
-			>
-				{defs?.map((def, i) =>
-					<CardBlock
-						key={i}
-						className="grid  lg:grid-cols-3 p-2  bg-pink-500/20 rounded-2xl"
-					>
+			{defs?.length > 0 ?
+
+
+
+
+
+				<ContainerBlock
+					className="space-y-2 pb-4"
+				>
+					{defs?.map((def, i) =>
 						<CardBlock
-							className=""
+							key={i}
+							className="grid  lg:grid-cols-3 p-2  bg-pink-500/10 rounded-xl"
 						>
+							<CardBlock
+								className=""
+							>
+
+								<CardBlock
+									className="bg-white flex justify-center rounded-t-lg"
+								>
+									<ImageArt size={100} artikul={def.artikul} />
+
+								</CardBlock>
+
+
+								<TextBlock
+									className="p-2 text-xl text-center italic bg-sky-500/10 rounded-b-lg "
+								>
+									{artsDB?.find(art => art.artikul === def.artikul)?.nameukr || def.artikul}
+								</TextBlock>
+
+							</CardBlock>
 
 							<CardBlock
-								className="bg-white flex justify-center rounded-t-2xl"
+								className="justify-self-center flex flex-col justify-around p-3"
 							>
-								<ImageArt size={200} artikul={def.artikul} />
+								<TextBlock
+									className="text-xl text-left"
+								> Запаси: {def?.quant}</TextBlock>
+
+								<TextBlock
+									className="text-xl text-left"
+								>
+									База: {def?.remain}
+								</TextBlock>
+								<TextBlock
+									className="text-xl text-left"
+								>
+									Дефіцит: {def?.dif}
+								</TextBlock>
 
 							</CardBlock>
 
 
-							<TextBlock
-								className="p-2 text-xl text-center italic bg-sky-500/50 rounded-b-2xl "
+							<CardBlock
+								className="flex justify-center items-center"
 							>
-								{artsDB?.find(art => art.artikul === def.artikul)?.nameukr}
-							</TextBlock>
+
+								<ButtonBlock
+									className="pink-b"
+									onClick={() => {
+										setShowModalCreateAsk(true)
+										setNewAskArtikul(def.artikul)
+									}}
+								>
+									Створити запит
+								</ButtonBlock>
+
+							</CardBlock>
 
 						</CardBlock>
+					)}
 
-						<CardBlock
-							className="justify-self-center flex flex-col justify-around p-3"
-						>
-							<TextBlock
-								className="text-2xl text-center"
-							> Кількість артикула на запасах: {def?.quant}</TextBlock>
-							<TextBlock
-								className="text-2xl text-center"
-							>
-								Дефіцит: {def?.dif}
-							</TextBlock>
-							<TextBlock
-								className="text-2xl text-center"
-							>
-								Залишок по базі: {def?.remain}
-							</TextBlock>
+				</ContainerBlock>
 
-						</CardBlock>
-
-
-						<CardBlock
-							className="flex justify-center items-center"
-						>
-
-							<ButtonBlock
-								className="indigo-b"
-								onClick={() => {
-									setShowModalCreateAsk(true)
-									setNewAskArtikul(def.artikul)
-								}}
-							>
-								Створити запит
-							</ButtonBlock>
-
-						</CardBlock>
-
-					</CardBlock>
-				)}
-
-			</CardBlock>
-
-
+				:
+				<TextBlock>
+					Дефіцитів немає
+				</TextBlock>
+			}
 
 
 

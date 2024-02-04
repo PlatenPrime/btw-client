@@ -19,7 +19,7 @@ export default function PositionBage({ pos, onDelete, onEdit, artsDB }) {
 
 		<>
 			<li className=' grid grid-rows-6 lg:grid-rows-1 lg:grid-cols-6
-	 relative border-2 border-teal-500
+	 relative
 	shadow-lg hover:shadow-teal-500
 	
 		rounded-xl

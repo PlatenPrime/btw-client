@@ -92,7 +92,7 @@ p-4
 
 				<TextBlock className="border border-orange-500 hover:bg-orange-500/90 rounded justify-start w-full" >
 					<NavLink
-						to={"stocks"}
+						to={"rows"}
 						style={({ isActive }) => isActive ? {
 							color: "white",
 							padding: "12px",
@@ -105,7 +105,7 @@ p-4
 							className="flex text-xl space-x-1"
 						>
 							<FcLibrary />
-							<TextBlock>Запаси</TextBlock>
+							<TextBlock>Ряди</TextBlock>
 						</TextBlock>
 
 					</NavLink>
