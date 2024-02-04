@@ -52,7 +52,7 @@ const ArtBage = ({ art, remains }) => {
 				className="flex items-center bg-white rounded-l-xl rounded-r-none p-1"
 			>
 
-				<ImageArt size={80} artikul={art?.artikul} className="rounded-l-xl" />
+				<ImageArt size={50} artikul={art?.artikul} className="rounded-l-xl" />
 
 			</CardBlock>
 
@@ -62,12 +62,12 @@ const ArtBage = ({ art, remains }) => {
 				to={`/arts/${art?._id}`}
 			>
 
-				<TextBlock className="justify-start text-xl " >{art?.nameukr}</TextBlock>
+				<TextBlock className="justify-start text-xl italic " >{art?.nameukr}</TextBlock>
 
 				<CardBlock
 					className="flex flex-wrap justify-between"
 				>
-					<TextBlock className=" text-xl font-bold  bg-orange-500 p-1 rounded" ><VscLocation />{art?.zone}</TextBlock>
+					<TextBlock className=" text-xl font-bold  bg-orange-300 p-1 rounded" ><VscLocation />{art?.zone}</TextBlock>
 					<TextBlock className=" text-xl font-bold " > <BsBalloon /> {remains ? remains[title] : ""}</TextBlock>
 				</CardBlock>
 
@@ -81,12 +81,12 @@ const ArtBage = ({ art, remains }) => {
 				to={`/arts/${art?._id}`}
 			>
 
-				<TextBlock className=" justify-start text-xl" >{art?.nameukr}</TextBlock>
+				<TextBlock className=" justify-start text-xl italic" >{art?.nameukr}</TextBlock>
 
 				<CardBlock
 				className = "flex w-1/3 justify-between px-2"
 				>
-					<TextBlock className="  text-xl font-bold border border-orange-500 p-1 rounded text-orange-500" ><VscLocation />{art?.zone}</TextBlock>
+					<TextBlock className="  text-xl font-bold border border-orange-300 p-1 rounded text-orange-300" ><VscLocation />{art?.zone}</TextBlock>
 					<TextBlock className=" text-xl font-bold " ><BsBalloon />  {remains ? remains[title] : ""}</TextBlock>
 				</CardBlock>
 

@@ -655,7 +655,7 @@ export default function DefsPage() {
 					{defs?.map((def, i) =>
 						<CardBlock
 							key={i}
-							className="grid  lg:grid-cols-3 p-2  bg-pink-500/10 rounded-xl"
+							className="grid  lg:grid-cols-3 p-2  bg-pink-500/5 rounded-xl"
 						>
 							<CardBlock
 								className=""
@@ -678,7 +678,7 @@ export default function DefsPage() {
 							</CardBlock>
 
 							<CardBlock
-								className="justify-self-center flex flex-col justify-around p-3"
+								className="justify-self-center flex flex-col justify-around p-3 bg-slate-700 rounded-lg "
 							>
 								<TextBlock
 									className="text-xl text-left"
@@ -720,9 +720,16 @@ export default function DefsPage() {
 				</ContainerBlock>
 
 				:
-				<TextBlock>
-					Дефіцитів немає
-				</TextBlock>
+
+				isFetchingPoses
+					?
+
+					null
+					:
+
+					<TextBlock>
+						Дефіцитів немає
+					</TextBlock>
 			}
 
 
