@@ -606,17 +606,20 @@ export default function DefsPage() {
 				:
 
 				<ContainerBlock
-					className="flex flex-col items-start  p-2 "
+					className="grid lg:grid-cols-2 gap-2 p-2 "
 
 				>
 
 					<TextBlock
-						className="text-xl text-teal-100"
+						className="text-xl text-white bg-teal-500/50 rounded-xl"
 					>
 						Позиції всього: {allPoses?.length}
 					</TextBlock>
+
+
+
 					<TextBlock
-						className="text-xl text-sky-100"
+						className="text-xl text-white bg-sky-500/50 rounded-xl"
 					>
 						Артикули: {artsDB?.length}
 					</TextBlock>
@@ -627,13 +630,13 @@ export default function DefsPage() {
 					</TextBlock> */}
 
 					<TextBlock
-						className="text-xl text-orange-100"
+						className="text-xl text-white bg-orange-500/50 rounded-xl"
 					>
 						Запаси: {stocks?.length}
 					</TextBlock>
 
 					<TextBlock
-						className="text-xl text-pink-100"
+						className="text-xl text-white bg-pink-500/50 rounded-xl"
 					>
 						Дефіцити: {defs?.length}
 					</TextBlock>
