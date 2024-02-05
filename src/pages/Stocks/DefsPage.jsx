@@ -551,6 +551,67 @@ export default function DefsPage() {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+			{isFetchingPoses
+				?
+				<ContainerBlock>
+					<Spinner color="rgb(236 72 153)" />
+				</ContainerBlock>
+				:
+
+				<ContainerBlock
+					className="grid lg:grid-cols-2 gap-2 p-2 "
+
+				>
+
+					<TextBlock
+						className="text-xl text-emerald-100 bg-slate-700 rounded-xl"
+					>
+						Позиції всього: {allPoses?.length}
+					</TextBlock>
+
+
+
+					<TextBlock
+						className="text-xl text-sky-100 bg-slate-700 rounded-xl"
+					>
+						Артикули: {artsDB?.length}
+					</TextBlock>
+
+
+					{/* <TextBlock>
+						Залишки: {remains ? remains["1102-0260"] : null}
+					</TextBlock> */}
+
+					<TextBlock
+						className="text-xl text-orange-100 bg-slate-700 rounded-xl"
+					>
+						Запаси: {stocks?.length}
+					</TextBlock>
+
+					<TextBlock
+						className="text-xl text-pink-100 bg-slate-700 rounded-xl"
+					>
+						Дефіцити: {defs?.length}
+					</TextBlock>
+
+				</ContainerBlock>
+			}
+
+
+
 			{/* Полоска анализа */}
 
 			{isFetchingQuants &&
@@ -598,51 +659,10 @@ export default function DefsPage() {
 
 
 
-			{isFetchingPoses
-				?
-				<ContainerBlock>
-					<Spinner color="rgb(236 72 153)" />
-				</ContainerBlock>
-				:
-
-				<ContainerBlock
-					className="grid lg:grid-cols-2 gap-2 p-2 "
-
-				>
-
-					<TextBlock
-						className="text-xl text-white bg-teal-500/50 rounded-xl"
-					>
-						Позиції всього: {allPoses?.length}
-					</TextBlock>
 
 
 
-					<TextBlock
-						className="text-xl text-white bg-sky-500/50 rounded-xl"
-					>
-						Артикули: {artsDB?.length}
-					</TextBlock>
 
-
-					{/* <TextBlock>
-						Залишки: {remains ? remains["1102-0260"] : null}
-					</TextBlock> */}
-
-					<TextBlock
-						className="text-xl text-white bg-orange-500/50 rounded-xl"
-					>
-						Запаси: {stocks?.length}
-					</TextBlock>
-
-					<TextBlock
-						className="text-xl text-white bg-pink-500/50 rounded-xl"
-					>
-						Дефіцити: {defs?.length}
-					</TextBlock>
-
-				</ContainerBlock>
-			}
 
 
 
