@@ -60,7 +60,7 @@ export function exportToExcelComps(data) {
 
 
 
-export async function exportToExcelPoses(allPoses, artsDB) {
+export async function exportToExcelPosesTotal(allPoses, artsDB) {
 
 
 
@@ -105,3 +105,51 @@ export async function exportToExcelPoses(allPoses, artsDB) {
 	XLSX.writeFile(wb, fileName);
 }
 
+
+
+
+
+
+export async function exportToExcelPoses(allPoses, artsDB) {
+
+
+
+	// Преобразование данных для экспорта
+	const transformedData = allPoses
+
+		.filter(el => el.quant != 0)
+		.filter(el => artsDB?.find(art => art?.artikul === el?.artikul))
+		.sort((a, b) => {
+			const aArtikulArray = a.artikul?.split("-")
+			const bArtikulArray = b.artikul?.split("-")
+
+			if (aArtikulArray[0] - bArtikulArray[0] > 0) return 1
+			if (aArtikulArray[0] - bArtikulArray[0] < 0) return -1
+			if (aArtikulArray[1] - bArtikulArray[1] > 0) return 1
+			if (aArtikulArray[1] - bArtikulArray[1] < 0) return -1
+			return 0
+		})
+		.map(item => ({
+			"Артикул": item?.artikul,
+			"Повна назва": artsDB?.find(art => art?.artikul === item?.artikul)?.nameukr,
+			"Склад": item?.sklad === "pogrebi" ? "Погреби склад" : item?.sklad === "merezhi" ? "Мережі" : null,
+			"Кількість": item?.quant,
+			"Дата": item?.date
+		}));
+
+
+
+	const ws = XLSX.utils.json_to_sheet(transformedData);
+	const wb = XLSX.utils.book_new();
+	XLSX.utils.book_append_sheet(wb, ws, 'Sheet1');
+
+
+
+	// Получаем текущую дату в формате ГГГГ-ММ-ДД
+	const currentDate = new Date().toISOString().slice(0, 10);
+
+	// Создаем название файла
+	const fileName = `stocks_${currentDate}.xlsx`;
+	// Записываем файл с новым названием
+	XLSX.writeFile(wb, fileName);
+}
