@@ -93,13 +93,13 @@ export default function ArtsPage() {
 			>
 
 				<CardBlock
-					className="flex flex-wrap justify-center  "
+					className="flex flex-wrap justify-center rounded-xl bg-slate-700  "
 				>
 
 
 
 					<form
-						className=" flex flex-col sm:flex-row justify-center space-y-2  sm:space-y-0 sm:space-x-3"
+						className=" flex flex-col sm:flex-row justify-center space-y-2  sm:space-y-0 sm:space-x-3 w-full"
 						onSubmit={(e) => {
 							e.preventDefault()
 							handleFilterArts()
@@ -111,9 +111,9 @@ export default function ArtsPage() {
 								setSearchValue(e.target.value);
 								handleFilterArts(e.target.value)
 							}}
-							placeholder="Введи артикул або назву..."
-							className="text-xl outline-none border-none p-3 px-8
-								 placeholder:font-light
+							placeholder="Пошук по артикулу або назві..."
+							className="text-xl outline-none border-none p-3 px-8 bg-slate-700 focus:bg-sky-700/50 w-full 
+								 placeholder:font-light 
 								"
 						/>
 
@@ -132,7 +132,7 @@ export default function ArtsPage() {
 
 				{filteredArts?.length === 0 || filteredArts?.length === artsDB?.length ?
 					<CardBlock
-						className="flex flex-wrap justify-between p-2  rounded"
+						className="flex flex-wrap justify-between p-2  rounded-xl bg-slate-700"
 					>
 
 						<TextBlock>

@@ -37,7 +37,7 @@ const ArtBage = ({ art, remains }) => {
 		rounded-xl
 		 text-sky-100 hover:text-white 
 	 
-		bg-sky-500/10 
+		bg-sky-700/30 
 		 hover:shadow-2xl hover:shadow-sky-500 
 		 hover:bg-sky-500 transition ease-in-out duration-300
 	
