@@ -134,7 +134,11 @@ export async function exportToExcelPoses(allPoses, artsDB) {
 			"Повна назва": artsDB?.find(art => art?.artikul === item?.artikul)?.nameukr,
 			"Склад": item?.sklad === "pogrebi" ? "Погреби склад" : item?.sklad === "merezhi" ? "Мережі" : null,
 			"Кількість": item?.quant,
-			"Дата": item?.date
+			"Коробки": item?.boxes,
+			"Дата": item?.date,
+			"Ряд": item?.rowTitle,
+			"Палета": item?.palletTitle,
+
 		}));
 
 
