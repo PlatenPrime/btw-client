@@ -99,6 +99,6 @@ export async function getArtDataBtrade(art) {
 		} else {
 			console.error("Unknown error:", error);
 		}
-		throw error;
+		
 	}
 }
