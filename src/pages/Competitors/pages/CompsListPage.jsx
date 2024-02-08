@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { useCompContext } from '../contexts/compContextProvider';  // Import the context hook
-import { ButtonBlock, CardBlock, ImageBlock, InputBlock, TextBlock, Spinner, ModalWrapper, ImageArt } from '../../../components';
+import { ButtonBlock, CardBlock, ImageBlock, InputBlock, TextBlock, Spinner, ModalWrapper, ImageArt, ButtonGroup, ContainerBlock } from '../../../components';
 import { analyzeComp } from '../../../utils/analyzeComp';
 import { exportToExcelComps } from '../../../utils/exportExcel';
 
@@ -222,8 +222,8 @@ export default function CompListPage() {
 		<CardBlock className="flex flex-col space-y-2 relative  " >
 
 
-			<CardBlock
-				className="flex justify-start flex-wrap gap-1  "
+			<ButtonGroup
+				className="f  "
 			>
 
 				<CheckCompLinks />
@@ -274,7 +274,7 @@ export default function CompListPage() {
 					<TextBlock>Фільтр</TextBlock>
 				</ButtonBlock>
 
-			</CardBlock>
+			</ButtonGroup>
 
 
 
@@ -292,12 +292,6 @@ export default function CompListPage() {
 
 
 
-
-
-
-			<CardBlock
-				className=""
-			>
 
 				{isAnalyzing &&
 					<CardBlock>
@@ -334,7 +328,7 @@ export default function CompListPage() {
 				}
 
 				{isAnalyzingOnFilter &&
-					<CardBlock>
+					<ContainerBlock>
 
 
 						<div className="relative pt-1 px-4">
@@ -363,7 +357,7 @@ export default function CompListPage() {
 							</div>
 						</div>
 
-					</CardBlock>
+					</ContainerBlock>
 
 				}
 
@@ -372,10 +366,7 @@ export default function CompListPage() {
 
 
 
-			</CardBlock>
-
-
-			{isFilterOpen && <CardBlock
+			{isFilterOpen && <ContainerBlock
 				className="flex flex-col items-center justify-between space-y-2  p-2 "
 			>
 
@@ -409,7 +400,7 @@ export default function CompListPage() {
 					className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-1">
 
 					<select
-						className="InputBlock focus:bg-slate-900 text-lg "
+						className="InputBlock focus:bg-slate-900 text-base "
 						value={filter.abcLetter}
 						onChange={(e) => setFilter({ ...filter, abcLetter: e.target.value })}
 					>
@@ -426,7 +417,7 @@ export default function CompListPage() {
 
 
 					<select
-						className="InputBlock focus:bg-slate-900 text-lg "
+						className="InputBlock focus:bg-slate-900 text-base "
 						value={filter.prod}
 						onChange={(e) => setFilter({ ...filter, prod: e.target.value })}
 					>
@@ -442,7 +433,7 @@ export default function CompListPage() {
 					</select>
 
 					<select
-						className="InputBlock focus:bg-slate-900 text-lg  "
+						className="InputBlock focus:bg-slate-900 text-base "
 						value={filter.category}
 						onChange={(e) => {
 							setSelectedCategory(e.target.value);
@@ -462,7 +453,7 @@ export default function CompListPage() {
 					</select>
 
 					<select
-						className="InputBlock focus:bg-slate-900 text-lg "
+						className="InputBlock focus:bg-slate-900 text-base "
 						value={filter.subcategory}
 						onChange={(e) => {
 							setSelectedSubcategory(e.target.value);
@@ -482,7 +473,7 @@ export default function CompListPage() {
 
 
 					<select
-						className="InputBlock focus:bg-slate-900 text-lg "
+						className="InputBlock focus:bg-slate-900 text-base"
 						value={filter.size}
 						onChange={(e) => setFilter({ ...filter, size: e.target.value })}
 					>
@@ -508,7 +499,7 @@ export default function CompListPage() {
 
 
 
-			</CardBlock>
+			</ContainerBlock>
 
 			}
 
@@ -520,8 +511,8 @@ export default function CompListPage() {
 
 				:
 
-				<CardBlock
-					className="flex-grow overflow-auto  mb-1 relative "
+				<ContainerBlock
+					className="flex-grow overflow-auto  mb-1 relative pt-0 "
 				>
 
 					<div
@@ -806,7 +797,7 @@ export default function CompListPage() {
 							</tbody>
 						</table>
 					</div>
-				</CardBlock>
+				</ContainerBlock>
 
 
 

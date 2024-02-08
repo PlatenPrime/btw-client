@@ -53,7 +53,7 @@ function ModalEditPos({
 						<InputBlock
 							name="updatePosDateValue"
 							value={updatePosDateValue}
-							placeholder="12-2023..."
+							placeholder="12.20"
 							onChange={(e) => { setUpdatePosDateValue(e.target.value) }}
 						/>
 					</CardBlock>

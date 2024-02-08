@@ -6,6 +6,7 @@ import {
 	HeaderBlock,
 	CardBlock,
 	TextBlock,
+	ContainerBlock,
 
 } from '../../../components';
 
@@ -36,13 +37,12 @@ export default function CompsPage() {
 
 
 	const activeStyles = {
-		backgroundColor: "rgb(139 92 246 / 0.5)",
+		backgroundColor: "rgb(244 63 94 )",
 		color: "white",
 		padding: "0.5rem",
 		width: "100%",
 		textAlign: 'center',
-		borderBottomLeftRadius: "0.5rem",
-		borderBottomRightRadius: "0.5rem",
+		
 	}
 
 
@@ -61,7 +61,7 @@ export default function CompsPage() {
 
 			<PageBTW className='max-h-screen ' >
 
-				<HeaderBlock className="bg-violet-500/20 ">
+				<HeaderBlock className="shadow-lg shadow-rose-500 ">
 
 
 					<NavLink
@@ -75,14 +75,14 @@ export default function CompsPage() {
 				</HeaderBlock>
 
 
-				<CardBlock
-					className="flex justify-evenly border border-violet-500  "
+				<ContainerBlock
+					className="flex justify-evenly  "
 
 				>
 
 
 					<TextBlock
-						className="w-1/4 rounded hover:bg-violet-500/20 rounded-b-lg"
+						className="w-1/4  hover:bg-rose-500 rounded-xl"
 
 					>
 						<NavLink
@@ -139,7 +139,7 @@ export default function CompsPage() {
 
 
 
-				</CardBlock>
+				</ContainerBlock>
 
 
 				<CardBlock
