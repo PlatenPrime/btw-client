@@ -5,6 +5,7 @@ import InfiniteScroll from 'react-infinite-scroll-component';
 import { useArtContext } from '../../ArtContext';
 import { toast } from 'react-toastify';
 import { AiOutlineArrowLeft, AiOutlineArrowRight, AiOutlineDoubleLeft, AiOutlineDoubleRight, AiOutlineSearch } from "react-icons/ai";
+import { GoSearch } from "react-icons/go";
 import useFetchRemains from '../../hooks/useFetchRemains';
 import { SearchIcon } from '../../components/UI/Icons';
 import { Link } from 'react-router-dom';
@@ -89,36 +90,33 @@ export default function ArtsPage() {
 			</ButtonGroup>
 
 			<ContainerBlock
-				className="space-y-4"
+				className="space-y-4 "
 			>
 
+
+
+
+
+
 				<CardBlock
-					className="flex flex-wrap justify-center rounded-xl bg-slate-700  "
+					className="flex  justify-start rounded-xl bg-slate-700 space-x-3 pl-4 "
 				>
 
 
-
-					<form
-						className=" flex flex-col sm:flex-row justify-center space-y-2  sm:space-y-0 sm:space-x-3 w-full"
-						onSubmit={(e) => {
-							e.preventDefault()
-							handleFilterArts()
+					<TextBlock
+						className="text-2xl font-bold"
+					><GoSearch />
+					</TextBlock>
+					<InputBlock
+						onChange={(e) => {
+							setSearchValue(e.target.value);
+							handleFilterArts(e.target.value)
 						}}
-					>
-
-						<InputBlock
-							onChange={(e) => {
-								setSearchValue(e.target.value);
-								handleFilterArts(e.target.value)
-							}}
-							placeholder="Пошук по артикулу або назві..."
-							className="text-xl outline-none border-none p-3 px-8 bg-slate-700 focus:bg-sky-700/50 w-full 
-								 placeholder:font-light 
+						placeholder="Пошук по артикулу або назві..."
+						className="text-xl outline-none border-none p-3 px-8 bg-slate-700 focus:bg-slate-600 w-full
+								 placeholder:font-light rounded-xl rounded-l-none
 								"
-						/>
-
-
-					</form>
+					/>
 
 
 
