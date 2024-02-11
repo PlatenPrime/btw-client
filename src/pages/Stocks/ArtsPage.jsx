@@ -134,12 +134,12 @@ export default function ArtsPage() {
 					>
 
 						<TextBlock>
-							Всього: {artsDB?.length}
+							Всього: {artsDB?.length > 0 && artsDB?.length}
 						</TextBlock>
 
 
 
-						{artsDB ?
+						{artsDB > 0 ?
 							<TextBlock
 								className=""
 							>

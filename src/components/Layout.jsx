@@ -32,7 +32,7 @@ const Layout = ({ children }) => {
 
 
 
-		<div className='container mx-auto min-h-screen max-h-screen shadow-sm relative'>
+		<div className='container mx-auto  shadow-sm relative'>
 
 
 

@@ -12,6 +12,8 @@ import ArtBage from './ArtBage';
 
 import usePosesStore from "./stores/posesStore"
 import StockBage from './StockBage';
+import { exportToExcelPoses } from '../../utils/exportExcel';
+import { SiMicrosoftexcel } from 'react-icons/si';
 
 
 
@@ -112,9 +114,13 @@ export default function StocksPage() {
 
 
 				<ButtonBlock
-					className="emerald-b "
+					onClick={() => exportToExcelPoses(allPoses, artsDB)}
+					className=" green-b flex items-center space-x-1  "
 				>
-
+					< SiMicrosoftexcel className='text-xl' />
+					<TextBlock>
+						Експорт в Excel
+					</TextBlock>
 				</ButtonBlock>
 
 			</ButtonGroup>
@@ -142,7 +148,7 @@ export default function StocksPage() {
 							setSearchValue(e.target.value);
 							handleFilterPoses(e.target.value)
 						}}
-						placeholder="Пошук по артикулу або назві..."
+						placeholder="Пошук по позиції"
 						className="text-xl outline-none border-none p-3 px-8 bg-slate-700 focus:bg-slate-600 w-full
 								 placeholder:font-light rounded-xl rounded-l-none
 								"
@@ -164,12 +170,12 @@ export default function StocksPage() {
 					>
 
 						<TextBlock>
-							Всього: {allPoses?.length}
+							Всього: {allPoses?.length > 0 && allPoses?.length}
 						</TextBlock>
 
 
 
-						{allPoses ?
+						{allPoses.length > 0 ?
 							<TextBlock
 								className=""
 							>

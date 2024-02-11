@@ -40,7 +40,18 @@ const usePosesStore = create((set) => ({
 	getAllPoses: async () => {
 		try {
 			const response = await axios.get('poses');
-			const data = response.data.poses.sort((a, b) => a.artikul - b.artikul)
+			const data = response.data.poses.sort(
+				(a, b) => {
+					if (a.artikul > b.artikul) return 1
+					if (a.artikul < b.artikul) return -1
+					if (a.artikul === b.artikul) {
+						if (a.palletTitle > b.palletTitle) return 1
+						if (a.palletTitle < b.palletTitle) return -1
+					}
+					return 0
+				}
+
+			)
 			set({ allPoses: data });
 			return data
 		} catch (error) {

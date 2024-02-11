@@ -114,15 +114,7 @@ export default function RowsPage() {
 					<TextBlock>Створити новий ряд</TextBlock>
 				</ButtonBlock>
 
-				<ButtonBlock
-					onClick={() => exportToExcelPoses(allPoses, artsDB)}
-					className=" green-b flex items-center space-x-1  "
-				>
-					< SiMicrosoftexcel className='text-xl' />
-					<TextBlock>
-						Експорт в Excel
-					</TextBlock>
-				</ButtonBlock>
+			
 
 
 
