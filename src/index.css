@@ -61,14 +61,14 @@ table {
 }
 
 ::-webkit-scrollbar {
-	width: 8px; /* Width of the scrollbar */
+	width: 4px; /* Width of the scrollbar */
 	height: 8px;
   }
   
   ::-webkit-scrollbar-thumb {
 	
 
-	border: 2px solid rgb(72, 167, 255);
+	border: 2px solid rgba(72, 167, 255, 0.397);
 	border-radius: 8px; /* Roundness of the scrollbar thumb */
 	
   }
@@ -94,7 +94,7 @@ table {
 
 	.PageBTW {
 		@apply
-		w-full  flex flex-col max-h-screen min-h-screen   space-y-4 py-5
+		w-full  flex flex-col max-h-screen min-h-screen   space-y-4 py-5  flex-grow overflow-auto  relative 
 	}
 
 
