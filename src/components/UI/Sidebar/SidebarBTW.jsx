@@ -64,26 +64,36 @@ p-4
 
 			<ContainerBlock>
 
-				<NavLink
-					to={"/"}
+
+
+				<CardBlock
+				className="border border-sky-500 rounded-xl hover:bg-sky-500/20"
 				>
-					<CardBlock className='flex items-center justify-center w-full h-16 text-5xl text-sky-500  
+
+
+					<NavLink
+						to={"/"}
+					>
+						<CardBlock className='flex items-center justify-center w-full h-16 text-5xl text-sky-500  
 				hover:text-white
 				'>
 
-						BTW
+							BTW
 
-					</CardBlock>
-				</NavLink>
+						</CardBlock>
 
 
-				{user
-					?
-					<TextBlock
-						className="border border-sky-500 p-3 rounded-xl"
-					>{user.fullname}</TextBlock>
-					:
-					null}
+						{user
+						?
+						<TextBlock
+							className=" p-3 "
+						>{user.fullname}</TextBlock>
+						:
+						null}
+
+					</NavLink>
+				</CardBlock>
+
 
 			</ContainerBlock>
 
@@ -104,7 +114,7 @@ p-4
 						<TextBlock
 							className="flex text-xl space-x-1"
 						>
-							<FcDeployment/>
+							<FcDeployment />
 							<TextBlock>Ряди</TextBlock>
 						</TextBlock>
 
@@ -282,7 +292,7 @@ p-4
 
 
 			<ContainerBlock
-			className="flex justify-center p-4"
+				className="flex justify-center p-4"
 			>
 
 				{
