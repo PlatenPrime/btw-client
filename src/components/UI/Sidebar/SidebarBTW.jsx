@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import { ButtonBlock, TextBlock, CardBlock, Spinner } from "../../index";
-import { FcBinoculars, FcDeployment, FcLibrary, FcOrganization, FcSettings, FcLeave } from 'react-icons/fc';
+import { FcBinoculars, FcDeployment, FcLibrary, FcOrganization, FcSettings, FcLeave, FcLowPriority } from 'react-icons/fc';
 
 import useAuthStore from '../../../pages/Auth/authStore';
 import ContainerBlock from '../blocks/ContainerBlock';
@@ -110,6 +110,34 @@ p-4
 
 					</NavLink>
 				</TextBlock>
+
+
+
+
+				<TextBlock className="border border-emerald-500 hover:bg-emerald-500/90 rounded justify-start w-full" >
+					<NavLink
+						to={"stocks"}
+						style={({ isActive }) => isActive ? {
+							color: "white",
+							padding: "12px",
+							width: "100%",
+							background: "rgb(16 185 129)",
+						} : inActiveStyles}
+					>
+
+						<TextBlock
+							className="flex text-xl space-x-1"
+						>
+							<FcLowPriority />
+							<TextBlock>Запаси</TextBlock>
+						</TextBlock>
+
+					</NavLink>
+				</TextBlock>
+
+
+
+
 
 
 				<TextBlock className="border border-sky-500 hover:bg-sky-500/90 rounded" >
