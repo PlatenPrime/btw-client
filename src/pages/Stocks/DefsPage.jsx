@@ -107,6 +107,7 @@ export default function DefsPage() {
 				.filter((pos) => selectedRowTitles.length === 0 || selectedRowTitles.includes(pos.rowTitle))
 				.filter((pos) => pos.sklad === "pogrebi" && isNewerThanThreeYears(pos.date))
 				.filter((stock) => { return /^\d{4}-\d{4}$/.test(stock.artikul) })
+				.filter((pos) => pos?.quant !== 0)
 				.reduce((result, currentStock) => {
 
 
