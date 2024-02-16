@@ -265,7 +265,11 @@ export default function AskPage() {
 
 
 
-
+	if (isLoadingAsk) return <ContainerBlock
+		className="w-full flex justify-center items-center"
+	>
+		<Spinner color="#6366f1" />
+	</ContainerBlock>
 
 
 
@@ -274,6 +278,12 @@ export default function AskPage() {
 
 
 	return (
+
+
+
+
+
+
 		<PageBTW
 			className="space-y-2 px-1"
 		>
@@ -282,8 +292,8 @@ export default function AskPage() {
 				className="shadow-md shadow-indigo-500 "
 			>
 
-				{isLoadingAsk ? <Spinner color="#6366f1" /> : <TextBlock>Запит на  {ask?.artikul}</TextBlock>
-				}
+			 <TextBlock>Запит на  {ask?.artikul}</TextBlock>
+			
 
 			</HeaderBlock>
 
@@ -595,16 +605,8 @@ export default function AskPage() {
 
 
 
-			{isLoadingAsk
-				?
-				<Spinner
-					color="#6366f1"
-				/>
-				:
-				<CardBlock
-					className="w-full space-y-8 "
-				>
 
+		
 
 
 
@@ -628,7 +630,7 @@ export default function AskPage() {
 						>
 							{ask?.actions?.map((action, i) => <TextBlock
 								key={i}
-								className="bg-indigo-900/50 p-2 text-white rounded-xl italic"
+								className="bg-indigo-500/10 p-2 text-white rounded-xl italic"
 
 							>
 								{action}
@@ -657,11 +659,11 @@ export default function AskPage() {
 											key={pos._id}
 											className={`
 											grid grid-cols-1 lg:grid-cols-2 space-y-2  lg:space-y-0 cursor-pointer p-4 lg:gap-8 justify-center
-											${pos.sklad === "merezhi" ? 
-											"bg-yellow-700/20 hover:bg-yellow-700/50  " 
-											: pos.sklad === "pogrebi" 
-											? "bg-blue-700/20 hover:bg-blue-700/50 " 
-											: null} 
+											${pos.sklad === "merezhi" ?
+													"bg-yellow-700/20 hover:bg-yellow-700/50  "
+													: pos.sklad === "pogrebi"
+														? "bg-blue-700/20 hover:bg-blue-700/50 "
+														: null} 
 											transition ease-in-out duration-300`}
 											onClick={() => {
 												setShowModalUpdateAsk(true);
@@ -710,11 +712,11 @@ export default function AskPage() {
 													className="flex justify-center space-x-2"
 												>
 													<TextBlock
-														className="text-amber-300  text-xl">
+														className="text-amber-100  text-xl">
 														<BsBoxSeam />
 													</TextBlock>
 													<TextBlock
-														className="text-amber-300 font-bold text-xl "
+														className="text-amber-100 font-bold text-xl "
 													>
 														{pos?.boxes}
 													</TextBlock>
@@ -725,11 +727,11 @@ export default function AskPage() {
 													className="flex justify-center  space-x-2"
 												>
 													<TextBlock
-														className="text-sky-300  text-xl">
+														className="text-sky-100  text-xl">
 														<BsBalloon />
 													</TextBlock>
 													<TextBlock
-														className="text-sky-300  font-bold text-xl "
+														className="text-sky-100  font-bold text-xl "
 													>
 
 														{pos?.quant}
@@ -759,15 +761,6 @@ export default function AskPage() {
 
 					</ContainerBlock>
 
-
-
-
-
-
-
-
-
-				</CardBlock>}
 
 
 		</PageBTW >

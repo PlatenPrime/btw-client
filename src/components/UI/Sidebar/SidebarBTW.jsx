@@ -100,7 +100,7 @@ p-4
 			<ContainerBlock className='space-y-2 p-4' >
 
 
-				<TextBlock className="border border-orange-500 hover:bg-orange-500/90 rounded justify-start w-full" >
+				<TextBlock className=" bg-orange-500/20 hover:bg-orange-500/90 rounded justify-start w-full" >
 					<NavLink
 						to={"rows"}
 						style={({ isActive }) => isActive ? {
@@ -124,7 +124,7 @@ p-4
 
 
 
-				<TextBlock className="border border-emerald-500 hover:bg-emerald-500/90 rounded justify-start w-full" >
+				<TextBlock className="bg-emerald-500/20 hover:bg-emerald-500/90 rounded justify-start w-full" >
 					<NavLink
 						to={"stocks"}
 						style={({ isActive }) => isActive ? {
@@ -150,7 +150,7 @@ p-4
 
 
 
-				<TextBlock className="border border-sky-500 hover:bg-sky-500/90 rounded" >
+				<TextBlock className="bg-sky-500/20 hover:bg-sky-500/90 rounded" >
 					<NavLink
 						to={"arts"}
 						style={({ isActive }) => isActive ? {
@@ -176,7 +176,7 @@ p-4
 
 
 
-				<TextBlock className="border border-indigo-500 hover:bg-indigo-500/90 rounded" >
+				<TextBlock className="bg-indigo-500/20 hover:bg-indigo-500/90 rounded" >
 					<NavLink
 						to={"asks"}
 						style={({ isActive }) => isActive ? {
@@ -203,7 +203,7 @@ p-4
 
 
 				{user?.role === "PRIME" || user?.role === "ADMIN" || user?.role === "SKLAD" ?
-					<TextBlock className="border border-pink-500 hover:bg-pink-500/90 rounded " >
+					<TextBlock className="bg-pink-500/20 hover:bg-pink-500/90 rounded " >
 						<NavLink
 							to={"defs"}
 							style={({ isActive }) => isActive ? {
@@ -231,7 +231,7 @@ p-4
 
 
 				{user?.role === "PRIME" || user?.role === "ADMIN" ?
-					<TextBlock className="border border-rose-500 hover:bg-rose-500/90 rounded " >
+					<TextBlock className="bg-rose-500/20 hover:bg-rose-500/90 rounded " >
 						<NavLink
 							to={"comps"}
 							style={({ isActive }) => isActive ? {
@@ -255,7 +255,7 @@ p-4
 
 
 				{user?.role === "PRIME" ?
-					<TextBlock className="border border-slate-500 hover:bg-slate-500/90 rounded " >
+					<TextBlock className="bg-slate-500/20 hover:bg-slate-500/90 rounded " >
 						<NavLink
 							to={"settings"}
 							style={({ isActive }) => isActive ? {
