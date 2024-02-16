@@ -714,9 +714,13 @@ export default function DefsPage() {
 									База: {def?.remain}
 								</TextBlock>
 								<TextBlock
-									className="text-xl text-left"
+									className="text-xl text-lef space-x-2"
 								>
-									Дефіцит: {def?.dif}
+
+									<TextBlock>Дефіцит:</TextBlock>
+									<TextBlock className="text-pink-500">{def?.dif}</TextBlock>
+
+
 								</TextBlock>
 
 							</CardBlock>

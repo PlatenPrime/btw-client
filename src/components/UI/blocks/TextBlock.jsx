@@ -11,12 +11,12 @@ const TextBlock = ({ children, className, onClick }) => {
 `
 
 	return (
-		<p
+		<div
 			className={style}
 			onClick={onClick}
 		>
 			{children}
-		</p>
+		</div>
 	);
 };
 

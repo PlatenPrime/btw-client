@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { ButtonBlock, ButtonGroup, CardBlock, HeaderBlock, ImageArt, InputBlock, ModalConfirm, ModalWrapper, PageBTW, Spinner, TextBlock } from "../../components"
+import { ButtonBlock, ButtonGroup, CardBlock, ContainerBlock, HeaderBlock, ImageArt, InputBlock, ModalConfirm, ModalWrapper, PageBTW, Spinner, TextBlock } from "../../components"
 import { BsBalloon, BsBoxSeam } from "react-icons/bs";
 import { VscLocation } from "react-icons/vsc";
 import { FaWarehouse } from "react-icons/fa6";
@@ -13,6 +13,7 @@ import usePalletStore from './stores/palletsStore'
 import useFetchRemains from '../../hooks/useFetchRemains';
 import { getArtDataBtrade } from '../../utils/getArtDataBtrade';
 import useAuthStore from '../Auth/authStore';
+import ArtCard from './components/ArtCard';
 
 
 
@@ -274,11 +275,11 @@ export default function AskPage() {
 
 	return (
 		<PageBTW
-			className="space-y-2"
+			className="space-y-2 px-1"
 		>
 
 			<HeaderBlock
-				className="border border-indigo-500 shadow-md shadow-indigo-500 "
+				className="shadow-md shadow-indigo-500 "
 			>
 
 				{isLoadingAsk ? <Spinner color="#6366f1" /> : <TextBlock>Запит на  {ask?.artikul}</TextBlock>
@@ -594,124 +595,49 @@ export default function AskPage() {
 
 
 
-			{isLoadingAsk ? <Spinner color="indigo" /> :
+			{isLoadingAsk
+				?
+				<Spinner
+					color="#6366f1"
+				/>
+				:
 				<CardBlock
-					className="w-full space-y-8 p-4"
+					className="w-full space-y-8 "
 				>
 
-					<TextBlock
-						className=""
-					>
-						{ask?.status === "new"
-							?
-							"Новий"
-							: ask?.status === "solved"
-								? "Виконано"
-								: ask?.status === "fail"
-									? "Відмовлено"
-									: null
-						}
-					</TextBlock>
 
-					<CardBlock
-						className="flex flex-col lg:flex-row lg:justify-start space-y-2 lg:space-x-2 border"
-					>
 
-						<CardBlock
-							className="w-full lg:w-fit flex justify-center items-start lg:justify-start"
+
+					<ArtCard
+						artikul={artikul}
+						remains={remains}
+						title={title}
+						ostatok={ostatok}
+						posesWithArtikul={posesWithArtikul}
+
+					/>
+
+					<ContainerBlock>
+						<TextBlock
+							className="text-2xl"
 						>
-
-							<ImageArt size={200} artikul={artikul?.artikul} />
-						</CardBlock>
-
+							Історія змін
+						</TextBlock>
 						<CardBlock
-							className="flex flex-col items-center space-y-2"
+							className="space-y-2 "
 						>
+							{ask?.actions?.map((action, i) => <TextBlock
+								key={i}
+								className="bg-indigo-900/50 p-2 text-white rounded-xl italic"
 
-							<TextBlock
-								className="text-2xl  lg:text-4xl p-1 justify-center lg:text-left"
 							>
-								{artikul?.nameukr}
-							</TextBlock>
-
-
-							<CardBlock
-								className="w-full flex items-center flex-col lg:flex-row lg:space-x-4 p-1"
-							>
-
-								<TextBlock className="  text-3xl font-bold  p-1 rounded text-orange-300" ><VscLocation />{artikul?.zone}</TextBlock>
-
-
-								<CardBlock
-									className="flex"
-								>
-									<TextBlock
-
-										className="text-rose-300  text-3xl"
-									>
-
-										<BsBalloon />
-									</TextBlock>
-									<TextBlock
-										className="text-rose-300  font-bold text-3xl  rounded"
-
-									>
-
-										{remains ? remains[title] : ""}
-									</TextBlock>
-								</CardBlock>
-
-
-
-								<CardBlock
-									className="flex "
-								>
-									<TextBlock
-										className="text-green-300  text-3xl">
-										<BsBalloon />
-									</TextBlock>
-									<TextBlock
-										className="text-green-300  font-bold text-3xl  rounded"
-									>
-
-										{ostatok}
-									</TextBlock>
-								</CardBlock>
-
-
-								<CardBlock
-									className="flex items-center "
-								>
-									<TextBlock
-										className="text-blue-300  text-3xl">
-										<FaWarehouse />
-									</TextBlock>
-
-									<TextBlock
-										className="text-blue-300 font-bold   text-3xl">
-
-										{posesWithArtikul?.reduce((a, b) => a + parseInt(b.quant), 0)}
-
-									</TextBlock>
-								</CardBlock>
-
-
-
-
-							</CardBlock>
-
-
+								{action}
+							</TextBlock>)}
 						</CardBlock>
-
-					</CardBlock>
-
+					</ContainerBlock>
 
 
-
-
-
-
-					<CardBlock
+					<ContainerBlock
 						className="flex justify-center w-full space-y-4"
 					>
 
@@ -729,30 +655,44 @@ export default function AskPage() {
 										.sort((a, b) => b.boxes - a.boxes)
 										.map((pos) => <CardBlock
 											key={pos._id}
-											className='
-											grid grid-cols-1 lg:grid-cols-3 space-y-2  lg:space-y-0
-											p-4 lg:gap-8
-											justify-center
-											bg-sky-900/20 hover:bg-sky-900/40
-											transition ease-in-out duration-300
-			'
+											className={`
+											grid grid-cols-1 lg:grid-cols-2 space-y-2  lg:space-y-0 cursor-pointer p-4 lg:gap-8 justify-center
+											${pos.sklad === "merezhi" ? 
+											"bg-yellow-700/20 hover:bg-yellow-700/50  " 
+											: pos.sklad === "pogrebi" 
+											? "bg-blue-700/20 hover:bg-blue-700/50 " 
+											: null} 
+											transition ease-in-out duration-300`}
+											onClick={() => {
+												setShowModalUpdateAsk(true);
+												setSelectedPos(pos)
+												setFinalValuePosBoxes(pos?.boxes)
+												setFinalValuePosQuant(pos?.quant)
+												setAskValuePosBoxes(0);
+												setAskValuePosQuant(0);
+												setSelectedPosPalletTitle(pallets?.find((pallet) => pallet._id === pos?.pallet)?.title)
+											}
+
+											}
 										>
 
 
 
 											<CardBlock
-												className={` flex justify-center  lg:justify-start  font-bold ${pos.sklad === "merezhi" ? "bg-indigo-300/90" : pos.sklad === "pogrebi" ? "bg-green-300/90" : null}   `}
+												className={` flex justify-center  lg:justify-start  font-bold    `
+												}
+
 											>
 
 												<TextBlock
-													className="text-black text-5xl"
+													className=" text-2xl"
 												>
 													<LiaPalletSolid />
 												</TextBlock>
 
 
 												<TextBlock
-													className="grid place-content-center text-black text-4xl"
+													className="grid place-content-center text-2xl"
 												>
 													{pos.palletTitle}
 												</TextBlock>
@@ -763,18 +703,18 @@ export default function AskPage() {
 
 
 											<CardBlock
-												className="  grid grid-cols-2  lg:justify-items-start border p-1 bg-slate-900 "
+												className="  grid grid-cols-2  lg:justify-items-start p-1  "
 											>
 
 												<CardBlock
 													className="flex justify-center space-x-2"
 												>
 													<TextBlock
-														className="text-amber-300  text-3xl">
+														className="text-amber-300  text-xl">
 														<BsBoxSeam />
 													</TextBlock>
 													<TextBlock
-														className="text-amber-300 font-bold text-3xl "
+														className="text-amber-300 font-bold text-xl "
 													>
 														{pos?.boxes}
 													</TextBlock>
@@ -785,11 +725,11 @@ export default function AskPage() {
 													className="flex justify-center  space-x-2"
 												>
 													<TextBlock
-														className="text-sky-300  text-3xl">
+														className="text-sky-300  text-xl">
 														<BsBalloon />
 													</TextBlock>
 													<TextBlock
-														className="text-sky-300  font-bold text-3xl "
+														className="text-sky-300  font-bold text-xl "
 													>
 
 														{pos?.quant}
@@ -799,30 +739,6 @@ export default function AskPage() {
 											</CardBlock>
 
 
-
-											<CardBlock
-												className="justify-self-end w-full lg:w-fit "
-											>
-												<ButtonBlock
-													className=" blue-b flex text-3xl w-full lg:w-fit  "
-													onClick={() => {
-														setShowModalUpdateAsk(true);
-														setSelectedPos(pos)
-														setFinalValuePosBoxes(pos?.boxes)
-														setFinalValuePosQuant(pos?.quant)
-														setAskValuePosBoxes(0);
-														setAskValuePosQuant(0);
-														setSelectedPosPalletTitle(pallets?.find((pallet) => pallet._id === pos?.pallet)?.title)
-													}
-
-													}
-												>
-													<ImMoveDown />
-													<TextBlock
-														className="text-2xl"
-													>Зняти</TextBlock>
-												</ButtonBlock>
-											</CardBlock>
 										</CardBlock>
 
 										)}
@@ -841,29 +757,12 @@ export default function AskPage() {
 
 						}
 
-					</CardBlock>
+					</ContainerBlock>
 
 
 
 
-					<CardBlock>
-						<TextBlock
-							className="text-3xl"
-						>
-							Історія змін
-						</TextBlock>
-						<CardBlock
-							className="space-y-2"
-						>
-							{ask?.actions?.map((action, i) => <TextBlock
-								key={i}
-								className="border border-green-700 p-2 text-green-200 rounded"
 
-							>
-								{action}
-							</TextBlock>)}
-						</CardBlock>
-					</CardBlock>
 
 
 
