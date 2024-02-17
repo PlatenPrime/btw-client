@@ -59,9 +59,9 @@ export default function CompsPage() {
 		<CompContextProvider>
 
 
-			<PageBTW className='max-h-screen ' >
+			<PageBTW className='max-h-screen px-1' >
 
-				<HeaderBlock className="shadow-lg shadow-rose-500 ">
+				<HeaderBlock className="bg-rose-500 shadow-2xl shadow-rose-500 ">
 
 
 					<NavLink

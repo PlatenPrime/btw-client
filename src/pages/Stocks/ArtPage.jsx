@@ -128,7 +128,7 @@ export default function ArtPage() {
 		>
 
 			<HeaderBlock
-				className=" shadow-md shadow-white"
+				className="bg-sky-500  shadow-2xl shadow-sky-500 "
 			>
 				{isLoadingArtikul ? <Spinner color="white" /> : <>{artikul?.artikul}</>}
 			</HeaderBlock>

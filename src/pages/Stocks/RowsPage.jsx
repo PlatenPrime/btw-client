@@ -90,11 +90,11 @@ export default function RowsPage() {
 
 	return (
 		<PageBTW
-			className=""
+			className="px-1"
 		>
 
 			<HeaderBlock
-				className="  shadow-md shadow-slate-500/50"
+				className="bg-orange-500  shadow-2xl shadow-orange-500"
 			>
 				Ряди
 			</HeaderBlock>

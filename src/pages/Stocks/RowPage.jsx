@@ -170,10 +170,10 @@ export default function RowPage() {
 
 	return (
 		<PageBTW
-		
+		className="px-1"
 		>
 			<HeaderBlock
-				className="border border-orange-500 bg-orange-500/10 shadow-2xl shadow-orange-500/50"
+				className=" bg-amber-500 shadow-2xl shadow-amber-500"
 			>
 				{title}
 			</HeaderBlock>

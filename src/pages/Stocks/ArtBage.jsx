@@ -62,7 +62,7 @@ const ArtBage = ({ art, remains }) => {
 				to={`/arts/${art?._id}`}
 			>
 
-				<TextBlock className="justify-start text-xl italic " >{art?.nameukr}</TextBlock>
+				<TextBlock className="justify-start text-xl  " >{art?.nameukr}</TextBlock>
 
 				<CardBlock
 					className="flex flex-wrap justify-between"
@@ -81,7 +81,7 @@ const ArtBage = ({ art, remains }) => {
 				to={`/arts/${art?._id}`}
 			>
 
-				<TextBlock className=" justify-start text-xl italic" >{art?.nameukr}</TextBlock>
+				<TextBlock className=" justify-start text-xl " >{art?.nameukr}</TextBlock>
 
 				<CardBlock
 				className = "flex w-1/3 justify-between px-2"

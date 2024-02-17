@@ -107,7 +107,7 @@ export default function StocksPage() {
 	}, [allPoses])
 
 
-	if (isLoadingPoses) return <PageBTW><Spinner /></PageBTW>
+
 
 
 
@@ -115,11 +115,11 @@ export default function StocksPage() {
 
 	return (
 		<PageBTW
-			className="space-y-4 "
+			className="space-y-4 px-1 "
 		>
 
 			<HeaderBlock
-				className=" shadow-md shadow-emerald-500 "
+				className=" shadow-2xl bg-emerald-500 shadow-emerald-500 "
 			>
 				<TextBlock className="">
 					Запаси
@@ -130,53 +130,64 @@ export default function StocksPage() {
 			</HeaderBlock>
 
 
-
-			<ButtonGroup
-			>
-
-
-				<ButtonBlock
-					onClick={() => exportToExcelPoses(allPoses, artsDB)}
-					className=" green-b flex items-center space-x-1  "
+			{isLoadingPoses
+				?
+				<ContainerBlock
+					className="w-full h-full flex justify-start items-center"
 				>
-					< SiMicrosoftexcel className='text-xl' />
-					<TextBlock>
-						Експорт в Excel
-					</TextBlock>
-				</ButtonBlock>
-
-			</ButtonGroup>
-
-			<ContainerBlock
-				className="space-y-4 "
-			>
+					<Spinner color="#10b981" />
+				</ContainerBlock>
+				:
+				<>
 
 
 
+					<ButtonGroup
+					>
+
+
+						<ButtonBlock
+							onClick={() => exportToExcelPoses(allPoses, artsDB)}
+							className=" green-b flex items-center space-x-1  "
+						>
+							< SiMicrosoftexcel className='text-xl' />
+							<TextBlock>
+								Експорт в Excel
+							</TextBlock>
+						</ButtonBlock>
+
+					</ButtonGroup>
+
+					<ContainerBlock
+						className="space-y-4 "
+					>
 
 
 
-				<CardBlock
-					className="flex  justify-start rounded-xl bg-slate-700 space-x-3 pl-4 "
-				>
 
 
-					<TextBlock
-						className="text-2xl font-bold"
-					><GoSearch />
-					</TextBlock>
-					<InputBlock
-						onChange={(e) => handleSearch(e.target.value)
-						}
-						placeholder="Пошук по позиції"
-						className="text-xl outline-none border-none p-3 px-8 bg-slate-700 focus:bg-slate-600 w-full
+
+						<CardBlock
+							className="flex  justify-start rounded-xl bg-slate-700 space-x-3 pl-4 "
+						>
+
+
+							<TextBlock
+								className="text-2xl font-bold"
+							><GoSearch />
+							</TextBlock>
+							<InputBlock
+								onChange={(e) => handleSearch(e.target.value)
+								}
+								placeholder="Пошук по позиції"
+								className="text-xl outline-none border-none p-3 px-8 bg-slate-700 focus:bg-slate-600 w-full
 								 placeholder:font-light rounded-xl rounded-l-none
 								"
-					/>
+							/>
 
 
 
-				</CardBlock>
+						</CardBlock>
 
 
 
@@ -184,26 +195,140 @@ export default function StocksPage() {
 
 
 
-				{filteredStocks?.length === 0 ? null : filteredStocks?.length === allPoses?.length ?
-					<CardBlock
-						className="flex flex-wrap justify-between p-2  rounded-xl bg-slate-700"
-					>
-
-						<TextBlock>
-							Всього: {allPoses?.length > 0 && allPoses?.length}
-						</TextBlock>
-
-
-
-						{allPoses.length > 0 ?
-							<TextBlock
-								className=""
+						{filteredStocks?.length === 0 ? null : filteredStocks?.length === allPoses?.length ?
+							<CardBlock
+								className="flex flex-wrap justify-between p-2  rounded-xl bg-slate-700"
 							>
-								{step * page - step + 1} - {step * page < allPoses?.length ? step * page : allPoses?.length}
-							</TextBlock>
+
+								<TextBlock>
+									Всього: {allPoses?.length > 0 && allPoses?.length}
+								</TextBlock>
+
+
+
+								{allPoses.length > 0 ?
+									<TextBlock
+										className=""
+									>
+										{step * page - step + 1} - {step * page < allPoses?.length ? step * page : allPoses?.length}
+									</TextBlock>
+
+									:
+									null
+								}
+
+
+
+
+
+
+
+
+
+								<CardBlock
+									className="space-x-3 flex flex-wrap "
+								>
+
+									<ButtonBlock onClick={() => setPage(1)} className="emerald-b border-none bg-emerald-500/10 " disabled={page === 1}>
+										<TextBlock className="text-lg lg:text-2xl">
+											<AiOutlineDoubleLeft />
+										</TextBlock>
+									</ButtonBlock>
+
+									<ButtonBlock onClick={() => setPage((prev) => prev - 1)} className="emerald-b border-none bg-emerald-500/10" disabled={page === 1}>
+
+										<TextBlock className="text-lg lg:text-2xl">
+											<AiOutlineArrowLeft />
+										</TextBlock>
+									</ButtonBlock>
+
+									<TextBlock>
+										Сторінка: {page}
+									</TextBlock>
+
+									<ButtonBlock onClick={() => setPage((prev) => prev + 1)} className="emerald-b border-none bg-emerald-500/10" disabled={allPoses?.length / step / page < 1}>
+
+										<TextBlock className="text-lg lg:text-2xl">
+											<AiOutlineArrowRight />
+										</TextBlock>
+									</ButtonBlock>
+
+									<ButtonBlock onClick={() => setPage(Math.ceil(allPoses?.length / step))} className="emerald-b border-none bg-emerald-500/10 " disabled={allPoses?.length / step / page < 1}>
+
+										<TextBlock className="text-lg lg:text-2xl">
+											<AiOutlineDoubleRight />
+										</TextBlock>
+									</ButtonBlock>
+
+
+
+								</CardBlock>
+
+							</CardBlock>
 
 							:
-							null
+
+							<CardBlock
+								className="flex flex-wrap justify-between p-2 "
+							>
+
+
+
+
+								<TextBlock>
+									Знайдено: {filteredStocks?.length}
+								</TextBlock>
+
+
+
+								<TextBlock
+									className="text-xl"
+
+								>
+									{step * page - step + 1} - {step * page < filteredStocks?.length ? step * page : filteredStocks?.length}
+								</TextBlock>
+
+
+
+								<CardBlock
+									className="space-x-3 flex flex-wrap"
+								>
+
+									<ButtonBlock onClick={() => setPage(1)} className="sky-b border-none bg-emerald-500/10 " disabled={page === 1}>
+										<TextBlock className="text-lg lg:text-2xl">
+											<AiOutlineDoubleLeft />
+										</TextBlock>
+									</ButtonBlock>
+
+									<ButtonBlock onClick={() => setPage((prev) => prev - 1)} className="emerald-b border-none bg-emerald-500/10 " disabled={page === 1}>
+										<TextBlock className="text-lg lg:text-2xl">
+											<AiOutlineArrowLeft />
+										</TextBlock>
+									</ButtonBlock>
+
+									<TextBlock>
+										Сторінка: {page}
+									</TextBlock>
+
+
+									<ButtonBlock onClick={() => setPage((prev) => prev + 1)} className="emerald-b border-none bg-emerald-500/10 " disabled={filteredStocks?.length / step / page < 1}>
+										<TextBlock className="text-lg lg:text-2xl">
+											<AiOutlineArrowRight />
+										</TextBlock>
+									</ButtonBlock>
+
+									<ButtonBlock onClick={() => setPage(Math.ceil(filteredStocks?.length / step))} className="emerald-b border-none bg-emerald-500/10 " disabled={filteredStocks?.length / step / page < 1}>
+										<TextBlock className="text-lg lg:text-2xl">
+											<AiOutlineDoubleRight />
+										</TextBlock>
+
+									</ButtonBlock>
+
+								</CardBlock>
+
+							</CardBlock>
+
+
 						}
 
 
@@ -212,146 +337,33 @@ export default function StocksPage() {
 
 
 
-
-
-						<CardBlock
-							className="space-x-3 flex flex-wrap "
-						>
-
-							<ButtonBlock onClick={() => setPage(1)} className="emerald-b border-none bg-emerald-500/10 " disabled={page === 1}>
-								<TextBlock className="text-lg lg:text-2xl">
-									<AiOutlineDoubleLeft />
-								</TextBlock>
-							</ButtonBlock>
-
-							<ButtonBlock onClick={() => setPage((prev) => prev - 1)} className="emerald-b border-none bg-emerald-500/10" disabled={page === 1}>
-
-								<TextBlock className="text-lg lg:text-2xl">
-									<AiOutlineArrowLeft />
-								</TextBlock>
-							</ButtonBlock>
-
-							<TextBlock>
-								Сторінка: {page}
-							</TextBlock>
-
-							<ButtonBlock onClick={() => setPage((prev) => prev + 1)} className="emerald-b border-none bg-emerald-500/10" disabled={allPoses?.length / step / page < 1}>
-
-								<TextBlock className="text-lg lg:text-2xl">
-									<AiOutlineArrowRight />
-								</TextBlock>
-							</ButtonBlock>
-
-							<ButtonBlock onClick={() => setPage(Math.ceil(allPoses?.length / step))} className="emerald-b border-none bg-emerald-500/10 " disabled={allPoses?.length / step / page < 1}>
-
-								<TextBlock className="text-lg lg:text-2xl">
-									<AiOutlineDoubleRight />
-								</TextBlock>
-							</ButtonBlock>
-
-
-
-						</CardBlock>
-
-					</CardBlock>
-
-					:
-
-					<CardBlock
-						className="flex flex-wrap justify-between p-2 "
-					>
-
-
-
-
-						<TextBlock>
-							Знайдено: {filteredStocks?.length}
-						</TextBlock>
-
-
-
-						<TextBlock
-							className="text-xl"
-
-						>
-							{step * page - step + 1} - {step * page < filteredStocks?.length ? step * page : filteredStocks?.length}
-						</TextBlock>
-
-
-
-						<CardBlock
-							className="space-x-3 flex flex-wrap"
-						>
-
-							<ButtonBlock onClick={() => setPage(1)} className="sky-b border-none bg-emerald-500/10 " disabled={page === 1}>
-								<TextBlock className="text-lg lg:text-2xl">
-									<AiOutlineDoubleLeft />
-								</TextBlock>
-							</ButtonBlock>
-
-							<ButtonBlock onClick={() => setPage((prev) => prev - 1)} className="emerald-b border-none bg-emerald-500/10 " disabled={page === 1}>
-								<TextBlock className="text-lg lg:text-2xl">
-									<AiOutlineArrowLeft />
-								</TextBlock>
-							</ButtonBlock>
-
-							<TextBlock>
-								Сторінка: {page}
-							</TextBlock>
-
-
-							<ButtonBlock onClick={() => setPage((prev) => prev + 1)} className="emerald-b border-none bg-emerald-500/10 " disabled={filteredStocks?.length / step / page < 1}>
-								<TextBlock className="text-lg lg:text-2xl">
-									<AiOutlineArrowRight />
-								</TextBlock>
-							</ButtonBlock>
-
-							<ButtonBlock onClick={() => setPage(Math.ceil(filteredStocks?.length / step))} className="emerald-b border-none bg-emerald-500/10 " disabled={filteredStocks?.length / step / page < 1}>
-								<TextBlock className="text-lg lg:text-2xl">
-									<AiOutlineDoubleRight />
-								</TextBlock>
-
-							</ButtonBlock>
-
-						</CardBlock>
-
-					</CardBlock>
-
-
-				}
-
-
-
-
-
-
-
-				{isLoadingPoses ?
-					<Spinner color="emerald" />
-					:
-					<CardBlock className="space-y-2">
-						{filteredStocks?.length === 0
-							?
-							<TextBlock>Нічого не знайдено</TextBlock>
+						{isLoadingPoses ?
+							<Spinner color="emerald" />
 							:
-							filteredStocks?.length === allPoses.length
-								? allPoses?.slice(step * page - step, step * page).map((pos) => <StockBage key={pos._id} pos={pos} nameukr={artsDB?.find(artikul => artikul.artikul === pos.artikul)?.nameukr} />)
-								: filteredStocks?.slice(step * page - step, step * page).map((pos) => <StockBage key={pos._id} pos={pos} nameukr={artsDB?.find(artikul => artikul.artikul === pos.artikul)?.nameukr} />)}
+							<CardBlock className="space-y-2">
+								{filteredStocks?.length === 0
+									?
+									<TextBlock>Нічого не знайдено</TextBlock>
+									:
+									filteredStocks?.length === allPoses.length
+										? allPoses?.slice(step * page - step, step * page).map((pos) => <StockBage key={pos._id} pos={pos} nameukr={artsDB?.find(artikul => artikul.artikul === pos.artikul)?.nameukr} />)
+										: filteredStocks?.slice(step * page - step, step * page).map((pos) => <StockBage key={pos._id} pos={pos} nameukr={artsDB?.find(artikul => artikul.artikul === pos.artikul)?.nameukr} />)}
 
-					</CardBlock>
+							</CardBlock>
 
-				}
-
-
-
-
-
-
-
-			</ContainerBlock>
+						}
 
 
 
+
+
+
+
+					</ContainerBlock>
+
+
+				</>
+			}
 
 
 		</PageBTW>

@@ -109,11 +109,11 @@ export default function AsksPage() {
 
 	return (
 		<PageBTW
-			className="space-y-8"
+			className="space-y-4 px-1 "
 		>
 
 			<HeaderBlock
-				className="shadow-md shadow-indigo-500"
+				className="bg-indigo-500 shadow-2xl shadow-indigo-500"
 			>
 				Запити
 			</HeaderBlock>
@@ -254,7 +254,7 @@ export default function AsksPage() {
 						className="p-1 flex justify-center"
 					>
 						<ButtonBlock
-							className="indigo-b shadow-lg  p-4 flex  border-dashed "
+							className="indigo-b shadow-lg  p-4 flex  border-dashed bg-indigo-500/10 "
 							onClick={() => setShowModalCreateAsk(true)}
 						>
 							<AddIcon />

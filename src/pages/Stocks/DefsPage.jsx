@@ -361,7 +361,7 @@ export default function DefsPage() {
 			className=" "
 		>
 			<HeaderBlock
-				className=" shadow-md shadow-pink-500"
+				className="bg-pink-500 shadow-2xl shadow-pink-500"
 			>
 				Дефіцити
 			</HeaderBlock>

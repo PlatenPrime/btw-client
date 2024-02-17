@@ -78,11 +78,11 @@ export default function ArtsPage() {
 
 	return (
 		<PageBTW
-			className="space-y-4 "
+			className="space-y-4 px-1 "
 		>
 
 			<HeaderBlock
-				className=" shadow-md shadow-sky-500 "
+				className="bg-sky-500  shadow-2xl shadow-sky-500 "
 			>
 				<TextBlock className="">
 					Артикули

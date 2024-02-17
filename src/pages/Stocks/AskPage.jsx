@@ -289,7 +289,7 @@ export default function AskPage() {
 		>
 
 			<HeaderBlock
-				className="shadow-md shadow-indigo-500 "
+				className="bg-indigo-500 shadow-2xl shadow-indigo-500"
 			>
 
 			 <TextBlock>Запит на  {ask?.artikul}</TextBlock>

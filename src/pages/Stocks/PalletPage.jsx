@@ -376,10 +376,12 @@ export default function PalletPage() {
 
 
 	return (
-		<PageBTW>
+		<PageBTW
+			className="px-1"
+		>
 
 			<HeaderBlock
-				className="border border-amber-500 shadow-md shadow-amber-500 "
+				className="bg-teal-500 shadow-2xl shadow-teal-500 "
 
 			>
 
@@ -394,7 +396,7 @@ export default function PalletPage() {
 					>
 
 						<TextBlock
-							className=" rounded p-1 bg-orange-500"
+							className=" rounded p-1 bg-orange-500/20 hover:bg-orange-500"
 						>
 							<BackIcon />
 							{`Ряд ${row?.title ? row?.title : ""}`}
@@ -473,103 +475,103 @@ export default function PalletPage() {
 
 
 
-				<ModalDeletePallet
-					show={showModalDeletePallet}
-					onDelete={handleDeletePalletById}
-					onCancel={() => { setShowModalDeletePallet(false) }}
-				/>
+			<ModalDeletePallet
+				show={showModalDeletePallet}
+				onDelete={handleDeletePalletById}
+				onCancel={() => { setShowModalDeletePallet(false) }}
+			/>
 
-				<ModalRenamePallet
-					show={showModalRenamePallet}
-					value={title}
-					onConfirm={(title) => { handleRenamePalletById(title) }}
-					onCancel={() => { setShowModalRenamePallet(false) }}
+			<ModalRenamePallet
+				show={showModalRenamePallet}
+				value={title}
+				onConfirm={(title) => { handleRenamePalletById(title) }}
+				onCancel={() => { setShowModalRenamePallet(false) }}
 
-				/>
+			/>
 
-				<ModalChangePalletCom
-					show={showModalChangePalletCom}
-					value={newCom}
-					onConfirm={(newCom) => { handleChangePalletComentById(newCom) }}
-					onCancel={() => { setShowModalChangePalletCom(false) }}
+			<ModalChangePalletCom
+				show={showModalChangePalletCom}
+				value={newCom}
+				onConfirm={(newCom) => { handleChangePalletComentById(newCom) }}
+				onCancel={() => { setShowModalChangePalletCom(false) }}
 
-				/>
-
-
+			/>
 
 
 
 
 
-				<ModalCreatePos
-					show={showModalCreatePos}
-					newPos={newPos}
-					artsDB={artsDB}
-					handleInputPosChange={handleInputPosChange}
-					handleCreatePos={handleCreatePos}
-					onCancel={() => { setShowModalCreatePos(false) }}
-				/>
 
 
-				<ModalDeletePos
-					show={showModalDeletePos}
-					onCancel={() => { setShowModalDeletePos(false) }}
-					onDelete={() => handleDeletePosById(selectedPos._id)}
-					selectedPos={selectedPos}
-				/>
+			<ModalCreatePos
+				show={showModalCreatePos}
+				newPos={newPos}
+				artsDB={artsDB}
+				handleInputPosChange={handleInputPosChange}
+				handleCreatePos={handleCreatePos}
+				onCancel={() => { setShowModalCreatePos(false) }}
+			/>
 
 
-				<ModalEditPos
-					show={showModalEditPos}
-					selectedPos={selectedPos}
-					updatePosQuantValue={updatePosQuantValue}
-					setUpdatePosQuantValue={setUpdatePosQuantValue}
-					updatePosBoxesValue={updatePosBoxesValue}
-					setUpdatePosBoxesValue={setUpdatePosBoxesValue}
-					updatePosDateValue={updatePosDateValue}
-					setUpdatePosDateValue={setUpdatePosDateValue}
-
-					updatePosSkladValue={updatePosSkladValue}
-					setUpdatePosSkladValue={setUpdatePosSkladValue}
-					updatePosComValue={updatePosComValue}
-					setUpdatePosComValue={setUpdatePosComValue}
+			<ModalDeletePos
+				show={showModalDeletePos}
+				onCancel={() => { setShowModalDeletePos(false) }}
+				onDelete={() => handleDeletePosById(selectedPos._id)}
+				selectedPos={selectedPos}
+			/>
 
 
-					handleUpdatePosById={handleUpdatePosById}
-					onCancel={() => { setShowModalEditPos(false) }}
+			<ModalEditPos
+				show={showModalEditPos}
+				selectedPos={selectedPos}
+				updatePosQuantValue={updatePosQuantValue}
+				setUpdatePosQuantValue={setUpdatePosQuantValue}
+				updatePosBoxesValue={updatePosBoxesValue}
+				setUpdatePosBoxesValue={setUpdatePosBoxesValue}
+				updatePosDateValue={updatePosDateValue}
+				setUpdatePosDateValue={setUpdatePosDateValue}
 
-				/>
+				updatePosSkladValue={updatePosSkladValue}
+				setUpdatePosSkladValue={setUpdatePosSkladValue}
+				updatePosComValue={updatePosComValue}
+				setUpdatePosComValue={setUpdatePosComValue}
 
 
-				<ModalClearPallet
-					show={showModalClearPallet}
-					ask={`Очистити палету ${pallet?.title}?`}
-					onConfirm={() => { handleClearPalletById(id) }}
-					onCancel={() => { setShowModalClearPallet(false) }}
+				handleUpdatePosById={handleUpdatePosById}
+				onCancel={() => { setShowModalEditPos(false) }}
 
-				/>
+			/>
 
 
+			<ModalClearPallet
+				show={showModalClearPallet}
+				ask={`Очистити палету ${pallet?.title}?`}
+				onConfirm={() => { handleClearPalletById(id) }}
+				onCancel={() => { setShowModalClearPallet(false) }}
 
-				<ModalMovePalletContent
-					show={showModalMovePalletContent}
-					id={id}
-					pallet={pallet}
-					rows={rows}
-					selectedRowPallets={selectedRowPallets}
-					selectedRowId={selectedRowId}
-					selectedPalletId={selectedPalletId}
-					selectedPallet={selectedPallet}
-					handleMovePalletContent={handleMovePalletContent}
-					setSelectedRowId={setSelectedRowId}
-					setSelectedPalletId={setSelectedPalletId}
-					onCancel={() => { setShowModalMovePalletContent(false) }}
-
-				/>
+			/>
 
 
 
-	
+			<ModalMovePalletContent
+				show={showModalMovePalletContent}
+				id={id}
+				pallet={pallet}
+				rows={rows}
+				selectedRowPallets={selectedRowPallets}
+				selectedRowId={selectedRowId}
+				selectedPalletId={selectedPalletId}
+				selectedPallet={selectedPallet}
+				handleMovePalletContent={handleMovePalletContent}
+				setSelectedRowId={setSelectedRowId}
+				setSelectedPalletId={setSelectedPalletId}
+				onCancel={() => { setShowModalMovePalletContent(false) }}
+
+			/>
+
+
+
+
 
 
 
@@ -595,7 +597,7 @@ export default function PalletPage() {
 
 
 				<CardBlock
-				className="flex flex-col items-center justify-center lg:flex-row lg:justify-between"
+					className="flex flex-col items-center justify-center lg:flex-row lg:justify-between"
 				>
 
 					<TextBlock
@@ -604,11 +606,21 @@ export default function PalletPage() {
 						Позицій: {posesInStore?.length}
 					</TextBlock>
 
+					<ButtonBlock
+						className="teal-b bg-teal-500/20 shadow-lg p-4 flex  border-dashed "
+						onClick={() => { setShowModalCreatePos(true); }}
+					>
+						<TextBlock className="text-xl"><AddIcon /></TextBlock>
+						<TextBlock className="">Додати позицію</TextBlock>
+
+					</ButtonBlock>
+
 					<TextBlock
 						className="text-amber-500 text-xl justify-start p-1"
 					>
 						Коробок всього: {posesInStore?.reduce((a, b) => a + b.boxes, 0)}
 					</TextBlock>
+
 
 
 				</CardBlock>
@@ -619,14 +631,7 @@ export default function PalletPage() {
 				<CardBlock
 					className="flex justify-center items-center "
 				>
-					<ButtonBlock
-						className="teal-b shadow-lg p-4 flex  border-dashed "
-						onClick={() => { setShowModalCreatePos(true); }}
-					>
-						<TextBlock className="text-xl"><AddIcon /></TextBlock>
-						<TextBlock className="">Додати позицію</TextBlock>
 
-					</ButtonBlock>
 				</CardBlock>
 
 

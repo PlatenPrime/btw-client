@@ -417,7 +417,7 @@ shadow-md  active:shadow-transparent
 	border-2 border-slate-500 
 	bg-transparent  hover:bg-slate-400 active:bg-slate-600  
 	text-white
-	  shadow-2xl shadow-slate-500 hover:shadow-sm hover:shadow-slate-500
+	shadow-lg shadow-slate-500 hover:shadow-sm hover:shadow-slate-500
 	 
 }
 
@@ -428,7 +428,7 @@ shadow-md  active:shadow-transparent
 	border-2 border-gray-500  
 	bg-transparent  hover:bg-gray-500 active:bg-gray-600  
 	text-white 
-	  shadow-2xl shadow-gray-500 hover:shadow-sm hover:shadow-gray-500
+	shadow-lg shadow-gray-500 hover:shadow-sm hover:shadow-gray-500
 	 
 }
 
@@ -438,7 +438,7 @@ shadow-md  active:shadow-transparent
 	border-2 border-zinc-500  
 	bg-transparent  hover:bg-zinc-500 active:bg-zinc-600  
 	  text-white
-	  shadow-2xl shadow-zinc-500 hover:shadow-sm hover:shadow-zinc-500
+	  shadow-lg shadow-zinc-500 hover:shadow-sm hover:shadow-zinc-500
 	 
 }
 
@@ -448,7 +448,7 @@ shadow-md  active:shadow-transparent
 	border-2 border-neutral-500  
 	bg-transparent  hover:bg-neutral-500 active:bg-neutral-600  
 	  text-white
-	  shadow-2xl shadow-neutral-500 hover:shadow-sm hover:shadow-neutral-500
+	  shadow-lg shadow-neutral-500 hover:shadow-sm hover:shadow-neutral-500
 	 
 }
 
@@ -459,7 +459,7 @@ shadow-md  active:shadow-transparent
 	border-2 border-stone-500  
 	bg-transparent  hover:bg-stone-500 active:bg-stone-600  
 	text-white
-	  shadow-2xl shadow-stone-500 hover:shadow-sm hover:shadow-stone-500
+	shadow-lg shadow-stone-500 hover:shadow-sm hover:shadow-stone-500
 	 
 }
 
@@ -470,7 +470,7 @@ shadow-md  active:shadow-transparent
 	border-2 border-red-500  
 	bg-transparent  hover:bg-red-500 active:bg-red-600  
 	  text-white 
-	  shadow-2xl shadow-red-500 hover:shadow-sm hover:shadow-red-500
+	  shadow-lg shadow-red-500 hover:shadow-sm hover:shadow-red-500
 	 
 }
 
@@ -481,7 +481,7 @@ shadow-md  active:shadow-transparent
 	border-2 border-orange-500  
 	bg-transparent  hover:bg-orange-500 active:bg-orange-600  
 	text-white
-	  shadow-2xl shadow-orange-500 hover:shadow-sm hover:shadow-orange-500
+	shadow-lg shadow-orange-500 hover:shadow-sm hover:shadow-orange-500
 	 
 }
 
@@ -491,7 +491,7 @@ shadow-md  active:shadow-transparent
 	border-2 border-amber-500  
 	bg-transparent  hover:bg-amber-500 active:bg-amber-600  
 	text-white 
-	  shadow-2xl shadow-amber-500 hover:shadow-sm hover:shadow-amber-500
+	shadow-lg shadow-amber-500 hover:shadow-sm hover:shadow-amber-500
 	 
 }
 
@@ -501,7 +501,7 @@ shadow-md  active:shadow-transparent
 	border-2 border-yellow-500 
 	bg-transparent  hover:bg-yellow-500 active:bg-yellow-600  
 	text-white
-	  shadow-2xl shadow-yellow-500 hover:shadow-sm hover:shadow-yellow-500
+	shadow-lg shadow-yellow-500 hover:shadow-sm hover:shadow-yellow-500
 	 
 }
 
@@ -511,7 +511,7 @@ shadow-md  active:shadow-transparent
 	border-2 border-lime-500  
 	bg-transparent  hover:bg-lime-500 active:bg-lime-600  
 	  text-white 
-	  shadow-2xl shadow-lime-500 hover:shadow-sm hover:shadow-lime-500
+	  shadow-lg shadow-lime-500 hover:shadow-sm hover:shadow-lime-500
 	 
 }
 
@@ -521,7 +521,7 @@ shadow-md  active:shadow-transparent
 	border-2 border-green-500  
 	bg-transparent  hover:bg-green-500 active:bg-green-600  
 	  text-white 
-	  shadow-2xl shadow-green-500 hover:shadow-sm hover:shadow-green-500
+	  shadow-lg shadow-green-500 hover:shadow-sm hover:shadow-green-500
 	 
 }
 
@@ -532,7 +532,7 @@ shadow-md  active:shadow-transparent
 	border-2 border-emerald-500  
 	bg-transparent  hover:bg-emerald-500 active:bg-emerald-600  
 	text-white 
-	  shadow-2xl shadow-emerald-500 hover:shadow-sm hover:shadow-emerald-500
+	  shadow-lg shadow-emerald-500 hover:shadow-sm hover:shadow-emerald-500
 	 
 }
 
@@ -542,7 +542,7 @@ shadow-md  active:shadow-transparent
 	border-2 border-teal-500  
 	bg-transparent  hover:bg-teal-500 active:bg-teal-600  
 	text-white focus:text-white 
-	  shadow-2xl shadow-teal-500 hover:shadow-sm hover:shadow-teal-500 
+	shadow-lg shadow-teal-500 hover:shadow-sm hover:shadow-teal-500 
 	 
 }
 
@@ -552,7 +552,7 @@ shadow-md  active:shadow-transparent
 	border-2 border-cyan-500  
 	bg-transparent  hover:bg-cyan-500 active:bg-cyan-600  
 	text-white 
-	  shadow-2xl shadow-cyan-500 hover:shadow-sm hover:shadow-cyan-500 
+	shadow-lg shadow-cyan-500 hover:shadow-sm hover:shadow-cyan-500 
 	  
 	 
 }
@@ -565,7 +565,7 @@ shadow-md  active:shadow-transparent
 	border-2 border-sky-500  
 	bg-transparent  hover:bg-sky-500 active:bg-sky-600  
 	  text-white 
-	  shadow-2xl shadow-sky-500 hover:shadow-sm hover:shadow-sky-500 
+	  shadow-lg shadow-sky-500 hover:shadow-sm hover:shadow-sky-500 
 	 
 }
 
@@ -575,7 +575,7 @@ shadow-md  active:shadow-transparent
 	border-2 border-blue-500  
 	bg-transparent  hover:bg-blue-500 active:bg-blue-600  
 	  text-white
-	  shadow-2xl shadow-blue-500 hover:shadow-sm hover:shadow-blue-500 
+	  shadow-lg shadow-blue-500 hover:shadow-sm hover:shadow-blue-500 
 	 
 }
 
@@ -586,7 +586,7 @@ shadow-md  active:shadow-transparent
 	border-2 border-indigo-500  
 	bg-transparent  hover:bg-indigo-500 active:bg-indigo-600  
 	  text-white 
-	  shadow-2xl shadow-indigo-500 hover:shadow-sm hover:shadow-indigo-500 
+	  shadow-lg shadow-indigo-500 hover:shadow-sm hover:shadow-indigo-500 
 	 
 }
 
@@ -597,7 +597,7 @@ shadow-md  active:shadow-transparent
 	border-2 border-violet-500  
 	bg-transparent  hover:bg-violet-500 active:bg-violet-600  
 	text-white
-	  shadow-2xl shadow-violet-500 hover:shadow-sm hover:shadow-violet-500 
+	shadow-lg shadow-violet-500 hover:shadow-sm hover:shadow-violet-500 
 	 
 }
 
@@ -607,7 +607,7 @@ shadow-md  active:shadow-transparent
 	border-2 border-purple-500 
 	bg-transparent  hover:bg-purple-500 active:bg-purple-600  
 	 text-white 
-	  shadow-2xl shadow-purple-500 hover:shadow-sm hover:shadow-purple-500 
+	 shadow-lg shadow-purple-500 hover:shadow-sm hover:shadow-purple-500 
 	 
 }
 
@@ -618,7 +618,7 @@ shadow-md  active:shadow-transparent
 	border-2 border-fuchsia-500 
 	bg-transparent  hover:bg-fuchsia-500 active:bg-fuchsia-600  
 	  text-white
-	  shadow-2xl shadow-fuchsia-500 hover:shadow-sm hover:shadow-fuchsia-500 
+	  shadow-lg shadow-fuchsia-500 hover:shadow-sm hover:shadow-fuchsia-500 
 	 
 }
 
@@ -629,7 +629,7 @@ shadow-md  active:shadow-transparent
 	border-2 border-pink-500  
 	bg-transparent  hover:bg-pink-500 active:bg-pink-600  
 	  text-white
-	  shadow-2xl shadow-pink-500 hover:shadow-sm hover:shadow-pink-500 
+	  shadow-lg shadow-pink-500 hover:shadow-sm hover:shadow-pink-500 
 	 
 }
 
@@ -640,7 +640,7 @@ shadow-md  active:shadow-transparent
 	border-2 border-rose-500  
 	bg-transparent  hover:bg-rose-500 active:bg-rose-600  
 	  text-white 
-	  shadow-2xl shadow-rose-500 hover:shadow-sm hover:shadow-rose-500 
+	  shadow-lg shadow-rose-500 hover:shadow-sm hover:shadow-rose-500 
 	 
 }
 
