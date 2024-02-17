@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { ButtonBlock, ButtonGroup, CardBlock, ContainerBlock, HeaderBlock, InputBlock, PageBTW, Spinner, TextBlock } from '../../components'
 import ArtBage from './ArtBage';
 import InfiniteScroll from 'react-infinite-scroll-component';
@@ -62,6 +62,16 @@ export default function ArtsPage() {
 	}, 500);
 
 
+
+
+	useEffect(() => {
+		setFilteredArts(artsDB)
+
+	}, [artsDB])
+
+
+
+	if (loadingArtsDB) return <PageBTW><Spinner /></PageBTW>
 
 
 
@@ -282,14 +292,14 @@ export default function ArtsPage() {
 					<Spinner color="lightblue" />
 					:
 					<CardBlock className="space-y-2">
-						{  filteredArts?.length === 0 ? 
-						<TextBlock>Нічого не знайдено</TextBlock> 
-						: 
-						filteredArts?.length === artsDB?.length 
-							? 
-							artsDB?.slice(step * page - step, step * page).map((art) => <ArtBage key={art._id} art={art} remains={remains} />)
-							: 
-							filteredArts?.slice(step * page - step, step * page).map((art) => <ArtBage key={art._id} art={art} remains={remains} />)}
+						{filteredArts?.length === 0 ?
+							<TextBlock>Нічого не знайдено</TextBlock>
+							:
+							filteredArts?.length === artsDB?.length
+								?
+								artsDB?.slice(step * page - step, step * page).map((art) => <ArtBage key={art._id} art={art} remains={remains} />)
+								:
+								filteredArts?.slice(step * page - step, step * page).map((art) => <ArtBage key={art._id} art={art} remains={remains} />)}
 
 					</CardBlock>
 

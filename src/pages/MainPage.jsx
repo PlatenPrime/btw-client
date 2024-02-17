@@ -2,8 +2,6 @@ import React, { useEffect } from 'react';
 
 
 import { ButtonBlock, CardBlock, HeaderBlock, TextBlock, PageBTW, ContainerBlock } from "../components/index"
-import { useNavigate } from 'react-router-dom';
-import useAuthStore from './Auth/authStore';
 import useCheckAuth from '../hooks/useCheckAuth';
 
 
@@ -27,7 +25,7 @@ const MainPage = () => {
 
 		<PageBTW className=" space-y-4 " >
 
-			<HeaderBlock className='shadow-md shadow-sky-500' >
+			<HeaderBlock className='shadow-2xl shadow-sky-500' >
 
 				Головна
 

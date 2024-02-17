@@ -51,7 +51,7 @@ const SidebarMobileBTW = ({ onClose }) => {
 	console.log(user);
 
 
-
+if (!user) return null
 
 
 

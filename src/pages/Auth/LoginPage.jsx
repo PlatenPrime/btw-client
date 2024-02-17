@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { ButtonBlock, CardBlock, HeaderBlock, InputBlock, PageBTW, Spinner, TextBlock } from '../../components'
+import { ButtonBlock, CardBlock, ContainerBlock, HeaderBlock, InputBlock, PageBTW, Spinner, TextBlock } from '../../components'
 import useAuthStore from './authStore';
 import { useNavigate } from 'react-router-dom';
 import { IoMdEye, IoMdEyeOff } from "react-icons/io";
@@ -63,17 +63,17 @@ export default function LoginPage() {
 
 	return (
 		<PageBTW
-			className="space-y-4"
+			className="space-y-4 px-1"
 		>
 			<HeaderBlock
-				className="border border-white shadow-md shadow-white"
+				className=" shadow-2xl shadow-white"
 			>
 				Авторизація
 			</HeaderBlock>
 
 
 
-			<CardBlock
+			<ContainerBlock
 				className=" w-full h-full  flex flex-col items-center justify-center"
 			>
 
@@ -90,7 +90,7 @@ export default function LoginPage() {
 					>
 
 						<TextBlock
-							className="text-3xl"
+							className="text-xl"
 						>
 							Логін:
 						</TextBlock>
@@ -100,7 +100,7 @@ export default function LoginPage() {
 							name="username"
 							value={formData.username}
 							onChange={handleChange}
-							className="text-4xl"
+							className="text-xl"
 
 						/>
 					</CardBlock>
@@ -127,7 +127,7 @@ export default function LoginPage() {
 							</ButtonBlock>
 
 							<TextBlock
-								className="text-3xl"
+								className="text-xl"
 							>
 								Пароль:
 							</TextBlock>
@@ -140,7 +140,7 @@ export default function LoginPage() {
 							name="password"
 							value={formData.password}
 							onChange={handleChange}
-							className="text-4xl"
+							className="text-xl"
 						/>
 
 
@@ -158,9 +158,9 @@ export default function LoginPage() {
 
 					<ButtonBlock
 						onClick={handleLogin}
-						className="green-b w-full flex items-center justify-center text-4xl"
+						className="green-b w-full flex items-center justify-center text-xl"
 						disabled={!formData.username}
-						disabledClassName="w-full text-4xl"
+						disabledClassName="w-full text-xl "
 					>
 						{isLogining
 							?
@@ -186,7 +186,7 @@ export default function LoginPage() {
 				</CardBlock>
 
 
-			</CardBlock>
+			</ContainerBlock>
 
 
 

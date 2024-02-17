@@ -101,6 +101,17 @@ export default function StocksPage() {
 
 
 
+	useEffect(() => {
+		setFilteredStocks(allPoses)
+
+	}, [allPoses])
+
+
+	if (isLoadingPoses) return <PageBTW><Spinner /></PageBTW>
+
+
+
+
 
 	return (
 		<PageBTW

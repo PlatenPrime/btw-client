@@ -1,10 +1,14 @@
 import React from 'react';
+import useAuthStore from '../../../pages/Auth/authStore';
 
 
 const NavbarBTW = ({ onClickSide, onClickControl, mobileControl }) => {
 
+	const { user } = useAuthStore()
 
 
+
+	if (!user) return null
 
 	return (
 		

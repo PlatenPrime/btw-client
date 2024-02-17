@@ -49,6 +49,10 @@ const SidebarBTW = () => {
 	console.log(user);
 
 
+	if (!user) return null
+
+
+
 
 
 	return (
