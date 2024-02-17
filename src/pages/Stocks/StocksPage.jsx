@@ -14,6 +14,7 @@ import usePosesStore from "./stores/posesStore"
 import StockBage from './StockBage';
 import { exportToExcelPoses } from '../../utils/exportExcel';
 import { SiMicrosoftexcel } from 'react-icons/si';
+import { useDebouncedCallback } from 'use-debounce'
 
 
 
@@ -91,6 +92,16 @@ export default function StocksPage() {
 
 
 
+	const handleSearch = useDebouncedCallback((term) => {
+
+		setSearchValue(term);
+		handleFilterPoses(term)
+
+	}, 500);
+
+
+
+
 	return (
 		<PageBTW
 			className="space-y-4 "
@@ -144,10 +155,8 @@ export default function StocksPage() {
 					><GoSearch />
 					</TextBlock>
 					<InputBlock
-						onChange={(e) => {
-							setSearchValue(e.target.value);
-							handleFilterPoses(e.target.value)
-						}}
+						onChange={(e) => handleSearch(e.target.value)
+						}
 						placeholder="Пошук по позиції"
 						className="text-xl outline-none border-none p-3 px-8 bg-slate-700 focus:bg-slate-600 w-full
 								 placeholder:font-light rounded-xl rounded-l-none
@@ -164,7 +173,7 @@ export default function StocksPage() {
 
 
 
-				{filteredStocks?.length === 0 || filteredStocks?.length === allPoses?.length ?
+				{filteredStocks?.length === 0 ? null : filteredStocks?.length === allPoses?.length ?
 					<CardBlock
 						className="flex flex-wrap justify-between p-2  rounded-xl bg-slate-700"
 					>
@@ -311,8 +320,12 @@ export default function StocksPage() {
 					:
 					<CardBlock className="space-y-2">
 						{filteredStocks?.length === 0
-							? allPoses?.slice(step * page - step, step * page).map((pos) => <StockBage key={pos._id} pos={pos} nameukr={artsDB?.find(artikul => artikul.artikul === pos.artikul)?.nameukr} />)
-							: filteredStocks?.slice(step * page - step, step * page).map((pos) => <StockBage key={pos._id} pos={pos} nameukr={artsDB?.find(artikul => artikul.artikul === pos.artikul)?.nameukr} />)}
+							?
+							<TextBlock>Нічого не знайдено</TextBlock>
+							:
+							filteredStocks?.length === allPoses.length
+								? allPoses?.slice(step * page - step, step * page).map((pos) => <StockBage key={pos._id} pos={pos} nameukr={artsDB?.find(artikul => artikul.artikul === pos.artikul)?.nameukr} />)
+								: filteredStocks?.slice(step * page - step, step * page).map((pos) => <StockBage key={pos._id} pos={pos} nameukr={artsDB?.find(artikul => artikul.artikul === pos.artikul)?.nameukr} />)}
 
 					</CardBlock>
 

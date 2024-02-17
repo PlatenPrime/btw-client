@@ -9,6 +9,7 @@ import { GoSearch } from "react-icons/go";
 import useFetchRemains from '../../hooks/useFetchRemains';
 import { SearchIcon } from '../../components/UI/Icons';
 import { Link } from 'react-router-dom';
+import { useDebouncedCallback } from 'use-debounce'
 
 export default function ArtsPage() {
 
@@ -52,6 +53,16 @@ export default function ArtsPage() {
 		setFilteredArts(filtered);
 		setPage(1)
 	}
+
+	const handleSearch = useDebouncedCallback((term) => {
+
+		setSearchValue(term);
+		handleFilterArts(term)
+
+	}, 500);
+
+
+
 
 
 
@@ -108,10 +119,7 @@ export default function ArtsPage() {
 					><GoSearch />
 					</TextBlock>
 					<InputBlock
-						onChange={(e) => {
-							setSearchValue(e.target.value);
-							handleFilterArts(e.target.value)
-						}}
+						onChange={(e) => handleSearch(e.target.value)}
 						placeholder="Пошук по артикулу або назві..."
 						className="text-xl outline-none border-none p-3 px-8 bg-slate-700 focus:bg-slate-600 w-full
 								 placeholder:font-light rounded-xl rounded-l-none
@@ -128,7 +136,7 @@ export default function ArtsPage() {
 
 
 
-				{filteredArts?.length === 0 || filteredArts?.length === artsDB?.length ?
+				{filteredArts?.length === 0 ? null : filteredArts?.length === artsDB?.length ?
 					<CardBlock
 						className="flex flex-wrap justify-between p-2  rounded-xl bg-slate-700"
 					>
@@ -274,9 +282,14 @@ export default function ArtsPage() {
 					<Spinner color="lightblue" />
 					:
 					<CardBlock className="space-y-2">
-						{filteredArts?.length === 0
-							? artsDB?.slice(step * page - step, step * page).map((art) => <ArtBage key={art._id} art={art} remains={remains} />)
-							: filteredArts?.slice(step * page - step, step * page).map((art) => <ArtBage key={art._id} art={art} remains={remains} />)}
+						{  filteredArts?.length === 0 ? 
+						<TextBlock>Нічого не знайдено</TextBlock> 
+						: 
+						filteredArts?.length === artsDB?.length 
+							? 
+							artsDB?.slice(step * page - step, step * page).map((art) => <ArtBage key={art._id} art={art} remains={remains} />)
+							: 
+							filteredArts?.slice(step * page - step, step * page).map((art) => <ArtBage key={art._id} art={art} remains={remains} />)}
 
 					</CardBlock>
 

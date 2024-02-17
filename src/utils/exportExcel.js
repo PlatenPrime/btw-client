@@ -117,7 +117,7 @@ export async function exportToExcelPoses(allPoses, artsDB) {
 	// Преобразование данных для экспорта
 	const transformedData = allPoses
 
-		.filter(el => el.quant != 0)
+		.filter(el => el.quant !== 0)
 		.filter(el => artsDB?.find(art => art?.artikul === el?.artikul))
 		.sort((a, b) => {
 			const aArtikulArray = a.artikul?.split("-")
