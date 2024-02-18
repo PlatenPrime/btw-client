@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useRowStore } from './stores/rowsStore';
-import { CardBlock, TextBlock, Spinner } from '../../components';
+import { CardBlock, TextBlock, Spinner, ContainerBlock } from '../../components';
 import RowBage from './RowBage';
 
 
@@ -10,7 +10,7 @@ export function RowList() {
 	const getAllRows = useRowStore((state) => state.getAllRows);
 	const [isRowLoading, setIsRowLoading] = useState(false)
 
-	
+
 
 	async function fetchRows() {
 		try {
@@ -35,9 +35,18 @@ export function RowList() {
 		<CardBlock
 			className="p-2 space-y-2 "
 		>
-		
 
-			{isRowLoading ? <Spinner color="rgb(249 115 22)" /> :
+
+			{isRowLoading ?
+
+
+				<ContainerBlock
+					className="w-full h-full flex justify-start items-center"
+				>
+					<Spinner color="rgb(249 115 22)" />
+				</ContainerBlock>
+
+				:
 				<CardBlock
 					className="space-y-2"
 				>

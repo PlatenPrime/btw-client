@@ -3,101 +3,92 @@ import axios from "../utils/axios";
 
 
 const useFetchRemains = () => {
+
 	const [remains, setRemains] = useState(null);
-	const [loadingRemains, setLoadingRemains] = useState(true);
+	const [isLoadingRemains, setIsLoadingRemains] = useState(false);
 	const [errorRemains, setErrorRemains] = useState(null);
 
-
-
 	useEffect(() => {
-		const fetchData = async () => {
+		const fetchRemains = async () => {
 			try {
+				setIsLoadingRemains(true);
 
+				const remainsFromLSString = localStorage.getItem("remainsFromLS");
 
+				if (!remainsFromLSString) {
+					const link = `https://sharik.ua/product_rests/1302-0065/`;
+					const response = await axios.get(`comps/linkpage/${encodeURIComponent(link)}`);
+					const responseText = response?.data?.html;
 
-				const link = `https://sharik.ua/product_rests/1302-0065/`
+					const lines = responseText.split('<pre>');
+					const data = {};
 
-				const response = await axios.get(`comps/linkpage/${encodeURIComponent(link)}`)
-				const responseText = response?.data?.html
+					lines.forEach((line) => {
+						const parts = line.split('=');
+						if (parts.length === 2) {
+							const key = parts[0].trim();
+							const value = parseInt(parts[1], 10);
+							data[key] = value;
+						}
+					});
 
+					const currentTime = new Date().getTime();
+					localStorage.setItem(
+						"remainsFromLS",
+						JSON.stringify({
+							remains: data,
+							saveTime: currentTime,
+						})
+					);
 
-				// const response = await fetch(`"https://corsproxy.io/?https://sharik.ua/product_rests/1302-0065/"`, {
-				// 	cache: 'no-store', // Запрещаем кэширование
-				// });
+					setRemains(data);
+				} else {
+					const remainsFromLS = JSON.parse(remainsFromLSString);
+					const currentTime = new Date().getTime();
 
-				// const responseText = await response.text();
+					if (currentTime - remainsFromLS.saveTime < 5 * 60 * 1000) {
+						setRemains(remainsFromLS.remains);
+					} else {
+						const link = `https://sharik.ua/product_rests/1302-0065/`;
+						const response = await axios.get(`comps/linkpage/${encodeURIComponent(link)}`);
+						const responseText = response?.data?.html;
 
+						const lines = responseText.split('<pre>');
+						const data = {};
 
+						lines.forEach((line) => {
+							const parts = line.split('=');
+							if (parts.length === 2) {
+								const key = parts[0].trim();
+								const value = parseInt(parts[1], 10);
+								data[key] = value;
+							}
+						});
 
+						const currentTime = new Date().getTime();
+						localStorage.setItem(
+							"remainsFromLS",
+							JSON.stringify({
+								remains: data,
+								saveTime: currentTime,
+							})
+						);
 
-
-
-
-
-
-				const lines = responseText.split('<pre>');
-				const data = {};
-
-				lines.forEach((line) => {
-					const parts = line.split('=');
-					if (parts.length === 2) {
-						const key = parts[0].trim();
-						const value = parseInt(parts[1], 10);
-						data[key] = value;
+						setRemains(data);
 					}
-				});
-
-				setRemains(data)
-				// Сохраняем полученные данные в localStorage
-				localStorage.setItem('remainsData', JSON.stringify(data))
-
+				}
 			} catch (error) {
-				setErrorRemains(error)
+				setErrorRemains(error);
 			} finally {
-				setLoadingRemains(false)
+				setIsLoadingRemains(false);
 			}
 		};
 
+		fetchRemains();
+	}, []);
 
-
-		const updateData = () => {
-			// Периодически обновляем данные из сервера, например, каждые 5 минут
-			fetchData();
-		};
-
-
-
-
-		// Попытка получить данные из localStorage при загрузке
-		const cachedData = localStorage.getItem('remainsData');
-		if (cachedData) {
-			setRemains(JSON.parse(cachedData));
-			setLoadingRemains(false); // Устанавливаем loading в false, так как есть данные
-		} else {
-			fetchData();
-		}
-
-		// Запускаем периодическое обновление данных
-		const updateInterval = setInterval(updateData, 300000); // 300000 миллисекунд (5 минут)
-
-		return () => {
-			// Очищаем интервал при размонтировании компонента
-			clearInterval(updateInterval);
-			// Очищаем данные из localStorage при размонтировании
-			localStorage.removeItem('remainsData');
-		};
-
-
-
-
-	}, [])
-
-
-
-
-
-
-	return { remains, loadingRemains, errorRemains };
+	return { remains, isLoadingRemains, errorRemains };
 };
+
 
 export default useFetchRemains;

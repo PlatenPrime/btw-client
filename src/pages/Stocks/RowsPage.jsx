@@ -130,7 +130,9 @@ export default function RowsPage() {
 			/>}
 
 
-			<ContainerBlock>
+			<ContainerBlock
+			className=""
+			>
 				<RowList />
 			</ContainerBlock>
 

@@ -247,7 +247,7 @@ export default function AsksPage() {
 
 
 				<ContainerBlock
-					className="space-y-4 "
+					className="space-y-4 h-full "
 				>
 
 					<CardBlock
@@ -267,7 +267,10 @@ export default function AsksPage() {
 
 					{isAsksLoading
 						?
-						<Spinner color="#6366f1" />
+						
+							<Spinner color="#6366f1" />
+					
+						
 						:
 						<CardBlock
 							className=" space-y-2"
