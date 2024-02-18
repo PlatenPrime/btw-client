@@ -311,7 +311,7 @@ export default function RowPage() {
 			{
 				showModalDeleteRow && <ModalDelete
 					ask="Видалити цей ряд?"
-					onConfirm={handleDeleteRowById}
+					onDelete={handleDeleteRowById}
 					onCancel={closeModalDeleteRow}
 				/>
 			}

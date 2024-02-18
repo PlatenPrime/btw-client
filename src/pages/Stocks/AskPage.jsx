@@ -328,7 +328,7 @@ export default function AskPage() {
 			{showModalDeleteAsk && <ModalDelete
 				ask="Видалити цей запит на зняття?"
 				onCancel={() => setShowModalDeleteAsk(false)}
-				onConfirm={handleDeleteAsk}
+				onDelete={handleDeleteAsk}
 
 
 			/>}
