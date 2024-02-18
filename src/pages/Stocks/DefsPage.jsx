@@ -8,6 +8,7 @@ import useAskStore from './stores/asksStore'
 import useAuthStore from '../Auth/authStore'
 import { toast } from 'react-toastify'
 import { getArtDataBtrade } from "../../utils/getArtDataBtrade"
+import { CancelIcon, OkIcon } from '../../components/UI/Icons'
 
 
 
@@ -456,12 +457,12 @@ export default function DefsPage() {
 
 
 				<CardBlock
-					className="flex flex-col space-y-8 min-w-fit max-w-lg "
+					className="flex flex-col space-y-8 min-w-fit max-w-lg text-xl "
 				>
 
 					<CardBlock className="grid grid-cols-1 gap-1">
 						<CardBlock
-							className="grid justify-self-center"
+							className="grid justify-self-center w-full place-content-center bg-white"
 						>
 							<ImageArt
 								size={150}
@@ -469,7 +470,7 @@ export default function DefsPage() {
 							/>
 						</CardBlock>
 						<TextBlock className="text-xl grid justify-self-center italic">
-							{artsDB?.find((art) => art.artikul === newAskArtikul)?.nameukr}
+							{artsDB?.find((art) => art.artikul === newAskArtikul)?.nameukr || newAskArtikul}
 						</TextBlock>
 					</CardBlock>
 
@@ -477,8 +478,8 @@ export default function DefsPage() {
 					<CardBlock className="space-y-2">
 
 
-						<CardBlock className="grid grid-rows-2 ">
-							<label className="justify-self-center text-xl" htmlFor="artikul">Артикул:</label>
+						<CardBlock className="grid grid-cols-1 md:grid-cols-2 space-x-2">
+							<label className=" justify-self-center self-center md:justify-self-start" htmlFor="artikul">Артикул:</label>
 							<InputBlock
 								type="text"
 								id="artikul"
@@ -493,8 +494,8 @@ export default function DefsPage() {
 
 
 
-						<CardBlock className="grid grid-rows-2 ">
-							<label className="justify-self-center text-xl" htmlFor="quant">Кількість:</label>
+						<CardBlock className="grid grid-cols-1 md:grid-cols-2 space-x-2">
+							<label className=" justify-self-center self-center md:justify-self-start" htmlFor="quant">Кількість:</label>
 							<InputBlock
 								type="number"
 								id="quant"
@@ -510,17 +511,25 @@ export default function DefsPage() {
 
 
 					<CardBlock className="grid grid-cols-2 space-x-2">
+
+
+
+
 						<ButtonBlock
-							type="button"
-							className="red-b"
+							className="red-b flex justify-center items-center"
 							onClick={() => setShowModalCreateAsk(false)}
 						>
-							Скасувати
+							<TextBlock className="text-2xl"><CancelIcon /></TextBlock>
+							<TextBlock className=""> Скасувати</TextBlock>
+
 						</ButtonBlock>
+
+
+
 						<ButtonBlock
 							disabled={!newAskArtikul}
 							type="submit"
-							className="green-b"
+							className="green-b flex justify-center items-center"
 							onClick={handleCreateAsk}
 						>
 
@@ -529,7 +538,11 @@ export default function DefsPage() {
 
 								<Spinner color="green" />
 								:
-								<TextBlock>	Створити</TextBlock>
+								<>
+									<TextBlock className="text-2xl"><OkIcon /></TextBlock>
+									<TextBlock className=""> 	Створити</TextBlock>
+								</>
+
 							}
 
 

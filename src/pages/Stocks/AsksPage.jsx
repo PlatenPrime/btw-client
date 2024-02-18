@@ -4,7 +4,7 @@ import useAskStore from './stores/asksStore'
 import useAuthStore from "../Auth/authStore"
 import { useArtContext } from '../../ArtContext';
 import { Link } from 'react-router-dom';
-import { AddIcon } from '../../components/UI/Icons';
+import { AddIcon, CancelIcon, OkIcon } from '../../components/UI/Icons';
 
 
 
@@ -123,7 +123,7 @@ export default function AsksPage() {
 
 				{/* BUTTONS */}
 
-			
+
 
 
 
@@ -142,7 +142,7 @@ export default function AsksPage() {
 
 						<CardBlock className="grid grid-cols-1 gap-1">
 							<CardBlock
-								className="grid justify-self-center"
+								className="grid justify-self-center bg-white w-full place-content-center"
 							>
 								<ImageArt
 									size={150}
@@ -158,8 +158,8 @@ export default function AsksPage() {
 						<CardBlock className="space-y-2">
 
 
-							<CardBlock className="grid grid-rows-2 ">
-								<label className="justify-self-center text-xl" htmlFor="artikul">Артикул:</label>
+							<CardBlock className="grid grid-cols-1 md:grid-cols-2 space-x-2">
+								<label className=" justify-self-center self-center md:justify-self-start text-xl" htmlFor="artikul">Артикул:</label>
 								<InputBlock
 									type="text"
 									id="artikul"
@@ -174,8 +174,8 @@ export default function AsksPage() {
 
 
 
-							<CardBlock className="grid grid-rows-2 ">
-								<label className="justify-self-center text-xl" htmlFor="quant">Кількість:</label>
+							<CardBlock className="grid grid-cols-1 md:grid-cols-2 space-x-2">
+								<label className=" justify-self-center self-center md:justify-self-start text-xl" htmlFor="quant">Кількість:</label>
 								<InputBlock
 									type="number"
 									id="quant"
@@ -187,8 +187,8 @@ export default function AsksPage() {
 							</CardBlock>
 
 
-							<CardBlock className="grid grid-rows-2 ">
-								<label className="justify-self-center text-xl" htmlFor="com">Коментарій:</label>
+							<CardBlock className="grid grid-cols-1 md:grid-cols-2 space-x-2">
+								<label className=" justify-self-center self-center md:justify-self-start text-xl" htmlFor="com">Коментарій:</label>
 								<InputBlock
 									type="text"
 									id="com"
@@ -212,20 +212,27 @@ export default function AsksPage() {
 
 
 						<CardBlock className="grid grid-cols-2 space-x-2">
+
+
 							<ButtonBlock
-								type="button"
-								className="red-b"
+								className="red-b flex justify-center items-center"
 								onClick={() => setShowModalCreateAsk(false)}
 							>
-								Скасувати
+								<TextBlock className="text-2xl"><CancelIcon /></TextBlock>
+								<TextBlock className=""> Скасувати</TextBlock>
+
 							</ButtonBlock>
+
+
 							<ButtonBlock
 								disabled={!newAskArtikul}
 								type="submit"
-								className="green-b"
+								className="green-b flex justify-center items-center"
 								onClick={handleCreateAsk}
 							>
-								Створити
+								<TextBlock className="text-2xl"><OkIcon /></TextBlock>
+								<TextBlock className=""> 	Створити</TextBlock>
+
 							</ButtonBlock>
 						</CardBlock>
 
@@ -267,10 +274,10 @@ export default function AsksPage() {
 
 					{isAsksLoading
 						?
-						
-							<Spinner color="#6366f1" />
-					
-						
+
+						<Spinner color="#6366f1" />
+
+
 						:
 						<CardBlock
 							className=" space-y-2"
@@ -309,7 +316,7 @@ export default function AsksPage() {
 										className="grid grid-cols-1 lg:grid-cols-2 gap-2 place-items-center "
 									>
 
-										
+
 										<CardBlock
 											className=" flex justify-center bg-white place-self-stretch "
 										>
@@ -358,7 +365,7 @@ export default function AsksPage() {
 											<TextBlock
 												className="text-base"
 											>
-											Кількість:	{ask?.quant}
+												Кількість:	{ask?.quant}
 											</TextBlock>
 											:
 											null

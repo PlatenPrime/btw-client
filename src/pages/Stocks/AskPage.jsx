@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { ButtonBlock, ButtonGroup, CardBlock, ContainerBlock, HeaderBlock, ImageArt, InputBlock, ModalConfirm, ModalWrapper, PageBTW, Spinner, TextBlock } from "../../components"
+import { ButtonBlock, ButtonGroup, CardBlock, ContainerBlock, HeaderBlock, ImageArt, InputBlock, ModalConfirm, ModalDelete, ModalWrapper, PageBTW, Spinner, TextBlock } from "../../components"
 import { BsBalloon, BsBoxSeam } from "react-icons/bs";
 import { VscLocation } from "react-icons/vsc";
 import { FaWarehouse } from "react-icons/fa6";
@@ -325,7 +325,7 @@ export default function AskPage() {
 
 
 
-			{showModalDeleteAsk && <ModalConfirm
+			{showModalDeleteAsk && <ModalDelete
 				ask="Видалити цей запит на зняття?"
 				onCancel={() => setShowModalDeleteAsk(false)}
 				onConfirm={handleDeleteAsk}

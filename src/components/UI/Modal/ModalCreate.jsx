@@ -1,6 +1,7 @@
 
 import { useRef, useState } from "react";
 import { ButtonBlock, InputBlock, TextBlock } from "../../index";
+import { CancelIcon, OkIcon } from "../Icons";
 
 
 export default function ModalCreate({ title, onConfirm, onCancel }) {
@@ -36,7 +37,7 @@ export default function ModalCreate({ title, onConfirm, onCancel }) {
 					placeholder="Введи назву..."
 					value={newValue}
 					onChange={(e) => { setNewValue(e.target.value) }}
-					className="text-2xl text-center mx-auto"
+					className="text-xl text-center mx-auto"
 
 
 				/>
@@ -44,17 +45,21 @@ export default function ModalCreate({ title, onConfirm, onCancel }) {
 
 				<div className="grid grid-cols-2 space-x-2">
 					<ButtonBlock
-						onClick={() => onCancel()}
-						className="cancel-c "
+						className="red-b flex justify-center items-center"
+						onClick={() => { onCancel(); }}
 					>
-						Скасувати
+						<TextBlock className="text-2xl"><CancelIcon /></TextBlock>
+						<TextBlock className=""> Скасувати</TextBlock>
+
 					</ButtonBlock>
 					<ButtonBlock
 						onClick={() => onConfirm(newValue)}
-						className="success-c "
+						className="green-b flex justify-center items-center"
 						disabled={!newValue}
 					>
-						Створити
+						<TextBlock className="text-2xl"><OkIcon /></TextBlock>
+						<TextBlock className=""> 	Створити</TextBlock>
+
 					</ButtonBlock>
 
 				</div>

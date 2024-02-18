@@ -1,6 +1,7 @@
 
 import { useRef, useState } from "react";
 import { ButtonBlock, InputBlock, TextBlock } from "../../index";
+import { CancelIcon, OkIcon } from "../Icons";
 
 export default function ModalEditOneValue({ value, onConfirm, onCancel }) {
 
@@ -41,17 +42,20 @@ export default function ModalEditOneValue({ value, onConfirm, onCancel }) {
 
 				<div className="grid grid-cols-2 space-x-2">
 					<ButtonBlock
-						onClick={() => onCancel()}
-						className="red-b px-4"
+						className="red-b flex justify-center items-center"
+						onClick={() => { onCancel(); }}
 					>
-						Скасувати
+						<TextBlock className="text-2xl"><CancelIcon /></TextBlock>
+						<TextBlock className=""> Скасувати</TextBlock>
+
 					</ButtonBlock>
 					<ButtonBlock
 						onClick={() => onConfirm(newValue)}
-						className="green-b px-4"
+						className="green-b flex justify-center items-center"
 						disabled={newValue?.length < 1}
 					>
-						Змінити
+						<TextBlock className="text-2xl"><OkIcon /></TextBlock>
+						<TextBlock className=""> 	Змінити</TextBlock>
 					</ButtonBlock>
 
 				</div>

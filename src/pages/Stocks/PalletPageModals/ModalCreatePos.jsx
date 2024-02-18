@@ -16,7 +16,7 @@ function ModalCreatePos({
 
 
 				<CardBlock
-					className="space-y-4"
+					className="space-y-4  "
 				>
 
 
@@ -28,7 +28,7 @@ function ModalCreatePos({
 
 					<CardBlock className="
 					grid grid-cols-1 space-y-2
-					border
+				
 
 					
 					">
@@ -50,17 +50,24 @@ function ModalCreatePos({
 						</CardBlock>
 
 
+						{artsDB.find((art) => art.artikul === newPos.artikul) ?
+
+							<CardBlock>
+								<TextBlock className="text-xl text-center">
+									{artsDB.find((art) => art.artikul === newPos.artikul)?.nameukr}
+								</TextBlock>
 
 
-						<TextBlock className="text-xl text-center">
-							{artsDB.find((art) => art.artikul === newPos.artikul)?.nameukr}
-						</TextBlock>
+								<TextBlock className="text-xl text-orange-500">
+									{artsDB.find((art) => art.artikul === newPos.artikul)?.zone}
+								</TextBlock>
+							</CardBlock>
+
+							:
+							null
 
 
-						<TextBlock className="text-xl text-orange-500">
-							{artsDB.find((art) => art.artikul === newPos.artikul)?.zone}
-						</TextBlock>
-
+						}
 
 
 					</CardBlock>
@@ -77,7 +84,7 @@ function ModalCreatePos({
 
 					<CardBlock className="space-y-2">
 						<CardBlock className="grid grid-cols-1 md:grid-cols-2 space-x-2">
-							<label className=" justify-self-center md:justify-self-start" htmlFor="artikul">Артикул:</label>
+							<label className=" justify-self-center self-center md:justify-self-start" htmlFor="artikul">Артикул:</label>
 							<InputBlock
 								type="text"
 								id="artikul"
@@ -89,7 +96,7 @@ function ModalCreatePos({
 						</CardBlock>
 
 						<CardBlock className="grid grid-cols-1 md:grid-cols-2 space-x-2">
-							<label className=" justify-self-center md:justify-self-start" htmlFor="quant">Кількість артикулу:</label>
+							<label className=" justify-self-center self-center md:justify-self-start" htmlFor="quant">Кількість артикулу:</label>
 							<InputBlock
 								type="number"
 								id="quant"
@@ -101,7 +108,7 @@ function ModalCreatePos({
 						</CardBlock>
 
 						<CardBlock className="grid grid-cols-1 md:grid-cols-2 space-x-2">
-							<label className=" justify-self-center md:justify-self-start" htmlFor="box">Кількість коробок:</label>
+							<label className=" justify-self-center self-center md:justify-self-start" htmlFor="box">Кількість коробок:</label>
 							<InputBlock
 								type="number"
 								id="boxes"
@@ -113,7 +120,7 @@ function ModalCreatePos({
 						</CardBlock>
 
 						<CardBlock className="grid grid-cols-1 md:grid-cols-2 space-x-2">
-							<label className=" justify-self-center md:justify-self-start" htmlFor="date">Дата:</label>
+							<label className=" justify-self-center self-center md:justify-self-start" htmlFor="date">Дата:</label>
 							<InputBlock
 								type="text"
 								id="date"
@@ -126,7 +133,7 @@ function ModalCreatePos({
 
 
 						<CardBlock className="grid grid-cols-1 md:grid-cols-2 space-x-2">
-							<label className=" justify-self-center md:justify-self-start" htmlFor="sklad">Склад:</label>
+							<label className=" justify-self-center self-center md:justify-self-start" htmlFor="sklad">Склад:</label>
 							<select
 								className="InputBlock focus:bg-slate-900 text-lg "
 								value={newPos.sklad}
@@ -143,7 +150,7 @@ function ModalCreatePos({
 
 
 						<CardBlock className="grid grid-cols-1 md:grid-cols-2 space-x-2">
-							<label className=" justify-self-center md:justify-self-start" htmlFor="com">Комент:</label>
+							<label className=" justify-self-center self-center  md:justify-self-start" htmlFor="com">Комент:</label>
 
 
 							<InputBlock

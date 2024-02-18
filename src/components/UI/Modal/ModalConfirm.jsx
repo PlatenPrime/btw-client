@@ -1,5 +1,6 @@
 import { useRef } from "react";
 import { ButtonBlock, TextBlock } from "../../../components";
+import { CancelIcon, OkIcon } from "../Icons";
 
 
 
@@ -35,20 +36,23 @@ export default function ModalConfirm({ ask, onConfirm, onCancel }) {
 				>{ask}
 				</TextBlock>
 
-				<div className="flex justify-evenly  ">
+				<div className="grid grid-cols-2 space-x-2">
 
 					<ButtonBlock
-						onClick={() => onCancel()}
-						className=" red-b px-4 text-xl w-1/3"
+						className="red-b flex justify-center items-center"
+						onClick={() => { onCancel(); }}
 					>
-						Ні
+						<TextBlock className="text-2xl"><CancelIcon /></TextBlock>
+						<TextBlock className=""> Скасувати</TextBlock>
+
 					</ButtonBlock>
 
 					<ButtonBlock
 						onClick={() => onConfirm()}
-						className=" green-b px-4 text-xl w-1/3"
+						className="green-b flex justify-center items-center"
 					>
-						Так
+						<TextBlock className="text-2xl"><OkIcon /></TextBlock>
+						<TextBlock className="">Так</TextBlock>
 					</ButtonBlock>
 
 				</div>
