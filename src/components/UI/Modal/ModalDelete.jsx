@@ -1,5 +1,5 @@
 import { useRef } from "react";
-import { ButtonBlock, TextBlock } from "../../../components";
+import { ButtonBlock, Spinner, TextBlock } from "../../../components";
 import { CancelIcon, OkIcon } from "../Icons";
 
 
@@ -7,7 +7,7 @@ import { CancelIcon, OkIcon } from "../Icons";
 
 
 
-export default function ModalDelete({ ask, onDelete, onCancel }) {
+export default function ModalDelete({ ask, onDelete, onCancel, isDeleting }) {
 
 	const modalRef = useRef();
 
@@ -51,8 +51,18 @@ export default function ModalDelete({ ask, onDelete, onCancel }) {
 						onClick={() => onDelete()}
 						className="green-b flex justify-center items-center"
 					>
-						<TextBlock className="text-2xl"><OkIcon /></TextBlock>
-						<TextBlock className=""> 	Видалити</TextBlock>
+
+						{isDeleting ?
+							<Spinner color="rgb(134 239 172)" />
+							:
+							<>	<TextBlock className="text-2xl"><OkIcon /></TextBlock>
+								<TextBlock className=""> 	Видалити</TextBlock></>
+						}
+
+
+
+
+
 					</ButtonBlock>
 
 				</div>

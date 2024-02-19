@@ -46,6 +46,12 @@ export default function RowPage() {
 	const [isRowPalletsLoading, setIsRowPalletsLoading] = useState(false)
 
 
+	const [isPalletCreating, setIsPalletCreating] = useState(false)
+	const [isRowUpdating, setIsRowUpdating] = useState(false)
+	const [isRowDeleting, setIsRowDeleting] = useState(false)
+
+
+
 
 
 	async function fetchRow(id) {
@@ -113,7 +119,7 @@ export default function RowPage() {
 	async function handleCreatePallet() {
 
 		try {
-
+			setIsPalletCreating(true)
 
 			await createPallet(newPalletTitle, row._id, newPalletCom);
 
@@ -121,6 +127,7 @@ export default function RowPage() {
 		} catch (error) {
 			console.error('Ошибка при создании паллеты:', error);
 		} finally {
+			setIsPalletCreating(false)
 			setShowModalCreatePallet(false)
 
 		}
@@ -132,12 +139,14 @@ export default function RowPage() {
 	async function handleUpdateRowById(newTitle) {
 
 		try {
+			setIsRowUpdating(true)
 			await updateRowById(row._id, newTitle);
 			setTitle(newTitle)
 
 		} catch (error) {
 			console.error('Ошибка при изменении ряда:', error);
 		} finally {
+			setIsRowUpdating(false)
 			setShowModalUpdateRow(false)
 
 		}
@@ -146,15 +155,15 @@ export default function RowPage() {
 
 	async function handleDeleteRowById() {
 		try {
-
+			setIsRowDeleting(true)
 			await deleteRowById(row._id);
-			toast.success(`Ряд ${row.title} удален`)
+			toast.success(`Ряд ${row.title} видалений`)
 		} catch (error) {
 			console.error('Ошибка при удалении Row:', error);
 		} finally {
+			setIsRowDeleting(false)
 			setShowModalDeleteRow(false)
-
-			navigate("/stocks")
+			navigate("/rows")
 		}
 	};
 
@@ -279,8 +288,17 @@ export default function RowPage() {
 						className="green-b flex justify-center items-center"
 						onClick={handleCreatePallet}
 					>
-						<TextBlock className="text-2xl"><OkIcon /></TextBlock>
-						<TextBlock className=""> 	Створити</TextBlock>
+						{isPalletCreating
+							?
+							<Spinner color="rgb(134 239 172)" />
+							:
+							<>
+								<TextBlock className="text-2xl"><OkIcon /></TextBlock>
+								<TextBlock className=""> 	Створити</TextBlock>
+							</>
+
+						}
+
 					</ButtonBlock>
 
 
@@ -304,6 +322,7 @@ export default function RowPage() {
 					value={row.title}
 					onConfirm={(value) => { handleUpdateRowById(value) }}
 					onCancel={closeModalUpdateRow}
+					isUpdating={isRowUpdating}
 				/>
 			}
 
@@ -313,6 +332,7 @@ export default function RowPage() {
 					ask="Видалити цей ряд?"
 					onDelete={handleDeleteRowById}
 					onCancel={closeModalDeleteRow}
+					isDeleting={isRowDeleting}
 				/>
 			}
 

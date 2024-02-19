@@ -1,10 +1,10 @@
 
 import { useRef, useState } from "react";
-import { ButtonBlock, InputBlock, TextBlock } from "../../index";
+import { ButtonBlock, InputBlock, Spinner, TextBlock } from "../../index";
 import { CancelIcon, OkIcon } from "../Icons";
 
 
-export default function ModalCreate({ title, onConfirm, onCancel }) {
+export default function ModalCreate({ title, onConfirm, onCancel, isCreating }) {
 
 
 	const [newValue, setNewValue] = useState("")
@@ -57,8 +57,23 @@ export default function ModalCreate({ title, onConfirm, onCancel }) {
 						className="green-b flex justify-center items-center"
 						disabled={!newValue}
 					>
-						<TextBlock className="text-2xl"><OkIcon /></TextBlock>
-						<TextBlock className=""> 	Створити</TextBlock>
+
+						{isCreating
+							?
+							<Spinner color="rgb(134 239 172)" />
+							:
+							<>
+								<TextBlock className="text-2xl"><OkIcon /></TextBlock>
+								<TextBlock className=""> 	Створити</TextBlock>
+							</>
+
+						}
+
+
+
+
+
+
 
 					</ButtonBlock>
 

@@ -24,6 +24,7 @@ export default function RowsPage() {
 
 
 	const [showModalCreateRow, setShowModalCreateRow] = useState(false)
+	const [isCreatingRow, setIsCreatingRow] = useState(false)
 
 
 
@@ -70,12 +71,14 @@ export default function RowsPage() {
 	async function handleCreateRow(rowTitle) {
 
 		try {
+			setIsCreatingRow(true)
 			await createRow(rowTitle);
 
 
 		} catch (error) {
 			console.error('Ошибка при создании ряда:', error);
 		} finally {
+			setIsCreatingRow(false)
 			setShowModalCreateRow(false)
 
 		}
@@ -114,7 +117,7 @@ export default function RowsPage() {
 					<TextBlock>Створити новий ряд</TextBlock>
 				</ButtonBlock>
 
-			
+
 
 
 
@@ -126,12 +129,13 @@ export default function RowsPage() {
 				title="Створення нового ряду"
 				onConfirm={(rowTitle) => { handleCreateRow(rowTitle) }}
 				onCancel={closeModalCreateRow}
+				isCreating={isCreatingRow}
 
 			/>}
 
 
 			<ContainerBlock
-			className=""
+				className=""
 			>
 				<RowList />
 			</ContainerBlock>

@@ -1,5 +1,5 @@
 import { useRef } from "react";
-import { ButtonBlock, TextBlock } from "../../../components";
+import { ButtonBlock, Spinner, TextBlock } from "../../../components";
 import { CancelIcon, OkIcon } from "../Icons";
 
 
@@ -7,7 +7,7 @@ import { CancelIcon, OkIcon } from "../Icons";
 
 
 
-export default function ModalConfirm({ ask, onConfirm, onCancel }) {
+export default function ModalConfirm({ ask, onConfirm, onCancel, isConfirming }) {
 
 	const modalRef = useRef();
 
@@ -51,8 +51,16 @@ export default function ModalConfirm({ ask, onConfirm, onCancel }) {
 						onClick={() => onConfirm()}
 						className="green-b flex justify-center items-center"
 					>
-						<TextBlock className="text-2xl"><OkIcon /></TextBlock>
-						<TextBlock className="">Так</TextBlock>
+						{isConfirming
+							?
+							<Spinner color="rgb(134 239 172)" />
+							:
+							<>
+								<TextBlock className="text-2xl"><OkIcon /></TextBlock>
+								<TextBlock className=""> 	Так</TextBlock>
+							</>
+
+						}
 					</ButtonBlock>
 
 				</div>
