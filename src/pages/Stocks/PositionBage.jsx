@@ -9,7 +9,7 @@ export default function PositionBage({ pos, onDelete, onEdit, artsDB }) {
 
 
 	const defaultImageArtikul = "1102-3092"
-	const artikul = artsDB?.find((art) => art.artikul === pos.artikul)
+	const artikul = artsDB?.find((art) => art.artikul === pos?.artikul)
 
 
 
@@ -26,17 +26,17 @@ export default function PositionBage({ pos, onDelete, onEdit, artsDB }) {
 		transition ease-in-out duration-300	
 		
 		'
-				key={pos._id}
+				key={pos?._id}
 			>
 
 				<TextBlock
 					className={`
 					absolute top-0 left-0 z-10 bg-red-500 rounded-xl
-					${pos.date ? "p-1" : ""}
+					${pos?.date ? "p-1" : ""}
 					
 					`}
 				>
-					{pos.date}
+					{pos?.date}
 				</TextBlock>
 
 
@@ -57,7 +57,7 @@ export default function PositionBage({ pos, onDelete, onEdit, artsDB }) {
 
 						<ImageArt
 							size={100}
-							artikul={artikul ? pos.artikul : ""}
+							artikul={artikul ? pos?.artikul : ""}
 							className="rounded-lg justify-self-center self-center"
 						/>
 
@@ -75,7 +75,7 @@ export default function PositionBage({ pos, onDelete, onEdit, artsDB }) {
 						<TextBlock
 							className=" text-2xl font-bold text-center self-center justify-self-center  "
 						>
-							{pos.artikul}
+							{pos?.artikul}
 						</TextBlock>
 
 						<TextBlock
@@ -122,7 +122,7 @@ export default function PositionBage({ pos, onDelete, onEdit, artsDB }) {
 							<TextBlock
 								className="text-sky-300  font-bold text-xl  rounded"
 							>
-								{pos.quant}
+								{pos?.quant}
 							</TextBlock>
 
 						</CardBlock>
@@ -138,7 +138,7 @@ export default function PositionBage({ pos, onDelete, onEdit, artsDB }) {
 							<TextBlock
 								className="text-amber-300  font-bold text-xl  rounded"
 							>
-								{pos.boxes}
+								{pos?.boxes}
 							</TextBlock>
 						</CardBlock>
 
@@ -156,13 +156,13 @@ export default function PositionBage({ pos, onDelete, onEdit, artsDB }) {
 						<TextBlock
 							className=" text-xl  "
 						>
-							{pos.sklad === "pogrebi" ? "Погреби" : pos.sklad === "merezhi" ? "Мережі" : null}
+							{pos?.sklad === "pogrebi" ? "Погреби" : pos?.sklad === "merezhi" ? "Мережі" : null}
 						</TextBlock>
 
 						<TextBlock
 							className=" text-xl  "
 						>
-							{pos.com}
+							{pos?.com}
 						</TextBlock>
 
 

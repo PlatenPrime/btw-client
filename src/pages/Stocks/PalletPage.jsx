@@ -618,7 +618,7 @@ export default function PalletPage() {
 					<TextBlock
 						className="text-amber-500 text-xl justify-start p-1"
 					>
-						Коробок всього: {posesInStore?.reduce((a, b) => a + b.boxes, 0)}
+						Коробок всього: {posesInStore?.reduce((a, b) => a + b?.boxes, 0)}
 					</TextBlock>
 
 
@@ -655,11 +655,11 @@ export default function PalletPage() {
 									onEdit={() => {
 										setShowModalEditPos(true)
 										setSelectedPos(pos)
-										setUpdatePosBoxesValue(pos.boxes)
-										setUpdatePosQuantValue(pos.quant)
-										setUpdatePosDateValue(pos.date)
-										setUpdatePosSkladValue(pos.sklad)
-										setUpdatePosComValue(pos.com)
+										setUpdatePosBoxesValue(pos?.boxes)
+										setUpdatePosQuantValue(pos?.quant)
+										setUpdatePosDateValue(pos?.date)
+										setUpdatePosSkladValue(pos?.sklad)
+										setUpdatePosComValue(pos?.com)
 									}}
 									artsDB={artsDB}
 

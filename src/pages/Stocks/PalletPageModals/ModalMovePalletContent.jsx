@@ -99,6 +99,9 @@ function ModalMovePalletContent({
 					>
 						<TextBlock className="text-2xl"><OkIcon /></TextBlock>
 						<TextBlock className=""> Переставити</TextBlock>
+
+
+
 					</ButtonBlock>
 
 				</CardBlock>
