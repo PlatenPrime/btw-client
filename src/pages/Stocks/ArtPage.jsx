@@ -153,13 +153,13 @@ export default function ArtPage() {
 				>
 
 
-					<ArtCard 
+					<ArtCard
 						artikul={artikul}
 						remains={remains}
 						title={title}
 						ostatok={ostatok}
 						posesWithArtikul={posesWithArtikul}
-					
+
 					/>
 
 
@@ -188,14 +188,14 @@ export default function ArtPage() {
 								>
 
 									{posesWithArtikul?.map((pos) => <Link
-										className='
-			flex flex-col lg:flex-row justify-between
-				  p-4 rounded text-2xl space-y-2 lg:space-y-0
-				 
-				 bg-amber-500/10  hover:bg-amber-500/20
-				text-amber-100 hover:text-white
-			transition ease-in-out duration-300
-			'
+										className={`
+										grid grid-cols-1 lg:grid-cols-2 space-y-2  lg:space-y-0 cursor-pointer p-4 lg:gap-8 justify-center
+										${pos.sklad === "merezhi" ?
+												"bg-yellow-700/20 hover:bg-yellow-700/50  "
+												: pos.sklad === "pogrebi"
+													? "bg-blue-700/20 hover:bg-blue-700/50 "
+													: null} 
+										transition ease-in-out duration-300`}
 										to={`/pallets/${pallets?.find((pallet) => pallet._id === pos?.pallet)?._id}`}
 										key={pos._id}
 									>
@@ -204,7 +204,7 @@ export default function ArtPage() {
 										>
 											<PalletIcon />
 											<TextBlock>
-												{pallets?.find((pallet) => pallet._id === pos?.pallet)?.title}
+												{pos?.palletTitle}
 											</TextBlock>
 										</TextBlock>
 
