@@ -329,6 +329,7 @@ export default function AskPage() {
 				ask="Видалити цей запит на зняття?"
 				onCancel={() => setShowModalDeleteAsk(false)}
 				onDelete={handleDeleteAsk}
+				isDeleting={isDeletingAsk}
 
 
 			/>}
@@ -337,6 +338,8 @@ export default function AskPage() {
 				ask="Позначити цей запит виконаним?"
 				onCancel={() => setShowModalDoAsk(false)}
 				onConfirm={handleDoAsk}
+				isConfirming={isDoingAsk}
+
 
 
 			/>}
@@ -345,6 +348,7 @@ export default function AskPage() {
 				ask="Позначити цей запит невиконаним?"
 				onCancel={() => setShowModalFailAsk(false)}
 				onConfirm={handleFailAsk}
+				isConfirming={isFailingAsk}
 
 
 			/>}

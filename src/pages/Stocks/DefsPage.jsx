@@ -291,6 +291,14 @@ export default function DefsPage() {
 
 
 
+	const handleSelectCorrectRows = () => {
+		const correctRows = ["10-12", "14-16", "18-20", "22-24", "27-29"]
+
+
+		setSelectedRowTitles(uniqueRowTitles.filter(rowTitle => correctRows.includes(rowTitle)));
+	}
+
+
 
 	// EFFECTS
 
@@ -379,6 +387,15 @@ export default function DefsPage() {
 				>
 					Показати дефіцити
 				</ButtonBlock>
+
+
+				<ButtonBlock
+					className="orange-b"
+					onClick={handleSelectCorrectRows}
+				>
+					Правильні ряди
+				</ButtonBlock>
+
 
 
 				<ButtonBlock

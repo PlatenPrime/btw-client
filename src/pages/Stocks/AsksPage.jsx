@@ -230,8 +230,17 @@ export default function AsksPage() {
 								className="green-b flex justify-center items-center"
 								onClick={handleCreateAsk}
 							>
-								<TextBlock className="text-2xl"><OkIcon /></TextBlock>
-								<TextBlock className=""> 	Створити</TextBlock>
+								{isAskCreating
+									?
+									<Spinner color="rgb(134 239 172)" />
+									:
+									<>
+										<TextBlock className="text-2xl"><OkIcon /></TextBlock>
+										<TextBlock className=""> 	Так</TextBlock>
+									</>
+								}
+
+
 
 							</ButtonBlock>
 						</CardBlock>
