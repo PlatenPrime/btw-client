@@ -71,7 +71,7 @@ p-4
 
 
 				<CardBlock
-				className="border border-sky-500 rounded-xl hover:bg-sky-500/20"
+				className=" rounded-xl hover:bg-sky-500/20"
 				>
 
 
