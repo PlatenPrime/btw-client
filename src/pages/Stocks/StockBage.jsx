@@ -38,10 +38,10 @@ const StockBage = ({ pos, nameukr }) => {
 				
 				 hover:shadow-2xl 
 
-${ pos.quant  ? "bg-emerald-700/30 hover:shadow-emerald-500 hover:bg-emerald-500  " : "bg-slate-700/30 hover:shadow-slate-500 hover:bg-slate-500  " }
+${pos.quant ? "bg-emerald-700/30 hover:shadow-emerald-500 hover:bg-emerald-500  " : "bg-slate-700/30 hover:shadow-slate-500 hover:bg-slate-500  "}
 				 
 				 transition ease-in-out duration-300`}
-	
+
 
 		>
 
@@ -90,22 +90,47 @@ ${ pos.quant  ? "bg-emerald-700/30 hover:shadow-emerald-500 hover:bg-emerald-500
 
 
 				<CardBlock
-					className="flex"
+					className="grid grid-cols-2  w-1/2 "
 				>
 
 
+					<TextBlock
+						className="px-8 justify-self-start text-2xl"
+					>
+						{pos?.palletTitle}
+					</TextBlock>
 
 
 					<CardBlock
-						className="flex flex-col items-end px-4"
+						className="px-4 "
 					>
-						<TextBlock className="justify-start text-xl text-yellow-200 " >{pos?.boxes}<BsBoxSeam /></TextBlock>
-						<TextBlock className="justify-start text-xl  text-sky-200" >{pos?.quant}<BsBalloon /></TextBlock>
+						<CardBlock
+							className="flex space-x-2"
+						>
+							<TextBlock className=" text-sm text-yellow-200 " ><BsBoxSeam /></TextBlock>
+							<TextBlock className=" text-2xl text-yellow-200 " >{pos?.boxes}</TextBlock>
+
+						</CardBlock>
+
+
+						<CardBlock
+							className="flex space-x-2"
+						>
+							<TextBlock className="justify-start text-sm  text-sky-200" ><BsBalloon /></TextBlock>
+							<TextBlock className="justify-start text-2xl  text-sky-200" >{pos?.quant}</TextBlock>
+
+
+						</CardBlock>
+
+
+
+
+
+
 					</CardBlock>
 
-					<TextBlock
-					className="px-8 text-xl"
-					>{pos?.palletTitle}</TextBlock>
+
+
 
 
 
