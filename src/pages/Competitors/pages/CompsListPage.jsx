@@ -582,13 +582,14 @@ export default function CompListPage() {
 								<tr>
 									{/* Заголовки для данных */}
 									<th className=" bg-blue-900/95">Btrade</th>
-									<th className=" bg-sky-900/95">Sharte</th>
 									<th className=" bg-amber-900/95">Yumi</th>
+									<th className=" bg-sky-900/95">Sharte</th>
 									<th className=" bg-lime-900/95">Air</th>
 									<th className=" bg-pink-900/95">Best</th>
+
 									<th className=" bg-blue-900/95">Btrade</th>
-									<th className=" bg-sky-900/95">Sharte</th>
 									<th className=" bg-amber-900/95">Yumi</th>
+									<th className=" bg-sky-900/95">Sharte</th>
 									<th className=" bg-lime-900/95">Air</th>
 									<th className=" bg-pink-900/95">Best</th>
 								</tr>
@@ -671,39 +672,43 @@ export default function CompListPage() {
 											>
 												{comp?.avail?.btrade ?? "-"}
 											</td>
-
-											<td className={` w-1/12 ${comp?.avail?.sharte ? "bg-green-500/20" :"bg-red-500/50"} `} >
-												{comp?.avail?.sharte	? "Є" : (comp?.avail?.sharte === false) ? "Немає" : "-" }
-											</td>
-
 											<td
 												className={` 
 										w-1/12 
 										${comp?.avail?.yumi ? "bg-sky-500/20 " : "bg-rose-500/50"}
 									 `}
 											>
-												{comp?.avail?.yumi === 0 ? "0" : comp?.avail?.yumi ? comp?.avail?.yumi  : "-"}
+												{comp?.avail?.yumi === 0 ? "0" : comp?.avail?.yumi ? comp?.avail?.yumi : "-"}
 											</td>
 
-											<td className={` w-1/12 ${comp?.avail?.air ? "bg-green-500/20" :"bg-red-500/50"} `} >
-												{comp?.avail?.air	? "Є" : (comp?.avail?.air=== false) ? "Немає" : "-" }
+											<td className={` w-1/12 ${comp?.avail?.sharte ? "bg-green-500/20" : "bg-red-500/50"} `} >
+												{comp?.avail?.sharte ? "Є" : (comp?.avail?.sharte === false) ? "Немає" : "-"}
 											</td>
 
-											<td className={` w-1/12 ${comp?.avail?.best ? "bg-green-500/20" :"bg-red-500/50"} `} >
-												{comp?.avail?.best	? "Є" : (comp?.avail?.best=== false) ? "Немає" : "-" }
+
+
+
+
+											<td className={` w-1/12 ${comp?.avail?.air ? "bg-green-500/20" : "bg-red-500/50"} `} >
+												{comp?.avail?.air ? "Є" : (comp?.avail?.air === false) ? "Немає" : "-"}
+											</td>
+
+											<td className={` w-1/12 ${comp?.avail?.best ? "bg-green-500/20" : "bg-red-500/50"} `} >
+												{comp?.avail?.best ? "Є" : (comp?.avail?.best === false) ? "Немає" : "-"}
 											</td>
 
 											<td className='text-green-500 w-1/12  bg-slate-900/50 ' >
 												{comp?.price?.btrade}
+											</td>
+											<td className='text-yellow-400 w-1/12  bg-slate-900/50' >
+												{comp?.price?.yumi ? comp?.price?.yumi : "-"}
 											</td>
 
 											<td className='text-yellow-400 w-1/12  bg-slate-900/50' >
 												{comp?.price?.sharte}
 											</td>
 
-											<td className='text-yellow-400 w-1/12  bg-slate-900/50' >
-												{comp?.price?.yumi ? comp?.price?.yumi : "-"}
-											</td>
+
 											<td className='text-yellow-400 w-1/12  bg-slate-900/50' >
 												{comp?.price?.air ? comp?.price?.air : "-"}
 											</td>
