@@ -293,73 +293,73 @@ export default function CompListPage() {
 
 
 
-				{isAnalyzing &&
-					<CardBlock>
+			{isAnalyzing &&
+				<CardBlock>
 
 
-						<div className="relative pt-1 px-4">
+					<div className="relative pt-1 px-4">
 
 
-							<div className="flex px-4 mb-2 items-center justify-between">
+						<div className="flex px-4 mb-2 items-center justify-between">
 
 
-								<span className="text-sm font-semibold inline-block text-violet-100">
-									{progress.toFixed(2)}%
-								</span>
-								<span>{compsDB[currentAnalyzeItem - 1]?.nameukr}</span>
+							<span className="text-sm font-semibold inline-block text-violet-100">
+								{progress.toFixed(2)}%
+							</span>
+							<span>{compsDB[currentAnalyzeItem - 1]?.nameukr}</span>
 
-								<span>{currentAnalyzeItem} / {compsDB?.length}</span>
-
-
-
-							</div>
+							<span>{currentAnalyzeItem} / {compsDB?.length}</span>
 
 
-							<div className="flex h-2 mb-4 overflow-hidden text-xs bg-violet-200">
-								<div
-									style={{ width: `${progress}%` }}
-									className="flex flex-col justify-center text-center text-white bg-violet-500 shadow-none whitespace-nowrap"
-								></div>
-							</div>
+
 						</div>
 
-					</CardBlock>
 
-				}
+						<div className="flex h-2 mb-4 overflow-hidden text-xs bg-violet-200">
+							<div
+								style={{ width: `${progress}%` }}
+								className="flex flex-col justify-center text-center text-white bg-violet-500 shadow-none whitespace-nowrap"
+							></div>
+						</div>
+					</div>
 
-				{isAnalyzingOnFilter &&
-					<ContainerBlock>
+				</CardBlock>
 
+			}
 
-						<div className="relative pt-1 px-4">
-
-
-							<div className="flex px-4 mb-2 items-center justify-between">
-
-
-								<span className="text-sm font-semibold inline-block text-cyan-100">
-									{progress.toFixed(2)}%
-								</span>
-								<span>{filteredComps[currentAnalyzeItem - 1]?.nameukr}</span>
-
-								<span>{currentAnalyzeItem} / {filteredComps?.length}</span>
+			{isAnalyzingOnFilter &&
+				<ContainerBlock>
 
 
+					<div className="relative pt-1 px-4">
 
-							</div>
+
+						<div className="flex px-4 mb-2 items-center justify-between">
 
 
-							<div className="flex h-2 mb-4 overflow-hidden text-xs bg-cyan-200">
-								<div
-									style={{ width: `${progress}%` }}
-									className="flex flex-col justify-center text-center text-white bg-cyan-500 shadow-none whitespace-nowrap"
-								></div>
-							</div>
+							<span className="text-sm font-semibold inline-block text-cyan-100">
+								{progress.toFixed(2)}%
+							</span>
+							<span>{filteredComps[currentAnalyzeItem - 1]?.nameukr}</span>
+
+							<span>{currentAnalyzeItem} / {filteredComps?.length}</span>
+
+
+
 						</div>
 
-					</ContainerBlock>
 
-				}
+						<div className="flex h-2 mb-4 overflow-hidden text-xs bg-cyan-200">
+							<div
+								style={{ width: `${progress}%` }}
+								className="flex flex-col justify-center text-center text-white bg-cyan-500 shadow-none whitespace-nowrap"
+							></div>
+						</div>
+					</div>
+
+				</ContainerBlock>
+
+			}
 
 
 
@@ -376,7 +376,7 @@ export default function CompListPage() {
 				>
 
 					<TextBlock
-						className="text-xl"
+						className="text-lg"
 					>
 						Вибрано артикулів:	{filteredComps.length} із {compsDB.length}
 					</TextBlock>
@@ -386,7 +386,7 @@ export default function CompListPage() {
 						onClick={resetFilter}
 					>
 						<TextBlock
-							className="text-2xl"
+							className="text-xl"
 						>
 							<LuFilterX />
 						</TextBlock>
@@ -512,7 +512,7 @@ export default function CompListPage() {
 				:
 
 				<ContainerBlock
-					className="flex-grow overflow-auto  mb-1 relative pt-0 "
+					className="flex-grow overflow-auto  mb-1 relative p-0 "
 				>
 
 					<div
@@ -527,7 +527,7 @@ export default function CompListPage() {
 								<tr className=''>
 									{/* Заголовки таблицы */}
 									<th
-										className=" lg:w-1/4  bg-black  shadow-inner shadow-black hover:shadow-violet-500 border-0 transition ease-in-out duration-300 cursor-pointer	 "
+										className=" lg:w-1/4  bg-slate-900/95   hover:bg-sky-500 border-0 transition ease-in-out duration-300 cursor-pointer	 "
 										rowSpan="2"
 										colSpan="2"
 										onClick={handleSortCompsByArtikul}
@@ -551,7 +551,7 @@ export default function CompListPage() {
 
 									</th>
 									<th
-										className="  bg-black  shadow-inner shadow-black hover:shadow-green-500 border-0 transition ease-in-out duration-300	cursor-pointer	 "
+										className="  bg-slate-900/95   hover:bg-green-500 border-0 transition ease-in-out duration-300	cursor-pointer	 "
 										rowSpan="2"
 										onClick={handleSortCompsByABC}
 									>
@@ -565,32 +565,32 @@ export default function CompListPage() {
 											</TextBlock>
 
 											<TextBlock
-												className={`text-3xl  ${sortWord === "abc" && "text-green-500"}`}
+												className={`text-3xl  ${sortWord === "abc" && "text-green-300"}`}
 											>
 												<BsSortAlphaDown />
 											</TextBlock>
 
 										</TextBlock>
 									</th>
-									<th className=" bg-black  " colSpan="5">
+									<th className=" bg-slate-900/95   " colSpan="5">
 										Наявність
 									</th>
-									<th className=" bg-black  " colSpan="5">
+									<th className=" bg-slate-900/95  " colSpan="5">
 										Ціна
 									</th>
 								</tr>
 								<tr>
 									{/* Заголовки для данных */}
-									<th className=" bg-blue-600">Btrade</th>
-									<th className=" bg-sky-500">Sharte</th>
-									<th className=" bg-amber-600">Yumi</th>
-									<th className=" bg-lime-600">Air</th>
-									<th className=" bg-pink-500">Best</th>
-									<th className=" bg-blue-600">Btrade</th>
-									<th className=" bg-sky-500">Sharte</th>
-									<th className=" bg-amber-600">Yumi</th>
-									<th className=" bg-lime-600">Air</th>
-									<th className=" bg-pink-500">Best</th>
+									<th className=" bg-blue-900/95">Btrade</th>
+									<th className=" bg-sky-900/95">Sharte</th>
+									<th className=" bg-amber-900/95">Yumi</th>
+									<th className=" bg-lime-900/95">Air</th>
+									<th className=" bg-pink-900/95">Best</th>
+									<th className=" bg-blue-900/95">Btrade</th>
+									<th className=" bg-sky-900/95">Sharte</th>
+									<th className=" bg-amber-900/95">Yumi</th>
+									<th className=" bg-lime-900/95">Air</th>
+									<th className=" bg-pink-900/95">Best</th>
 								</tr>
 							</thead>
 
@@ -614,25 +614,24 @@ export default function CompListPage() {
 
 											<td
 												colSpan="2"
-												className='p-0 bg-indigo-900/40'
+												className='p-0 bg-sky-800/50'
 											>
 
 												<CardBlock
-													className="flex space-x-1 items-center p-0"
+													className="flex p-0 items-center "
 												>
-
 
 
 													<ImageArt
 														artikul={comp.artikul}
 														size={50}
-														className="rounded cursor-pointer"
+														className="py-1 bg-white cursor-pointer"
 													/>
 
 
 													<CardBlock
 														className="flex items-center justify-start w-full cursor-pointer 
-														hover:bg-violet-500 hover:shadow-lg hover:shadow-violet-500 p-1 "
+														hover:bg-sky-500 hover:shadow-lg hover:shadow-sky-500 p-0 rounded-none px-1"
 														onClick={(e) => {
 															e.stopPropagation()
 															setShowModalComp(true);
@@ -644,7 +643,7 @@ export default function CompListPage() {
 
 
 														<TextBlock
-															className="text-left  "
+															className="text-left text-sm py-2  "
 
 
 														>
@@ -664,130 +663,51 @@ export default function CompListPage() {
 												{comp?.abc}
 											</td>
 
-
-
-
-											<td className=' 
+											<td
+												className={` 
 										w-1/12 
-										shadow-inner inset-2 shadow-blue-600 bg-slate-900
-										
-										'>
-												{comp?.avail?.btrade
-													?
-													<span className='bg-sky-500 p-2 rounded' >
-														{comp?.avail?.btrade}
-													</span>
-													:
-													comp?.avail?.btrade === 0
-														?
-														<span className='bg-rose-500 p-2 rounded' >
-															0
-														</span>
-														:
-														<span className='bg-rose-500 p-2 rounded' >
-															-
-														</span>}
+										${comp?.avail?.btrade ? "bg-blue-500/20 " : "bg-rose-500/50"}
+									 `}
+											>
+												{comp?.avail?.btrade ?? "-"}
 											</td>
 
-											<td className=' w-1/12 shadow-inner inset-2 shadow-sky-500  bg-slate-900' >
-												{comp?.avail?.sharte
-													?
-													<span className='bg-green-500 p-2 rounded' >
-														Є
-													</span>
-													:
-													(comp?.avail?.sharte === false)
-
-														?
-														<span className='bg-red-500 p-2 rounded' >
-															Немає
-														</span>
-														:
-														<span className='' >
-															-
-														</span>
-
-
-
-												}
+											<td className={` w-1/12 ${comp?.avail?.sharte ? "bg-green-500/20" :"bg-red-500/50"} `} >
+												{comp?.avail?.sharte	? "Є" : (comp?.avail?.sharte === false) ? "Немає" : "-" }
 											</td>
 
-
-											<td className=' w-1/12 shadow-inner inset-2 shadow-amber-600 bg-slate-900'>
-												{comp?.avail?.yumi
-													?
-													<span className='bg-sky-500 p-2 rounded' >
-														{comp?.avail?.yumi}
-													</span>
-													:
-													comp?.avail?.yumi === 0
-														?
-														<span className='bg-rose-500 p-2 rounded' >
-															0
-														</span>
-														:
-														<span className=' p-2 rounded' >
-															-
-														</span>}
+											<td
+												className={` 
+										w-1/12 
+										${comp?.avail?.yumi ? "bg-sky-500/20 " : "bg-rose-500/50"}
+									 `}
+											>
+												{comp?.avail?.yumi === 0 ? "0" : comp?.avail?.yumi ? comp?.avail?.yumi  : "-"}
 											</td>
 
-											<td className=' w-1/12 shadow-inner inset-2 shadow-lime-600 bg-slate-900' >
-												{comp?.avail?.air
-													?
-													<span className='bg-green-500 p-2 rounded' >
-														Є
-													</span>
-													:
-													(comp?.avail?.air === false)
-
-														?
-														<span className='bg-red-500 p-2 rounded' >
-															Немає
-														</span>
-														:
-														<span className=' p-2 rounded' >
-															-
-														</span>}
+											<td className={` w-1/12 ${comp?.avail?.air ? "bg-green-500/20" :"bg-red-500/50"} `} >
+												{comp?.avail?.air	? "Є" : (comp?.avail?.air=== false) ? "Немає" : "-" }
 											</td>
 
-											<td className=' w-1/12 shadow-inner inset-2 shadow-pink-600 bg-slate-900' >
-												{comp?.avail?.best
-													?
-													<span className='bg-green-500 p-2 rounded' >
-														Є</span>
-													:
-													(comp?.avail?.best === false)
-
-														?
-														<span className='bg-red-500 p-2 rounded' >
-															Немає
-														</span>
-														:
-														<span className=' p-2 rounded' >
-															-
-														</span>}
+											<td className={` w-1/12 ${comp?.avail?.best ? "bg-green-500/20" :"bg-red-500/50"} `} >
+												{comp?.avail?.best	? "Є" : (comp?.avail?.best=== false) ? "Немає" : "-" }
 											</td>
 
-
-
-
-
-
-											<td className='text-green-500 w-1/12 shadow-inner inset-2 shadow-blue-600 bg-slate-900 ' >
+											<td className='text-green-500 w-1/12  bg-slate-900/50 ' >
 												{comp?.price?.btrade}
 											</td>
 
-											<td className='text-yellow-400 w-1/12 shadow-inner inset-2 shadow-sky-500 bg-slate-900' >
+											<td className='text-yellow-400 w-1/12  bg-slate-900/50' >
 												{comp?.price?.sharte}
 											</td>
 
-											<td className='text-yellow-400 w-1/12 shadow-inner inset-2 shadow-amber-600 bg-slate-900' >
+											<td className='text-yellow-400 w-1/12  bg-slate-900/50' >
 												{comp?.price?.yumi ? comp?.price?.yumi : "-"}
 											</td>
-											<td className='text-yellow-400 w-1/12 shadow-inner inset-2 shadow-lime-600 bg-slate-900' >
+											<td className='text-yellow-400 w-1/12  bg-slate-900/50' >
 												{comp?.price?.air ? comp?.price?.air : "-"}
 											</td>
-											<td className='text-yellow-400 w-1/12 shadow-inner inset-2 shadow-pink-600 bg-slate-900' >
+											<td className='text-yellow-400 w-1/12  bg-slate-900/50' >
 												{comp?.price?.best ? comp?.price?.best : "-"}
 											</td>
 
