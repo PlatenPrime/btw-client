@@ -58,6 +58,7 @@ export default function DefsPage() {
 
 	const [newAskArtikul, setNewAskArtikul] = useState('')
 	const [newAskQuant, setNewAskQuant] = useState('')
+	const [newAskCom, setNewAskCom] = useState('')
 
 
 	const [showModalCreateAsk, setShowModalCreateAsk] = useState(false)
@@ -187,6 +188,7 @@ export default function DefsPage() {
 			const newAskData = {
 				artikul: newAskArtikul,
 				quant: newAskQuant,
+				com: newAskCom,
 				status: "new",
 				asker: user._id
 			}
@@ -520,6 +522,18 @@ export default function DefsPage() {
 								autoComplete="off"
 								value={newAskQuant}
 								onChange={(e) => setNewAskQuant(e.target.value)}
+							/>
+						</CardBlock>
+
+						<CardBlock className="grid grid-cols-1 md:grid-cols-2 space-x-2">
+							<label className=" justify-self-center self-center md:justify-self-start" htmlFor="com">Комент:</label>
+							<InputBlock
+								type="text"
+								id="com"
+								name="com"
+								autoComplete="off"
+								value={newAskCom}
+								onChange={(e) => setNewAskCom(e.target.value)}
 							/>
 						</CardBlock>
 
