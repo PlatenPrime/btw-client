@@ -31,11 +31,11 @@ const RowBage = ({ row }) => {
 
 				className=' 
 			flex justify-center
-		w-full p-3
+		w-full p-2
 			rounded-xl
 			 text-2xl text-orange-100 hover:text-white 
 			 hover:bg-orange-500 
-			bg-orange-500/30
+			bg-orange-700/50
 			 hover:shadow-lg hover:shadow-orange-500 
 			 transition ease-in-out duration-500
 			
@@ -43,7 +43,7 @@ const RowBage = ({ row }) => {
 			>
 
 				<TextBlock
-					className="text-black bg-white px-2 rounded-xl"
+					className="text-black bg-white p-2 rounded-xl"
 				>
 					{row.title}
 				</TextBlock>

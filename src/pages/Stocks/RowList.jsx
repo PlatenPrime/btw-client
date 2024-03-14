@@ -48,7 +48,7 @@ export function RowList() {
 
 				:
 				<CardBlock
-					className="space-y-2"
+					className="space-y-4"
 				>
 					{rows.map((row) => (
 						<RowBage row={row} key={row._id} />
