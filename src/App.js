@@ -32,6 +32,8 @@ import useCheckAuth from "./hooks/useCheckAuth";
 import CreateUserPage from "./pages/Auth/CreateUserPage";
 import SettingsPage from "./pages/Settings/SettingsPage";
 import DefsPage from "./pages/Stocks/DefsPage";
+import InstructionsPage from "./pages/Instructions/InstructionsPage";
+import InsPage from "./pages/Instructions/InsPage";
 
 
 
@@ -86,6 +88,11 @@ function App() {
 
 
 					<Route path="settings" element={<SettingsPage />} />
+
+
+
+					<Route path="ins" element={<InstructionsPage />} />
+					<Route path="ins/:id" element={<InsPage />} />
 
 
 

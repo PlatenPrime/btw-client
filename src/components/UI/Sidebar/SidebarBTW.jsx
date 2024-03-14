@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import { ButtonBlock, TextBlock, CardBlock, Spinner } from "../../index";
-import { FcBinoculars, FcDeployment, FcLibrary, FcOrganization, FcSettings, FcLeave, FcLowPriority, FcRotateToLandscape } from 'react-icons/fc';
+import { FcBinoculars, FcDeployment, FcLibrary, FcOrganization, FcSettings, FcLeave, FcLowPriority, FcRotateToLandscape, FcDocument } from 'react-icons/fc';
 
 import useAuthStore from '../../../pages/Auth/authStore';
 import ContainerBlock from '../blocks/ContainerBlock';
@@ -71,7 +71,7 @@ p-4
 
 
 				<CardBlock
-				className=" rounded-xl hover:bg-sky-500/20"
+					className=" rounded-xl hover:bg-sky-500/20"
 				>
 
 
@@ -88,12 +88,12 @@ p-4
 
 
 						{user
-						?
-						<TextBlock
-							className=" p-3 "
-						>{user.fullname}</TextBlock>
-						:
-						null}
+							?
+							<TextBlock
+								className=" p-3 "
+							>{user.fullname}</TextBlock>
+							:
+							null}
 
 					</NavLink>
 				</CardBlock>
@@ -255,6 +255,36 @@ p-4
 					</TextBlock>
 					:
 					null}
+
+
+
+
+				{user?.role === "PRIME" ?
+					<TextBlock className="bg-blue-500/20 hover:bg-blue-500/90 rounded " >
+						<NavLink
+							to={"ins"}
+							style={({ isActive }) => isActive ? {
+								color: "white",
+								padding: "12px",
+								width: "100%",
+								background: "rgb(59 130 246 )",
+							} : inActiveStyles}
+						>
+							<TextBlock
+								className="flex text-xl space-x-1"
+							>
+								<FcDocument />
+								<TextBlock>Інструкції</TextBlock>
+							</TextBlock>
+
+						</NavLink>
+					</TextBlock>
+					:
+					null}
+
+
+
+
 
 
 
