@@ -34,6 +34,7 @@ import SettingsPage from "./pages/Settings/SettingsPage";
 import DefsPage from "./pages/Stocks/DefsPage";
 import InstructionsPage from "./pages/Instructions/InstructionsPage";
 import InsPage from "./pages/Instructions/InsPage";
+import CreateInsPage from "./pages/Instructions/CreateInsPage";
 
 
 
@@ -92,6 +93,7 @@ function App() {
 
 
 					<Route path="ins" element={<InstructionsPage />} />
+					<Route path="ins/new" element={<CreateInsPage />} />
 					<Route path="ins/:id" element={<InsPage />} />
 
 

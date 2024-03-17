@@ -1,0 +1,40 @@
+.wrapper-class {
+	padding: 1rem;
+	
+	background-color: #0f172a;
+	border-radius: 20px;
+  }
+  .editor-class {
+	background-color:rgb(30 41 59);
+	padding: 1rem;
+	
+	color: aliceblue;
+	border-radius: 20px;
+  }
+  .toolbar-class {
+	border: 1px solid #0fd319;
+	background-color: rgb(255, 5, 5);
+  }
+
+  .rdw-editor-toolbar {
+    background-color: gray; /* Новый цвет панели инструментов */
+    /* Дополнительные стили по вашему выбору */
+}
+
+.wrapper-class .rdw-editor-toolbar {
+    background-color: rgb(30 41 59); 
+	border: none; 
+	
+	/*
+	 Новый цвет панели инструментов */
+    /* Дополнительные стили по вашему выбору */
+}
+
+
+ 
+.wrapper-class .rdw-editor-toolbar  .rdw-option-wrapper {
+	background-color: white;
+	border: none; 
+	color: white;
+
+}

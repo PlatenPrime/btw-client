@@ -1,7 +1,16 @@
 import React from 'react'
-import { HeaderBlock, PageBTW } from '../../components'
+import { ButtonBlock, ButtonGroup, HeaderBlock, PageBTW } from '../../components'
+import { useNavigate } from 'react-router-dom'
 
 export default function InstructionsPage() {
+
+
+
+	const navigate = useNavigate()
+
+
+
+
 	return (
 		<PageBTW
 			className="space-y-4"
@@ -11,6 +20,17 @@ export default function InstructionsPage() {
 			>
 				Інструкції
 			</HeaderBlock>
+
+
+			<ButtonGroup>
+				<ButtonBlock
+					className="green-b"
+					onClick={() => navigate("/ins/new")}
+
+				>
+					Створити інструкцію
+				</ButtonBlock>
+			</ButtonGroup>
 
 
 
