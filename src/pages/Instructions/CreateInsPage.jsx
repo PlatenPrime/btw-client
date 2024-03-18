@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { ButtonBlock, ButtonGroup, HeaderBlock, PageBTW } from '../../components'
+import { ButtonBlock, ButtonGroup, CardBlock, ContainerBlock, HeaderBlock, InputBlock, PageBTW } from '../../components'
 import { EditorState, convertToRaw, convertFromRaw } from 'draft-js';
 import { Editor } from 'react-draft-wysiwyg';
 import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
@@ -19,18 +19,29 @@ export default function CreateInsPage() {
 
 
 	const [insId, setInsId] = useState('')
+	const [newTitle, setNewTitle] = useState('')
+
 
 
 	const [editorState, setEditorState] = useState(EditorState.createEmpty());
+
+
+
+
+
+console.log(insId);
+
+
+
+
+
+
+
 
 	// Функция для обновления состояния редактора при вводе текста
 	const handleEditorStateChange = (newEditorState) => {
 		setEditorState(newEditorState);
 	};
-
-
-
-
 
 
 	// Функция для первичного создания инструкции в базу данных MongoDB
@@ -43,14 +54,20 @@ export default function CreateInsPage() {
 
 			// Отправляем данные на сервер для сохранения в базу MongoDB
 			const response = await axios.post('https://btw-server.up.railway.app/api/ins', {
-				title: "Test instruction",
+				title: newTitle,
 				body: JSON.stringify(rawContent),
 				category: "reglament",
 				department: "Truba"
 
 			});
 
+
+			console.log(response);
+			
+
 			// В респонсе должна вернуться инструкция с ее Id
+			if (response.status === 200) { setInsId(response?.data?._id) }
+			console.log(insId);
 
 
 
@@ -72,7 +89,8 @@ export default function CreateInsPage() {
 
 
 			// Отправляем данные на сервер для сохранения в базу MongoDB
-			const response = await axios.put('https://btw-server.up.railway.app/api/ins/65efdbf0eaaf0c8dea5fdd33', {
+			const response = await axios.put(`https://btw-server.up.railway.app/api/ins/${insId}`, {
+				title: newTitle,
 				body: JSON.stringify(rawContent),
 			});
 			console.log(response);
@@ -120,11 +138,15 @@ export default function CreateInsPage() {
 
 				<ButtonBlock
 					className="green-b"
+					disabled={insId}
+					onClick={createInsToMongoDB}
 				>
 					Створити
 				</ButtonBlock>
 				<ButtonBlock
 					className="blue-b"
+					disabled={!insId}
+					onClick={saveChangesToMongoDB}
 				>
 					Зберегти
 				</ButtonBlock>
@@ -140,6 +162,75 @@ export default function CreateInsPage() {
 
 
 
+
+
+
+			<ContainerBlock
+				className="p-1 space-y-4 "
+			>
+
+
+				<CardBlock
+					className="grid place-center"
+				>
+					<InputBlock
+						className="mx-auto"
+						value={newTitle}
+						onChange={(e) => setNewTitle(e.target.value)}
+					/>
+				</CardBlock>
+
+
+				<Editor
+					editorState={editorState}
+					onEditorStateChange={handleEditorStateChange}
+					wrapperClassName="wrapper-class"
+					editorClassName="editor-class"
+					toolbarClassName="toolbar-class"
+					localization={{
+						locale: 'ru',
+					}}
+					toolbar={{
+						// image: {
+						// 	uploadCallback: uploadImageCallback,
+						// 	alt: { present: true, mandatory: true },
+						// },
+						options: ['history', 'fontFamily', 'fontSize', 'list', 'textAlign', 'inline', 'colorPicker', 'link', 'embedded', 'emoji', 'image', 'remove',],
+						inline: {
+							options: ['bold', 'italic', 'underline', 'strikethrough'],
+						},
+						// blockType: {
+						// 	inDropdown: true,
+						// 	options: ['Normal', 'H1', 'H2', 'H3', 'H4', 'H5', 'H6'],
+						// },
+						fontSize: {
+							options: [8, 10, 12, 14, 16, 18, 24, 30, 36, 48, 60, 72, 96],
+						},
+						fontFamily: {
+							options: ['Arial', 'Georgia', 'Impact', 'Tahoma', 'Times New Roman', 'Verdana', "Roboto"],
+						},
+						textAlign: {
+							inDropdown: true,
+						},
+						list: {
+							inDropdown: true,
+						},
+						history: {
+							inDropdown: true,
+						},
+						colorPicker: {
+							// icon:  <AiFillAlipayCircle />,
+							className: undefined,
+							component: undefined,
+							popupClassName: undefined,
+							colors: ['rgb(239 68 68)', 'rgb(0 0 0)', 'rgb(255 255 255)', 'rgb(248 250 252)'],
+						},
+
+
+
+					}}
+				/>
+			</ContainerBlock>
 
 
 

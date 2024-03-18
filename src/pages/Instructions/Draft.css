@@ -1,11 +1,11 @@
 .wrapper-class {
 	padding: 1rem;
-	
+	color: #222;
 	background-color: #0f172a;
 	border-radius: 20px;
   }
   .editor-class {
-	background-color:rgb(30 41 59);
+	background-color:rgb(51 65 85);
 	padding: 1rem;
 	
 	color: aliceblue;
@@ -17,12 +17,12 @@
   }
 
   .rdw-editor-toolbar {
-    background-color: gray; /* Новый цвет панели инструментов */
+    background-color: rgb(209, 28, 28); /* Новый цвет панели инструментов */
     /* Дополнительные стили по вашему выбору */
 }
 
 .wrapper-class .rdw-editor-toolbar {
-    background-color: rgb(30 41 59); 
+    background-color: transparent; 
 	border: none; 
 	
 	/*
@@ -33,8 +33,10 @@
 
  
 .wrapper-class .rdw-editor-toolbar  .rdw-option-wrapper {
-	background-color: white;
+	background-color: rgb(178, 225, 247);
 	border: none; 
-	color: white;
+	color: rgb(211, 16, 16);
+	width: 2rem;
+	height: 30px;
 
 }
