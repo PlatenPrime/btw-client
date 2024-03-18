@@ -29,7 +29,7 @@ export default function CreateInsPage() {
 
 
 
-console.log(insId);
+	console.log(insId);
 
 
 
@@ -63,7 +63,7 @@ console.log(insId);
 
 
 			console.log(response);
-			
+
 
 			// В респонсе должна вернуться инструкция с ее Id
 			if (response.status === 200) { setInsId(response?.data?._id) }
@@ -107,6 +107,33 @@ console.log(insId);
 
 
 
+	const uploadImageCallback = async (file) => {
+		const formData = new FormData();
+		formData.append('image', file);
+
+		try {
+			const response = await fetch('https://api.imgur.com/3/image', {
+				method: 'POST',
+				headers: {
+					Authorization: 'Client-ID 86f656ab03b0dcf', // Вставьте ваш Client ID Imgur
+				},
+				body: formData,
+			});
+
+			if (!response.ok) {
+				throw Error(response.statusText);
+			}
+
+			console.log(response);
+
+
+			const data = await response.json();
+			return { data: { link: data.data.link } };
+		} catch (error) {
+			console.error('Error uploading image to Imgur:', error);
+			return { error: 'Failed to upload image' };
+		}
+	};
 
 
 
@@ -191,10 +218,10 @@ console.log(insId);
 						locale: 'ru',
 					}}
 					toolbar={{
-						// image: {
-						// 	uploadCallback: uploadImageCallback,
-						// 	alt: { present: true, mandatory: true },
-						// },
+						image: {
+							uploadCallback: uploadImageCallback,
+							alt: { present: true, mandatory: true },
+						},
 						options: ['history', 'fontFamily', 'fontSize', 'list', 'textAlign', 'inline', 'colorPicker', 'link', 'embedded', 'emoji', 'image', 'remove',],
 						inline: {
 							options: ['bold', 'italic', 'underline', 'strikethrough'],
