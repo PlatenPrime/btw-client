@@ -190,7 +190,7 @@ export default function ArtPage() {
 									{posesWithArtikul?.map((pos) => <Link
 										className={`
 										grid grid-cols-1 lg:grid-cols-2 space-y-2  lg:space-y-0 cursor-pointer p-4 lg:gap-8 justify-center
-										${pos.sklad === "merezhi" ?
+										${ pos?.quant === 0 ? "bg-gray-700 hover:bg-gray-500 " : pos.sklad === "merezhi" ?
 												"bg-yellow-700/20 hover:bg-yellow-700/50  "
 												: pos.sklad === "pogrebi"
 													? "bg-blue-700/20 hover:bg-blue-700/50 "
