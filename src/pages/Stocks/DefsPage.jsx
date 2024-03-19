@@ -204,8 +204,12 @@ export default function DefsPage() {
 		} catch (error) {
 			console.log(error)
 		} finally {
+			setNewAskArtikul('')
+			setNewAskQuant('')
+			setNewAskCom('')
 			setIsCreatingAsk(false)
 			setShowModalCreateAsk(false)
+
 		}
 
 
@@ -672,7 +676,7 @@ export default function DefsPage() {
 							<span className="text-sm font-semibold inline-block text-pink-100">
 								{progress.toFixed(2)}%
 							</span>
-							<span>{ artsDB.find(art => art?.artikul === stocks[currentFetchingStock - 1]?.artikul)?.nameukr ||  stocks[currentFetchingStock - 1]?.artikul}</span>
+							<span>{artsDB.find(art => art?.artikul === stocks[currentFetchingStock - 1]?.artikul)?.nameukr || stocks[currentFetchingStock - 1]?.artikul}</span>
 
 							<span>{currentFetchingStock} / {stocks?.length}</span>
 
