@@ -301,12 +301,7 @@ export default function AskPage() {
 
 
 			<ButtonGroup>
-				<ButtonBlock
-					className="red-b"
-					onClick={() => setShowModalDeleteAsk(true)}
-				>
-					Видалити запит
-				</ButtonBlock>
+
 				<ButtonBlock
 					className="green-b"
 					onClick={() => setShowModalDoAsk(true)}
@@ -317,7 +312,13 @@ export default function AskPage() {
 					className="rose-b"
 					onClick={() => setShowModalFailAsk(true)}
 				>
-					Позначити невиконаним
+					Відмовити
+				</ButtonBlock>
+				<ButtonBlock
+					className="red-b"
+					onClick={() => setShowModalDeleteAsk(true)}
+				>
+					Видалити
 				</ButtonBlock>
 			</ButtonGroup>
 
@@ -326,14 +327,7 @@ export default function AskPage() {
 
 
 
-			{showModalDeleteAsk && <ModalDelete
-				ask="Видалити цей запит на зняття?"
-				onCancel={() => setShowModalDeleteAsk(false)}
-				onDelete={handleDeleteAsk}
-				isDeleting={isDeletingAsk}
 
-
-			/>}
 
 			{showModalDoAsk && <ModalConfirm
 				ask="Позначити цей запит виконаним?"
@@ -346,7 +340,7 @@ export default function AskPage() {
 			/>}
 
 			{showModalFailAsk && <ModalConfirm
-				ask="Позначити цей запит невиконаним?"
+				ask="Відмовити на цей запит?"
 				onCancel={() => setShowModalFailAsk(false)}
 				onConfirm={handleFailAsk}
 				isConfirming={isFailingAsk}
@@ -354,24 +348,32 @@ export default function AskPage() {
 
 			/>}
 
+			{showModalDeleteAsk && <ModalDelete
+				ask="Видалити цей запит на зняття?"
+				onCancel={() => setShowModalDeleteAsk(false)}
+				onDelete={handleDeleteAsk}
+				isDeleting={isDeletingAsk}
 
 
-			<UpdateASkModal 
-			showModalUpdateAsk={showModalUpdateAsk}
-			setShowModalUpdateAsk={setShowModalUpdateAsk}
-			selectedPos={selectedPos}
-			finalValuePosBoxes={finalValuePosBoxes}
-			finalValuePosQuant={finalValuePosQuant}
-			askValuePosBoxes={askValuePosBoxes}
-			askValuePosQuant={askValuePosQuant}
-			setAskValuePosBoxes={setAskValuePosBoxes}
-			setFinalValuePosBoxes={setFinalValuePosBoxes}
-			setAskValuePosQuant={setAskValuePosQuant}
-			setFinalValuePosQuant={setFinalValuePosQuant}
-			handleAskingPos={handleAskingPos}
-			isUpdatingPos={isUpdatingPos}
-			
-			
+			/>}
+
+
+			<UpdateASkModal
+				showModalUpdateAsk={showModalUpdateAsk}
+				setShowModalUpdateAsk={setShowModalUpdateAsk}
+				selectedPos={selectedPos}
+				finalValuePosBoxes={finalValuePosBoxes}
+				finalValuePosQuant={finalValuePosQuant}
+				askValuePosBoxes={askValuePosBoxes}
+				askValuePosQuant={askValuePosQuant}
+				setAskValuePosBoxes={setAskValuePosBoxes}
+				setFinalValuePosBoxes={setFinalValuePosBoxes}
+				setAskValuePosQuant={setAskValuePosQuant}
+				setFinalValuePosQuant={setFinalValuePosQuant}
+				handleAskingPos={handleAskingPos}
+				isUpdatingPos={isUpdatingPos}
+
+
 			/>
 
 
