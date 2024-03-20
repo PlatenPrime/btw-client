@@ -1,6 +1,6 @@
 import React, { useCallback, useEffect, useLayoutEffect, useMemo, useState } from 'react'
 import { ButtonBlock, ButtonGroup, CardBlock, ContainerBlock, HeaderBlock, ImageArt, ImageBlock, InputBlock, ModalWrapper, PageBTW, Spinner, TextBlock } from '../../components'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import useFetchRemains from '../../hooks/useFetchRemains'
 import useFetchArts from '../../hooks/useFetchArts'
 import usePosesStore from './stores/posesStore'
@@ -23,6 +23,9 @@ import { CancelIcon, OkIcon } from '../../components/UI/Icons'
 
 
 export default function DefsPage() {
+
+
+	const navigate = useNavigate()
 
 
 
@@ -727,55 +730,84 @@ export default function DefsPage() {
 					{defs?.map((def, i) =>
 						<CardBlock
 							key={i}
-							className="grid  lg:grid-cols-3 p-2  bg-pink-500/5 rounded-xl"
+							className="grid  lg:grid-cols-6 p-2  bg-pink-500/5 hover:bg-pink-500/10 rounded-xl"
+
 						>
+
+
 							<CardBlock
-								className=""
+								className="lg:col-span-3 flex "
+
 							>
 
 								<CardBlock
-									className="bg-white flex justify-center rounded-t-lg"
+									className="lg:col-span-1 bg-white flex justify-center rounded-l-lg"
 								>
-									<ImageArt size={100} artikul={def.artikul} />
+									<ImageArt size={100} artikul={def.artikul} className="rounded-l-lg" />
 
 								</CardBlock>
 
 
 								<TextBlock
-									className="p-2 text-xl text-center italic bg-sky-500/10 rounded-b-lg "
+									className="lg:col-span-2 p-2 text-xl text-center italic bg-sky-500/10 hover:bg-sky-500 rounded-r-lg cursor-pointer "
+									onClick={() => {
+										const artId = artsDB?.find(art => art.artikul === def.artikul)?._id || "";
+										const url = `/arts/${artId}`;
+										window.open(url, "_blank");
+									}}
 								>
 									{artsDB?.find(art => art.artikul === def.artikul)?.nameukr || def.artikul}
 								</TextBlock>
 
 							</CardBlock>
 
+
+
+
+
 							<CardBlock
-								className="justify-self-center flex flex-col justify-around p-3 bg-slate-700 rounded-lg "
+								className="lg:col-span-2 justify-self-stretch flex flex-col items-start justify-around p-3 bg-slate-700/50 rounded-lg "
 							>
-								<TextBlock
-									className="text-xl text-left"
-								> Запаси: {def?.quant}</TextBlock>
+
 
 								<TextBlock
-									className="text-xl text-left"
+									className="text-xl text-left space-x-2"
 								>
-									База: {def?.remain}
+									<TextBlock
+										className="text-xl text-left "
+									>
+										Запаси:
+									</TextBlock>
+
+									<TextBlock
+										className="text-teal-300"
+									>{
+											def?.quant}
+									</TextBlock>
 								</TextBlock>
+
+
+
 								<TextBlock
-									className="text-xl text-lef space-x-2"
+									className="text-xl text-left space-x-2"
 								>
+									<TextBlock>База:</TextBlock>
+									<TextBlock className="text-amber-300">{def?.remain}</TextBlock>
+								</TextBlock>
 
+
+								<TextBlock
+									className="text-xl text-left space-x-2"
+								>
 									<TextBlock>Дефіцит:</TextBlock>
-									<TextBlock className="text-pink-500">{def?.dif}</TextBlock>
-
-
+									<TextBlock className="text-pink-300">{def?.dif}</TextBlock>
 								</TextBlock>
 
 							</CardBlock>
 
 
 							<CardBlock
-								className="flex justify-center items-center"
+								className="lg:col-span-1 flex justify-center items-center"
 							>
 
 								<ButtonBlock
@@ -789,6 +821,9 @@ export default function DefsPage() {
 								</ButtonBlock>
 
 							</CardBlock>
+
+
+
 
 						</CardBlock>
 					)}
