@@ -261,7 +261,7 @@ export default function ArtPage() {
 								</CardBlock>
 								:
 								<TextBlock
-									className="text-amber-500 text-xl"
+									className="text-amber-100 text-xl italic"
 								>
 									Позиції немає на запасах
 								</TextBlock>
