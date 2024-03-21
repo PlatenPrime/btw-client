@@ -9,6 +9,7 @@ function ModalCreatePos({
 	handleInputPosChange,
 	handleCreatePos,
 	onCancel,
+	isCreatingPos
 }) {
 	return (
 		show && (
@@ -184,6 +185,11 @@ function ModalCreatePos({
 						>
 							<TextBlock className="text-2xl"><OkIcon /></TextBlock>
 							<TextBlock className=""> 	Створити</TextBlock>
+
+
+
+
+							
 
 						</ButtonBlock>
 					</CardBlock>

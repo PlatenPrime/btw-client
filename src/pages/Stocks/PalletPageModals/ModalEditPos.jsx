@@ -19,6 +19,9 @@ function ModalEditPos({
 
 	handleUpdatePosById,
 	onCancel,
+
+	isEditingPos
+
 }) {
 	return (
 		show && (

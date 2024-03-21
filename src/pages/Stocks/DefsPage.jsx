@@ -551,8 +551,6 @@ export default function DefsPage() {
 					<CardBlock className="grid grid-cols-2 space-x-2">
 
 
-
-
 						<ButtonBlock
 							className="red-b flex justify-center items-center"
 							onClick={() => setShowModalCreateAsk(false)}
@@ -582,13 +580,6 @@ export default function DefsPage() {
 								</>
 
 							}
-
-
-
-
-
-
-
 
 						</ButtonBlock>
 					</CardBlock>

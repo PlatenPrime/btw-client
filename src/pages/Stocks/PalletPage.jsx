@@ -100,6 +100,21 @@ export default function PalletPage() {
 	const [showModalMovePalletContent, setShowModalMovePalletContent] = useState(false);
 
 
+	const [isDeletingPallet, setIsDeletingPallet] = useState(false);
+	const [isRenamingPallet, setIsRenamingPallet] = useState(false);
+	const [isChangingPalletCom, setIsChangingPalletCom] = useState(false);
+	const [isCreatingPos, setIsCreatingPos] = useState(false);
+	const [isDeletingPos, setIsDeletingPos] = useState(false);
+	const [isEditingPos, setIsEditingPos] = useState(false);
+	const [isClearingPallet, setIsClearingPallet] = useState(false);
+	const [isMovingPalletContent, setIsMovingPalletContent] = useState(false);
+
+
+
+
+
+
+
 	// EFFECTS
 
 	async function fetchPallet(id) {
@@ -201,12 +216,14 @@ export default function PalletPage() {
 
 	async function handleDeletePalletById() {
 		try {
+			setIsDeletingPallet(true)
 			await deletePalletById(pallet._id)
 			toast.success(`Паллета ${pallet.title} удалена`)
 
 		} catch (error) {
 			console.error('Ошибка при удалении Pallet:', error);
 		} finally {
+			setIsDeletingPallet(false);
 			setShowModalDeletePallet(false)
 			navigate(`/rows/${pallet.row}`)
 		}
@@ -216,8 +233,15 @@ export default function PalletPage() {
 
 
 
+
+
+
+
+
+
 	async function handleRenamePalletById(newTitle) {
 		try {
+			setIsRenamingPallet(true);
 			const updateData = { ...pallet, title: newTitle }
 			await updatePalletById(pallet._id, updateData);
 			setTitle(newTitle)
@@ -225,6 +249,7 @@ export default function PalletPage() {
 		} catch (error) {
 			console.error('Ошибка при изменении  названия паллеты:', error);
 		} finally {
+			setIsRenamingPallet(false);
 			setShowModalRenamePallet(false)
 		}
 	}
@@ -233,6 +258,7 @@ export default function PalletPage() {
 
 	async function handleChangePalletComentById(newCom) {
 		try {
+			setIsChangingPalletCom(true);
 			const updateData = { ...pallet, com: newCom }
 			await updatePalletById(pallet._id, updateData);
 			setNewCom(newCom)
@@ -240,6 +266,7 @@ export default function PalletPage() {
 		} catch (error) {
 			console.error('Ошибка при изменении  комментария паллеты:', error);
 		} finally {
+			setIsChangingPalletCom(false);
 			setShowModalChangePalletCom(false)
 		}
 	}
@@ -260,7 +287,7 @@ export default function PalletPage() {
 	const handleCreatePos = async () => {
 
 		try {
-
+			setIsCreatingPos(true);
 			const existingPos = posesInStore.find(pos => pos.artikul === newPos.artikul);
 
 			if (existingPos && existingPos.sklad === newPos.sklad && existingPos.date === newPos.date && existingPos.com === newPos.com) {
@@ -281,6 +308,7 @@ export default function PalletPage() {
 		} catch (error) {
 			console.log(error)
 		} finally {
+			setIsCreatingPos(false);
 			setShowModalCreatePos(false)
 			setNewPos({
 
@@ -297,12 +325,14 @@ export default function PalletPage() {
 
 	async function handleDeletePosById(id) {
 		try {
+			setIsDeletingPos(true);
 			const resDeletePos = await deletePosById(id)
 			console.log(resDeletePos)
 
 		} catch (error) {
 			console.log(error)
 		} finally {
+			setIsDeletingPos(false);
 			setShowModalDeletePos(false)
 		}
 	}
@@ -310,6 +340,7 @@ export default function PalletPage() {
 
 	async function handleUpdatePosById(id) {
 		try {
+			setIsEditingPos(true);
 
 			const updatedData = {
 				quant: updatePosQuantValue,
@@ -325,6 +356,7 @@ export default function PalletPage() {
 		} catch (error) {
 
 		} finally {
+			setIsEditingPos(false);
 			setShowModalEditPos(false)
 		}
 	}
@@ -332,6 +364,7 @@ export default function PalletPage() {
 
 	async function handleClearPalletById(id) {
 		try {
+			setIsClearingPallet(true);
 
 			const resClear = await clearPalletById(id)
 			console.log(resClear)
@@ -340,6 +373,7 @@ export default function PalletPage() {
 		} catch (error) {
 			console.log(error)
 		} finally {
+			setIsClearingPallet(false);
 			setShowModalClearPallet(false)
 		}
 	}
@@ -349,6 +383,7 @@ export default function PalletPage() {
 	async function handleMovePalletContent(currentPalletId, targetPalletId) {
 
 		try {
+			setIsMovingPalletContent(true);
 			const message = await movePalletContent(currentPalletId, targetPalletId);
 			console.log(message); // Выводим сообщение об успешном перемещении
 			clearPosesStore()
@@ -357,6 +392,7 @@ export default function PalletPage() {
 			console.error('Ошибка при перемещении содержимого Pallet:', error);
 			// Обработка ошибки, если что-то пошло не так
 		} finally {
+			setIsMovingPalletContent(false);
 			setShowModalMovePalletContent(false)
 		}
 
@@ -479,6 +515,8 @@ export default function PalletPage() {
 				show={showModalDeletePallet}
 				onDelete={handleDeletePalletById}
 				onCancel={() => { setShowModalDeletePallet(false) }}
+				isDeletingPallet={isDeletingPallet}
+
 			/>
 
 			<ModalRenamePallet
@@ -486,7 +524,7 @@ export default function PalletPage() {
 				value={title}
 				onConfirm={(title) => { handleRenamePalletById(title) }}
 				onCancel={() => { setShowModalRenamePallet(false) }}
-
+				isRenamingPallet={isRenamingPallet}
 			/>
 
 			<ModalChangePalletCom
@@ -494,7 +532,7 @@ export default function PalletPage() {
 				value={newCom}
 				onConfirm={(newCom) => { handleChangePalletComentById(newCom) }}
 				onCancel={() => { setShowModalChangePalletCom(false) }}
-
+				isChangingPalletCom={isChangingPalletCom}
 			/>
 
 
@@ -510,6 +548,7 @@ export default function PalletPage() {
 				handleInputPosChange={handleInputPosChange}
 				handleCreatePos={handleCreatePos}
 				onCancel={() => { setShowModalCreatePos(false) }}
+				isCreatingPos={isCreatingPos}
 			/>
 
 
@@ -518,6 +557,7 @@ export default function PalletPage() {
 				onCancel={() => { setShowModalDeletePos(false) }}
 				onDelete={() => handleDeletePosById(selectedPos._id)}
 				selectedPos={selectedPos}
+				isDeletingPos={isDeletingPos}
 			/>
 
 
@@ -539,6 +579,7 @@ export default function PalletPage() {
 
 				handleUpdatePosById={handleUpdatePosById}
 				onCancel={() => { setShowModalEditPos(false) }}
+				isEditingPos={isEditingPos}
 
 			/>
 
@@ -548,7 +589,7 @@ export default function PalletPage() {
 				ask={`Очистити палету ${pallet?.title}?`}
 				onConfirm={() => { handleClearPalletById(id) }}
 				onCancel={() => { setShowModalClearPallet(false) }}
-
+				isClearingPallet={isClearingPallet}
 			/>
 
 
@@ -566,6 +607,7 @@ export default function PalletPage() {
 				setSelectedRowId={setSelectedRowId}
 				setSelectedPalletId={setSelectedPalletId}
 				onCancel={() => { setShowModalMovePalletContent(false) }}
+				isMovingPalletContent={isMovingPalletContent}
 
 			/>
 

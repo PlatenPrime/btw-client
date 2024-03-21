@@ -15,6 +15,7 @@ function ModalMovePalletContent({
 	onCancel,
 	setSelectedRowId,
 	setSelectedPalletId,
+	isMovingPalletContent
 }) {
 	return (
 		show && (
