@@ -89,7 +89,7 @@ export default function AsksPage() {
 		} catch (error) {
 			console.log(error)
 		} finally {
-			setIsAskCreating(true)
+			setIsAskCreating(false)
 			setShowModalCreateAsk(false)
 			setNewAskArtikul("")
 			setNewAskQuant("")
