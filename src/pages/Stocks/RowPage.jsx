@@ -189,198 +189,201 @@ export default function RowPage() {
 
 
 
-			<ButtonGroup
-
-			>
-				<ButtonBlock
-					className="emerald-b flex"
-					onClick={() => { setShowModalCreatePallet(true); }}
+			{isRowPalletsLoading
+				?
+				<ContainerBlock
+					className="w-full h-full flex justify-start items-center"
 				>
-					<TextBlock className="text-2xl"><AddIcon /></TextBlock>
-					<TextBlock className="">Створити палету</TextBlock>
-
-				</ButtonBlock>
-				<ButtonBlock
-					className="lime-b flex"
-					onClick={() => { setShowModalUpdateRow(true); }}
-				>
-					<TextBlock className="text-2xl"><RenameIcon /></TextBlock>
-					<TextBlock className="">Перейменувати</TextBlock>
-
-				</ButtonBlock>
-				<ButtonBlock
-					className="red-b flex items-center"
-					onClick={() => { setShowModalDeleteRow(true); }}
-				>
-					<TextBlock className="text-2xl"><DeleteIcon /></TextBlock>
-					<TextBlock className="">Видалити ряд</TextBlock>
+					<Spinner color="#fef3c7" />
+				</ContainerBlock>
+				:
+				<>
 
 
-				</ButtonBlock>
+					<ButtonGroup
 
-			</ButtonGroup>
+					>
+						<ButtonBlock
+							className="emerald-b flex"
+							onClick={() => { setShowModalCreatePallet(true); }}
+						>
+							<TextBlock className="text-2xl"><AddIcon /></TextBlock>
+							<TextBlock className="">Створити палету</TextBlock>
+
+						</ButtonBlock>
+						<ButtonBlock
+							className="lime-b flex"
+							onClick={() => { setShowModalUpdateRow(true); }}
+						>
+							<TextBlock className="text-2xl"><RenameIcon /></TextBlock>
+							<TextBlock className="">Перейменувати</TextBlock>
+
+						</ButtonBlock>
+						<ButtonBlock
+							className="red-b flex items-center"
+							onClick={() => { setShowModalDeleteRow(true); }}
+						>
+							<TextBlock className="text-2xl"><DeleteIcon /></TextBlock>
+							<TextBlock className="">Видалити ряд</TextBlock>
+
+
+						</ButtonBlock>
+
+					</ButtonGroup>
 
 
 
 
-			{showModalCreatePallet && <ModalWrapper
-				title="Створення нової палети"
-				onCancel={closeModalCreatePallet}
-			>
-
-				<CardBlock
-					className="space-y-3"
-				>
-
-
-
-					<CardBlock
-						className="grid grid-cols-2"
+					{showModalCreatePallet && <ModalWrapper
+						title="Створення нової палети"
+						onCancel={closeModalCreatePallet}
 					>
 
-						<TextBlock>
-							Назва палети
-						</TextBlock>
-						<InputBlock
-							value={newPalletTitle}
-							name="newPalletTitle"
-							type="text"
-							placeholder="XX-XX-X-X"
-							onChange={(e) => setNewPalletTitle(e.target.value)}
-						/>
-					</CardBlock>
-
-
-					<CardBlock
-						className="grid grid-cols-2"
-					>
-
-						<TextBlock>
-							Коментарій
-						</TextBlock>
-						<InputBlock
-							value={newPalletCom}
-							name="newPalletCom"
-							type="text"
-							placeholder="....."
-							onChange={(e) => setNewPalletCom(e.target.value)}
-						/>
-					</CardBlock>
-
-
-				</CardBlock>
-
-				<CardBlock
-					className="grid grid-cols-2 gap-4"
-				>
-
-					<ButtonBlock
-						className="red-b flex justify-center items-center"
-						onClick={closeModalCreatePallet}
-					>
-						<TextBlock className="text-2xl"><CancelIcon /></TextBlock>
-						<TextBlock className=""> Скасувати</TextBlock>
-
-					</ButtonBlock>
-
-
-					<ButtonBlock
-						className="green-b flex justify-center items-center"
-						onClick={handleCreatePallet}
-					>
-						{isPalletCreating
-							?
-							<Spinner color="rgb(134 239 172)" />
-							:
-							<>
-								<TextBlock className="text-2xl"><OkIcon /></TextBlock>
-								<TextBlock className=""> 	Створити</TextBlock>
-							</>
-
-						}
-
-					</ButtonBlock>
-
-
-				</CardBlock>
-
-
-			</ModalWrapper>}
-
-
-
-
-
-
-
-
-
-
-
-			{
-				showModalUpdateRow && <ModalEditOneValue
-					value={row.title}
-					onConfirm={(value) => { handleUpdateRowById(value) }}
-					onCancel={closeModalUpdateRow}
-					isUpdating={isRowUpdating}
-				/>
-			}
-
-
-			{
-				showModalDeleteRow && <ModalDelete
-					ask="Видалити цей ряд?"
-					onDelete={handleDeleteRowById}
-					onCancel={closeModalDeleteRow}
-					isDeleting={isRowDeleting}
-				/>
-			}
-
-
-
-
-
-
-
-			<ContainerBlock
-				className="space-y-4  "
-			>
-				<TextBlock
-					className="text-3xl text-amber-300 "
-				>
-					Палети
-				</TextBlock>
-
-				{isRowPalletsLoading
-					?
-					<Spinner />
-					:
-					palletsStore.length === 0
-						?
-						<TextBlock
-							className="text-2xl"
-						>Цей ряд не містить палети </TextBlock>
-						:
 						<CardBlock
-							className="space-y-2 "
+							className="space-y-3"
 						>
 
-							{palletsStore?.map((pallet) => <PalletBage
-								pallet={pallet}
-								key={pallet._id}
-								poses={allPoses?.filter((pos) => pos.pallet === pallet._id)}
-							/>
-							)}
-						</CardBlock>}
+
+
+							<CardBlock
+								className="grid grid-cols-2"
+							>
+
+								<TextBlock>
+									Назва палети
+								</TextBlock>
+								<InputBlock
+									value={newPalletTitle}
+									name="newPalletTitle"
+									type="text"
+									placeholder="XX-XX-X-X"
+									onChange={(e) => setNewPalletTitle(e.target.value)}
+								/>
+							</CardBlock>
+
+
+							<CardBlock
+								className="grid grid-cols-2"
+							>
+
+								<TextBlock>
+									Коментарій
+								</TextBlock>
+								<InputBlock
+									value={newPalletCom}
+									name="newPalletCom"
+									type="text"
+									placeholder="....."
+									onChange={(e) => setNewPalletCom(e.target.value)}
+								/>
+							</CardBlock>
+
+
+						</CardBlock>
+
+						<CardBlock
+							className="grid grid-cols-2 gap-4"
+						>
+
+							<ButtonBlock
+								className="red-b flex justify-center items-center"
+								onClick={closeModalCreatePallet}
+							>
+								<TextBlock className="text-2xl"><CancelIcon /></TextBlock>
+								<TextBlock className=""> Скасувати</TextBlock>
+
+							</ButtonBlock>
+
+
+							<ButtonBlock
+								className="green-b flex justify-center items-center"
+								onClick={handleCreatePallet}
+							>
+								{isPalletCreating
+									?
+									<Spinner color="rgb(134 239 172)" />
+									:
+									<>
+										<TextBlock className="text-2xl"><OkIcon /></TextBlock>
+										<TextBlock className=""> 	Створити</TextBlock>
+									</>
+
+								}
+
+							</ButtonBlock>
+
+
+						</CardBlock>
+
+
+					</ModalWrapper>}
+
+
+					{
+						showModalUpdateRow && <ModalEditOneValue
+							value={row.title}
+							onConfirm={(value) => { handleUpdateRowById(value) }}
+							onCancel={closeModalUpdateRow}
+							isUpdating={isRowUpdating}
+						/>
+					}
+
+
+					{
+						showModalDeleteRow && <ModalDelete
+							ask="Видалити цей ряд?"
+							onDelete={handleDeleteRowById}
+							onCancel={closeModalDeleteRow}
+							isDeleting={isRowDeleting}
+						/>
+					}
 
 
 
 
-			</ContainerBlock>
+
+
+
+					<ContainerBlock
+						className="space-y-4  "
+					>
+						<TextBlock
+							className="text-3xl text-amber-100 "
+						>
+							Палети
+						</TextBlock>
+
+						{isRowPalletsLoading
+							?
+							<Spinner color="#fef3c7" />
+							:
+							palletsStore.length === 0
+								?
+								<TextBlock
+									className="text-2xl"
+								>Цей ряд не містить палети </TextBlock>
+								:
+								<CardBlock
+									className="space-y-4 "
+								>
+
+									{palletsStore?.map((pallet) => <PalletBage
+										pallet={pallet}
+										key={pallet._id}
+										poses={allPoses?.filter((pos) => pos.pallet === pallet._id)}
+									/>
+									)}
+								</CardBlock>}
 
 
 
 
+					</ContainerBlock>
+
+
+
+				</>
+			}
 
 
 		</PageBTW >

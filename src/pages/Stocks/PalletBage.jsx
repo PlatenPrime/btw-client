@@ -25,21 +25,27 @@ export default function PalletBage({ pallet, poses }) {
 
 	return (
 		<Link
-			className='
+			className={`'
 			
 grid grid-cols-1 lg:grid-cols-3
 				   rounded-xl 
-				
-				 bg-amber-500/10  hover:bg-amber-500/50
 
+
+				   ${boxes ?
+					"bg-amber-500/5  hover:bg-amber-500/20 hover:shadow-lg hover:shadow-amber-500"
+					:
+					"bg-slate-700/50  hover:bg-slate-700 hover:shadow-lg hover:shadow-slate-500"
+
+				}
 				
+			
 			transition ease-in-out duration-300
-			'
+			'`}
 			to={`/pallets/${pallet._id}`}
 		>
 
 			<TextBlock
-				className="p-3 text-3xl bg-amber-100/10  rounded-xl "
+				className="p-3 text-3xl  rounded-xl "
 			>{pallet.title}</TextBlock>
 
 
@@ -47,24 +53,39 @@ grid grid-cols-1 lg:grid-cols-3
 
 
 			<CardBlock
-				className="p-2  grid grid-cols-2 text-2xl  rounded-xl "
+				className="p-2  grid grid-cols-2  rounded-xl "
 
 			>
 
 				<TextBlock
-					className="text-teal-300"
-				><VscNote /> {poses?.length}</TextBlock>
+					className="text-teal-100"
+				>
+					<VscNote />
+					<TextBlock
+						className="text-2xl"
+					>
+						{poses?.length}
+					</TextBlock>
+
+				</TextBlock>
 				<TextBlock
-					className="text-yellow-300"
+					className="text-yellow-100"
 				>
 					<LuBox />
-					{boxes}</TextBlock>
+
+					<TextBlock
+						className="text-2xl"
+					>
+						{boxes}
+					</TextBlock>
+
+				</TextBlock>
 
 			</CardBlock>
 
 			<TextBlock
 				className="italic  p-2"
-			>{pallet.com}</TextBlock>
+			>{pallet?.com || "-"}</TextBlock>
 
 
 

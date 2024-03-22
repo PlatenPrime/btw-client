@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { ButtonBlock, CardBlock, ImageArt, ImageBlock, TextBlock } from '../../components'
 import { ImMoveDown } from 'react-icons/im'
-import { MdDeleteForever } from "react-icons/md";
+import { MdDeleteForever, MdOutlineEdit } from "react-icons/md";
 import { BsBalloon, BsBoxSeam } from "react-icons/bs";
 
 
@@ -107,45 +107,7 @@ export default function PositionBage({ pos, onDelete, onEdit, artsDB }) {
 					className="col-span-3 row-span-2 lg:col-span-2 bg-teal-500/5"
 				>
 
-					<CardBlock
-						className="grid grid-cols-2 p-2 gap-2">
 
-
-						<CardBlock
-							className="flex justify-center items-center"
-						>
-
-							<TextBlock
-								className="text-sky-300  text-xl"
-							><BsBalloon /></TextBlock>
-
-							<TextBlock
-								className="text-sky-300  font-bold text-xl  rounded"
-							>
-								{pos?.quant}
-							</TextBlock>
-
-						</CardBlock>
-
-
-						<CardBlock
-							className="flex justify-center items-center"
-						>
-							<TextBlock
-								className="text-amber-300  text-xl "
-							><BsBoxSeam /></TextBlock>
-
-							<TextBlock
-								className="text-amber-300  font-bold text-xl  rounded"
-							>
-								{pos?.boxes}
-							</TextBlock>
-						</CardBlock>
-
-
-
-
-					</CardBlock>
 
 
 					<CardBlock
@@ -165,9 +127,52 @@ export default function PositionBage({ pos, onDelete, onEdit, artsDB }) {
 							{pos?.com}
 						</TextBlock>
 
+					</CardBlock>
+
+
+					<CardBlock
+						className="grid grid-cols-2 p-2 gap-2">
+
+
+						<CardBlock
+							className="flex justify-center items-center"
+						>
+
+							<TextBlock
+								className="text-sky-100  text-xl"
+							><BsBalloon /></TextBlock>
+
+							<TextBlock
+								className="text-sky-100  font-bold text-3xl  rounded"
+							>
+								{pos?.quant}
+							</TextBlock>
+
+						</CardBlock>
+
+
+						<CardBlock
+							className="flex justify-center items-center"
+						>
+							<TextBlock
+								className="text-amber-100  text-xl "
+							><BsBoxSeam /></TextBlock>
+
+							<TextBlock
+								className="text-amber-100  font-bold text-3xl  rounded"
+							>
+								{pos?.boxes}
+							</TextBlock>
+						</CardBlock>
+
+
 
 
 					</CardBlock>
+
+
+
+
 
 				</CardBlock>
 
@@ -175,17 +180,17 @@ export default function PositionBage({ pos, onDelete, onEdit, artsDB }) {
 
 
 				<CardBlock
-					className="col-span-3 row-span-1 lg:col-span-1 flex  space-x-1 justify-evenly lg:items-center rounded-b-xl rounded-r-xl p-2  bg-slate-900 hover:bg-slate-800">
+					className="col-span-3 row-span-1 lg:col-span-1 flex  space-x-2 justify-evenly lg:items-center rounded-b-xl rounded-r-xl p-2  bg-slate-900 hover:bg-slate-800">
 
 					<ButtonBlock
-						className=" blue-b text-xl"
+						className=" blue-b text-2xl w-full"
 						onClick={onEdit}
 					>
-						<ImMoveDown />
+						<MdOutlineEdit />
 					</ButtonBlock>
 
 					<ButtonBlock
-						className="red-b text-xl "
+						className="red-b text-2xl w-full "
 						onClick={onDelete}
 					>
 						<MdDeleteForever />

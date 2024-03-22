@@ -643,7 +643,7 @@ export default function PalletPage() {
 				>
 
 					<TextBlock
-						className="text-teal-500 text-xl justify-start p-1"
+						className="text-teal-100 text-xl justify-start p-1"
 					>
 						Позицій: {posesInStore?.length}
 					</TextBlock>
@@ -658,7 +658,7 @@ export default function PalletPage() {
 					</ButtonBlock>
 
 					<TextBlock
-						className="text-amber-500 text-xl justify-start p-1"
+						className="text-amber-100 text-xl justify-start p-1"
 					>
 						Коробок всього: {posesInStore?.reduce((a, b) => a + b?.boxes, 0)}
 					</TextBlock>
