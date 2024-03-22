@@ -21,6 +21,7 @@ export default function PositionBage({ pos, onDelete, onEdit, artsDB }) {
 			<li className=' grid grid-rows-6 lg:grid-rows-1 lg:grid-cols-6
 	 relative
 	shadow-lg hover:shadow-teal-500
+	hover:bg-teal-500/10
 	
 		rounded-xl
 		transition ease-in-out duration-300	
@@ -180,17 +181,17 @@ export default function PositionBage({ pos, onDelete, onEdit, artsDB }) {
 
 
 				<CardBlock
-					className="col-span-3 row-span-1 lg:col-span-1 flex  space-x-2 justify-evenly lg:items-center rounded-b-xl rounded-r-xl p-2  bg-slate-900 hover:bg-slate-800">
+					className="col-span-3 row-span-1 lg:col-span-1 flex  space-x-2 justify-evenly lg:items-center rounded-b-xl rounded-r-xl p-2  bg-slate-900/10 hover:bg-slate-800">
 
 					<ButtonBlock
-						className=" blue-b text-2xl w-full"
+						className=" blue-b text-2xl w-full h-full"
 						onClick={onEdit}
 					>
 						<MdOutlineEdit />
 					</ButtonBlock>
 
 					<ButtonBlock
-						className="red-b text-2xl w-full "
+						className="red-b text-2xl w-full h-full "
 						onClick={onDelete}
 					>
 						<MdDeleteForever />
