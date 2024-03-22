@@ -5,21 +5,21 @@ import { BsBalloon, BsBoxSeam } from 'react-icons/bs'
 
 export default function UpdateASkModal(
 
-{
-	showModalUpdateAsk,
-	setShowModalUpdateAsk,
-	selectedPos,
-	finalValuePosBoxes,
-	finalValuePosQuant,
-	askValuePosBoxes,
-	askValuePosQuant,
-	setAskValuePosBoxes,
-	setFinalValuePosBoxes,
-	setAskValuePosQuant,
-	setFinalValuePosQuant,
-	handleAskingPos,
-	isUpdatingPos
-}
+	{
+		showModalUpdateAsk,
+		setShowModalUpdateAsk,
+		selectedPos,
+		finalValuePosBoxes,
+		finalValuePosQuant,
+		askValuePosBoxes,
+		askValuePosQuant,
+		setAskValuePosBoxes,
+		setFinalValuePosBoxes,
+		setAskValuePosQuant,
+		setFinalValuePosQuant,
+		handleAskingPos,
+		isUpdatingPos
+	}
 
 ) {
 
@@ -28,72 +28,41 @@ export default function UpdateASkModal(
 
 
 
-  return (
-	<>
-	{showModalUpdateAsk && <ModalWrapper
+	return (
+		<>
+			{showModalUpdateAsk && <ModalWrapper
 				onCancel={() => setShowModalUpdateAsk(false)}
-				title="Зняття позицій"
+				title={`Зняття позиції з палети ${selectedPos?.palletTitle} `}
 
 			>
 				<CardBlock
-					className="space-y-4 border p-3"
+					className="space-y-4  p-3 w-full flex flex-col justify-center  "
 				>
 
 
 
 
-					<CardBlock
-						className="flex justify-center  font-bold "
-					>
 
-						<TextBlock
-							className="text-indigo-300 text-3xl"
-						>
-							<LiaPalletSolid />
-						</TextBlock>
-
-
-						<TextBlock
-							className="lg:min-w-1/3 text-3xl  lg:justify-items-start items-center text-indigo-300"
-						>
-							{selectedPos?.palletTitle}
-						</TextBlock>
-
-					</CardBlock>
 
 
 					<CardBlock
-						className="flex space-x-2"
+						className="flex space-x-8 w-full"
 					>
 						<TextBlock
 							className="text-2xl"
 						>
 							Зараз:
 						</TextBlock>
-						<CardBlock
-							className="flex justify-center  space-x-2"
-						>
-							<TextBlock
-								className="text-amber-300  text-3xl">
-								<BsBoxSeam />
-							</TextBlock>
-							<TextBlock
-								className="text-amber-300 font-bold text-2xl rounded"
-							>
-								{selectedPos?.boxes}
-							</TextBlock>
-						</CardBlock>
-
 
 						<CardBlock
 							className="flex justify-center  space-x-2"
 						>
 							<TextBlock
-								className="text-sky-300  text-3xl">
+								className="text-sky-300  text-xl">
 								<BsBalloon />
 							</TextBlock>
 							<TextBlock
-								className="text-sky-300  font-bold text-2xl  rounded"
+								className="text-sky-300  font-bold text-3xl  rounded"
 							>
 
 								{selectedPos?.quant}
@@ -101,49 +70,72 @@ export default function UpdateASkModal(
 						</CardBlock>
 
 
+						<CardBlock
+							className="flex justify-center  space-x-2"
+						>
+							<TextBlock
+								className="text-amber-300  text-xl">
+								<BsBoxSeam />
+							</TextBlock>
+							<TextBlock
+								className="text-amber-300 font-bold text-3xl rounded"
+							>
+								{selectedPos?.boxes}
+							</TextBlock>
+						</CardBlock>
+
+
 					</CardBlock>
 
 
 					<CardBlock
-						className="flex space-x-2"
+						className="flex space-x-8 space-between w-full"
 					>
+
+
 						<TextBlock
 							className="text-2xl "
 						>
 							Стане:
 						</TextBlock>
+
+
+
 						<CardBlock
 							className="flex justify-center  space-x-2"
 						>
 							<TextBlock
-								className={finalValuePosBoxes < 0 ? "text-red-600  text-3xl" : "text-teal-300  text-3xl"}>
+								className={finalValuePosQuant < 0 ? "text-red-500  text-xl" : "text-teal-300  text-xl"}>
+								<BsBalloon />
+							</TextBlock>
+							<TextBlock
+								className={finalValuePosQuant < 0 ? "text-red-500  text-3xl" : "text-teal-300  text-3xl"}
+							>
+
+								{finalValuePosQuant}
+							</TextBlock>
+						</CardBlock>
+
+
+						<CardBlock
+							className="flex justify-center  space-x-2"
+						>
+							<TextBlock
+								className={finalValuePosBoxes < 0 ? "text-red-500  text-xl" : "text-teal-300  text-xl"}>
 
 
 								<BsBoxSeam />
 							</TextBlock>
 							<TextBlock
 
-								className={finalValuePosBoxes < 0 ? "text-red-600  text-2xl" : "text-teal-300  text-2xl"}>
+								className={finalValuePosBoxes < 0 ? "text-red-500  text-3xl" : "text-teal-300  text-3xl"}>
 
 								{finalValuePosBoxes}
 							</TextBlock>
 						</CardBlock>
 
 
-						<CardBlock
-							className="flex justify-center  space-x-2"
-						>
-							<TextBlock
-								className={finalValuePosQuant < 0 ? "text-red-600  text-3xl" : "text-teal-300  text-3xl"}>
-								<BsBalloon />
-							</TextBlock>
-							<TextBlock
-								className={finalValuePosQuant < 0 ? "text-red-600  text-2xl" : "text-teal-300  text-2xl"}
-							>
 
-								{finalValuePosQuant}
-							</TextBlock>
-						</CardBlock>
 
 
 					</CardBlock>
@@ -162,7 +154,7 @@ export default function UpdateASkModal(
 					<CardBlock>
 
 						{finalValuePosQuant < 0 && <TextBlock
-							className="border border-red-600 text-red-600 p-2 rounded"
+							className="border border-red-500 text-red-500 p-2 rounded"
 						>
 							Недостатньо позиції
 						</TextBlock>}
@@ -179,7 +171,25 @@ export default function UpdateASkModal(
 
 						<CardBlock className="flex justify-between items-center space-x-4">
 							<TextBlock
-								className="text-cyan-500  text-3xl">
+								className="text-sky-100   text-3xl">
+								<BsBalloon />
+							</TextBlock>
+							<InputBlock
+								type="number"
+								id="quant"
+								name="quant"
+								autoComplete="off"
+								value={askValuePosQuant}
+								onChange={(e) => {
+									setAskValuePosQuant(e.target.value)
+									setFinalValuePosQuant(selectedPos?.quant - e.target.value)
+								}}
+							/>
+						</CardBlock>
+
+						<CardBlock className="flex justify-between items-center space-x-4">
+							<TextBlock
+								className="text-amber-100  text-3xl">
 								<BsBoxSeam />
 							</TextBlock>
 							<InputBlock
@@ -198,28 +208,23 @@ export default function UpdateASkModal(
 
 
 
-						<CardBlock className="flex justify-between items-center space-x-4">
-							<TextBlock
-								className="text-cyan-500   text-3xl">
-								<BsBalloon />
-							</TextBlock>
-							<InputBlock
-								type="number"
-								id="quant"
-								name="quant"
-								autoComplete="off"
-								value={askValuePosQuant}
-								onChange={(e) => {
-									setAskValuePosQuant(e.target.value)
-									setFinalValuePosQuant(selectedPos?.quant - e.target.value)
-								}}
-							/>
-						</CardBlock>
+
 
 
 
 
 					</CardBlock>
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -249,7 +254,7 @@ export default function UpdateASkModal(
 
 							{isUpdatingPos ?
 								<CardBlock>
-										<Spinner color="rgb(134 239 172)" />
+									<Spinner color="rgb(134 239 172)" />
 								</CardBlock>
 								:
 								<TextBlock>
@@ -272,6 +277,6 @@ export default function UpdateASkModal(
 
 				</CardBlock>
 			</ModalWrapper>}
-	</>
-  )
+		</>
+	)
 }
