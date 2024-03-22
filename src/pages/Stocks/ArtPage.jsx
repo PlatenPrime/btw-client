@@ -130,7 +130,7 @@ export default function ArtPage() {
 			<HeaderBlock
 				className="bg-sky-500  shadow-2xl shadow-sky-500 "
 			>
-				{isLoadingArtikul ? <Spinner color="white" /> : <>{artikul?.artikul}</>}
+				<TextBlock>Артикул</TextBlock>
 			</HeaderBlock>
 
 
@@ -146,7 +146,11 @@ export default function ArtPage() {
 
 			{isLoadingArtikul
 				?
-				<Spinner color="white" />
+				<ContainerBlock
+					className="w-full h-full flex justify-start items-center"
+				>
+					<Spinner color="#72a5e9" />
+				</ContainerBlock>
 				:
 				<CardBlock
 					className="space-y-2 min-h-screen"
@@ -190,7 +194,7 @@ export default function ArtPage() {
 									{posesWithArtikul?.map((pos) => <Link
 										className={`
 										grid grid-cols-1 lg:grid-cols-2 space-y-2  lg:space-y-0 cursor-pointer p-4 lg:gap-8 justify-center rounded-xl
-										${ pos?.quant === 0 ? "bg-gray-700 hover:bg-gray-500 " : pos.sklad === "merezhi" ?
+										${pos?.quant === 0 ? "bg-gray-700 hover:bg-gray-500 " : pos.sklad === "merezhi" ?
 												"bg-yellow-700/20 hover:bg-yellow-700/50  "
 												: pos.sklad === "pogrebi"
 													? "bg-blue-700/20 hover:bg-blue-700/50 "
@@ -200,7 +204,7 @@ export default function ArtPage() {
 										key={pos._id}
 									>
 										<TextBlock
-											className="lg:w-1/2 flex  lg:justify-start"
+											className="lg:w-1/2 flex  lg:justify-start text-2xl"
 										>
 											<PalletIcon />
 											<TextBlock>

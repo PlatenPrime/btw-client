@@ -1,5 +1,5 @@
 import React from 'react';
-import { ModalWrapper, InputBlock, ButtonBlock, CardBlock, TextBlock, ImageArt } from '../../../components';
+import { ModalWrapper, InputBlock, ButtonBlock, CardBlock, TextBlock, ImageArt, Spinner } from '../../../components';
 import { CancelIcon, OkIcon } from '../../../components/UI/Icons';
 
 function ModalCreatePos({
@@ -183,13 +183,18 @@ function ModalCreatePos({
 							onClick={handleCreatePos}
 							disabled={!newPos.artikul || !newPos.boxes || !newPos.quant}
 						>
-							<TextBlock className="text-2xl"><OkIcon /></TextBlock>
-							<TextBlock className=""> 	Створити</TextBlock>
+						
+							{isCreatingPos ?
+								<Spinner color="green" />
+								:
+								<>
+									<TextBlock className="text-2xl"><OkIcon /></TextBlock>
+									<TextBlock className=""> 	Створити</TextBlock>
+								</>
+							}
 
 
 
-
-							
 
 						</ButtonBlock>
 					</CardBlock>

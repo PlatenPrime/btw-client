@@ -1,5 +1,5 @@
 import React from 'react';
-import { ModalWrapper, InputBlock, ButtonBlock, CardBlock, TextBlock } from '../../../components';
+import { ModalWrapper, InputBlock, ButtonBlock, CardBlock, TextBlock, Spinner } from '../../../components';
 import { CancelIcon, OkIcon } from '../../../components/UI/Icons';
 
 function ModalMovePalletContent({
@@ -98,9 +98,16 @@ function ModalMovePalletContent({
 							handleMovePalletContent(id, selectedPalletId);
 						}}
 					>
-						<TextBlock className="text-2xl"><OkIcon /></TextBlock>
-						<TextBlock className=""> Переставити</TextBlock>
+					
 
+						{isMovingPalletContent ?
+							<Spinner color="green" />
+							:
+							<>
+								<TextBlock className="text-2xl"><OkIcon /></TextBlock>
+								<TextBlock className=""> Переставити</TextBlock>
+							</>
+						}
 
 
 					</ButtonBlock>
