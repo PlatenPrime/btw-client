@@ -18,15 +18,17 @@ export default function PositionBage({ pos, onDelete, onEdit, artsDB }) {
 	return (
 
 		<>
-			<li className=' grid grid-rows-6 lg:grid-rows-1 lg:grid-cols-6
-	 relative
-	shadow-lg hover:shadow-teal-500
-	hover:bg-teal-500/10
+			<li className={`grid grid-rows-6 lg:grid-rows-1 lg:grid-cols-6
+	 relative  shadow-lg 
 	
+	 
+	 ${pos?.quant ? "hover:bg-teal-500/10 hover:shadow-teal-500": "bg-slate-700/80 hover:bg-slate-700 hover:shadow-slate-700 " }
+	 
+
 		rounded-xl
 		transition ease-in-out duration-300	
 		
-		'
+		`}
 				key={pos?._id}
 			>
 

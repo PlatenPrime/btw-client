@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { ButtonBlock, CardBlock, HeaderBlock, PageBTW, TextBlock, ButtonGroup } from '../../components'
+import { ButtonBlock, CardBlock, HeaderBlock, PageBTW, TextBlock, ButtonGroup, Spinner } from '../../components'
 import { RowList } from './RowList'
 import { useRowStore } from './stores/rowsStore';
 import ModalCreate from '../../components/UI/Modal/ModalCreate';
@@ -16,12 +16,12 @@ export default function RowsPage() {
 
 	const createRow = useRowStore((state) => state.createRow);
 	const { getAllPoses, allPoses } = usePosesStore()
-
+	const getAllRows = useRowStore((state) => state.getAllRows);
 
 	const { artsDB, loadingArtsDB, errorArtsDB } = useFetchArts()
 
 
-
+	const [isRowsLoading, setIsRowsLoading] = useState(false)
 
 	const [showModalCreateRow, setShowModalCreateRow] = useState(false)
 	const [isCreatingRow, setIsCreatingRow] = useState(false)
@@ -53,6 +53,25 @@ export default function RowsPage() {
 
 
 
+
+
+	async function fetchRows() {
+		try {
+			setIsRowsLoading(true)
+			await getAllRows();
+		} catch (error) {
+			console.log(error)
+		} finally {
+			setIsRowsLoading(false)
+		}
+	}
+
+
+
+	useEffect(() => {
+		// При монтировании компонента получите все Row
+		fetchRows()
+	}, []);
 
 
 
@@ -104,42 +123,55 @@ export default function RowsPage() {
 
 
 
-			<ButtonGroup
-				className="flex justify-start p-2"
-			>
 
-				<ButtonBlock
-					onClick={() => { setShowModalCreateRow(true) }}
-					className="emerald-b flex items-center justify-center "
+			{isRowsLoading ?
+
+
+				<ContainerBlock
+					className="w-full h-full flex justify-start items-center"
 				>
+					<Spinner color="rgb(249 115 22)" />
+				</ContainerBlock>
 
-					<TextBlock className="text-xl"><AddIcon /></TextBlock>
-					<TextBlock>Створити новий ряд</TextBlock>
-				</ButtonBlock>
+				:
 
-
-
-
+				<>
 
 
 
-			</ButtonGroup>
+					<ButtonGroup
+						className="flex justify-start p-2"
+					>
 
-			{showModalCreateRow && <ModalCreate
-				title="Створення нового ряду"
-				onConfirm={(rowTitle) => { handleCreateRow(rowTitle) }}
-				onCancel={closeModalCreateRow}
-				isCreating={isCreatingRow}
+						<ButtonBlock
+							onClick={() => { setShowModalCreateRow(true) }}
+							className="emerald-b flex items-center justify-center "
+						>
 
-			/>}
+							<TextBlock className="text-xl"><AddIcon /></TextBlock>
+							<TextBlock>Створити новий ряд</TextBlock>
+						</ButtonBlock>
 
 
-			<ContainerBlock
-				className=""
-			>
-				<RowList />
-			</ContainerBlock>
+					</ButtonGroup>
 
+					{showModalCreateRow && <ModalCreate
+						title="Створення нового ряду"
+						onConfirm={(rowTitle) => { handleCreateRow(rowTitle) }}
+						onCancel={closeModalCreateRow}
+						isCreating={isCreatingRow}
+
+					/>}
+
+
+					<ContainerBlock
+						className=""
+					>
+						<RowList />
+					</ContainerBlock>
+
+				</>
+			}
 
 
 		</PageBTW>

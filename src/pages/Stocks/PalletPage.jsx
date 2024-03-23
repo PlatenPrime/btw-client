@@ -432,7 +432,7 @@ export default function PalletPage() {
 					>
 
 						<TextBlock
-							className=" rounded p-1 bg-orange-500/20 hover:bg-orange-500"
+							className=" rounded p-1 bg-orange-500/20 bg-teal-500 hover:bg-orange-500"
 						>
 							<BackIcon />
 							{`Ряд ${row?.title ? row?.title : ""}`}
@@ -450,166 +450,98 @@ export default function PalletPage() {
 			</HeaderBlock>
 
 
-
-
-
-
-
-			<ButtonGroup>
-
-
-
-				<ButtonBlock
-					className="lime-b flex"
-					onClick={() => { setShowModalRenamePallet(true); }}
+			{isPosesLoading ?
+				<ContainerBlock
+					className="w-full h-full flex justify-start items-center"
 				>
-					<TextBlock className="text-2xl"><RenameIcon /></TextBlock>
-					<TextBlock>Перейменувати</TextBlock>
-
-				</ButtonBlock>
-
-
-				<ButtonBlock
-					className="yellow-b flex"
-					onClick={() => { setShowModalChangePalletCom(true); }}
-				>
-					<TextBlock className="text-2xl"><RenameIcon /></TextBlock>
-					<TextBlock>Коментарій</TextBlock>
-
-				</ButtonBlock>
-
-				<ButtonBlock
-					className="blue-b flex"
-					onClick={() => { setShowModalMovePalletContent(true); }}
-				>
-					<TextBlock className="text-2xl"><MoveIcon /></TextBlock>
-					<TextBlock>Переставити</TextBlock>
-
-
-				</ButtonBlock>
-
-				<ButtonBlock
-					onClick={() => { setShowModalClearPallet(true) }}
-					className=" rose-b flex justify-center items-center"
-				>
-					<TextBlock className="text-2xl"><ClearIcon /></TextBlock>
-					<TextBlock className="">Очистити</TextBlock>
-
-				</ButtonBlock>
-
-
-				<ButtonBlock
-					className="red-b flex"
-					onClick={() => { setShowModalDeletePallet(true) }}
-				>
-					<TextBlock className="text-2xl"><DeleteIcon /></TextBlock>
-					<TextBlock className="">Видалити</TextBlock>
-				</ButtonBlock>
-			</ButtonGroup>
+					<Spinner color="rgb(20 184 166)" />
+				</ContainerBlock>
+				:
 
 
 
+				<>
 
 
-			<ModalDeletePallet
-				show={showModalDeletePallet}
-				onDelete={handleDeletePalletById}
-				onCancel={() => { setShowModalDeletePallet(false) }}
-				isDeletingPallet={isDeletingPallet}
+					<ButtonGroup>
 
-			/>
 
-			<ModalRenamePallet
-				show={showModalRenamePallet}
-				value={title}
-				onConfirm={(title) => { handleRenamePalletById(title) }}
-				onCancel={() => { setShowModalRenamePallet(false) }}
-				isRenamingPallet={isRenamingPallet}
-			/>
 
-			<ModalChangePalletCom
-				show={showModalChangePalletCom}
-				value={newCom}
-				onConfirm={(newCom) => { handleChangePalletComentById(newCom) }}
-				onCancel={() => { setShowModalChangePalletCom(false) }}
-				isChangingPalletCom={isChangingPalletCom}
-			/>
+						<ButtonBlock
+							className="lime-b flex"
+							onClick={() => { setShowModalRenamePallet(true); }}
+						>
+							<TextBlock className="text-2xl"><RenameIcon /></TextBlock>
+							<TextBlock>Перейменувати</TextBlock>
+
+						</ButtonBlock>
+
+
+						<ButtonBlock
+							className="yellow-b flex"
+							onClick={() => { setShowModalChangePalletCom(true); }}
+						>
+							<TextBlock className="text-2xl"><RenameIcon /></TextBlock>
+							<TextBlock>Коментарій</TextBlock>
+
+						</ButtonBlock>
+
+						<ButtonBlock
+							className="blue-b flex"
+							onClick={() => { setShowModalMovePalletContent(true); }}
+						>
+							<TextBlock className="text-2xl"><MoveIcon /></TextBlock>
+							<TextBlock>Переставити</TextBlock>
+
+
+						</ButtonBlock>
+
+						<ButtonBlock
+							onClick={() => { setShowModalClearPallet(true) }}
+							className=" rose-b flex justify-center items-center"
+						>
+							<TextBlock className="text-2xl"><ClearIcon /></TextBlock>
+							<TextBlock className="">Очистити</TextBlock>
+
+						</ButtonBlock>
+
+
+						<ButtonBlock
+							className="red-b flex"
+							onClick={() => { setShowModalDeletePallet(true) }}
+						>
+							<TextBlock className="text-2xl"><DeleteIcon /></TextBlock>
+							<TextBlock className="">Видалити</TextBlock>
+						</ButtonBlock>
+					</ButtonGroup>
 
 
 
 
 
+					<ModalDeletePallet
+						show={showModalDeletePallet}
+						onDelete={handleDeletePalletById}
+						onCancel={() => { setShowModalDeletePallet(false) }}
+						isDeletingPallet={isDeletingPallet}
 
+					/>
 
-			<ModalCreatePos
-				show={showModalCreatePos}
-				newPos={newPos}
-				artsDB={artsDB}
-				handleInputPosChange={handleInputPosChange}
-				handleCreatePos={handleCreatePos}
-				onCancel={() => { setShowModalCreatePos(false) }}
-				isCreatingPos={isCreatingPos}
-			/>
+					<ModalRenamePallet
+						show={showModalRenamePallet}
+						value={title}
+						onConfirm={(title) => { handleRenamePalletById(title) }}
+						onCancel={() => { setShowModalRenamePallet(false) }}
+						isRenamingPallet={isRenamingPallet}
+					/>
 
-
-			<ModalDeletePos
-				show={showModalDeletePos}
-				onCancel={() => { setShowModalDeletePos(false) }}
-				onDelete={() => handleDeletePosById(selectedPos._id)}
-				selectedPos={selectedPos}
-				isDeletingPos={isDeletingPos}
-			/>
-
-
-			<ModalEditPos
-				show={showModalEditPos}
-				selectedPos={selectedPos}
-				updatePosQuantValue={updatePosQuantValue}
-				setUpdatePosQuantValue={setUpdatePosQuantValue}
-				updatePosBoxesValue={updatePosBoxesValue}
-				setUpdatePosBoxesValue={setUpdatePosBoxesValue}
-				updatePosDateValue={updatePosDateValue}
-				setUpdatePosDateValue={setUpdatePosDateValue}
-
-				updatePosSkladValue={updatePosSkladValue}
-				setUpdatePosSkladValue={setUpdatePosSkladValue}
-				updatePosComValue={updatePosComValue}
-				setUpdatePosComValue={setUpdatePosComValue}
-
-
-				handleUpdatePosById={handleUpdatePosById}
-				onCancel={() => { setShowModalEditPos(false) }}
-				isEditingPos={isEditingPos}
-
-			/>
-
-
-			<ModalClearPallet
-				show={showModalClearPallet}
-				ask={`Очистити палету ${pallet?.title}?`}
-				onConfirm={() => { handleClearPalletById(id) }}
-				onCancel={() => { setShowModalClearPallet(false) }}
-				isClearingPallet={isClearingPallet}
-			/>
-
-
-
-			<ModalMovePalletContent
-				show={showModalMovePalletContent}
-				id={id}
-				pallet={pallet}
-				rows={rows}
-				selectedRowPallets={selectedRowPallets}
-				selectedRowId={selectedRowId}
-				selectedPalletId={selectedPalletId}
-				selectedPallet={selectedPallet}
-				handleMovePalletContent={handleMovePalletContent}
-				setSelectedRowId={setSelectedRowId}
-				setSelectedPalletId={setSelectedPalletId}
-				onCancel={() => { setShowModalMovePalletContent(false) }}
-				isMovingPalletContent={isMovingPalletContent}
-
-			/>
+					<ModalChangePalletCom
+						show={showModalChangePalletCom}
+						value={newCom}
+						onConfirm={(newCom) => { handleChangePalletComentById(newCom) }}
+						onCancel={() => { setShowModalChangePalletCom(false) }}
+						isChangingPalletCom={isChangingPalletCom}
+					/>
 
 
 
@@ -617,105 +549,183 @@ export default function PalletPage() {
 
 
 
+					<ModalCreatePos
+						show={showModalCreatePos}
+						newPos={newPos}
+						artsDB={artsDB}
+						handleInputPosChange={handleInputPosChange}
+						handleCreatePos={handleCreatePos}
+						onCancel={() => { setShowModalCreatePos(false) }}
+						isCreatingPos={isCreatingPos}
+					/>
+
+
+					<ModalDeletePos
+						show={showModalDeletePos}
+						onCancel={() => { setShowModalDeletePos(false) }}
+						onDelete={() => handleDeletePosById(selectedPos._id)}
+						selectedPos={selectedPos}
+						isDeletingPos={isDeletingPos}
+					/>
+
+
+					<ModalEditPos
+						show={showModalEditPos}
+						selectedPos={selectedPos}
+						updatePosQuantValue={updatePosQuantValue}
+						setUpdatePosQuantValue={setUpdatePosQuantValue}
+						updatePosBoxesValue={updatePosBoxesValue}
+						setUpdatePosBoxesValue={setUpdatePosBoxesValue}
+						updatePosDateValue={updatePosDateValue}
+						setUpdatePosDateValue={setUpdatePosDateValue}
+
+						updatePosSkladValue={updatePosSkladValue}
+						setUpdatePosSkladValue={setUpdatePosSkladValue}
+						updatePosComValue={updatePosComValue}
+						setUpdatePosComValue={setUpdatePosComValue}
+
+
+						handleUpdatePosById={handleUpdatePosById}
+						onCancel={() => { setShowModalEditPos(false) }}
+						isEditingPos={isEditingPos}
+
+					/>
+
+
+					<ModalClearPallet
+						show={showModalClearPallet}
+						ask={`Очистити палету ${pallet?.title}?`}
+						onConfirm={() => { handleClearPalletById(id) }}
+						onCancel={() => { setShowModalClearPallet(false) }}
+						isClearingPallet={isClearingPallet}
+					/>
 
 
 
-			<ContainerBlock
-				className="p-2 space-y-2 "
-			>
+					<ModalMovePalletContent
+						show={showModalMovePalletContent}
+						id={id}
+						pallet={pallet}
+						rows={rows}
+						selectedRowPallets={selectedRowPallets}
+						selectedRowId={selectedRowId}
+						selectedPalletId={selectedPalletId}
+						selectedPallet={selectedPallet}
+						handleMovePalletContent={handleMovePalletContent}
+						setSelectedRowId={setSelectedRowId}
+						setSelectedPalletId={setSelectedPalletId}
+						onCancel={() => { setShowModalMovePalletContent(false) }}
+						isMovingPalletContent={isMovingPalletContent}
+
+					/>
 
 
-				<CardBlock
-					className="flex items-center justify-center"
-				>
 
-					<TextBlock
-						className="text-teal-100 text-center text-3xl justify-start p-1"
+
+
+
+
+
+
+
+					<ContainerBlock
+						className="p-2 space-y-2 "
 					>
-						{newCom}
-					</TextBlock>
-
-				</CardBlock>
 
 
-				<CardBlock
-					className="flex flex-col items-center justify-center lg:flex-row lg:justify-between"
-				>
+						<CardBlock
+							className="flex items-center justify-center"
+						>
 
-					<TextBlock
-						className="text-teal-100 text-xl justify-start p-1"
-					>
-						Позицій: {posesInStore?.length}
-					</TextBlock>
+							<TextBlock
+								className="text-teal-100 text-center text-3xl justify-start p-1"
+							>
+								{newCom}
+							</TextBlock>
 
-					<ButtonBlock
-						className="teal-b bg-teal-500/20 shadow-lg p-4 flex  border-dashed "
-						onClick={() => { setShowModalCreatePos(true); }}
-					>
-						<TextBlock className="text-xl"><AddIcon /></TextBlock>
-						<TextBlock className="">Додати позицію</TextBlock>
-
-					</ButtonBlock>
-
-					<TextBlock
-						className="text-amber-100 text-xl justify-start p-1"
-					>
-						Коробок всього: {posesInStore?.reduce((a, b) => a + b?.boxes, 0)}
-					</TextBlock>
+						</CardBlock>
 
 
+						<CardBlock
+							className="grid lg:grid-cols-3"
+						>
 
-				</CardBlock>
+							<TextBlock
+								className="text-teal-100 text-xl justify-start p-1"
+							>
+								Позицій: {posesInStore?.length}
+							</TextBlock>
 
+							<ButtonBlock
+								className="teal-b bg-teal-500/10 shadow-lg p-4 flex  border-dashed "
+								onClick={() => { setShowModalCreatePos(true); }}
+							>
+								<TextBlock className="text-xl"><AddIcon /></TextBlock>
+								<TextBlock className="">Додати позицію</TextBlock>
 
+							</ButtonBlock>
 
-
-				<CardBlock
-					className="flex justify-center items-center "
-				>
-
-				</CardBlock>
-
-
-				{isPosesLoading ? (
-					<Spinner />
-				) : posesInStore?.length === 0 ? (
-					<p></p>
-				) : (
-					<ul className=' space-y-2'>
-
-
-						{posesInStore?.map((pos) => {
-
-							return (
-								<PositionBage
-									pos={pos}
-									onDelete={() => {
-										setShowModalDeletePos(true)
-										setSelectedPos(pos)
-									}}
-									onEdit={() => {
-										setShowModalEditPos(true)
-										setSelectedPos(pos)
-										setUpdatePosBoxesValue(pos?.boxes)
-										setUpdatePosQuantValue(pos?.quant)
-										setUpdatePosDateValue(pos?.date)
-										setUpdatePosSkladValue(pos?.sklad)
-										setUpdatePosComValue(pos?.com)
-									}}
-									artsDB={artsDB}
-
-								/>
-							);
-						})}
-					</ul>
-				)}
-
-
-			</ContainerBlock>
+							<TextBlock
+								className="text-amber-100 text-xl justify-self-end p-1"
+							>
+								Коробок всього: {posesInStore?.reduce((a, b) => a + b?.boxes, 0)}
+							</TextBlock>
 
 
 
+						</CardBlock>
+
+
+
+
+						<CardBlock
+							className="flex justify-center items-center "
+						>
+
+						</CardBlock>
+
+
+						{posesInStore?.length === 0 ? (
+							<TextBlock
+								className="text-teal-100 italic"
+							>
+								На цій палеті позицій немає
+							</TextBlock>
+						) : (
+							<ul className=' space-y-2'>
+
+
+								{posesInStore?.map((pos) => {
+
+									return (
+										<PositionBage
+											pos={pos}
+											onDelete={() => {
+												setShowModalDeletePos(true)
+												setSelectedPos(pos)
+											}}
+											onEdit={() => {
+												setShowModalEditPos(true)
+												setSelectedPos(pos)
+												setUpdatePosBoxesValue(pos?.boxes)
+												setUpdatePosQuantValue(pos?.quant)
+												setUpdatePosDateValue(pos?.date)
+												setUpdatePosSkladValue(pos?.sklad)
+												setUpdatePosComValue(pos?.com)
+											}}
+											artsDB={artsDB}
+
+										/>
+									);
+								})}
+							</ul>
+						)}
+
+
+					</ContainerBlock>
+
+				</>
+			}
 		</PageBTW>
 	)
 }
