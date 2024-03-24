@@ -262,22 +262,6 @@ export default function AskPage() {
 
 
 
-
-
-
-
-	if (isLoadingAsk) return <ContainerBlock
-		className="w-full flex justify-center items-center"
-	>
-		<Spinner color="#6366f1" />
-	</ContainerBlock>
-
-
-
-
-
-
-
 	return (
 
 
@@ -299,82 +283,21 @@ export default function AskPage() {
 			</HeaderBlock>
 
 
+			{isLoadingAsk
 
-			<ButtonGroup>
+				?
 
-				<ButtonBlock
-					className="green-b"
-					onClick={() => setShowModalDoAsk(true)}
+
+
+				<ContainerBlock
+					className="w-full h-full flex justify-start items-center"
 				>
-					Виконати
-				</ButtonBlock>
-				<ButtonBlock
-					className="rose-b"
-					onClick={() => setShowModalFailAsk(true)}
-				>
-					Відмовити
-				</ButtonBlock>
-				<ButtonBlock
-					className="red-b"
-					onClick={() => setShowModalDeleteAsk(true)}
-				>
-					Видалити
-				</ButtonBlock>
-			</ButtonGroup>
+					<Spinner color="rgb(99 102 241 )" />
+				</ContainerBlock>
 
+				:
 
-			{/* MODALS */}
-
-
-
-
-
-			{showModalDoAsk && <ModalConfirm
-				ask="Позначити цей запит виконаним?"
-				onCancel={() => setShowModalDoAsk(false)}
-				onConfirm={handleDoAsk}
-				isConfirming={isDoingAsk}
-
-
-
-			/>}
-
-			{showModalFailAsk && <ModalConfirm
-				ask="Відмовити на цей запит?"
-				onCancel={() => setShowModalFailAsk(false)}
-				onConfirm={handleFailAsk}
-				isConfirming={isFailingAsk}
-
-
-			/>}
-
-			{showModalDeleteAsk && <ModalDelete
-				ask="Видалити цей запит на зняття?"
-				onCancel={() => setShowModalDeleteAsk(false)}
-				onDelete={handleDeleteAsk}
-				isDeleting={isDeletingAsk}
-
-
-			/>}
-
-
-			<UpdateASkModal
-				showModalUpdateAsk={showModalUpdateAsk}
-				setShowModalUpdateAsk={setShowModalUpdateAsk}
-				selectedPos={selectedPos}
-				finalValuePosBoxes={finalValuePosBoxes}
-				finalValuePosQuant={finalValuePosQuant}
-				askValuePosBoxes={askValuePosBoxes}
-				askValuePosQuant={askValuePosQuant}
-				setAskValuePosBoxes={setAskValuePosBoxes}
-				setFinalValuePosBoxes={setFinalValuePosBoxes}
-				setAskValuePosQuant={setAskValuePosQuant}
-				setFinalValuePosQuant={setFinalValuePosQuant}
-				handleAskingPos={handleAskingPos}
-				isUpdatingPos={isUpdatingPos}
-
-
-			/>
+				<>
 
 
 
@@ -382,164 +305,249 @@ export default function AskPage() {
 
 
 
+					<ButtonGroup>
 
-
-
-
-
-
-			<ArtCard
-				artikul={artikul}
-				remains={remains}
-				title={title}
-				ostatok={ostatok}
-				posesWithArtikul={posesWithArtikul}
-
-			/>
-
-			<ContainerBlock>
-				<TextBlock
-					className="text-2xl"
-				>
-					Історія змін
-				</TextBlock>
-				<CardBlock
-					className="space-y-2 "
-				>
-					{ask?.actions?.map((action, i) => <TextBlock
-						key={i}
-						className="bg-indigo-500/10 p-2 text-white rounded-xl italic"
-
-					>
-						{action}
-					</TextBlock>)}
-				</CardBlock>
-			</ContainerBlock>
-
-
-			<ContainerBlock
-				className="flex justify-center w-full space-y-4"
-			>
-
-				{isLoadingPoses ?
-					<Spinner color="rgb(234 179 8 )" />
-					:
-					posesWithArtikul.length > 0 ?
-						<CardBlock
-							className="flex flex-col space-y-4 w-full"
+						<ButtonBlock
+							className="green-b"
+							onClick={() => setShowModalDoAsk(true)}
 						>
+							Виконати
+						</ButtonBlock>
+						<ButtonBlock
+							className="rose-b"
+							onClick={() => setShowModalFailAsk(true)}
+						>
+							Відмовити
+						</ButtonBlock>
+						<ButtonBlock
+							className="red-b"
+							onClick={() => setShowModalDeleteAsk(true)}
+						>
+							Видалити
+						</ButtonBlock>
+					</ButtonGroup>
 
-							{posesWithArtikul?.map((pos) => {
-								return { ...pos, palletTitle: pallets?.find((pallet) => pallet._id === pos?.pallet)?.title }
-							})
-								.sort((a, b) => b.boxes - a.boxes)
-								.map((pos) => <CardBlock
-									key={pos._id}
-									className={`
+
+					{/* MODALS */}
+
+
+
+
+
+					{showModalDoAsk && <ModalConfirm
+						ask="Позначити цей запит виконаним?"
+						onCancel={() => setShowModalDoAsk(false)}
+						onConfirm={handleDoAsk}
+						isConfirming={isDoingAsk}
+
+
+
+					/>}
+
+					{showModalFailAsk && <ModalConfirm
+						ask="Відмовити на цей запит?"
+						onCancel={() => setShowModalFailAsk(false)}
+						onConfirm={handleFailAsk}
+						isConfirming={isFailingAsk}
+
+
+					/>}
+
+					{showModalDeleteAsk && <ModalDelete
+						ask="Видалити цей запит на зняття?"
+						onCancel={() => setShowModalDeleteAsk(false)}
+						onDelete={handleDeleteAsk}
+						isDeleting={isDeletingAsk}
+
+
+					/>}
+
+
+					<UpdateASkModal
+						showModalUpdateAsk={showModalUpdateAsk}
+						setShowModalUpdateAsk={setShowModalUpdateAsk}
+						selectedPos={selectedPos}
+						finalValuePosBoxes={finalValuePosBoxes}
+						finalValuePosQuant={finalValuePosQuant}
+						askValuePosBoxes={askValuePosBoxes}
+						askValuePosQuant={askValuePosQuant}
+						setAskValuePosBoxes={setAskValuePosBoxes}
+						setFinalValuePosBoxes={setFinalValuePosBoxes}
+						setAskValuePosQuant={setAskValuePosQuant}
+						setFinalValuePosQuant={setFinalValuePosQuant}
+						handleAskingPos={handleAskingPos}
+						isUpdatingPos={isUpdatingPos}
+
+
+					/>
+
+
+
+
+
+
+
+
+
+
+
+
+
+					<ArtCard
+						artikul={artikul}
+						remains={remains}
+						title={title}
+						ostatok={ostatok}
+						posesWithArtikul={posesWithArtikul}
+
+					/>
+
+					<ContainerBlock>
+						<TextBlock
+							className="text-2xl"
+						>
+							Історія змін
+						</TextBlock>
+						<CardBlock
+							className="space-y-2 "
+						>
+							{ask?.actions?.map((action, i) => <TextBlock
+								key={i}
+								className="bg-indigo-500/10 p-2 text-white rounded-xl italic"
+
+							>
+								{action}
+							</TextBlock>)}
+						</CardBlock>
+					</ContainerBlock>
+
+
+					<ContainerBlock
+						className="flex justify-center w-full space-y-4"
+					>
+
+						{isLoadingPoses ?
+							<Spinner color="rgb(234 179 8 )" />
+							:
+							posesWithArtikul.length > 0 ?
+								<CardBlock
+									className="flex flex-col space-y-4 w-full"
+								>
+
+									{posesWithArtikul?.map((pos) => {
+										return { ...pos, palletTitle: pallets?.find((pallet) => pallet._id === pos?.pallet)?.title }
+									})
+										.sort((a, b) => b.boxes - a.boxes)
+										.map((pos) => <CardBlock
+											key={pos._id}
+											className={`
 											grid grid-cols-1 lg:grid-cols-2 space-y-2  lg:space-y-0 cursor-pointer p-4 lg:gap-8 justify-center
 											rounded-xl
 											${pos?.quant === 0 ? "bg-gray-700 hover:bg-gray-500 " : pos.sklad === "merezhi" ?
-											"bg-yellow-700/20 hover:bg-yellow-700/50  "
-											: pos.sklad === "pogrebi"
-												? "bg-blue-700/20 hover:bg-blue-700/50 "
-												: null} 
+													"bg-yellow-700/20 hover:bg-yellow-700/50  "
+													: pos.sklad === "pogrebi"
+														? "bg-blue-700/20 hover:bg-blue-700/50 "
+														: null} 
 											transition ease-in-out duration-300`}
-									onClick={() => {
-										setShowModalUpdateAsk(true);
-										setSelectedPos(pos)
-										setFinalValuePosBoxes(pos?.boxes)
-										setFinalValuePosQuant(pos?.quant)
-										setAskValuePosBoxes(0);
-										setAskValuePosQuant(0);
-										setSelectedPosPalletTitle(pallets?.find((pallet) => pallet._id === pos?.pallet)?.title)
-									}
+											onClick={() => {
+												setShowModalUpdateAsk(true);
+												setSelectedPos(pos)
+												setFinalValuePosBoxes(pos?.boxes)
+												setFinalValuePosQuant(pos?.quant)
+												setAskValuePosBoxes(0);
+												setAskValuePosQuant(0);
+												setSelectedPosPalletTitle(pallets?.find((pallet) => pallet._id === pos?.pallet)?.title)
+											}
 
-									}
-								>
-
-
-
-									<CardBlock
-										className={` flex justify-center  lg:justify-start  font-bold    `
-										}
-
-									>
-
-										<TextBlock
-											className=" text-2xl"
+											}
 										>
-											<LiaPalletSolid />
-										</TextBlock>
-
-
-										<TextBlock
-											className="grid place-content-center text-2xl"
-										>
-											{pos.palletTitle}
-										</TextBlock>
-
-									</CardBlock>
 
 
 
+											<CardBlock
+												className={` flex justify-center  lg:justify-start  font-bold    `
+												}
 
-									<CardBlock
-										className="  grid grid-cols-2  lg:justify-items-start p-1  "
-									>
-
-										<CardBlock
-											className="flex justify-center space-x-2"
-										>
-											<TextBlock
-												className="text-amber-100  text-xl">
-												<BsBoxSeam />
-											</TextBlock>
-											<TextBlock
-												className="text-amber-100 font-bold text-xl "
-											>
-												{pos?.boxes}
-											</TextBlock>
-										</CardBlock>
-
-
-										<CardBlock
-											className="flex justify-center  space-x-2"
-										>
-											<TextBlock
-												className="text-sky-100  text-xl">
-												<BsBalloon />
-											</TextBlock>
-											<TextBlock
-												className="text-sky-100  font-bold text-xl "
 											>
 
-												{pos?.quant}
-											</TextBlock>
+												<TextBlock
+													className=" text-2xl"
+												>
+													<LiaPalletSolid />
+												</TextBlock>
+
+
+												<TextBlock
+													className="grid place-content-center text-2xl"
+												>
+													{pos.palletTitle}
+												</TextBlock>
+
+											</CardBlock>
+
+
+
+
+											<CardBlock
+												className="  grid grid-cols-2  lg:justify-items-start p-1  "
+											>
+
+												<CardBlock
+													className="flex justify-center space-x-2"
+												>
+													<TextBlock
+														className="text-amber-100  text-xl">
+														<BsBoxSeam />
+													</TextBlock>
+													<TextBlock
+														className="text-amber-100 font-bold text-xl "
+													>
+														{pos?.boxes}
+													</TextBlock>
+												</CardBlock>
+
+
+												<CardBlock
+													className="flex justify-center  space-x-2"
+												>
+													<TextBlock
+														className="text-sky-100  text-xl">
+														<BsBalloon />
+													</TextBlock>
+													<TextBlock
+														className="text-sky-100  font-bold text-xl "
+													>
+
+														{pos?.quant}
+													</TextBlock>
+												</CardBlock>
+
+											</CardBlock>
+
+
 										</CardBlock>
 
-									</CardBlock>
+										)}
+
+
 
 
 								</CardBlock>
-
-								)}
-
-
-
-
-						</CardBlock>
-						:
-						<TextBlock
-							className="text-amber-500 text-xl"
-						>
-							Позиції немає на запасах
-						</TextBlock>
+								:
+								<TextBlock
+									className="text-amber-500 text-xl"
+								>
+									Позиції немає на запасах
+								</TextBlock>
 
 
-				}
+						}
 
-			</ContainerBlock>
+					</ContainerBlock>
 
+
+				</>
+			}
 
 
 		</PageBTW >

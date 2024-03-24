@@ -387,457 +387,463 @@ export default function DefsPage() {
 
 
 
-			<ButtonGroup>
 
 
-				<ButtonBlock
-					className="sky-b"
-					onClick={calculateDefs}
+
+
+
+			{isFetchingPoses ?
+
+
+				<ContainerBlock
+					className="w-full h-full flex justify-start items-center"
 				>
-					Показати дефіцити
-				</ButtonBlock>
-
-
-				<ButtonBlock
-					className="orange-b"
-					onClick={handleSelectCorrectRows}
-				>
-					Правильні ряди
-				</ButtonBlock>
-
-
-
-				<ButtonBlock
-					className="pink-b"
-					onClick={handleActualizeDefs}
-				>
-					Актуалізація дефіцитів
-				</ButtonBlock>
-
-
-
-			</ButtonGroup>
-
-
-
-
-
-
-			{/* Список чекбоксов рядов для фильтра */}
-
-
-
-
-
-			<ContainerBlock className="flex flex-wrap gap-2 ">
-
-
-				<CardBlock className="inline-flex items-center bg-pink-500/20 p-2 gap-1">
-					<InputBlock
-						className="appearance-none h-6 w-6 checked:bg-pink-500 rounded-sm border-none"
-						type="checkbox"
-						checked={selectedRowTitles.length === uniqueRowTitles.length}
-						onChange={handleSelectAllChange}
-					/>
-					<span className="text-pink-100 text-lg">Вибрати всі</span>
-				</CardBlock>
-
-
-				{uniqueRowTitles
-					.sort((a, b) => parseInt(a) - parseInt(b))
-
-
-					.map((title, index) => (
-						<CardBlock key={index} className="inline-flex items-center bg-pink-500/20  p-2 gap-1">
-							<InputBlock
-								className="appearance-none  h-6 w-6 checked:bg-pink-500 rounded-xl border-none "
-								type="checkbox"
-								value={title}
-								checked={selectedRowTitles.includes(title)}
-								onChange={handleRowTitleChange}
-							/>
-							<span className=" text-pink-100 text-lg">{title}</span>
-						</CardBlock>
-					))}
-			</ContainerBlock>
-
-
-
-
-
-
-
-
-
-
-
-			{/* MODAL CREATE ASK */}
-
-
-
-
-			{showModalCreateAsk && <ModalWrapper
-				onCancel={() => setShowModalCreateAsk(false)}
-				title="Створення запиту на зняття "
-			>
-
-
-				<CardBlock
-					className="flex flex-col space-y-8 min-w-fit max-w-lg text-xl "
-				>
-
-					<CardBlock className="grid grid-cols-1 gap-1">
-						<CardBlock
-							className="grid justify-self-center w-full place-content-center bg-white"
-						>
-							<ImageArt
-								size={150}
-								artikul={newAskArtikul?.length === 9 ? newAskArtikul : "1102-3092"}
-							/>
-						</CardBlock>
-						<TextBlock className="text-xl grid justify-self-center italic">
-							{artsDB?.find((art) => art.artikul === newAskArtikul)?.nameukr || newAskArtikul}
-						</TextBlock>
-					</CardBlock>
-
-
-					<CardBlock className="space-y-2">
-
-
-						<CardBlock className="grid grid-cols-1 md:grid-cols-2 space-x-2">
-							<label className=" justify-self-center self-center md:justify-self-start" htmlFor="artikul">Артикул:</label>
-							<InputBlock
-								type="text"
-								id="artikul"
-								name="artikul"
-								autoComplete="off"
-								value={newAskArtikul}
-								onChange={(e) => setNewAskArtikul(e.target.value)}
-							/>
-						</CardBlock>
-
-
-
-
-
-						<CardBlock className="grid grid-cols-1 md:grid-cols-2 space-x-2">
-							<label className=" justify-self-center self-center md:justify-self-start" htmlFor="quant">Кількість:</label>
-							<InputBlock
-								type="number"
-								id="quant"
-								name="quant"
-								autoComplete="off"
-								value={newAskQuant}
-								onChange={(e) => setNewAskQuant(e.target.value)}
-							/>
-						</CardBlock>
-
-						<CardBlock className="grid grid-cols-1 md:grid-cols-2 space-x-2">
-							<label className=" justify-self-center self-center md:justify-self-start" htmlFor="com">Комент:</label>
-							<InputBlock
-								type="text"
-								id="com"
-								name="com"
-								autoComplete="off"
-								value={newAskCom}
-								onChange={(e) => setNewAskCom(e.target.value)}
-							/>
-						</CardBlock>
-
-					</CardBlock>
-
-
-
-					<CardBlock className="grid grid-cols-2 space-x-2">
-
-
-						<ButtonBlock
-							className="red-b flex justify-center items-center"
-							onClick={() => setShowModalCreateAsk(false)}
-						>
-							<TextBlock className="text-2xl"><CancelIcon /></TextBlock>
-							<TextBlock className=""> Скасувати</TextBlock>
-
-						</ButtonBlock>
-
-
-
-						<ButtonBlock
-							disabled={!newAskArtikul}
-							type="submit"
-							className="green-b flex justify-center items-center"
-							onClick={handleCreateAsk}
-						>
-
-
-							{isCreatingAsk ?
-
-								<Spinner color="green" />
-								:
-								<>
-									<TextBlock className="text-2xl"><OkIcon /></TextBlock>
-									<TextBlock className=""> 	Створити</TextBlock>
-								</>
-
-							}
-
-						</ButtonBlock>
-					</CardBlock>
-
-
-
-				</CardBlock>
-			</ModalWrapper>
-			}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-			{isFetchingPoses
-				?
-				<ContainerBlock>
 					<Spinner color="rgb(236 72 153)" />
 				</ContainerBlock>
+
 				:
 
-				<ContainerBlock
-					className="grid lg:grid-cols-2 gap-2 p-2 "
+				<>
 
-				>
 
-					<TextBlock
-						className="text-xl text-emerald-100 bg-slate-700 rounded-xl"
+					<ButtonGroup>
+
+
+						<ButtonBlock
+							className="sky-b"
+							onClick={calculateDefs}
+						>
+							Показати дефіцити
+						</ButtonBlock>
+
+
+						<ButtonBlock
+							className="orange-b"
+							onClick={handleSelectCorrectRows}
+						>
+							Правильні ряди
+						</ButtonBlock>
+
+
+
+						<ButtonBlock
+							className="pink-b"
+							onClick={handleActualizeDefs}
+						>
+							Актуалізація дефіцитів
+						</ButtonBlock>
+
+
+
+					</ButtonGroup>
+
+
+
+
+
+
+					{/* Список чекбоксов рядов для фильтра */}
+
+
+
+
+
+					<ContainerBlock className="flex flex-wrap gap-2 ">
+
+
+						<CardBlock className="inline-flex items-center bg-pink-500/20 p-2 gap-1">
+							<InputBlock
+								className="appearance-none h-6 w-6 checked:bg-pink-500 rounded-sm border-none"
+								type="checkbox"
+								checked={selectedRowTitles.length === uniqueRowTitles.length}
+								onChange={handleSelectAllChange}
+							/>
+							<span className="text-pink-100 text-lg">Вибрати всі</span>
+						</CardBlock>
+
+
+						{uniqueRowTitles
+							.sort((a, b) => parseInt(a) - parseInt(b))
+
+
+							.map((title, index) => (
+								<CardBlock key={index} className="inline-flex items-center bg-pink-500/20  p-2 gap-1">
+									<InputBlock
+										className="appearance-none  h-6 w-6 checked:bg-pink-500 rounded-xl border-none "
+										type="checkbox"
+										value={title}
+										checked={selectedRowTitles.includes(title)}
+										onChange={handleRowTitleChange}
+									/>
+									<span className=" text-pink-100 text-lg">{title}</span>
+								</CardBlock>
+							))}
+					</ContainerBlock>
+
+
+
+
+
+
+
+
+
+
+
+					{/* MODAL CREATE ASK */}
+
+
+
+
+					{showModalCreateAsk && <ModalWrapper
+						onCancel={() => setShowModalCreateAsk(false)}
+						title="Створення запиту на зняття "
 					>
-						Позиції всього: {allPoses?.length}
-					</TextBlock>
 
 
-
-					<TextBlock
-						className="text-xl text-sky-100 bg-slate-700 rounded-xl"
-					>
-						Артикули: {artsDB?.length}
-					</TextBlock>
-
-
-					{/* <TextBlock>
-						Залишки: {remains ? remains["1102-0260"] : null}
-					</TextBlock> */}
-
-					<TextBlock
-						className="text-xl text-orange-100 bg-slate-700 rounded-xl"
-					>
-						Запаси: {stocks?.length}
-					</TextBlock>
-
-					<TextBlock
-						className="text-xl text-pink-100 bg-slate-700 rounded-xl"
-					>
-						Дефіцити: {defs?.length}
-					</TextBlock>
-
-				</ContainerBlock>
-			}
-
-
-
-			{/* Полоска анализа */}
-
-			{isFetchingQuants &&
-				<ContainerBlock>
-
-
-					<div className="relative pt-1 px-4">
-
-
-						<div className="flex px-4 mb-2 items-center justify-between">
-
-
-							<span className="text-sm font-semibold inline-block text-pink-100">
-								{progress.toFixed(2)}%
-							</span>
-							<span>{artsDB.find(art => art?.artikul === stocks[currentFetchingStock - 1]?.artikul)?.nameukr || stocks[currentFetchingStock - 1]?.artikul}</span>
-
-							<span>{currentFetchingStock} / {stocks?.length}</span>
-
-
-
-						</div>
-
-
-						<div className="flex h-2 mb-4 overflow-hidden text-xs bg-violet-200">
-							<div
-								style={{ width: `${progress}%` }}
-								className="flex flex-col justify-center text-center text-white bg-pink-500 shadow-none whitespace-nowrap"
-							></div>
-						</div>
-					</div>
-
-				</ContainerBlock>
-
-			}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-			{defs?.length > 0 ?
-
-
-
-
-
-				<ContainerBlock
-					className="space-y-2 pb-4"
-				>
-					{defs?.map((def, i) =>
 						<CardBlock
-							key={i}
-							className="grid  lg:grid-cols-6 p-2  bg-pink-500/5 hover:bg-pink-500/10 rounded-xl"
-
+							className="flex flex-col space-y-8 min-w-fit max-w-lg text-xl "
 						>
 
-
-							<CardBlock
-								className="lg:col-span-3 flex "
-
-							>
-
+							<CardBlock className="grid grid-cols-1 gap-1">
 								<CardBlock
-									className="lg:col-span-1 bg-white flex justify-center rounded-l-lg"
+									className="grid justify-self-center w-full place-content-center bg-white"
 								>
-									<ImageArt size={100} artikul={def.artikul} className="rounded-l-lg" />
+									<ImageArt
+										size={150}
+										artikul={newAskArtikul?.length === 9 ? newAskArtikul : "1102-3092"}
+									/>
+								</CardBlock>
+								<TextBlock className="text-xl grid justify-self-center italic">
+									{artsDB?.find((art) => art.artikul === newAskArtikul)?.nameukr || newAskArtikul}
+								</TextBlock>
+							</CardBlock>
 
+
+							<CardBlock className="space-y-2">
+
+
+								<CardBlock className="grid grid-cols-1 md:grid-cols-2 space-x-2">
+									<label className=" justify-self-center self-center md:justify-self-start" htmlFor="artikul">Артикул:</label>
+									<InputBlock
+										type="text"
+										id="artikul"
+										name="artikul"
+										autoComplete="off"
+										value={newAskArtikul}
+										onChange={(e) => setNewAskArtikul(e.target.value)}
+									/>
 								</CardBlock>
 
 
-								<TextBlock
-									className="lg:col-span-2 p-2 text-xl text-center italic bg-sky-500/10 hover:bg-sky-500 rounded-r-lg cursor-pointer "
-									onClick={() => {
-										const artId = artsDB?.find(art => art.artikul === def.artikul)?._id || "";
-										const url = `/arts/${artId}`;
-										window.open(url, "_blank");
-									}}
-								>
-									{artsDB?.find(art => art.artikul === def.artikul)?.nameukr || def.artikul}
-								</TextBlock>
+
+
+
+								<CardBlock className="grid grid-cols-1 md:grid-cols-2 space-x-2">
+									<label className=" justify-self-center self-center md:justify-self-start" htmlFor="quant">Кількість:</label>
+									<InputBlock
+										type="number"
+										id="quant"
+										name="quant"
+										autoComplete="off"
+										value={newAskQuant}
+										onChange={(e) => setNewAskQuant(e.target.value)}
+									/>
+								</CardBlock>
+
+								<CardBlock className="grid grid-cols-1 md:grid-cols-2 space-x-2">
+									<label className=" justify-self-center self-center md:justify-self-start" htmlFor="com">Комент:</label>
+									<InputBlock
+										type="text"
+										id="com"
+										name="com"
+										autoComplete="off"
+										value={newAskCom}
+										onChange={(e) => setNewAskCom(e.target.value)}
+									/>
+								</CardBlock>
 
 							</CardBlock>
 
 
 
+							<CardBlock className="grid grid-cols-2 space-x-2">
 
-
-							<CardBlock
-								className="lg:col-span-2 justify-self-stretch flex flex-col items-start justify-around p-3 bg-slate-700/50 rounded-lg "
-							>
-
-
-								<TextBlock
-									className="text-xl text-left space-x-2"
-								>
-									<TextBlock
-										className="text-xl text-left "
-									>
-										Запаси:
-									</TextBlock>
-
-									<TextBlock
-										className="text-teal-300"
-									>{
-											def?.quant}
-									</TextBlock>
-								</TextBlock>
-
-
-
-								<TextBlock
-									className="text-xl text-left space-x-2"
-								>
-									<TextBlock>База:</TextBlock>
-									<TextBlock className="text-amber-300">{def?.remain}</TextBlock>
-								</TextBlock>
-
-
-								<TextBlock
-									className="text-xl text-left space-x-2"
-								>
-									<TextBlock>Дефіцит:</TextBlock>
-									<TextBlock className="text-pink-300">{def?.dif}</TextBlock>
-								</TextBlock>
-
-							</CardBlock>
-
-
-							<CardBlock
-								className="lg:col-span-1 flex justify-center items-center"
-							>
 
 								<ButtonBlock
-									className="pink-b"
-									onClick={() => {
-										setShowModalCreateAsk(true)
-										setNewAskArtikul(def.artikul)
-									}}
+									className="red-b flex justify-center items-center"
+									onClick={() => setShowModalCreateAsk(false)}
 								>
-									Створити запит
+									<TextBlock className="text-2xl"><CancelIcon /></TextBlock>
+									<TextBlock className=""> Скасувати</TextBlock>
+
 								</ButtonBlock>
 
-							</CardBlock>
 
+
+								<ButtonBlock
+									disabled={!newAskArtikul}
+									type="submit"
+									className="green-b flex justify-center items-center"
+									onClick={handleCreateAsk}
+								>
+
+
+									{isCreatingAsk ?
+
+										<Spinner color="green" />
+										:
+										<>
+											<TextBlock className="text-2xl"><OkIcon /></TextBlock>
+											<TextBlock className=""> 	Створити</TextBlock>
+										</>
+
+									}
+
+								</ButtonBlock>
+							</CardBlock>
 
 
 
 						</CardBlock>
-					)}
-
-				</ContainerBlock>
-
-				:
-
-				isFetchingPoses
-					?
-
-					null
-					:
-
-					<TextBlock>
-						Дефіцитів немає
-					</TextBlock>
-			}
+					</ModalWrapper>
+					}
 
 
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+					{isFetchingPoses
+						?
+						<ContainerBlock>
+							<Spinner color="rgb(236 72 153)" />
+						</ContainerBlock>
+						:
+
+						<ContainerBlock
+							className="grid lg:grid-cols-2 gap-2 p-2 "
+
+						>
+
+							<TextBlock
+								className="text-xl text-emerald-100 bg-slate-700 rounded-xl"
+							>
+								Позиції всього: {allPoses?.length}
+							</TextBlock>
+
+
+
+							<TextBlock
+								className="text-xl text-sky-100 bg-slate-700 rounded-xl"
+							>
+								Артикули: {artsDB?.length}
+							</TextBlock>
+
+
+							{/* <TextBlock>
+						Залишки: {remains ? remains["1102-0260"] : null}
+					</TextBlock> */}
+
+							<TextBlock
+								className="text-xl text-orange-100 bg-slate-700 rounded-xl"
+							>
+								Запаси: {stocks?.length}
+							</TextBlock>
+
+							<TextBlock
+								className="text-xl text-pink-100 bg-slate-700 rounded-xl"
+							>
+								Дефіцити: {defs?.length}
+							</TextBlock>
+
+						</ContainerBlock>
+					}
+
+
+
+					{/* Полоска анализа */}
+
+					{isFetchingQuants &&
+						<ContainerBlock>
+
+
+							<div className="relative pt-1 px-4">
+
+
+								<div className="flex px-4 mb-2 items-center justify-between">
+
+
+									<span className="text-sm font-semibold inline-block text-pink-100">
+										{progress.toFixed(2)}%
+									</span>
+									<span>{artsDB.find(art => art?.artikul === stocks[currentFetchingStock - 1]?.artikul)?.nameukr || stocks[currentFetchingStock - 1]?.artikul}</span>
+
+									<span>{currentFetchingStock} / {stocks?.length}</span>
+
+
+
+								</div>
+
+
+								<div className="flex h-2 mb-4 overflow-hidden text-xs bg-violet-200">
+									<div
+										style={{ width: `${progress}%` }}
+										className="flex flex-col justify-center text-center text-white bg-pink-500 shadow-none whitespace-nowrap"
+									></div>
+								</div>
+							</div>
+
+						</ContainerBlock>
+
+					}
+
+
+
+
+
+					{defs?.length > 0 ?
+
+
+
+
+
+						<ContainerBlock
+							className="space-y-2 pb-4"
+						>
+							{defs?.map((def, i) =>
+								<CardBlock
+									key={i}
+									className="grid  lg:grid-cols-6 p-2  bg-pink-500/5 hover:bg-pink-500/10 rounded-xl"
+
+								>
+
+
+									<CardBlock
+										className="lg:col-span-3 flex "
+
+									>
+
+										<CardBlock
+											className="lg:col-span-1 bg-white flex justify-center rounded-l-lg"
+										>
+											<ImageArt size={100} artikul={def.artikul} className="rounded-l-lg" />
+
+										</CardBlock>
+
+
+										<TextBlock
+											className="lg:col-span-2 p-2 text-xl text-center italic bg-sky-500/10 hover:bg-sky-500 rounded-r-lg cursor-pointer "
+											onClick={() => {
+												const artId = artsDB?.find(art => art.artikul === def.artikul)?._id || "";
+												const url = `/arts/${artId}`;
+												window.open(url, "_blank");
+											}}
+										>
+											{artsDB?.find(art => art.artikul === def.artikul)?.nameukr || def.artikul}
+										</TextBlock>
+
+									</CardBlock>
+
+
+
+
+
+									<CardBlock
+										className="lg:col-span-2 justify-self-stretch flex flex-col items-start justify-around p-3 bg-slate-700/50 rounded-lg "
+									>
+
+
+										<TextBlock
+											className="text-xl text-left space-x-2"
+										>
+											<TextBlock
+												className="text-xl text-left "
+											>
+												Запаси:
+											</TextBlock>
+
+											<TextBlock
+												className="text-teal-300"
+											>{
+													def?.quant}
+											</TextBlock>
+										</TextBlock>
+
+
+
+										<TextBlock
+											className="text-xl text-left space-x-2"
+										>
+											<TextBlock>База:</TextBlock>
+											<TextBlock className="text-amber-300">{def?.remain}</TextBlock>
+										</TextBlock>
+
+
+										<TextBlock
+											className="text-xl text-left space-x-2"
+										>
+											<TextBlock>Дефіцит:</TextBlock>
+											<TextBlock className="text-pink-300">{def?.dif}</TextBlock>
+										</TextBlock>
+
+									</CardBlock>
+
+
+									<CardBlock
+										className="lg:col-span-1 flex justify-center items-center"
+									>
+
+										<ButtonBlock
+											className="pink-b"
+											onClick={() => {
+												setShowModalCreateAsk(true)
+												setNewAskArtikul(def.artikul)
+											}}
+										>
+											Створити запит
+										</ButtonBlock>
+
+									</CardBlock>
+
+
+
+
+								</CardBlock>
+							)}
+
+						</ContainerBlock>
+
+						:
+
+						isFetchingPoses
+							?
+
+							null
+							:
+
+							<TextBlock>
+								Дефіцитів немає
+							</TextBlock>
+					}
+
+
+
+
+				</>
+}
 
 
 		</PageBTW >

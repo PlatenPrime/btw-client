@@ -22,7 +22,8 @@ export default function PositionBage({ pos, onDelete, onEdit, artsDB }) {
 	 relative  shadow-lg 
 	
 	 
-	 ${pos?.quant ? "hover:bg-teal-500/10 hover:shadow-teal-500": "bg-slate-700/80 hover:bg-slate-700 hover:shadow-slate-700 " }
+	 ${pos?.quant ? "hover:bg-teal-500/10 hover:shadow-teal-500": "bg-slate-700/80 hover:bg-slate-700 hover:shadow-slate-700 g " }
+	 
 	 
 
 		rounded-xl
