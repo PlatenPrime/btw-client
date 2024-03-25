@@ -726,7 +726,7 @@ export default function DefsPage() {
 							{defs?.map((def, i) =>
 								<CardBlock
 									key={i}
-									className="grid  lg:grid-cols-6 p-2  bg-pink-500/5 hover:bg-pink-500/10 rounded-xl"
+									className="grid  lg:grid-cols-6 gap-2 p-2  bg-pink-500/5 hover:bg-pink-500/10 rounded-xl"
 
 								>
 
@@ -737,7 +737,7 @@ export default function DefsPage() {
 									>
 
 										<CardBlock
-											className="lg:col-span-1 bg-white flex justify-center rounded-l-lg"
+											className="lg:col-span-1 bg-white flex justify-center items-center rounded-l-lg"
 										>
 											<ImageArt size={100} artikul={def.artikul} className="rounded-l-lg" />
 
@@ -745,7 +745,7 @@ export default function DefsPage() {
 
 
 										<TextBlock
-											className="lg:col-span-2 p-2 text-xl text-center italic bg-sky-500/10 hover:bg-sky-500 rounded-r-lg cursor-pointer "
+											className="lg:col-span-2  w-full p-2 text-xl text-center italic bg-sky-500/10 hover:bg-sky-500 rounded-r-lg cursor-pointer "
 											onClick={() => {
 												const artId = artsDB?.find(art => art.artikul === def.artikul)?._id || "";
 												const url = `/arts/${artId}`;
@@ -769,11 +769,7 @@ export default function DefsPage() {
 										<TextBlock
 											className="text-xl text-left space-x-2"
 										>
-											<TextBlock
-												className="text-xl text-left "
-											>
-												Запаси:
-											</TextBlock>
+											<TextBlock className="text-xl text-left " >Запаси:</TextBlock>
 
 											<TextBlock
 												className="text-teal-300"
@@ -800,6 +796,11 @@ export default function DefsPage() {
 										</TextBlock>
 
 									</CardBlock>
+
+
+
+
+
 
 
 									<CardBlock
