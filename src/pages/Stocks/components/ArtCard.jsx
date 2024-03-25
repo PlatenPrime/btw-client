@@ -43,14 +43,14 @@ export default function ArtCard(
 			>
 
 				<TextBlock
-					className="text-2xl w-full    p-1  lg:text-center bg-slate-700 rounded-xl"
+					className="text-2xl w-full    p-1  lg:text-center bg-sky-900/20 rounded-xl"
 				>
 					{artikul?.nameukr}
 				</TextBlock>
 
 
 				<CardBlock
-					className="w-full flex items-start flex-col  p-1 bg-slate-700 rounded-xl"
+					className="w-full flex items-start flex-col  p-1 bg-sky-900/20 rounded-xl"
 				>
 
 					<TextBlock className="  text-xl   p-1 rounded text-orange-100" >

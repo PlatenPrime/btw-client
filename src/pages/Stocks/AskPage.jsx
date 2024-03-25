@@ -404,7 +404,7 @@ export default function AskPage() {
 
 					<ContainerBlock>
 						<TextBlock
-							className="text-2xl"
+							className="text-2xl text-green-100"
 						>
 							Історія змін
 						</TextBlock>
@@ -413,10 +413,10 @@ export default function AskPage() {
 						>
 							{ask?.actions?.map((action, i) => <TextBlock
 								key={i}
-								className="bg-indigo-500/10 p-2 text-white rounded-xl italic"
+								className="bg-green-500/10 p-2 text-white rounded-xl italic justify-start"
 
 							>
-								{action}
+								{i+1 + ". "}{action}
 							</TextBlock>)}
 						</CardBlock>
 					</ContainerBlock>
