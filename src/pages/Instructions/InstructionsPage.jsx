@@ -22,6 +22,11 @@ export default function InstructionsPage() {
 			</HeaderBlock>
 
 
+
+
+			
+
+
 			<ButtonGroup>
 				<ButtonBlock
 					className="green-b"
@@ -31,6 +36,12 @@ export default function InstructionsPage() {
 					Створити інструкцію
 				</ButtonBlock>
 			</ButtonGroup>
+
+
+
+
+
+
 
 
 
