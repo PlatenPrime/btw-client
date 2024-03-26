@@ -24,14 +24,6 @@ export default function CreateInsPage() {
 	const [newDepartment, setNewDepartment] = useState('')
 	const [newAccess, setNewAccess] = useState('')
 
-
-
-	const [editorState, setEditorState] = useState(EditorState.createEmpty());
-
-
-
-
-
 	console.log(insId);
 
 
@@ -41,10 +33,24 @@ export default function CreateInsPage() {
 
 
 
+
+	const [editorState, setEditorState] = useState(() => {
+		const storedContent = localStorage.getItem('editorContent');
+		if (storedContent) {
+		  return EditorState.createWithContent(convertFromRaw(JSON.parse(storedContent)));
+		}
+		return EditorState.createEmpty();
+	  });
+
+
+
 	// Функция для обновления состояния редактора при вводе текста
-	const handleEditorStateChange = (newEditorState) => {
+	const handleEditorStateChange= (newEditorState) => {
+		const contentState = newEditorState.getCurrentContent();
+		// Save content to local storage
+		localStorage.setItem('editorContent', JSON.stringify(convertToRaw(contentState)));
 		setEditorState(newEditorState);
-	};
+	  };
 
 
 	// Функция для первичного создания инструкции в базу данных MongoDB
