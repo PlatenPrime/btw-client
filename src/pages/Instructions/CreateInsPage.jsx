@@ -20,6 +20,9 @@ export default function CreateInsPage() {
 
 	const [insId, setInsId] = useState('')
 	const [newTitle, setNewTitle] = useState('')
+	const [newCategory, setNewCategory] = useState('')
+	const [newDepartment, setNewDepartment] = useState('')
+	const [newAccess, setNewAccess] = useState('')
 
 
 
@@ -56,8 +59,9 @@ export default function CreateInsPage() {
 			const response = await axios.post('https://btw-server.up.railway.app/api/ins', {
 				title: newTitle,
 				body: JSON.stringify(rawContent),
-				category: "reglament",
-				department: "Truba"
+				category: newCategory,
+				department: newDepartment,
+				access: newAccess
 
 			});
 
@@ -92,6 +96,9 @@ export default function CreateInsPage() {
 			const response = await axios.put(`https://btw-server.up.railway.app/api/ins/${insId}`, {
 				title: newTitle,
 				body: JSON.stringify(rawContent),
+				category: newCategory,
+				department: newDepartment,
+				access: newAccess
 			});
 			console.log(response);
 
@@ -155,13 +162,7 @@ export default function CreateInsPage() {
 
 
 			<ButtonGroup>
-				<ButtonBlock
-					className="violet-b"
-				>
-					Imgur
-				</ButtonBlock>
-
-
+				
 
 				<ButtonBlock
 					className="green-b"
@@ -198,14 +199,87 @@ export default function CreateInsPage() {
 
 
 				<CardBlock
-					className="grid place-center"
+					className="flex justify-start items-center space-x-4"
+
 				>
+
+					<label htmlFor="">Назва інструкції: </label>
+
 					<InputBlock
-						className="mx-auto"
+						name="newTitle"
+						className=""
 						value={newTitle}
 						onChange={(e) => setNewTitle(e.target.value)}
+						placeholder="..."
 					/>
+
+
 				</CardBlock>
+
+
+
+				<CardBlock
+					className="flex justify-start items-center space-x-4"
+
+				>
+					{/* регламент, посадова */}
+					<label htmlFor="">Категорія: </label>
+
+					<InputBlock
+						name="newCategory"
+						className=""
+						value={newCategory}
+						onChange={(e) => setNewCategory(e.target.value)}
+						placeholder="регламент, посадова "
+					/>
+
+
+				</CardBlock>
+
+
+
+				<CardBlock
+					className="flex justify-start items-center space-x-4"
+
+				>
+
+					<label htmlFor="">Відділ: </label>
+
+					<InputBlock
+						name="newDepartment"
+						className=""
+						value={newDepartment}
+						onChange={(e) => setNewDepartment(e.target.value)}
+						placeholder="Погреби, Труба, Дніпро "
+					/>
+
+
+				</CardBlock>
+
+
+				<CardBlock
+					className="flex justify-start items-center space-x-4"
+
+				>
+
+					<label htmlFor="">Доступ: </label>
+
+					<InputBlock
+						name="newAccess"
+						className=""
+						value={newAccess}
+						onChange={(e) => setNewAccess(e.target.value)}
+						placeholder="Тільки менеджери, Бтрейд "
+					/>
+
+
+				</CardBlock>
+
+
+
+
+
+
 
 
 				<Editor
