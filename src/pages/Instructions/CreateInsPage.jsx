@@ -32,25 +32,25 @@ export default function CreateInsPage() {
 
 
 
-
+	const [imageCache, setImageCache] = useState({});
 
 	const [editorState, setEditorState] = useState(() => {
 		const storedContent = localStorage.getItem('editorContent');
 		if (storedContent) {
-		  return EditorState.createWithContent(convertFromRaw(JSON.parse(storedContent)));
+			return EditorState.createWithContent(convertFromRaw(JSON.parse(storedContent)));
 		}
 		return EditorState.createEmpty();
-	  });
+	});
 
 
 
 	// Функция для обновления состояния редактора при вводе текста
-	const handleEditorStateChange= (newEditorState) => {
+	const handleEditorStateChange = (newEditorState) => {
 		const contentState = newEditorState.getCurrentContent();
 		// Save content to local storage
 		localStorage.setItem('editorContent', JSON.stringify(convertToRaw(contentState)));
 		setEditorState(newEditorState);
-	  };
+	};
 
 
 	// Функция для первичного создания инструкции в базу данных MongoDB
@@ -120,11 +120,48 @@ export default function CreateInsPage() {
 
 
 
+	// const uploadImageCallback = async (file) => {
+	// 	const formData = new FormData();
+	// 	formData.append('image', file);
+
+	// 	try {
+	// 		const response = await fetch('https://api.imgur.com/3/image', {
+	// 			method: 'POST',
+	// 			headers: {
+	// 				Authorization: 'Client-ID 86f656ab03b0dcf', // Вставьте ваш Client ID Imgur
+	// 			},
+	// 			body: formData,
+	// 		});
+
+	// 		if (!response.ok) {
+	// 			throw Error(response.statusText);
+	// 		}
+
+	// 		console.log(response);
+
+
+	// 		const data = await response.json();
+	// 		return { data: { link: data.data.link } };
+	// 	} catch (error) {
+	// 		console.error('Error uploading image to Imgur:', error);
+	// 		return { error: 'Failed to upload image' };
+	// 	}
+	// };
+
+
+
+
+
 	const uploadImageCallback = async (file) => {
 		const formData = new FormData();
 		formData.append('image', file);
 
 		try {
+			if (imageCache[file.name]) {
+				// Если изображение уже было загружено, возвращаем кешированную ссылку
+				return { data: { link: imageCache[file.name] } };
+			}
+
 			const response = await fetch('https://api.imgur.com/3/image', {
 				method: 'POST',
 				headers: {
@@ -137,16 +174,26 @@ export default function CreateInsPage() {
 				throw Error(response.statusText);
 			}
 
-			console.log(response);
-
-
 			const data = await response.json();
+			// Сохраняем ссылку в кеше
+			setImageCache(prevState => ({
+				...prevState,
+				[file.name]: data.data.link,
+			}));
+
 			return { data: { link: data.data.link } };
 		} catch (error) {
 			console.error('Error uploading image to Imgur:', error);
 			return { error: 'Failed to upload image' };
 		}
 	};
+
+
+
+
+
+
+
 
 
 
@@ -168,7 +215,7 @@ export default function CreateInsPage() {
 
 
 			<ButtonGroup>
-				
+
 
 				<ButtonBlock
 					className="green-b"
