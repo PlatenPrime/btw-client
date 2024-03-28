@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-import { CardBlock, ContainerBlock, HeaderBlock, ImageArt, PageBTW, Spinner, TextBlock } from "../../components";
+import { ButtonBlock, ButtonGroup, CardBlock, ContainerBlock, HeaderBlock, ImageArt, InputBlock, ModalWrapper, PageBTW, Spinner, TextBlock } from "../../components";
 import useArtikulStore from "./stores/artsStore";
 import { Link, useParams } from "react-router-dom";
 import usePosesStore from "./stores/posesStore";
@@ -10,15 +10,21 @@ import useFetchRemains from "../../hooks/useFetchRemains";
 import { VscLocation } from "react-icons/vsc";
 import { FaWarehouse } from "react-icons/fa6";
 import { getArtDataBtrade } from "../../utils/getArtDataBtrade";
-import { PalletIcon } from "../../components/UI/Icons";
+import { CancelIcon, OkIcon, PalletIcon } from "../../components/UI/Icons";
 import ArtCard from "./components/ArtCard";
+import useAskStore from "./stores/asksStore";
+import useAuthStore from "../Auth/authStore";
+import { toast } from "react-toastify";
+import useFetchArts from "../../hooks/useFetchArts";
 
 
 export default function ArtPage() {
 
 
 	const { remains } = useFetchRemains()
+	const { artsDB, loadingArtsDB, errorArtsDB } = useFetchArts()
 
+	const { user } = useAuthStore()
 
 
 	const { id } = useParams()
@@ -31,8 +37,14 @@ export default function ArtPage() {
 	const pallets = usePalletStore((state) => state.pallets);
 	const getAllPallets = usePalletStore((state) => state.getAllPallets);
 
+	const { createAsk } = useAskStore()
+	const [isCreatingAsk, setIsCreatingAsk] = useState(false)
+	const [newAskArtikul, setNewAskArtikul] = useState('')
+	const [newAskQuant, setNewAskQuant] = useState('')
+	const [newAskCom, setNewAskCom] = useState('')
 
 
+	const [showModalCreateAsk, setShowModalCreateAsk] = useState(false)
 
 
 
@@ -117,6 +129,42 @@ export default function ArtPage() {
 
 
 
+	async function handleCreateAsk() {
+		try {
+
+			setIsCreatingAsk(true)
+
+			const newAskData = {
+				artikul: newAskArtikul,
+				quant: newAskQuant,
+				com: newAskCom,
+				status: "new",
+				asker: user._id
+			}
+
+			const newAsk = await createAsk(newAskData)
+
+
+			if (newAsk) toast.success(`Запит на ${newAskArtikul} створено`)
+
+			console.log(newAsk);
+
+
+		} catch (error) {
+			console.log(error)
+		} finally {
+			setNewAskArtikul('')
+			setNewAskQuant('')
+			setNewAskCom('')
+			setIsCreatingAsk(false)
+			setShowModalCreateAsk(false)
+
+		}
+
+
+
+	}
+
 
 
 
@@ -155,6 +203,139 @@ export default function ArtPage() {
 				<CardBlock
 					className="space-y-2 min-h-screen"
 				>
+
+
+
+					{showModalCreateAsk && <ModalWrapper
+						onCancel={() => setShowModalCreateAsk(false)}
+						title="Створення запиту на зняття "
+					>
+
+
+						<CardBlock
+							className="flex flex-col space-y-8 min-w-fit max-w-lg text-xl "
+						>
+
+							<CardBlock className="grid grid-cols-1 gap-1">
+								<CardBlock
+									className="grid justify-self-center w-full place-content-center bg-white"
+								>
+									<ImageArt
+										size={150}
+										artikul={newAskArtikul?.length === 9 ? newAskArtikul : "1102-3092"}
+									/>
+								</CardBlock>
+								<TextBlock className="text-xl grid justify-self-center italic">
+									{artsDB?.find((art) => art.artikul === newAskArtikul)?.nameukr || newAskArtikul}
+								</TextBlock>
+							</CardBlock>
+
+
+							<CardBlock className="space-y-2">
+
+
+								<CardBlock className="grid grid-cols-1 md:grid-cols-2 space-x-2">
+									<label className=" justify-self-center self-center md:justify-self-start" htmlFor="artikul">Артикул:</label>
+									<InputBlock
+										type="text"
+										id="artikul"
+										name="artikul"
+										autoComplete="off"
+										value={newAskArtikul}
+										onChange={(e) => setNewAskArtikul(e.target.value)}
+									/>
+								</CardBlock>
+
+
+
+
+
+								<CardBlock className="grid grid-cols-1 md:grid-cols-2 space-x-2">
+									<label className=" justify-self-center self-center md:justify-self-start" htmlFor="quant">Кількість:</label>
+									<InputBlock
+										type="number"
+										id="quant"
+										name="quant"
+										autoComplete="off"
+										value={newAskQuant}
+										onChange={(e) => setNewAskQuant(e.target.value)}
+									/>
+								</CardBlock>
+
+								<CardBlock className="grid grid-cols-1 md:grid-cols-2 space-x-2">
+									<label className=" justify-self-center self-center md:justify-self-start" htmlFor="com">Комент:</label>
+									<InputBlock
+										type="text"
+										id="com"
+										name="com"
+										autoComplete="off"
+										value={newAskCom}
+										onChange={(e) => setNewAskCom(e.target.value)}
+									/>
+								</CardBlock>
+
+							</CardBlock>
+
+
+
+							<CardBlock className="grid grid-cols-2 space-x-2">
+
+
+								<ButtonBlock
+									className="red-b flex justify-center items-center"
+									onClick={() => setShowModalCreateAsk(false)}
+								>
+									<TextBlock className="text-2xl"><CancelIcon /></TextBlock>
+									<TextBlock className=""> Скасувати</TextBlock>
+
+								</ButtonBlock>
+
+
+
+								<ButtonBlock
+									disabled={!newAskArtikul}
+									type="submit"
+									className="green-b flex justify-center items-center"
+									onClick={handleCreateAsk}
+								>
+
+
+									{isCreatingAsk ?
+
+										<Spinner color="green" />
+										:
+										<>
+											<TextBlock className="text-2xl"><OkIcon /></TextBlock>
+											<TextBlock className=""> 	Створити</TextBlock>
+										</>
+
+									}
+
+								</ButtonBlock>
+							</CardBlock>
+
+
+
+						</CardBlock>
+					</ModalWrapper>
+					}
+
+
+
+
+
+
+					<ButtonGroup>
+						<ButtonBlock
+							className="pink-b"
+							onClick={() => {
+								setShowModalCreateAsk(true)
+								setNewAskArtikul(artikul?.artikul)
+							}}
+						>
+							Створити запит
+						</ButtonBlock>
+					</ButtonGroup>
 
 
 					<ArtCard

@@ -277,7 +277,12 @@ export default function AskPage() {
 				className="bg-indigo-500 shadow-2xl shadow-indigo-500"
 			>
 
-				<TextBlock>Запит на  {ask?.artikul}</TextBlock>
+				{ask ?
+					<TextBlock>Запит на  {ask?.artikul}</TextBlock>
+					:
+					<TextBlock className="text-transparent" >Запит</TextBlock>
+
+				}
 
 
 			</HeaderBlock>
@@ -416,7 +421,7 @@ export default function AskPage() {
 								className="bg-green-500/10 p-2 text-white rounded-xl italic justify-start"
 
 							>
-								{i+1 + ". "}{action}
+								{i + 1 + ". "}{action}
 							</TextBlock>)}
 						</CardBlock>
 					</ContainerBlock>
