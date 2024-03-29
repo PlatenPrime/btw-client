@@ -116,7 +116,7 @@ p-4
 					>
 
 						<TextBlock
-							className="flex text-xl space-x-1"
+							className="flex  space-x-1"
 						>
 							<FcDeployment />
 							<TextBlock>Ряди</TextBlock>
@@ -140,7 +140,7 @@ p-4
 					>
 
 						<TextBlock
-							className="flex text-xl space-x-1"
+							className="flex  space-x-1"
 						>
 							<FcLowPriority />
 							<TextBlock>Запаси</TextBlock>
@@ -165,7 +165,7 @@ p-4
 						} : inActiveStyles}
 					>
 						<TextBlock
-							className="flex text-xl space-x-1"
+							className="flex  space-x-1"
 						>
 							<FcOrganization />
 							<TextBlock>Артикули</TextBlock>
@@ -191,7 +191,7 @@ p-4
 						} : inActiveStyles}
 					>
 						<TextBlock
-							className="flex text-xl space-x-1"
+							className="flex  space-x-1"
 						>
 							<FcRotateToLandscape />
 							<TextBlock>Запити</TextBlock>
@@ -218,7 +218,7 @@ p-4
 							} : inActiveStyles}
 						>
 							<TextBlock
-								className="flex text-xl space-x-1"
+								className="flex  space-x-1"
 							>
 								<FcLeave /> <TextBlock>Дефіцити</TextBlock>
 							</TextBlock>
@@ -246,7 +246,7 @@ p-4
 							} : inActiveStyles}
 						>
 							<TextBlock
-								className="flex text-xl space-x-1"
+								className="flex  space-x-1"
 							>
 								<FcBinoculars /> <TextBlock>Конкуренти</TextBlock>
 							</TextBlock>
@@ -271,7 +271,7 @@ p-4
 							} : inActiveStyles}
 						>
 							<TextBlock
-								className="flex text-xl space-x-1"
+								className="flex  space-x-1"
 							>
 								<FcDocument />
 								<TextBlock>Інструкції</TextBlock>
@@ -300,7 +300,7 @@ p-4
 							} : inActiveStyles}
 						>
 							<TextBlock
-								className="flex text-xl space-x-1"
+								className="flex  space-x-1"
 							>
 								<FcSettings />
 								<TextBlock>Налаштування</TextBlock>
