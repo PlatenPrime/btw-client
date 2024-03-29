@@ -6,6 +6,8 @@ import { useArtContext } from '../../ArtContext';
 import { Link } from 'react-router-dom';
 import { AddIcon, CancelIcon, OkIcon } from '../../components/UI/Icons';
 
+import { sendMessageToTelegram } from "../../utils/sendMessagesTelegram"
+
 
 
 export default function AsksPage() {
@@ -70,19 +72,27 @@ export default function AsksPage() {
 
 	// HANDLERS
 
-	async function handleCreateAsk() {
+	async function handleCreateAsk(newAskData) {
 		try {
 			setIsAskCreating(true)
 
-			const newAskData = {
-				artikul: newAskArtikul,
-				quant: newAskQuant,
-				status: "new",
-				com: newAskCom,
-				asker: user?._id
-			}
 
-			await createAsk(newAskData)
+			const createdAsk = await createAsk(newAskData)
+
+			console.log("Created Ask: ", createdAsk);
+
+			const user = users?.find(user => user._id === createdAsk?.asker)
+			const artikul = createdAsk?.artikul
+			const quant = createdAsk?.quant
+			const com = createdAsk?.com
+
+
+			if (user?.role === "PICKER") 
+			await sendMessageToTelegram(`
+			${user?.fullname}: необхідно зняти ${artikul}.
+			${quant ? `Кількість: ${quant} шт` : ""}
+			${com ? `Коментарій: ${com}` : ""}
+			`)
 
 
 
@@ -259,7 +269,13 @@ export default function AsksPage() {
 										disabled={!newAskArtikul}
 										type="submit"
 										className="green-b flex justify-center items-center"
-										onClick={handleCreateAsk}
+										onClick={() => handleCreateAsk({
+											artikul: newAskArtikul,
+											quant: newAskQuant,
+											status: "new",
+											com: newAskCom,
+											asker: user?._id
+										})}
 									>
 										{isAskCreating
 											?

@@ -7,8 +7,6 @@ import usePosesStore from "./stores/posesStore";
 import usePalletStore from "./stores/palletsStore";
 import { BsBalloon, BsBoxSeam } from "react-icons/bs";
 import useFetchRemains from "../../hooks/useFetchRemains";
-import { VscLocation } from "react-icons/vsc";
-import { FaWarehouse } from "react-icons/fa6";
 import { getArtDataBtrade } from "../../utils/getArtDataBtrade";
 import { CancelIcon, OkIcon, PalletIcon } from "../../components/UI/Icons";
 import ArtCard from "./components/ArtCard";
@@ -17,6 +15,8 @@ import useAuthStore from "../Auth/authStore";
 import { toast } from "react-toastify";
 import useFetchArts from "../../hooks/useFetchArts";
 
+import { sendMessageToTelegram } from "../../utils/sendMessagesTelegram"
+
 
 export default function ArtPage() {
 
@@ -24,7 +24,8 @@ export default function ArtPage() {
 	const { remains } = useFetchRemains()
 	const { artsDB, loadingArtsDB, errorArtsDB } = useFetchArts()
 
-	const { user } = useAuthStore()
+	const { user, users, getUsers } = useAuthStore()
+
 
 
 	const { id } = useParams()
@@ -113,6 +114,7 @@ export default function ArtPage() {
 			try {
 
 				const pallets = await getAllPallets()
+				await getUsers()
 
 			} catch (error) {
 				console.log(error)
@@ -129,25 +131,28 @@ export default function ArtPage() {
 
 
 
-	async function handleCreateAsk() {
+	async function handleCreateAsk(newAskData) {
 		try {
 
 			setIsCreatingAsk(true)
 
-			const newAskData = {
-				artikul: newAskArtikul,
-				quant: newAskQuant,
-				com: newAskCom,
-				status: "new",
-				asker: user._id
-			}
+			const createdAsk = await createAsk(newAskData)
 
-			const newAsk = await createAsk(newAskData)
+			console.log("Created Ask: ", createdAsk);
+
+			const user = users?.find(user => user._id === createdAsk?.asker)
+			const artikul = createdAsk?.artikul
+			const quant = createdAsk?.quant
+			const com = createdAsk?.com
 
 
-			if (newAsk) toast.success(`Запит на ${newAskArtikul} створено`)
+			// if (user?.role === "PICKER") 
+			await sendMessageToTelegram(`
+			${user?.fullname}: необхідно зняти ${artikul}.
+			${quant ? `Кількість: ${quant} шт` : ""}
+			${com ? `Коментарій: ${com}` : ""}
+			`)
 
-			console.log(newAsk);
 
 
 		} catch (error) {
@@ -296,7 +301,13 @@ export default function ArtPage() {
 									disabled={!newAskArtikul}
 									type="submit"
 									className="green-b flex justify-center items-center"
-									onClick={handleCreateAsk}
+									onClick={() => handleCreateAsk({
+										artikul: newAskArtikul,
+										quant: newAskQuant,
+										status: "new",
+										com: newAskCom,
+										asker: user?._id
+									})}
 								>
 
 
