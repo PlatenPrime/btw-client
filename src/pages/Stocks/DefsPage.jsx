@@ -12,6 +12,10 @@ import { CancelIcon, OkIcon } from '../../components/UI/Icons'
 
 
 
+import { sendMessageToUser } from '../../utils/sendMessagesTelegram'
+
+
+
 
 
 
@@ -264,6 +268,33 @@ export default function DefsPage() {
 			setProgress(0)
 			setCurrentFetchingStock(1)
 			setDefs(newDefs)
+
+
+			if (newDefs) {
+				try {
+					sendMessageToUser(`
+					${newDefs?.length > 0 ?
+							`Є наступні дефіцити:
+						${newDefs?.map(def => `    ${def?.artikul} - ${def?.dif}
+						`)}`
+							:
+							"Дефіцитів немає"
+						}
+					`,
+						user?.telegram)
+				} catch (error) {
+					console.log(error);
+
+				}
+
+			}
+
+
+
+
+
+
+
 		}
 	}
 
@@ -451,9 +482,9 @@ export default function DefsPage() {
 					<ContainerBlock className="flex flex-wrap gap-2 ">
 
 
-						<CardBlock className="inline-flex items-center bg-pink-500/20 p-2 gap-1">
+						<CardBlock className="inline-flex items-center bg-pink-500/20 hover:bg-pink-500/50 p-2 gap-1">
 							<InputBlock
-								className="appearance-none h-6 w-6 checked:bg-pink-500 rounded-sm border-none"
+								className="appearance-none h-6 w-6 checked:bg-pink-500 rounded-sm border-none cursor-pointer"
 								type="checkbox"
 								checked={selectedRowTitles.length === uniqueRowTitles.length}
 								onChange={handleSelectAllChange}
@@ -467,9 +498,9 @@ export default function DefsPage() {
 
 
 							.map((title, index) => (
-								<CardBlock key={index} className="inline-flex items-center bg-pink-500/20  p-2 gap-1">
+								<CardBlock key={index} className="inline-flex items-center bg-pink-500/20 hover:bg-pink-500/50  p-2 gap-1">
 									<InputBlock
-										className="appearance-none  h-6 w-6 checked:bg-pink-500 rounded-xl border-none "
+										className="appearance-none  h-6 w-6 checked:bg-pink-500 rounded-xl border-none cursor-pointer"
 										type="checkbox"
 										value={title}
 										checked={selectedRowTitles.includes(title)}
@@ -639,7 +670,7 @@ export default function DefsPage() {
 						>
 
 							<TextBlock
-								className="text-xl text-emerald-100 bg-slate-700 rounded-xl"
+								className="text-xl bg-teal-500/50 hover:bg-teal-500 text-white  rounded-xl"
 							>
 								Позиції всього: {allPoses?.length}
 							</TextBlock>
@@ -647,7 +678,7 @@ export default function DefsPage() {
 
 
 							<TextBlock
-								className="text-xl text-sky-100 bg-slate-700 rounded-xl"
+								className="text-xl bg-sky-500/50 hover:bg-sky-500 text-white  rounded-xl"
 							>
 								Артикули: {artsDB?.length}
 							</TextBlock>
@@ -658,13 +689,13 @@ export default function DefsPage() {
 					</TextBlock> */}
 
 							<TextBlock
-								className="text-xl text-orange-100 bg-slate-700 rounded-xl"
+								className="text-xl bg-orange-500/50 hover:bg-orange-500 text-white  rounded-xl"
 							>
 								Запаси: {stocks?.length}
 							</TextBlock>
 
 							<TextBlock
-								className="text-xl text-pink-100 bg-slate-700 rounded-xl"
+								className="text-xl bg-pink-500/50 hover:bg-pink-500 text-white  rounded-xl"
 							>
 								Дефіцити: {defs?.length}
 							</TextBlock>
@@ -834,17 +865,19 @@ export default function DefsPage() {
 
 							null
 							:
+							<ContainerBlock>
+								<TextBlock>
+									Дефіцитів немає
+								</TextBlock>
+							</ContainerBlock>
 
-							<TextBlock>
-								Дефіцитів немає
-							</TextBlock>
 					}
 
 
 
 
 				</>
-}
+			}
 
 
 		</PageBTW >

@@ -16,7 +16,7 @@ import useAuthStore from '../Auth/authStore';
 import ArtCard from './components/ArtCard';
 import UpdateASkModal from './AskPageModals/UpdateAskModal';
 
-import {sendMessageToUser} from '../../utils/sendMessagesTelegram'
+import { sendMessageToUser } from '../../utils/sendMessagesTelegram'
 
 
 
@@ -216,11 +216,31 @@ export default function AskPage() {
 
 			const askUpdateData = {
 				status: "solved",
-				solver: user?._id
+				solver: user?._id,
+				actions: [...ask?.actions, `${user?.fullname} ВИКОНАВ цей запит`]
 			}
 
 			const updatedAsk = await updateAskById(id, askUpdateData)
-			if (updatedAsk) setAsk(updatedAsk)
+
+
+
+			if (updatedAsk) {
+				setAsk(updatedAsk)
+
+				try {
+					const askerUser = await getUserById(updatedAsk?.asker)
+
+					
+					if (askerUser) {
+						sendMessageToUser(`${askerUser?.fullname}, твій запит на ${artikul ? artikul?.nameukr : updatedAsk?.artikul} ВИКОНАНО`, askerUser?.telegram)
+					}
+				} catch (error) {
+					console.log(error);
+
+				} 
+
+
+			}
 
 
 
@@ -263,7 +283,7 @@ export default function AskPage() {
 					console.log(error);
 
 				} finally {
-					
+
 				}
 
 
