@@ -16,6 +16,8 @@ import useAuthStore from '../Auth/authStore';
 import ArtCard from './components/ArtCard';
 import UpdateASkModal from './AskPageModals/UpdateAskModal';
 
+import {sendMessageToUser} from '../../utils/sendMessagesTelegram'
+
 
 
 export default function AskPage() {
@@ -32,7 +34,7 @@ export default function AskPage() {
 	const { getAskById, updateAskById, deleteAskById } = useAskStore()
 	const { getPosesByArtikul, posesWithArtikul, updatePosWithArtikulById } = usePosesStore();
 	const { pallets, getAllPallets } = usePalletStore();
-	const { user, users, getUsers } = useAuthStore()
+	const { user, users, getUsers, getUserById } = useAuthStore()
 
 
 
@@ -239,11 +241,38 @@ export default function AskPage() {
 
 			const askUpdateData = {
 				status: "fail",
-				solver: user?._id
+				solver: user?._id,
+				actions: [...ask?.actions, `${user?.fullname} ВІДМОВИВ на цей запит`]
 			}
 
 			const updatedAsk = await updateAskById(id, askUpdateData)
-			if (updatedAsk) setAsk(updatedAsk)
+
+
+
+
+
+			if (updatedAsk) {
+				setAsk(updatedAsk)
+
+				try {
+					const askerUser = await getUserById(updatedAsk?.asker)
+					if (askerUser) {
+						sendMessageToUser(`${askerUser?.fullname}, на твій запит на ${artikul ? artikul?.nameukr : updatedAsk?.artikul} було ВІДМОВЛЕНО`, askerUser?.telegram)
+					}
+				} catch (error) {
+					console.log(error);
+
+				} finally {
+					
+				}
+
+
+			}
+
+
+
+
+
 
 
 
