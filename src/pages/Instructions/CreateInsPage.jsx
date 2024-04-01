@@ -1,10 +1,14 @@
+
+// 86f656ab03b0dcf
+
+
+
 import React, { useState } from 'react'
 import { ButtonBlock, ButtonGroup, CardBlock, ContainerBlock, HeaderBlock, InputBlock, PageBTW } from '../../components'
 import { EditorState, convertToRaw, convertFromRaw } from 'draft-js';
-import { Editor } from 'react-draft-wysiwyg';
-import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
-import "./Draft.css"
+
 import axios from 'axios';
+import Editor from './QuillEditor';
 
 
 
@@ -30,41 +34,25 @@ export default function CreateInsPage() {
 
 
 
-
-
-	const [imageCache, setImageCache] = useState({});
-
-	const [editorState, setEditorState] = useState(() => {
-		const storedContent = localStorage.getItem('editorContent');
-		if (storedContent) {
-			return EditorState.createWithContent(convertFromRaw(JSON.parse(storedContent)));
-		}
-		return EditorState.createEmpty();
-	});
+	const [insBody, setInsBody] = useState("");
 
 
 
-	// Функция для обновления состояния редактора при вводе текста
-	const handleEditorStateChange = (newEditorState) => {
-		const contentState = newEditorState.getCurrentContent();
-		// Save content to local storage
-		localStorage.setItem('editorContent', JSON.stringify(convertToRaw(contentState)));
-		setEditorState(newEditorState);
-	};
+
+
 
 
 	// Функция для первичного создания инструкции в базу данных MongoDB
 	const createInsToMongoDB = async () => {
 		try {
-			const contentState = editorState.getCurrentContent();
-			const rawContent = convertToRaw(contentState);
+
 
 
 
 			// Отправляем данные на сервер для сохранения в базу MongoDB
 			const response = await axios.post('https://btw-server.up.railway.app/api/ins', {
 				title: newTitle,
-				body: JSON.stringify(rawContent),
+				body: insBody,
 				category: newCategory,
 				department: newDepartment,
 				access: newAccess
@@ -94,14 +82,13 @@ export default function CreateInsPage() {
 	const saveChangesToMongoDB = async () => {
 		try {
 
-			const contentState = editorState.getCurrentContent();
-			const rawContent = convertToRaw(contentState);
+
 
 
 			// Отправляем данные на сервер для сохранения в базу MongoDB
 			const response = await axios.put(`https://btw-server.up.railway.app/api/ins/${insId}`, {
 				title: newTitle,
-				body: JSON.stringify(rawContent),
+				body: insBody,
 				category: newCategory,
 				department: newDepartment,
 				access: newAccess
@@ -117,85 +104,6 @@ export default function CreateInsPage() {
 
 		}
 	}
-
-
-
-	// const uploadImageCallback = async (file) => {
-	// 	const formData = new FormData();
-	// 	formData.append('image', file);
-
-	// 	try {
-	// 		const response = await fetch('https://api.imgur.com/3/image', {
-	// 			method: 'POST',
-	// 			headers: {
-	// 				Authorization: 'Client-ID 86f656ab03b0dcf', // Вставьте ваш Client ID Imgur
-	// 			},
-	// 			body: formData,
-	// 		});
-
-	// 		if (!response.ok) {
-	// 			throw Error(response.statusText);
-	// 		}
-
-	// 		console.log(response);
-
-
-	// 		const data = await response.json();
-	// 		return { data: { link: data.data.link } };
-	// 	} catch (error) {
-	// 		console.error('Error uploading image to Imgur:', error);
-	// 		return { error: 'Failed to upload image' };
-	// 	}
-	// };
-
-
-
-
-
-	const uploadImageCallback = async (file) => {
-		const formData = new FormData();
-		formData.append('image', file);
-
-		try {
-			if (imageCache[file.name]) {
-				// Если изображение уже было загружено, возвращаем кешированную ссылку
-				return { data: { link: imageCache[file.name] } };
-			}
-
-			const response = await fetch('https://api.imgur.com/3/image', {
-				method: 'POST',
-				headers: {
-					Authorization: 'Client-ID 86f656ab03b0dcf', // Вставьте ваш Client ID Imgur
-				},
-				body: formData,
-			});
-
-			if (!response.ok) {
-				throw Error(response.statusText);
-			}
-
-			const data = await response.json();
-			// Сохраняем ссылку в кеше
-			setImageCache(prevState => ({
-				...prevState,
-				[file.name]: data.data.link,
-			}));
-
-			return { data: { link: data.data.link } };
-		} catch (error) {
-			console.error('Error uploading image to Imgur:', error);
-			return { error: 'Failed to upload image' };
-		}
-	};
-
-
-
-
-
-
-
-
-
 
 
 
@@ -331,59 +239,17 @@ export default function CreateInsPage() {
 
 
 
+				<ContainerBlock>
+					<Editor 
+					value={insBody}
+					setValue={setInsBody}
+					
+					/>
+				</ContainerBlock>
 
 
 
 
-				<Editor
-					editorState={editorState}
-					onEditorStateChange={handleEditorStateChange}
-					wrapperClassName="wrapper-class"
-					editorClassName="editor-class"
-					toolbarClassName="toolbar-class"
-					localization={{
-						locale: 'ru',
-					}}
-					toolbar={{
-						image: {
-							uploadCallback: uploadImageCallback,
-							alt: { present: true, mandatory: true },
-						},
-						options: ['history', 'fontFamily', 'fontSize', 'list', 'textAlign', 'inline', 'colorPicker', 'link', 'embedded', 'emoji', 'image', 'remove',],
-						inline: {
-							options: ['bold', 'italic', 'underline', 'strikethrough'],
-						},
-						// blockType: {
-						// 	inDropdown: true,
-						// 	options: ['Normal', 'H1', 'H2', 'H3', 'H4', 'H5', 'H6'],
-						// },
-						fontSize: {
-							options: [8, 10, 12, 14, 16, 18, 24, 30, 36, 48, 60, 72, 96],
-						},
-						fontFamily: {
-							options: ['Arial', 'Georgia', 'Impact', 'Tahoma', 'Times New Roman', 'Verdana', "Roboto"],
-						},
-						textAlign: {
-							inDropdown: true,
-						},
-						list: {
-							inDropdown: true,
-						},
-						history: {
-							inDropdown: true,
-						},
-						colorPicker: {
-							// icon:  <AiFillAlipayCircle />,
-							className: undefined,
-							component: undefined,
-							popupClassName: undefined,
-							colors: ['rgb(239 68 68)', 'rgb(0 0 0)', 'rgb(255 255 255)', 'rgb(248 250 252)'],
-						},
-
-
-
-					}}
-				/>
 			</ContainerBlock>
 
 
