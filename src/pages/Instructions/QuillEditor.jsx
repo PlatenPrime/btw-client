@@ -1,5 +1,5 @@
 // Importing helper modules
-import { useCallback, useMemo, useRef, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 
 // Importing core components
 import QuillEditor from "react-quill";
@@ -107,6 +107,10 @@ const Editor = ({
 		"clean",
 	];
 
+
+
+
+
 	return (
 		<div className={styles.wrapper}>
 			<QuillEditor
@@ -117,8 +121,10 @@ const Editor = ({
 				formats={formats}
 				modules={modules}
 				onChange={(value) => setValue(value)}
+
+
 			/>
-			
+
 		</div>
 	);
 };
