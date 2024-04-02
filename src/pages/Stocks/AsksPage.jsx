@@ -87,8 +87,8 @@ export default function AsksPage() {
 			const com = createdAsk?.com
 
 
-			if (user?.role !== "PRIME") 
-			await sendMessageToTelegram(`
+			if (user?.role !== "PRIME")
+				await sendMessageToTelegram(`
 			${user?.fullname}: необхідно зняти ${artikul}.
 			${quant ? `Кількість: ${quant} шт` : ""}
 			${com ? `Коментарій: ${com}` : ""}
@@ -419,9 +419,20 @@ export default function AsksPage() {
 
 												{ask?.quant ?
 													<TextBlock
-														className="text-base"
+														className="text-base font-bold"
 													>
 														Кількість:	{ask?.quant}
+													</TextBlock>
+													:
+													null
+
+												}
+
+												{ask?.com ?
+													<TextBlock
+														className="text-base italic"
+													>
+														Комент:	{ask?.com}
 													</TextBlock>
 													:
 													null
