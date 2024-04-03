@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { ButtonBlock, ButtonGroup, ContainerBlock, HeaderBlock, PageBTW } from '../../components';
+import { ButtonBlock, ButtonGroup, CardBlock, ContainerBlock, HeaderBlock, PageBTW, TextBlock } from '../../components';
 import { useParams } from 'react-router-dom';
 import useInsStore from './insStore';
 import Editor from "./QuillEditor"
@@ -11,30 +11,47 @@ export default function InsPage() {
 	const { getInstructionById, updateInstructionById, deleteInstructionById } = useInsStore();
 
 
-
-	const [isReadOnly, setIsReadOnly] = useState(false);
-
-
-	const [instruction, setInstruction] = useState(null);
+	const [ins, setIns] = useState(null);
 	const [insBody, setInsBody] = useState(null);
 
 
-	const [loading, setLoading] = useState(true);
-	const [error, setError] = useState(null);
+	console.log(ins);
+
+
+	// MODALS
+
+
+
+
+
+	// Toggles
+
+	const [isInsEditing, setIsInsEditing] = useState(false);
+
+	const [isInsFetching, setIsInsFetching] = useState(false);
+	const [isInsUpdating, setIsInsUpdating] = useState(false);
+	const [isInsDeleting, setIsInsDeleting] = useState(false);
+
+
+
+
+
+
+
 
 
 
 	useEffect(() => {
 		const fetchInstruction = async () => {
 			try {
-				setLoading(true);
+				setIsInsFetching(true);
 				const fetchedInstruction = await getInstructionById(id);
-				setInstruction(fetchedInstruction);
+				setIns(fetchedInstruction);
 				setInsBody(fetchedInstruction?.body)
 			} catch (error) {
-				setError(error.message);
+				console.log(error.message);
 			} finally {
-				setLoading(false);
+				setIsInsFetching(false);
 			}
 		};
 
@@ -52,32 +69,32 @@ export default function InsPage() {
 
 	const handleUpdateInstruction = async (updatedData) => {
 		try {
-			setLoading(true);
+			setIsInsUpdating(true);
 			await updateInstructionById(id, updatedData);
 			const updatedInstruction = await getInstructionById(id);
-			setInstruction(updatedInstruction);
+			setIns(updatedInstruction);
 		} catch (error) {
-			setError(error.message);
+			console.log(error.message);
 		} finally {
-			setLoading(false);
+			setIsInsUpdating(false);
 		}
 	};
 
 	const handleDeleteInstruction = async () => {
 		try {
-			setLoading(true);
+			setIsInsDeleting(true);
 			await deleteInstructionById(id);
 			// Redirect or handle success as needed
 		} catch (error) {
-			setError(error.message);
+			console.log(error.message);
 		} finally {
-			setLoading(false);
+			setIsInsDeleting(false);
 		}
 	};
 
 	const handleToggleReadOnly = () => {
 		console.log("Changing read-only mode");
-		setIsReadOnly((prev) => !prev);
+		setIsInsEditing((prev) => !prev);
 	};
 
 	return (
@@ -85,12 +102,53 @@ export default function InsPage() {
 			<HeaderBlock className="bg-blue-500 shadow-2xl shadow-blue-500">Інструкція</HeaderBlock>
 
 			<ButtonGroup>
-				<ButtonBlock
-					className="blue-b"
-					onClick={handleToggleReadOnly}
-				>
-					Read Toggle
-				</ButtonBlock>
+
+
+
+				{isInsEditing ?
+
+					<>
+						<ButtonBlock
+							className="pink-b"
+							onClick={handleToggleReadOnly}
+						>
+							Скасувати
+						</ButtonBlock>
+
+						<ButtonBlock
+							className="green-b"
+							onClick={() => { }}
+						>
+							Зберегти
+						</ButtonBlock>
+
+						<ButtonBlock
+							className="red-b"
+						// onClick={handleToggleReadOnly}
+						>
+							Видалити
+						</ButtonBlock>
+
+
+
+					</>
+
+					:
+					<ButtonBlock
+						className="blue-b"
+						onClick={handleToggleReadOnly}
+					>
+						Редагувати
+					</ButtonBlock>
+
+				}
+
+
+
+
+
+
+
 			</ButtonGroup>
 
 
@@ -102,7 +160,7 @@ export default function InsPage() {
 
 
 
-				{isReadOnly ?
+				{isInsEditing ?
 					<Editor
 						value={insBody}
 						setValue={setInsBody}
@@ -110,8 +168,21 @@ export default function InsPage() {
 					/>
 					:
 					<div
-
 					>
+
+
+
+						<TextBlock className="text-3xl">Назва: {ins?.title}</TextBlock>
+
+						<CardBlock
+							className="flex flex-col items-start p-8"
+						>
+							<TextBlock className="text-xl italic ">Доступ (хто може дивитись): {ins?.access}</TextBlock>
+							<TextBlock className="text-xl italic">Категорія: {ins?.category}</TextBlock>
+							<TextBlock className="text-xl italic">Відділ (для кого): {ins?.department}</TextBlock>
+						</CardBlock>
+
+
 						{insBody && parse(insBody)}
 					</div>
 				}

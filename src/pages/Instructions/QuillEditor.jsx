@@ -70,7 +70,7 @@ const Editor = ({
 				container: [
 					[{ header: [2, 3, 4, false] }],
 					["bold", "italic", "underline", "blockquote"],
-					[{ color: ["white", "#993403"] }],
+					[{ color: [] }],
 					[
 						{ list: "ordered" },
 						{ list: "bullet" },
