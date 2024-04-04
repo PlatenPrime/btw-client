@@ -900,11 +900,11 @@ export default function DefsPage() {
 										className={`
 										
 										${asks?.find(ask => ask.artikul === def.artikul)?.status === "new" ?
-												"bg-pink-500/50 "
+												"bg-violet-500/50 "
 												:
 												""}
 										
-										lg:col-span-1 flex justify-center items-center`}
+										lg:col-span-1 flex justify-center items-center rounded-xl`}
 									>
 
 										<ButtonBlock
@@ -913,6 +913,7 @@ export default function DefsPage() {
 												setShowModalCreateAsk(true)
 												setNewAskArtikul(def.artikul)
 											}}
+											disabled={asks?.find(ask => ask.artikul === def.artikul)?.status === "new"}
 										>
 											Створити запит
 										</ButtonBlock>
