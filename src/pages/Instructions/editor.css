@@ -1,0 +1,32 @@
+.ql-snow.ql-toolbar button svg {
+
+	fill: white;
+	
+}
+
+.ql-snow .ql-stroke {
+	fill: rgb(0, 0, 0);
+	stroke: white;
+}
+
+.ql-snow .ql-fill, .ql-snow .ql-stroke.ql-fill {
+    fill: #bdbdbd;
+}
+
+.ql-toolbar.ql-snow {
+    border: 1px solid #494949;
+    box-sizing: border-box;
+    font-family: 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif;
+    padding: 8px;
+
+}
+
+.ql-container {
+    box-sizing: border-box;
+    font-family: Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    height: 100%;
+    margin: 0px;
+    position: relative;
+	border: none;
+}

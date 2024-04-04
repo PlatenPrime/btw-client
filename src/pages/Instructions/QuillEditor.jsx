@@ -7,6 +7,17 @@ import QuillEditor from "react-quill";
 // Importing styles
 import "react-quill/dist/quill.snow.css";
 import styles from "./styles.module.css";
+import "./editor.css"
+
+
+
+
+
+
+
+
+
+
 
 const Editor = ({
 	value, setValue
@@ -64,12 +75,17 @@ const Editor = ({
 
 
 
+
+
+
+
+
 	const modules = useMemo(
 		() => ({
 			toolbar: {
 				container: [
-					[{ header: [2, 3, 4, false] }],
-					["bold", "italic", "underline", "blockquote"],
+					[{ header: [1, 2, 3, 4, false] }],
+					["bold", "italic", "underline", "strike", "blockquote"],
 					[{ color: [] }],
 					[
 						{ list: "ordered" },
@@ -77,11 +93,12 @@ const Editor = ({
 						{ indent: "-1" },
 						{ indent: "+1" },
 					],
-					["link", "image"],
+					["link", "image", "video"],
 					["clean"],
 				],
 				handlers: {
 					image: imageHandler,
+					// video: youtubeVideoHandler,
 				},
 			},
 			clipboard: {
