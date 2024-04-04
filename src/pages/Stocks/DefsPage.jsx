@@ -38,12 +38,13 @@ export default function DefsPage() {
 	const { artsDB, loadingArtsDB, errorArtsDB } = useFetchArts()
 
 	const { allPoses, getAllPoses, clearPosesStore } = usePosesStore()
-	const { createAsk } = useAskStore()
+	const { createAsk, getAllAsks, asks } = useAskStore()
 	const { user } = useAuthStore()
 
 
 
 	const [isFetchingPoses, setIsFetchingPoses] = useState(false)
+	const [isFetchingAsks, setIsFetchingAsks] = useState(false)
 	const [isCreatingAsk, setIsCreatingAsk] = useState(false)
 	const [isFetchingQuants, setIsFetchingQuants] = useState(false)
 
@@ -58,6 +59,8 @@ export default function DefsPage() {
 	const [selectedRowTitles, setSelectedRowTitles] = useState([]);
 	// Состояние для управления всеми чекбоксами
 	const [selectAll, setSelectAll] = useState(true);
+
+	const [correctRows, setCorrectRows] = useState([]);
 
 
 
@@ -340,6 +343,16 @@ export default function DefsPage() {
 
 
 
+
+
+
+
+
+
+
+
+
+
 	// EFFECTS
 
 
@@ -401,6 +414,47 @@ export default function DefsPage() {
 
 
 	}, [allPoses])
+
+
+
+
+
+
+	useEffect(() => {
+
+
+		const fetchAsks = async () => {
+
+			try {
+				setIsFetchingAsks(true)
+				const allPoses = await getAllAsks()
+
+
+			} catch (error) {
+				console.log(error);
+
+			} finally {
+				setIsFetchingAsks(false)
+			}
+		}
+
+		fetchAsks()
+
+
+
+
+	}, [getAllAsks])
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -491,6 +545,14 @@ export default function DefsPage() {
 							/>
 							<span className="text-pink-100 text-lg">Вибрати всі</span>
 						</CardBlock>
+
+
+
+
+
+
+
+
 
 
 						{uniqueRowTitles
@@ -835,7 +897,14 @@ export default function DefsPage() {
 
 
 									<CardBlock
-										className="lg:col-span-1 flex justify-center items-center"
+										className={`
+										
+										${asks?.find(ask => ask.artikul === def.artikul)?.status === "new" ?
+												"bg-pink-500/50 "
+												:
+												""}
+										
+										lg:col-span-1 flex justify-center items-center`}
 									>
 
 										<ButtonBlock
