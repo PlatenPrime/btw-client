@@ -30,3 +30,7 @@
     position: relative;
 	border: none;
 }
+
+.ql-container.ql-snow {
+    border: 1px solid #dd2626;
+}
