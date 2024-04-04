@@ -4,14 +4,33 @@
 	
 }
 
+
+
+
 .ql-snow .ql-stroke {
 	fill: transparent;
 	stroke: white;
 }
 
+
+
+
+
+
 .ql-snow .ql-fill, .ql-snow .ql-stroke.ql-fill {
     fill: #f5f5f5;
 }
+
+
+
+
+
+
+
+
+
+
+
 
 .ql-toolbar.ql-snow {
    border: none;
