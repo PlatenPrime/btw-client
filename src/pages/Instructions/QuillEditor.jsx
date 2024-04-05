@@ -85,8 +85,9 @@ const Editor = ({
 		() => ({
 			toolbar: {
 				container: [
-					[{ header: [1, 2, 3, 4, false] }],
-					["bold", "italic", "underline", "strike", "blockquote"],
+					// [{ header: [1, 2, 3, 4, false] }],
+					[{ 'font': [] }, { 'size': [] }],
+					["bold", "italic", "underline", "strike", "blockquote", ],
 					[{ 'color': [] }, { 'background': [] }],
 					[
 						{ list: "ordered" },
@@ -119,6 +120,8 @@ const Editor = ({
 	const formats = [
 		"header",
 		"bold",
+		"font",
+		"size",
 		"italic",
 		"underline",
 		"strike",
@@ -143,6 +146,7 @@ const Editor = ({
 			<QuillEditor
 				ref={(el) => (quill.current = el)}
 				className={styles.editor}
+				placeholder='Напиши тут...'
 				theme="snow"
 				value={value}
 				formats={formats}
