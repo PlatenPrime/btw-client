@@ -900,7 +900,7 @@ export default function DefsPage() {
 										className={`
 										
 										${asks?.find(ask => ask.artikul === def.artikul)?.status === "new" ?
-												"bg-violet-500/50 "
+												"bg-indigo-500/50 "
 												:
 												""}
 										
