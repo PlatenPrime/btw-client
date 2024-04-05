@@ -5,10 +5,11 @@
 
 import React, { useState } from 'react'
 import { ButtonBlock, ButtonGroup, CardBlock, ContainerBlock, HeaderBlock, InputBlock, ModalConfirm, PageBTW } from '../../components'
-import { EditorState, convertToRaw, convertFromRaw } from 'draft-js';
+
 
 import axios from 'axios';
 import Editor from './QuillEditor';
+import useInsStore from './insStore';
 
 
 
@@ -21,17 +22,23 @@ import Editor from './QuillEditor';
 export default function CreateInsPage() {
 
 
+	const { createInstruction, updateInstructionById } = useInsStore();
+
+
 
 	const [insId, setInsId] = useState('')
+
+
+
 	const [newTitle, setNewTitle] = useState('')
 	const [newCategory, setNewCategory] = useState('')
 	const [newDepartment, setNewDepartment] = useState('')
 	const [newAccess, setNewAccess] = useState('')
+	const [newBody, setNewBody] = useState("");
 
 
-
-	const [isInsCreating, setInsCreating] = useState(false)
-	const [isInsUpdating, setInsUpdating] = useState(false)
+	const [isInsCreating, setIsInsCreating] = useState(false)
+	const [isInsUpdating, setIsInsUpdating] = useState(false)
 
 
 	const [isShowModalInsCreating, setIsShowModalInsCreating] = useState(false)
@@ -44,7 +51,7 @@ export default function CreateInsPage() {
 
 
 
-	const [insBody, setInsBody] = useState("");
+
 
 
 
@@ -52,19 +59,17 @@ export default function CreateInsPage() {
 	const handleInsCreate = async (createData) => {
 		try {
 
-			setInsCreating(true)
-			// Отправляем данные на сервер для сохранения в базу MongoDB
-			const response = await axios.post('https://btw-server.up.railway.app/api/ins', createData);
-			console.log(response);
+			setIsInsCreating(true)
+		
 
-			// В респонсе должна вернуться инструкция с ее Id
-			if (response.status === 200) { setInsId(response?.data?._id) }
-			console.log(insId);
+			const instruction = await createInstruction(createData)
+			setInsId(instruction?._id)
+
 
 		} catch (error) {
 			console.error('Произошла ошибка:', error);
 		} finally {
-			setInsCreating(false)
+			setIsInsCreating(false)
 			setIsShowModalInsCreating(false)
 		}
 	};
@@ -74,16 +79,14 @@ export default function CreateInsPage() {
 	const handleInsUpdate = async (updateData) => {
 		try {
 
-			setInsUpdating(true)
-			// Отправляем данные на сервер для сохранения в базу MongoDB
-			const response = await axios.put(`https://btw-server.up.railway.app/api/ins/${insId}`, updateData);
-			console.log(response);
+			setIsInsUpdating(true)
+			await updateInstructionById(insId, updateData);
 
 		} catch (error) {
 			console.error('Произошла ошибка:', error);
 
 		} finally {
-			setInsUpdating(false)
+			setIsInsUpdating(false)
 			setIsShowModalInsUpdating(false)
 		}
 	}
@@ -110,7 +113,7 @@ export default function CreateInsPage() {
 
 				<ButtonBlock
 					className="green-b"
-					disabled={insId || isInsCreating || !newTitle || !insBody || !newCategory || !newDepartment || !newAccess}
+					disabled={insId || isInsCreating || !newTitle || !newBody || !newCategory || !newDepartment || !newAccess}
 					onClick={() => setIsShowModalInsCreating(true)}
 				>
 					Створити
@@ -144,7 +147,7 @@ export default function CreateInsPage() {
 					onConfirm={() => handleInsCreate({
 
 						title: newTitle,
-						body: insBody,
+						body: newBody,
 						category: newCategory,
 						department: newDepartment,
 						access: newAccess
@@ -155,21 +158,21 @@ export default function CreateInsPage() {
 				/>}
 
 
-				{isShowModalInsUpdating &&	
+			{isShowModalInsUpdating &&
 				<ModalConfirm
-				ask="Зберегти інструкцію?"
+					ask="Зберегти інструкцію?"
 					onConfirm={() => handleInsUpdate({
 
 						title: newTitle,
-						body: insBody,
+						body: newBody,
 						category: newCategory,
 						department: newDepartment,
 						access: newAccess
 					})}
 					onCancel={() => setIsShowModalInsUpdating(false)}
 					isConfirming={isInsUpdating}
-				
-				
+
+
 				/>}
 
 
@@ -273,8 +276,8 @@ export default function CreateInsPage() {
 
 				<ContainerBlock>
 					<Editor
-						value={insBody}
-						setValue={setInsBody}
+						value={newBody}
+						setValue={setNewBody}
 
 					/>
 				</ContainerBlock>

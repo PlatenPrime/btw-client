@@ -2,13 +2,14 @@ import { create } from 'zustand';
 import axios from '../../utils/axios';
 
 const useInsStore = create((set) => ({
+	instruction: null,
 	instructions: [],
 
 	createInstruction: async (instructionData) => {
 		try {
 			const response = await axios.post('ins', instructionData);
 
-			if (response.status === 201) {
+			if (response.status === 200) {
 				const newInstruction = response.data;
 				set((state) => ({ instructions: [newInstruction, ...state.instructions] }));
 				return newInstruction;
