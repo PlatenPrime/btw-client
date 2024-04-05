@@ -96,6 +96,7 @@ const Editor = ({
 					],
 					["link", "image"],
 					["clean"],
+					[{ align: [] }],
 				],
 				handlers: {
 					image: imageHandler,
@@ -108,7 +109,9 @@ const Editor = ({
 			imageResize: {
 				parchment: Quill.import('parchment'),
 				modules: ['Resize', 'DisplaySize']
-			  }
+			  },
+
+		
 		}),
 		[imageHandler]
 	);
