@@ -4,7 +4,7 @@
 
 
 import React, { useState } from 'react'
-import { ButtonBlock, ButtonGroup, CardBlock, ContainerBlock, HeaderBlock, InputBlock, PageBTW } from '../../components'
+import { ButtonBlock, ButtonGroup, CardBlock, ContainerBlock, HeaderBlock, InputBlock, ModalConfirm, PageBTW } from '../../components'
 import { EditorState, convertToRaw, convertFromRaw } from 'draft-js';
 
 import axios from 'axios';
@@ -28,6 +28,16 @@ export default function CreateInsPage() {
 	const [newDepartment, setNewDepartment] = useState('')
 	const [newAccess, setNewAccess] = useState('')
 
+
+
+	const [isInsCreating, setInsCreating] = useState(false)
+	const [isInsUpdating, setInsUpdating] = useState(false)
+
+
+	const [isShowModalInsCreating, setIsShowModalInsCreating] = useState(false)
+	const [isShowModalInsUpdating, setIsShowModalInsUpdating] = useState(false)
+
+
 	console.log(insId);
 
 
@@ -39,69 +49,42 @@ export default function CreateInsPage() {
 
 
 
-
-
-
-	// Функция для первичного создания инструкции в базу данных MongoDB
-	const createInsToMongoDB = async () => {
+	const handleInsCreate = async (createData) => {
 		try {
 
-
-
-
+			setInsCreating(true)
 			// Отправляем данные на сервер для сохранения в базу MongoDB
-			const response = await axios.post('https://btw-server.up.railway.app/api/ins', {
-				title: newTitle,
-				body: insBody,
-				category: newCategory,
-				department: newDepartment,
-				access: newAccess
-
-			});
-
-
+			const response = await axios.post('https://btw-server.up.railway.app/api/ins', createData);
 			console.log(response);
-
 
 			// В респонсе должна вернуться инструкция с ее Id
 			if (response.status === 200) { setInsId(response?.data?._id) }
 			console.log(insId);
 
-
-
 		} catch (error) {
 			console.error('Произошла ошибка:', error);
+		} finally {
+			setInsCreating(false)
+			setIsShowModalInsCreating(false)
 		}
 	};
 
 
 
-
-	// Сохранить изменения уже созданной инструкции
-
-	const saveChangesToMongoDB = async () => {
+	const handleInsUpdate = async (updateData) => {
 		try {
 
-
-
-
+			setInsUpdating(true)
 			// Отправляем данные на сервер для сохранения в базу MongoDB
-			const response = await axios.put(`https://btw-server.up.railway.app/api/ins/${insId}`, {
-				title: newTitle,
-				body: insBody,
-				category: newCategory,
-				department: newDepartment,
-				access: newAccess
-			});
+			const response = await axios.put(`https://btw-server.up.railway.app/api/ins/${insId}`, updateData);
 			console.log(response);
-
-
-
-
 
 		} catch (error) {
 			console.error('Произошла ошибка:', error);
 
+		} finally {
+			setInsUpdating(false)
+			setIsShowModalInsUpdating(false)
 		}
 	}
 
@@ -127,25 +110,72 @@ export default function CreateInsPage() {
 
 				<ButtonBlock
 					className="green-b"
-					disabled={insId}
-					onClick={createInsToMongoDB}
+					disabled={insId || isInsCreating || !newTitle || !insBody || !newCategory || !newDepartment || !newAccess}
+					onClick={() => setIsShowModalInsCreating(true)}
 				>
 					Створити
 				</ButtonBlock>
+
+
+
+
+
 				<ButtonBlock
 					className="blue-b"
 					disabled={!insId}
-					onClick={saveChangesToMongoDB}
+					onClick={() => setIsShowModalInsUpdating(true)}
 				>
 					Зберегти
 				</ButtonBlock>
-
-
-
-
-
-
 			</ButtonGroup>
+
+
+
+
+			{/* MODALS */}
+
+
+
+
+			{isShowModalInsCreating &&
+
+				<ModalConfirm
+					ask="Створити інструкцію?"
+					onConfirm={() => handleInsCreate({
+
+						title: newTitle,
+						body: insBody,
+						category: newCategory,
+						department: newDepartment,
+						access: newAccess
+					})}
+					onCancel={() => setIsShowModalInsCreating(false)}
+					isConfirming={isInsCreating}
+
+				/>}
+
+
+				{isShowModalInsUpdating &&	
+				<ModalConfirm
+				ask="Зберегти інструкцію?"
+					onConfirm={() => handleInsUpdate({
+
+						title: newTitle,
+						body: insBody,
+						category: newCategory,
+						department: newDepartment,
+						access: newAccess
+					})}
+					onCancel={() => setIsShowModalInsUpdating(false)}
+					isConfirming={isInsUpdating}
+				
+				
+				/>}
+
+
+
+
+
 
 
 
@@ -233,17 +263,19 @@ export default function CreateInsPage() {
 						placeholder="Тільки менеджери, Бтрейд "
 					/>
 
-
 				</CardBlock>
 
 
 
 
+
+
+
 				<ContainerBlock>
-					<Editor 
-					value={insBody}
-					setValue={setInsBody}
-					
+					<Editor
+						value={insBody}
+						setValue={setInsBody}
+
 					/>
 				</ContainerBlock>
 
