@@ -104,6 +104,7 @@ export default function InsPage() {
 			setError(error.message);
 		} finally {
 			setIsInsUpdating(false);
+			setIsShowModalInsUpdating(false);
 		}
 	};
 
@@ -117,6 +118,7 @@ export default function InsPage() {
 			setError(error.message);
 		} finally {
 			setIsInsDeleting(false);
+			setIsShowModalInsDeleting(false);
 		}
 	};
 
@@ -195,14 +197,14 @@ export default function InsPage() {
 
 								<ButtonBlock
 									className="green-b"
-									onClick={() => { }}
+									onClick={() => setIsShowModalInsUpdating(true)}
 								>
 									Зберегти
 								</ButtonBlock>
 
 								<ButtonBlock
 									className="red-b"
-								// onClick={handleToggleReadOnly}
+									onClick={() => setIsShowModalInsDeleting(true)}
 								>
 									Видалити
 								</ButtonBlock>
