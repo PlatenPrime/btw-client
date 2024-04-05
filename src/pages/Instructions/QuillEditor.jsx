@@ -2,8 +2,8 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 
 // Importing core components
-import QuillEditor, {Quill} from "react-quill";
-import  ImageResize  from 'quill-image-resize-module-react';
+import QuillEditor, { Quill } from "react-quill";
+import ImageResize from 'quill-image-resize-module-react';
 
 // Importing styles
 import "react-quill/dist/quill.snow.css";
@@ -87,7 +87,7 @@ const Editor = ({
 				container: [
 					[{ header: [1, 2, 3, 4, false] }],
 					["bold", "italic", "underline", "strike", "blockquote"],
-					[{ color: [] }],
+					[{ 'color': [] }, { 'background': [] }],
 					[
 						{ list: "ordered" },
 						{ list: "bullet" },
@@ -96,7 +96,7 @@ const Editor = ({
 					],
 					["link", "image"],
 					["clean"],
-					[{ align: [] }],
+					[{ align: '' }, { align: 'center' }, { align: 'right' }, { align: 'justify' }],
 				],
 				handlers: {
 					image: imageHandler,
@@ -109,9 +109,9 @@ const Editor = ({
 			imageResize: {
 				parchment: Quill.import('parchment'),
 				modules: ['Resize', 'DisplaySize']
-			  },
+			},
 
-		
+
 		}),
 		[imageHandler]
 	);
@@ -130,6 +130,8 @@ const Editor = ({
 		"image",
 		"color",
 		"clean",
+		'align',
+		"background",
 	];
 
 

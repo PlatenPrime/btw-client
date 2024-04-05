@@ -96,15 +96,16 @@ export default function InsPage() {
 	const handleInsUpdate = async (updateData) => {
 		try {
 			setIsInsUpdating(true);
-			await updateInstructionById(id, updateData);
-			const updatedInstruction = await getInstructionById(id);
+			const updatedInstruction = await updateInstructionById(id, updateData);
 			setIns(updatedInstruction);
+			setInsBody(updatedInstruction?.body)
 		} catch (error) {
 			console.log(error.message);
 			setError(error.message);
 		} finally {
 			setIsInsUpdating(false);
 			setIsShowModalInsUpdating(false);
+			setIsInsEditing(false);
 		}
 	};
 
