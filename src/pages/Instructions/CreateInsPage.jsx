@@ -7,9 +7,12 @@ import React, { useState } from 'react'
 import { ButtonBlock, ButtonGroup, CardBlock, ContainerBlock, HeaderBlock, InputBlock, ModalConfirm, PageBTW } from '../../components'
 
 
-import axios from 'axios';
 import Editor from './QuillEditor';
 import useInsStore from './insStore';
+import TitleImage from './components/TitleImage';
+
+
+
 
 
 
@@ -31,6 +34,7 @@ export default function CreateInsPage() {
 
 
 	const [newTitle, setNewTitle] = useState('')
+	const [newTitleImage, setNewTitleImage] = useState('')
 	const [newCategory, setNewCategory] = useState('')
 	const [newDepartment, setNewDepartment] = useState('')
 	const [newAccess, setNewAccess] = useState('')
@@ -60,7 +64,7 @@ export default function CreateInsPage() {
 		try {
 
 			setIsInsCreating(true)
-		
+
 
 			const instruction = await createInstruction(createData)
 			setInsId(instruction?._id)
@@ -190,6 +194,22 @@ export default function CreateInsPage() {
 			<ContainerBlock
 				className="p-1 space-y-4 "
 			>
+
+
+				<CardBlock
+					className="flex justify-start items-center space-x-4"
+
+				>
+
+					<label htmlFor="">Зображення: </label>
+
+					<TitleImage newTitleImage={newTitleImage} setNewTitleImage={setNewTitleImage} />
+
+
+				</CardBlock>
+
+
+
 
 
 				<CardBlock
