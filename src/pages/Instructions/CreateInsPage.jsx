@@ -41,6 +41,10 @@ export default function CreateInsPage() {
 	const [newBody, setNewBody] = useState("");
 
 
+
+
+
+	
 	const [isInsCreating, setIsInsCreating] = useState(false)
 	const [isInsUpdating, setIsInsUpdating] = useState(false)
 
