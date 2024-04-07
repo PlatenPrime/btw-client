@@ -86,7 +86,7 @@ const Editor = ({
 			toolbar: {
 				container: [
 					// [{ header: [1, 2, 3, 4, false] }],
-					[{ 'font': [] }, { 'size': [] }],
+					[{ 'font': [] }],
 					["bold", "italic", "underline", "strike", "blockquote",],
 					[{ align: '' }, { align: 'center' }, { align: 'right' }, { align: 'justify' }],
 					[{ 'color': [] }, { 'background': [] }],
