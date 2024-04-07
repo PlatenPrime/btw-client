@@ -87,7 +87,8 @@ const Editor = ({
 				container: [
 					// [{ header: [1, 2, 3, 4, false] }],
 					[{ 'font': [] }, { 'size': [] }],
-					["bold", "italic", "underline", "strike", "blockquote", ],
+					["bold", "italic", "underline", "strike", "blockquote",],
+					[{ align: '' }, { align: 'center' }, { align: 'right' }, { align: 'justify' }],
 					[{ 'color': [] }, { 'background': [] }],
 					[
 						{ list: "ordered" },
@@ -97,7 +98,7 @@ const Editor = ({
 					],
 					["link", "image"],
 					["clean"],
-					[{ align: '' }, { align: 'center' }, { align: 'right' }, { align: 'justify' }],
+
 				],
 				handlers: {
 					image: imageHandler,
@@ -107,7 +108,7 @@ const Editor = ({
 			clipboard: {
 				matchVisual: true,
 			},
-			
+
 
 
 		}),

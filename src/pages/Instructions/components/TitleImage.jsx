@@ -11,6 +11,7 @@ export default function TitleImage({
 		const file = event.target.files[0];
 		if (file) {
 			const imageUrl = await uploadImage(file);
+			console.log(imageUrl);
 			setNewTitleImage(imageUrl);
 		}
 	};
@@ -20,11 +21,13 @@ export default function TitleImage({
 	return (
 		<ContainerBlock>
 			<CardBlock>
-				{newTitleImage ? <img
-					src={newTitleImage}
-					width={200}
-				>
-				</img> :
+				{newTitleImage ?
+					<img
+						src={newTitleImage}
+						width={200}
+					>
+					</img>
+					:
 
 					<img
 						src='https://i.pinimg.com/564x/13/21/15/1321155e80afc063f9eb4376785fbee3.jpg'
