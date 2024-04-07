@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { ButtonBlock, ButtonGroup, CardBlock, ContainerBlock, HeaderBlock, InputBlock, PageBTW, Spinner, TextBlock } from '../../components'
 import ArtBage from './ArtBage';
-import InfiniteScroll from 'react-infinite-scroll-component';
 import { useArtContext } from '../../ArtContext';
 import { toast } from 'react-toastify';
 import { AiOutlineArrowLeft, AiOutlineArrowRight, AiOutlineDoubleLeft, AiOutlineDoubleRight, AiOutlineSearch } from "react-icons/ai";

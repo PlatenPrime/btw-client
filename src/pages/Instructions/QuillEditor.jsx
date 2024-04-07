@@ -3,7 +3,7 @@ import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 
 // Importing core components
 import QuillEditor, { Quill } from "react-quill";
-import ImageResize from 'quill-image-resize-module-react';
+
 
 // Importing styles
 import "react-quill/dist/quill.snow.css";
@@ -12,7 +12,7 @@ import "./editor.css"
 
 
 
-Quill.register('modules/imageResize', ImageResize);
+
 
 
 
@@ -107,10 +107,7 @@ const Editor = ({
 			clipboard: {
 				matchVisual: true,
 			},
-			imageResize: {
-				parchment: Quill.import('parchment'),
-				modules: ['Resize', 'DisplaySize']
-			},
+			
 
 
 		}),
