@@ -2,6 +2,11 @@ import React, { useEffect, useState } from 'react'
 import { ButtonBlock, ButtonGroup, CardBlock, ContainerBlock, HeaderBlock, PageBTW, Spinner, TextBlock } from '../../components'
 import { useNavigate } from 'react-router-dom'
 import useInsStore from './insStore'
+import YouTube from 'react-youtube';
+
+
+
+// DFNNauCXiFM
 
 export default function InstructionsPage() {
 
@@ -94,7 +99,11 @@ export default function InstructionsPage() {
 
 
 
-
+					<div
+					className="flex justify-center"
+					>
+						<YouTube videoId="DFNNauCXiFM" />
+					</div>
 
 
 
@@ -123,10 +132,10 @@ export default function InstructionsPage() {
 										className="justify-start"
 									>
 										{i + 1}. {ins?.title}
-										
+
 									</TextBlock>
 									<CardBlock>{ins?.category}</CardBlock>
-										<CardBlock>{ins?.department}</CardBlock>
+									<CardBlock>{ins?.department}</CardBlock>
 								</CardBlock>
 								)}
 
