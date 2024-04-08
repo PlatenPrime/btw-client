@@ -1,0 +1,29 @@
+
+.insBodyContainer {
+
+	
+}
+
+.insBodyContainer img {
+	width: 80%;
+	height: auto;
+	margin: 0 auto;
+	padding: 0.5rem;
+	border-radius: 1rem;
+	transition: transform 0.3s, box-shadow 0.3s;
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); 
+
+  }
+
+
+  .insBodyContainer img:hover {
+	transform: translateY( -5%) scale(1.1); 
+	
+	  }
+
+
+
+
+	  .insBodyContainer h2 {
+		font-size: 2rem;
+	  }

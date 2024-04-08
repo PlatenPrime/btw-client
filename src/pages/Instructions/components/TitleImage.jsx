@@ -58,7 +58,7 @@ export default function TitleImage({
 						:
 
 						<img
-							src='https://i.pinimg.com/564x/13/21/15/1321155e80afc063f9eb4376785fbee3.jpg'
+							src='https://placehold.co/600x400?text=Інструкція'
 							width={200}
 						></img>}
 			</CardBlock>

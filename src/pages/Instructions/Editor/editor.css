@@ -67,7 +67,7 @@
 
 
 
-img {
+.ql-container img {
 	width: 80%;
 	height: auto;
 	margin: 0 auto;
@@ -79,15 +79,18 @@ img {
   }
 
 
-	img:hover {
-		transform: translateZ(-5px) scale(1.1); 
+  .ql-container img:hover {
+		transform: translateY( -5%) scale(1.1); 
 	
 	  }
 
 
 
 
-	  h2 {
+	  .ql-container h2 {
 		font-size: 2rem;
 	  }
 
+.ql.container ::placeholder {
+	color: white;
+}

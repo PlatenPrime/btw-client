@@ -5,6 +5,7 @@ import useInsStore from './insStore';
 import useAuthStore from '../../pages/Auth/authStore';
 import Editor from "./Editor/QuillEditor";
 import parse from 'html-react-parser';
+import InsContainer from './components/InsContainer';
 
 export default function InsPage() {
 
@@ -336,14 +337,7 @@ export default function InsPage() {
 										/>
 									</ContainerBlock>
 
-
-
-
 								</ContainerBlock>
-
-
-
-
 							</CardBlock>
 
 							:
@@ -362,8 +356,11 @@ export default function InsPage() {
 									<TextBlock className="text-xl italic">Відділ (для кого): {ins?.department}</TextBlock>
 								</CardBlock>
 
+								<InsContainer>{insBody && parse(insBody)}</InsContainer>
 
-								{insBody && parse(insBody)}
+
+
+
 							</ContainerBlock>
 						}
 

@@ -33,9 +33,6 @@ const Editor = ({
 	const quill = useRef();
 
 	// Handler to handle button clicked
-	function handler() {
-		console.log(value);
-	}
 
 	const imageHandler = useCallback(() => {
 		// Создаем input элемент
