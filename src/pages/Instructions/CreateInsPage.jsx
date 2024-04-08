@@ -1,22 +1,14 @@
 
 // 86f656ab03b0dcf
 
-
-
 import React, { useState } from 'react'
 import { ButtonBlock, ButtonGroup, CardBlock, ContainerBlock, HeaderBlock, InputBlock, ModalConfirm, PageBTW } from '../../components'
 
 
-import Editor from './QuillEditor';
+import Editor from './Editor/QuillEditor';
 import useInsStore from './insStore';
 import TitleImage from './components/TitleImage';
-
-
-
-
-
-
-
+import useAuthStore from '../Auth/authStore';
 
 
 
@@ -24,6 +16,7 @@ import TitleImage from './components/TitleImage';
 
 export default function CreateInsPage() {
 
+	const { user } = useAuthStore();
 
 	const { createInstruction, updateInstructionById } = useInsStore();
 
@@ -44,7 +37,7 @@ export default function CreateInsPage() {
 
 
 
-	
+
 	const [isInsCreating, setIsInsCreating] = useState(false)
 	const [isInsUpdating, setIsInsUpdating] = useState(false)
 
@@ -155,6 +148,8 @@ export default function CreateInsPage() {
 					onConfirm={() => handleInsCreate({
 
 						title: newTitle,
+						titleImage: newTitleImage,
+						author: user._id,
 						body: newBody,
 						category: newCategory,
 						department: newDepartment,
@@ -172,6 +167,7 @@ export default function CreateInsPage() {
 					onConfirm={() => handleInsUpdate({
 
 						title: newTitle,
+						titleImage: newTitleImage,
 						body: newBody,
 						category: newCategory,
 						department: newDepartment,

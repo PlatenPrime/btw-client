@@ -85,7 +85,7 @@ const Editor = ({
 		() => ({
 			toolbar: {
 				container: [
-					// [{ header: [1, 2, 3, 4, false] }],
+					[{ header: [ 2, false] }],
 					[{ 'font': [] }],
 					["bold", "italic", "underline", "strike", "blockquote",],
 					[{ align: '' }, { align: 'center' }, { align: 'right' }, { align: 'justify' }],

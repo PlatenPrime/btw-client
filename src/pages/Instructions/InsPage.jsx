@@ -2,7 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { ButtonBlock, ButtonGroup, CardBlock, ContainerBlock, HeaderBlock, InputBlock, ModalConfirm, ModalDelete, PageBTW, Spinner, TextBlock } from '../../components';
 import { useNavigate, useParams } from 'react-router-dom';
 import useInsStore from './insStore';
-import Editor from "./QuillEditor"
+import useAuthStore from '../../pages/Auth/authStore';
+import Editor from "./Editor/QuillEditor";
 import parse from 'html-react-parser';
 
 export default function InsPage() {
@@ -11,6 +12,7 @@ export default function InsPage() {
 	const navigate = useNavigate()
 
 	const { getInstructionById, updateInstructionById, deleteInstructionById } = useInsStore();
+	const { user } = useAuthStore();
 
 	const [error, setError] = useState(null);
 
@@ -20,6 +22,7 @@ export default function InsPage() {
 
 
 	const [newTitle, setNewTitle] = useState('')
+	const [newTitleImage, setNewTitleImage] = useState('')
 	const [newCategory, setNewCategory] = useState('')
 	const [newDepartment, setNewDepartment] = useState('')
 	const [newAccess, setNewAccess] = useState('')
@@ -141,6 +144,7 @@ export default function InsPage() {
 					onConfirm={() => handleInsUpdate({
 
 						title: newTitle,
+						titleImage: newTitleImage,
 						body: newBody,
 						category: newCategory,
 						department: newDepartment,
