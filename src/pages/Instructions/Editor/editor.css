@@ -80,7 +80,7 @@ img {
 
 
 	img:hover {
-		transform: translateZ(-5px) scale(1.2); 
+		transform: translateZ(-5px) scale(1.1); 
 	
 	  }
 
@@ -88,6 +88,6 @@ img {
 
 
 	  h2 {
-		font-size: 3rem;
+		font-size: 2rem;
 	  }
 
