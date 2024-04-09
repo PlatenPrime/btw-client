@@ -8,6 +8,7 @@ import parse from 'html-react-parser';
 import InsContainer from './components/InsContainer';
 
 import YouTube from 'react-youtube';
+import { extractVideoId } from '../../utils/youtube';
 
 
 
@@ -36,7 +37,7 @@ export default function InsPage() {
 	const [newAccess, setNewAccess] = useState('')
 	const [newBody, setNewBody] = useState("");
 
-
+	const [videoUrl, setVideoUrl] = useState('');
 
 	console.log(ins);
 
@@ -140,6 +141,26 @@ export default function InsPage() {
 		console.log("Changing read-only mode");
 		setIsInsEditing((prev) => !prev);
 	};
+
+
+	const handleVideoUrlChange = (event) => {
+		const url = event.target.value;
+		setVideoUrl(url);
+		const id = extractVideoId(url);
+		setNewVideo(id);
+	};
+
+
+
+
+
+
+
+
+
+
+
+
 
 	return (
 		<PageBTW className="space-y-4">
@@ -280,22 +301,24 @@ export default function InsPage() {
 
 
 
-									<CardBlock
-										className="flex justify-start items-center space-x-4"
+									<div
+										className="flex flex-col items-center space-y-2"
 									>
-										{/* регламент, посадова */}
-										<label htmlFor="">Категорія: </label>
-
 										<InputBlock
-											name="newCategory"
-											className=""
-											value={newCategory}
-											onChange={(e) => setNewCategory(e.target.value)}
-											placeholder="регламент, посадова "
+											type="text"
+											className="text-xl outline-none border-none p-3 px-8 bg-slate-700 focus:bg-slate-600 w-full
+								 placeholder:font-light rounded-xl rounded-l-none
+								"
+											placeholder="Введите ссылку на видео с YouTube"
+											value={videoUrl}
+											onChange={handleVideoUrlChange}
 										/>
+										{newVideo && <YouTube videoId={newVideo} />}
+									</div>
 
 
-									</CardBlock>
+
+
 
 
 
@@ -320,12 +343,7 @@ export default function InsPage() {
 
 								<TextBlock className="text-3xl">Назва: {ins?.title}</TextBlock>
 
-								<CardBlock
-									className="flex flex-col items-start p-8"
-								>
-									<TextBlock className="text-xl italic">Категорія: {ins?.category}</TextBlock>
 
-								</CardBlock>
 
 								<div
 									className="flex flex-col items-center space-y-2"
