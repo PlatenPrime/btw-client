@@ -51,7 +51,7 @@ const SidebarMobileBTW = ({ onClose }) => {
 	console.log(user);
 
 
-if (!user) return null
+	if (!user) return null
 
 
 
@@ -204,6 +204,25 @@ if (!user) return null
 							} : inActiveStyles}
 						>
 							Конкуренти
+						</NavLink>
+					</TextBlock>
+					:
+					null}
+
+
+				{user?.role === "PRIME" ?
+					<TextBlock className="w-full text-xl text-center border border-blue-500 hover:bg-blue-500/90 rounded font-bold " >
+						<NavLink
+							onClick={onClose}
+							to={"ins"}
+							style={({ isActive }) => isActive ? {
+								color: "white",
+								padding: "12px",
+								width: "100%",
+								background: "rgb(59 130 246  )",
+							} : inActiveStyles}
+						>
+							Інструкції
 						</NavLink>
 					</TextBlock>
 					:
