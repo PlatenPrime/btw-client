@@ -39,11 +39,10 @@ export default function CreateInsPage() {
 	const [newDepartment, setNewDepartment] = useState('')
 	const [newAccess, setNewAccess] = useState('')
 	const [newBody, setNewBody] = useState("");
-
-
+	const [newVideo, setNewVideo] = useState('')
 
 	const [videoUrl, setVideoUrl] = useState('');
-	const [videoId, setVideoId] = useState('');
+
 
 	const [error, setError] = useState(null);
 
@@ -76,7 +75,7 @@ export default function CreateInsPage() {
 		const url = event.target.value;
 		setVideoUrl(url);
 		const id = extractVideoId(url);
-		setVideoId(id);
+		setNewVideo(id);
 	};
 
 
@@ -179,7 +178,8 @@ export default function CreateInsPage() {
 						body: newBody,
 						category: newCategory,
 						department: newDepartment,
-						access: newAccess
+						access: newAccess,
+						video: newVideo
 					})}
 					onCancel={() => setIsShowModalInsCreating(false)}
 					isConfirming={isInsCreating}
@@ -197,7 +197,8 @@ export default function CreateInsPage() {
 						body: newBody,
 						category: newCategory,
 						department: newDepartment,
-						access: newAccess
+						access: newAccess,
+						video: newVideo
 					})}
 					onCancel={() => setIsShowModalInsUpdating(false)}
 					isConfirming={isInsUpdating}
@@ -269,7 +270,7 @@ export default function CreateInsPage() {
 						value={videoUrl}
 						onChange={handleVideoUrlChange}
 					/>
-					{videoId && <YouTube videoId={videoId} />}
+					{newVideo&& <YouTube videoId={newVideo} />}
 				</div>
 
 

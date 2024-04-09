@@ -7,6 +7,10 @@ import Editor from "./Editor/QuillEditor";
 import parse from 'html-react-parser';
 import InsContainer from './components/InsContainer';
 
+import YouTube from 'react-youtube';
+
+
+
 export default function InsPage() {
 
 	const { id } = useParams();
@@ -24,10 +28,14 @@ export default function InsPage() {
 
 	const [newTitle, setNewTitle] = useState('')
 	const [newTitleImage, setNewTitleImage] = useState('')
+	const [newVideo, setNewVideo] = useState('')
+
+
 	const [newCategory, setNewCategory] = useState('')
 	const [newDepartment, setNewDepartment] = useState('')
 	const [newAccess, setNewAccess] = useState('')
 	const [newBody, setNewBody] = useState("");
+
 
 
 	console.log(ins);
@@ -75,6 +83,7 @@ export default function InsPage() {
 					setNewDepartment(fetchedInstruction?.department)
 					setNewAccess(fetchedInstruction?.access)
 					setNewBody(fetchedInstruction?.body)
+					setNewVideo(fetchedInstruction?.video)
 				}
 
 			} catch (error) {
@@ -149,7 +158,8 @@ export default function InsPage() {
 						body: newBody,
 						category: newCategory,
 						department: newDepartment,
-						access: newAccess
+						access: newAccess,
+						video: newVideo
 					})}
 					onCancel={() => setIsShowModalInsUpdating(false)}
 					isConfirming={isInsUpdating}
@@ -289,44 +299,6 @@ export default function InsPage() {
 
 
 
-									<CardBlock
-										className="flex justify-start items-center space-x-4"
-									>
-
-										<label htmlFor="">Відділ: </label>
-
-										<InputBlock
-											name="newDepartment"
-											className=""
-											value={newDepartment}
-											onChange={(e) => setNewDepartment(e.target.value)}
-											placeholder="Погреби, Труба, Дніпро "
-										/>
-
-
-									</CardBlock>
-
-
-									<CardBlock
-										className="flex justify-start items-center space-x-4"
-									>
-
-										<label htmlFor="">Доступ: </label>
-
-										<InputBlock
-											name="newAccess"
-											className=""
-											value={newAccess}
-											onChange={(e) => setNewAccess(e.target.value)}
-											placeholder="Тільки менеджери, Бтрейд "
-										/>
-
-									</CardBlock>
-
-
-
-
-
 
 
 									<ContainerBlock>
@@ -351,10 +323,17 @@ export default function InsPage() {
 								<CardBlock
 									className="flex flex-col items-start p-8"
 								>
-									<TextBlock className="text-xl italic ">Доступ (хто може дивитись): {ins?.access}</TextBlock>
 									<TextBlock className="text-xl italic">Категорія: {ins?.category}</TextBlock>
-									<TextBlock className="text-xl italic">Відділ (для кого): {ins?.department}</TextBlock>
+
 								</CardBlock>
+
+								<div
+									className="flex flex-col items-center space-y-2"
+								>
+
+									{newVideo && <YouTube videoId={newVideo} />}
+								</div>
+
 
 								<InsContainer>{insBody && parse(insBody)}</InsContainer>
 
