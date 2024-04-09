@@ -3,12 +3,16 @@
 
 import React, { useState } from 'react'
 import { ButtonBlock, ButtonGroup, CardBlock, ContainerBlock, HeaderBlock, InputBlock, ModalConfirm, PageBTW } from '../../components'
-
+import YouTube from 'react-youtube';
 
 import Editor from './Editor/QuillEditor';
 import useInsStore from './insStore';
 import TitleImage from './components/TitleImage';
 import useAuthStore from '../Auth/authStore';
+import { toast } from 'react-toastify';
+
+import { categories, departments, access } from './constants';
+import { extractVideoId } from '../../utils/youtube';
 
 
 
@@ -27,7 +31,10 @@ export default function CreateInsPage() {
 
 
 	const [newTitle, setNewTitle] = useState('')
+
+
 	const [newTitleImage, setNewTitleImage] = useState('')
+
 	const [newCategory, setNewCategory] = useState('')
 	const [newDepartment, setNewDepartment] = useState('')
 	const [newAccess, setNewAccess] = useState('')
@@ -35,7 +42,10 @@ export default function CreateInsPage() {
 
 
 
+	const [videoUrl, setVideoUrl] = useState('');
+	const [videoId, setVideoId] = useState('');
 
+	const [error, setError] = useState(null);
 
 
 	const [isInsCreating, setIsInsCreating] = useState(false)
@@ -52,9 +62,22 @@ export default function CreateInsPage() {
 
 
 
+	const [selectedGroups, setSelectedGroups] = useState([]);
 
+	const handleGroupChange = (groupKey) => {
+		if (selectedGroups.includes(groupKey)) {
+			setSelectedGroups(selectedGroups.filter((key) => key !== groupKey));
+		} else {
+			setSelectedGroups([...selectedGroups, groupKey]);
+		}
+	};
 
-
+	const handleVideoUrlChange = (event) => {
+		const url = event.target.value;
+		setVideoUrl(url);
+		const id = extractVideoId(url);
+		setVideoId(id);
+	};
 
 
 	const handleInsCreate = async (createData) => {
@@ -69,6 +92,8 @@ export default function CreateInsPage() {
 
 		} catch (error) {
 			console.error('Произошла ошибка:', error);
+			setError(error.message)
+			toast.error(error.message)
 		} finally {
 			setIsInsCreating(false)
 			setIsShowModalInsCreating(false)
@@ -85,7 +110,8 @@ export default function CreateInsPage() {
 
 		} catch (error) {
 			console.error('Произошла ошибка:', error);
-
+			setError(error.message)
+			toast.error(error.message)
 		} finally {
 			setIsInsUpdating(false)
 			setIsShowModalInsUpdating(false)
@@ -114,7 +140,7 @@ export default function CreateInsPage() {
 
 				<ButtonBlock
 					className="green-b"
-					disabled={insId || isInsCreating || !newTitle || !newBody || !newCategory || !newDepartment || !newAccess}
+					disabled={insId || isInsCreating || !newTitle || !newBody }
 					onClick={() => setIsShowModalInsCreating(true)}
 				>
 					Створити
@@ -192,28 +218,12 @@ export default function CreateInsPage() {
 
 
 			<ContainerBlock
-				className="p-1 space-y-4 "
+				className="p-2 space-y-4 "
 			>
 
 
 				<CardBlock
-					className="flex justify-start items-center space-x-4"
-
-				>
-
-					<label htmlFor="">Зображення: </label>
-
-					<TitleImage newTitleImage={newTitleImage} setNewTitleImage={setNewTitleImage} />
-
-
-				</CardBlock>
-
-
-
-
-
-				<CardBlock
-					className="flex justify-start items-center space-x-4"
+					className="flex justify-evenly items-center space-x-4"
 
 				>
 
@@ -221,7 +231,9 @@ export default function CreateInsPage() {
 
 					<InputBlock
 						name="newTitle"
-						className=""
+						className="text-xl outline-none border-none p-3 px-8 bg-slate-700 focus:bg-slate-600 w-full
+								 placeholder:font-light rounded-xl rounded-l-none
+								"
 						value={newTitle}
 						onChange={(e) => setNewTitle(e.target.value)}
 						placeholder="..."
@@ -230,65 +242,124 @@ export default function CreateInsPage() {
 
 				</CardBlock>
 
-
-
-				<CardBlock
-					className="flex justify-start items-center space-x-4"
-
-				>
-					{/* регламент, посадова */}
-					<label htmlFor="">Категорія: </label>
-
-					<InputBlock
-						name="newCategory"
-						className=""
-						value={newCategory}
-						onChange={(e) => setNewCategory(e.target.value)}
-						placeholder="регламент, посадова "
-					/>
-
-
-				</CardBlock>
-
-
-
 				<CardBlock
 					className="flex justify-start items-center space-x-4"
 
 				>
 
-					<label htmlFor="">Відділ: </label>
-
-					<InputBlock
-						name="newDepartment"
-						className=""
-						value={newDepartment}
-						onChange={(e) => setNewDepartment(e.target.value)}
-						placeholder="Погреби, Труба, Дніпро "
-					/>
-
+					<label htmlFor="">Зображення: </label>
+					<CardBlock
+						className="w-full flex justify-center"
+					>
+						<TitleImage newTitleImage={newTitleImage} setNewTitleImage={setNewTitleImage} />
+					</CardBlock>
 
 				</CardBlock>
 
 
-				<CardBlock
-					className="flex justify-start items-center space-x-4"
+				<div
+					className="flex flex-col items-center space-y-2"
+				>
+					<InputBlock
+						type="text"
+						className="text-xl outline-none border-none p-3 px-8 bg-slate-700 focus:bg-slate-600 w-full
+								 placeholder:font-light rounded-xl rounded-l-none
+								"
+						placeholder="Введите ссылку на видео с YouTube"
+						value={videoUrl}
+						onChange={handleVideoUrlChange}
+					/>
+					{videoId && <YouTube videoId={videoId} />}
+				</div>
 
+
+
+
+				{/* 
+				<CardBlock
+					className="grid grid-cols-2"
 				>
 
-					<label htmlFor="">Доступ: </label>
-
-					<InputBlock
-						name="newAccess"
-						className=""
-						value={newAccess}
-						onChange={(e) => setNewAccess(e.target.value)}
-						placeholder="Тільки менеджери, Бтрейд "
-					/>
-
-				</CardBlock>
 
 
+
+
+					<CardBlock
+						className="flex justify-start items-center space-x-4"
+
+					>
+						
+						<label htmlFor="">Категорія: </label>
+
+						<select
+							name="newDepartment"
+							className="bg-transparent"
+							value={newDepartment}
+							onChange={(e) => setNewCategory(e.target.value)}
+							placeholder=""
+						>
+							{Object.keys(categories).map((key) => (
+								<option
+									className="bg-slate-700 p-2"
+									key={key}
+									value={key}
+								>
+									{categories[key]}
+								</option>
+							))}
+						</select>
+
+
+					</CardBlock>
+
+
+
+
+
+
+					<CardBlock className="flex justify-start items-center space-x-4">
+						<label htmlFor="">Відділ: </label>
+						<select
+							name="newDepartment"
+							className="bg-transparent"
+							value={newDepartment}
+							onChange={(e) => setNewDepartment(e.target.value)}
+							placeholder="Погреби, Труба, Дніпро"
+						>
+							{Object.keys(departments).map((key) => (
+								<option
+									className="bg-slate-700 p-2"
+									key={key}
+									value={key}
+								>
+									{departments[key]}
+								</option>
+							))}
+						</select>
+					</CardBlock>
+
+
+					<CardBlock className="flex justify-start items-center space-x-4">
+						<label htmlFor="">Доступ: </label>
+						<div className="flex flex-wrap items-center">
+							{Object.keys(access).map((key) => (
+								<div key={key} className="flex items-center space-x-2">
+									<input
+										type="checkbox"
+										id={`group_${key}`}
+										name={`group_${key}`}
+										checked={selectedGroups.includes(key)}
+										onChange={() => handleGroupChange(key)}
+									/>
+									<label htmlFor={`group_${key}`}>{`Группа ${key}`}</label>
+								</div>
+							))}
+						</div>
+					</CardBlock>
+
+
+
+				</CardBlock> */}
 
 
 

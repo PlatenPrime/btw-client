@@ -9,6 +9,7 @@ import QuillEditor, { Quill } from "react-quill";
 import "react-quill/dist/quill.snow.css";
 import styles from "./styles.module.css";
 import "./editor.css"
+import { toast } from "react-toastify";
 
 
 
@@ -27,6 +28,11 @@ const Editor = ({
 
 
 	console.log(value);
+
+
+
+
+	const [error, setError] = useState(null);
 
 
 	// Editor ref
@@ -67,6 +73,8 @@ const Editor = ({
 				})
 				.catch(error => {
 					console.error("Ошибка при отправке запроса на сервер Imgur:", error);
+					setError(error.message);
+					toast.error(error.message);
 				});
 		};
 	}, []);
@@ -82,7 +90,7 @@ const Editor = ({
 		() => ({
 			toolbar: {
 				container: [
-					[{ header: [ 2, false] }],
+					[{ header: [2, false] }],
 					[{ 'font': [] }],
 					["bold", "italic", "underline", "strike", "blockquote",],
 					[{ align: '' }, { align: 'center' }, { align: 'right' }, { align: 'justify' }],
