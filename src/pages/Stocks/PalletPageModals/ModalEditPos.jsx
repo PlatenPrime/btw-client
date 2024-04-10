@@ -1,5 +1,5 @@
 import React from 'react';
-import { ModalWrapper, InputBlock, ButtonBlock, CardBlock, TextBlock } from '../../../components';
+import { ModalWrapper, InputBlock, ButtonBlock, CardBlock, TextBlock, Spinner } from '../../../components';
 import { CancelIcon, ClearIcon, OkIcon } from '../../../components/UI/Icons';
 
 function ModalEditPos({
@@ -111,8 +111,23 @@ function ModalEditPos({
 							className="green-b flex justify-center items-center"
 							onClick={() => { handleUpdatePosById(selectedPos._id); }}
 						>
-							<TextBlock className="text-2xl"><OkIcon /></TextBlock>
-							<TextBlock className=""> Зберегти</TextBlock>
+							
+
+
+							{isEditingPos ?
+
+								<Spinner color="green" />
+								:
+								<>
+									<TextBlock className="text-2xl"><OkIcon /></TextBlock>
+									<TextBlock className=""> Зберегти</TextBlock>
+								</>
+
+							}
+
+
+
+
 
 						</ButtonBlock>
 					</CardBlock>
