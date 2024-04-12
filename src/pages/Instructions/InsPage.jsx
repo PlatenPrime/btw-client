@@ -290,7 +290,9 @@ export default function InsPage() {
 
 										<InputBlock
 											name="newTitle"
-											className=""
+											className="text-xl outline-none border-none p-3 px-8 bg-slate-700 focus:bg-slate-600 w-full
+								 placeholder:font-light rounded-xl rounded-l-none
+								"
 											value={newTitle}
 											onChange={(e) => setNewTitle(e.target.value)}
 											placeholder="..."
@@ -301,18 +303,32 @@ export default function InsPage() {
 
 
 
-									<div
-										className="flex flex-col items-center space-y-2"
+
+
+
+									<CardBlock
+										className="flex justify-start items-center space-x-4"
+
 									>
+
+										<label htmlFor="">Відео: </label>
+
 										<InputBlock
 											type="text"
 											className="text-xl outline-none border-none p-3 px-8 bg-slate-700 focus:bg-slate-600 w-full
 								 placeholder:font-light rounded-xl rounded-l-none
 								"
-											placeholder="Введите ссылку на видео с YouTube"
+											placeholder="https://www.youtube.com/..."
 											value={videoUrl}
 											onChange={handleVideoUrlChange}
 										/>
+
+									</CardBlock>
+
+									<div
+										className="flex flex-col items-center space-y-2"
+									>
+
 										{newVideo && <YouTube videoId={newVideo} />}
 									</div>
 
@@ -324,7 +340,10 @@ export default function InsPage() {
 
 
 
-									<ContainerBlock>
+									<ContainerBlock
+										className="bg-blue-500/10
+									shadow-2xl shadow-blue-500 rounded-xl"
+									>
 										<Editor
 											value={newBody}
 											setValue={setNewBody}
@@ -337,6 +356,7 @@ export default function InsPage() {
 
 							:
 							<ContainerBlock
+								className="p-1 space-y-4 "
 							>
 
 
@@ -346,15 +366,23 @@ export default function InsPage() {
 
 
 								<div
-									className="flex flex-col items-center space-y-2"
+									className="flex flex-col items-center space-y-2 py-4
+									bg-blue-500/10
+									 rounded-xl  "
 								>
 
-									{newVideo && <YouTube videoId={newVideo} />}
+									{newVideo && <YouTube
+
+										videoId={newVideo}
+									/>}
 								</div>
 
-
-								<InsContainer>{insBody && parse(insBody)}</InsContainer>
-
+								<ContainerBlock
+									className="bg-blue-500/10
+ rounded-xl"
+								>
+									<InsContainer>{insBody && parse(insBody)}</InsContainer>
+								</ContainerBlock>
 
 
 

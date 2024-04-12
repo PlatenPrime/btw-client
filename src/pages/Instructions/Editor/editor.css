@@ -80,7 +80,7 @@
 
 
   .ql-container img:hover {
-		transform: translateY( -5%) scale(1.1); 
+		transform:  scale(1.01); 
 	
 	  }
 
