@@ -9,6 +9,7 @@ import InsContainer from './components/InsContainer';
 
 import YouTube from 'react-youtube';
 import { extractVideoId } from '../../utils/youtube';
+import YoutubeCard from '../../components/UI/YoutubeCard/YoutubeCard';
 
 
 
@@ -332,6 +333,9 @@ export default function InsPage() {
 										{newVideo && <YouTube videoId={newVideo} />}
 									</div>
 
+									<YoutubeCard
+										url={videoUrl} />
+
 
 
 
@@ -377,16 +381,24 @@ export default function InsPage() {
 									/>}
 								</div>
 
-								<ContainerBlock
-									className="bg-blue-500/10
- rounded-xl"
-								>
+
+
+
+								<YoutubeCard
+									url={videoUrl} />
+
+							
 									<InsContainer>{insBody && parse(insBody)}</InsContainer>
+
+
+
+
+
+
+
 								</ContainerBlock>
 
 
-
-							</ContainerBlock>
 						}
 
 

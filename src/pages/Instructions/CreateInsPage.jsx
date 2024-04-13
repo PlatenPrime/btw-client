@@ -31,10 +31,7 @@ export default function CreateInsPage() {
 
 
 	const [newTitle, setNewTitle] = useState('')
-
-
 	const [newTitleImage, setNewTitleImage] = useState('')
-
 	const [newCategory, setNewCategory] = useState('')
 	const [newDepartment, setNewDepartment] = useState('')
 	const [newAccess, setNewAccess] = useState('')
