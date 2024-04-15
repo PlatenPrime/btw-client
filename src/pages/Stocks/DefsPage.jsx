@@ -732,7 +732,7 @@ export default function DefsPage() {
 						>
 
 							<TextBlock
-								className="text-xl bg-teal-500/50 hover:bg-teal-500 text-white  rounded-xl"
+								className="text-xl bg-teal-500/10 hover:bg-teal-500 text-white  rounded-xl"
 							>
 								Позиції всього: {allPoses?.length}
 							</TextBlock>
@@ -740,7 +740,7 @@ export default function DefsPage() {
 
 
 							<TextBlock
-								className="text-xl bg-sky-500/50 hover:bg-sky-500 text-white  rounded-xl"
+								className="text-xl bg-sky-500/10 hover:bg-sky-500 text-white  rounded-xl"
 							>
 								Артикули: {artsDB?.length}
 							</TextBlock>
@@ -751,13 +751,13 @@ export default function DefsPage() {
 					</TextBlock> */}
 
 							<TextBlock
-								className="text-xl bg-orange-500/50 hover:bg-orange-500 text-white  rounded-xl"
+								className="text-xl bg-orange-500/10 hover:bg-orange-500 text-white  rounded-xl"
 							>
 								Запаси: {stocks?.length}
 							</TextBlock>
 
 							<TextBlock
-								className="text-xl bg-pink-500/50 hover:bg-pink-500 text-white  rounded-xl"
+								className="text-xl bg-pink-500/10 hover:bg-pink-500 text-white  rounded-xl"
 							>
 								Дефіцити: {defs?.length}
 							</TextBlock>
@@ -819,7 +819,7 @@ export default function DefsPage() {
 							{defs?.map((def, i) =>
 								<CardBlock
 									key={i}
-									className="grid  lg:grid-cols-6 gap-2 p-2  bg-pink-500/5 hover:bg-pink-500/10 rounded-xl"
+									className="grid text-sm  lg:grid-cols-6 gap-2 p-2  bg-pink-500/5 hover:bg-pink-500/10 rounded-xl"
 
 								>
 
@@ -838,7 +838,7 @@ export default function DefsPage() {
 
 
 										<TextBlock
-											className="lg:col-span-2  w-full p-2 text-xl text-center italic bg-sky-500/10 hover:bg-sky-500 rounded-r-lg cursor-pointer "
+											className="lg:col-span-2  w-full p-2 text-lg text-center italic bg-sky-500/20 hover:bg-sky-500 rounded-r-lg cursor-pointer "
 											onClick={() => {
 												const artId = artsDB?.find(art => art.artikul === def.artikul)?._id || "";
 												const url = `/arts/${artId}`;
@@ -855,17 +855,17 @@ export default function DefsPage() {
 
 
 									<CardBlock
-										className="lg:col-span-2 justify-self-stretch flex flex-col items-start justify-around p-3 bg-slate-700/50 rounded-lg "
+										className="lg:col-span-2 justify-self-stretch flex flex-col items-start justify-around p-3 bg-pink-700/10 rounded-lg "
 									>
 
 
 										<TextBlock
 											className="text-xl text-left space-x-2"
 										>
-											<TextBlock className="text-xl text-left " >Запаси:</TextBlock>
+											<TextBlock className="text-lg text-left " >Запаси:</TextBlock>
 
 											<TextBlock
-												className="text-teal-300"
+												className="text-teal-100"
 											>{
 													def?.quant}
 											</TextBlock>
@@ -874,18 +874,18 @@ export default function DefsPage() {
 
 
 										<TextBlock
-											className="text-xl text-left space-x-2"
+											className="text-lg text-left space-x-2"
 										>
 											<TextBlock>База:</TextBlock>
-											<TextBlock className="text-amber-300">{def?.remain}</TextBlock>
+											<TextBlock className="text-amber-100">{def?.remain}</TextBlock>
 										</TextBlock>
 
 
 										<TextBlock
-											className="text-xl text-left space-x-2"
+											className="text-lg text-left space-x-2"
 										>
 											<TextBlock>Дефіцит:</TextBlock>
-											<TextBlock className="text-pink-300">{def?.dif}</TextBlock>
+											<TextBlock className="text-red-500">-{def?.dif}</TextBlock>
 										</TextBlock>
 
 									</CardBlock>
