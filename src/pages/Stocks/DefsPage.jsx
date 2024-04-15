@@ -739,7 +739,7 @@ export default function DefsPage() {
 
 
 
-							<TextBlock
+							    <TextBlock
 								className="text-xl bg-sky-500/10 hover:bg-sky-500 text-white  rounded-xl"
 							>
 								Артикули: {artsDB?.length}
