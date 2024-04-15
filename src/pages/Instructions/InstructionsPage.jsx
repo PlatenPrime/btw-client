@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react'
-import { ButtonBlock, ButtonGroup, ContainerBlock, HeaderBlock, PageBTW, Spinner} from '../../components'
+import { ButtonBlock, ButtonGroup, CardBlock, ContainerBlock, HeaderBlock, InputBlock, ModalWrapper, PageBTW, Spinner, TextBlock} from '../../components'
 import { useNavigate } from 'react-router-dom'
 
 import useInsFoldersStore from './insFoldersStore'
+import { CancelIcon, OkIcon } from '../../components/UI/Icons'
 
 
 
@@ -22,8 +23,15 @@ export default function InstructionsPage() {
 	const {insFolders, getAllInsFolders, createInsFolder, } = useInsFoldersStore()
 
 
+const [newInsFolderTitle, setNewInsFolderTitle] = useState('')
+const [newInsFolderColor, setNewInsFolderColor] = useState('')
+
+
+
 	const [isInsFoldersLoading, setIsInsFoldersLoading] = useState(false)
 	const [isInsFolderCreating, setIsInsFolderCreating] = useState(false)
+
+	const [isShowModalInsFolderCreating, setIsShowModalInsFolderCreating] = useState(false)
 
 
 
@@ -81,7 +89,7 @@ export default function InstructionsPage() {
 	}
 
 
-	
+
 
 
 
@@ -95,6 +103,104 @@ export default function InstructionsPage() {
 			>
 				Інструкції
 			</HeaderBlock>
+
+
+
+
+
+
+{/* MODALS */}
+
+
+{isShowModalInsFolderCreating && <ModalWrapper
+onCancel = {() => setIsShowModalInsFolderCreating(false)}
+title = "Створення теки"
+>
+
+
+
+
+<CardBlock className="space-y-2">
+
+
+								<CardBlock className="grid grid-cols-1 md:grid-cols-2 space-x-2">
+									<label className=" justify-self-center self-center md:justify-self-start" htmlFor="title">Назва:</label>
+									<InputBlock
+										type="text"
+										id="title"
+										name="title"
+										autoComplete="off"
+										value={newInsFolderTitle}
+										onChange={(e) => setNewInsFolderTitle(e.target.value)}
+									/>
+								</CardBlock>
+
+
+
+
+
+								
+
+							</CardBlock>
+
+
+
+
+
+
+
+
+
+<CardBlock className="grid grid-cols-2 space-x-2">
+
+
+								<ButtonBlock
+									className="red-b flex justify-center items-center"
+									onClick={() => setIsShowModalInsFolderCreating(false)}
+								>
+									<TextBlock className="text-2xl"><CancelIcon /></TextBlock>
+									<TextBlock className=""> Скасувати</TextBlock>
+
+								</ButtonBlock>
+
+
+
+								<ButtonBlock
+									disabled={!newInsFolderTitle}
+									type="submit"
+									className="green-b flex justify-center items-center"
+									onClick={handleInsFolderCreate}
+								>
+
+
+									{isInsFolderCreating ?
+
+										<Spinner color="green" />
+										:
+										<>
+											<TextBlock className="text-2xl"><OkIcon /></TextBlock>
+											<TextBlock className=""> 	Створити</TextBlock>
+										</>
+
+									}
+
+								</ButtonBlock>
+							</CardBlock>
+
+
+	</ModalWrapper>}
+
+
+
+
+
+
+
+
+
+
+
+			{/* MAIN */}
 
 
 
@@ -113,9 +219,14 @@ export default function InstructionsPage() {
 
 
 
+
 <ButtonGroup>
 
-	<ButtonBlock className="green-b" onClick={() => {}}>Створити теку</ButtonBlock>
+	<ButtonBlock 
+	className="green-b" 
+	onClick={() => setIsShowModalInsFolderCreating(true)}>
+		Створити теку
+		</ButtonBlock>
 </ButtonGroup>
 
 			
