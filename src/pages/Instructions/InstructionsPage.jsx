@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react'
-import { ButtonBlock, ButtonGroup, CardBlock, ContainerBlock, HeaderBlock, PageBTW, Spinner, TextBlock } from '../../components'
+import { ButtonBlock, ButtonGroup, ContainerBlock, HeaderBlock, PageBTW, Spinner} from '../../components'
 import { useNavigate } from 'react-router-dom'
-import useInsStore from './insStore'
-import YouTube from 'react-youtube';
+
+import useInsFoldersStore from './insFoldersStore'
+
 
 
 
@@ -16,10 +17,13 @@ export default function InstructionsPage() {
 
 
 
-	const { instructions, getAllInstructions } = useInsStore()
 
 
-	const [isInsLoading, setIsInsLoading] = useState(false)
+	const {insFolders, getAllInsFolders, createInsFolder, } = useInsFoldersStore()
+
+
+	const [isInsFoldersLoading, setIsInsFoldersLoading] = useState(false)
+	const [isInsFolderCreating, setIsInsFolderCreating] = useState(false)
 
 
 
@@ -29,10 +33,10 @@ export default function InstructionsPage() {
 
 		const fetchIns = async () => {
 			try {
-				setIsInsLoading(true)
+				setIsInsFoldersLoading(true)
 
 
-				const instructions = await getAllInstructions()
+				const instructions = await getAllInsFolders()
 
 				console.log("Інструкції завантажені", instructions);
 
@@ -41,7 +45,7 @@ export default function InstructionsPage() {
 				console.log(error);
 
 			} finally {
-				setIsInsLoading(false)
+				setIsInsFoldersLoading(false)
 			}
 		}
 
@@ -50,9 +54,34 @@ export default function InstructionsPage() {
 		fetchIns()
 
 
-	}, [])
+	}, [getAllInsFolders])
 
 
+
+	console.log(insFolders);
+	
+
+
+
+
+
+
+
+	const handleInsFolderCreate = async () => {
+		try {
+			setIsInsFolderCreating(true)
+			await createInsFolder()	
+
+		} catch (error) {
+			console.log(error);
+		} finally {
+			setIsInsFolderCreating(false)
+		}
+
+	}
+
+
+	
 
 
 
@@ -69,7 +98,7 @@ export default function InstructionsPage() {
 
 
 
-			{isInsLoading ?
+			{isInsFoldersLoading ?
 
 
 				<ContainerBlock
@@ -84,76 +113,12 @@ export default function InstructionsPage() {
 
 
 
-					<ButtonGroup>
-						<ButtonBlock
-							className="green-b"
-							onClick={() => navigate("/ins/new")}
+<ButtonGroup>
 
-						>
-							Створити інструкцію
-						</ButtonBlock>
-					</ButtonGroup>
+	<ButtonBlock className="green-b" onClick={() => {}}>Створити теку</ButtonBlock>
+</ButtonGroup>
 
-
-
-
-
-
-					<div
-					className="flex justify-center"
-					>
-						<YouTube videoId="DFNNauCXiFM" />
-					</div>
-
-
-
-
-					<ContainerBlock>
-						{instructions.length < 1
-							?
-							<TextBlock className="text-blue-100 italic" >Інструкцій немає або вони не завантажились</TextBlock>
-							:
-
-							<CardBlock
-								className="space-y-2"
-							>
-
-								{instructions?.map((ins, i) => <CardBlock
-									className="p-8 cursor-pointer
-									bg-blue-500/10 hover:bg-blue-500 hover:shadow-lg hover:shadow-blue-500 
-									
-									transition ease-in-out duration-1000 
-									
-									
-									"
-									onClick={() => navigate(`/ins/${ins?._id}`)}
-								>
-									<TextBlock
-										className="justify-start"
-									>
-										{i + 1}. {ins?.title}
-
-									</TextBlock>
-									<CardBlock>{ins?.category}</CardBlock>
-									<CardBlock>{ins?.department}</CardBlock>
-								</CardBlock>
-								)}
-
-
-							</CardBlock>}
-
-					</ContainerBlock>
-
-
-
-
-
-
-
-
-
-
-
+			
 
 
 				</>
@@ -162,4 +127,5 @@ export default function InstructionsPage() {
 
 		</PageBTW >
 	)
+
 }
