@@ -43,6 +43,7 @@ const useInsFolderStore = create((set) => ({
 
       if (response.status === 200) {
         const insFolder = response.data;
+        set({ insFolder });
         return insFolder;
       } else {
         throw new Error('Ошибка получения папки инструкций по ID');

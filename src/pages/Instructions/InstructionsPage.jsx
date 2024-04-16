@@ -111,12 +111,18 @@ export default function InstructionsPage() {
               {insFolders.map((insFolder) => (
                 <div
                   key={insFolder._id}
-                  className="rounded-xl flex justify-center items-center 
-                   bg-blue-500/20 hover:bg-blue-500/50 hover:shadow-lg hover:shadow-blue-500 transition duration-500 ease-in-out h-[200px] "
+                  onClick={() => navigate(`/insfolder/${insFolder._id}`)}
+                  className="rounded-xl flex justify-center items-center p-2
+                   bg-yellow-500/50 hover:bg-yellow-500 hover:shadow-lg hover:shadow-yellow-500 transition duration-500 ease-in-out h-[200px] cursor-pointer "
 
 
                 >
-                  {insFolder?.title}
+                  <TextBlock
+                  className="bg-white text-black text-xl p-2 rounded-xl"
+                  >
+                    {insFolder?.title}
+                  </TextBlock>
+
                 </div>
               ))}
             </ContainerBlock>
@@ -139,7 +145,8 @@ export default function InstructionsPage() {
 
 
         </>
-      )}
-    </PageBTW>
+      )
+      }
+    </PageBTW >
   );
 }
