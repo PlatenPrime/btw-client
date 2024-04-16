@@ -42,7 +42,21 @@ const useInsStore = create((set) => ({
 
 
 
+	getFolderInstructions: async (id) => {
+		try {
+			const response = await axios.get(`ins/insfolder/${id}`);
 
+			if (response.status === 200) {
+				const data = response.data;
+				set({ folderInstructions: data.folderInstructions });
+				return data.folderInstructions;
+			} else {
+				throw new Error('Ошибка получения инструкций');
+			}
+		} catch (error) {
+			console.error('Ошибка получения инструкций:', error);
+		}
+	},
 
 
 

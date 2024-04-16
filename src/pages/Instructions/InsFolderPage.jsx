@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { ButtonBlock, ButtonGroup, ContainerBlock, HeaderBlock, PageBTW, Spinner } from "../../components";
+import { ButtonBlock, ButtonGroup, ContainerBlock, HeaderBlock, PageBTW, Spinner, TextBlock } from "../../components";
 import { useParams } from "react-router-dom";
 import useInsFoldersStore from "./insFoldersStore";
 import useInsStore from "./insStore";
@@ -13,7 +13,7 @@ export default function InsFolderPage() {
 
 
   const { insFolder, getInsFolderById } = useInsFoldersStore()
-  const { createInstruction, folderInstructions } = useInsStore()
+  const { createInstruction, folderInstructions, getFolderInstructions } = useInsStore()
 
 
   const [isInsFolderLoading, setIsInsFolderLoading] = useState(false);
@@ -22,7 +22,9 @@ export default function InsFolderPage() {
 
 
   useEffect(() => {
-    const fetchIns = async () => {
+
+
+    const fetchInsFolder = async () => {
       try {
         setIsInsFolderLoading(true);
         const insFolder = await getInsFolderById(id);
@@ -34,8 +36,27 @@ export default function InsFolderPage() {
       }
     };
 
-    fetchIns();
-  }, [getInsFolderById, id]);
+
+    const fetchFolderInstructions = async () => {
+      try {
+        setIsInsFolderLoading(true);
+        const folderInstructions = await getFolderInstructions(id);
+        console.log("Інструкції теки завантажені: ", folderInstructions);
+      } catch (error) {
+        console.log(error);
+      } finally {
+        setIsInsFolderLoading(false);
+      }
+    };
+
+
+    fetchInsFolder();
+    fetchFolderInstructions()
+
+
+
+
+  }, [getInsFolderById, getFolderInstructions, id]);
 
 
 
@@ -84,7 +105,12 @@ export default function InsFolderPage() {
 
 
 
+          <ContainerBlock>
+            {folderInstructions?.map((instruction) => (
+              <TextBlock>{instruction?.title}</TextBlock>
 
+            ))}
+          </ContainerBlock>
 
 
 
