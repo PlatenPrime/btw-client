@@ -112,18 +112,15 @@ export default function InstructionsPage() {
                 <div
                   key={insFolder._id}
                   onClick={() => navigate(`/insfolder/${insFolder._id}`)}
-                  className="rounded-xl flex justify-center items-center p-2
-                   bg-slate-700 hover:bg-yellow-500 hover:shadow-xl hover:shadow-yellow-500 transition duration-500 ease-in-out min-h-[6rem] cursor-pointer "
-
-
+                  className="rounded-xl flex justify-center items-center p-2 bg-yellow-500/20 
+                      hover:bg-yellow-500  hover:shadow-2xl 
+                      transition duration-500 ease-in-out min-h-[6rem] cursor-pointer transform-gpu"
                 >
-                  <TextBlock
-                    className="bg-gray-100 hover:bg-white text-black text-xl p-2 rounded-lg w-full"
-                  >
+                  <TextBlock className="bg-gray-100 hover:bg-white text-black text-xl px-2 py-1 rounded-lg w-full shadow-md">
                     {insFolder?.title}
                   </TextBlock>
-
                 </div>
+
               ))}
             </ContainerBlock>
           )}
