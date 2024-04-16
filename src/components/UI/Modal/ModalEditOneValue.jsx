@@ -23,7 +23,7 @@ export default function ModalEditOneValue({ value, onConfirm, onCancel, isUpdati
 			onClick={handleModalClick}
 		>
 
-			<div className="relative flex flex-col space-y-8 bg-slate-900 backdrop-blur backdrop-filter bg-opacity-80 min-w-fit  max-w-3xl rounded-lg shadow-lg p-8"
+			<div className="relative flex flex-col space-y-8 bg-slate-900 backdrop-blur backdrop-filter bg-opacity-80 min-w-[400px]  max-w-3xl rounded-lg shadow-lg p-8"
 				ref={modalRef}
 			>
 
@@ -35,8 +35,6 @@ export default function ModalEditOneValue({ value, onConfirm, onCancel, isUpdati
 					value={newValue}
 					onChange={(e) => { setNewValue(e.target.value) }}
 					className="text-center text-xl"
-
-
 				/>
 
 

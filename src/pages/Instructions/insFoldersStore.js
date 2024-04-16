@@ -60,6 +60,7 @@ const useInsFolderStore = create((set) => ({
       if (response.status === 200) {
         const updatedInsFolder = response.data;
         set((state) => ({
+          insFolder: updatedInsFolder,
           insFolders: state.insFolders.map((folder) =>
             folder._id === updatedInsFolder._id ? updatedInsFolder : folder
           ),

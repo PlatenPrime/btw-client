@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { ButtonBlock, ButtonGroup, CardBlock, ContainerBlock, HeaderBlock, ModalCreate, ModalWrapper, PageBTW, Spinner, TextBlock } from "../../components";
+import { ButtonBlock, ButtonGroup, CardBlock, ContainerBlock, HeaderBlock, ModalCreate, ModalEditOneValue, ModalWrapper, PageBTW, Spinner, TextBlock } from "../../components";
 import { useNavigate, useParams } from "react-router-dom";
 import useInsFoldersStore from "./insFoldersStore";
 import useInsStore from "./insStore";
@@ -13,15 +13,17 @@ export default function InsFolderPage() {
   const navigate = useNavigate()
 
 
-  const { insFolder, getInsFolderById } = useInsFoldersStore()
+  const { insFolder, getInsFolderById, updateInsFolderById } = useInsFoldersStore()
   const { createInstruction, folderInstructions, getFolderInstructions } = useInsStore()
 
 
   const [isInsFolderLoading, setIsInsFolderLoading] = useState(false);
   const [isInsCreating, setIsInsCreating] = useState(false);
+  const [isInsFolderUpdating, setIsInsFolderUpdating] = useState(false);
 
 
   const [isShowModalInsCreating, setIsShowModalInsCreating] = useState(false);
+  const [isShowModalInsFolderUpdating, setIsShowModalInsFolderUpdating] = useState(false);
 
 
 
@@ -84,7 +86,18 @@ export default function InsFolderPage() {
 
 
 
-
+  const handleUpdateInsFolder = async (updateData) => {
+    try {
+      setIsInsFolderUpdating(true)
+      const updatedInsFolder = await updateInsFolderById(id, updateData);
+      console.log('Тека оновлена:', updatedInsFolder);
+    } catch (error) {
+      console.error('Помилка при оновленні теки:', error);
+    } finally {
+      setIsInsFolderUpdating(false)
+      setIsShowModalInsFolderUpdating(false)
+    }
+  }
 
 
 
@@ -114,10 +127,18 @@ export default function InsFolderPage() {
         onCancel={() => setIsShowModalInsCreating(false)}
         onConfirm={(newTitle) => handleCreateInstruction({ title: newTitle, folder: id })}
         isCreating={isInsCreating}
-      >
+      />}
 
 
-      </ModalCreate>}
+      {isShowModalInsFolderUpdating && <ModalEditOneValue
+        value={insFolder?.title}
+        onConfirm={(newTitle) => handleUpdateInsFolder({ title: newTitle })}
+        onCancel={() => setIsShowModalInsFolderUpdating(false)}
+        isUpdating={isInsFolderUpdating}
+
+      />}
+
+
 
 
 
@@ -154,7 +175,8 @@ export default function InsFolderPage() {
 
 
             <ButtonBlock
-
+              className="blue-b"
+              onClick={() => setIsShowModalInsFolderUpdating(true)}
             >
               Редагувати
             </ButtonBlock>
