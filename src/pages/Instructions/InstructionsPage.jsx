@@ -113,12 +113,12 @@ export default function InstructionsPage() {
                   key={insFolder._id}
                   onClick={() => navigate(`/insfolder/${insFolder._id}`)}
                   className="rounded-xl flex justify-center items-center p-2
-                   bg-yellow-500/50 hover:bg-yellow-500 hover:shadow-lg hover:shadow-yellow-500 transition duration-500 ease-in-out h-[200px] cursor-pointer "
+                   bg-yellow-500/50 hover:bg-yellow-500 hover:shadow-lg hover:shadow-yellow-500 transition duration-500 ease-in-out min-h-[6rem] cursor-pointer "
 
 
                 >
                   <TextBlock
-                  className="bg-white text-black text-xl p-2 rounded-xl"
+                  className="bg-white/90 text-black text-xl p-2 rounded-xl w-full"
                   >
                     {insFolder?.title}
                   </TextBlock>

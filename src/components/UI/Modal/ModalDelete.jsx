@@ -25,7 +25,7 @@ export default function ModalDelete({ ask, onDelete, onCancel, isDeleting }) {
 			onClick={handleModalClick}
 		>
 
-			<div className="relative space-y-8 bg-slate-900 backdrop-blur backdrop-filter bg-opacity-80 min-w-fit  max-w-3xl p-4 rounded-lg shadow-lg"
+			<div className="relative space-y-8 bg-slate-900 backdrop-blur backdrop-filter bg-opacity-80 min-w-[400px]  max-w-3xl p-4 rounded-lg shadow-lg"
 				ref={modalRef}
 			>
 

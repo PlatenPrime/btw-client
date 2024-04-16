@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { ButtonBlock, ButtonGroup, CardBlock, ContainerBlock, HeaderBlock, ModalCreate, ModalEditOneValue, ModalWrapper, PageBTW, Spinner, TextBlock } from "../../components";
+import { ButtonBlock, ButtonGroup, CardBlock, ContainerBlock, HeaderBlock, ModalCreate, ModalDelete, ModalEditOneValue, ModalWrapper, PageBTW, Spinner, TextBlock } from "../../components";
 import { useNavigate, useParams } from "react-router-dom";
 import useInsFoldersStore from "./insFoldersStore";
 import useInsStore from "./insStore";
@@ -13,17 +13,19 @@ export default function InsFolderPage() {
   const navigate = useNavigate()
 
 
-  const { insFolder, getInsFolderById, updateInsFolderById } = useInsFoldersStore()
+  const { insFolder, getInsFolderById, updateInsFolderById, deleteInsFolderById } = useInsFoldersStore()
   const { createInstruction, folderInstructions, getFolderInstructions } = useInsStore()
 
 
   const [isInsFolderLoading, setIsInsFolderLoading] = useState(false);
   const [isInsCreating, setIsInsCreating] = useState(false);
   const [isInsFolderUpdating, setIsInsFolderUpdating] = useState(false);
+  const [isInsFolderDeleting, setIsInsFolderDeleting] = useState(false);
 
 
   const [isShowModalInsCreating, setIsShowModalInsCreating] = useState(false);
   const [isShowModalInsFolderUpdating, setIsShowModalInsFolderUpdating] = useState(false);
+  const [isShowModalInsFolderDeleting, setIsShowModalInsFolderDeleting] = useState(false);
 
 
 
@@ -101,6 +103,22 @@ export default function InsFolderPage() {
 
 
 
+  const handleDeleteInsFolder = async () => {
+    try {
+      setIsInsFolderDeleting(true)
+      await deleteInsFolderById(id);
+      console.log('Тека видалена');
+    } catch (error) {
+      console.error('Помилка при видаленні теки:', error);
+    } finally {
+      setIsInsFolderDeleting(false)
+      setIsShowModalInsFolderDeleting(false)
+      navigate('/ins')
+    }
+  }
+
+
+
 
 
 
@@ -125,7 +143,7 @@ export default function InsFolderPage() {
       {isShowModalInsCreating && <ModalCreate
         title="Створення інструкції"
         onCancel={() => setIsShowModalInsCreating(false)}
-        onConfirm={(newTitle) => handleCreateInstruction({ title: newTitle, folder: id })}
+        onConfirm={(newTitle) => handleCreateInstruction({ title: newTitle, folderId: id })}
         isCreating={isInsCreating}
       />}
 
@@ -140,6 +158,14 @@ export default function InsFolderPage() {
 
 
 
+
+      {isShowModalInsFolderDeleting && <ModalDelete
+        ask="Видалити теку і всі інструкції в ній?"
+        onDelete={handleDeleteInsFolder}
+        onCancel={() => setIsShowModalInsFolderDeleting(false)}
+        isDeleting={isInsFolderDeleting}
+
+      />}
 
 
 
@@ -182,7 +208,8 @@ export default function InsFolderPage() {
             </ButtonBlock>
 
             <ButtonBlock
-
+              className="red-b"
+              onClick={() => setIsShowModalInsFolderDeleting(true)}
             >
               Видалити
             </ButtonBlock>
@@ -194,24 +221,32 @@ export default function InsFolderPage() {
 
 
 
+          {folderInstructions?.length > 0 ?
+            <ContainerBlock
+              className="space-y-2"
+            >
+              {folderInstructions?.map((instruction) => (
+                <CardBlock
+                  key={instruction._id}
+                  className="w-full p-2 rounded-xl bg-blue-500/20 hover:bg-blue-500 cursor-pointer
+     transition duration-500 ease-in-out"
+                  onClick={() => navigate(`/ins/${instruction._id}`)}
+                >
+                  <TextBlock>
+                    {instruction?.title}
+                  </TextBlock>
+                </CardBlock>
 
-          <ContainerBlock
-            className="space-y-2"
-          >
-            {folderInstructions?.map((instruction) => (
-              <CardBlock
-                key={instruction._id}
-                className="w-full p-2 rounded-xl bg-blue-500/20 hover:bg-blue-500 cursor-pointer
-                transition duration-500 ease-in-out"
-                onClick={() => navigate(`/ins/${instruction._id}`)}
-              >
-                <TextBlock>
-                  {instruction?.title}
-                </TextBlock>
-              </CardBlock>
+              ))}
+            </ContainerBlock>
 
-            ))}
-          </ContainerBlock>
+            :
+            <ContainerBlock>
+              <TextBlock>В цій теці інструкцій немає</TextBlock>
+            </ContainerBlock>
+
+          }
+
 
 
 
