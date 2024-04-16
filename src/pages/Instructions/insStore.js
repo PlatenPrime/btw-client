@@ -4,6 +4,7 @@ import axios from '../../utils/axios';
 const useInsStore = create((set) => ({
 	instruction: null,
 	instructions: [],
+	folderInstructions: [],
 
 	createInstruction: async (instructionData) => {
 		try {
@@ -11,7 +12,7 @@ const useInsStore = create((set) => ({
 
 			if (response.status === 200) {
 				const newInstruction = response.data;
-				set((state) => ({ instructions: [newInstruction, ...state.instructions] }));
+				set((state) => ({ folderInstructions: [newInstruction, ...state.folderInstructions] }));
 				return newInstruction;
 			} else {
 				throw new Error('Ошибка создания инструкции');
@@ -36,6 +37,21 @@ const useInsStore = create((set) => ({
 			console.error('Ошибка получения инструкций:', error);
 		}
 	},
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 	getInstructionById: async (id) => {
 		try {

@@ -13,7 +13,7 @@ export default function InsFolderPage() {
 
 
   const { insFolder, getInsFolderById } = useInsFoldersStore()
-  const { createInstruction } = useInsStore()
+  const { createInstruction, folderInstructions } = useInsStore()
 
 
   const [isInsFolderLoading, setIsInsFolderLoading] = useState(false);
