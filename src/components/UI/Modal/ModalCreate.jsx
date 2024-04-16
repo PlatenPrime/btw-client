@@ -24,12 +24,12 @@ export default function ModalCreate({ title, onConfirm, onCancel, isCreating }) 
 			onClick={handleModalClick}
 		>
 
-			<div className="relative flex flex-col space-y-8 bg-slate-900 backdrop-blur backdrop-filter bg-opacity-80 min-w-fit  max-w-3xl p-4 rounded-lg shadow-lg"
+			<div className="relative flex flex-col space-y-8 bg-slate-900 backdrop-blur backdrop-filter bg-opacity-80 min-w-[400px]  max-w-3xl p-4 rounded-lg shadow-lg"
 				ref={modalRef}
 			>
 
 				<TextBlock
-					className="text-3xl mx-auto"
+					className="text-2xl mx-auto bg-slate-700 p-2 rounded-xl"
 				>{title}</TextBlock>
 
 
@@ -37,7 +37,7 @@ export default function ModalCreate({ title, onConfirm, onCancel, isCreating }) 
 					placeholder="Введи назву..."
 					value={newValue}
 					onChange={(e) => { setNewValue(e.target.value) }}
-					className="text-xl text-center mx-auto"
+					className="text-lg text-center mx-auto w-full"
 
 
 				/>

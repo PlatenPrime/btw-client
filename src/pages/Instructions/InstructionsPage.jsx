@@ -6,6 +6,7 @@ import {
   ContainerBlock,
   HeaderBlock,
   InputBlock,
+  ModalCreate,
   ModalWrapper,
   PageBTW,
   Spinner,
@@ -24,8 +25,7 @@ export default function InstructionsPage() {
   const { insFolders, getAllInsFolders, createInsFolder } =
     useInsFoldersStore();
 
-  const [newInsFolderTitle, setNewInsFolderTitle] = useState("");
-  const [newInsFolderColor, setNewInsFolderColor] = useState("#000000");
+
 
   const [isInsFoldersLoading, setIsInsFoldersLoading] = useState(false);
   const [isInsFolderCreating, setIsInsFolderCreating] = useState(false);
@@ -73,97 +73,19 @@ export default function InstructionsPage() {
 
       {/* MODALS */}
 
-      {isShowModalInsFolderCreating && (
-        <ModalWrapper
-          onCancel={() => setIsShowModalInsFolderCreating(false)}
-          title="Створення теки"
-        >
-          <CardBlock className="space-y-2">
-            <CardBlock className="grid grid-cols-1 space-x-2 md:grid-cols-2">
-              <label
-                className=" self-center justify-self-center md:justify-self-start"
-                htmlFor="title"
-              >
-                Назва:
-              </label>
-              <InputBlock
-                type="text"
-                id="title"
-                name="title"
-                autoComplete="off"
-                value={newInsFolderTitle}
-                onChange={(e) => setNewInsFolderTitle(e.target.value)}
-              />
-            </CardBlock>
 
 
-
-            <CardBlock className="grid grid-cols-1 space-x-2">
-              <label
-                className="self-center justify-self-center md:justify-self-start"
-                htmlFor="color"
-              >
-                Колір:
-              </label>
-              <input
-                type="color"
-                id="color"
-                name="color"
-                value={newInsFolderColor}
-                onChange={(e) => setNewInsFolderColor(e.target.value)}
-              />
-            </CardBlock>
+      {isShowModalInsFolderCreating && <ModalCreate
+        title="Створення теки"
+        onConfirm={(newInsFolderTitle) => handleInsFolderCreate({ title: newInsFolderTitle })}
+        onCancel={() => setIsShowModalInsFolderCreating(false)}
+        isCreating={isInsFolderCreating}
+      />}
 
 
 
 
 
-
-
-
-
-
-
-
-          </CardBlock>
-
-          <CardBlock className="grid grid-cols-2 space-x-2">
-            <ButtonBlock
-              className="red-b flex items-center justify-center"
-              onClick={() => setIsShowModalInsFolderCreating(false)}
-            >
-              <TextBlock className="text-2xl">
-                <CancelIcon />
-              </TextBlock>
-              <TextBlock className=""> Скасувати</TextBlock>
-            </ButtonBlock>
-
-            <ButtonBlock
-              disabled={!newInsFolderTitle}
-              type="submit"
-              className="green-b flex items-center justify-center"
-              onClick={() => handleInsFolderCreate(
-                {
-                  title: newInsFolderTitle,
-                  color: newInsFolderColor
-                }
-              )
-              }
-            >
-              {isInsFolderCreating ? (
-                <Spinner color="green" />
-              ) : (
-                <>
-                  <TextBlock className="text-2xl">
-                    <OkIcon />
-                  </TextBlock>
-                  <TextBlock className=""> Створити</TextBlock>
-                </>
-              )}
-            </ButtonBlock>
-          </CardBlock>
-        </ModalWrapper>
-      )}
 
       {/* MAIN */}
 
@@ -184,26 +106,21 @@ export default function InstructionsPage() {
 
 
           {insFolders?.length > 0 && (
-            <CardBlock className="grid grid-cols-1 gap-4 md:grid-cols-2 
+            <ContainerBlock className="grid grid-cols-1 gap-4 p-4 md:grid-cols-2 
             lg:grid-cols-3">
               {insFolders.map((insFolder) => (
                 <div
                   key={insFolder._id}
-                  style={{ backgroundColor: insFolder.color, height: "200px", }}
                   className="rounded-xl flex justify-center items-center 
-                   bg-blue-500/20 hover:bg-blue-500/50 hover:shadow-lg hover:shadow-blue-500 transition duration-500 ease-in-out "
+                   bg-blue-500/20 hover:bg-blue-500/50 hover:shadow-lg hover:shadow-blue-500 transition duration-500 ease-in-out h-[200px] "
 
 
                 >
                   {insFolder?.title}
                 </div>
               ))}
-            </CardBlock>
+            </ContainerBlock>
           )}
-
-
-
-
 
 
 
