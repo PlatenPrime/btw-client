@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react'
 import { ButtonBlock, ButtonGroup, CardBlock, ContainerBlock, HeaderBlock, InputBlock, PageBTW, Spinner, TextBlock } from '../../components'
-import { useArtContext } from '../../ArtContext';
 import { toast } from 'react-toastify';
 import { AiOutlineArrowLeft, AiOutlineArrowRight, AiOutlineDoubleLeft, AiOutlineDoubleRight, AiOutlineSearch } from "react-icons/ai";
 import { GoSearch } from "react-icons/go";
@@ -15,6 +14,7 @@ import StockBage from './StockBage';
 import { exportToExcelPoses } from '../../utils/exportExcel';
 import { SiMicrosoftexcel } from 'react-icons/si';
 import { useDebouncedCallback } from 'use-debounce'
+import useFetchArts from '../../hooks/useFetchArts';
 
 
 
@@ -25,7 +25,7 @@ import { useDebouncedCallback } from 'use-debounce'
 
 export default function StocksPage() {
 
-	const { artsDB, loadingArtsDB, errorArtsDB } = useArtContext();
+	const { artsDB, loadingArtsDB, errorArtsDB } = useFetchArts();
 
 
 	const { allPoses, getAllPoses } = usePosesStore()

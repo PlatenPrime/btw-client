@@ -2,10 +2,9 @@ import React, { useState } from 'react'
 import { ButtonBlock, ButtonGroup, CardBlock, HeaderBlock, InputBlock, PageBTW, TextBlock } from '../../components'
 import { Link } from 'react-router-dom'
 import axios from '../../utils/axios';
-import { toast } from 'react-toastify';
-import { useArtContext } from '../../ArtContext';
 import { excelToJSONArts } from '../../utils/importExcel';
 import { BackIcon } from "../../components/UI/Icons"
+import useFetchArts from '../../hooks/useFetchArts';
 
 
 
@@ -22,7 +21,7 @@ export default function ArtsUpdatingPage() {
 
 
 
-	const { artsDB } = useArtContext();
+	const { artsDB } = useFetchArts();
 	const [arts, setArts] = useState(null);
 	const [artTest, setArtTest] = useState(null);
 	const [currentArt, setCurrentArt] = useState(0);

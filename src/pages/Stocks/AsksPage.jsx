@@ -2,18 +2,18 @@ import React, { useEffect, useState } from 'react'
 import { ButtonBlock, ButtonGroup, CardBlock, ContainerBlock, HeaderBlock, ImageArt, InputBlock, ModalConfirm, ModalWrapper, PageBTW, Spinner, TextBlock } from "../../components"
 import useAskStore from './stores/asksStore'
 import useAuthStore from "../Auth/authStore"
-import { useArtContext } from '../../ArtContext';
 import { Link } from 'react-router-dom';
 import { AddIcon, CancelIcon, OkIcon } from '../../components/UI/Icons';
 
 import { sendMessageToTelegram } from "../../utils/sendMessagesTelegram"
+import useFetchArts from '../../hooks/useFetchArts';
 
 
 
 export default function AsksPage() {
 
 
-	const { artsDB, loadingArtsDB, errorArtsDB } = useArtContext()
+	const { artsDB, loadingArtsDB, errorArtsDB } = useFetchArts()
 
 
 	const { asks, getAllAsks, createAsk } = useAskStore()

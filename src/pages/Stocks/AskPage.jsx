@@ -7,7 +7,6 @@ import { LiaPalletSolid } from "react-icons/lia";
 import { ImMoveDown } from 'react-icons/im'
 import useAskStore from './stores/asksStore'
 import { Link, useNavigate, useParams } from 'react-router-dom'
-import { useArtContext } from '../../ArtContext'
 import usePosesStore from './stores/posesStore'
 import usePalletStore from './stores/palletsStore'
 import useFetchRemains from '../../hooks/useFetchRemains';
@@ -17,13 +16,14 @@ import ArtCard from './components/ArtCard';
 import UpdateASkModal from './AskPageModals/UpdateAskModal';
 
 import { sendMessageToUser } from '../../utils/sendMessagesTelegram'
+import useFetchArts from '../../hooks/useFetchArts';
 
 
 
 export default function AskPage() {
 
 
-	const { artsDB } = useArtContext()
+	const { artsDB } = useFetchArts()
 	const { remains } = useFetchRemains()
 
 	const { id } = useParams()

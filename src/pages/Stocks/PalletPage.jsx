@@ -8,9 +8,10 @@ import { toast } from 'react-toastify';
 import PositionBage from './PositionBage';
 
 import { ModalDeletePallet, ModalRenamePallet, ModalCreatePos, ModalDeletePos, ModalEditPos, ModalClearPallet, ModalMovePalletContent, ModalChangePalletCom } from './PalletPageModals/index.js';
-import { useArtContext } from '../../ArtContext';
+
 import { RenameIcon, MoveIcon, DeleteIcon, ClearIcon, AddIcon, BackIcon } from '../../components/UI/Icons/';
 import ButtonGroup from '../../components/UI/ButtonGroup.jsx';
+import useFetchArts from '../../hooks/useFetchArts.js';
 
 
 
@@ -21,7 +22,7 @@ export default function PalletPage() {
 	const { id } = useParams();
 	const navigate = useNavigate()
 
-	const { artsDB, loadingArtsDB, errorArtsDB } = useArtContext();
+	const { artsDB, loadingArtsDB, errorArtsDB } = useFetchArts();
 
 
 

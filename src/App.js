@@ -1,6 +1,5 @@
 import Layout from "./components/Layout";
 import { Routes, Route, useNavigate } from "react-router-dom";
-import { ArtProvider } from './ArtContext';
 import { ToastContainer } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -8,9 +7,9 @@ import { useAuthStore } from './pages/Auth/authStore'
 
 
 import LoginPage from "./pages/Auth/LoginPage";
-// import { RegisterPage } from "./pages/Auth/RegisterPage";
 
-import { useEffect, useLayoutEffect } from "react";
+
+
 
 
 import MainPage from "./pages/MainPage";
@@ -50,7 +49,7 @@ function App() {
 
 	return (
 
-		<ArtProvider>
+		
 			<Layout>
 
 				<Routes>
@@ -118,7 +117,7 @@ function App() {
 				/>
 
 			</Layout>
-		</ArtProvider>
+	
 
 
 

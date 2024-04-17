@@ -1,18 +1,18 @@
 import React, { useEffect, useState } from 'react'
 import { ButtonBlock, ButtonGroup, CardBlock, ContainerBlock, HeaderBlock, InputBlock, PageBTW, Spinner, TextBlock } from '../../components'
 import ArtBage from './ArtBage';
-import { useArtContext } from '../../ArtContext';
+
 import { toast } from 'react-toastify';
 import { AiOutlineArrowLeft, AiOutlineArrowRight, AiOutlineDoubleLeft, AiOutlineDoubleRight, AiOutlineSearch } from "react-icons/ai";
 import { GoSearch } from "react-icons/go";
 import useFetchRemains from '../../hooks/useFetchRemains';
-import { SearchIcon } from '../../components/UI/Icons';
 import { Link } from 'react-router-dom';
 import { useDebouncedCallback } from 'use-debounce'
+import useFetchArts from '../../hooks/useFetchArts';
 
 export default function ArtsPage() {
 
-	const { artsDB, loadingArtsDB, errorArtsDB } = useArtContext();
+	const { artsDB, loadingArtsDB, errorArtsDB } = useFetchArts();
 	const { remains } = useFetchRemains()
 	console.log(remains)
 
@@ -70,7 +70,7 @@ export default function ArtsPage() {
 
 
 
-	
+
 
 
 
