@@ -10,6 +10,7 @@ import InsContainer from './components/InsContainer';
 import YouTube from 'react-youtube';
 import { extractVideoId } from '../../utils/youtube';
 import YoutubeCard from '../../components/UI/YoutubeCard/YoutubeCard';
+import TitleImage from './components/TitleImage';
 
 
 
@@ -36,6 +37,8 @@ export default function InsPage() {
 
 
 	console.log(ins);
+	console.log("URL", newVideoUrl);
+
 
 
 	// MODALS
@@ -68,7 +71,8 @@ export default function InsPage() {
 					setInsBody(fetchedInstruction?.body)
 					setNewTitle(fetchedInstruction?.title)
 					setNewBody(fetchedInstruction?.body)
-
+					setNewTitleImage(fetchedInstruction?.titleImage)
+					setNewVideoUrl(fetchedInstruction?.videoUrl)
 				}
 
 			} catch (error) {
@@ -157,14 +161,6 @@ export default function InsPage() {
 
 
 
-
-
-
-
-
-
-
-
 			{isInsFetching
 
 				?
@@ -219,37 +215,187 @@ export default function InsPage() {
 
 
 					<ContainerBlock>
-						{isInsEditing ?
+						{isInsEditing
 
-							<CardBlock>
+							?
+
+
+
+
+							<CardBlock className=" flex flex-col space-y-4">
+
+
+								<CardBlock
+									className="flex justify-evenly items-center space-x-4"
+
+								>
+
+									<label
+										className='min-w-[200px]'
+										htmlFor="">Назва інструкції:
+									</label>
+
+									<InputBlock
+										name="newTitle"
+										className="text-xl outline-none border-none p-3 px-8 bg-slate-700 focus:bg-slate-600 w-full
+								 placeholder:font-light rounded-xl rounded-l-none
+								"
+										value={newTitle}
+										onChange={(e) => setNewTitle(e.target.value)}
+										placeholder="..."
+									/>
+
+
+								</CardBlock>
+
+
+
+
+
+								<CardBlock
+									className="flex justify-start items-center space-x-4"
+
+								>
+
+									<label htmlFor=""
+										className='min-w-[200px]'
+									>
+										Зображення:
+									</label>
+
+
+
+									<CardBlock
+										className="w-full flex justify-center"
+									>
+										<TitleImage newTitleImage={newTitleImage} setNewTitleImage={setNewTitleImage} />
+									</CardBlock>
+
+								</CardBlock>
+
+
+
+
+								<CardBlock
+									className="flex justify-start items-center space-x-4"
+								>
+									<label htmlFor=""
+										className='min-w-[200px]'
+									>
+										Відео:
+									</label>
+
+
+
+									<InputBlock
+										type="text"
+										className="text-xl outline-none border-none p-3 px-8 bg-slate-700 focus:bg-slate-600 w-full
+								 placeholder:font-light rounded-xl rounded-l-none
+								"
+										placeholder="Введите ссылку на видео с YouTube"
+										value={newVideoUrl}
+										onChange={(e) => setNewVideoUrl(e.target.value)}
+									/>
+
+								</CardBlock>
+
+
+
+								<CardBlock
+									className="flex justify-center items-center"
+								>
+									{newVideoUrl
+										&&
+										<YoutubeCard url={newVideoUrl} />}
+								</CardBlock>
+
+
+
+
 
 								<ContainerBlock
 									className="p-1 space-y-4 "
 								>
 
-									<ContainerBlock
-										className="bg-blue-500/10
-									shadow-2xl shadow-blue-500 rounded-xl"
-									>
-										<Editor
-											value={newBody}
-											setValue={setNewBody}
+									<Editor
+										value={newBody}
+										setValue={setNewBody}
 
-										/>
-									</ContainerBlock>
+									/>
+
 
 								</ContainerBlock>
 							</CardBlock>
 
+
+
+
+
+
 							:
+
+
+							// ОТОБРАЖЕНИЕ	
+
 
 							<ContainerBlock
 								className="p-1 space-y-4 "
 							>
 
-								<TextBlock className="text-3xl">Назва: {ins?.title}</TextBlock>
 
-								<InsContainer>{insBody && parse(insBody)}</InsContainer>
+								<CardBlock
+									className="flex flex-col lg:flex-row lg:space-x-4 items-start"
+								>
+									{ins?.TitleImage ?
+
+										<CardBlock
+											className="flex justify-center items-center w-full lg:w-fit aspect-video"
+										>
+
+											<img src={ins?.titleImage} alt="" className="w-[300px] " />
+
+										</CardBlock>
+
+										:
+
+										<CardBlock
+											className="flex justify-center items-center w-full lg:w-fit "
+										>
+											<TextBlock className="bg-blue-900 w-[300px] aspect-video">
+												Зображення
+											</TextBlock>
+										</CardBlock>
+
+
+									}
+
+									<TextBlock className="text-3xl"> {ins?.title}</TextBlock>
+								</CardBlock>
+
+
+
+
+
+
+								<CardBlock
+									className="flex justify-center items-center"
+								>
+									{ins?.videoUrl &&
+
+										<YoutubeCard url={ins?.videoUrl} />
+
+									}
+
+								</CardBlock>
+
+
+								{insBody
+									?
+									<InsContainer>{parse(insBody)}</InsContainer>
+									:
+									<TextBlock className="text-2xl italic"  >Текст інструкції відсутній</TextBlock>
+								}
+
 
 							</ContainerBlock>
 

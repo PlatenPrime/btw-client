@@ -40,6 +40,7 @@
     margin: 0px;
     /* position: relative; */
 	border: none;
+	
 }
 
 .ql-container.ql-snow {
@@ -57,6 +58,10 @@
 
 .ql-snow .ql-picker.ql-header .ql-picker-label::before, .ql-snow .ql-picker.ql-header .ql-picker-item::before {
     content: 'Звичайний';
+}
+
+.ql-snow .ql-picker.ql-header .ql-picker-label[data-value="2"]::before, .ql-snow .ql-picker.ql-header .ql-picker-item[data-value="2"]::before {
+	content: 'Заголовок';
 }
 
 
