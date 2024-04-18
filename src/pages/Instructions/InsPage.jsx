@@ -38,6 +38,10 @@ export default function InsPage() {
 
 	console.log(ins);
 	console.log("URL", newVideoUrl);
+	console.log("TITLE", newTitle);
+	console.log("TItleImage", newTitleImage);
+
+
 
 
 
