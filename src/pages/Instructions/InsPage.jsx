@@ -296,7 +296,7 @@ export default function InsPage() {
 										className="text-xl outline-none border-none p-3 px-8 bg-slate-700 focus:bg-slate-600 w-full
 								 placeholder:font-light rounded-xl rounded-l-none
 								"
-										placeholder="Введите ссылку на видео с YouTube"
+										placeholder="https://www.youtube.com/..."
 										value={newVideoUrl}
 										onChange={(e) => setNewVideoUrl(e.target.value)}
 									/>
@@ -305,13 +305,13 @@ export default function InsPage() {
 
 
 
-								<CardBlock
-									className="flex justify-center items-center"
-								>
-									{newVideoUrl
-										&&
-										<YoutubeCard url={newVideoUrl} />}
-								</CardBlock>
+
+								{newVideoUrl
+									&&
+									<YoutubeCard url={newVideoUrl} />
+
+								}
+
 
 
 
@@ -348,9 +348,9 @@ export default function InsPage() {
 
 
 								<CardBlock
-									className="flex flex-col lg:flex-row lg:space-x-4 items-start"
+									className="flex flex-col lg:flex-row lg:space-x-4 items-start bg-blue-500/10 p-2 rounded-xl"
 								>
-									{ins?.TitleImage ?
+									{ins?.titleImage ?
 
 										<CardBlock
 											className="flex justify-center items-center w-full lg:w-fit aspect-video"
@@ -381,16 +381,13 @@ export default function InsPage() {
 
 
 
-								<CardBlock
-									className="flex justify-center items-center"
-								>
-									{ins?.videoUrl &&
+								{ins?.videoUrl &&
 
-										<YoutubeCard url={ins?.videoUrl} />
+									<YoutubeCard url={ins?.videoUrl} />
 
-									}
+								}
 
-								</CardBlock>
+
 
 
 								{insBody
