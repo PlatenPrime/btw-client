@@ -30,15 +30,10 @@ export default function InsPage() {
 
 	const [newTitle, setNewTitle] = useState('')
 	const [newTitleImage, setNewTitleImage] = useState('')
-	const [newVideo, setNewVideo] = useState('')
+	const [newVideoUrl, setNewVideoUrl] = useState('')
 
-
-	const [newCategory, setNewCategory] = useState('')
-	const [newDepartment, setNewDepartment] = useState('')
-	const [newAccess, setNewAccess] = useState('')
 	const [newBody, setNewBody] = useState("");
 
-	const [videoUrl, setVideoUrl] = useState('');
 
 	console.log(ins);
 
@@ -62,14 +57,6 @@ export default function InsPage() {
 	const [isInsDeleting, setIsInsDeleting] = useState(false);
 
 
-
-
-
-
-
-
-
-
 	useEffect(() => {
 		const fetchInstruction = async () => {
 			try {
@@ -79,13 +66,9 @@ export default function InsPage() {
 				if (fetchedInstruction) {
 					setIns(fetchedInstruction);
 					setInsBody(fetchedInstruction?.body)
-
 					setNewTitle(fetchedInstruction?.title)
-					setNewCategory(fetchedInstruction?.category)
-					setNewDepartment(fetchedInstruction?.department)
-					setNewAccess(fetchedInstruction?.access)
 					setNewBody(fetchedInstruction?.body)
-					setNewVideo(fetchedInstruction?.video)
+
 				}
 
 			} catch (error) {
@@ -138,27 +121,6 @@ export default function InsPage() {
 		}
 	};
 
-	const handleToggleReadOnly = () => {
-		console.log("Changing read-only mode");
-		setIsInsEditing((prev) => !prev);
-	};
-
-
-	const handleVideoUrlChange = (event) => {
-		const url = event.target.value;
-		setVideoUrl(url);
-		const id = extractVideoId(url);
-		setNewVideo(id);
-	};
-
-
-
-
-
-
-
-
-
 
 
 
@@ -178,10 +140,7 @@ export default function InsPage() {
 						title: newTitle,
 						titleImage: newTitleImage,
 						body: newBody,
-						category: newCategory,
-						department: newDepartment,
-						access: newAccess,
-						video: newVideo
+						videoUrl: newVideoUrl
 					})}
 					onCancel={() => setIsShowModalInsUpdating(false)}
 					isConfirming={isInsUpdating}
@@ -220,7 +179,6 @@ export default function InsPage() {
 
 				<>
 
-
 					<ButtonGroup>
 
 						{isInsEditing ?
@@ -228,7 +186,7 @@ export default function InsPage() {
 							<>
 								<ButtonBlock
 									className="pink-b"
-									onClick={handleToggleReadOnly}
+									onClick={() => setIsInsEditing(false)}
 								>
 									Скасувати
 								</ButtonBlock>
@@ -246,33 +204,21 @@ export default function InsPage() {
 								>
 									Видалити
 								</ButtonBlock>
-
-
-
 							</>
-
 							:
 							<ButtonBlock
 								className="blue-b"
-								onClick={handleToggleReadOnly}
+								onClick={() => setIsInsEditing(true)}
 							>
 								Редагувати
 							</ButtonBlock>
 
 						}
-
-
-
 					</ButtonGroup>
 
 
 
 					<ContainerBlock>
-						{/* Render your instruction content here */}
-						{/* Pass handlers to child components for editing/deleting */}
-
-
-
 						{isInsEditing ?
 
 							<CardBlock>
@@ -280,69 +226,6 @@ export default function InsPage() {
 								<ContainerBlock
 									className="p-1 space-y-4 "
 								>
-
-
-									<CardBlock
-										className="flex justify-start items-center space-x-4"
-
-									>
-
-										<label htmlFor="">Назва інструкції: </label>
-
-										<InputBlock
-											name="newTitle"
-											className="text-xl outline-none border-none p-3 px-8 bg-slate-700 focus:bg-slate-600 w-full
-								 placeholder:font-light rounded-xl rounded-l-none
-								"
-											value={newTitle}
-											onChange={(e) => setNewTitle(e.target.value)}
-											placeholder="..."
-										/>
-
-
-									</CardBlock>
-
-
-
-
-
-
-									<CardBlock
-										className="flex justify-start items-center space-x-4"
-
-									>
-
-										<label htmlFor="">Відео: </label>
-
-										<InputBlock
-											type="text"
-											className="text-xl outline-none border-none p-3 px-8 bg-slate-700 focus:bg-slate-600 w-full
-								 placeholder:font-light rounded-xl rounded-l-none
-								"
-											placeholder="https://www.youtube.com/..."
-											value={videoUrl}
-											onChange={handleVideoUrlChange}
-										/>
-
-									</CardBlock>
-
-									<div
-										className="flex flex-col items-center space-y-2"
-									>
-
-										{newVideo && <YouTube videoId={newVideo} />}
-									</div>
-
-									<YoutubeCard
-										url={videoUrl} />
-
-
-
-
-
-
-
-
 
 									<ContainerBlock
 										className="bg-blue-500/10
@@ -359,53 +242,19 @@ export default function InsPage() {
 							</CardBlock>
 
 							:
+
 							<ContainerBlock
 								className="p-1 space-y-4 "
 							>
 
-
-
 								<TextBlock className="text-3xl">Назва: {ins?.title}</TextBlock>
 
+								<InsContainer>{insBody && parse(insBody)}</InsContainer>
 
-
-								<div
-									className="flex flex-col items-center space-y-2 py-4
-									bg-blue-500/10
-									 rounded-xl  "
-								>
-
-									{newVideo && <YouTube
-
-										videoId={newVideo}
-									/>}
-								</div>
-
-
-
-
-								<YoutubeCard
-									url={videoUrl} />
-
-							
-									<InsContainer>{insBody && parse(insBody)}</InsContainer>
-
-
-
-
-
-
-
-								</ContainerBlock>
+							</ContainerBlock>
 
 
 						}
-
-
-
-
-
-
 
 
 					</ContainerBlock>
