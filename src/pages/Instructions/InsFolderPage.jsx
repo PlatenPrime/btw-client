@@ -228,11 +228,36 @@ export default function InsFolderPage() {
               {folderInstructions?.map((instruction) => (
                 <CardBlock
                   key={instruction._id}
-                  className="w-full p-2 rounded-xl bg-blue-500/20 hover:bg-blue-500 cursor-pointer
+                  className=" flex items-center space-x-4 w-full p-2 rounded-xl bg-blue-500/20 hover:bg-blue-500 cursor-pointer
      transition duration-500 ease-in-out"
                   onClick={() => navigate(`/ins/${instruction._id}`)}
                 >
-                  <TextBlock>
+
+
+
+
+
+                  <CardBlock
+                    className="flex justify-center items-center w-full lg:w-fit aspect-video rounded-xl"
+                  >
+
+                    {instruction?.titleImage ?
+
+                      <img src={instruction?.titleImage} alt="" className="w-[300px] " />
+
+                      :
+
+                      <img
+                        src='https://placehold.co/600x400?text=Інструкція'
+                        width={300}
+                      ></img>}
+                  </CardBlock>
+
+
+
+                  <TextBlock
+                    className="text-xl"
+                  >
                     {instruction?.title}
                   </TextBlock>
                 </CardBlock>

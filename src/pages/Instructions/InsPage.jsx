@@ -365,9 +365,12 @@ export default function InsPage() {
 										<CardBlock
 											className="flex justify-center items-center w-full lg:w-fit "
 										>
-											<TextBlock className="bg-blue-900 w-[300px] aspect-video">
-												Зображення
-											</TextBlock>
+											<img
+												src='https://placehold.co/600x400?text=Інструкція'
+												width={200}
+											>
+
+											</img>
 										</CardBlock>
 
 
