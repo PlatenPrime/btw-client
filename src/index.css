@@ -55,6 +55,27 @@ table {
 
 
 
+input[type="file" i] {
+	background: transparent;
+}
+
+
+
+ol {
+	list-style-type: decimal;
+	list-style-position: inside;
+	padding-left: 1rem;
+}
+
+
+h2 {
+	text-align: center;
+}
+
+
+
+
+
 
 
 

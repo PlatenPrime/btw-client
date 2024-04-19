@@ -226,11 +226,11 @@ export default function InsPage() {
 
 
 
-							<CardBlock className=" flex flex-col space-y-4">
+							<CardBlock className=" flex flex-col space-y-4 ">
 
 
 								<CardBlock
-									className="flex justify-evenly items-center space-x-4"
+									className="flex justify-evenly items-center space-x-4 bg-blue-500/10 p-2 rounded-xl"
 
 								>
 
@@ -257,7 +257,7 @@ export default function InsPage() {
 
 
 								<CardBlock
-									className="flex justify-start items-center space-x-4"
+									className="flex justify-start items-center space-x-4 bg-blue-500/10 p-2 rounded-xl"
 
 								>
 
@@ -270,7 +270,7 @@ export default function InsPage() {
 
 
 									<CardBlock
-										className="w-full flex justify-center"
+										className="w-full flex justify-center "
 									>
 										<TitleImage newTitleImage={newTitleImage} setNewTitleImage={setNewTitleImage} />
 									</CardBlock>
@@ -281,7 +281,7 @@ export default function InsPage() {
 
 
 								<CardBlock
-									className="flex justify-start items-center space-x-4"
+									className="flex justify-start items-center space-x-4 bg-blue-500/10 p-2 rounded-xl"
 								>
 									<label htmlFor=""
 										className='min-w-[200px]'

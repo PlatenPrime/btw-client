@@ -12,11 +12,15 @@ export default function YoutubeCard({
 	return (
 
 		<CardBlock
-			className="flex justify-center items-center bg-red-500/10 p-2 rounded-xl w-full"
+			className="flex justify-center items-center bg-blue-500/10 p-2 rounded-xl  w-full"
 		>
-			<YouTube
-				videoId={id}
-			/>
+			<CardBlock
+				className="shadow-lg shadow-red-500 "
+			>
+				<YouTube
+					videoId={id}
+				/>
+			</CardBlock>
 		</CardBlock>
 
 	)

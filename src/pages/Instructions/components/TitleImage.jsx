@@ -42,7 +42,16 @@ export default function TitleImage({
 
 
 	return (
-		<ContainerBlock>
+		<ContainerBlock
+		className="flex justify-between items-center w-full"
+		>
+
+			<input 
+			type="file" 
+			onChange={handleFileInputChange} 
+			className=""
+			/>
+
 			<CardBlock>
 
 				{isImageUploading ? <Spinner />
@@ -62,7 +71,9 @@ export default function TitleImage({
 							width={200}
 						></img>}
 			</CardBlock>
-			<input type="file" onChange={handleFileInputChange} />
+
+
+
 
 		</ContainerBlock>
 	)
