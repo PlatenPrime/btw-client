@@ -33,7 +33,6 @@ import SettingsPage from "./pages/Settings/SettingsPage";
 import DefsPage from "./pages/Stocks/DefsPage";
 import InstructionsPage from "./pages/Instructions/InstructionsPage";
 import InsPage from "./pages/Instructions/InsPage";
-import CreateInsPage from "./pages/Instructions/CreateInsPage";
 import InsFolderPage from "./pages/Instructions/InsFolderPage";
 
 
@@ -49,75 +48,74 @@ function App() {
 
 	return (
 
-		
-			<Layout>
 
-				<Routes>
-					<Route path="/" element={<MainPage />} />
-					<Route path="login" element={<LoginPage />} />
-					<Route path="createuser" element={<CreateUserPage />} />
+		<Layout>
 
-
-
-					<Route path="pallets/:id" element={<PalletPage />} />
+			<Routes>
+				<Route path="/" element={<MainPage />} />
+				<Route path="login" element={<LoginPage />} />
+				<Route path="createuser" element={<CreateUserPage />} />
 
 
 
-					<Route path="rows" element={<RowsPage />} />
-					<Route path="rows/:id" element={<RowPage />} />
-
-
-					<Route path="stocks" element={<StocksPage />} />
-
-					<Route path="arts" element={<ArtsPage />} />
-					<Route path="arts/updating" element={<ArtsUpdatingPage />} />
-					<Route path="arts/:id" element={<ArtPage />} />
-
-
-					<Route path="asks" element={<AsksPage />} />
-					<Route path="asks/:id" element={<AskPage />} />
-					<Route path="defs" element={<DefsPage />} />
-
-
-					<Route path="comps" element={<CompsPage />} >
-						<Route path="edit" element={<CompsEditPage />} />
-						<Route path="list" element={<CompsListPage />} />
-						<Route path="logs" element={<CompsLogsPage />} />
-						<Route path="add" element={<CompsAddPage />} />
-					</Route>
+				<Route path="pallets/:id" element={<PalletPage />} />
 
 
 
-					<Route path="settings" element={<SettingsPage />} />
+				<Route path="rows" element={<RowsPage />} />
+				<Route path="rows/:id" element={<RowPage />} />
+
+
+				<Route path="stocks" element={<StocksPage />} />
+
+				<Route path="arts" element={<ArtsPage />} />
+				<Route path="arts/updating" element={<ArtsUpdatingPage />} />
+				<Route path="arts/:id" element={<ArtPage />} />
+
+
+				<Route path="asks" element={<AsksPage />} />
+				<Route path="asks/:id" element={<AskPage />} />
+				<Route path="defs" element={<DefsPage />} />
+
+
+				<Route path="comps" element={<CompsPage />} >
+					<Route path="edit" element={<CompsEditPage />} />
+					<Route path="list" element={<CompsListPage />} />
+					<Route path="logs" element={<CompsLogsPage />} />
+					<Route path="add" element={<CompsAddPage />} />
+				</Route>
 
 
 
-					<Route path="ins" element={<InstructionsPage />} />
-					<Route path="insfolder/:id" element={<InsFolderPage />} />
-					<Route path="ins/new" element={<CreateInsPage />} />
-					<Route path="ins/:id" element={<InsPage />} />
+				<Route path="settings" element={<SettingsPage />} />
 
+
+
+				<Route path="ins" element={<InstructionsPage />} />
+				<Route path="insfolder/:id" element={<InsFolderPage />} />
+				<Route path="ins/:id" element={<InsPage />} />
 
 
 
 
-				</Routes>
 
-				<ToastContainer
-					position="bottom-right"
-					autoClose={5000}
-					hideProgressBar={false}
-					newestOnTop={false}
-					closeOnClick
-					rtl={false}
-					pauseOnFocusLoss
-					draggable
-					pauseOnHover
-					theme="colored"
-				/>
+			</Routes>
 
-			</Layout>
-	
+			<ToastContainer
+				position="bottom-right"
+				autoClose={5000}
+				hideProgressBar={false}
+				newestOnTop={false}
+				closeOnClick
+				rtl={false}
+				pauseOnFocusLoss
+				draggable
+				pauseOnHover
+				theme="colored"
+			/>
+
+		</Layout>
+
 
 
 

@@ -1,5 +1,5 @@
 import { create } from 'zustand';
-import axios from '../../utils/axios';
+import axios from '../../../utils/axios';
 
 const useInsFolderStore = create((set) => ({
   insFolder: null,

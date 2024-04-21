@@ -1,14 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { ButtonBlock, ButtonGroup, CardBlock, ContainerBlock, HeaderBlock, InputBlock, ModalConfirm, ModalDelete, PageBTW, Spinner, TextBlock } from '../../components';
 import { useNavigate, useParams } from 'react-router-dom';
-import useInsStore from './insStore';
+import useInsStore from './stores/insStore';
 import useAuthStore from '../../pages/Auth/authStore';
 import Editor from "./Editor/QuillEditor";
 import parse from 'html-react-parser';
 import InsContainer from './components/InsContainer';
 
-import YouTube from 'react-youtube';
-import { extractVideoId } from '../../utils/youtube';
+
 import YoutubeCard from '../../components/UI/YoutubeCard/YoutubeCard';
 import TitleImage from './components/TitleImage';
 
@@ -20,12 +19,14 @@ export default function InsPage() {
 	const navigate = useNavigate()
 
 	const { getInstructionById, updateInstructionById, deleteInstructionById } = useInsStore();
-	const { user } = useAuthStore();
+	const { user, getUserById } = useAuthStore();
 
 	const [error, setError] = useState(null);
 
 	const [ins, setIns] = useState(null);
 	const [insBody, setInsBody] = useState(null);
+	const [author, setAuthor] = useState(null);
+
 
 
 
@@ -70,6 +71,9 @@ export default function InsPage() {
 				setIsInsFetching(true);
 				const fetchedInstruction = await getInstructionById(id);
 
+
+
+
 				if (fetchedInstruction) {
 					setIns(fetchedInstruction);
 					setInsBody(fetchedInstruction?.body)
@@ -78,6 +82,15 @@ export default function InsPage() {
 					setNewTitleImage(fetchedInstruction?.titleImage)
 					setNewVideoUrl(fetchedInstruction?.videoUrl)
 				}
+
+
+				if (fetchedInstruction?.author) {
+					const fetchedAuthor = await getUserById(fetchedInstruction?.author);
+					setAuthor(fetchedAuthor);
+				}
+
+
+
 
 			} catch (error) {
 				console.log(error.message);
@@ -223,7 +236,7 @@ export default function InsPage() {
 
 							?
 
-
+							// EDIT
 
 
 							<CardBlock className=" flex flex-col space-y-4 ">
@@ -348,12 +361,14 @@ export default function InsPage() {
 
 
 								<CardBlock
-									className="flex flex-col lg:flex-row lg:space-x-4 items-start bg-blue-500/10 p-2 rounded-xl"
+									className="flex flex-col lg:flex-row lg:space-x-4 items-center bg-blue-500/10 p-2 rounded-xl"
 								>
+
+
 									{ins?.titleImage ?
 
 										<CardBlock
-											className="flex justify-center items-center w-full lg:w-fit aspect-video"
+											className="flex justify-center items-center w-full lg:w-fit "
 										>
 
 											<img src={ins?.titleImage} alt="" className="w-[300px] " />
@@ -376,7 +391,11 @@ export default function InsPage() {
 
 									}
 
-									<TextBlock className="text-3xl"> {ins?.title}</TextBlock>
+									<CardBlock>
+										<TextBlock className="text-3xl "> {ins?.title}</TextBlock>
+										{author && <TextBlock className="text-xl text-slate-400"> {author?.fullname}</TextBlock>}
+									</CardBlock>
+
 								</CardBlock>
 
 
@@ -397,7 +416,7 @@ export default function InsPage() {
 									?
 									<InsContainer>{parse(insBody)}</InsContainer>
 									:
-									<TextBlock className="text-2xl italic"  >Текст інструкції відсутній</TextBlock>
+									<TextBlock className="text-xl italic"  >Текст інструкції відсутній</TextBlock>
 								}
 
 

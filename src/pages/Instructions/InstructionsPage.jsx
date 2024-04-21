@@ -7,15 +7,14 @@ import {
   HeaderBlock,
   InputBlock,
   ModalCreate,
-  ModalWrapper,
   PageBTW,
   Spinner,
   TextBlock,
 } from "../../components";
 import { useNavigate } from "react-router-dom";
 
-import useInsFoldersStore from "./insFoldersStore";
-import { CancelIcon, OkIcon } from "../../components/UI/Icons";
+import useInsFoldersStore from "./stores/insFoldersStore";
+
 
 // DFNNauCXiFM
 
@@ -109,17 +108,17 @@ export default function InstructionsPage() {
             <ContainerBlock className="grid grid-cols-1 gap-4 p-4 md:grid-cols-2 
             lg:grid-cols-3">
               {insFolders.map((insFolder) => (
-                <div
+                <CardBlock
                   key={insFolder._id}
                   onClick={() => navigate(`/insfolder/${insFolder._id}`)}
-                  className="rounded-xl flex justify-center items-center p-2 bg-yellow-500/20 
-                      hover:bg-yellow-500  hover:shadow-2xl 
+                  className="rounded-xl flex justify-center items-center p-2   shadow
+                      hover:bg-yellow-500  hover:shadow-2xl shadow-yellow-500 hover:shadow-yellow-500
                       transition duration-500 ease-in-out min-h-[6rem] cursor-pointer transform-gpu"
                 >
-                  <TextBlock className="bg-gray-100 hover:bg-white text-black text-xl px-2 py-1 rounded-lg w-full shadow-md">
+                  <TextBlock className="bg-gray-300 hover:bg-white text-black text-xl px-2 py-1 rounded-lg w-full shadow-md">
                     {insFolder?.title}
                   </TextBlock>
-                </div>
+                </CardBlock>
 
               ))}
             </ContainerBlock>

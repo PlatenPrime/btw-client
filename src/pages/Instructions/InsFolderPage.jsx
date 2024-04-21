@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { ButtonBlock, ButtonGroup, CardBlock, ContainerBlock, HeaderBlock, ModalCreate, ModalDelete, ModalEditOneValue, ModalWrapper, PageBTW, Spinner, TextBlock } from "../../components";
 import { useNavigate, useParams } from "react-router-dom";
-import useInsFoldersStore from "./insFoldersStore";
-import useInsStore from "./insStore";
+import useInsFoldersStore from "./stores/insFoldersStore";
+import useInsStore from "./stores/insStore";
+import useAuthStore from "../Auth/authStore";
 
 
 
@@ -15,6 +16,7 @@ export default function InsFolderPage() {
 
   const { insFolder, getInsFolderById, updateInsFolderById, deleteInsFolderById } = useInsFoldersStore()
   const { createInstruction, folderInstructions, getFolderInstructions } = useInsStore()
+  const { user } = useAuthStore()
 
 
   const [isInsFolderLoading, setIsInsFolderLoading] = useState(false);
@@ -143,7 +145,7 @@ export default function InsFolderPage() {
       {isShowModalInsCreating && <ModalCreate
         title="Створення інструкції"
         onCancel={() => setIsShowModalInsCreating(false)}
-        onConfirm={(newTitle) => handleCreateInstruction({ title: newTitle, folderId: id })}
+        onConfirm={(newTitle) => handleCreateInstruction({ title: newTitle, folderId: id, author: user?._id })}
         isCreating={isInsCreating}
       />}
 
