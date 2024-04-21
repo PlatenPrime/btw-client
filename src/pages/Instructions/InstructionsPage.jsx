@@ -105,17 +105,17 @@ export default function InstructionsPage() {
 
 
           {insFolders?.length > 0 && (
-            <ContainerBlock className="grid grid-cols-1 gap-4 p-4 md:grid-cols-2 
+            <ContainerBlock className="grid grid-cols-1 gap-2 p-4 md:grid-cols-2 
             lg:grid-cols-3">
               {insFolders.map((insFolder) => (
                 <CardBlock
                   key={insFolder._id}
                   onClick={() => navigate(`/insfolder/${insFolder._id}`)}
-                  className="rounded-xl flex justify-center items-center p-2   shadow
-                      hover:bg-yellow-500  hover:shadow-2xl shadow-yellow-500 hover:shadow-yellow-500
-                      transition duration-500 ease-in-out min-h-[6rem] cursor-pointer transform-gpu"
+                  className="group rounded-xl flex justify-center items-center p-4 
+                      hover:bg-yellow-500  hover:shadow-2xl  hover:shadow-yellow-500
+                      transition duration-500 ease-in-out  cursor-pointer"
                 >
-                  <TextBlock className="bg-gray-300 hover:bg-white text-black text-xl px-2 py-1 rounded-lg w-full shadow-md">
+                  <TextBlock className="bg-sky-500/10 group-hover:bg-sky-600  text-xl px-2 py-1 rounded-lg w-full shadow-md">
                     {insFolder?.title}
                   </TextBlock>
                 </CardBlock>

@@ -16,7 +16,9 @@ export default function InsFolderPage() {
 
   const { insFolder, getInsFolderById, updateInsFolderById, deleteInsFolderById } = useInsFoldersStore()
   const { createInstruction, folderInstructions, getFolderInstructions } = useInsStore()
-  const { user } = useAuthStore()
+  const { user, users, getUsers } = useAuthStore()
+
+  console.log(users);
 
 
   const [isInsFolderLoading, setIsInsFolderLoading] = useState(false);
@@ -69,6 +71,25 @@ export default function InsFolderPage() {
 
 
   }, [getInsFolderById, getFolderInstructions, id]);
+
+
+
+
+  useEffect(() => {
+
+    const fetchUsers = async () => {
+      try {
+        await getUsers()
+
+      } catch (error) {
+        console.log(error);
+
+      }
+    }
+
+    fetchUsers()
+
+  }, [getUsers])
 
 
 
@@ -227,12 +248,12 @@ export default function InsFolderPage() {
             <ContainerBlock
               className="space-y-2"
             >
-              {folderInstructions?.map((instruction) => (
+              {folderInstructions?.map((ins) => (
                 <CardBlock
-                  key={instruction._id}
-                  className=" flex items-center space-x-4 w-full p-2 rounded-xl bg-blue-500/20 hover:bg-blue-500 cursor-pointer
+                  key={ins._id}
+                  className=" flex flex-col lg:flex-row items-center space-x-4 w-full p-2 rounded-xl bg-blue-500/20 hover:bg-blue-500 cursor-pointer
      transition duration-500 ease-in-out"
-                  onClick={() => navigate(`/ins/${instruction._id}`)}
+                  onClick={() => navigate(`/ins/${ins._id}`)}
                 >
 
 
@@ -240,28 +261,35 @@ export default function InsFolderPage() {
 
 
                   <CardBlock
-                    className="flex justify-center items-center w-full lg:w-fit aspect-video rounded-xl"
+                    className="flex justify-center items-center w-full lg:w-fit  rounded-xl"
                   >
 
-                    {instruction?.titleImage ?
+                    {ins?.titleImage ?
 
-                      <img src={instruction?.titleImage} alt="" className="w-[300px] " />
+                      <img src={ins?.titleImage} alt="" className="w-[300px] rounded-xl " />
 
                       :
 
                       <img
-                        src='https://placehold.co/600x400?text=Інструкція'
+                        src='https://placehold.co/600x300?text=Інструкція'
                         width={300}
+                        className="rounded-xl"
                       ></img>}
                   </CardBlock>
 
 
 
-                  <TextBlock
-                    className="text-xl"
-                  >
-                    {instruction?.title}
-                  </TextBlock>
+                  <CardBlock>
+                    <TextBlock className="text-3xl "> {ins?.title}</TextBlock>
+
+                    {ins?.author && users?.find((user) => user?._id === ins?.author) &&
+                      <TextBlock className="text-xl text-slate-400">
+                        {users?.find((user) => user?._id === ins?.author)?.fullname}
+                      </TextBlock>}
+
+                    {ins?.createdAt && <TextBlock className="text-lg text-slate-400 justify-start">Створена: {new Date(ins?.createdAt).toLocaleString()}</TextBlock>}
+                    {ins?.updatedAt && <TextBlock className="text-lg text-slate-400 justify-start">Змінена: {new Date(ins?.updatedAt).toLocaleString()}</TextBlock>}
+                  </CardBlock>
                 </CardBlock>
 
               ))}

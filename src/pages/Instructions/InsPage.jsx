@@ -90,8 +90,6 @@ export default function InsPage() {
 				}
 
 
-
-
 			} catch (error) {
 				console.log(error.message);
 				setError(error.message);
@@ -394,6 +392,8 @@ export default function InsPage() {
 									<CardBlock>
 										<TextBlock className="text-3xl "> {ins?.title}</TextBlock>
 										{author && <TextBlock className="text-xl text-slate-400"> {author?.fullname}</TextBlock>}
+										{ins?.createdAt && <TextBlock className="text-lg text-slate-400 justify-start">Створена: {new Date(ins?.createdAt).toLocaleString()}</TextBlock>}
+										{ins?.updatedAt && <TextBlock className="text-lg text-slate-400 justify-start">Змінена: {new Date(ins?.updatedAt).toLocaleString()}</TextBlock>}
 									</CardBlock>
 
 								</CardBlock>
@@ -416,7 +416,7 @@ export default function InsPage() {
 									?
 									<InsContainer>{parse(insBody)}</InsContainer>
 									:
-									<TextBlock className="text-xl italic"  >Текст інструкції відсутній</TextBlock>
+									<TextBlock className="text-xl italic text-slate-500"  >Текст інструкції відсутній</TextBlock>
 								}
 
 
