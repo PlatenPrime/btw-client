@@ -149,7 +149,7 @@ const Editor = ({
 			<QuillEditor
 				ref={(el) => (quill.current = el)}
 				className={styles.editor}
-				placeholder='Напиши тут...'
+				placeholder='Текст пиши тут...'
 				theme="snow"
 				value={value}
 				formats={formats}

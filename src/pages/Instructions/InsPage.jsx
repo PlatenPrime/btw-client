@@ -369,7 +369,7 @@ export default function InsPage() {
 											className="flex justify-center items-center w-full lg:w-fit "
 										>
 
-											<img src={ins?.titleImage} alt="" className="w-[300px] " />
+											<img src={ins?.titleImage} alt="" className="w-[300px] rounded-xl " />
 
 										</CardBlock>
 
@@ -381,6 +381,7 @@ export default function InsPage() {
 											<img
 												src='https://placehold.co/600x400?text=Інструкція'
 												width={200}
+												className="rounded-xl"
 											>
 
 											</img>

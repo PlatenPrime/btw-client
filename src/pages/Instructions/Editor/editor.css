@@ -96,8 +96,8 @@
 
 
 
-.ql.container ::placeholder {
-	color: white;
+	  .ql-editor.ql-blank::before {
+	color: rgba(255, 255, 255, 0.774);
 }
 
 
