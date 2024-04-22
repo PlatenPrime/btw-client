@@ -411,14 +411,34 @@ export default function InsPage() {
 								}
 
 
-
+{/* 
 
 								{insBody
 									?
 									<InsContainer>{parse(insBody)}</InsContainer>
 									:
 									<TextBlock className="text-xl italic text-slate-500"  >Текст інструкції відсутній</TextBlock>
+								} */}
+
+
+								{insBody
+									?
+									<InsContainer
+
+									>
+										<div
+											dangerouslySetInnerHTML={{
+												__html: insBody
+											}} >
+
+										</div>
+									</InsContainer>
+									:
+									<TextBlock className="text-xl italic text-slate-500"  >Текст інструкції відсутній</TextBlock>
 								}
+
+
+
 
 
 							</ContainerBlock>
