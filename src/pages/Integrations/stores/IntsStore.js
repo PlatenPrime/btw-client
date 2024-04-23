@@ -3,6 +3,7 @@ import axios from '../../../utils/axios';
 
 const useIntsStore = create((set) => ({
     ints: [],
+    int: null,
 
     createInt: async (intData) => {
         try {
@@ -42,6 +43,7 @@ const useIntsStore = create((set) => ({
 
             if (response.status === 200) {
                 const int = response.data;
+                set({ int });
                 return int;
             } else {
                 throw new Error('Ошибка получения интеграции по ID');
@@ -57,7 +59,9 @@ const useIntsStore = create((set) => ({
 
             if (response.status === 200) {
                 const updatedInt = response.data;
+               
                 set((state) => ({
+                    int: updatedInt,
                     ints: state.ints.map((item) =>
                         item._id === updatedInt._id ? updatedInt : item
                     ),

@@ -35,6 +35,7 @@ import InstructionsPage from "./pages/Instructions/InstructionsPage";
 import InsPage from "./pages/Instructions/InsPage";
 import InsFolderPage from "./pages/Instructions/InsFolderPage";
 import IntsPage from "./pages/Integrations/IntsPage";
+import IntPage from "./pages/Integrations/IntPage";
 
 
 
@@ -99,6 +100,7 @@ function App() {
 
 
 				<Route path="ints" element={<IntsPage />} />
+				<Route path="ints/:id" element={<IntPage />} />
 
 
 

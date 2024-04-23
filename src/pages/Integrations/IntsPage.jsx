@@ -9,7 +9,7 @@ export default function IntsPage() {
     const navigate = useNavigate()
 
 
-    const { ints, getAllInts } = useIntsStore();
+    const { ints,  getAllInts } = useIntsStore();
 
 
     const [error, setError] = React.useState(null);
@@ -80,7 +80,11 @@ export default function IntsPage() {
 
 
             {isIntsLoading ? (
-                <Spinner />
+                <ContainerBlock
+                    className="w-full h-full flex justify-start items-center"
+                >
+                    <Spinner color="rgb(34 197 94)" />
+                </ContainerBlock>
             ) : (
                 <ContainerBlock className="flex flex-col gap-4">
                     {ints?.map((int) => (
