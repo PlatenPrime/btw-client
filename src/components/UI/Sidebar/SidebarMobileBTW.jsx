@@ -231,7 +231,7 @@ const SidebarMobileBTW = ({ onClose }) => {
 
 
 				{user?.role === "PRIME" ?
-					<TextBlock className="w-full text-xl text-center  hover:bg-yellow-500/90 rounded font-bold " >
+					<TextBlock className="w-full text-xl text-center  hover:bg-green-500/90 rounded font-bold " >
 						<NavLink
 							onClick={onClose}
 							to={"ints"}
@@ -239,7 +239,7 @@ const SidebarMobileBTW = ({ onClose }) => {
 								color: "white",
 								padding: "12px",
 								width: "100%",
-								background: "rgb(234 179 8   )",
+								background: "rgb(34 197 94  )",
 							} : inActiveStyles}
 						>
 							Інтеграції
