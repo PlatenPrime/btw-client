@@ -34,6 +34,7 @@ import DefsPage from "./pages/Stocks/DefsPage";
 import InstructionsPage from "./pages/Instructions/InstructionsPage";
 import InsPage from "./pages/Instructions/InsPage";
 import InsFolderPage from "./pages/Instructions/InsFolderPage";
+import IntsPage from "./pages/Integrations/IntsPage";
 
 
 
@@ -95,6 +96,9 @@ function App() {
 				<Route path="insfolder/:id" element={<InsFolderPage />} />
 				<Route path="ins/:id" element={<InsPage />} />
 
+
+
+				<Route path="ints" element={<IntsPage />} />
 
 
 

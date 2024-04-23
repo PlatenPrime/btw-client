@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import { ButtonBlock, TextBlock, CardBlock, Spinner } from "../../index";
-import { FcBinoculars, FcDeployment, FcLibrary, FcOrganization, FcSettings, FcLeave, FcLowPriority, FcRotateToLandscape, FcDocument } from 'react-icons/fc';
+import { FcBinoculars, FcDeployment, FcLibrary, FcOrganization, FcSettings, FcLeave, FcLowPriority, FcRotateToLandscape, FcDocument, FcConferenceCall, FcButtingIn } from 'react-icons/fc';
 
 import useAuthStore from '../../../pages/Auth/authStore';
 import ContainerBlock from '../blocks/ContainerBlock';
@@ -281,6 +281,35 @@ p-4
 					</TextBlock>
 					:
 					null}
+
+
+
+
+
+
+				{user?.role === "PRIME" ?
+					<TextBlock className="bg-yellow-500/20 hover:bg-yellow-500/90 rounded " >
+						<NavLink
+							to={"ints"}
+							style={({ isActive }) => isActive ? {
+								color: "white",
+								padding: "12px",
+								width: "100%",
+								background: "rgb(234 179 8 )",
+							} : inActiveStyles}
+						>
+							<TextBlock
+								className="flex  space-x-1"
+							>
+								<FcButtingIn />
+								<TextBlock>Інтеграції</TextBlock>
+							</TextBlock>
+
+						</NavLink>
+					</TextBlock>
+					:
+					null}
+
 
 
 

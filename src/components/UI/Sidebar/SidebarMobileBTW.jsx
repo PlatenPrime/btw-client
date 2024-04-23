@@ -93,7 +93,7 @@ const SidebarMobileBTW = ({ onClose }) => {
 
 
 
-				<TextBlock className="w-full text-xl text-center border border-orange-500 hover:bg-orange-500/90 rounded font-bold" >
+				<TextBlock className="w-full text-xl text-center  hover:bg-orange-500/90 rounded font-bold" >
 					<NavLink
 						onClick={onClose}
 						to={"rows"}
@@ -111,7 +111,7 @@ const SidebarMobileBTW = ({ onClose }) => {
 
 
 
-				<TextBlock className="w-full text-xl text-center border border-emerald-500 hover:bg-emerald-500/90 rounded font-bold" >
+				<TextBlock className="w-full text-xl text-center  hover:bg-emerald-500/90 rounded font-bold" >
 					<NavLink
 						onClick={onClose}
 						to={"stocks"}
@@ -130,7 +130,7 @@ const SidebarMobileBTW = ({ onClose }) => {
 
 
 
-				<TextBlock className="w-full text-xl text-center border border-sky-500 hover:bg-sky-500/90  rounded font-bold" >
+				<TextBlock className="w-full text-xl text-center  hover:bg-sky-500/90  rounded font-bold" >
 					<NavLink
 						onClick={onClose}
 						to={"arts"}
@@ -150,7 +150,7 @@ const SidebarMobileBTW = ({ onClose }) => {
 
 
 
-				<TextBlock className="w-full text-xl text-center border border-indigo-500 hover:bg-indigo-500/90 rounded font-bold" >
+				<TextBlock className="w-full text-xl text-center  hover:bg-indigo-500/90 rounded font-bold" >
 					<NavLink
 						onClick={onClose}
 						to={"asks"}
@@ -169,7 +169,7 @@ const SidebarMobileBTW = ({ onClose }) => {
 
 
 				{user?.role === "PRIME" || user?.role === "ADMIN" || user?.role === "SKLAD" ?
-					<TextBlock className="w-full text-xl text-center border border-pink-500 hover:bg-pink-500/90 rounded font-bold " >
+					<TextBlock className="w-full text-xl text-center  hover:bg-pink-500/90 rounded font-bold " >
 						<NavLink
 							onClick={onClose}
 							to={"defs"}
@@ -192,7 +192,7 @@ const SidebarMobileBTW = ({ onClose }) => {
 
 
 				{user?.role === "PRIME" || user?.role === "ADMIN" ?
-					<TextBlock className="w-full text-xl text-center border border-rose-500 hover:bg-rose-500/90 rounded font-bold " >
+					<TextBlock className="w-full text-xl text-center  hover:bg-rose-500/90 rounded font-bold " >
 						<NavLink
 							onClick={onClose}
 							to={"comps"}
@@ -211,7 +211,7 @@ const SidebarMobileBTW = ({ onClose }) => {
 
 
 				{user?.role === "PRIME" ?
-					<TextBlock className="w-full text-xl text-center border border-blue-500 hover:bg-blue-500/90 rounded font-bold " >
+					<TextBlock className="w-full text-xl text-center  hover:bg-blue-500/90 rounded font-bold " >
 						<NavLink
 							onClick={onClose}
 							to={"ins"}
@@ -227,6 +227,30 @@ const SidebarMobileBTW = ({ onClose }) => {
 					</TextBlock>
 					:
 					null}
+
+
+
+				{user?.role === "PRIME" ?
+					<TextBlock className="w-full text-xl text-center  hover:bg-yellow-500/90 rounded font-bold " >
+						<NavLink
+							onClick={onClose}
+							to={"ints"}
+							style={({ isActive }) => isActive ? {
+								color: "white",
+								padding: "12px",
+								width: "100%",
+								background: "rgb(234 179 8   )",
+							} : inActiveStyles}
+						>
+							Інтеграції
+						</NavLink>
+					</TextBlock>
+					:
+					null}
+
+
+
+
 
 
 

@@ -11,6 +11,10 @@ import {
   Spinner,
   TextBlock,
 } from "../../components";
+
+import { FcFolder } from "react-icons/fc";
+
+
 import { useNavigate } from "react-router-dom";
 
 import useInsFoldersStore from "./stores/insFoldersStore";
@@ -111,13 +115,18 @@ export default function InstructionsPage() {
                 <CardBlock
                   key={insFolder._id}
                   onClick={() => navigate(`/insfolder/${insFolder._id}`)}
-                  className="group rounded-xl flex justify-center items-center p-4 
-                      hover:bg-yellow-500  hover:shadow-2xl  hover:shadow-yellow-500
-                      transition duration-500 ease-in-out  cursor-pointer"
+                  className="group rounded-xl flex justify-center items-center
+                  bg-blue-500/10 
+                      hover:bg-blue-500  hover:shadow-2xl  hover:shadow-blue-500
+                      transition duration-500 ease-in-out  cursor-pointer "
                 >
-                  <TextBlock className="bg-sky-500/10 group-hover:bg-sky-600  text-xl px-2 py-1 rounded-lg w-full shadow-md">
+
+                  <FcFolder className="text-5xl" />
+                  <TextBlock className="  text-xl px-2 py-1 rounded-lg   w-full ">
                     {insFolder?.title}
                   </TextBlock>
+
+
                 </CardBlock>
 
               ))}
