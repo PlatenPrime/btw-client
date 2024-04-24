@@ -1,5 +1,5 @@
 import React from 'react'
-import { ButtonBlock, ButtonGroup, CardBlock, ContainerBlock, HeaderBlock, PageBTW, Spinner } from '../../components'
+import { ButtonBlock, ButtonGroup, CardBlock, ContainerBlock, HeaderBlock, PageBTW, Spinner, TextBlock } from '../../components'
 import { useParams } from 'react-router-dom';
 import useIntsStore from './stores/IntsStore';
 import { useEffect } from 'react';
@@ -50,7 +50,9 @@ export default function IntPage() {
 
     return (
         <PageBTW>
-            <HeaderBlock>
+            <HeaderBlock
+                className="bg-green-500 shadow-2xl shadow-green-500"
+            >
                 Інтеграція
             </HeaderBlock>
 
@@ -73,9 +75,35 @@ export default function IntPage() {
                     <>
 
                         <ButtonGroup>
-                            <ButtonBlock>
-                                Редагувати
-                            </ButtonBlock>
+
+
+                            {isIntEditing
+                                ?
+                                <>
+                                    <ButtonBlock
+                                        className="rose-b"
+                                        onClick={() => setIsIntEditing(!isIntEditing)}
+                                    >
+                                        Скасувати
+                                    </ButtonBlock>
+
+                                    <ButtonBlock>
+                                        Зберегти
+                                    </ButtonBlock>
+
+                                </>
+                                :
+                                <ButtonBlock
+                                    onClick={() => setIsIntEditing(!isIntEditing)}
+                                    className="blue-b"
+                                >
+                                    Редагувати
+                                </ButtonBlock>
+
+                            }
+
+
+
 
                             <ButtonBlock>
                                 Видалити
@@ -87,6 +115,28 @@ export default function IntPage() {
 
 
 
+                        {isIntEditing ?
+
+                            <ContainerBlock
+                                className="bg-blue-500/10 "
+                            >
+                                <TextBlock
+                                    className=" text-3xl"
+                                >
+                                    Інтеграція в режимі редагування
+                                </TextBlock>
+                            </ContainerBlock>
+                            :
+                            <ContainerBlock
+                                className="bg-green-500/10 "
+                            >
+                                <TextBlock
+                                    className=" text-3xl"
+                                >
+                                    {int?.title}
+                                </TextBlock>
+                            </ContainerBlock>
+                        }
 
 
 
@@ -99,7 +149,17 @@ export default function IntPage() {
 
 
 
-                        Інтеграція: {int?.title}
+
+
+
+
+
+
+
+
+
+
+
                     </>
                 )}
 
