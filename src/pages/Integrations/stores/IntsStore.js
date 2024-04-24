@@ -26,11 +26,12 @@ const useIntsStore = create((set) => ({
             const response = await axios.get('ints');
 
             if (response.status === 200) {
-                const data = response.data;
-                set({ ints: data.ints });
-                return data.ints;
+                const ints = response.data;
+                set({ ints });
+                return ints;
             } else {
                 throw new Error('Ошибка получения интеграций');
+                
             }
         } catch (error) {
             console.error('Ошибка получения интеграций:', error);
@@ -43,6 +44,8 @@ const useIntsStore = create((set) => ({
 
             if (response.status === 200) {
                 const int = response.data;
+                console.log("Get Int, Zustand", int);
+
                 set({ int });
                 return int;
             } else {
@@ -59,7 +62,7 @@ const useIntsStore = create((set) => ({
 
             if (response.status === 200) {
                 const updatedInt = response.data;
-               
+
                 set((state) => ({
                     int: updatedInt,
                     ints: state.ints.map((item) =>

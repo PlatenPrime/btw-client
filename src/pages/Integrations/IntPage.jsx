@@ -1,21 +1,26 @@
 import React from 'react'
-import { ContainerBlock, HeaderBlock, PageBTW, Spinner } from '../../components'
+import { ButtonBlock, ButtonGroup, CardBlock, ContainerBlock, HeaderBlock, PageBTW, Spinner } from '../../components'
 import { useParams } from 'react-router-dom';
 import useIntsStore from './stores/IntsStore';
 import { useEffect } from 'react';
+import { useState } from 'react';
 
 export default function IntPage() {
 
     const { id } = useParams();
 
-    const { int, getIntById } = useIntsStore();
+    const { int, getIntById, updateIntById, deleteIntById } = useIntsStore();
 
 
-    console.log(int);
+
+    const [isIntLoading, setIsIntLoading] = useState(false);
+    const [isIntEditing, setIsIntEditing] = useState(false);
 
 
-    const [error, setError] = React.useState(null);
-    const [isIntLoading, setIsIntLoading] = React.useState(false);
+
+
+
+
 
 
 
@@ -41,11 +46,19 @@ export default function IntPage() {
 
 
 
+
+
     return (
         <PageBTW>
             <HeaderBlock>
                 Інтеграція
             </HeaderBlock>
+
+
+
+
+
+
 
             {isIntLoading ?
                 (
@@ -57,11 +70,38 @@ export default function IntPage() {
                 )
                 :
                 (
-                    <p>Інтеграція: {int?.int?.title}</p>
+                    <>
+
+                        <ButtonGroup>
+                            <ButtonBlock>
+                                Редагувати
+                            </ButtonBlock>
+
+                            <ButtonBlock>
+                                Видалити
+                            </ButtonBlock>
+
+                        </ButtonGroup>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                        Інтеграція: {int?.title}
+                    </>
                 )}
-
-
-
 
 
         </PageBTW >

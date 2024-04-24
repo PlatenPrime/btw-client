@@ -1,5 +1,5 @@
 import React from 'react'
-import { ButtonBlock, ButtonGroup, CardBlock, ContainerBlock, HeaderBlock, PageBTW, Spinner } from '../../components'
+import { ButtonBlock, ButtonGroup, CardBlock, ContainerBlock, HeaderBlock, PageBTW, Spinner, TextBlock } from '../../components'
 import useIntsStore from './stores/IntsStore';
 import { useNavigate } from 'react-router-dom';
 
@@ -9,12 +9,13 @@ export default function IntsPage() {
     const navigate = useNavigate()
 
 
-    const { ints,  getAllInts } = useIntsStore();
+    const { ints, getAllInts } = useIntsStore();
 
 
     const [error, setError] = React.useState(null);
     const [isIntsLoading, setIsIntsLoading] = React.useState(false);
 
+    console.log(error);
 
 
 
@@ -33,7 +34,7 @@ export default function IntsPage() {
 
             try {
                 setIsIntsLoading(true);
-                getAllInts()
+                await getAllInts()
             } catch (error) {
                 setError(error);
             } finally {
@@ -50,7 +51,23 @@ export default function IntsPage() {
 
 
 
+    if (error) {
+        return <PageBTW>
+            <HeaderBlock
+                className="bg-red-500 shadow-2xl shadow-red-500"
+            >
+                Помилка
+            </HeaderBlock>
 
+            <ContainerBlock>
+                <TextBlock>
+                    {error.message}
+                </TextBlock>
+            </ContainerBlock>
+
+
+        </PageBTW >
+    }
 
 
 
