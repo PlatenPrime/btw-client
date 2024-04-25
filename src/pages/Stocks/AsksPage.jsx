@@ -394,7 +394,7 @@ export default function AsksPage() {
 													</TextBlock>
 
 													<TextBlock
-														className=" justify-center text-base italic"
+														className=" justify-center items-center w-full text-center text-base italic"
 													>
 
 														{artsDB?.find((art) => ask?.artikul === art?.artikul)?.nameukr?.slice(10)}
