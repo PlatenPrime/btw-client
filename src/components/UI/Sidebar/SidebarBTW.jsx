@@ -290,7 +290,7 @@ p-4
 				{user?.role === "PRIME" ?
 					<TextBlock className="bg-green-500/20 hover:bg-green-500/90 rounded " >
 						<NavLink
-							to={"ints"}
+							to={"adapts"}
 							style={({ isActive }) => isActive ? {
 								color: "white",
 								padding: "12px",
@@ -302,7 +302,7 @@ p-4
 								className="flex  space-x-1"
 							>
 								<FcBullish />
-								<TextBlock>Інтеграції</TextBlock>
+								<TextBlock>Адаптації</TextBlock>
 							</TextBlock>
 
 						</NavLink>

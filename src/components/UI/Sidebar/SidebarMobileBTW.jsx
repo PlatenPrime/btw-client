@@ -234,7 +234,7 @@ const SidebarMobileBTW = ({ onClose }) => {
 					<TextBlock className="w-full text-xl text-center  hover:bg-green-500/90 rounded font-bold " >
 						<NavLink
 							onClick={onClose}
-							to={"ints"}
+							to={"adapts"}
 							style={({ isActive }) => isActive ? {
 								color: "white",
 								padding: "12px",
@@ -242,7 +242,7 @@ const SidebarMobileBTW = ({ onClose }) => {
 								background: "rgb(34 197 94  )",
 							} : inActiveStyles}
 						>
-							Інтеграції
+							Адаптації
 						</NavLink>
 					</TextBlock>
 					:

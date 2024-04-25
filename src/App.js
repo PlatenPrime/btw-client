@@ -34,8 +34,8 @@ import DefsPage from "./pages/Stocks/DefsPage";
 import InstructionsPage from "./pages/Instructions/InstructionsPage";
 import InsPage from "./pages/Instructions/InsPage";
 import InsFolderPage from "./pages/Instructions/InsFolderPage";
-import AdaptsPage from "./pages/Integrations/AdaptsPage";
-import AdaptPage from "./pages/Integrations/AdaptPage";
+import AdaptsPage from "./pages/Adaptations/AdaptsPage";
+import AdaptPage from "./pages/Adaptations/AdaptPage";
 
 
 

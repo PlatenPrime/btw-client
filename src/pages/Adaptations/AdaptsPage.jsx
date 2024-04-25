@@ -74,7 +74,7 @@ export default function AdaptsPage() {
             <HeaderBlock
                 className="bg-green-500 shadow-2xl shadow-green-500"
             >
-                Інтеграції
+                Адаптації
             </HeaderBlock>
 
 
@@ -88,10 +88,6 @@ export default function AdaptsPage() {
                 isCreating={isAdaptCreating}
             />}
 
-
-
-
-            Ada
 
 
 
@@ -109,7 +105,7 @@ export default function AdaptsPage() {
                     className="green-b"
                     onClick={() => { setIsShowModalAdaptCreating(true) }}
                 >
-                    Створити інтеграцію
+                    Створити адаптацію
                 </ButtonBlock>
             </ButtonGroup>
 

@@ -11,7 +11,7 @@ export default function AdaptPage() {
     const { id } = useParams();
 
     const { adapt, getAdaptById, updateAdaptById, deleteAdaptById } = useAdaptsStore();
-    const { adaptBlocks, getAdaptBlocksByAdaptId } = useAdaptBlocksStore();
+    const { oneAdaptBlocks, getAdaptBlocksByAdaptId } = useAdaptBlocksStore();
 
 
 
@@ -56,7 +56,7 @@ export default function AdaptPage() {
             <HeaderBlock
                 className="bg-green-500 shadow-2xl shadow-green-500"
             >
-                Інтеграція
+                Адаптація
             </HeaderBlock>
 
 
@@ -128,7 +128,7 @@ export default function AdaptPage() {
                                 <TextBlock
                                     className=" text-3xl"
                                 >
-                                    Інтеграція в режимі редагування
+                                    Адаптація в режимі редагування
                                 </TextBlock>
 
 
@@ -172,7 +172,7 @@ export default function AdaptPage() {
                                     </TextBlock>
 
 
-                                    {adaptBlocks?.map((adaptBlock) => (
+                                    {oneAdaptBlocks?.map((adaptBlock) => (
 
                                         <CardBlock
                                             key={adaptBlock._id}
