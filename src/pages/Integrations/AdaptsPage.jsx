@@ -1,25 +1,25 @@
 import React, { useState } from 'react'
 import { ButtonBlock, ButtonGroup, CardBlock, ContainerBlock, HeaderBlock, ModalCreate, PageBTW, Spinner, TextBlock } from '../../components'
-import useIntsStore from './stores/IntsStore';
+import useAdaptsStore from './stores/adaptsStore';
 import { useNavigate } from 'react-router-dom';
 import { useEffect } from 'react';
 
-export default function IntsPage() {
+export default function AdaptsPage() {
 
 
     const navigate = useNavigate()
 
 
-    const { ints, getAllInts, createInt } = useIntsStore();
+    const { adapts, getAllAdapts, createAdapt } = useAdaptsStore();
 
 
 
-    const [isIntsLoading, setIsIntsLoading] = useState(false);
+    const [isAdaptsLoading, setIsAdaptsLoading] = useState(false);
 
 
-    const [isIntCreating, setIsIntCreating] = useState(false);
+    const [isAdaptCreating, setIsAdaptCreating] = useState(false);
 
-    const [isShowModalIntCreating, setIsShowModalIntCreating] = useState(false);
+    const [isShowModalAdaptCreating, setIsShowModalAdaptCreating] = useState(false);
 
 
 
@@ -29,39 +29,39 @@ export default function IntsPage() {
 
 
 
-        const fetchInts = async () => {
+        const fetchAdapts = async () => {
 
 
             try {
-                setIsIntsLoading(true);
-                await getAllInts()
+                setIsAdaptsLoading(true);
+                await getAllAdapts()
             } catch (error) {
                 console.error('Помилка завантаження інтеграцій:', error);
             } finally {
-                setIsIntsLoading(false);
+                setIsAdaptsLoading(false);
             }
         }
 
-        fetchInts()
+        fetchAdapts()
 
 
 
-    }, [getAllInts]);
+    }, [getAllAdapts]);
 
 
 
-    const handleIntCreate = async (createData) => {
+    const handleAdaptCreate = async (createData) => {
         try {
-            setIsIntCreating(true);
+            setIsAdaptCreating(true);
 
-            await createInt(createData)
+            await createAdapt(createData)
 
         } catch (error) {
             console.log(error);
 
         } finally {
-            setIsIntCreating(false);
-            setIsShowModalIntCreating(false);
+            setIsAdaptCreating(false);
+            setIsShowModalAdaptCreating(false);
         }
     }
 
@@ -81,20 +81,17 @@ export default function IntsPage() {
             {/* MODALS */}
 
 
-            {isShowModalIntCreating && <ModalCreate
+            {isShowModalAdaptCreating && <ModalCreate
                 title="Створення інтеграції"
-                onConfirm={(newIntTitle) => handleIntCreate({ title: newIntTitle })}
-                onCancel={() => setIsShowModalIntCreating(false)}
-                isCreating={isIntCreating}
+                onConfirm={(newAdaptTitle) => handleAdaptCreate({ title: newAdaptTitle })}
+                onCancel={() => setIsShowModalAdaptCreating(false)}
+                isCreating={isAdaptCreating}
             />}
 
 
 
 
-
-
-
-
+            Ada
 
 
 
@@ -110,7 +107,7 @@ export default function IntsPage() {
 
                 <ButtonBlock
                     className="green-b"
-                    onClick={() => { setIsShowModalIntCreating(true) }}
+                    onClick={() => { setIsShowModalAdaptCreating(true) }}
                 >
                     Створити інтеграцію
                 </ButtonBlock>
@@ -119,22 +116,22 @@ export default function IntsPage() {
 
 
             {
-                isIntsLoading ? (
-                    <ContainerBlock
+                isAdaptsLoading ? (
+                    <ContainerBlock ContainerBlock
                         className="w-full h-full flex justify-start items-center"
                     >
                         <Spinner color="rgb(34 197 94)" />
                     </ContainerBlock>
                 ) : (
                     <ContainerBlock className="flex flex-col gap-4">
-                        {ints?.map((int) => (
+                        {adapts?.map((adapt) => (
 
                             <CardBlock
-                                onClick={() => navigate(`/ints/${int._id}`)}
-                                key={int._id}
+                                onClick={() => navigate(`/adapts/${adapt._id}`)}
+                                key={adapt._id}
                                 className="text-center text-3xl p-4 bg-green-500/20 hover:bg-green-500 rounded-xl cursor-pointer transition duration-500 ease-in-out"
                             >
-                                {int.title}
+                                {adapt.title}
                             </CardBlock>
 
                         ))}

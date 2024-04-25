@@ -1,22 +1,22 @@
 import React from 'react'
 import { ButtonBlock, ButtonGroup, CardBlock, ContainerBlock, HeaderBlock, PageBTW, Spinner, TextBlock } from '../../components'
 import { useParams } from 'react-router-dom';
-import useIntsStore from './stores/IntsStore';
-import useIntBlocksStore from './stores/IntBlocksStore';
+import useAdaptsStore from './stores/adaptsStore';
+import useAdaptBlocksStore from './stores/adaptBlocksStore';
 import { useEffect } from 'react';
 import { useState } from 'react';
 
-export default function IntPage() {
+export default function AdaptPage() {
 
     const { id } = useParams();
 
-    const { int, getIntById, updateIntById, deleteIntById } = useIntsStore();
-    const { intBlocks, getIntBlocksByIntId } = useIntBlocksStore();
+    const { adapt, getAdaptById, updateAdaptById, deleteAdaptById } = useAdaptsStore();
+    const { adaptBlocks, getAdaptBlocksByAdaptId } = useAdaptBlocksStore();
 
 
 
-    const [isIntLoading, setIsIntLoading] = useState(false);
-    const [isIntEditing, setIsIntEditing] = useState(false);
+    const [isAdaptLoading, setIsAdaptLoading] = useState(false);
+    const [isAdaptEditing, setIsAdaptEditing] = useState(false);
 
 
 
@@ -28,21 +28,21 @@ export default function IntPage() {
 
     useEffect(() => {
 
-        const fetchIntById = async () => {
+        const fetchAdaptById = async () => {
             try {
-                setIsIntLoading(true);
-                await getIntById(id)
-                await getIntBlocksByIntId(id)
+                setIsAdaptLoading(true);
+                await getAdaptById(id)
+                await getAdaptBlocksByAdaptId(id)
             } catch (error) {
                 console.error('Помилка завантаження інтеграції:', error);
             } finally {
-                setIsIntLoading(false);
+                setIsAdaptLoading(false);
             }
         }
 
-        fetchIntById()
+        fetchAdaptById()
 
-    }, [getIntById, id, getIntBlocksByIntId]);
+    }, [getAdaptById, id, getAdaptBlocksByAdaptId]);
 
 
 
@@ -65,7 +65,7 @@ export default function IntPage() {
 
 
 
-            {isIntLoading ?
+            {isAdaptLoading ?
                 (
                     <ContainerBlock
                         className="w-full h-full flex justify-start items-center"
@@ -80,12 +80,12 @@ export default function IntPage() {
                         <ButtonGroup>
 
 
-                            {isIntEditing
+                            {isAdaptEditing
                                 ?
                                 <>
                                     <ButtonBlock
                                         className="rose-b"
-                                        onClick={() => setIsIntEditing(!isIntEditing)}
+                                        onClick={() => setIsAdaptEditing(!isAdaptEditing)}
                                     >
                                         Скасувати
                                     </ButtonBlock>
@@ -97,7 +97,7 @@ export default function IntPage() {
                                 </>
                                 :
                                 <ButtonBlock
-                                    onClick={() => setIsIntEditing(!isIntEditing)}
+                                    onClick={() => setIsAdaptEditing(!isAdaptEditing)}
                                     className="blue-b"
                                 >
                                     Редагувати
@@ -118,7 +118,7 @@ export default function IntPage() {
 
 
 
-                        {isIntEditing
+                        {isAdaptEditing
 
                             ?
 
@@ -158,7 +158,7 @@ export default function IntPage() {
                                 <TextBlock
                                     className=" text-3xl"
                                 >
-                                    {int?.title}
+                                    {adapt?.title}
                                 </TextBlock>
 
                                 <ContainerBlock
@@ -172,16 +172,16 @@ export default function IntPage() {
                                     </TextBlock>
 
 
-                                    {intBlocks?.map((intBlock) => (
+                                    {adaptBlocks?.map((adaptBlock) => (
 
                                         <CardBlock
-                                            key={intBlock._id}
+                                            key={adaptBlock._id}
                                             className="w-full rounded-3xl border-4  border-green-500/50 p-4 "
                                         >
                                             <TextBlock
                                                 className=" text-2xl"
                                             >
-                                                {intBlock?.title}
+                                                {adaptBlock?.title}
                                             </TextBlock>
                                         </CardBlock>
                                     ))}

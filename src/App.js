@@ -34,8 +34,8 @@ import DefsPage from "./pages/Stocks/DefsPage";
 import InstructionsPage from "./pages/Instructions/InstructionsPage";
 import InsPage from "./pages/Instructions/InsPage";
 import InsFolderPage from "./pages/Instructions/InsFolderPage";
-import IntsPage from "./pages/Integrations/IntsPage";
-import IntPage from "./pages/Integrations/IntPage";
+import AdaptsPage from "./pages/Integrations/AdaptsPage";
+import AdaptPage from "./pages/Integrations/AdaptPage";
 
 
 
@@ -99,8 +99,8 @@ function App() {
 
 
 
-				<Route path="ints" element={<IntsPage />} />
-				<Route path="ints/:id" element={<IntPage />} />
+				<Route path="adapts" element={<AdaptsPage />} />
+				<Route path="adapts/:id" element={<AdaptPage />} />
 
 
 
