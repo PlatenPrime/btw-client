@@ -5,6 +5,8 @@ import useAdaptsStore from './stores/adaptsStore';
 import useAdaptBlocksStore from './stores/adaptBlocksStore';
 import { useEffect } from 'react';
 import { useState } from 'react';
+import useInsStore from '../Instructions/stores/insStore';
+import useInsFoldersStore from '../Instructions/stores/insFoldersStore';
 
 export default function AdaptPage() {
 
@@ -12,15 +14,23 @@ export default function AdaptPage() {
 
     const { adapt, getAdaptById, updateAdaptById, deleteAdaptById } = useAdaptsStore();
     const { oneAdaptBlocks, getAdaptBlocksByAdaptId } = useAdaptBlocksStore();
+    const { instructions, getAllInstructions } = useInsStore();
+    const { insFolders, getAllInsFolders } = useInsFoldersStore();
 
 
 
     const [isAdaptLoading, setIsAdaptLoading] = useState(false);
+    const [isInstructionsLoading, setIsInstructionsLoading] = useState(false);
+
+
+
     const [isAdaptEditing, setIsAdaptEditing] = useState(false);
+    const [isNewAdaptBlockEditing, setIsNewAdaptBlockEditing] = useState(false);
 
 
 
 
+    console.log(insFolders);
 
 
 
@@ -44,6 +54,26 @@ export default function AdaptPage() {
 
     }, [getAdaptById, id, getAdaptBlocksByAdaptId]);
 
+
+
+
+    useEffect(() => {
+
+        const fetchInstructions = async () => {
+            try {
+                setIsInstructionsLoading(true);
+                await getAllInstructions()
+                await getAllInsFolders()
+            } catch (error) {
+                console.error('Помилка завантаження інтеграції:', error);
+            } finally {
+                setIsInstructionsLoading(false);
+            }
+        }
+
+        fetchInstructions()
+
+    }, [getAllInstructions, getAllInsFolders]);
 
 
 
@@ -132,12 +162,141 @@ export default function AdaptPage() {
                                 </TextBlock>
 
 
-                                <ContainerBlock>
-                                    <ButtonBlock
-                                        className="w-full slate-b bg-transparent hover:bg-slate-500/10 rounded-3xl border-4 border-dashed  p-4"
+                                <ContainerBlock
+                                    className="space-y-4 "
+                                >
+
+                                    <TextBlock
+                                        className=" text-2xl"
                                     >
-                                        Додати блок
-                                    </ButtonBlock>
+                                        Блоки
+                                    </TextBlock>
+
+
+
+                                    {oneAdaptBlocks?.map((adaptBlock) => (
+
+                                        <CardBlock
+                                            key={adaptBlock._id}
+                                            className="w-full rounded-3xl border-4  border-green-500/50 p-4 "
+                                        >
+                                            <TextBlock
+                                                className=" text-2xl"
+                                            >
+                                                {adaptBlock?.title}
+                                            </TextBlock>
+
+                                            <TextBlock
+                                                className=" text-2xl"
+                                            >
+
+                                                Інструкція: {instructions?.find((ins) => ins?._id === adaptBlock?.insId)?.title}
+                                            </TextBlock>
+
+                                        </CardBlock>
+                                    ))}
+
+
+                                    {isNewAdaptBlockEditing ?
+                                        <CardBlock
+                                            className="w-full rounded-xl  border-4 border-dashed  border-green-500/20 p-4 space-y-4 "
+                                        >
+
+                                            <TextBlock
+                                                className=" text-3xl"
+                                            >
+                                                Форма для нового блоку
+                                            </TextBlock>
+
+                                            <CardBlock>
+                                                <select
+                                                    className="InputBlock w-full text-xl"
+                                                    name="insId"
+
+                                                >
+
+                                                    {insFolders?.map((insfolder) => (
+                                                        <optgroup
+                                                            key={insfolder?._id}
+                                                            label={insfolder?.title}
+                                                            className="text-2xl bg-yellow-500 "
+                                                        >
+
+                                                            {instructions?.filter((ins) => insfolder?._id === ins?.folderId).map((ins) => (
+                                                                <option
+                                                                    key={ins?._id}
+                                                                    value={ins?._id}
+                                                                    className="bg-green-500"
+                                                                >
+                                                               
+                                                                    {ins?.title}
+                                                                </option>
+                                                            ))}
+
+                                                        </optgroup>
+                                                    ))}
+
+
+
+
+
+                                                    <optgroup
+
+                                                        key={1}
+                                                        label="slgjeogeg"
+                                                        className="text-2xl bg-blue-500 "
+
+                                                    >
+                                                        {instructions?.map((ins) => (
+                                                            <>
+
+                                                                <option
+                                                                    key={ins?._id}
+                                                                    value={ins?._id}
+                                                                >
+                                                                    {ins?.title}
+                                                                </option>
+                                                            </>
+                                                        ))}
+                                                    </optgroup>
+                                                </select>
+                                            </CardBlock>
+
+                                            <CardBlock
+                                                className="flex justify-around space-x-4"
+                                            >
+                                                <ButtonBlock
+                                                    className="rose-b"
+                                                    onClick={() => setIsNewAdaptBlockEditing(!isNewAdaptBlockEditing)}
+                                                >
+                                                    Скасувати
+                                                </ButtonBlock>
+                                                <ButtonBlock>
+                                                    Створити
+                                                </ButtonBlock>
+
+                                            </CardBlock>
+
+
+
+                                        </CardBlock>
+                                        :
+
+                                        <ButtonBlock
+                                            className="w-full slate-b bg-transparent hover:bg-slate-500/10 rounded-3xl border-4 border-dashed  p-4"
+                                            onClick={() => setIsNewAdaptBlockEditing(!isNewAdaptBlockEditing)}
+                                        >
+                                            Додати блок
+                                        </ButtonBlock>
+                                    }
+
+
+
+
+
+
+
+
                                 </ContainerBlock>
 
 
@@ -176,12 +335,18 @@ export default function AdaptPage() {
 
                                         <CardBlock
                                             key={adaptBlock._id}
-                                            className="w-full rounded-3xl border-4  border-green-500/50 p-4 "
+                                            className="w-full rounded-3xl border-4  border-green-500/50 p-4 space-y-4"
                                         >
                                             <TextBlock
                                                 className=" text-2xl"
                                             >
                                                 {adaptBlock?.title}
+                                            </TextBlock>
+                                            <TextBlock
+                                                className=" text-2xl"
+                                            >
+
+                                                Інструкція: {instructions?.find((ins) => ins?._id === adaptBlock?.insId)?.title}
                                             </TextBlock>
                                         </CardBlock>
                                     ))}
