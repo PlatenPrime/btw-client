@@ -27,6 +27,8 @@ export default function AdaptPage() {
     const [isAdaptEditing, setIsAdaptEditing] = useState(false);
     const [isNewAdaptBlockEditing, setIsNewAdaptBlockEditing] = useState(false);
 
+    const [isNewAdaptBlockInsId, setNewAdaptBlockInsId] = useState(null)
+
 
 
 
@@ -227,8 +229,9 @@ export default function AdaptPage() {
                                                                     key={ins?._id}
                                                                     value={ins?._id}
                                                                     className="bg-green-500"
+                                                                    onChange={(e) => setNewAdaptBlockInsId(e.target.value)}
                                                                 >
-                                                               
+
                                                                     {ins?.title}
                                                                 </option>
                                                             ))}
@@ -237,28 +240,6 @@ export default function AdaptPage() {
                                                     ))}
 
 
-
-
-
-                                                    <optgroup
-
-                                                        key={1}
-                                                        label="slgjeogeg"
-                                                        className="text-2xl bg-blue-500 "
-
-                                                    >
-                                                        {instructions?.map((ins) => (
-                                                            <>
-
-                                                                <option
-                                                                    key={ins?._id}
-                                                                    value={ins?._id}
-                                                                >
-                                                                    {ins?.title}
-                                                                </option>
-                                                            </>
-                                                        ))}
-                                                    </optgroup>
                                                 </select>
                                             </CardBlock>
 
