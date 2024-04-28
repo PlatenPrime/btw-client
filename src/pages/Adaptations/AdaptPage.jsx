@@ -1,5 +1,5 @@
 import React from 'react'
-import { ButtonBlock, ButtonGroup, CardBlock, ContainerBlock, HeaderBlock, PageBTW, Spinner, TextBlock } from '../../components'
+import { ButtonBlock, ButtonGroup, CardBlock, ContainerBlock, HeaderBlock, InputBlock, PageBTW, Spinner, TextBlock } from '../../components'
 import { useParams } from 'react-router-dom';
 import useAdaptsStore from './stores/adaptsStore';
 import useAdaptBlocksStore from './stores/adaptBlocksStore';
@@ -7,13 +7,14 @@ import { useEffect } from 'react';
 import { useState } from 'react';
 import useInsStore from '../Instructions/stores/insStore';
 import useInsFoldersStore from '../Instructions/stores/insFoldersStore';
+import { CancelIcon, OkIcon } from '../../components/UI/Icons';
 
 export default function AdaptPage() {
 
     const { id } = useParams();
 
     const { adapt, getAdaptById, updateAdaptById, deleteAdaptById } = useAdaptsStore();
-    const { oneAdaptBlocks, getAdaptBlocksByAdaptId } = useAdaptBlocksStore();
+    const { oneAdaptBlocks, getAdaptBlocksByAdaptId, createAdaptBlock } = useAdaptBlocksStore();
     const { instructions, getAllInstructions } = useInsStore();
     const { insFolders, getAllInsFolders } = useInsFoldersStore();
 
@@ -27,12 +28,17 @@ export default function AdaptPage() {
     const [isAdaptEditing, setIsAdaptEditing] = useState(false);
     const [isNewAdaptBlockEditing, setIsNewAdaptBlockEditing] = useState(false);
 
-    const [isNewAdaptBlockInsId, setNewAdaptBlockInsId] = useState(null)
+    const [newAdaptBlockTitle, setNewAdaptBlockTitle] = useState('')
+    const [newAdaptBlockInsId, setNewAdaptBlockInsId] = useState(null)
+
+
+    const [isAdaptBlockCreating, setIsAdaptBlockCreating] = useState(false);
 
 
 
+    console.log('newAdaptBlockInsId', newAdaptBlockInsId);
 
-    console.log(insFolders);
+
 
 
 
@@ -76,6 +82,49 @@ export default function AdaptPage() {
         fetchInstructions()
 
     }, [getAllInstructions, getAllInsFolders]);
+
+
+
+
+
+
+
+
+
+    // const handleDeleteAdapt = async () => {
+    //     try {
+
+    //     } catch (error) {
+
+    //     }
+    // }
+
+
+
+
+    const handleCreateAdaptBlock = async (createData) => {
+        try {
+            setIsAdaptBlockCreating(true)
+
+            await createAdaptBlock(createData)
+            
+
+
+
+        } catch (error) {
+            console.log(error);
+
+        } finally {
+            setIsAdaptBlockCreating(false)
+            setIsNewAdaptBlockEditing(false)
+            setNewAdaptBlockInsId(null)
+            setNewAdaptBlockTitle('')
+        }
+    }
+
+
+
+
 
 
 
@@ -176,60 +225,130 @@ export default function AdaptPage() {
 
 
 
-                                    {oneAdaptBlocks?.map((adaptBlock) => (
+                                    {oneAdaptBlocks?.map((adaptBlock, i) => (
 
                                         <CardBlock
                                             key={adaptBlock._id}
-                                            className="w-full rounded-3xl border-4  border-green-500/50 p-4 "
+                                            className="  w-full rounded-3xl border-4  border-green-500/50 p-4 "
                                         >
                                             <TextBlock
                                                 className=" text-2xl"
                                             >
-                                                {adaptBlock?.title}
+                                                {i + 1}. {adaptBlock?.title}
                                             </TextBlock>
 
-                                            <TextBlock
-                                                className=" text-2xl"
+
+                                            <CardBlock
+                                                className="flex space-x-4"
                                             >
 
-                                                Інструкція: {instructions?.find((ins) => ins?._id === adaptBlock?.insId)?.title}
-                                            </TextBlock>
+                                                <img
+                                                    src={instructions?.find((ins) => ins?._id === adaptBlock?.insId)?.titleImage
+                                                        || 'https://placehold.co/600x400?text=Інструкція'
+                                                    }
+                                                    width={200}
+                                                    className="rounded-3xl"
+                                                >
+
+                                                </img>
+
+                                                <TextBlock
+                                                    className=" text-2xl"
+                                                >
+
+
+
+                                                    Інструкція: {instructions?.find((ins) => ins?._id === adaptBlock?.insId)?.title}
+
+
+                                                </TextBlock>
+
+
+                                            </CardBlock>
 
                                         </CardBlock>
                                     ))}
 
 
-                                    {isNewAdaptBlockEditing ?
+
+
+
+
+                                    {isNewAdaptBlockEditing
+                                        ?
+
+
+
                                         <CardBlock
-                                            className="w-full rounded-xl  border-4 border-dashed  border-green-500/20 p-4 space-y-4 "
+                                            className="w-full rounded-xl bg-green-500/5  border-4 border-dashed  border-green-500/20 p-4 space-y-4 "
                                         >
 
                                             <TextBlock
-                                                className=" text-3xl"
+                                                className=" text-2xl bg-green-500/5"
                                             >
                                                 Форма для нового блоку
                                             </TextBlock>
 
-                                            <CardBlock>
-                                                <select
-                                                    className="InputBlock w-full text-xl"
-                                                    name="insId"
 
+
+                                            <CardBlock
+                                                className="flex items-center space-x-4"
+                                            >
+                                                <label>
+                                                    <TextBlock className=" text-xl whitespace-nowrap">
+                                                        Назва блоку:
+                                                    </TextBlock>
+                                                </label>
+
+                                                <InputBlock
+                                                    onChange={(e) => setNewAdaptBlockTitle(e.target.value)}
+                                                    value={newAdaptBlockTitle}
+                                                    className="w-full"
+
+                                                />
+                                            </CardBlock>
+
+
+
+
+                                            <CardBlock
+                                                className="flex items-center space-x-4"
+                                            >
+
+                                                <label>
+                                                    <TextBlock className=" text-xl">
+                                                        Інструкція:
+                                                    </TextBlock>
+                                                </label>
+
+
+                                                <select
+                                                    className="InputBlock w-full "
+                                                    name="insId"
+                                                    onChange={(e) => setNewAdaptBlockInsId(e.target.value)}
                                                 >
+
+                                                    <option
+                                                        className="bg-blue-500 text-white"
+                                                        value=""
+                                                        disabled
+                                                    >
+                                                        Вибери інструкцію
+                                                    </option>
 
                                                     {insFolders?.map((insfolder) => (
                                                         <optgroup
                                                             key={insfolder?._id}
                                                             label={insfolder?.title}
-                                                            className="text-2xl bg-yellow-500 "
+                                                            className=" bg-slate-900 text-slate-500 "
                                                         >
 
                                                             {instructions?.filter((ins) => insfolder?._id === ins?.folderId).map((ins) => (
                                                                 <option
                                                                     key={ins?._id}
                                                                     value={ins?._id}
-                                                                    className="bg-green-500"
-                                                                    onChange={(e) => setNewAdaptBlockInsId(e.target.value)}
+                                                                    className="text-white"
+
                                                                 >
 
                                                                     {ins?.title}
@@ -243,17 +362,83 @@ export default function AdaptPage() {
                                                 </select>
                                             </CardBlock>
 
+
+
+
+                                            {newAdaptBlockInsId
+
+                                                ?
+                                                <CardBlock
+                                                    className="flex space-x-4 bg-blue-500/10 p-2 rounded-xl"
+                                                >
+
+                                                    <img
+                                                        src={instructions?.find((ins) => ins?._id === newAdaptBlockInsId)?.titleImage
+                                                            || 'https://placehold.co/600x400?text=Інструкція'
+                                                        }
+                                                        width={200}
+                                                        className="rounded-3xl"
+                                                    >
+
+                                                    </img>
+
+                                                    <TextBlock
+                                                        className=" text-2xl"
+                                                    >
+
+
+
+                                                        Інструкція: {instructions?.find((ins) => ins?._id === newAdaptBlockInsId)?.title}
+
+
+                                                    </TextBlock>
+
+
+                                                </CardBlock>
+                                                :
+                                                null
+                                            }
+
+
+
+
+
+
+
+
+
+
                                             <CardBlock
                                                 className="flex justify-around space-x-4"
                                             >
                                                 <ButtonBlock
-                                                    className="rose-b"
+                                                    className="rose-b flex justify-center items-center"
                                                     onClick={() => setIsNewAdaptBlockEditing(!isNewAdaptBlockEditing)}
                                                 >
-                                                    Скасувати
+
+                                                    <TextBlock className="text-2xl"><CancelIcon /></TextBlock>
+                                                    <TextBlock className=""> Скасувати</TextBlock>
+
                                                 </ButtonBlock>
-                                                <ButtonBlock>
-                                                    Створити
+
+                                                <ButtonBlock
+                                                    onClick={() => handleCreateAdaptBlock({
+                                                        title: newAdaptBlockTitle,
+                                                        insId: newAdaptBlockInsId,
+                                                        adaptId: adapt?._id
+                                                    })}
+                                                    className="green-b flex justify-center items-center"
+                                                    disabled={!newAdaptBlockTitle || !newAdaptBlockInsId}
+
+                                                >
+                                                    {isAdaptBlockCreating ?
+                                                        <Spinner color="rgb(134 239 172)" />
+                                                        :
+                                                        <>
+                                                            <TextBlock className="text-2xl"><OkIcon /></TextBlock>
+                                                            <TextBlock className="">  Створити</TextBlock>
+                                                        </>}
+
                                                 </ButtonBlock>
 
                                             </CardBlock>
@@ -261,6 +446,8 @@ export default function AdaptPage() {
 
 
                                         </CardBlock>
+
+
                                         :
 
                                         <ButtonBlock
@@ -361,7 +548,8 @@ export default function AdaptPage() {
 
 
                     </>
-                )}
+                )
+            }
 
 
         </PageBTW >

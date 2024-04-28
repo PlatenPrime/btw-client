@@ -13,7 +13,11 @@ const useAdaptBlocksStore = create((set) => ({
 
             if (response.status === 201) {
                 const newAdaptBlock = response.data;
-                set((state) => ({ adaptsBlocks: [...state.adaptsBlocks, newAdaptBlock] }));
+                set((state) => ({
+                    adaptsBlocks: [...state.adaptsBlocks, newAdaptBlock],
+                    oneAdaptBlocks: [...state.oneAdaptBlocks, newAdaptBlock],
+
+                }));
                 return newAdaptBlock;
             } else {
                 throw new Error('Ошибка создания блока адаптации');
@@ -87,6 +91,9 @@ const useAdaptBlocksStore = create((set) => ({
                     adaptsBlocks: state.adaptsBlocks.map((block) =>
                         block._id === updatedAdaptBlock._id ? updatedAdaptBlock : block
                     ),
+                    oneAdaptBlocks: state.oneAdaptBlocks.map((block) =>
+                        block._id === updatedAdaptBlock._id ? updatedAdaptBlock : block
+                    ),
                 }));
                 return updatedAdaptBlock;
             } else {
@@ -104,6 +111,7 @@ const useAdaptBlocksStore = create((set) => ({
             if (response.status === 200) {
                 set((state) => ({
                     adaptsBlocks: state.adaptsBlocks.filter((block) => block._id !== id),
+                    oneAdaptBlocks: state.oneAdaptBlocks.filter((block) => block._id !== id),
                 }));
             } else {
                 throw new Error('Ошибка удаления блока интеграции по ID');

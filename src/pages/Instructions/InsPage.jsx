@@ -380,7 +380,7 @@ export default function InsPage() {
 										>
 											<img
 												src='https://placehold.co/600x400?text=Інструкція'
-												width={200}
+												width={300}
 												className="rounded-xl"
 											>
 
