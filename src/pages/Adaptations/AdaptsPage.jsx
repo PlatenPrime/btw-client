@@ -3,11 +3,13 @@ import { ButtonBlock, ButtonGroup, CardBlock, ContainerBlock, HeaderBlock, Modal
 import useAdaptsStore from './stores/adaptsStore';
 import { useNavigate } from 'react-router-dom';
 import { useEffect } from 'react';
+import AdaptBage from './components/AdaptBage';
+import AdaptSpinnerContainer from './components/AdaptSpinnerContainer';
 
 export default function AdaptsPage() {
 
 
-    const navigate = useNavigate()
+   
 
 
     const { adapts, getAllAdapts, createAdapt } = useAdaptsStore();
@@ -88,14 +90,7 @@ export default function AdaptsPage() {
                 isCreating={isAdaptCreating}
             />}
 
-
-
-
-
-
-
-
-
+            {/* MODALS END */}
 
 
 
@@ -112,30 +107,18 @@ export default function AdaptsPage() {
 
 
             {
-                isAdaptsLoading ? (
-                    <ContainerBlock ContainerBlock
-                        className="w-full h-full flex justify-start items-center"
-                    >
-                        <Spinner color="rgb(34 197 94)" />
-                    </ContainerBlock>
-                ) : (
+                isAdaptsLoading
+                    ?
+                    <AdaptSpinnerContainer />
+
+                    :
                     <ContainerBlock className="flex flex-col gap-4">
                         {adapts?.map((adapt) => (
-
-                            <CardBlock
-                                onClick={() => navigate(`/adapts/${adapt._id}`)}
-                                key={adapt._id}
-                                className="text-center text-3xl p-4 bg-green-500/20 hover:bg-green-500 rounded-xl cursor-pointer transition duration-500 ease-in-out"
-                            >
-                                {adapt.title}
-                            </CardBlock>
-
+                            <AdaptBage adapt={adapt} />
                         ))}
                     </ContainerBlock>
-                )
+
             }
-
-
 
 
 

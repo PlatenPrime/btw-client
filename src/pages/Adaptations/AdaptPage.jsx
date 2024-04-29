@@ -1,6 +1,6 @@
 import React from 'react'
-import { ButtonBlock, ButtonGroup, CardBlock, ContainerBlock, HeaderBlock, InputBlock, PageBTW, Spinner, TextBlock } from '../../components'
-import { useParams } from 'react-router-dom';
+import { ButtonBlock, ButtonGroup, CardBlock, ContainerBlock, HeaderBlock, InputBlock, ModalDelete, PageBTW, Spinner, TextBlock } from '../../components'
+import { useNavigate, useParams } from 'react-router-dom';
 import useAdaptsStore from './stores/adaptsStore';
 import useAdaptBlocksStore from './stores/adaptBlocksStore';
 import { useEffect } from 'react';
@@ -12,6 +12,8 @@ import { CancelIcon, OkIcon } from '../../components/UI/Icons';
 export default function AdaptPage() {
 
     const { id } = useParams();
+
+    const navigate = useNavigate();
 
     const { adapt, getAdaptById, updateAdaptById, deleteAdaptById } = useAdaptsStore();
     const { oneAdaptBlocks, getAdaptBlocksByAdaptId, createAdaptBlock } = useAdaptBlocksStore();
@@ -32,11 +34,16 @@ export default function AdaptPage() {
     const [newAdaptBlockInsId, setNewAdaptBlockInsId] = useState(null)
 
 
+    const [isShowAdaptDeleteModal, setIsShowAdaptDeleteModal] = useState(false);
+
+
+    const [isAdaptDeleting, setIsAdaptDeleting] = useState(false);
+
     const [isAdaptBlockCreating, setIsAdaptBlockCreating] = useState(false);
 
 
 
-    console.log('newAdaptBlockInsId', newAdaptBlockInsId);
+
 
 
 
@@ -91,13 +98,30 @@ export default function AdaptPage() {
 
 
 
-    // const handleDeleteAdapt = async () => {
-    //     try {
+    const handleDeleteAdapt = async () => {
+        try {
+            setIsAdaptDeleting(true)
+            await deleteAdaptById(adapt?._id)
+            navigate("/adapts")
 
-    //     } catch (error) {
+        } catch (error) {
+            console.log(error);
 
-    //     }
-    // }
+        } finally {
+            setIsAdaptDeleting(false)
+            setIsShowAdaptDeleteModal(false)
+
+        }
+    }
+
+
+
+
+
+
+
+
+
 
 
 
@@ -107,7 +131,7 @@ export default function AdaptPage() {
             setIsAdaptBlockCreating(true)
 
             await createAdaptBlock(createData)
-            
+
 
 
 
@@ -142,9 +166,20 @@ export default function AdaptPage() {
 
 
 
+            {/* MODALS */}
+
+            {isShowAdaptDeleteModal &&
+                <ModalDelete
+                    ask="Ви впевнені, що хочете видалити адаптацію?"
+                    onDelete={() => handleDeleteAdapt()}
+                    onCancel={() => setIsShowAdaptDeleteModal(false)}
+                    isDeleting={isAdaptDeleting}
+                />
+            }
 
 
 
+            {/* MODALS END */}
 
             {isAdaptLoading ?
                 (
@@ -165,13 +200,16 @@ export default function AdaptPage() {
                                 ?
                                 <>
                                     <ButtonBlock
-                                        className="rose-b"
+                                        className="pink-b"
                                         onClick={() => setIsAdaptEditing(!isAdaptEditing)}
                                     >
                                         Скасувати
                                     </ButtonBlock>
 
-                                    <ButtonBlock>
+                                    <ButtonBlock
+                                        className="emerald-b"
+                                        onClick={() => setIsAdaptEditing(!isAdaptEditing)}
+                                    >
                                         Зберегти
                                     </ButtonBlock>
 
@@ -189,7 +227,10 @@ export default function AdaptPage() {
 
 
 
-                            <ButtonBlock>
+                            <ButtonBlock
+                                className="red-b"
+                                onClick={() => setIsShowAdaptDeleteModal(true)}
+                            >
                                 Видалити
                             </ButtonBlock>
 
@@ -229,10 +270,10 @@ export default function AdaptPage() {
 
                                         <CardBlock
                                             key={adaptBlock._id}
-                                            className="  w-full rounded-3xl border-4  border-green-500/50 p-4 "
+                                            className="  w-full rounded-3xl bg-green-500/20 p-2 space-y-4 "
                                         >
                                             <TextBlock
-                                                className=" text-2xl"
+                                                className=" text-2xl w-full bg-green-500 rounded-xl"
                                             >
                                                 {i + 1}. {adaptBlock?.title}
                                             </TextBlock>
@@ -253,7 +294,7 @@ export default function AdaptPage() {
                                                 </img>
 
                                                 <TextBlock
-                                                    className=" text-2xl"
+                                                    className=" text-xl"
                                                 >
 
 
@@ -498,26 +539,50 @@ export default function AdaptPage() {
                                         Блоки
                                     </TextBlock>
 
-
-                                    {oneAdaptBlocks?.map((adaptBlock) => (
+                                    {oneAdaptBlocks?.map((adaptBlock, i) => (
 
                                         <CardBlock
                                             key={adaptBlock._id}
-                                            className="w-full rounded-3xl border-4  border-green-500/50 p-4 space-y-4"
+                                            className="  w-full rounded-3xl bg-green-500/20 p-2 space-y-4 "
                                         >
                                             <TextBlock
-                                                className=" text-2xl"
+                                                className=" text-2xl w-full bg-green-500 rounded-xl"
                                             >
-                                                {adaptBlock?.title}
+                                                {i + 1}. {adaptBlock?.title}
                                             </TextBlock>
-                                            <TextBlock
-                                                className=" text-2xl"
+
+
+                                            <CardBlock
+                                                className="flex space-x-4"
                                             >
 
-                                                Інструкція: {instructions?.find((ins) => ins?._id === adaptBlock?.insId)?.title}
-                                            </TextBlock>
+                                                <img
+                                                    src={instructions?.find((ins) => ins?._id === adaptBlock?.insId)?.titleImage
+                                                        || 'https://placehold.co/600x400?text=Інструкція'
+                                                    }
+                                                    width={200}
+                                                    className="rounded-3xl"
+                                                >
+
+                                                </img>
+
+                                                <TextBlock
+                                                    className=" text-xl"
+                                                >
+
+
+
+                                                    Інструкція: {instructions?.find((ins) => ins?._id === adaptBlock?.insId)?.title}
+
+
+                                                </TextBlock>
+
+
+                                            </CardBlock>
+
                                         </CardBlock>
                                     ))}
+
 
 
 
