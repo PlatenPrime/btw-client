@@ -36,6 +36,7 @@ import InsPage from "./pages/Instructions/InsPage";
 import InsFolderPage from "./pages/Instructions/InsFolderPage";
 import AdaptsPage from "./pages/Adaptations/AdaptsPage";
 import AdaptPage from "./pages/Adaptations/AdaptPage";
+import AdaptBlockPage from "./pages/Adaptations/AdaptBlockPage";
 
 
 
@@ -100,7 +101,10 @@ function App() {
 
 
 				<Route path="adapts" element={<AdaptsPage />} />
+				<Route path="adapts/blocks/:id" element={<AdaptBlockPage />} />
 				<Route path="adapts/:id" element={<AdaptPage />} />
+
+
 
 
 

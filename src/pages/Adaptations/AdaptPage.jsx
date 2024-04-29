@@ -180,7 +180,7 @@ export default function AdaptPage() {
             <HeaderBlock
                 className="bg-green-500 shadow-2xl shadow-green-500"
             >
-                Адаптація
+                {adapt?.title}
             </HeaderBlock>
 
 
@@ -252,7 +252,7 @@ export default function AdaptPage() {
 
 
             <ContainerBlock
-                className="space-y-4 "
+                className="space-y-4 p-4 "
 
             >
 
@@ -275,6 +275,7 @@ export default function AdaptPage() {
                         adaptBlock={adaptBlock}
                         i={i}
                         instructions={instructions}
+                        isAdaptEditing={isAdaptEditing}
                     />
                 ))}
 
