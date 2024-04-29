@@ -9,7 +9,7 @@ import AdaptSpinnerContainer from './components/AdaptSpinnerContainer';
 export default function AdaptsPage() {
 
 
-   
+
 
 
     const { adapts, getAllAdapts, createAdapt } = useAdaptsStore();
@@ -65,6 +65,24 @@ export default function AdaptsPage() {
             setIsAdaptCreating(false);
             setIsShowModalAdaptCreating(false);
         }
+    }
+
+
+
+
+    if (isAdaptsLoading) {
+
+        return (
+            <PageBTW>
+                <HeaderBlock
+                    className="text-transparent"
+                >
+                    Адаптації
+                </HeaderBlock>
+                <AdaptSpinnerContainer />
+            </PageBTW>
+        )
+
     }
 
 

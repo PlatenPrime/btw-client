@@ -18,10 +18,10 @@ export default function AdaptBlockBage({
         <CardBlock
             onClick={!isAdaptEditing ? () => navigate(`/adapts/blocks/${adaptBlock._id}`) : null}
             key={adaptBlock._id}
-            className="  w-full rounded-3xl bg-green-500/20 hover:bg-green-500/50 p-2 space-y-4 cursor-pointer "
+            className="  w-full rounded-3xl bg-lime-500/20 hover:bg-lime-500/50 p-2 space-y-4 cursor-pointer "
         >
             <TextBlock
-                className=" text-2xl w-full bg-green-500 rounded-xl"
+                className=" text-2xl w-full bg-lime-500 rounded-xl"
             >
                 {i + 1}. {adaptBlock?.title}
             </TextBlock>

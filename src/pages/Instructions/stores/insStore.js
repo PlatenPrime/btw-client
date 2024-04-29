@@ -73,6 +73,7 @@ const useInsStore = create((set) => ({
 
 			if (response.status === 200) {
 				const instruction = response.data;
+				set({ instruction: instruction });
 				return instruction;
 			} else {
 				throw new Error('Ошибка получения инструкции по ID');

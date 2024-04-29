@@ -160,7 +160,7 @@ export default function AdaptPage() {
 
         <PageBTW>
             <HeaderBlock
-                className="bg-green-500 shadow-2xl shadow-green-500"
+                className="text-transparent"
             >
                 Адаптація
             </HeaderBlock>
@@ -208,42 +208,56 @@ export default function AdaptPage() {
 
             <ButtonGroup>
 
+                <div
+                    className="flex gap-2"
+                >
+                    {isAdaptEditing
+                        ?
+                        <>
+                            <ButtonBlock
+                                className="pink-b"
+                                onClick={() => setIsAdaptEditing(!isAdaptEditing)}
+                            >
+                                Скасувати
+                            </ButtonBlock>
 
-                {isAdaptEditing
-                    ?
-                    <>
+                            <ButtonBlock
+                                className="emerald-b"
+                                onClick={() => setIsAdaptEditing(!isAdaptEditing)}
+                            >
+                                Зберегти
+                            </ButtonBlock>
+
+                        </>
+                        :
                         <ButtonBlock
-                            className="pink-b"
                             onClick={() => setIsAdaptEditing(!isAdaptEditing)}
+                            className="blue-b"
                         >
-                            Скасувати
+                            Редагувати
                         </ButtonBlock>
 
-                        <ButtonBlock
-                            className="emerald-b"
-                            onClick={() => setIsAdaptEditing(!isAdaptEditing)}
-                        >
-                            Зберегти
-                        </ButtonBlock>
+                    }
 
-                    </>
-                    :
+
                     <ButtonBlock
-                        onClick={() => setIsAdaptEditing(!isAdaptEditing)}
-                        className="blue-b"
+                        className="red-b"
+                        onClick={() => setIsShowAdaptDeleteModal(true)}
                     >
-                        Редагувати
+                        Видалити
                     </ButtonBlock>
 
-                }
+                </div>
 
 
-                <ButtonBlock
-                    className="red-b"
-                    onClick={() => setIsShowAdaptDeleteModal(true)}
+                <div
+                    className="flex gap-2"
                 >
-                    Видалити
-                </ButtonBlock>
+                    <ButtonBlock>
+                        Пройти тест
+                    </ButtonBlock>
+                </div>
+
 
             </ButtonGroup>
 
@@ -256,16 +270,7 @@ export default function AdaptPage() {
 
             >
 
-                <TextBlock
-                    className=" text-3xl"
-                >
-                    {isAdaptEditing
-                        ?
-                        "Адаптація в режимі редагування"
-                        :
-                        adapt?.title
-                    }
-                </TextBlock>
+               
 
 
 
