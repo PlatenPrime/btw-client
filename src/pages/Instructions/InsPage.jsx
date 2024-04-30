@@ -192,39 +192,45 @@ export default function InsPage() {
 
 					<ButtonGroup>
 
-						{isInsEditing ?
+						<ButtonGroup.Actions>
 
-							<>
+							{isInsEditing ?
+
+								<>
+									<ButtonBlock
+										className="pink-b"
+										onClick={() => setIsInsEditing(false)}
+									>
+										Скасувати
+									</ButtonBlock>
+
+									<ButtonBlock
+										className="green-b"
+										onClick={() => setIsShowModalInsUpdating(true)}
+									>
+										Зберегти
+									</ButtonBlock>
+
+									<ButtonBlock
+										className="red-b"
+										onClick={() => setIsShowModalInsDeleting(true)}
+									>
+										Видалити
+									</ButtonBlock>
+								</>
+								:
 								<ButtonBlock
-									className="pink-b"
-									onClick={() => setIsInsEditing(false)}
+									className="blue-b"
+									onClick={() => setIsInsEditing(true)}
 								>
-									Скасувати
+									Редагувати
 								</ButtonBlock>
 
-								<ButtonBlock
-									className="green-b"
-									onClick={() => setIsShowModalInsUpdating(true)}
-								>
-									Зберегти
-								</ButtonBlock>
+							}
+						</ButtonGroup.Actions>
 
-								<ButtonBlock
-									className="red-b"
-									onClick={() => setIsShowModalInsDeleting(true)}
-								>
-									Видалити
-								</ButtonBlock>
-							</>
-							:
-							<ButtonBlock
-								className="blue-b"
-								onClick={() => setIsInsEditing(true)}
-							>
-								Редагувати
-							</ButtonBlock>
 
-						}
+
 					</ButtonGroup>
 
 
@@ -411,7 +417,7 @@ export default function InsPage() {
 								}
 
 
-{/* 
+								{/* 
 
 								{insBody
 									?

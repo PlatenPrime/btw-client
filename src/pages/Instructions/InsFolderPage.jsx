@@ -215,27 +215,35 @@ export default function InsFolderPage() {
 
           <ButtonGroup>
 
-            <ButtonBlock
-              className="green-b"
-              onClick={() => setIsShowModalInsCreating(true)}
-            >
-              Створити інструкцію
-            </ButtonBlock>
+
+            <ButtonGroup.Actions>
+
+              <ButtonBlock
+                className="blue-b"
+                onClick={() => setIsShowModalInsFolderUpdating(true)}
+              >
+                Редагувати
+              </ButtonBlock>
+
+              <ButtonBlock
+                className="red-b"
+                onClick={() => setIsShowModalInsFolderDeleting(true)}
+              >
+                Видалити
+              </ButtonBlock>
+
+            </ButtonGroup.Actions>
 
 
-            <ButtonBlock
-              className="blue-b"
-              onClick={() => setIsShowModalInsFolderUpdating(true)}
-            >
-              Редагувати
-            </ButtonBlock>
+            <ButtonGroup.Navigation>
+              <ButtonBlock
+                className="green-b"
+                onClick={() => setIsShowModalInsCreating(true)}
+              >
+                Створити інструкцію
+              </ButtonBlock>
 
-            <ButtonBlock
-              className="red-b"
-              onClick={() => setIsShowModalInsFolderDeleting(true)}
-            >
-              Видалити
-            </ButtonBlock>
+            </ButtonGroup.Navigation>
 
           </ButtonGroup>
 
