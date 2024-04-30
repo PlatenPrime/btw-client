@@ -103,19 +103,25 @@ export default function AdaptBlockPage() {
 
             <ButtonGroup>
 
-                <>
+                <ButtonGroup.Actions>
                     <ButtonBlock>
                         Редагувати
                     </ButtonBlock>
                     <ButtonBlock>
                         Видалити
                     </ButtonBlock>
-                </>
+                </ButtonGroup.Actions>
 
 
-                <>
-                   
-                </>
+
+                <ButtonGroup.Navigation>
+                    <ButtonBlock
+                        className="lime-b "
+                    >
+                        Перейти до наступного блоку
+                    </ButtonBlock>
+                </ButtonGroup.Navigation>
+
 
             </ButtonGroup>
 
@@ -165,20 +171,6 @@ export default function AdaptBlockPage() {
                     <TextBlock className="text-xl italic text-slate-500"  >Текст інструкції відсутній</TextBlock>
                 }
             </ContainerBlock>
-
-
-
-
-            <ContainerBlock
-                className="p-4"
-            >
-                <ButtonBlock
-                    className="lime-b w-full"
-                >
-                    Перейти до наступного блоку
-                </ButtonBlock>
-            </ContainerBlock>
-
 
 
 

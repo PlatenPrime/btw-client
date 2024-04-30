@@ -4,7 +4,7 @@ const HeaderBlock = ({ children, className }) => {
 
 	const style = `
 
-	HeaderBlock bg-slate-800
+	HeaderBlock 
 	
 	${className}
 

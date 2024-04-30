@@ -114,12 +114,17 @@ export default function AdaptsPage() {
 
             <ButtonGroup>
 
-                <ButtonBlock
-                    className="green-b"
-                    onClick={() => { setIsShowModalAdaptCreating(true) }}
-                >
-                    Створити адаптацію
-                </ButtonBlock>
+
+                <ButtonGroup.Actions>
+                    <ButtonBlock
+                        className="green-b"
+                        onClick={() => { setIsShowModalAdaptCreating(true) }}
+                    >
+                        Створити адаптацію
+                    </ButtonBlock>
+                </ButtonGroup.Actions>
+
+
             </ButtonGroup>
 
 

@@ -208,8 +208,7 @@ export default function AdaptPage() {
 
             <ButtonGroup>
 
-                <div
-                    className="flex gap-2"
+                <ButtonGroup.Actions
                 >
                     {isAdaptEditing
                         ?
@@ -247,16 +246,15 @@ export default function AdaptPage() {
                         Видалити
                     </ButtonBlock>
 
-                </div>
+                </ButtonGroup.Actions>
 
 
-                <div
-                    className="flex gap-2"
+                <ButtonGroup.Navigation
                 >
                     <ButtonBlock>
                         Пройти тест
                     </ButtonBlock>
-                </div>
+                </ButtonGroup.Navigation>
 
 
             </ButtonGroup>
@@ -270,7 +268,7 @@ export default function AdaptPage() {
 
             >
 
-               
+
 
 
 
