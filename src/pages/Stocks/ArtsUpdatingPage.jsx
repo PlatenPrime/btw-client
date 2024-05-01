@@ -127,17 +127,20 @@ export default function ArtsUpdatingPage() {
 			>
 
 				<ButtonGroup>
-					<ButtonBlock
-						className="sky-b "
-					>
-						<Link
-							to="/arts"
-							className='flex'
+					<ButtonGroup.Actions></ButtonGroup.Actions>
+					<ButtonGroup.Navigation>
+						<ButtonBlock
+							className="sky-b "
 						>
-							<BackIcon />
-							Артикули
-						</Link>
-					</ButtonBlock>
+							<Link
+								to="/arts"
+								className='flex'
+							>
+								<BackIcon />
+								Артикули
+							</Link>
+						</ButtonBlock>
+					</ButtonGroup.Navigation>
 				</ButtonGroup>
 
 				<CardBlock>

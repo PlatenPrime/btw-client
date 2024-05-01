@@ -17,15 +17,22 @@ export default function SettingsPage() {
 
 			<CardBlock>
 				<ButtonGroup>
-					<ButtonBlock
-						className="emerald-b "
-					>
-						<Link
-							to="/createuser"
+
+					<ButtonGroup.Actions>
+
+					</ButtonGroup.Actions>
+					<ButtonGroup.Navigation>
+						<ButtonBlock
+							className="emerald-b "
 						>
-							Створити користувача
-						</Link>
-					</ButtonBlock>
+							<Link
+								to="/createuser"
+							>
+								Створити користувача
+							</Link>
+						</ButtonBlock>
+					</ButtonGroup.Navigation>
+
 
 
 

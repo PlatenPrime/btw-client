@@ -98,13 +98,17 @@ export default function InstructionsPage() {
         </ContainerBlock>
       ) : (
         <>
+
+
           <ButtonGroup>
-            <ButtonBlock
-              className="green-b"
-              onClick={() => setIsShowModalInsFolderCreating(true)}
-            >
-              Створити теку
-            </ButtonBlock>
+            <ButtonGroup.Actions>
+              <ButtonBlock
+                className="green-b"
+                onClick={() => setIsShowModalInsFolderCreating(true)}
+              >
+                Створити теку
+              </ButtonBlock>
+            </ButtonGroup.Actions>
           </ButtonGroup>
 
 

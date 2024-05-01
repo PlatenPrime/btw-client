@@ -223,56 +223,62 @@ export default function CompListPage() {
 
 
 			<ButtonGroup
-				className="f  "
+				className=" "
 			>
 
-				<CheckCompLinks />
+				<ButtonGroup.Actions>
+
+
+					<CheckCompLinks />
 
 
 
-				<ButtonBlock
-					onClick={() => exportToExcelComps(filteredComps)}
-					className=" green-b flex items-center space-x-1  "
-				>
-					< SiMicrosoftexcel className='text-2xl' />
-					<TextBlock>
-						Експорт в Excel
-					</TextBlock>
-				</ButtonBlock>
+					<ButtonBlock
+						onClick={() => exportToExcelComps(filteredComps)}
+						className=" green-b flex items-center space-x-1  "
+					>
+						< SiMicrosoftexcel className='text-2xl' />
+						<TextBlock>
+							Експорт в Excel
+						</TextBlock>
+					</ButtonBlock>
 
 
 
-				<ButtonBlock
-					onClick={handleAnalyze}
-					className=" violet-b flex items-center space-x-1  "
-				>
-					< MdOutlineAnalytics className='text-2xl' />
-					<TextBlock>
-						Аналіз (повний)
-					</TextBlock>
+					<ButtonBlock
+						onClick={handleAnalyze}
+						className=" violet-b flex items-center space-x-1  "
+					>
+						< MdOutlineAnalytics className='text-2xl' />
+						<TextBlock>
+							Аналіз (повний)
+						</TextBlock>
 
-				</ButtonBlock>
+					</ButtonBlock>
 
-				<ButtonBlock
-					onClick={() => handleAnalyzeOnFilter(filteredComps)}
-					className=" cyan-b flex items-center space-x-1  "
-				>
-					< IoAnalyticsOutline className='text-2xl ' />
-					<TextBlock>
-						Аналіз (фільтр)
-					</TextBlock>
+					<ButtonBlock
+						onClick={() => handleAnalyzeOnFilter(filteredComps)}
+						className=" cyan-b flex items-center space-x-1  "
+					>
+						< IoAnalyticsOutline className='text-2xl ' />
+						<TextBlock>
+							Аналіз (фільтр)
+						</TextBlock>
 
-				</ButtonBlock>
+					</ButtonBlock>
 
 
 
-				<ButtonBlock
-					className="rose-b flex  items-center space-x-1  "
-					onClick={() => { setIsFilterOpen(prev => !prev) }}
-				>
-					<LuFilter className=' text-2xl' />
-					<TextBlock>Фільтр</TextBlock>
-				</ButtonBlock>
+					<ButtonBlock
+						className="rose-b flex  items-center space-x-1  "
+						onClick={() => { setIsFilterOpen(prev => !prev) }}
+					>
+						<LuFilter className=' text-2xl' />
+						<TextBlock>Фільтр</TextBlock>
+					</ButtonBlock>
+
+
+				</ButtonGroup.Actions>
 
 			</ButtonGroup>
 

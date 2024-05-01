@@ -466,54 +466,56 @@ export default function PalletPage() {
 
 					<ButtonGroup>
 
+						<ButtonGroup.Actions>
 
 
-						<ButtonBlock
-							className="lime-b flex"
-							onClick={() => { setShowModalRenamePallet(true); }}
-						>
-							<TextBlock className="text-2xl"><RenameIcon /></TextBlock>
-							<TextBlock>Перейменувати</TextBlock>
+							<ButtonBlock
+								className="lime-b flex"
+								onClick={() => { setShowModalRenamePallet(true); }}
+							>
+								<TextBlock className="text-2xl"><RenameIcon /></TextBlock>
+								<TextBlock>Перейменувати</TextBlock>
 
-						</ButtonBlock>
-
-
-						<ButtonBlock
-							className="yellow-b flex"
-							onClick={() => { setShowModalChangePalletCom(true); }}
-						>
-							<TextBlock className="text-2xl"><RenameIcon /></TextBlock>
-							<TextBlock>Коментарій</TextBlock>
-
-						</ButtonBlock>
-
-						<ButtonBlock
-							className="blue-b flex"
-							onClick={() => { setShowModalMovePalletContent(true); }}
-						>
-							<TextBlock className="text-2xl"><MoveIcon /></TextBlock>
-							<TextBlock>Переставити</TextBlock>
+							</ButtonBlock>
 
 
-						</ButtonBlock>
+							<ButtonBlock
+								className="yellow-b flex"
+								onClick={() => { setShowModalChangePalletCom(true); }}
+							>
+								<TextBlock className="text-2xl"><RenameIcon /></TextBlock>
+								<TextBlock>Коментарій</TextBlock>
 
-						<ButtonBlock
-							onClick={() => { setShowModalClearPallet(true) }}
-							className=" rose-b flex justify-center items-center"
-						>
-							<TextBlock className="text-2xl"><ClearIcon /></TextBlock>
-							<TextBlock className="">Очистити</TextBlock>
+							</ButtonBlock>
 
-						</ButtonBlock>
+							<ButtonBlock
+								className="blue-b flex"
+								onClick={() => { setShowModalMovePalletContent(true); }}
+							>
+								<TextBlock className="text-2xl"><MoveIcon /></TextBlock>
+								<TextBlock>Переставити</TextBlock>
 
 
-						<ButtonBlock
-							className="red-b flex"
-							onClick={() => { setShowModalDeletePallet(true) }}
-						>
-							<TextBlock className="text-2xl"><DeleteIcon /></TextBlock>
-							<TextBlock className="">Видалити</TextBlock>
-						</ButtonBlock>
+							</ButtonBlock>
+
+							<ButtonBlock
+								onClick={() => { setShowModalClearPallet(true) }}
+								className=" rose-b flex justify-center items-center"
+							>
+								<TextBlock className="text-2xl"><ClearIcon /></TextBlock>
+								<TextBlock className="">Очистити</TextBlock>
+
+							</ButtonBlock>
+
+
+							<ButtonBlock
+								className="red-b flex"
+								onClick={() => { setShowModalDeletePallet(true) }}
+							>
+								<TextBlock className="text-2xl"><DeleteIcon /></TextBlock>
+								<TextBlock className="">Видалити</TextBlock>
+							</ButtonBlock>
+						</ButtonGroup.Actions>
 					</ButtonGroup>
 
 

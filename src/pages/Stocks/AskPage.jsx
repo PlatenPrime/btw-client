@@ -230,14 +230,14 @@ export default function AskPage() {
 				try {
 					const askerUser = await getUserById(updatedAsk?.asker)
 
-					
+
 					if (askerUser) {
 						sendMessageToUser(`${askerUser?.fullname}, твій запит на ${artikul ? artikul?.nameukr : updatedAsk?.artikul} ВИКОНАНО`, askerUser?.telegram)
 					}
 				} catch (error) {
 					console.log(error);
 
-				} 
+				}
 
 
 			}
@@ -361,24 +361,27 @@ export default function AskPage() {
 
 					<ButtonGroup>
 
-						<ButtonBlock
-							className="green-b"
-							onClick={() => setShowModalDoAsk(true)}
-						>
-							Виконати
-						</ButtonBlock>
-						<ButtonBlock
-							className="rose-b"
-							onClick={() => setShowModalFailAsk(true)}
-						>
-							Відмовити
-						</ButtonBlock>
-						<ButtonBlock
-							className="red-b"
-							onClick={() => setShowModalDeleteAsk(true)}
-						>
-							Видалити
-						</ButtonBlock>
+						<ButtonGroup.Actions>
+
+							<ButtonBlock
+								className="green-b"
+								onClick={() => setShowModalDoAsk(true)}
+							>
+								Виконати
+							</ButtonBlock>
+							<ButtonBlock
+								className="rose-b"
+								onClick={() => setShowModalFailAsk(true)}
+							>
+								Відмовити
+							</ButtonBlock>
+							<ButtonBlock
+								className="red-b"
+								onClick={() => setShowModalDeleteAsk(true)}
+							>
+								Видалити
+							</ButtonBlock>
+						</ButtonGroup.Actions>
 					</ButtonGroup>
 
 

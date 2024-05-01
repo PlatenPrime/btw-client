@@ -105,28 +105,28 @@ export default function ArtsPage() {
 
 					<ButtonGroup
 					>
+						<ButtonGroup.Actions>
 
-
-						<ButtonBlock
-							className="emerald-b "
-						>
-							<Link
-								to="/arts/updating"
+						</ButtonGroup.Actions>
+						<ButtonGroup.Navigation>
+							<ButtonBlock
+								className="emerald-b "
 							>
-								Оновлення даних
-							</Link>
-						</ButtonBlock>
-
+								<Link
+									to="/arts/updating"
+								>
+									Оновлення даних
+								</Link>
+							</ButtonBlock>
+						</ButtonGroup.Navigation>
 					</ButtonGroup>
+
+
+
 
 					<ContainerBlock
 						className="space-y-4 "
 					>
-
-
-
-
-
 
 						<CardBlock
 							className="flex  justify-start rounded-xl bg-slate-700 space-x-3 pl-4 "

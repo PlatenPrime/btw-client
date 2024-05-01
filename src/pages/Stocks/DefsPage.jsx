@@ -493,32 +493,34 @@ export default function DefsPage() {
 
 					<ButtonGroup>
 
-
-						<ButtonBlock
-							className="sky-b"
-							onClick={calculateDefs}
-						>
-							Показати дефіцити
-						</ButtonBlock>
+						<ButtonGroup.Actions>
 
 
-						<ButtonBlock
-							className="orange-b"
-							onClick={handleSelectCorrectRows}
-						>
-							Правильні ряди
-						</ButtonBlock>
+							<ButtonBlock
+								className="sky-b"
+								onClick={calculateDefs}
+							>
+								Показати дефіцити
+							</ButtonBlock>
+
+
+							<ButtonBlock
+								className="orange-b"
+								onClick={handleSelectCorrectRows}
+							>
+								Правильні ряди
+							</ButtonBlock>
 
 
 
-						<ButtonBlock
-							className="pink-b"
-							onClick={handleActualizeDefs}
-						>
-							Актуалізація дефіцитів
-						</ButtonBlock>
+							<ButtonBlock
+								className="pink-b"
+								onClick={handleActualizeDefs}
+							>
+								Актуалізація дефіцитів
+							</ButtonBlock>
 
-
+						</ButtonGroup.Actions>
 
 					</ButtonGroup>
 
@@ -739,7 +741,7 @@ export default function DefsPage() {
 
 
 
-							    <TextBlock
+							<TextBlock
 								className="text-xl bg-sky-500/10 hover:bg-sky-500 text-white  rounded-xl"
 							>
 								Артикули: {artsDB?.length}

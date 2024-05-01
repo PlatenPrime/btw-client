@@ -203,31 +203,32 @@ export default function RowPage() {
 					<ButtonGroup
 
 					>
-						<ButtonBlock
-							className="emerald-b flex"
-							onClick={() => { setShowModalCreatePallet(true); }}
-						>
-							<TextBlock className="text-2xl"><AddIcon /></TextBlock>
-							<TextBlock className="">Створити палету</TextBlock>
 
-						</ButtonBlock>
-						<ButtonBlock
-							className="lime-b flex"
-							onClick={() => { setShowModalUpdateRow(true); }}
-						>
-							<TextBlock className="text-2xl"><RenameIcon /></TextBlock>
-							<TextBlock className="">Перейменувати</TextBlock>
+						<ButtonGroup.Actions>
+							<ButtonBlock
+								className="emerald-b flex"
+								onClick={() => { setShowModalCreatePallet(true); }}
+							>
+								<TextBlock className="text-2xl"><AddIcon /></TextBlock>
+								<TextBlock className="">Створити палету</TextBlock>
 
-						</ButtonBlock>
-						<ButtonBlock
-							className="red-b flex items-center"
-							onClick={() => { setShowModalDeleteRow(true); }}
-						>
-							<TextBlock className="text-2xl"><DeleteIcon /></TextBlock>
-							<TextBlock className="">Видалити ряд</TextBlock>
+							</ButtonBlock>
+							<ButtonBlock
+								className="lime-b flex"
+								onClick={() => { setShowModalUpdateRow(true); }}
+							>
+								<TextBlock className="text-2xl"><RenameIcon /></TextBlock>
+								<TextBlock className="">Перейменувати</TextBlock>
 
-
-						</ButtonBlock>
+							</ButtonBlock>
+							<ButtonBlock
+								className="red-b flex items-center"
+								onClick={() => { setShowModalDeleteRow(true); }}
+							>
+								<TextBlock className="text-2xl"><DeleteIcon /></TextBlock>
+								<TextBlock className="">Видалити ряд</TextBlock>
+							</ButtonBlock>
+						</ButtonGroup.Actions>
 
 					</ButtonGroup>
 

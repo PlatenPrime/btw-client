@@ -155,13 +155,23 @@ export default function AsksPage() {
 
 
 
-					<CardBlock>
 
 
 						{/* BUTTONS */}
 
 
 
+						<ButtonGroup>
+							<ButtonGroup.Actions>
+								<ButtonBlock
+									className="indigo-b  "
+									onClick={() => setShowModalCreateAsk(true)}
+								>
+									<AddIcon />
+									Створити запит
+								</ButtonBlock>
+							</ButtonGroup.Actions>
+						</ButtonGroup>
 
 
 
@@ -313,17 +323,6 @@ export default function AsksPage() {
 							className="space-y-4 h-full "
 						>
 
-							<CardBlock
-								className="p-1 flex justify-center"
-							>
-								<ButtonBlock
-									className="indigo-b shadow-lg  p-4 flex  border-dashed bg-indigo-500/10 "
-									onClick={() => setShowModalCreateAsk(true)}
-								>
-									<AddIcon />
-									Створити запит
-								</ButtonBlock>
-							</CardBlock>
 
 
 
@@ -485,14 +484,6 @@ export default function AsksPage() {
 
 						</ContainerBlock>
 
-
-
-
-
-
-
-
-					</CardBlock>
 
 				</>
 			}
