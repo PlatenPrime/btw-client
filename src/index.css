@@ -237,199 +237,6 @@ transition ease-in-out duration-300
 
 
 
-
-
-/* Buttons roles */
-
-.edit {
-	@apply 
-	 border border-blue-300 bg-transparent  text-blue-300 
-	  hover:bg-blue-200 hover:text-blue-600
-	    active:text-white active:bg-blue-500 
-		shadow-lg hover:shadow-blue-300
-		
-
-}
-
-.edit-c {
-	@apply 
-	 border border-blue-500  text-blue-100 
-	 bg-transparent hover:bg-blue-400 active:bg-blue-800 
-	  hover:text-white focus:text-white active:text-white
-	  shadow-2xl hover:shadow-blue-500
-	  
-}
-
-
-
-
-.create {
-	@apply 
-	
-	border border-cyan-300 bg-transparent text-cyan-300 
-	hover:bg-cyan-200 hover:text-cyan-800
-	 active:text-white active:bg-cyan-500 
-	 shadow-lg hover:shadow-cyan-300
-	
-
-}
-
-.create-c {
-	@apply 
-	
-	border border-cyan-500  text-gray-100 
-	bg-transparent hover:bg-cyan-400 active:bg-cyan-600 
-	  hover:text-white focus:text-white active:text-white
-	  shadow-2xl hover:shadow-cyan-500
-	  
-}
-
-
-
-
-.cancel {
-	@apply
-	 
-	border border-rose-500 bg-transparent text-rose-500 
-	hover:bg-rose-200 hover:text-rose-900
-	  active:text-white active:bg-rose-500 
-	  shadow-lg hover:shadow-rose-200
-	  
-
-}
-
-.cancel-c {
-	@apply
-	 
-	border border-rose-500  text-rose-500
-	bg-transparent	hover:bg-white hover:text-rose-500
-	  active:bg-gray-200 active:text-rose-600
-	  shadow-2xl hover:shadow-white
-	 
-}
-
-
-
-.success {
-	@apply
-	border border-green-300 bg-transparent text-green-300 
-	hover:bg-green-200 hover:text-green-600
-	 active:text-white active:bg-green-500 
-	 shadow-lg hover:shadow-green-200
-	 
-}
-
-.success-c {
-	@apply
-	border border-green-500  text-white
-	bg-transparent hover:bg-green-400 active:bg-green-800  
-	  hover:text-white focus:text-white active:text-white
-	  shadow-2xl hover:shadow-green-500
-	  
-}
-
-
-
-
-
-.delete {
-	@apply
- 
-	border border-red-600 bg-red-600 text-red-100 
-	  hover:bg-red-500 hover:text-white
-	    active:text-white active:bg-red-900 
-		shadow-lg hover:shadow-red-500
-		
-}
-
-.delete-c {
-	@apply
- 
-	border border-red-500  text-white 
-	bg-transparent hover:bg-red-500 active:bg-red-600  
-	  
-	  shadow-2xl hover:shadow-red-500
-	 
-}
-
-
-
-
-.confirm {
-	@apply
-	border border-yellow-300 bg-transparent text-yellow-300 
-	hover:bg-yellow-200 hover:text-yellow-800
-	  active:text-white active:bg-yellow-500 
-	  shadow-lg hover:shadow-yellow-200
-	  
-}
-
-.confirm-c {
-	@apply
- 
-	border border-yellow-500  text-gray-100  
-	bg-transparent hover:bg-yellow-400 active:bg-yellow-600  
-	  hover:text-white focus:text-white active:text-white
-	  shadow-2xl hover:shadow-yellow-500
-	  
-}
-
-
-
-
-
-
-.add {
-	@apply
-	border border-violet-300 bg-transparent text-violet-300 
-	hover:bg-violet-200 hover:text-violet-800
-	  active:text-white active:bg-violet-500 
-	  shadow-lg hover:shadow-violet-200
-	  
-}
-
-.add-c {
-	@apply
- 
-	border border-violet-500  text-gray-100 
-	bg-transparent hover:bg-violet-400 active:bg-violet-600  
-	  hover:text-white focus:text-white active:text-white
-	  shadow-2xl hover:shadow-violet-500
-	 
-}
-
-.search {
-	@apply
-	border border-teal-300 bg-transparent text-teal-300 
-	hover:bg-teal-200 hover:text-teal-800
-	  active:text-white active:bg-teal-500 
-	  shadow-lg hover:shadow-teal-200
-	  
-}
-
-.search-c {
-	@apply
- 
-	border border-teal-500  text-teal-500
-	bg-transparent  hover:bg-teal-400 active:bg-teal-600  
-	  hover:text-white focus:text-white active:text-white
-	  shadow-2xl hover:shadow-teal-500
-	 
-}
-
-
-.disabled {
-	@apply
-	flex justify-center items-center
-	border-none  bg-slate-500/20 text-gray-300 
-hover:text-gray-300    hover:bg-transparent
-shadow-md  active:shadow-transparent
-
-	
-}
-
-
-
 /* Buttons colors */
 
 .slate-b {
@@ -442,6 +249,15 @@ shadow-md  active:shadow-transparent
 	 
 }
 
+.slate-b-n {
+	@apply
+	  border-2 border-slate-500 hover:border-slate-400
+	  bg-slate-400/80 hover:bg-slate-400 active:bg-slate-600
+	  text-white
+	  shadow-sm shadow-slate-500 hover:shadow-lg hover:shadow-slate-500;
+  }
+  
+
 
 .gray-b {
 	@apply
@@ -453,6 +269,15 @@ shadow-md  active:shadow-transparent
 	 
 }
 
+.gray-b-n {
+	@apply
+	  border-2 border-gray-500 hover:border-gray-400
+	  bg-gray-500/80 hover:bg-gray-500 active:bg-gray-600
+	  text-white
+	  shadow-sm shadow-gray-500 hover:shadow-lg hover:shadow-gray-500;
+  }
+  
+
 .zinc-b {
 	@apply
  
@@ -463,6 +288,15 @@ shadow-md  active:shadow-transparent
 	 
 }
 
+.zinc-b-n {
+	@apply
+	  border-2 border-zinc-500 hover:border-zinc-400
+	  bg-zinc-500/80 hover:bg-zinc-500 active:bg-zinc-600
+	  text-white
+	  shadow-sm shadow-zinc-500 hover:shadow-lg hover:shadow-zinc-500;
+  }
+  
+
 .neutral-b {
 	@apply
  
@@ -472,6 +306,15 @@ shadow-md  active:shadow-transparent
 	  shadow-lg shadow-neutral-500 hover:shadow-sm hover:shadow-neutral-500
 	 
 }
+
+.neutral-b-n {
+	@apply
+	  border-2 border-neutral-500 hover:border-neutral-400
+	  bg-neutral-500/80 hover:bg-neutral-500 active:bg-neutral-600
+	  text-white
+	  shadow-sm shadow-neutral-500 hover:shadow-lg hover:shadow-neutral-500;
+  }
+  
 
 
 .stone-b {
@@ -484,6 +327,15 @@ shadow-md  active:shadow-transparent
 	 
 }
 
+.stone-b-n {
+	@apply
+	  border-2 border-stone-500 hover:border-stone-400
+	  bg-stone-500/80 hover:bg-stone-500 active:bg-stone-600
+	  text-white
+	  shadow-sm shadow-stone-500 hover:shadow-lg hover:shadow-stone-500;
+  }
+  
+
 
 .red-b {
 	@apply
@@ -494,6 +346,14 @@ shadow-md  active:shadow-transparent
 	  shadow-lg shadow-red-500 hover:shadow-sm hover:shadow-red-500
 	 
 }
+
+.red-b-n {
+	@apply
+	  border-2 border-red-500 hover:border-red-400
+	  bg-red-500/80 hover:bg-red-500 active:bg-red-600
+	  text-white
+	  shadow-sm shadow-red-500 hover:shadow-lg hover:shadow-red-500;
+  }
 
 
 .orange-b {
@@ -506,6 +366,17 @@ shadow-md  active:shadow-transparent
 	 
 }
 
+.orange-b-n {
+	@apply
+	  border-2 border-orange-500 hover:border-orange-400
+	  bg-orange-500/80 hover:bg-orange-500 active:bg-orange-600
+	  text-white
+	  shadow-sm shadow-orange-500 hover:shadow-lg hover:shadow-orange-500;
+  }
+  
+
+
+
 .amber-b {
 	@apply
  
@@ -515,6 +386,17 @@ shadow-md  active:shadow-transparent
 	shadow-lg shadow-amber-500 hover:shadow-sm hover:shadow-amber-500
 	 
 }
+
+.amber-b-n {
+	@apply
+	  border-2 border-amber-500 hover:border-amber-400
+	  bg-amber-500/80 hover:bg-amber-500 active:bg-amber-600
+	  text-white
+	  shadow-sm shadow-amber-500 hover:shadow-lg hover:shadow-amber-500;
+  }
+  
+
+
 
 .yellow-b {
 	@apply
@@ -526,6 +408,17 @@ shadow-md  active:shadow-transparent
 	 
 }
 
+.yellow-b-n {
+	@apply
+	  border-2 border-yellow-500 hover:border-yellow-400
+	  bg-yellow-500/80 hover:bg-yellow-500 active:bg-yellow-600
+	  text-white
+	  shadow-sm shadow-yellow-500 hover:shadow-lg hover:shadow-yellow-500;
+  }
+  
+
+
+
 .lime-b {
 	@apply
  
@@ -535,6 +428,17 @@ shadow-md  active:shadow-transparent
 	  shadow-lg shadow-lime-500 hover:shadow-sm hover:shadow-lime-500
 	 
 }
+
+.lime-b-n {
+	@apply
+	  border-2 border-lime-500 hover:border-lime-400
+	  bg-lime-500/80 hover:bg-lime-500 active:bg-lime-600
+	  text-white
+	  shadow-sm shadow-lime-500 hover:shadow-lg hover:shadow-lime-500;
+  }
+  
+
+
 
 .green-b {
 	@apply
@@ -547,15 +451,38 @@ shadow-md  active:shadow-transparent
 }
 
 
+.green-b-n {
+	@apply
+	  border-2 border-green-500 hover:border-green-400
+	  bg-green-500/80 hover:bg-green-500 active:bg-green-600
+	  text-white
+	  shadow-sm shadow-green-500 hover:shadow-lg hover:shadow-green-500;
+  }
+  
+
 .emerald-b {
 	@apply
  
 	border-2 border-emerald-500  
 	bg-transparent  hover:bg-emerald-500 active:bg-emerald-600  
 	text-white 
-	  shadow-lg shadow-emerald-500 hover:shadow-sm hover:shadow-emerald-500
-	 
+	  shadow-lg shadow-emerald-500 hover:shadow-sm hover:shadow-emerald-500 
 }
+
+
+.emerald-b-n {
+	@apply
+ 
+	border-2 border-emerald-500 hover:border-emerald-400 
+	bg-emerald-500/80  hover:bg-emerald-500 active:bg-emerald-600  
+	text-white 
+	  shadow-sm shadow-emerald-500 hover:shadow-lg hover:shadow-emerald-500 
+}
+
+
+
+
+
 
 .teal-b {
 	@apply
@@ -566,6 +493,16 @@ shadow-md  active:shadow-transparent
 	shadow-lg shadow-teal-500 hover:shadow-sm hover:shadow-teal-500 
 	 
 }
+
+.teal-b-n {
+	@apply
+	  border-2 border-teal-500 hover:border-teal-400
+	  bg-teal-500/80 hover:bg-teal-500 active:bg-teal-600
+	  text-white focus:text-white
+	  shadow-sm shadow-teal-500 hover:shadow-lg hover:shadow-teal-500;
+  }
+  
+
 
 .cyan-b {
 	@apply
@@ -579,6 +516,16 @@ shadow-md  active:shadow-transparent
 }
 
 
+.cyan-b-n {
+	@apply
+	  border-2 border-cyan-500 hover:border-cyan-400
+	  bg-cyan-500/80 hover:bg-cyan-500 active:bg-cyan-600
+	  text-white
+	  shadow-sm shadow-cyan-500 hover:shadow-lg hover:shadow-cyan-500;
+  }
+  
+
+
 
 .sky-b {
 	@apply
@@ -590,6 +537,16 @@ shadow-md  active:shadow-transparent
 	 
 }
 
+.sky-b-n {
+	@apply
+	  border-2 border-sky-500 hover:border-sky-400
+	  bg-sky-500/80 hover:bg-sky-500 active:bg-sky-600
+	  text-white
+	  shadow-sm shadow-sky-500 hover:shadow-lg hover:shadow-sky-500;
+  }
+  
+
+
 .blue-b {
 	@apply
  
@@ -599,6 +556,16 @@ shadow-md  active:shadow-transparent
 	  shadow-lg shadow-blue-500 hover:shadow-sm hover:shadow-blue-500 
 	 
 }
+
+
+.blue-b-n {
+	@apply
+	  border-2 border-blue-500 hover:border-blue-400
+	  bg-blue-500/80 hover:bg-blue-500 active:bg-blue-600
+	  text-white
+	  shadow-sm shadow-blue-500 hover:shadow-lg hover:shadow-blue-500;
+  }
+  
 
 
 .indigo-b {
@@ -612,6 +579,16 @@ shadow-md  active:shadow-transparent
 }
 
 
+
+.indigo-b-n {
+	@apply
+	  border-2 border-indigo-500 hover:border-indigo-400
+	  bg-indigo-500/80 hover:bg-indigo-500 active:bg-indigo-600
+	  text-white
+	  shadow-sm shadow-indigo-500 hover:shadow-lg hover:shadow-indigo-500;
+  }
+  
+
 .violet-b {
 	@apply
  
@@ -621,6 +598,16 @@ shadow-md  active:shadow-transparent
 	shadow-lg shadow-violet-500 hover:shadow-sm hover:shadow-violet-500 
 	 
 }
+
+
+.violet-b-n {
+	@apply
+	  border-2 border-violet-500 hover:border-violet-400
+	  bg-violet-500/80 hover:bg-violet-500 active:bg-violet-600
+	  text-white
+	  shadow-sm shadow-violet-500 hover:shadow-lg hover:shadow-violet-500;
+  }
+  
 
 .purple-b {
 	@apply
@@ -633,6 +620,15 @@ shadow-md  active:shadow-transparent
 }
 
 
+.purple-b-n {
+	@apply
+	  border-2 border-purple-500 hover:border-purple-400
+	  bg-purple-500/80 hover:bg-purple-500 active:bg-purple-600
+	  text-white
+	  shadow-sm shadow-purple-500 hover:shadow-lg hover:shadow-purple-500;
+  }
+  
+
 .fuchsia-b {
 	@apply
  
@@ -643,6 +639,15 @@ shadow-md  active:shadow-transparent
 	 
 }
 
+
+.fuchsia-b-n {
+	@apply
+	  border-2 border-fuchsia-500 hover:border-fuchsia-400
+	  bg-fuchsia-500/80 hover:bg-fuchsia-500 active:bg-fuchsia-600
+	  text-white
+	  shadow-sm shadow-fuchsia-500 hover:shadow-lg hover:shadow-fuchsia-500;
+  }
+  
 
 .pink-b {
 	@apply
@@ -655,6 +660,15 @@ shadow-md  active:shadow-transparent
 }
 
 
+.pink-b-n {
+	@apply
+	  border-2 border-pink-500 hover:border-pink-400
+	  bg-pink-500/80 hover:bg-pink-500 active:bg-pink-600
+	  text-white
+	  shadow-sm shadow-pink-500 hover:shadow-lg hover:shadow-pink-500;
+  }
+  
+
 .rose-b {
 	@apply
  
@@ -665,6 +679,15 @@ shadow-md  active:shadow-transparent
 	 
 }
 
+
+.rose-b-n {
+	@apply
+	  border-2 border-rose-500 hover:border-rose-400
+	  bg-rose-500/80 hover:bg-rose-500 active:bg-rose-600
+	  text-white
+	  shadow-sm shadow-rose-500 hover:shadow-lg hover:shadow-rose-500;
+  }
+  
 
 
 

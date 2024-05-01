@@ -23,7 +23,7 @@ export default function SettingsPage() {
 					</ButtonGroup.Actions>
 					<ButtonGroup.Navigation>
 						<ButtonBlock
-							className="emerald-b "
+							className="emerald-b-n "
 						>
 							<Link
 								to="/createuser"

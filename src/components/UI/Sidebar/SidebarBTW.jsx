@@ -361,7 +361,7 @@ p-4
 				{
 					user ?
 						<ButtonBlock
-							className="cancel-c px-8 text-xl w-full"
+							className="red-b px-8  w-full"
 							onClick={handleLogout} >
 							{isLogouting ?
 								< Spinner color="red" />
