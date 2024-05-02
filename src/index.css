@@ -234,10 +234,12 @@ transition ease-in-out duration-300
 }
 .disabled {
 	@apply
+	border-none
 	bg-transparent
 	hover:bg-transparent
 	active:bg-transparent
 	shadow-none
+	text-gray-500
 }
 
 
@@ -249,16 +251,16 @@ transition ease-in-out duration-300
 .slate-b {
 	@apply
  
-	border-2 border-slate-500 
+	border-none
 	bg-transparent  hover:bg-slate-400 active:bg-slate-600  
 	text-white
 	shadow-lg shadow-slate-500 hover:shadow-sm hover:shadow-slate-500
-	 
+	text-slate-300 hover:text-white
 }
 
 .slate-b-n {
 	@apply
-	  border-2 border-slate-500 hover:border-slate-400
+	border-none
 	  bg-slate-400/80 hover:bg-slate-400 active:bg-slate-600
 	  text-white
 	  shadow-sm shadow-slate-500 hover:shadow-lg hover:shadow-slate-500;
@@ -269,16 +271,16 @@ transition ease-in-out duration-300
 .gray-b {
 	@apply
  
-	border-2 border-gray-500  
+	border-none
 	bg-transparent  hover:bg-gray-500 active:bg-gray-600  
 	text-white 
 	shadow-lg shadow-gray-500 hover:shadow-sm hover:shadow-gray-500
-	 
+	text-gray-300 hover:text-white
 }
 
 .gray-b-n {
 	@apply
-	  border-2 border-gray-500 hover:border-gray-400
+	border-none
 	  bg-gray-500/80 hover:bg-gray-500 active:bg-gray-600
 	  text-white
 	  shadow-sm shadow-gray-500 hover:shadow-lg hover:shadow-gray-500;
@@ -288,16 +290,16 @@ transition ease-in-out duration-300
 .zinc-b {
 	@apply
  
-	border-2 border-zinc-500  
+	border-none
 	bg-transparent  hover:bg-zinc-500 active:bg-zinc-600  
 	  text-white
 	  shadow-lg shadow-zinc-500 hover:shadow-sm hover:shadow-zinc-500
-	 
+	  text-zinc-300 hover:text-white
 }
 
 .zinc-b-n {
 	@apply
-	  border-2 border-zinc-500 hover:border-zinc-400
+	border-none
 	  bg-zinc-500/80 hover:bg-zinc-500 active:bg-zinc-600
 	  text-white
 	  shadow-sm shadow-zinc-500 hover:shadow-lg hover:shadow-zinc-500;
@@ -306,20 +308,22 @@ transition ease-in-out duration-300
 
 .neutral-b {
 	@apply
+	border-none
  
-	border-2 border-neutral-500  
 	bg-transparent  hover:bg-neutral-500 active:bg-neutral-600  
 	  text-white
 	  shadow-lg shadow-neutral-500 hover:shadow-sm hover:shadow-neutral-500
-	 
+	  text-neutral-300 hover:text-white
 }
 
 .neutral-b-n {
 	@apply
-	  border-2 border-neutral-500 hover:border-neutral-400
+	border-none
 	  bg-neutral-500/80 hover:bg-neutral-500 active:bg-neutral-600
 	  text-white
-	  shadow-sm shadow-neutral-500 hover:shadow-lg hover:shadow-neutral-500;
+	  shadow-sm shadow-neutral-500 hover:shadow-lg hover:shadow-neutral-500
+	  
+
   }
   
 
@@ -327,16 +331,16 @@ transition ease-in-out duration-300
 .stone-b {
 	@apply
  
-	border-2 border-stone-500  
+	border-none
 	bg-transparent  hover:bg-stone-500 active:bg-stone-600  
 	text-white
 	shadow-lg shadow-stone-500 hover:shadow-sm hover:shadow-stone-500
-	 
+	text-stone-300 hover:text-white
 }
 
 .stone-b-n {
 	@apply
-	  border-2 border-stone-500 hover:border-stone-400
+	border-none
 	  bg-stone-500/80 hover:bg-stone-500 active:bg-stone-600
 	  text-white
 	  shadow-sm shadow-stone-500 hover:shadow-lg hover:shadow-stone-500;
@@ -346,17 +350,16 @@ transition ease-in-out duration-300
 
 .red-b {
 	@apply
- 
-	border-2 border-red-500  
+	border-none
 	bg-transparent  hover:bg-red-500 active:bg-red-600  
 	  text-white 
 	  shadow-lg shadow-red-500 hover:shadow-sm hover:shadow-red-500
-	 
+	 text-red-300 hover:text-white 
 }
 
 .red-b-n {
 	@apply
-	  border-2 border-red-500 hover:border-red-400
+	border-none
 	  bg-red-500/80 hover:bg-red-500 active:bg-red-600
 	  text-white
 	  shadow-sm shadow-red-500 hover:shadow-lg hover:shadow-red-500;
@@ -366,16 +369,16 @@ transition ease-in-out duration-300
 .orange-b {
 	@apply
  
-	border-2 border-orange-500  
+	border-none
 	bg-transparent  hover:bg-orange-500 active:bg-orange-600  
 	text-white
 	shadow-lg shadow-orange-500 hover:shadow-sm hover:shadow-orange-500
-	 
+	text-orange-300 hover:text-white 
 }
 
 .orange-b-n {
 	@apply
-	  border-2 border-orange-500 hover:border-orange-400
+	border-none
 	  bg-orange-500/80 hover:bg-orange-500 active:bg-orange-600
 	  text-white
 	  shadow-sm shadow-orange-500 hover:shadow-lg hover:shadow-orange-500;
@@ -386,17 +389,16 @@ transition ease-in-out duration-300
 
 .amber-b {
 	@apply
- 
-	border-2 border-amber-500  
+	border-none
 	bg-transparent  hover:bg-amber-500 active:bg-amber-600  
 	text-white 
 	shadow-lg shadow-amber-500 hover:shadow-sm hover:shadow-amber-500
-	 
+	text-amber-300 hover:text-white
 }
 
 .amber-b-n {
 	@apply
-	  border-2 border-amber-500 hover:border-amber-400
+	border-none
 	  bg-amber-500/80 hover:bg-amber-500 active:bg-amber-600
 	  text-white
 	  shadow-sm shadow-amber-500 hover:shadow-lg hover:shadow-amber-500;
@@ -408,16 +410,16 @@ transition ease-in-out duration-300
 .yellow-b {
 	@apply
  
-	border-2 border-yellow-500 
+	border-none
 	bg-transparent  hover:bg-yellow-500 active:bg-yellow-600  
 	text-white
 	shadow-lg shadow-yellow-500 hover:shadow-sm hover:shadow-yellow-500
-	 
+	text-yellow-300 hover:text-white
 }
 
 .yellow-b-n {
 	@apply
-	  border-2 border-yellow-500 hover:border-yellow-400
+	border-none
 	  bg-yellow-500/80 hover:bg-yellow-500 active:bg-yellow-600
 	  text-white
 	  shadow-sm shadow-yellow-500 hover:shadow-lg hover:shadow-yellow-500;
@@ -429,16 +431,16 @@ transition ease-in-out duration-300
 .lime-b {
 	@apply
  
-	border-2 border-lime-500  
+	border-none
 	bg-transparent  hover:bg-lime-500 active:bg-lime-600  
 	  text-white 
 	  shadow-lg shadow-lime-500 hover:shadow-sm hover:shadow-lime-500
-	 
+	  text-lime-300 hover:text-white
 }
 
 .lime-b-n {
 	@apply
-	  border-2 border-lime-500 hover:border-lime-400
+	border-none
 	  bg-lime-500/80 hover:bg-lime-500 active:bg-lime-600
 	  text-white
 	  shadow-sm shadow-lime-500 hover:shadow-lg hover:shadow-lime-500;
@@ -450,17 +452,17 @@ transition ease-in-out duration-300
 .green-b {
 	@apply
  
-	border-2 border-green-500  
+	border-none
 	bg-transparent  hover:bg-green-500 active:bg-green-600  
 	  text-white 
 	  shadow-lg shadow-green-500 hover:shadow-sm hover:shadow-green-500
-	 
+	  text-green-300 hover:text-white
 }
 
 
 .green-b-n {
 	@apply
-	  border-2 border-green-500 hover:border-green-400
+	border-none
 	  bg-green-500/80 hover:bg-green-500 active:bg-green-600
 	  text-white
 	  shadow-sm shadow-green-500 hover:shadow-lg hover:shadow-green-500;
@@ -469,18 +471,19 @@ transition ease-in-out duration-300
 
 .emerald-b {
 	@apply
- 
-	border-2 border-emerald-500  
+	border-none
+
 	bg-transparent  hover:bg-emerald-500 active:bg-emerald-600  
 	text-white 
 	  shadow-lg shadow-emerald-500 hover:shadow-sm hover:shadow-emerald-500 
+	  text-emerald-300 hover:text-white
 }
 
 
 .emerald-b-n {
 	@apply
  
-	border-2 border-emerald-500 hover:border-emerald-400 
+	border-none
 	bg-emerald-500/80  hover:bg-emerald-500 active:bg-emerald-600  
 	text-white 
 	  shadow-sm shadow-emerald-500 hover:shadow-lg hover:shadow-emerald-500 
@@ -494,16 +497,16 @@ transition ease-in-out duration-300
 .teal-b {
 	@apply
  
-	border-2 border-teal-500  
+	border-none
 	bg-transparent  hover:bg-teal-500 active:bg-teal-600  
 	text-white focus:text-white 
 	shadow-lg shadow-teal-500 hover:shadow-sm hover:shadow-teal-500 
-	 
+	text-teal-300 hover:text-white
 }
 
 .teal-b-n {
 	@apply
-	  border-2 border-teal-500 hover:border-teal-400
+	border-none
 	  bg-teal-500/80 hover:bg-teal-500 active:bg-teal-600
 	  text-white focus:text-white
 	  shadow-sm shadow-teal-500 hover:shadow-lg hover:shadow-teal-500;
@@ -513,11 +516,11 @@ transition ease-in-out duration-300
 
 .cyan-b {
 	@apply
- 
-	border-2 border-cyan-500  
+	border-none
 	bg-transparent  hover:bg-cyan-500 active:bg-cyan-600  
 	text-white 
 	shadow-lg shadow-cyan-500 hover:shadow-sm hover:shadow-cyan-500 
+	text-cyan-300 hover:text-white
 	  
 	 
 }
@@ -525,7 +528,7 @@ transition ease-in-out duration-300
 
 .cyan-b-n {
 	@apply
-	  border-2 border-cyan-500 hover:border-cyan-400
+	border-none
 	  bg-cyan-500/80 hover:bg-cyan-500 active:bg-cyan-600
 	  text-white
 	  shadow-sm shadow-cyan-500 hover:shadow-lg hover:shadow-cyan-500;
@@ -536,17 +539,18 @@ transition ease-in-out duration-300
 
 .sky-b {
 	@apply
+	border-none
  
-	border-2 border-sky-500  
 	bg-transparent  hover:bg-sky-500 active:bg-sky-600  
 	  text-white 
 	  shadow-lg shadow-sky-500 hover:shadow-sm hover:shadow-sky-500 
+	  text-sky-300 hover:text-white
 	 
 }
 
 .sky-b-n {
 	@apply
-	  border-2 border-sky-500 hover:border-sky-400
+	border-none
 	  bg-sky-500/80 hover:bg-sky-500 active:bg-sky-600
 	  text-white
 	  shadow-sm shadow-sky-500 hover:shadow-lg hover:shadow-sky-500;
@@ -556,18 +560,18 @@ transition ease-in-out duration-300
 
 .blue-b {
 	@apply
- 
-	border-2 border-blue-500  
+	border-none
 	bg-transparent  hover:bg-blue-500 active:bg-blue-600  
 	  text-white
 	  shadow-lg shadow-blue-500 hover:shadow-sm hover:shadow-blue-500 
+	 text-blue-300 hover:text-white
 	 
 }
 
 
 .blue-b-n {
 	@apply
-	  border-2 border-blue-500 hover:border-blue-400
+	border-none
 	  bg-blue-500/80 hover:bg-blue-500 active:bg-blue-600
 	  text-white
 	  shadow-sm shadow-blue-500 hover:shadow-lg hover:shadow-blue-500;
@@ -577,11 +581,11 @@ transition ease-in-out duration-300
 
 .indigo-b {
 	@apply
- 
-	border-2 border-indigo-500  
+	border-none
 	bg-transparent  hover:bg-indigo-500 active:bg-indigo-600  
 	  text-white 
 	  shadow-lg shadow-indigo-500 hover:shadow-sm hover:shadow-indigo-500 
+	  text-indigo-300 hover:text-white
 	 
 }
 
@@ -589,7 +593,7 @@ transition ease-in-out duration-300
 
 .indigo-b-n {
 	@apply
-	  border-2 border-indigo-500 hover:border-indigo-400
+	border-none
 	  bg-indigo-500/80 hover:bg-indigo-500 active:bg-indigo-600
 	  text-white
 	  shadow-sm shadow-indigo-500 hover:shadow-lg hover:shadow-indigo-500;
@@ -598,38 +602,39 @@ transition ease-in-out duration-300
 
 .violet-b {
 	@apply
- 
-	border-2 border-violet-500  
+	border-none
 	bg-transparent  hover:bg-violet-500 active:bg-violet-600  
 	text-white
 	shadow-lg shadow-violet-500 hover:shadow-sm hover:shadow-violet-500 
+	 text-violet-300 hover:text-white
 	 
 }
 
 
 .violet-b-n {
 	@apply
-	  border-2 border-violet-500 hover:border-violet-400
+	border-none
 	  bg-violet-500/80 hover:bg-violet-500 active:bg-violet-600
 	  text-white
 	  shadow-sm shadow-violet-500 hover:shadow-lg hover:shadow-violet-500;
+
   }
   
 
 .purple-b {
 	@apply
- 
-	border-2 border-purple-500 
+	border-none
 	bg-transparent  hover:bg-purple-500 active:bg-purple-600  
 	 text-white 
 	 shadow-lg shadow-purple-500 hover:shadow-sm hover:shadow-purple-500 
+	 text-purple-300 hover:text-white
 	 
 }
 
 
 .purple-b-n {
 	@apply
-	  border-2 border-purple-500 hover:border-purple-400
+	border-none
 	  bg-purple-500/80 hover:bg-purple-500 active:bg-purple-600
 	  text-white
 	  shadow-sm shadow-purple-500 hover:shadow-lg hover:shadow-purple-500;
@@ -638,18 +643,18 @@ transition ease-in-out duration-300
 
 .fuchsia-b {
 	@apply
- 
-	border-2 border-fuchsia-500 
+	border-none
 	bg-transparent  hover:bg-fuchsia-500 active:bg-fuchsia-600  
 	  text-white
 	  shadow-lg shadow-fuchsia-500 hover:shadow-sm hover:shadow-fuchsia-500 
+	  text-fuchsia-300 hover:text-white
 	 
 }
 
 
 .fuchsia-b-n {
 	@apply
-	  border-2 border-fuchsia-500 hover:border-fuchsia-400
+	border-none
 	  bg-fuchsia-500/80 hover:bg-fuchsia-500 active:bg-fuchsia-600
 	  text-white
 	  shadow-sm shadow-fuchsia-500 hover:shadow-lg hover:shadow-fuchsia-500;
@@ -658,18 +663,18 @@ transition ease-in-out duration-300
 
 .pink-b {
 	@apply
- 
-	border-2 border-pink-500  
+ border-none
 	bg-transparent  hover:bg-pink-500 active:bg-pink-600  
 	  text-white
 	  shadow-lg shadow-pink-500 hover:shadow-sm hover:shadow-pink-500 
+	  text-pink-300 hover:text-white
 	 
 }
 
 
 .pink-b-n {
 	@apply
-	  border-2 border-pink-500 hover:border-pink-400
+	border-none
 	  bg-pink-500/80 hover:bg-pink-500 active:bg-pink-600
 	  text-white
 	  shadow-sm shadow-pink-500 hover:shadow-lg hover:shadow-pink-500;
@@ -678,37 +683,23 @@ transition ease-in-out duration-300
 
 .rose-b {
 	@apply
- 
-	border-2 border-rose-500  
+	border-none
 	bg-transparent  hover:bg-rose-500 active:bg-rose-600  
 	  text-white 
 	  shadow-lg shadow-rose-500 hover:shadow-sm hover:shadow-rose-500 
+	  text-rose-300 hover:text-white
 	 
 }
 
 
 .rose-b-n {
 	@apply
-	  border-2 border-rose-500 hover:border-rose-400
+	border-none
 	  bg-rose-500/80 hover:bg-rose-500 active:bg-rose-600
 	  text-white
 	  shadow-sm shadow-rose-500 hover:shadow-lg hover:shadow-rose-500;
   }
   
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
   }

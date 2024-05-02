@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import { ButtonBlock, TextBlock, CardBlock, Spinner } from "../../index";
-import { FcBinoculars, FcDeployment, FcLibrary, FcOrganization, FcSettings, FcLeave, FcLowPriority, FcRotateToLandscape, FcDocument, FcConferenceCall, FcButtingIn, FcBullish } from 'react-icons/fc';
+import { FcBinoculars, FcDeployment, FcLibrary, FcOrganization, FcSettings, FcLeave, FcLowPriority, FcRotateToLandscape, FcDocument, FcConferenceCall, FcButtingIn, FcBullish, FcList } from 'react-icons/fc';
 
 import useAuthStore from '../../../pages/Auth/authStore';
 import ContainerBlock from '../blocks/ContainerBlock';
@@ -183,7 +183,7 @@ p-4
 							<TextBlock
 								className="text-3xl"
 							>
-								<FcOrganization />
+								<FcList />
 							</TextBlock>
 
 							<TextBlock>Артикули</TextBlock>
