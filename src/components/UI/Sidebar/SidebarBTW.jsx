@@ -101,10 +101,10 @@ p-4
 
 			</ContainerBlock>
 
-			<ContainerBlock className='space-y-2 p-4' >
+			<ContainerBlock className=' p-4' >
 
 
-				<TextBlock className=" bg-orange-500/20 hover:bg-orange-500/90 rounded justify-start w-full" >
+				<TextBlock className=" bg-transparent hover:bg-orange-500/50 rounded-2xl justify-start w-full" >
 					<NavLink
 						to={"rows"}
 						style={({ isActive }) => isActive ? {
@@ -112,15 +112,21 @@ p-4
 							padding: "12px",
 							width: "100%",
 							background: "rgb(249 115 22)",
+							borderRadius: "1rem"
 						} : inActiveStyles}
 					>
 
-						<TextBlock
-							className="flex  space-x-1"
+						<CardBlock
+							className="flex  space-x-1 "
 						>
-							<FcDeployment />
+							<TextBlock
+								className="text-3xl"
+							>
+								<FcDeployment />
+							</TextBlock>
+
 							<TextBlock>Ряди</TextBlock>
-						</TextBlock>
+						</CardBlock>
 
 					</NavLink>
 				</TextBlock>
@@ -128,7 +134,7 @@ p-4
 
 
 
-				<TextBlock className="bg-emerald-500/20 hover:bg-emerald-500/90 rounded justify-start w-full" >
+				<TextBlock className="bg-transparent hover:bg-emerald-500/90 rounded-2xl " >
 					<NavLink
 						to={"stocks"}
 						style={({ isActive }) => isActive ? {
@@ -136,15 +142,21 @@ p-4
 							padding: "12px",
 							width: "100%",
 							background: "rgb(16 185 129)",
+							borderRadius: "1rem"
 						} : inActiveStyles}
 					>
 
-						<TextBlock
+						<CardBlock
 							className="flex  space-x-1"
 						>
-							<FcLowPriority />
+							<TextBlock
+								className="text-3xl"
+							>
+								<FcLowPriority />
+							</TextBlock>
+
 							<TextBlock>Запаси</TextBlock>
-						</TextBlock>
+						</CardBlock>
 
 					</NavLink>
 				</TextBlock>
@@ -154,7 +166,7 @@ p-4
 
 
 
-				<TextBlock className="bg-sky-500/20 hover:bg-sky-500/90 rounded" >
+				<TextBlock className="bg-transparent hover:bg-sky-500/90 rounded-2xl" >
 					<NavLink
 						to={"arts"}
 						style={({ isActive }) => isActive ? {
@@ -162,14 +174,20 @@ p-4
 							padding: "12px",
 							width: "100%",
 							background: "rgb(14 165 233 )",
+							borderRadius: "1rem"
 						} : inActiveStyles}
 					>
-						<TextBlock
+						<CardBlock
 							className="flex  space-x-1"
 						>
-							<FcOrganization />
+							<TextBlock
+								className="text-3xl"
+							>
+								<FcOrganization />
+							</TextBlock>
+
 							<TextBlock>Артикули</TextBlock>
-						</TextBlock>
+						</CardBlock>
 
 					</NavLink>
 				</TextBlock>
@@ -180,7 +198,7 @@ p-4
 
 
 
-				<TextBlock className="bg-indigo-500/20 hover:bg-indigo-500/90 rounded" >
+				<TextBlock className="bg-transparent hover:bg-indigo-500/90 rounded-2xl" >
 					<NavLink
 						to={"asks"}
 						style={({ isActive }) => isActive ? {
@@ -188,14 +206,20 @@ p-4
 							padding: "12px",
 							width: "100%",
 							background: "rgb(99 102 241)",
+							borderRadius: "1rem"
 						} : inActiveStyles}
 					>
-						<TextBlock
+						<CardBlock
 							className="flex  space-x-1"
 						>
-							<FcRotateToLandscape />
+							<TextBlock
+								className="text-3xl"
+							>
+								<FcRotateToLandscape />
+							</TextBlock>
+
 							<TextBlock>Запити</TextBlock>
-						</TextBlock>
+						</CardBlock>
 
 
 
@@ -207,7 +231,7 @@ p-4
 
 
 				{user?.role === "PRIME" || user?.role === "ADMIN" || user?.role === "SKLAD" ?
-					<TextBlock className="bg-pink-500/20 hover:bg-pink-500/90 rounded " >
+					<TextBlock className="bg-transparent hover:bg-pink-500/90 rounded-2xl " >
 						<NavLink
 							to={"defs"}
 							style={({ isActive }) => isActive ? {
@@ -215,13 +239,19 @@ p-4
 								padding: "12px",
 								width: "100%",
 								background: "rgb(236 72 153 )",
+								borderRadius: "1rem"
 							} : inActiveStyles}
 						>
-							<TextBlock
+							<CardBlock
 								className="flex  space-x-1"
 							>
-								<FcLeave /> <TextBlock>Дефіцити</TextBlock>
-							</TextBlock>
+								<TextBlock
+									className="text-3xl"
+								>
+									<FcLeave />
+								</TextBlock>
+								<TextBlock>Дефіцити</TextBlock>
+							</CardBlock>
 
 						</NavLink>
 					</TextBlock>
@@ -235,7 +265,7 @@ p-4
 
 
 				{user?.role === "PRIME" || user?.role === "ADMIN" ?
-					<TextBlock className="bg-rose-500/20 hover:bg-rose-500/90 rounded " >
+					<TextBlock className="bg-transparent hover:bg-rose-500/90 rounded-2xl " >
 						<NavLink
 							to={"comps"}
 							style={({ isActive }) => isActive ? {
@@ -243,13 +273,19 @@ p-4
 								padding: "12px",
 								width: "100%",
 								background: "rgb(244 63 94 )",
+								borderRadius: "1rem"
 							} : inActiveStyles}
 						>
-							<TextBlock
+							<CardBlock
 								className="flex  space-x-1"
 							>
-								<FcBinoculars /> <TextBlock>Конкуренти</TextBlock>
-							</TextBlock>
+								<TextBlock
+									className="text-3xl"
+								>
+									<FcBinoculars />
+								</TextBlock>
+								<TextBlock>Конкуренти</TextBlock>
+							</CardBlock>
 
 						</NavLink>
 					</TextBlock>
@@ -260,7 +296,7 @@ p-4
 
 
 				{user?.role === "PRIME" ?
-					<TextBlock className="bg-blue-500/20 hover:bg-blue-500/90 rounded " >
+					<TextBlock className="bg-transparent hover:bg-blue-500/90 rounded-2xl " >
 						<NavLink
 							to={"ins"}
 							style={({ isActive }) => isActive ? {
@@ -268,14 +304,20 @@ p-4
 								padding: "12px",
 								width: "100%",
 								background: "rgb(59 130 246 )",
+								borderRadius: "1rem"
 							} : inActiveStyles}
 						>
-							<TextBlock
+							<CardBlock
 								className="flex  space-x-1"
 							>
-								<FcDocument />
+								<TextBlock
+									className="text-3xl"
+								>
+									<FcDocument />
+								</TextBlock>
+
 								<TextBlock>Інструкції</TextBlock>
-							</TextBlock>
+							</CardBlock>
 
 						</NavLink>
 					</TextBlock>
@@ -288,7 +330,7 @@ p-4
 
 
 				{user?.role === "PRIME" ?
-					<TextBlock className="bg-green-500/20 hover:bg-green-500/90 rounded " >
+					<TextBlock className="bg-transparent hover:bg-green-500/90 rounded-2xl " >
 						<NavLink
 							to={"adapts"}
 							style={({ isActive }) => isActive ? {
@@ -296,14 +338,20 @@ p-4
 								padding: "12px",
 								width: "100%",
 								background: "rgb(34 197 94)",
+								borderRadius: "1rem"
 							} : inActiveStyles}
 						>
-							<TextBlock
+							<CardBlock
 								className="flex  space-x-1"
 							>
-								<FcBullish />
+								<TextBlock
+									className="text-3xl"
+								>
+									<FcBullish />
+								</TextBlock>
+
 								<TextBlock>Адаптації</TextBlock>
-							</TextBlock>
+							</CardBlock>
 
 						</NavLink>
 					</TextBlock>
@@ -318,7 +366,7 @@ p-4
 
 
 				{user?.role === "PRIME" ?
-					<TextBlock className="bg-slate-500/20 hover:bg-slate-500/90 rounded " >
+					<TextBlock className="bg-transparent hover:bg-slate-500/90 rounded-2xl " >
 						<NavLink
 							to={"settings"}
 							style={({ isActive }) => isActive ? {
@@ -326,27 +374,24 @@ p-4
 								padding: "12px",
 								width: "100%",
 								background: "rgb(100 116 139 )",
+								borderRadius: "1rem"
 							} : inActiveStyles}
 						>
-							<TextBlock
+							<CardBlock
 								className="flex  space-x-1"
 							>
-								<FcSettings />
+								<TextBlock
+									className="text-3xl"
+								>
+									<FcSettings />
+								</TextBlock>
 								<TextBlock>Налаштування</TextBlock>
-							</TextBlock>
+							</CardBlock>
 
 						</NavLink>
 					</TextBlock>
 					:
 					null}
-
-
-
-
-
-
-
-
 
 			</ContainerBlock>
 
