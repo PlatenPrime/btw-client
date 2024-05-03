@@ -1,0 +1,48 @@
+@keyframes gradient {
+    0% {
+        background-color: #f97415 ;
+        box-shadow: 0 10px 20px #f97316;
+    }
+    13% {
+        background-color: #10b981; /* Зеленый */
+        box-shadow: 0 10px 20px #10b981;
+    }
+    25% {
+        background-color: #0ea5e9; /* Синий */
+        box-shadow: 0 10px 20px #0ea5e9;
+    }
+    38% {
+        background-color: #6366f1; /* Фиолетовый */
+        box-shadow: 0 10px 20px #6366f1;
+    }
+    50% {
+        background-color: #ec4899; /* Розовый */
+        box-shadow: 0 10px 20px #ec4899;
+    }
+    63% {
+        background-color: #f43f5e; /* Красный */
+        box-shadow: 0 10px 20px #f43f5e;
+    }
+
+    75% {
+        background-color: #3b82f6; /* Синий */
+        box-shadow: 0 10px 20px #3b82f6;
+    }
+    87% {
+        background-color: #22c55e; /* Зеленый */
+        box-shadow: 0 10px 20px #22c55e;
+    }
+    94% {
+        background-color: #64748b; /* Серый */
+        box-shadow: 0 10px 20px #64748b;
+    }
+
+    100% {
+        background-color: #f97316; /* Оранжевый */
+        box-shadow: 0 10px 20px #f97316;
+    }
+}
+
+.animate-gradient {
+    animation: gradient 60s linear infinite;
+}
