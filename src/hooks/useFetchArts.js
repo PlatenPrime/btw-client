@@ -9,11 +9,52 @@ const useFetchArts = () => {
 	useEffect(() => {
 		const fetchData = async () => {
 			try {
-				const response = await axios.get("arts");
-				const newData = response.data.arts;
-				setArtsDB(newData);
-				// Сохраняем полученные данные в localStorage
-				localStorage.setItem('artsData', JSON.stringify(newData));
+				setLoadingArtsDB(true);
+
+				const artsFromLSString = localStorage.getItem("artsFromLS");
+
+				if (!artsFromLSString) {
+					const response = await axios.get("arts");
+					const arts = response.data.arts;
+					if (!arts) throw new Error('arts not got');
+
+					const currentTime = new Date().getTime();
+					localStorage.setItem(
+						"artsFromLS",
+						JSON.stringify({
+							artsDB: arts,
+							saveTime: currentTime,
+						})
+					);
+
+					setArtsDB(arts);
+
+				} else {
+					const artsFromLS = JSON.parse(artsFromLSString);
+					const currentTime = new Date().getTime();
+
+
+					if (currentTime - artsFromLS.saveTime < 5 * 60 * 1000) {
+						setArtsDB(artsFromLS.artsDB);
+					} else {
+
+						const response = await axios.get("arts");
+						const arts = response.data.arts;
+						if (!arts) throw new Error('arts not got');
+						const currentTime = new Date().getTime();
+						localStorage.setItem(
+							"artsFromLS",
+							JSON.stringify({
+								artsDB: arts,
+								saveTime: currentTime,
+							})
+						);
+
+						setArtsDB(arts);
+					}
+				}
+
+
 			} catch (error) {
 				setErrorArtsDB(error);
 			} finally {
@@ -21,29 +62,7 @@ const useFetchArts = () => {
 			}
 		};
 
-		const updateData = () => {
-			// Периодически обновляем данные из сервера, например, каждые 5 минут
-			fetchData();
-		};
-
-		// Попытка получить данные из localStorage при загрузке
-		const cachedData = localStorage.getItem('artsData');
-		if (cachedData) {
-			setArtsDB(JSON.parse(cachedData));
-			setLoadingArtsDB(false); // Устанавливаем loading в false, так как есть данные
-		} else {
-			fetchData();
-		}
-
-		// Запускаем периодическое обновление данных
-		const updateInterval = setInterval(updateData, 300000); // 300000 миллисекунд (5 минут)
-
-		return () => {
-			// Очищаем интервал при размонтировании компонента
-			clearInterval(updateInterval);
-			// Очищаем данные из localStorage при размонтировании
-			localStorage.removeItem('artsData');
-		};
+		fetchData();
 	}, []);
 
 	return { artsDB, loadingArtsDB, errorArtsDB };
