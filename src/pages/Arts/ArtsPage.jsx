@@ -1,38 +1,36 @@
 import React, { useEffect, useState } from 'react'
-import { ButtonBlock, ButtonGroup, CardBlock, ContainerBlock, HeaderBlock, InputBlock, PageBTW, Spinner, TextBlock } from '../../components'
-import ArtBage from './components/ArtBage';
-
+import { ButtonBlock, ButtonGroup, ContainerBlock, HeaderBlock, PageBTW, Spinner, TextBlock, InputSearch } from '../../components'
 import { toast } from 'react-toastify';
-import { AiOutlineArrowLeft, AiOutlineArrowRight, AiOutlineDoubleLeft, AiOutlineDoubleRight, AiOutlineSearch } from "react-icons/ai";
-import { GoSearch } from "react-icons/go";
 import useFetchRemains from '../../hooks/useFetchRemains';
 import { Link } from 'react-router-dom';
 import { useDebouncedCallback } from 'use-debounce'
 import useFetchArts from '../../hooks/useFetchArts';
+import PaginationBlock from './components/PaginationBlock';
+import ArtsContainer from './components/ArtsContainer';
+
 
 export default function ArtsPage() {
 
 	const { artsDB, loadingArtsDB, errorArtsDB } = useFetchArts();
 	const { remains } = useFetchRemains()
-	console.log(remains)
 
 	// CONSTANTS
 
 	const step = 10
 
 
-
-
 	// STATES
 
-
-	const [searchValue, setSearchValue] = useState("")
 	const [filteredArts, setFilteredArts] = useState([]);
 	const [page, setPage] = useState(1);
 
 
 	// EFFECTS 
 
+	useEffect(() => {
+		setFilteredArts(artsDB)
+
+	}, [artsDB])
 
 
 	// HANDLERS
@@ -53,25 +51,31 @@ export default function ArtsPage() {
 		setPage(1)
 	}
 
+
+
 	const handleSearch = useDebouncedCallback((term) => {
-
-		setSearchValue(term);
 		handleFilterArts(term)
-
 	}, 500);
 
 
 
+	if (loadingArtsDB) {
+		return (
+			<PageBTW>
+				<HeaderBlock
+					className="text-transparent"
+				>
+					Артикули
+				</HeaderBlock>
+				<ContainerBlock
+					className="w-full h-full flex justify-center items-center"
+				>
+					<Spinner color="#0ea5e9" />
+				</ContainerBlock>
 
-	useEffect(() => {
-		setFilteredArts(artsDB)
-
-	}, [artsDB])
-
-
-
-
-
+			</PageBTW>
+		)
+	}
 
 
 
@@ -92,240 +96,56 @@ export default function ArtsPage() {
 			</HeaderBlock>
 
 
+			<ButtonGroup
+			>
+				<ButtonGroup.Actions>
 
-			{loadingArtsDB
-				?
-				<ContainerBlock
-					className="w-full h-full flex justify-start items-center"
-				>
-					<Spinner color="#0ea5e9" />
-				</ContainerBlock>
-				:
-				<>
-
-					<ButtonGroup
+				</ButtonGroup.Actions>
+				<ButtonGroup.Navigation>
+					<ButtonBlock
+						className="emerald-b-n "
 					>
-						<ButtonGroup.Actions>
-
-						</ButtonGroup.Actions>
-						<ButtonGroup.Navigation>
-							<ButtonBlock
-								className="emerald-b "
-							>
-								<Link
-									to="/arts/updating"
-								>
-									Оновлення даних
-								</Link>
-							</ButtonBlock>
-						</ButtonGroup.Navigation>
-					</ButtonGroup>
-
-
-
-
-					<ContainerBlock
-						className="space-y-4 "
-					>
-
-						<CardBlock
-							className="flex  justify-start rounded-xl bg-slate-700 space-x-3 pl-4 "
+						<Link
+							to="/arts/updating"
 						>
+							Оновлення даних
+						</Link>
+					</ButtonBlock>
+				</ButtonGroup.Navigation>
+			</ButtonGroup>
 
 
-							<TextBlock
-								className="text-2xl font-bold"
-							><GoSearch />
-							</TextBlock>
-							<InputBlock
-								onChange={(e) => handleSearch(e.target.value)}
-								placeholder="Пошук по артикулу або назві..."
-								className="text-xl outline-none border-none p-3 px-8 bg-slate-700 focus:bg-slate-600 w-full
-								 placeholder:font-light rounded-xl rounded-l-none
-								"
-							/>
 
 
+			<ContainerBlock>
 
-						</CardBlock>
+				<InputSearch handleSearch={handleSearch} />
 
+				<PaginationBlock
+					filteredArts={filteredArts}
+					page={page}
+					step={step}
+					setPage={setPage}
+					artsDB={artsDB}
+				/>
 
 
+				{loadingArtsDB
+					?
+					<Spinner color="lightblue" />
+					:
+					<ArtsContainer
+						filteredArts={filteredArts}
+						artsDB={artsDB}
+						step={step}
+						page={page}
+						remains={remains}
+					/>
+				}
+			</ContainerBlock>
 
 
 
-
-						{filteredArts?.length === 0 ? null : filteredArts?.length === artsDB?.length ?
-							<CardBlock
-								className="flex flex-wrap justify-between p-2  rounded-xl bg-slate-700"
-							>
-
-								<TextBlock>
-									Всього: {artsDB?.length > 0 && artsDB?.length}
-								</TextBlock>
-
-
-
-								{artsDB > 0 ?
-									<TextBlock
-										className=""
-									>
-										{step * page - step + 1} - {step * page < artsDB?.length ? step * page : artsDB?.length}
-									</TextBlock>
-
-									:
-									null
-								}
-
-
-
-
-
-
-
-
-
-								<CardBlock
-									className="space-x-3 flex flex-wrap "
-								>
-
-									<ButtonBlock onClick={() => setPage(1)} className="sky-b border-none bg-sky-500/10 " disabled={page === 1}>
-										<TextBlock className="text-lg lg:text-2xl">
-											<AiOutlineDoubleLeft />
-										</TextBlock>
-									</ButtonBlock>
-
-									<ButtonBlock onClick={() => setPage((prev) => prev - 1)} className="sky-b border-none bg-sky-500/10" disabled={page === 1}>
-
-										<TextBlock className="text-lg lg:text-2xl">
-											<AiOutlineArrowLeft />
-										</TextBlock>
-									</ButtonBlock>
-
-									<TextBlock>
-										Сторінка: {page}
-									</TextBlock>
-
-									<ButtonBlock onClick={() => setPage((prev) => prev + 1)} className="sky-b border-none bg-sky-500/10" disabled={artsDB?.length / step / page < 1}>
-
-										<TextBlock className="text-lg lg:text-2xl">
-											<AiOutlineArrowRight />
-										</TextBlock>
-									</ButtonBlock>
-
-									<ButtonBlock onClick={() => setPage(Math.ceil(artsDB?.length / step))} className="sky-b border-none bg-sky-500/10 " disabled={artsDB?.length / step / page < 1}>
-
-										<TextBlock className="text-lg lg:text-2xl">
-											<AiOutlineDoubleRight />
-										</TextBlock>
-									</ButtonBlock>
-
-
-
-								</CardBlock>
-
-							</CardBlock>
-
-							:
-
-							<CardBlock
-								className="flex flex-wrap justify-between p-2 "
-							>
-
-
-
-
-								<TextBlock>
-									Знайдено: {filteredArts?.length}
-								</TextBlock>
-
-
-
-								<TextBlock
-									className="text-xl"
-
-								>
-									{step * page - step + 1} - {step * page < filteredArts?.length ? step * page : filteredArts?.length}
-								</TextBlock>
-
-
-
-								<CardBlock
-									className="space-x-3 flex flex-wrap"
-								>
-
-									<ButtonBlock onClick={() => setPage(1)} className="sky-b border-none bg-sky-500/10 " disabled={page === 1}>
-										<TextBlock className="text-lg lg:text-2xl">
-											<AiOutlineDoubleLeft />
-										</TextBlock>
-									</ButtonBlock>
-
-									<ButtonBlock onClick={() => setPage((prev) => prev - 1)} className="sky-b border-none bg-sky-500/10 " disabled={page === 1}>
-										<TextBlock className="text-lg lg:text-2xl">
-											<AiOutlineArrowLeft />
-										</TextBlock>
-									</ButtonBlock>
-
-									<TextBlock>
-										Сторінка: {page}
-									</TextBlock>
-
-
-									<ButtonBlock onClick={() => setPage((prev) => prev + 1)} className="sky-b border-none bg-sky-500/10 " disabled={filteredArts?.length / step / page < 1}>
-										<TextBlock className="text-lg lg:text-2xl">
-											<AiOutlineArrowRight />
-										</TextBlock>
-									</ButtonBlock>
-
-									<ButtonBlock onClick={() => setPage(Math.ceil(filteredArts?.length / step))} className="sky-b border-none bg-sky-500/10 " disabled={filteredArts?.length / step / page < 1}>
-										<TextBlock className="text-lg lg:text-2xl">
-											<AiOutlineDoubleRight />
-										</TextBlock>
-
-									</ButtonBlock>
-
-								</CardBlock>
-
-							</CardBlock>
-
-
-						}
-
-
-
-
-
-
-
-						{loadingArtsDB ?
-							<Spinner color="lightblue" />
-							:
-							<CardBlock className="space-y-2">
-								{filteredArts?.length === 0 ?
-									<TextBlock>Нічого не знайдено</TextBlock>
-									:
-									filteredArts?.length === artsDB?.length
-										?
-										artsDB?.slice(step * page - step, step * page).map((art) => <ArtBage key={art._id} art={art} remains={remains} />)
-										:
-										filteredArts?.slice(step * page - step, step * page).map((art) => <ArtBage key={art._id} art={art} remains={remains} />)}
-
-							</CardBlock>
-
-						}
-
-
-
-
-
-
-
-					</ContainerBlock>
-
-
-				</>}
-
-
-		</PageBTW>
+		</PageBTW >
 	)
 }
