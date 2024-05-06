@@ -3,10 +3,7 @@ import { ButtonBlock, ButtonGroup, CardBlock, ContainerBlock, HeaderBlock, Input
 import { toast } from 'react-toastify';
 import { AiOutlineArrowLeft, AiOutlineArrowRight, AiOutlineDoubleLeft, AiOutlineDoubleRight, AiOutlineSearch } from "react-icons/ai";
 import { GoSearch } from "react-icons/go";
-import useFetchRemains from '../../hooks/useFetchRemains';
-import { SearchIcon } from '../../components/UI/Icons';
-import { Link } from 'react-router-dom';
-import ArtBage from './ArtBage';
+
 
 
 import usePosesStore from "./stores/posesStore"

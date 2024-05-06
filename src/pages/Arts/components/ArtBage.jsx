@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { CardBlock, ImageArt, TextBlock } from '../../components';
+import { CardBlock, ImageArt, TextBlock } from '../../../components';
 import { VscLocation } from "react-icons/vsc";
 import { BsBalloon } from "react-icons/bs";
 
@@ -84,7 +84,7 @@ const ArtBage = ({ art, remains }) => {
 				<TextBlock className=" justify-start text-xl " >{art?.nameukr}</TextBlock>
 
 				<CardBlock
-				className = "flex w-1/3 justify-between px-2"
+					className="flex w-1/3 justify-between px-2"
 				>
 					<TextBlock className="  text-xl font-bold  p-1 rounded text-orange-300" ><VscLocation />{art?.zone}</TextBlock>
 					<TextBlock className=" text-xl font-bold " ><BsBalloon />  {remains ? remains[title] : ""}</TextBlock>
