@@ -12,7 +12,7 @@ import usePalletStore from './stores/palletsStore'
 import useFetchRemains from '../../hooks/useFetchRemains';
 import { getArtDataBtrade } from '../../utils/getArtDataBtrade';
 import useAuthStore from '../Auth/authStore';
-import ArtCard from './components/ArtCard';
+import ArtCard from '../Arts/components/ArtCard';
 import UpdateASkModal from './AskPageModals/UpdateAskModal';
 
 import { sendMessageToUser } from '../../utils/sendMessagesTelegram'
@@ -25,6 +25,9 @@ export default function AskPage() {
 
 	const { artsDB } = useFetchArts()
 	const { remains } = useFetchRemains()
+
+
+	const artPrice = "В асках нет пока запроса цены"
 
 	const { id } = useParams()
 	const navigate = useNavigate()
@@ -456,6 +459,7 @@ export default function AskPage() {
 						title={title}
 						ostatok={ostatok}
 						posesWithArtikul={posesWithArtikul}
+						artPrice={artPrice}
 
 					/>
 

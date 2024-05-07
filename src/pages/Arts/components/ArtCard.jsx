@@ -10,7 +10,8 @@ export default function ArtCard(
 		remains,
 		title,
 		ostatok,
-		posesWithArtikul
+		posesWithArtikul,
+		artPrice
 	}
 
 ) {
@@ -144,6 +145,26 @@ export default function ArtCard(
 						<TextBlock
 							className="text-yellow-100  text-xl">
 							Мережі: {" "} {posesWithArtikul?.filter((pos) => pos.sklad === "merezhi").reduce((a, b) => a + parseInt(b.quant), 0)}
+
+						</TextBlock>
+					</CardBlock>
+
+
+
+
+					<CardBlock
+						className="flex space-x-2"
+					>
+
+
+						<TextBlock
+							className="text-green-100 text-xl">
+							Ціна:
+						</TextBlock>
+
+						<TextBlock
+							className="text-green-400  text-xl">
+							{artPrice}
 
 						</TextBlock>
 					</CardBlock>

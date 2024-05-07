@@ -9,36 +9,39 @@ import { BsBalloon, BsBoxSeam } from "react-icons/bs";
 import useFetchRemains from "../../hooks/useFetchRemains";
 import { getArtDataBtrade } from "../../utils/getArtDataBtrade";
 import { CancelIcon, OkIcon, PalletIcon } from "../../components/UI/Icons";
-import ArtCard from "../Stocks/components/ArtCard";
+import ArtCard from "./components/ArtCard";
 import useAskStore from "../Stocks/stores/asksStore";
 import useAuthStore from "../Auth/authStore";
 import { toast } from "react-toastify";
 import useFetchArts from "../../hooks/useFetchArts";
+import useFetchArtikulById from "./hooks/useFetchArtikulById";
 
 import { sendMessageToTelegram } from "../../utils/sendMessagesTelegram"
+import useFetchPosesByArtikul from "./hooks/useFetchPosesByArtikul";
+import useFetchAllPallets from "../Pallets/hooks/useFetchAllPallets";
+import useFetchUsers from "../Auth/hooks/useFetchUsers";
 
 
 export default function ArtPage() {
 
+	const { user, users } = useAuthStore()
+	const { id } = useParams()
 
 	const { remains } = useFetchRemains()
-	const { artsDB, loadingArtsDB, errorArtsDB } = useFetchArts()
+	const { artsDB } = useFetchArts()
+	const { isLoadingArtikul, artikul, ostatok, artPrice } = useFetchArtikulById(id)
+	const { isLoadingPoses } = useFetchPosesByArtikul(artikul);
+	const {isLoadingPallets} = useFetchAllPallets()
+	const { isLoadingUsers } = useFetchUsers()
 
-	const { user, users, getUsers } = useAuthStore()
-
-
-
-	const { id } = useParams()
-	const getArtikulById = useArtikulStore((state) => state.getArtikulById);
-
-	const getPosesByArtikul = usePosesStore((state) => state.getPosesByArtikul);
-	const posesWithArtikul = usePosesStore((state) => state.posesWithArtikul);
-
-
-	const pallets = usePalletStore((state) => state.pallets);
-	const getAllPallets = usePalletStore((state) => state.getAllPallets);
+	const { posesWithArtikul } = usePosesStore();
+	const { pallets } = usePalletStore();
+	
 
 	const { createAsk } = useAskStore()
+
+
+
 	const [isCreatingAsk, setIsCreatingAsk] = useState(false)
 	const [newAskArtikul, setNewAskArtikul] = useState('')
 	const [newAskQuant, setNewAskQuant] = useState('')
@@ -51,83 +54,8 @@ export default function ArtPage() {
 
 	// STATES
 
-	const [artikul, setArtikul] = useState(null)
-	const [isLoadingArtikul, setIsLoadingArtikul] = useState(false)
-	const [ostatok, setOstatok] = useState(null)
-
-
-	const [isLoadingPoses, setIsLoadingPoses] = useState(false)
-
 
 	const title = artikul?.artikul
-
-
-	useEffect(() => {
-
-
-		const fetchArtikul = async () => {
-			try {
-				setIsLoadingArtikul(true)
-				const artikul = await getArtikulById(id)
-				const { quant: ostatok } = await getArtDataBtrade(artikul?.artikul)
-				setArtikul(artikul)
-				setOstatok(ostatok)
-			} catch (error) {
-				console.log(error)
-			} finally {
-				setIsLoadingArtikul(false)
-			}
-
-		}
-
-		fetchArtikul()
-
-	}, [id])
-
-
-	useEffect(() => {
-
-
-		const fetchPosesByArtikul = async () => {
-			try {
-				setIsLoadingPoses(true)
-				const posesByArtikul = await getPosesByArtikul(artikul?.artikul)
-
-			} catch (error) {
-				console.log(error)
-			} finally {
-				setIsLoadingPoses(false)
-			}
-
-		}
-
-		fetchPosesByArtikul()
-
-	}, [artikul])
-
-
-
-	useEffect(() => {
-
-
-		const fetchPallets = async () => {
-			try {
-
-				const pallets = await getAllPallets()
-				await getUsers()
-
-			} catch (error) {
-				console.log(error)
-			} finally {
-
-			}
-		}
-
-
-		fetchPallets()
-
-	}, [])
-
 
 
 
@@ -146,8 +74,8 @@ export default function ArtPage() {
 			const com = createdAsk?.com
 
 
-			if (user?.role !== "PRIME") 
-			await sendMessageToTelegram(`
+			if (user?.role !== "PRIME")
+				await sendMessageToTelegram(`
 			${user?.fullname}: необхідно зняти ${artikul}.
 			${quant ? `Кількість: ${quant} шт` : ""}
 			${com ? `Коментарій: ${com}` : ""}
@@ -337,15 +265,19 @@ export default function ArtPage() {
 
 
 					<ButtonGroup>
-						<ButtonBlock
-							className="pink-b"
-							onClick={() => {
-								setShowModalCreateAsk(true)
-								setNewAskArtikul(artikul?.artikul)
-							}}
-						>
-							Створити запит
-						</ButtonBlock>
+
+						<ButtonGroup.Actions>
+							<ButtonBlock
+								className="pink-b"
+								onClick={() => {
+									setShowModalCreateAsk(true)
+									setNewAskArtikul(artikul?.artikul)
+								}}
+							>
+								Створити запит
+							</ButtonBlock>
+						</ButtonGroup.Actions>
+
 					</ButtonGroup>
 
 
@@ -355,6 +287,7 @@ export default function ArtPage() {
 						title={title}
 						ostatok={ostatok}
 						posesWithArtikul={posesWithArtikul}
+						artPrice={artPrice}
 
 					/>
 
