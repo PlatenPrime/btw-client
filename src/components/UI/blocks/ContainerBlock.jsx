@@ -4,7 +4,7 @@ const ContainerBlock = ({ children, className, onClick }) => {
 
 	const style = `
 
-bg-slate-800/50 rounded-2xl p-2  space-y-4 
+bg-slate-800/50 rounded-2xl p-2   
 	
 	${className}
 

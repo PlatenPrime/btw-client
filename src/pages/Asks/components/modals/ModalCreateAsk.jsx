@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import useAskStore from '../../../Stocks/stores/asksStore'
-import { sendMessageToTelegram } from "../../utils/sendMessagesTelegram"
+import { sendMessageToTelegram } from "../../../../utils/sendMessagesTelegram"
 import useAuthStore from '../../../Auth/authStore'
 import useFetchUsers from '../../../Auth/hooks/useFetchUsers'
 import { ButtonBlock, CardBlock, ImageArt, InputBlock, ModalWrapper, Spinner, TextBlock } from '../../../../components'
@@ -8,6 +8,7 @@ import useFetchArts from '../../../../hooks/useFetchArts'
 import { CancelIcon, OkIcon } from '../../../../components/UI/Icons'
 
 export default function ModalCreateAsk({
+    artikul,
     showModalCreateAsk,
     setShowModalCreateAsk
 }) {
@@ -17,7 +18,7 @@ export default function ModalCreateAsk({
     const { createAsk } = useAskStore()
 
 
-    const [newAskArtikul, setNewAskArtikul] = useState('')
+    const [newAskArtikul, setNewAskArtikul] = useState(artikul)
     const [newAskQuant, setNewAskQuant] = useState('')
     const [newAskCom, setNewAskCom] = useState('')
     const [isAskCreating, setIsAskCreating] = useState(false)
