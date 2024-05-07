@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react';
 import usePalletStore from '../../Stocks/stores/palletsStore';
 
 const useFetchAllPallets = () => {
-    const [isLoadingPallets, setIsLoadingAllPallets] = useState(true);
+    const [isLoadingAllPallets, setIsLoadingAllPallets] = useState(true);
 
     const { getAllPallets } = usePalletStore();
 
@@ -24,7 +24,7 @@ const useFetchAllPallets = () => {
         fetchAllPallets();
     }, [getAllPallets]);
 
-    return { isLoadingPallets };
+    return { isLoadingAllPallets };
 };
 
 export default useFetchAllPallets;

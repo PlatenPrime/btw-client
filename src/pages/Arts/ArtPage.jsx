@@ -1,13 +1,12 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 import { ButtonBlock, ButtonGroup, CardBlock, ContainerBlock, HeaderBlock, ImageArt, InputBlock, ModalWrapper, PageBTW, Spinner, TextBlock } from "../../components";
-import useArtikulStore from "./stores/artsStore";
+
 import { Link, useParams } from "react-router-dom";
 import usePosesStore from "../Stocks/stores/posesStore";
 import usePalletStore from "../Stocks/stores/palletsStore";
 import { BsBalloon, BsBoxSeam } from "react-icons/bs";
 import useFetchRemains from "../../hooks/useFetchRemains";
-import { getArtDataBtrade } from "../../utils/getArtDataBtrade";
 import { CancelIcon, OkIcon, PalletIcon } from "../../components/UI/Icons";
 import ArtCard from "./components/ArtCard";
 import useAskStore from "../Stocks/stores/asksStore";
@@ -31,15 +30,13 @@ export default function ArtPage() {
 	const { artsDB } = useFetchArts()
 	const { isLoadingArtikul, artikul, ostatok, artPrice } = useFetchArtikulById(id)
 	const { isLoadingPoses } = useFetchPosesByArtikul(artikul);
-	const {isLoadingPallets} = useFetchAllPallets()
+	const { isLoadingAllPallets } = useFetchAllPallets()
 	const { isLoadingUsers } = useFetchUsers()
 
 	const { posesWithArtikul } = usePosesStore();
 	const { pallets } = usePalletStore();
-	
 
 	const { createAsk } = useAskStore()
-
 
 
 	const [isCreatingAsk, setIsCreatingAsk] = useState(false)
@@ -219,7 +216,7 @@ export default function ArtPage() {
 									onClick={() => setShowModalCreateAsk(false)}
 								>
 									<TextBlock className="text-2xl"><CancelIcon /></TextBlock>
-									<TextBlock className=""> Скасувати</TextBlock>
+									<TextBlock className="text-lg"> Скасувати</TextBlock>
 
 								</ButtonBlock>
 
@@ -245,7 +242,7 @@ export default function ArtPage() {
 										:
 										<>
 											<TextBlock className="text-2xl"><OkIcon /></TextBlock>
-											<TextBlock className=""> 	Створити</TextBlock>
+											<TextBlock className="text-lg"> 	Створити</TextBlock>
 										</>
 
 									}
