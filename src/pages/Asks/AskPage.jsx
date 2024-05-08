@@ -16,6 +16,7 @@ import UpdateAskModal from './components/modals/ModalUpdateAsk';
 
 import { sendMessageToUser } from '../../utils/sendMessagesTelegram'
 import useFetchArts from '../../hooks/useFetchArts';
+import ArtPalletBage from '../Arts/components/ArtPalletBage';
 
 
 
@@ -440,18 +441,6 @@ export default function AskPage() {
 
 					/>
 
-
-
-
-
-
-
-
-
-
-
-
-
 					<ArtCard
 						artikul={artikul}
 						remains={remains}
@@ -483,7 +472,7 @@ export default function AskPage() {
 
 
 					<ContainerBlock
-						className="flex justify-center w-full space-y-4"
+						className=" space-y-2"
 					>
 
 						{isLoadingPoses ?
@@ -494,94 +483,21 @@ export default function AskPage() {
 									className="flex flex-col space-y-4 w-full"
 								>
 
-									{posesWithArtikul?.map((pos) => <CardBlock
-										key={pos._id}
-										className={`
-											grid grid-cols-1 lg:grid-cols-2 space-y-2  lg:space-y-0 cursor-pointer p-4 lg:gap-8 justify-center
-											rounded-xl
-											${pos?.quant === 0 ? "bg-gray-700 hover:bg-gray-500 " : pos.sklad === "merezhi" ?
-												"bg-yellow-700/20 hover:bg-yellow-700/50  "
-												: pos.sklad === "pogrebi"
-													? "bg-blue-700/20 hover:bg-blue-700/50 "
-													: null} 
-											transition ease-in-out duration-300`}
-										onClick={() => {
-											setShowModalUpdateAsk(true);
-											setSelectedPos(pos)
-											setFinalValuePosBoxes(pos?.boxes)
-											setFinalValuePosQuant(pos?.quant)
-											setAskValuePosBoxes(0);
-											setAskValuePosQuant(0);
-											setSelectedPosPalletTitle(pallets?.find((pallet) => pallet._id === pos?.pallet)?.title)
-										}
+									{posesWithArtikul?.map((pos) =>
 
-										}
-									>
-
-
-
-										<CardBlock
-											className={` flex justify-center  lg:justify-start  font-bold    `
-											}
-
-										>
-
-											<TextBlock
-												className=" text-2xl"
-											>
-												<LiaPalletSolid />
-											</TextBlock>
-
-
-											<TextBlock
-												className="grid place-content-center text-2xl"
-											>
-												{pos.palletTitle}
-											</TextBlock>
-
-										</CardBlock>
-
-
-
-
-										<CardBlock
-											className="  grid grid-cols-2  lg:justify-items-start p-1  "
-										>
-
-											<CardBlock
-												className="flex justify-center space-x-2"
-											>
-												<TextBlock
-													className="text-amber-100  text-xl">
-													<BsBoxSeam />
-												</TextBlock>
-												<TextBlock
-													className="text-amber-100 font-bold text-xl "
-												>
-													{pos?.boxes}
-												</TextBlock>
-											</CardBlock>
-
-
-											<CardBlock
-												className="flex justify-center  space-x-2"
-											>
-												<TextBlock
-													className="text-sky-100  text-xl">
-													<BsBalloon />
-												</TextBlock>
-												<TextBlock
-													className="text-sky-100  font-bold text-xl "
-												>
-
-													{pos?.quant}
-												</TextBlock>
-											</CardBlock>
-
-										</CardBlock>
-
-
-									</CardBlock>
+										<ArtPalletBage
+											key={pos._id}
+											pos={pos}
+											onClick={() => {
+												setShowModalUpdateAsk(true)
+												setSelectedPos(pos)
+												setFinalValuePosBoxes(pos?.boxes)
+												setFinalValuePosQuant(pos?.quant)
+												setAskValuePosBoxes(0);
+												setAskValuePosQuant(0);
+												setSelectedPosPalletTitle(pallets?.find((pallet) => pallet._id === pos?.pallet)?.title)
+											}}
+										/>
 
 									)}
 

@@ -3,6 +3,8 @@ import { CardBlock, ContainerBlock, ImageArt, TextBlock } from '../../../compone
 import { VscLocation } from 'react-icons/vsc'
 import { BsBalloon } from 'react-icons/bs'
 import { FaWarehouse } from 'react-icons/fa6'
+import { PiCurrencyDollarBold } from "react-icons/pi";
+import { MdSunnySnowing, MdSunny } from "react-icons/md";
 
 export default function ArtCard(
 	{
@@ -39,137 +41,83 @@ export default function ArtCard(
 				<ImageArt size={200} artikul={artikul?.artikul} className="rounded-xl" />
 			</CardBlock>
 
+
+
+
+
+
 			<CardBlock
 				className="flex flex-col items-center space-y-2 w-full "
 			>
 
 				<TextBlock
-					className="text-2xl w-full    p-1  lg:text-center bg-sky-900/20 rounded-xl"
+					className="text-3xl w-full  p-1  lg:text-center  rounded-xl"
 				>
 					{artikul?.nameukr}
 				</TextBlock>
 
 
 				<CardBlock
-					className="w-full flex items-start flex-col  p-1 bg-sky-900/20 rounded-xl"
+					className="w-full space-y-2  p-1  rounded-xl"
 				>
 
-					<TextBlock className="  text-xl   p-1 rounded text-orange-100" >
-						<VscLocation />{artikul?.zone}
-					</TextBlock>
+					<CardBlock
+						className="grid grid-colums-1 lg:grid-cols-2 gap-2"
+					>
+						<TextBlock className="  text-xl bg-orange-500/50   p-1 rounded-lg " >
+							<VscLocation size={24} />{artikul?.zone}
+						</TextBlock>
+
+						<TextBlock
+							className=" text-xl bg-green-500/50  p-1 rounded-lg">
+							<PiCurrencyDollarBold size={24} /> {artPrice}
+						</TextBlock>
+
+
+					</CardBlock>
+
 
 
 					<CardBlock
-						className="flex space-x-2"
+						className="grid grid-colums-1 lg:grid-cols-2 gap-2"
 					>
-						<TextBlock
 
-							className="text-rose-100  text-xl"
+						<TextBlock
+							className="text-xl bg-blue-500/50   p-1 rounded-lg"
 						>
-
-							<BsBalloon />
+							<MdSunnySnowing size={24}  /> {" "}  {remains ? remains[title] : ""}
 						</TextBlock>
-						<TextBlock
-							className="text-yellow-100   text-xl  rounded"
 
+						<TextBlock
+							className="text-xl bg-lime-500/50   p-1 rounded-lg"
 						>
-							Ранок: {" "} {remains ? remains[title] : ""}
-						</TextBlock>
-					</CardBlock>
-
-
-
-					<CardBlock
-						className="flex space-x-2"
-					>
-						<TextBlock
-							className="text-green-100  text-xl">
-							<BsBalloon />
-						</TextBlock>
-						<TextBlock
-							className="text-green-100   text-xl  rounded"
-						>
-							База: {" "}	{ostatok}
-						</TextBlock>
-					</CardBlock>
-
-
-					<CardBlock
-						className="flex space-x-2"
-					>
-
-
-						<TextBlock
-							className="  text-xl">
-							<FaWarehouse />
+							<MdSunny size={24}  /> {" "}	{ostatok}
 						</TextBlock>
 
-						<TextBlock
-							className="  text-xl">
-							Склад: {" "} {posesWithArtikul?.reduce((a, b) => a + parseInt(b.quant), 0)}
-
-						</TextBlock>
-					</CardBlock>
-
-
-					<CardBlock
-						className="flex space-x-2"
-					>
-
-
-						<TextBlock
-							className="text-blue-100  text-xl">
-							<FaWarehouse />
-						</TextBlock>
-
-						<TextBlock
-							className="text-blue-100  text-xl">
-							Погреби: {" "} {posesWithArtikul?.filter((pos) => pos.sklad === "pogrebi").reduce((a, b) => a + parseInt(b.quant), 0)}
-
-						</TextBlock>
 					</CardBlock>
 
 
 
 
 					<CardBlock
-						className="flex space-x-2"
+						className="grid grid-colums-1 lg:grid-cols-2 gap-2"
 					>
-
-
 						<TextBlock
-							className="text-yellow-100 text-xl">
-							<FaWarehouse />
+							className="lg:col-span-2  text-xl bg-stone-500/50   p-1 rounded-lg items-center">
+							<FaWarehouse size={24}  /> Склад: {" "} {posesWithArtikul?.reduce((a, b) => a + parseInt(b.quant), 0)}
 						</TextBlock>
 
 						<TextBlock
-							className="text-yellow-100  text-xl">
-							Мережі: {" "} {posesWithArtikul?.filter((pos) => pos.sklad === "merezhi").reduce((a, b) => a + parseInt(b.quant), 0)}
-
+							className=" text-xl bg-emerald-500/50   p-1 rounded-lg items-center">
+							<FaWarehouse size={24}  />  Погреби: {" "} {posesWithArtikul?.filter((pos) => pos.sklad === "pogrebi").reduce((a, b) => a + parseInt(b.quant), 0)}
 						</TextBlock>
+
+						<TextBlock
+							className=" text-xl bg-yellow-500/50   p-1 rounded-lg items-center">
+							<FaWarehouse size={24}  />  Мережі: {" "} {posesWithArtikul?.filter((pos) => pos.sklad === "merezhi").reduce((a, b) => a + parseInt(b.quant), 0)}
+						</TextBlock>
+
 					</CardBlock>
-
-
-
-
-					<CardBlock
-						className="flex space-x-2"
-					>
-
-
-						<TextBlock
-							className="text-green-100 text-xl">
-							Ціна:
-						</TextBlock>
-
-						<TextBlock
-							className="text-green-400  text-xl">
-							{artPrice}
-
-						</TextBlock>
-					</CardBlock>
-
-
 
 				</CardBlock>
 

@@ -1,20 +1,23 @@
 import { useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
 
 import { ButtonBlock, ButtonGroup, CardBlock, ContainerBlock, HeaderBlock, PageBTW, Spinner, TextBlock } from "../../components";
-import { useNavigate, useParams } from "react-router-dom";
-import usePosesStore from "../Stocks/stores/posesStore";
-import usePalletStore from "../Stocks/stores/palletsStore";
-import useFetchRemains from "../../hooks/useFetchRemains";
-import ArtCard from "./components/ArtCard";
 
-import { toast } from "react-toastify";
+import usePosesStore from "../Stocks/stores/posesStore";
+
+import ArtCard from "./components/ArtCard";
+import ArtPalletBage from "./components/ArtPalletBage";
+
+import useFetchRemains from "../../hooks/useFetchRemains";
 import useFetchArts from "../../hooks/useFetchArts";
 import useFetchArtikulById from "./hooks/useFetchArtikulById";
 import useFetchPosesByArtikul from "./hooks/useFetchPosesByArtikul";
-import useFetchAllPallets from "../Pallets/hooks/useFetchAllPallets";
 import useFetchUsers from "../Auth/hooks/useFetchUsers";
+
 import ModalCreateAsk from "../Asks/components/modals/ModalCreateAsk";
-import ArtPalletBage from "./components/ArtPalletBage";
+
+
+
 
 
 export default function ArtPage() {
@@ -27,21 +30,11 @@ export default function ArtPage() {
 	const { artsDB } = useFetchArts()
 	const { isLoadingArtikul, artikul, ostatok, artPrice } = useFetchArtikulById(id)
 	const { isLoadingPoses } = useFetchPosesByArtikul(artikul);
-	const { isLoadingAllPallets } = useFetchAllPallets()
 	const { isLoadingUsers } = useFetchUsers()
 
 	const { posesWithArtikul } = usePosesStore();
-	const { pallets } = usePalletStore();
-
-
 
 	const [showModalCreateAsk, setShowModalCreateAsk] = useState(false)
-	const title = artikul?.artikul
-
-
-
-
-
 
 
 
@@ -67,12 +60,6 @@ export default function ArtPage() {
 
 
 
-
-
-
-
-
-
 	return (
 		<PageBTW
 			className="space-y-4 px-1"
@@ -86,7 +73,7 @@ export default function ArtPage() {
 
 
 			<ModalCreateAsk
-				artikul={title}
+				artikul={artikul?.artikul}
 				showModalCreateAsk={showModalCreateAsk}
 				setShowModalCreateAsk={setShowModalCreateAsk}
 			/>
@@ -110,7 +97,7 @@ export default function ArtPage() {
 			<ArtCard
 				artikul={artikul}
 				remains={remains}
-				title={title}
+				title={artikul?.artikul}
 				ostatok={ostatok}
 				posesWithArtikul={posesWithArtikul}
 				artPrice={artPrice}
@@ -123,7 +110,7 @@ export default function ArtPage() {
 			<ContainerBlock
 				className="space-y-2 "
 			>
-			
+
 				{isLoadingPoses
 					?
 					<Spinner color="rgb(245 158 11)" />
@@ -138,13 +125,13 @@ export default function ArtPage() {
 						>
 
 							{posesWithArtikul?.map((pos) =>
-									
 
-									<ArtPalletBage
 
-										pos={pos}
-										onClick={() => navigate(`/pallets/${pos?.pallet}`)}
-									/>
+								<ArtPalletBage
+
+									pos={pos}
+									onClick={() => navigate(`/pallets/${pos?.pallet}`)}
+								/>
 							)}
 						</CardBlock>
 						:
