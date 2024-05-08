@@ -130,10 +130,6 @@ export default function ArtsPage() {
 				/>
 
 
-				{loadingArtsDB
-					?
-					<Spinner color="lightblue" />
-					:
 					<ArtsContainer
 						filteredArts={filteredArts}
 						artsDB={artsDB}
@@ -141,7 +137,7 @@ export default function ArtsPage() {
 						page={page}
 						remains={remains}
 					/>
-				}
+				
 			</ContainerBlock>
 
 

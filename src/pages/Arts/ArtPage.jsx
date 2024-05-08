@@ -1,21 +1,20 @@
 import { useState } from "react";
 
-import { ButtonBlock, ButtonGroup, CardBlock, ContainerBlock, HeaderBlock, ImageArt, InputBlock, ModalWrapper, PageBTW, Spinner, TextBlock } from "../../components";
+import { ButtonBlock, ButtonGroup, CardBlock, ContainerBlock, HeaderBlock, PageBTW, Spinner, TextBlock } from "../../components";
 
 import { Link, useParams } from "react-router-dom";
 import usePosesStore from "../Stocks/stores/posesStore";
 import usePalletStore from "../Stocks/stores/palletsStore";
 import { BsBalloon, BsBoxSeam } from "react-icons/bs";
 import useFetchRemains from "../../hooks/useFetchRemains";
-import { CancelIcon, OkIcon, PalletIcon } from "../../components/UI/Icons";
+import { PalletIcon } from "../../components/UI/Icons";
 import ArtCard from "./components/ArtCard";
-import useAskStore from "../Stocks/stores/asksStore";
+
 import useAuthStore from "../Auth/authStore";
 import { toast } from "react-toastify";
 import useFetchArts from "../../hooks/useFetchArts";
 import useFetchArtikulById from "./hooks/useFetchArtikulById";
 
-import { sendMessageToTelegram } from "../../utils/sendMessagesTelegram"
 import useFetchPosesByArtikul from "./hooks/useFetchPosesByArtikul";
 import useFetchAllPallets from "../Pallets/hooks/useFetchAllPallets";
 import useFetchUsers from "../Auth/hooks/useFetchUsers";
@@ -24,7 +23,7 @@ import ModalCreateAsk from "../Asks/components/modals/ModalCreateAsk";
 
 export default function ArtPage() {
 
-	const { user, users } = useAuthStore()
+
 	const { id } = useParams()
 
 	const { remains } = useFetchRemains()
@@ -44,6 +43,39 @@ export default function ArtPage() {
 
 
 
+
+
+
+
+
+	if (isLoadingArtikul) {
+		return (
+			<PageBTW>
+				<HeaderBlock
+					className="text-transparent"
+				>
+					Артикул
+				</HeaderBlock>
+				<ContainerBlock
+					className="w-full h-full flex justify-center items-center"
+				>
+					<Spinner color="rgb(14 165 233 )" />
+				</ContainerBlock>
+
+			</PageBTW>
+		)
+	}
+
+
+
+
+
+
+
+
+
+
+
 	return (
 		<PageBTW
 			className="space-y-4 px-1"
@@ -58,18 +90,8 @@ export default function ArtPage() {
 
 
 
-			{isLoadingArtikul
-				?
-				<ContainerBlock
-					className="w-full h-full flex justify-start items-center"
-				>
-					<Spinner color="#72a5e9" />
-				</ContainerBlock>
-				:
-				<CardBlock
-					className="space-y-2 min-h-screen"
-				>
-
+			
+			
 					<ModalCreateAsk
 						artikul={title}
 						showModalCreateAsk={showModalCreateAsk}
@@ -210,11 +232,6 @@ export default function ArtPage() {
 
 					</ContainerBlock>
 
-
-
-
-
-				</CardBlock>}
 
 		</PageBTW>
 	)

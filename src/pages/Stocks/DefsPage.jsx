@@ -4,7 +4,7 @@ import { Link, useNavigate } from 'react-router-dom'
 import useFetchRemains from '../../hooks/useFetchRemains'
 import useFetchArts from '../../hooks/useFetchArts'
 import usePosesStore from './stores/posesStore'
-import useAskStore from './stores/asksStore'
+import useAskStore from '../Asks/stores/asksStore'
 import useAuthStore from '../Auth/authStore'
 import { toast } from 'react-toastify'
 import { getArtDataBtrade } from "../../utils/getArtDataBtrade"

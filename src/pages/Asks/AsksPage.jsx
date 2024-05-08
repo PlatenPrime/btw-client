@@ -1,13 +1,14 @@
 import React, { useEffect, useState } from 'react'
-import { ButtonBlock, ButtonGroup, CardBlock, ContainerBlock, HeaderBlock, ImageArt, InputBlock, ModalConfirm, ModalWrapper, PageBTW, Spinner, TextBlock } from "../../components"
+import { ButtonBlock, ButtonGroup, CardBlock, ContainerBlock, HeaderBlock, ImageArt, PageBTW, Spinner, TextBlock } from "../../components"
 import useAskStore from './stores/asksStore'
 import useAuthStore from "../Auth/authStore"
 import { Link } from 'react-router-dom';
-import { AddIcon, CancelIcon, OkIcon } from '../../components/UI/Icons';
+import { AddIcon } from '../../components/UI/Icons';
 
-import { sendMessageToTelegram } from "../../utils/sendMessagesTelegram"
 import useFetchArts from '../../hooks/useFetchArts';
-import ModalCreateAsk from '../Asks/components/modals/ModalCreateAsk';
+import ModalCreateAsk from './components/modals/ModalCreateAsk';
+import useFetchUsers from '../Auth/hooks/useFetchUsers';
+import useFetchAsks from './hooks/useFetchAsks';
 
 
 
@@ -15,63 +16,27 @@ export default function AsksPage() {
 
 
 	const { artsDB, loadingArtsDB, errorArtsDB } = useFetchArts()
+	const { isLoadingUsers } = useFetchUsers()
+	const { isAsksLoading } = useFetchAsks()
 
 
-	const { asks, getAllAsks, createAsk } = useAskStore()
-	const { user, users, getUsers } = useAuthStore()
-
-
-
+	const { asks } = useAskStore()
+	const { user, users } = useAuthStore()
 
 
 	const [showModalCreateAsk, setShowModalCreateAsk] = useState(false)
 
 
 
-	const [isAsksLoading, setIsAsksLoading] = useState(false)
 
 
 
 
 
 
-	// EFFECTS
-
-	useEffect(() => {
 
 
-		const fetchAsks = async () => {
-
-			try {
-				setIsAsksLoading(true)
-
-				const asks = await getAllAsks()
-				await getUsers()
-
-			} catch (error) {
-				console.log(error)
-			} finally {
-				setIsAsksLoading(false)
-			}
-		}
-
-		fetchAsks()
-
-
-		return () => { }
-	}, [])
-
-
-
-
-
-
-	// HANDLERS
-
-
-
-
-
+	
 
 
 
@@ -139,13 +104,13 @@ export default function AsksPage() {
 					{/* MODALS */}
 
 
-					<ModalCreateAsk 
-					 showModalCreateAsk={showModalCreateAsk}
-					 setShowModalCreateAsk={setShowModalCreateAsk}
-					
+					<ModalCreateAsk
+						showModalCreateAsk={showModalCreateAsk}
+						setShowModalCreateAsk={setShowModalCreateAsk}
+
 					/>
 
-			
+
 
 
 					{/* ASKS */}

@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import useAskStore from '../../../Stocks/stores/asksStore'
+import useAskStore from '../../stores/asksStore'
 import { sendMessageToTelegram } from "../../../../utils/sendMessagesTelegram"
 import useAuthStore from '../../../Auth/authStore'
 import useFetchUsers from '../../../Auth/hooks/useFetchUsers'

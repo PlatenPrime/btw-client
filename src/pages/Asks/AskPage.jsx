@@ -1,19 +1,18 @@
 import React, { useEffect, useState } from 'react'
 import { ButtonBlock, ButtonGroup, CardBlock, ContainerBlock, HeaderBlock, ImageArt, InputBlock, ModalConfirm, ModalDelete, ModalWrapper, PageBTW, Spinner, TextBlock } from "../../components"
 import { BsBalloon, BsBoxSeam } from "react-icons/bs";
-import { VscLocation } from "react-icons/vsc";
-import { FaWarehouse } from "react-icons/fa6";
+
 import { LiaPalletSolid } from "react-icons/lia";
-import { ImMoveDown } from 'react-icons/im'
+
 import useAskStore from './stores/asksStore'
-import { Link, useNavigate, useParams } from 'react-router-dom'
-import usePosesStore from './stores/posesStore'
-import usePalletStore from './stores/palletsStore'
+import {  useNavigate, useParams } from 'react-router-dom'
+import usePosesStore from '../Stocks/stores/posesStore'
+import usePalletStore from '../Stocks/stores/palletsStore'
 import useFetchRemains from '../../hooks/useFetchRemains';
 import { getArtDataBtrade } from '../../utils/getArtDataBtrade';
 import useAuthStore from '../Auth/authStore';
 import ArtCard from '../Arts/components/ArtCard';
-import UpdateASkModal from './AskPageModals/UpdateAskModal';
+import UpdateASkModal from './components/modals/ModalUpdateAsk';
 
 import { sendMessageToUser } from '../../utils/sendMessagesTelegram'
 import useFetchArts from '../../hooks/useFetchArts';
