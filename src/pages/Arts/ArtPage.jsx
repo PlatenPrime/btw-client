@@ -1,30 +1,27 @@
 import { useState } from "react";
 
 import { ButtonBlock, ButtonGroup, CardBlock, ContainerBlock, HeaderBlock, PageBTW, Spinner, TextBlock } from "../../components";
-
-import { Link, useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import usePosesStore from "../Stocks/stores/posesStore";
 import usePalletStore from "../Stocks/stores/palletsStore";
-import { BsBalloon, BsBoxSeam } from "react-icons/bs";
 import useFetchRemains from "../../hooks/useFetchRemains";
-import { PalletIcon } from "../../components/UI/Icons";
 import ArtCard from "./components/ArtCard";
 
-import useAuthStore from "../Auth/authStore";
 import { toast } from "react-toastify";
 import useFetchArts from "../../hooks/useFetchArts";
 import useFetchArtikulById from "./hooks/useFetchArtikulById";
-
 import useFetchPosesByArtikul from "./hooks/useFetchPosesByArtikul";
 import useFetchAllPallets from "../Pallets/hooks/useFetchAllPallets";
 import useFetchUsers from "../Auth/hooks/useFetchUsers";
 import ModalCreateAsk from "../Asks/components/modals/ModalCreateAsk";
+import ArtPalletBage from "./components/ArtPalletBage";
 
 
 export default function ArtPage() {
 
 
 	const { id } = useParams()
+	const navigate = useNavigate()
 
 	const { remains } = useFetchRemains()
 	const { artsDB } = useFetchArts()
@@ -88,149 +85,77 @@ export default function ArtPage() {
 			</HeaderBlock>
 
 
+			<ModalCreateAsk
+				artikul={title}
+				showModalCreateAsk={showModalCreateAsk}
+				setShowModalCreateAsk={setShowModalCreateAsk}
+			/>
 
+			<ButtonGroup>
 
-			
-			
-					<ModalCreateAsk
-						artikul={title}
-						showModalCreateAsk={showModalCreateAsk}
-						setShowModalCreateAsk={setShowModalCreateAsk}
-					/>
-
-					<ButtonGroup>
-
-						<ButtonGroup.Actions>
-							<ButtonBlock
-								className="pink-b"
-								onClick={() => {
-									setShowModalCreateAsk(true)
-								}}
-							>
-								Створити запит
-							</ButtonBlock>
-						</ButtonGroup.Actions>
-
-					</ButtonGroup>
-
-
-					<ArtCard
-						artikul={artikul}
-						remains={remains}
-						title={title}
-						ostatok={ostatok}
-						posesWithArtikul={posesWithArtikul}
-						artPrice={artPrice}
-					/>
-
-
-
-
-
-					<ContainerBlock
-						className="space-y-2 "
+				<ButtonGroup.Actions>
+					<ButtonBlock
+						className="pink-b"
+						onClick={() => {
+							setShowModalCreateAsk(true)
+						}}
 					>
-						<TextBlock
-							className="text-amber-100 text-3xl"
+						Створити запит
+					</ButtonBlock>
+				</ButtonGroup.Actions>
+
+			</ButtonGroup>
+
+
+			<ArtCard
+				artikul={artikul}
+				remains={remains}
+				title={title}
+				ostatok={ostatok}
+				posesWithArtikul={posesWithArtikul}
+				artPrice={artPrice}
+			/>
+
+
+
+
+
+			<ContainerBlock
+				className="space-y-2 "
+			>
+			
+				{isLoadingPoses
+					?
+					<Spinner color="rgb(245 158 11)" />
+
+					:
+
+					posesWithArtikul.length > 0 ?
+
+
+						<CardBlock
+							className="flex flex-col space-y-2"
 						>
-							Палети
+
+							{posesWithArtikul?.map((pos) =>
+									
+
+									<ArtPalletBage
+
+										pos={pos}
+										onClick={() => navigate(`/pallets/${pos?.pallet}`)}
+									/>
+							)}
+						</CardBlock>
+						:
+						<TextBlock
+							className="text-amber-100 text-xl italic"
+						>
+							Позиції немає на запасах
 						</TextBlock>
+				}
 
-
-						{isLoadingPoses ?
-							<Spinner color="rgb(245 158 11)" />
-							:
-
-							posesWithArtikul.length > 0 ?
-
-
-								<CardBlock
-									className="flex flex-col space-y-2"
-								>
-
-									{posesWithArtikul?.map((pos) => <Link
-										className={`
-										grid grid-cols-1 lg:grid-cols-2 space-y-2  lg:space-y-0 cursor-pointer p-4 lg:gap-8 justify-center rounded-xl
-										${pos?.quant === 0 ? "bg-gray-700 hover:bg-gray-500 " : pos.sklad === "merezhi" ?
-												"bg-yellow-700/20 hover:bg-yellow-700/50  "
-												: pos.sklad === "pogrebi"
-													? "bg-blue-700/20 hover:bg-blue-700/50 "
-													: null} 
-										transition ease-in-out duration-300`}
-										to={`/pallets/${pallets?.find((pallet) => pallet._id === pos?.pallet)?._id}`}
-										key={pos._id}
-									>
-										<TextBlock
-											className="lg:w-1/2 flex  lg:justify-start text-2xl"
-										>
-											<PalletIcon />
-											<TextBlock>
-												{pos?.palletTitle}
-											</TextBlock>
-										</TextBlock>
-
-
-
-
-
-
-										<CardBlock
-											className="  w-full flex justify-between "
-										>
-
-											<CardBlock
-												className="flex justify-center w-1/2 space-x-2"
-											>
-												<TextBlock
-													className="text-amber-100  text-xl">
-													<BsBoxSeam />
-												</TextBlock>
-												<TextBlock
-													className="text-amber-100 font-bold text-xl rounded"
-												>
-													{pos?.boxes}
-												</TextBlock>
-											</CardBlock>
-
-
-											<CardBlock
-												className="flex justify-center w-1/2 space-x-2"
-											>
-												<TextBlock
-													className="text-sky-100  text-xl">
-													<BsBalloon />
-												</TextBlock>
-												<TextBlock
-													className="text-sky-100  font-bold text-xl  rounded"
-												>
-
-													{pos?.quant}
-												</TextBlock>
-											</CardBlock>
-
-
-
-
-										</CardBlock>
-
-
-
-
-
-									</Link>
-									)}
-								</CardBlock>
-								:
-								<TextBlock
-									className="text-amber-100 text-xl italic"
-								>
-									Позиції немає на запасах
-								</TextBlock>
-
-
-						}
-
-					</ContainerBlock>
+			</ContainerBlock>
 
 
 		</PageBTW>

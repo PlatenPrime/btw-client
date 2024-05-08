@@ -5,14 +5,14 @@ import { BsBalloon, BsBoxSeam } from "react-icons/bs";
 import { LiaPalletSolid } from "react-icons/lia";
 
 import useAskStore from './stores/asksStore'
-import {  useNavigate, useParams } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 import usePosesStore from '../Stocks/stores/posesStore'
 import usePalletStore from '../Stocks/stores/palletsStore'
 import useFetchRemains from '../../hooks/useFetchRemains';
 import { getArtDataBtrade } from '../../utils/getArtDataBtrade';
 import useAuthStore from '../Auth/authStore';
 import ArtCard from '../Arts/components/ArtCard';
-import UpdateASkModal from './components/modals/ModalUpdateAsk';
+import UpdateAskModal from './components/modals/ModalUpdateAsk';
 
 import { sendMessageToUser } from '../../utils/sendMessagesTelegram'
 import useFetchArts from '../../hooks/useFetchArts';
@@ -422,7 +422,7 @@ export default function AskPage() {
 					/>}
 
 
-					<UpdateASkModal
+					<UpdateAskModal
 						showModalUpdateAsk={showModalUpdateAsk}
 						setShowModalUpdateAsk={setShowModalUpdateAsk}
 						selectedPos={selectedPos}
@@ -494,100 +494,96 @@ export default function AskPage() {
 									className="flex flex-col space-y-4 w-full"
 								>
 
-									{posesWithArtikul?.map((pos) => {
-										return { ...pos, palletTitle: pallets?.find((pallet) => pallet._id === pos?.pallet)?.title }
-									})
-										.sort((a, b) => b.boxes - a.boxes)
-										.map((pos) => <CardBlock
-											key={pos._id}
-											className={`
+									{posesWithArtikul?.map((pos) => <CardBlock
+										key={pos._id}
+										className={`
 											grid grid-cols-1 lg:grid-cols-2 space-y-2  lg:space-y-0 cursor-pointer p-4 lg:gap-8 justify-center
 											rounded-xl
 											${pos?.quant === 0 ? "bg-gray-700 hover:bg-gray-500 " : pos.sklad === "merezhi" ?
-													"bg-yellow-700/20 hover:bg-yellow-700/50  "
-													: pos.sklad === "pogrebi"
-														? "bg-blue-700/20 hover:bg-blue-700/50 "
-														: null} 
+												"bg-yellow-700/20 hover:bg-yellow-700/50  "
+												: pos.sklad === "pogrebi"
+													? "bg-blue-700/20 hover:bg-blue-700/50 "
+													: null} 
 											transition ease-in-out duration-300`}
-											onClick={() => {
-												setShowModalUpdateAsk(true);
-												setSelectedPos(pos)
-												setFinalValuePosBoxes(pos?.boxes)
-												setFinalValuePosQuant(pos?.quant)
-												setAskValuePosBoxes(0);
-												setAskValuePosQuant(0);
-												setSelectedPosPalletTitle(pallets?.find((pallet) => pallet._id === pos?.pallet)?.title)
+										onClick={() => {
+											setShowModalUpdateAsk(true);
+											setSelectedPos(pos)
+											setFinalValuePosBoxes(pos?.boxes)
+											setFinalValuePosQuant(pos?.quant)
+											setAskValuePosBoxes(0);
+											setAskValuePosQuant(0);
+											setSelectedPosPalletTitle(pallets?.find((pallet) => pallet._id === pos?.pallet)?.title)
+										}
+
+										}
+									>
+
+
+
+										<CardBlock
+											className={` flex justify-center  lg:justify-start  font-bold    `
 											}
 
-											}
 										>
 
-
-
-											<CardBlock
-												className={` flex justify-center  lg:justify-start  font-bold    `
-												}
-
+											<TextBlock
+												className=" text-2xl"
 											>
-
-												<TextBlock
-													className=" text-2xl"
-												>
-													<LiaPalletSolid />
-												</TextBlock>
+												<LiaPalletSolid />
+											</TextBlock>
 
 
-												<TextBlock
-													className="grid place-content-center text-2xl"
-												>
-													{pos.palletTitle}
-												</TextBlock>
-
-											</CardBlock>
-
-
-
-
-											<CardBlock
-												className="  grid grid-cols-2  lg:justify-items-start p-1  "
+											<TextBlock
+												className="grid place-content-center text-2xl"
 											>
-
-												<CardBlock
-													className="flex justify-center space-x-2"
-												>
-													<TextBlock
-														className="text-amber-100  text-xl">
-														<BsBoxSeam />
-													</TextBlock>
-													<TextBlock
-														className="text-amber-100 font-bold text-xl "
-													>
-														{pos?.boxes}
-													</TextBlock>
-												</CardBlock>
-
-
-												<CardBlock
-													className="flex justify-center  space-x-2"
-												>
-													<TextBlock
-														className="text-sky-100  text-xl">
-														<BsBalloon />
-													</TextBlock>
-													<TextBlock
-														className="text-sky-100  font-bold text-xl "
-													>
-
-														{pos?.quant}
-													</TextBlock>
-												</CardBlock>
-
-											</CardBlock>
-
+												{pos.palletTitle}
+											</TextBlock>
 
 										</CardBlock>
 
-										)}
+
+
+
+										<CardBlock
+											className="  grid grid-cols-2  lg:justify-items-start p-1  "
+										>
+
+											<CardBlock
+												className="flex justify-center space-x-2"
+											>
+												<TextBlock
+													className="text-amber-100  text-xl">
+													<BsBoxSeam />
+												</TextBlock>
+												<TextBlock
+													className="text-amber-100 font-bold text-xl "
+												>
+													{pos?.boxes}
+												</TextBlock>
+											</CardBlock>
+
+
+											<CardBlock
+												className="flex justify-center  space-x-2"
+											>
+												<TextBlock
+													className="text-sky-100  text-xl">
+													<BsBalloon />
+												</TextBlock>
+												<TextBlock
+													className="text-sky-100  font-bold text-xl "
+												>
+
+													{pos?.quant}
+												</TextBlock>
+											</CardBlock>
+
+										</CardBlock>
+
+
+									</CardBlock>
+
+									)}
 
 
 
