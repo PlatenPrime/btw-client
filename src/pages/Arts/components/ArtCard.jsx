@@ -103,18 +103,20 @@ export default function ArtCard(
 						className="grid grid-colums-1 lg:grid-cols-2 gap-2"
 					>
 						<TextBlock
-							className="lg:col-span-2  text-xl bg-gradient-to-b from-stone-500 to-stone-700/50   p-1 rounded-lg items-center">
-							<FaWarehouse size={24} /> Склад: {" "} {posesWithArtikul?.reduce((a, b) => a + parseInt(b.quant), 0)}
+							className="lg:col-span-2 space-x-2 text-xl bg-gradient-to-b from-stone-500 to-stone-700/50   p-1 rounded-lg items-center">
+							<FaWarehouse size={24} />
+							<span> Склад: {" "} {posesWithArtikul?.reduce((a, b) => a + parseInt(b.quant), 0)}</span>
 						</TextBlock>
 
 						<TextBlock
-							className=" text-xl bg-gradient-to-b from-emerald-500 to-emerald-700/50   p-1 rounded-lg items-center">
-							<FaWarehouse size={24} />  Погреби: {" "} {posesWithArtikul?.filter((pos) => pos.sklad === "pogrebi").reduce((a, b) => a + parseInt(b.quant), 0)}
+							className="space-x-2 text-xl bg-gradient-to-b from-emerald-500 to-emerald-700/50   p-1 rounded-lg items-center">
+							<FaWarehouse size={24} />
+							<span> Погреби: {" "} {posesWithArtikul?.filter((pos) => pos.sklad === "pogrebi").reduce((a, b) => a + parseInt(b.quant), 0)}</span>
 						</TextBlock>
 
 						<TextBlock
-							className=" text-xl bg-gradient-to-b from-yellow-500 to-yellow-700/50   p-1 rounded-lg items-center">
-							<FaWarehouse size={24} />  Мережі: {" "} {posesWithArtikul?.filter((pos) => pos.sklad === "merezhi").reduce((a, b) => a + parseInt(b.quant), 0)}
+							className="space-x-2 text-xl bg-gradient-to-b from-yellow-500 to-yellow-700/50   p-1 rounded-lg items-center">
+							<FaWarehouse size={24} /> <span> Мережі: {" "} {posesWithArtikul?.filter((pos) => pos.sklad === "merezhi").reduce((a, b) => a + parseInt(b.quant), 0)}</span>
 						</TextBlock>
 
 					</CardBlock>

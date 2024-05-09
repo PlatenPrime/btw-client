@@ -2,6 +2,7 @@ import React from 'react'
 import { CardBlock, TextBlock } from '../../../components'
 import { PalletIcon } from '../../../components/UI/Icons'
 import { BsBalloon, BsBoxSeam } from 'react-icons/bs'
+import { FaWarehouse } from 'react-icons/fa6'
 
 export default function ArtPalletBage({
     pos,
@@ -12,22 +13,27 @@ export default function ArtPalletBage({
     return (
         <CardBlock
             className={`
-										grid grid-cols-1 lg:grid-cols-2 space-y-2  lg:space-y-0 cursor-pointer p-4 lg:gap-8 justify-center rounded-xl
-										${pos?.quant === 0 ? "bg-gray-700 hover:bg-gray-500 " : pos.sklad === "merezhi" ?
-                    "bg-yellow-700/20 hover:bg-yellow-700/50  "
-                    : pos.sklad === "pogrebi"
-                        ? "bg-blue-700/20 hover:bg-blue-700/50 "
-                        : null} 
-										transition ease-in-out duration-300`}
-
-
+        grid grid-cols-1 lg:grid-cols-3 space-y-2 lg:space-y-0 cursor-pointer p-4 lg:gap-8 justify-center rounded-xl
+         
+        transition ease-in-out duration-500
+    
+        ${pos?.quant === 0
+                    ?
+                    "bg-gradient-to-b from-gray-500/50 to-gray-700/50 hover:bg-gray-500/50  "
+                    :
+                    pos.sklad === "merezhi" ? "bg-gradient-to-b from-yellow-500/80 to-yellow-700/50 hover:bg-yellow-500/50  " :
+                        pos.sklad === "pogrebi" ? "bg-gradient-to-b from-emerald-500/80 to-emerald-700/50 hover:bg-emerald-500/50   " :
+                            ""
+                }
+    `}
 
             onClick={onClick}
-          
             key={pos._id}
         >
+
+
             <TextBlock
-                className="lg:w-1/2 flex  lg:justify-start text-2xl"
+                className="flex lg:justify-start   text-2xl"
             >
                 <PalletIcon />
                 <TextBlock>
@@ -36,6 +42,32 @@ export default function ArtPalletBage({
             </TextBlock>
 
 
+
+
+            <CardBlock
+                className=" grid grid-cols-2"
+            >
+
+                <TextBlock
+                    className=" space-x-2"
+                >
+                    <FaWarehouse size={24} />
+                    <span>{pos?.sklad === "pogrebi" ? "Погреби" : pos?.sklad === "merezhi" ? "Мережі" : ""}</span>
+                </TextBlock>
+
+                <TextBlock>
+                    {pos?.date}
+
+                </TextBlock>
+
+                {pos?.com && <TextBlock
+                    className="col-span-2 italic"
+                >
+                    {pos?.com}
+                </TextBlock>
+                }
+
+            </CardBlock>
 
 
 
@@ -48,11 +80,11 @@ export default function ArtPalletBage({
                     className="flex justify-center w-1/2 space-x-2"
                 >
                     <TextBlock
-                        className="text-amber-100  text-xl">
-                        <BsBoxSeam />
+                        className="  text-xl">
+                        <BsBoxSeam size={12} />
                     </TextBlock>
                     <TextBlock
-                        className="text-amber-100 font-bold text-xl rounded"
+                        className=" font-bold text-xl rounded"
                     >
                         {pos?.boxes}
                     </TextBlock>
@@ -63,11 +95,11 @@ export default function ArtPalletBage({
                     className="flex justify-center w-1/2 space-x-2"
                 >
                     <TextBlock
-                        className="text-sky-100  text-xl">
-                        <BsBalloon />
+                        className="  text-xl">
+                        <BsBalloon size={12} />
                     </TextBlock>
                     <TextBlock
-                        className="text-sky-100  font-bold text-xl  rounded"
+                        className="  font-bold text-xl  rounded"
                     >
 
                         {pos?.quant}
