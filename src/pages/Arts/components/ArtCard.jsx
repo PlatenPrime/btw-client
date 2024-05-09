@@ -64,12 +64,12 @@ export default function ArtCard(
 					<CardBlock
 						className="grid grid-colums-1 lg:grid-cols-2 gap-2"
 					>
-						<TextBlock className="  text-xl bg-orange-500/50   p-1 rounded-lg " >
+						<TextBlock className="  text-xl bg-gradient-to-b from-orange-500 to-orange-700/50  p-1 rounded-lg " >
 							<VscLocation size={24} />{artikul?.zone}
 						</TextBlock>
 
 						<TextBlock
-							className=" text-xl bg-green-500/50  p-1 rounded-lg">
+							className=" text-xl bg-gradient-to-b from-green-500 to-green-700/50  p-1 rounded-lg">
 							<PiCurrencyDollarBold size={24} /> {artPrice}
 						</TextBlock>
 
@@ -83,15 +83,15 @@ export default function ArtCard(
 					>
 
 						<TextBlock
-							className="text-xl bg-blue-500/50   p-1 rounded-lg"
+							className="text-xl bg-gradient-to-b from-blue-500 to-blue-700/50  p-1 rounded-lg"
 						>
-							<MdSunnySnowing size={24}  /> {" "}  {remains ? remains[title] : ""}
+							<MdSunnySnowing size={24} /> {" "}  {remains ? remains[title] : ""}
 						</TextBlock>
 
 						<TextBlock
-							className="text-xl bg-lime-500/50   p-1 rounded-lg"
+							className="text-xl bg-gradient-to-b from-lime-500 to-lime-700/50   p-1 rounded-lg"
 						>
-							<MdSunny size={24}  /> {" "}	{ostatok}
+							<MdSunny size={24} /> {" "}	{ostatok}
 						</TextBlock>
 
 					</CardBlock>
@@ -103,18 +103,18 @@ export default function ArtCard(
 						className="grid grid-colums-1 lg:grid-cols-2 gap-2"
 					>
 						<TextBlock
-							className="lg:col-span-2  text-xl bg-stone-500/50   p-1 rounded-lg items-center">
-							<FaWarehouse size={24}  /> Склад: {" "} {posesWithArtikul?.reduce((a, b) => a + parseInt(b.quant), 0)}
+							className="lg:col-span-2  text-xl bg-gradient-to-b from-stone-500 to-stone-700/50   p-1 rounded-lg items-center">
+							<FaWarehouse size={24} /> Склад: {" "} {posesWithArtikul?.reduce((a, b) => a + parseInt(b.quant), 0)}
 						</TextBlock>
 
 						<TextBlock
-							className=" text-xl bg-emerald-500/50   p-1 rounded-lg items-center">
-							<FaWarehouse size={24}  />  Погреби: {" "} {posesWithArtikul?.filter((pos) => pos.sklad === "pogrebi").reduce((a, b) => a + parseInt(b.quant), 0)}
+							className=" text-xl bg-gradient-to-b from-emerald-500 to-emerald-700/50   p-1 rounded-lg items-center">
+							<FaWarehouse size={24} />  Погреби: {" "} {posesWithArtikul?.filter((pos) => pos.sklad === "pogrebi").reduce((a, b) => a + parseInt(b.quant), 0)}
 						</TextBlock>
 
 						<TextBlock
-							className=" text-xl bg-yellow-500/50   p-1 rounded-lg items-center">
-							<FaWarehouse size={24}  />  Мережі: {" "} {posesWithArtikul?.filter((pos) => pos.sklad === "merezhi").reduce((a, b) => a + parseInt(b.quant), 0)}
+							className=" text-xl bg-gradient-to-b from-yellow-500 to-yellow-700/50   p-1 rounded-lg items-center">
+							<FaWarehouse size={24} />  Мережі: {" "} {posesWithArtikul?.filter((pos) => pos.sklad === "merezhi").reduce((a, b) => a + parseInt(b.quant), 0)}
 						</TextBlock>
 
 					</CardBlock>
