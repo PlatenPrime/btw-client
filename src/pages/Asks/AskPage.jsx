@@ -16,7 +16,8 @@ import UpdateAskModal from './components/modals/ModalUpdateAsk';
 
 import { sendMessageToUser } from '../../utils/sendMessagesTelegram'
 import useFetchArts from '../../hooks/useFetchArts';
-import ArtPalletBage from '../Arts/components/ArtPalletBage';
+
+import PosesWithArtikulContainer from '../Arts/components/PosesWithArtikulContainer';
 
 
 
@@ -471,51 +472,29 @@ export default function AskPage() {
 					</ContainerBlock>
 
 
-					<ContainerBlock
-						className=" space-y-2"
+
+					<PosesWithArtikulContainer
+						isLoadingPoses={isLoadingPoses}
+						posesWithArtikul={posesWithArtikul}
 					>
-
-						{isLoadingPoses ?
-							<Spinner color="rgb(234 179 8 )" />
-							:
-							posesWithArtikul.length > 0 ?
-								<CardBlock
-									className="flex flex-col space-y-4 w-full"
-								>
-
-									{posesWithArtikul?.map((pos) =>
-
-										<ArtPalletBage
-											key={pos._id}
-											pos={pos}
-											onClick={() => {
-												setShowModalUpdateAsk(true)
-												setSelectedPos(pos)
-												setFinalValuePosBoxes(pos?.boxes)
-												setFinalValuePosQuant(pos?.quant)
-												setAskValuePosBoxes(0);
-												setAskValuePosQuant(0);
-												setSelectedPosPalletTitle(pallets?.find((pallet) => pallet._id === pos?.pallet)?.title)
-											}}
-										/>
-
-									)}
+						{posesWithArtikul?.map((pos) =>
+							<PosesWithArtikulContainer.PosWithArtikulBage
+								key={pos._id}
+								pos={pos}
+								onClick={() => {
+									setShowModalUpdateAsk(true)
+									setSelectedPos(pos)
+									setFinalValuePosBoxes(pos?.boxes)
+									setFinalValuePosQuant(pos?.quant)
+									setAskValuePosBoxes(0);
+									setAskValuePosQuant(0);
+									setSelectedPosPalletTitle(pallets?.find((pallet) => pallet._id === pos?.pallet)?.title)
+								}}
+							/>
+						)}
+					</PosesWithArtikulContainer>
 
 
-
-
-								</CardBlock>
-								:
-								<TextBlock
-									className="text-amber-500 text-xl"
-								>
-									Позиції немає на запасах
-								</TextBlock>
-
-
-						}
-
-					</ContainerBlock>
 
 
 				</>

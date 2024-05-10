@@ -6,7 +6,6 @@ import { ButtonBlock, ButtonGroup, CardBlock, ContainerBlock, HeaderBlock, PageB
 import usePosesStore from "../Stocks/stores/posesStore";
 
 import ArtCard from "./components/ArtCard";
-import ArtPalletBage from "./components/ArtPalletBage";
 
 import useFetchRemains from "../../hooks/useFetchRemains";
 import useFetchArts from "../../hooks/useFetchArts";
@@ -15,6 +14,7 @@ import useFetchPosesByArtikul from "./hooks/useFetchPosesByArtikul";
 import useFetchUsers from "../Auth/hooks/useFetchUsers";
 
 import ModalCreateAsk from "../Asks/components/modals/ModalCreateAsk";
+import PosesWithArtikulContainer from "./components/PosesWithArtikulContainer";
 
 
 
@@ -55,9 +55,6 @@ export default function ArtPage() {
 			</PageBTW>
 		)
 	}
-
-
-
 
 
 	return (
@@ -104,45 +101,19 @@ export default function ArtPage() {
 			/>
 
 
-
-
-
-			<ContainerBlock
-				className="space-y-2 "
+			<PosesWithArtikulContainer
+				isLoadingPoses={isLoadingPoses}
+				posesWithArtikul={posesWithArtikul}
 			>
-
-				{isLoadingPoses
-					?
-					<Spinner color="rgb(245 158 11)" />
-
-					:
-
-					posesWithArtikul.length > 0 ?
-
-
-						<CardBlock
-							className="flex flex-col space-y-2"
-						>
-
-							{posesWithArtikul?.map((pos) =>
+				{posesWithArtikul?.map((pos) =>
+					<PosesWithArtikulContainer.PosWithArtikulBage
+						pos={pos}
+						onClick={() => navigate(`/pallets/${pos?.pallet}`)}
+					/>
+				)}
+			</PosesWithArtikulContainer>
 
 
-								<ArtPalletBage
-
-									pos={pos}
-									onClick={() => navigate(`/pallets/${pos?.pallet}`)}
-								/>
-							)}
-						</CardBlock>
-						:
-						<TextBlock
-							className="text-amber-100 text-xl italic"
-						>
-							Позиції немає на запасах
-						</TextBlock>
-				}
-
-			</ContainerBlock>
 
 
 		</PageBTW>
