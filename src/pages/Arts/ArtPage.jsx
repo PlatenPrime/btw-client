@@ -79,7 +79,7 @@ export default function ArtPage() {
 
 				<ButtonGroup.Actions>
 					<ButtonBlock
-						className="pink-b"
+						className="indigo-b"
 						onClick={() => {
 							setShowModalCreateAsk(true)
 						}}

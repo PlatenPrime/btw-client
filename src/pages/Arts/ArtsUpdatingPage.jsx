@@ -1,9 +1,7 @@
 import React, { useState } from 'react'
-import { ButtonBlock, ButtonGroup, CardBlock, HeaderBlock, InputBlock, PageBTW, TextBlock } from '../../components'
-import { Link } from 'react-router-dom'
+import { ButtonBlock, ButtonGroup, CardBlock, ContainerBlock, HeaderBlock, InputBlock, PageBTW, TextBlock } from '../../components'
 import axios from '../../utils/axios';
 import { excelToJSONArts } from '../../utils/importExcel';
-import { BackIcon } from "../../components/UI/Icons"
 import useFetchArts from '../../hooks/useFetchArts';
 
 
@@ -34,8 +32,6 @@ export default function ArtsUpdatingPage() {
 
 
 	const handleChangeExcelInput = async (e) => {
-
-
 		try {
 			const json = await excelToJSONArts(e);
 			setArts(json)
@@ -50,18 +46,10 @@ export default function ArtsUpdatingPage() {
 
 
 
-
-
-
-
-
 	async function createOrUpdateArt(art) {
 
 		try {
-
 			await axios.post(`arts/update`, { ...art });
-
-
 		} catch (error) {
 			console.log(error)
 		}
@@ -70,12 +58,8 @@ export default function ArtsUpdatingPage() {
 
 
 	async function handleUploadingArts() {
-
-
 		try {
-
 			if (!arts) return
-
 
 			let interval = setInterval(() => {
 				setCurrentArt(currentArt => {
@@ -97,13 +81,7 @@ export default function ArtsUpdatingPage() {
 		} finally {
 			localStorage.removeItem('artsData');
 		}
-
-
-
-
 	}
-
-
 
 
 
@@ -114,37 +92,18 @@ export default function ArtsUpdatingPage() {
 		>
 
 			<HeaderBlock
-				className="border border-emerald-500 shadow-md shadow-emerald-500 "
+				className="bg-sky-500  shadow-2xl shadow-sky-500 "
 			>
+
 				<TextBlock className="">
 					Оновлення артикулів
 				</TextBlock>
 			</HeaderBlock>
 
 
-			<CardBlock
+			<ContainerBlock
 				className="p-1  min-h-screen space-y-4"
 			>
-
-				<ButtonGroup>
-					<ButtonGroup.Actions></ButtonGroup.Actions>
-					<ButtonGroup.Navigation>
-						<ButtonBlock
-							className="sky-b "
-						>
-							<Link
-								to="/arts"
-								className='flex'
-							>
-								<BackIcon />
-								Артикули
-							</Link>
-						</ButtonBlock>
-					</ButtonGroup.Navigation>
-				</ButtonGroup>
-
-				<CardBlock>
-
 
 					<CardBlock className=" flex flex-col justify-center items-center space-y-2  p-6 border border-green-500 rounded bg-green-500/10 ">
 
@@ -215,10 +174,7 @@ export default function ArtsUpdatingPage() {
 					}
 
 
-				</CardBlock>
-
-
-			</CardBlock>
+			</ContainerBlock>
 		</PageBTW>
 	)
 }

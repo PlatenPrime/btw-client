@@ -70,7 +70,7 @@ export default function ArtCard(
 
 						<TextBlock
 							className=" text-xl bg-gradient-to-b from-green-500 to-green-700/50  p-1 rounded-lg">
-							<PiCurrencyDollarBold size={24} /> {artPrice}
+							<PiCurrencyDollarBold size={24} /> {artPrice} грн
 						</TextBlock>
 
 
