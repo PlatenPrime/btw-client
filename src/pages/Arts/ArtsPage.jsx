@@ -29,7 +29,6 @@ export default function ArtsPage() {
 
 	useEffect(() => {
 		setFilteredArts(artsDB)
-
 	}, [artsDB])
 
 
@@ -90,9 +89,6 @@ export default function ArtsPage() {
 				<TextBlock className="">
 					Артикули
 				</TextBlock>
-
-
-
 			</HeaderBlock>
 
 
