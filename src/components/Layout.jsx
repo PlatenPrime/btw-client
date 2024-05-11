@@ -32,7 +32,7 @@ const Layout = ({ children }) => {
 
 
 
-		<div className=' w-full sm:container mx-auto  shadow-sm relative'>
+		<div className=' w-full  shadow-sm relative'>
 
 
 

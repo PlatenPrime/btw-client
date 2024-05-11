@@ -51,14 +51,14 @@ export default function ArtCard(
 			>
 
 				<TextBlock
-					className="text-3xl w-full  p-1  lg:text-center  rounded-xl"
+					className="text-3xl w-full  p-1 bg-gradient-to-b  from-sky-500 to-sky-700/50  rounded-xl"
 				>
 					{artikul?.nameukr}
 				</TextBlock>
 
 
 				<CardBlock
-					className="w-full space-y-2  p-1  rounded-xl"
+					className="w-full space-y-2   rounded-xl"
 				>
 
 					<CardBlock

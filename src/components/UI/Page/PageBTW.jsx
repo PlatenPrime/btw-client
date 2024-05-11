@@ -4,7 +4,7 @@ const PageBTW = ({ children, className }) => {
 
 
 	const style = `
-	PageBTW
+	PageBTW container mx-auto
 	${className}
 `
 
