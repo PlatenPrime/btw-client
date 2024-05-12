@@ -1,10 +1,9 @@
 import React, { useState } from 'react';
 
-import NavbarBTW from './UI/Navbar/NavbarBTW';
-
-
 import SidebarBTW from './UI/Sidebar/SidebarBTW';
 import SidebarMobileBTW from './UI/Sidebar/SidebarMobileBTW';
+
+import useLayoutStore from './layoutStore'
 
 
 
@@ -12,17 +11,11 @@ const Layout = ({ children }) => {
 
 
 
-	const [mobileSide, setMobileSide] = useState(false)
-
-
-	const handlerMobileSide = () => {
-		setMobileSide(prev => !prev)
-
-	}
+	const { showMobileSidebar, setShowMobileSidebar, toggleMobileSidebar } = useLayoutStore()
 
 
 
-	
+
 
 
 
@@ -34,20 +27,12 @@ const Layout = ({ children }) => {
 
 		<div className=' w-full  shadow-sm relative'>
 
-
-
-			{mobileSide && <SidebarMobileBTW onClose={handlerMobileSide} />}
-
-
-
-			<NavbarBTW onClickSide={handlerMobileSide} />
-
-
+			{showMobileSidebar && <SidebarMobileBTW onClose={toggleMobileSidebar} />}
 
 			<div className='flex h-fit w-full justify-center'>
 
 
-				<div className='w-60  xl:w-96  hidden xl:flex'>
+				<div className='w-60  xl:w-fit  hidden xl:flex '>
 
 					<SidebarBTW />
 

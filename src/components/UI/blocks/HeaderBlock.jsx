@@ -1,20 +1,39 @@
-import React from 'react';
+import React, { useState } from 'react';
+import NavbarBTW from '../Navbar/NavbarBTW';
+import useLayoutStore from '../../layoutStore';
+
 
 const HeaderBlock = ({ children, className }) => {
 
 	const style = `
 
-	HeaderBlock 
+	HeaderBlock flex justify-between xl:justify-center items-center
 	
 	${className}
 
 `
 
+	const { toggleMobileSidebar } = useLayoutStore()
+
+
+
+
 
 	return (
 
+
+
+
 		<div className={style} >
+
+
+
+			<NavbarBTW  onClickSide={() => toggleMobileSidebar()} />
+
 			{children}
+			<div
+				className="xl:hidden"
+			></div>
 		</div>
 	);
 };

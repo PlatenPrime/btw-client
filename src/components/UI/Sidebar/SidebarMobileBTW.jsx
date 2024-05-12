@@ -68,7 +68,7 @@ const SidebarMobileBTW = ({ onClose }) => {
 				onClick={(e) => e.stopPropagation()}
 				className='
 			flex flex-col justify-start items-center space-y-2 p-4
-			h-full min-h-screen w-1/2
+			h-full min-h-screen w-4/5 md:w-2/3 lg:w-1/2 
 			bg-black bg-opacity-90 hover:bg-black
 			z-1000
 			'>
@@ -257,7 +257,7 @@ const SidebarMobileBTW = ({ onClose }) => {
 				{
 					user ?
 						<ButtonBlock
-							className="cancel-c px-8 text-4xl  "
+							className="red-b-n px-8 text-2xl  "
 							onClick={() => {
 								onClose()
 								handleLogout();
