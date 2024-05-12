@@ -1,9 +1,9 @@
 import React from 'react'
 import { CardBlock, InputBlock, ModalWrapper, TextBlock, ButtonBlock, Spinner } from '../../../../components'
-import { LiaPalletSolid } from 'react-icons/lia'
+
 import { BsBalloon, BsBoxSeam } from 'react-icons/bs'
 
-export default function UpdateASkModal(
+export default function ModalUpdateAsk(
 
 	{
 		showModalUpdateAsk,
@@ -22,6 +22,11 @@ export default function UpdateASkModal(
 	}
 
 ) {
+
+
+
+
+
 
 
 

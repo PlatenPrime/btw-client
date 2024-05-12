@@ -26,7 +26,7 @@ const useFetchAsks = () => {
         return () => {
             // Cleanup function if needed
         };
-    }, []); // Empty dependency array to run effect only once
+    }, [getAllAsks]); // Empty dependency array to run effect only once
 
     return { isAsksLoading };
 };

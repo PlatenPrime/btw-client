@@ -3,6 +3,7 @@ import axios from '../../../utils/axios';
 
 const useAskStore = create((set) => ({
 	asks: [],
+	ask: null,
 
 	createAsk: async (askData) => {
 		try {
@@ -46,6 +47,7 @@ const useAskStore = create((set) => ({
 
 			if (response.status === 200) {
 				const ask = response.data;
+				set({ ask: ask });
 				return ask;
 			} else {
 				throw new Error('Ошибка получения запроса на снятие по ID');
@@ -66,6 +68,7 @@ const useAskStore = create((set) => ({
 						a._id === updatedAsk._id ? updatedAsk : a
 					),
 				}));
+				set({ ask: updatedAsk});
 				return updatedAsk;
 			} else {
 				throw new Error('Ошибка обновления запроса на снятие по ID');
