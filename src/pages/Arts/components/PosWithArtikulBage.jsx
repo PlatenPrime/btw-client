@@ -19,10 +19,10 @@ export default function ArtPalletBage({
     
         ${pos?.quant === 0
                     ?
-                    "bg-gradient-to-b from-gray-500/50 to-gray-700/50 hover:bg-gray-500/50  hover:shadow-lg hover:shadow-gray-500   "
+                    "bg-gradient-to-b from-gray-500/80 to-gray-700/50 hover:bg-gray-900/50  hover:shadow-lg hover:shadow-gray-500   "
                     :
-                    pos.sklad === "merezhi" ? "bg-gradient-to-b from-yellow-500/50 to-yellow-700/50 hover:bg-yellow-500 hover:shadow-lg hover:shadow-yellow-500  " :
-                        pos.sklad === "pogrebi" ? "bg-gradient-to-b from-emerald-500/50 to-emerald-700/50 hover:bg-emerald-500/50  hover:shadow-lg hover:shadow-emerald-500  " :
+                    pos.sklad === "merezhi" ? "bg-gradient-to-b from-yellow-500/80 to-yellow-900/50 hover:bg-yellow-500 hover:shadow-lg hover:shadow-yellow-500  " :
+                        pos.sklad === "pogrebi" ? "bg-gradient-to-b from-emerald-500/80 to-emerald-900/50 hover:bg-emerald-500/50  hover:shadow-lg hover:shadow-emerald-500  " :
                             ""
                 }
     `}

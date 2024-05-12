@@ -1,13 +1,13 @@
 import React from 'react'
-import CardBlock from './blocks/CardBlock'
+import ContainerBlock from './blocks/ContainerBlock'
 
 export default function ButtonGroup({ children }) {
 	return (
-		<CardBlock
-			className="grid grid:cols-1 lg:grid-cols-2 p-2 gap-2 bg-slate-800/50 rounded-xl text-sm"
+		<ContainerBlock
+			className="bg-gradient-to-b from-slate-700 to-slate-900/50 grid grid:cols-1 lg:grid-cols-2 p-2 gap-2  rounded-xl text-sm"
 		>
 			{children}
-		</CardBlock>
+		</ContainerBlock>
 	)
 }
 

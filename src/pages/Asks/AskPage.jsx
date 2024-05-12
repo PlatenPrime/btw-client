@@ -17,6 +17,7 @@ import PosesWithArtikulContainer from '../Arts/components/PosesWithArtikulContai
 import useFetchAsk from './hooks/useFetchAsk';
 import useFetchPosesByArtikul from '../Arts/hooks/useFetchPosesByArtikul';
 import AskActions from './components/AskActions'
+import AskInfo from './components/AskInfo'
 
 
 
@@ -301,6 +302,11 @@ export default function AskPage() {
 				isUpdatingPos={isUpdatingPos}
 			/>
 
+
+			<AskInfo
+				ask={ask}
+			/>
+
 			<ArtCard
 				artikul={artikul}
 				remains={remains}
@@ -317,7 +323,7 @@ export default function AskPage() {
 			/>
 
 
-	
+
 
 			<PosesWithArtikulContainer
 				isLoadingPoses={isLoadingPoses}

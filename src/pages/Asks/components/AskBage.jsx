@@ -13,9 +13,9 @@ export default function AskBage({
 
 
     const styles = {
-        "new": "border-indigo-500   hover:shadow-indigo-500 hover:bg-indigo-500  from-indigo-500/50 to-indigo-700/50",
-        "solved": "border-green-500   hover:shadow-green-500 hover:bg-green-500  from-green-500/50 to-green-700/50",
-        "fail": "border-rose-500  hover:shadow-rose-500 hover:bg-rose-500   from-rose-500/50 to-rose-700/50 "
+        "new": "border-indigo-500   hover:shadow-indigo-500 hover:bg-indigo-500  from-indigo-500/50 to-indigo-900/50",
+        "solved": "border-green-500   hover:shadow-green-500 hover:bg-green-500  from-green-500/50 to-green-900/50",
+        "fail": "border-rose-500  hover:shadow-rose-500 hover:bg-rose-500   from-rose-500/50 to-rose-900/50 "
     }
 
 
@@ -38,7 +38,7 @@ export default function AskBage({
                     grid overflow-auto grid-cols-1 lg:grid-cols-3 lg:text-2xl text-indigo-100 
                     transition ease-in-out duration-500
                     rounded-lg cursor-pointer
-                    hover:shadow-2xl bg-gradient-to-b
+                    hover:shadow-lg bg-gradient-to-b
                     ${styles[ask?.status]}
                     `}
         >
@@ -127,14 +127,14 @@ export default function AskBage({
                     <TextBlock
                         className="text-sm italic "
                     >
-
+                        < BsQuestionCircle size={24} />
                         {new Date(ask?.createdAt).toLocaleString('uk-UA', options)}
                     </TextBlock>
 
                     <TextBlock
                         className="text-base items-center font-bold"
                     >
-                        < BsQuestionCircle size={24} />
+
                         {users?.find(user => user._id === ask?.asker)?.fullname}
                     </TextBlock>
 
@@ -148,14 +148,14 @@ export default function AskBage({
                         <TextBlock
                             className="text-sm italic "
                         >
-
+                            <FaRegCircleCheck size={24} />
                             {new Date(ask?.updatedAt).toLocaleString('uk-UA', options)}
                         </TextBlock>
 
                         <TextBlock
                             className="text-base items-center font-bold"
                         >
-                            <FaRegCircleCheck size={24} />	{users?.find(user => user._id === ask?.solver)?.fullname}
+                            {users?.find(user => user._id === ask?.solver)?.fullname}
                         </TextBlock>
                     </CardBlock>
                 }

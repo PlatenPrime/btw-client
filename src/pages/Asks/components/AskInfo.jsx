@@ -1,0 +1,97 @@
+import React from 'react'
+import { CardBlock, ContainerBlock, TextBlock } from '../../../components'
+import { BsBalloon, BsQuestionCircle } from 'react-icons/bs'
+import useFetchUsers from '../../Auth/hooks/useFetchUsers';
+import useAuthStore from '../../Auth/authStore';
+import { FaRegCircleCheck } from 'react-icons/fa6';
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+const options = {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric',
+    hour: '2-digit',
+    minute: '2-digit',
+    second: '2-digit',
+    timeZone: 'Europe/Kiev'
+};
+
+export default function AskInfo({
+    ask
+}) {
+
+
+    const { isLoadingUsers } = useFetchUsers()
+    const { users } = useAuthStore()
+
+
+
+
+
+
+
+    return (
+        <ContainerBlock
+        className="bg-gradient-to-b from-indigo-500 to-indigo-900/50"
+        >
+
+
+
+            <CardBlock
+                className="flex flex-col justify-center items-center"
+            >
+                {ask?.quant ?
+                    <TextBlock
+                        className="text-xl font-bold"
+                    >
+                        <BsBalloon size={24} />	{ask?.quant}
+                    </TextBlock>
+                    :
+                    null
+                }
+
+                {ask?.com ?
+                    <TextBlock
+                        className="text-base italic"
+                    >
+                        {ask?.com}
+                    </TextBlock>
+                    :
+                    null
+                }
+            </CardBlock>
+
+
+            <CardBlock
+                className="flex  gap-2 justify-center items-center lg:items-end p-2"
+            >
+                <TextBlock
+                    className="text-sm italic "
+                >
+                    < BsQuestionCircle size={24} />
+                    {new Date(ask?.createdAt).toLocaleString('uk-UA', options)}
+                </TextBlock>
+
+                <TextBlock
+                    className="text-base items-center font-bold"
+                >
+                    {users?.find(user => user._id === ask?.asker)?.fullname}
+                </TextBlock>
+
+            </CardBlock>
+
+        </ContainerBlock>
+    )
+}
