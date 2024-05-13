@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import usePalletStore from '../Pallets/stores/palletsStore';
-import usePosesStore from './stores/posesStore';
+import usePosesStore from '../Pallets/stores/posesStore';
 import { useRowStore } from '../Rows/stores/rowsStore';
 import { ButtonBlock, CardBlock, HeaderBlock, PageBTW, Spinner, TextBlock, ContainerBlock } from '../../components';
 import { toast } from 'react-toastify';

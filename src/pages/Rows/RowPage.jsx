@@ -11,22 +11,16 @@ import PalletBage from './components/PalletBage';
 
 import { useRowStore } from './stores/rowsStore';
 import usePalletStore from '../Pallets/stores/palletsStore';
-import usePosesStore from '../Stocks/stores/posesStore';
+import usePosesStore from '../Pallets/stores/posesStore';
 import useFetchRowById from './hooks/useFetchRowById';
 
 
 export default function RowPage() {
 
-
-
 	const { row, updateRowById,   deleteRowById} = useRowStore();
-
-
 
 	const {getRowPallets, pallets, createPallet } = usePalletStore();
 	
-
-
 
 	const { allPoses, getAllPoses } = usePosesStore()
 

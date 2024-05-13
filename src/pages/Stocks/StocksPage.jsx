@@ -6,7 +6,7 @@ import { GoSearch } from "react-icons/go";
 
 
 
-import usePosesStore from "./stores/posesStore"
+import usePosesStore from "../Pallets/stores/posesStore"
 import StockBage from './StockBage';
 import { exportToExcelPoses } from '../../utils/exportExcel';
 import { SiMicrosoftexcel } from 'react-icons/si';

@@ -3,7 +3,7 @@ import { useNavigate, useParams } from "react-router-dom";
 
 import { ButtonBlock, ButtonGroup, CardBlock, ContainerBlock, HeaderBlock, PageBTW, Spinner, TextBlock } from "../../components";
 
-import usePosesStore from "../Stocks/stores/posesStore";
+import usePosesStore from "../Pallets/stores/posesStore";
 
 import ArtCard from "./components/ArtCard";
 

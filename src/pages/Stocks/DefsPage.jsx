@@ -3,7 +3,7 @@ import { ButtonBlock, ButtonGroup, CardBlock, ContainerBlock, HeaderBlock, Image
 import { Link, useNavigate } from 'react-router-dom'
 import useFetchRemains from '../../hooks/useFetchRemains'
 import useFetchArts from '../../hooks/useFetchArts'
-import usePosesStore from './stores/posesStore'
+import usePosesStore from '../Pallets/stores/posesStore'
 import useAskStore from '../Asks/stores/asksStore'
 import useAuthStore from '../Auth/authStore'
 import { toast } from 'react-toastify'
