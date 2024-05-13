@@ -4,7 +4,7 @@ import ContainerBlock from './blocks/ContainerBlock'
 export default function ButtonGroup({ children }) {
 	return (
 		<ContainerBlock
-			className="bg-gradient-to-b from-slate-700 to-slate-900/50 grid grid:cols-1 lg:grid-cols-2 p-2 gap-2  rounded-xl text-sm"
+			className="bg-gradient-to-b from-slate-700/50 to-slate-800/50 grid grid:cols-1 lg:grid-cols-2 p-2 gap-2  rounded-xl text-sm"
 		>
 			{children}
 		</ContainerBlock>
