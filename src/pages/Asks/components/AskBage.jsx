@@ -35,7 +35,7 @@ export default function AskBage({
             key={ask?._id}
             onClick={onClick}
             className={`
-                    grid overflow-auto grid-cols-1 lg:grid-cols-3 lg:text-2xl text-indigo-100 
+                    grid overflow-auto grid-cols-1 lg:grid-cols-5 lg:text-2xl text-indigo-100 
                     transition ease-in-out duration-500
                     rounded-lg cursor-pointer
                     hover:shadow-lg bg-gradient-to-b
@@ -44,12 +44,12 @@ export default function AskBage({
         >
 
             <CardBlock
-                className=" grid grid-cols-3 "
+                className="lg:col-span-3 grid grid-cols-4 "
             >
 
 
                 <CardBlock
-                    className="col-span-1 flex justify-center items-center bg-white  "
+                    className="col-span-1 flex justify-center items-center bg-white shadow-md shadow-white  "
                 >
 
                     <ImageArt size={100} artikul={ask?.artikul} />
@@ -58,7 +58,7 @@ export default function AskBage({
 
 
                 <CardBlock
-                    className=" col-span-2 flex flex-col items-center justify-center px-2 "
+                    className=" col-span-3 flex flex-col items-center justify-center px-2 "
                 >
 
                     <TextBlock

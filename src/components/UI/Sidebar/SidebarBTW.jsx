@@ -66,15 +66,15 @@ p-4
 
 
 				<CardBlock
-					className=" rounded-xl hover:bg-sky-500/20"
+					className=" rounded-xl hover:bg-sky-500/10  group"
 				>
 
 
 					<NavLink
 						to={"/"}
 					>
-						<CardBlock className='flex items-center justify-center w-full h-16 text-5xl text-sky-500  
-				hover:text-white
+						<CardBlock className='flex items-center justify-center w-full h-16 text-5xl text-sky-500 font-bold group-hover:text-sky-100
+				
 				'>
 
 							BTW
