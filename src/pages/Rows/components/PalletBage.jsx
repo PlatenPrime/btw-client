@@ -32,9 +32,9 @@ grid grid-cols-1 lg:grid-cols-3
 
 
 				   ${boxes ?
-					"bg-amber-500/40  hover:bg-amber-500/90 hover:shadow-lg hover:shadow-amber-500"
+					"bg-gradient-to-b from-amber-500/80 to-amber-900/50  hover:bg-amber-500 hover:shadow-lg hover:shadow-amber-500"
 					:
-					"bg-slate-700/50  hover:bg-slate-500 hover:shadow-lg hover:shadow-slate-500"
+					"bg-gradient-to-b from-slate-500/80 to-slate-700/50  hover:bg-slate-500 hover:shadow-lg hover:shadow-slate-500"
 
 				}
 				

@@ -327,11 +327,7 @@ const {isRowLoading} = useFetchRowById(id)
 					<ContainerBlock
 						className="space-y-4  "
 					>
-						<TextBlock
-							className="text-3xl text-amber-100 "
-						>
-							Палети
-						</TextBlock>
+						
 
 						{isRowPalletsLoading
 							?
