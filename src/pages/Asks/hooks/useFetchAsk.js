@@ -12,7 +12,7 @@ const useFetchAsk = (id) => {
     const { getAskById } = useAsksStore();
 
     useEffect(() => {
-        const fetchAsks = async () => {
+        const fetchAsk = async () => {
             try {
                 setIsAskLoading(true);
             const ask =    await getAskById(id);
@@ -26,7 +26,7 @@ const useFetchAsk = (id) => {
             }
         };
 
-        fetchAsks();
+        fetchAsk();
 
         return () => {
             // Cleanup function if needed

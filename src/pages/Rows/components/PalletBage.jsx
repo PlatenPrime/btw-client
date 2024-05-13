@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { CardBlock, TextBlock } from '../../components'
+import { CardBlock, TextBlock } from '../../../components'
 import { LuBox } from "react-icons/lu";
 import { VscNote } from "react-icons/vsc";
 

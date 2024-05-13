@@ -2,27 +2,29 @@ import React, { useEffect, useState } from 'react'
 
 import { useNavigate, useParams } from 'react-router-dom';
 
-import { ButtonBlock, CardBlock, HeaderBlock, ModalConfirm, ModalCreate, ModalEditOneValue, PageBTW, TextBlock, Spinner, ButtonGroup, ModalWrapper, InputBlock, ContainerBlock, ModalDelete } from '../../components';
-import { AddIcon, CancelIcon, DeleteIcon, OkIcon, RenameIcon } from '../../components/UI/Icons/';
+import { ButtonBlock, CardBlock, HeaderBlock, ModalEditOneValue, PageBTW, TextBlock, Spinner, ButtonGroup, ModalWrapper, InputBlock, ContainerBlock, ModalDelete } from '../../components';
+import { AddIcon, CancelIcon, DeleteIcon, OkIcon, RenameIcon } from '../../components/UI/Icons';
 
 import { toast } from 'react-toastify';
 
-import PalletBage from './PalletBage';
+import PalletBage from './components/PalletBage';
 
 import { useRowStore } from './stores/rowsStore';
-import usePalletStore from './stores/palletsStore';
-import usePosesStore from './stores/posesStore';
-
-
+import usePalletStore from '../Pallets/stores/palletsStore';
+import usePosesStore from '../Stocks/stores/posesStore';
+import useFetchRowById from './hooks/useFetchRowById';
 
 
 export default function RowPage() {
-	const getRowById = useRowStore((state) => state.getRowById);
-	const getRowPallets = usePalletStore((state) => state.getRowPallets);
-	const palletsStore = usePalletStore((state) => state.pallets);
-	const updateRowById = useRowStore((state) => state.updateRowById);
-	const deleteRowById = useRowStore((state) => state.deleteRowById);
-	const createPallet = usePalletStore((state) => state.createPallet);
+
+
+
+	const { row, updateRowById,   deleteRowById} = useRowStore();
+
+
+
+	const {getRowPallets, pallets, createPallet } = usePalletStore();
+	
 
 
 
@@ -30,10 +32,12 @@ export default function RowPage() {
 
 
 
-	const params = useParams()
+	const {id} = useParams()
 	const navigate = useNavigate()
 
-	const [row, setRow] = useState(null)
+const {isRowLoading} = useFetchRowById(id)
+
+
 	const [title, setTitle] = useState(row?.title)
 	const [newPalletTitle, setNewPalletTitle] = useState("")
 	const [newPalletCom, setNewPalletCom] = useState("")
@@ -53,19 +57,6 @@ export default function RowPage() {
 
 
 
-
-	async function fetchRow(id) {
-
-		try {
-			const row = await getRowById(id);
-			setRow(row)
-			setTitle(row.title)
-		} catch (error) {
-			console.error('Ошибка при получении ряда:', error);
-		}
-	}
-
-
 	async function fetchRowPallets(id) {
 
 		try {
@@ -83,16 +74,10 @@ export default function RowPage() {
 
 
 
-
-
-
-
-
-
 	useEffect(() => {
-		fetchRow(params.id)
-		fetchRowPallets(params.id)
-	}, [params.id]);
+
+		fetchRowPallets(id)
+	}, [id ]);
 
 
 
@@ -358,7 +343,7 @@ export default function RowPage() {
 							?
 							<Spinner color="#fef3c7" />
 							:
-							palletsStore.length === 0
+							pallets.length === 0
 								?
 								<TextBlock
 									className="text-2xl"
@@ -368,7 +353,7 @@ export default function RowPage() {
 									className="space-y-4 "
 								>
 
-									{palletsStore?.map((pallet) => <PalletBage
+									{pallets?.map((pallet) => <PalletBage
 										pallet={pallet}
 										key={pallet._id}
 										poses={allPoses?.filter((pos) => pos.pallet === pallet._id)}

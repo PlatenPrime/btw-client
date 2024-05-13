@@ -1,8 +1,9 @@
 import { create } from 'zustand';
 import axios from "../../../utils/axios"
 
-export  const useRowStore = create((set) => ({
+export const useRowStore = create((set) => ({
 	rows: [],
+	row: null,
 
 	// Функция для создания нового Row
 	createRow: async (title) => {
@@ -31,6 +32,8 @@ export  const useRowStore = create((set) => ({
 	getRowById: async (id) => {
 		try {
 			const response = await axios.get(`rows/${id}`);
+
+			set({ row: response.data });
 			return response.data;
 		} catch (error) {
 			throw error;
@@ -56,9 +59,9 @@ export  const useRowStore = create((set) => ({
 			console.log(response)
 			set((state) => ({
 				rows: state.rows.map((row) =>
-					row._id === id ? { ...row, title: response.data.title } : row
-				),
+					row._id === id ? { ...row, title: response.data.title } : row,),
 			}));
+			set({ row: response.data });
 		} catch (error) {
 			throw error;
 		}
