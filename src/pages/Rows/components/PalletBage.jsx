@@ -13,7 +13,6 @@ import { VscNote } from "react-icons/vsc";
 export default function PalletBage({ pallet, poses }) {
 
 
-	console.log(poses);
 
 
 	const boxes = poses?.reduce((a, b) => a + b.boxes, 0)

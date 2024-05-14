@@ -2,13 +2,14 @@ import { create } from 'zustand';
 import axios from '../../../utils/axios';
 
 const usePalletStore = create((set) => ({
-	pallets: [],
+	pallets: null,
+	rowPallets: null,
 
 
-	createPallet: async (title, rowId, com) => {
+	createPallet: async (createData) => {
 		try {
 
-			const response = await axios.post('pallets', { title, rowId, com });
+			const response = await axios.post('pallets', { ...createData });
 
 
 			if (response.status === 201) {
@@ -90,16 +91,11 @@ const usePalletStore = create((set) => ({
 		}
 	},
 
-
 	// Функция для получения Pallets для конкретного Row по ID
 	getRowPallets: async (id) => {
 		try {
 			const response = await axios.get(`rows/pallets/${id}`);
-			console.log(response)
-			set((state) => ({
-				pallets: [...response.data],
-			}));
-
+			set({ rowPallets: [...response.data ]});
 			return response.data;
 		} catch (error) {
 			throw error;
@@ -141,12 +137,6 @@ const usePalletStore = create((set) => ({
 			console.error('Ошибка при перемещении содержимого Pallet:', error);
 		}
 	},
-
-
-
-
-
-
 
 }));
 

@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 
-import usePalletStore from '../../Stocks/stores/palletsStore';
+import usePalletStore from '../stores/palletsStore';
 
 const useFetchAllPallets = () => {
     const [isLoadingAllPallets, setIsLoadingAllPallets] = useState(true);
