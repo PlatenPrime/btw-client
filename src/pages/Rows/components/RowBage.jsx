@@ -45,7 +45,7 @@ const RowBage = ({ row }) => {
 			>
 
 				<TextBlock
-					className="text-black bg-white  p-2 rounded-xl"
+					className="text-black bg-white text-4xl  p-1 rounded-xl"
 				>
 					{row.title}
 				</TextBlock>

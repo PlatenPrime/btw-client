@@ -2,8 +2,8 @@ import { create } from 'zustand';
 import axios from '../../../utils/axios';
 
 const usePalletStore = create((set) => ({
-	pallets: null,
-	rowPallets: null,
+	pallets: [],
+	rowPallets: [],
 
 
 	createPallet: async (createData) => {
@@ -14,7 +14,7 @@ const usePalletStore = create((set) => ({
 
 			if (response.status === 201) {
 				const newPallet = response.data;
-				set((state) => ({ pallets: [...state.pallets, newPallet] }));
+				set((state) => ({ rowPallets: [...state.rowPallets, newPallet] }));
 			} else {
 				throw new Error('Ошибка создания Pallet');
 			}
@@ -95,7 +95,7 @@ const usePalletStore = create((set) => ({
 	getRowPallets: async (id) => {
 		try {
 			const response = await axios.get(`rows/pallets/${id}`);
-			set({ rowPallets: [...response.data ]});
+			set({ rowPallets: [...response.data] });
 			return response.data;
 		} catch (error) {
 			throw error;

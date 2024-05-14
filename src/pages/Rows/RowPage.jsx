@@ -1,9 +1,9 @@
-import React, {  useState } from 'react'
+import React, { useState } from 'react'
 
 import { useNavigate, useParams } from 'react-router-dom';
 
 import { ButtonBlock, CardBlock, HeaderBlock, ModalEditOneValue, PageBTW, TextBlock, Spinner, ButtonGroup, ModalWrapper, InputBlock, ContainerBlock, ModalDelete } from '../../components';
-import { AddIcon,  DeleteIcon,  RenameIcon } from '../../components/UI/Icons';
+import { AddIcon, DeleteIcon, RenameIcon } from '../../components/UI/Icons';
 
 import { toast } from 'react-toastify';
 
@@ -34,7 +34,7 @@ export default function RowPage() {
 
 	const [showModalDeleteRow, setShowModalDeleteRow] = useState(false);
 	const [showModalUpdateRow, setShowModalUpdateRow] = useState(false);
-	const [showModalCreatePallet, setShowModalCreatePallet] = useState(false);
+	const [isShowModalCreatePallet, setIsShowModalCreatePallet] = useState(false);
 
 
 
@@ -44,19 +44,7 @@ export default function RowPage() {
 
 
 
-	function closeModalDeleteRow() {
-		setShowModalDeleteRow(false);
-	}
-
-
-	function closeModalUpdateRow() {
-		setShowModalUpdateRow(false);
-	}
-
-
-
 	async function handleCreatePallet(newPalletTitle, newPalletCom) {
-
 		try {
 			setIsPalletCreating(true)
 			const createData = {
@@ -69,14 +57,13 @@ export default function RowPage() {
 			console.error('Ошибка при создании паллеты:', error);
 		} finally {
 			setIsPalletCreating(false)
-			setShowModalCreatePallet(false)
+			setIsShowModalCreatePallet(false)
 		}
 	}
 
 
 
 	async function handleUpdateRowById(newTitle) {
-
 		try {
 			setIsRowUpdating(true)
 			await updateRowById(row._id, newTitle);
@@ -86,7 +73,6 @@ export default function RowPage() {
 			setIsRowUpdating(false)
 			setShowModalUpdateRow(false)
 		}
-
 	}
 
 	async function handleDeleteRowById() {
@@ -102,14 +88,6 @@ export default function RowPage() {
 			navigate("/rows")
 		}
 	};
-
-
-
-
-
-
-
-
 
 	if (isRowLoading) {
 		return (
@@ -148,7 +126,7 @@ export default function RowPage() {
 				<ButtonGroup.Actions>
 					<ButtonBlock
 						className="emerald-b flex"
-						onClick={() => { setShowModalCreatePallet(true); }}
+						onClick={() => { setIsShowModalCreatePallet(true); }}
 					>
 						<TextBlock className="text-2xl"><AddIcon /></TextBlock>
 						<TextBlock className="">Створити палету</TextBlock>
@@ -176,8 +154,8 @@ export default function RowPage() {
 
 
 			<ModalCreatePallet
-				showModalCreatePallet={showModalCreatePallet}
-				setShowModalCreatePallet={setShowModalCreatePallet}
+				isShowModalCreatePallet={isShowModalCreatePallet}
+				setIsShowModalCreatePallet={setIsShowModalCreatePallet}
 				handleCreatePallet={handleCreatePallet}
 				isPalletCreating={isPalletCreating}
 			/>
@@ -187,7 +165,7 @@ export default function RowPage() {
 				showModalUpdateRow && <ModalEditOneValue
 					value={row.title}
 					onConfirm={(value) => { handleUpdateRowById(value) }}
-					onCancel={closeModalUpdateRow}
+					onCancel={() => setShowModalUpdateRow(false)}
 					isUpdating={isRowUpdating}
 				/>
 			}
@@ -197,13 +175,10 @@ export default function RowPage() {
 				showModalDeleteRow && <ModalDelete
 					ask="Видалити цей ряд?"
 					onDelete={handleDeleteRowById}
-					onCancel={closeModalDeleteRow}
+					onCancel={() => setShowModalDeleteRow(false)}
 					isDeleting={isRowDeleting}
 				/>
 			}
-
-
-
 
 
 

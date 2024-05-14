@@ -4,8 +4,8 @@ import { CancelIcon, OkIcon } from '../../../../components/UI/Icons'
 import { useState } from 'react'
 
 export default function ModalCreatePallet({
-    showModalCreatePallet,
-    setShowModalCreatePallet,
+    isShowModalCreatePallet,
+    setIsShowModalCreatePallet,
     handleCreatePallet,
     isPalletCreating
 }) {
@@ -17,13 +17,13 @@ export default function ModalCreatePallet({
 
 
 
-    if (!showModalCreatePallet) return null
+    if (!isShowModalCreatePallet) return null
 
 
     return (
         <ModalWrapper
             title="Створення нової палети"
-            onCancel={() => setShowModalCreatePallet(false)}
+            onCancel={() => setIsShowModalCreatePallet(false)}
         >
 
             <CardBlock
@@ -74,7 +74,7 @@ export default function ModalCreatePallet({
 
                 <ButtonBlock
                     className="red-b flex justify-center items-center"
-                    onClick={() => setShowModalCreatePallet(false)}
+                    onClick={() => setIsShowModalCreatePallet(false)}
                 >
                     <TextBlock className="text-2xl"><CancelIcon /></TextBlock>
                     <TextBlock className=""> Скасувати</TextBlock>
