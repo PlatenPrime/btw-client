@@ -7,7 +7,7 @@ const HeaderBlock = ({ children, className }) => {
 
 	const style = `
 
-	HeaderBlock flex justify-between xl:justify-center items-center
+	HeaderBlock  justify-between xl:justify-center items-center 
 	
 	${className}
 
