@@ -84,7 +84,7 @@ export default function ArtsPage() {
 		>
 
 			<HeaderBlock
-				className="bg-sky-500  shadow-2xl shadow-sky-500 "
+				className="bg-sky-500  shadow-lg shadow-sky-500 "
 			>
 				<TextBlock className="">
 					Артикули
@@ -99,12 +99,12 @@ export default function ArtsPage() {
 				</ButtonGroup.Actions>
 				<ButtonGroup.Navigation>
 					<ButtonBlock
-						className="emerald-b-n "
+						className="emerald-b-n"
 					>
 						<Link
 							to="/arts/updating"
 						>
-							Оновлення даних
+							Оновлення артикулів
 						</Link>
 					</ButtonBlock>
 				</ButtonGroup.Navigation>

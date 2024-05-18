@@ -16,6 +16,7 @@ import useFetchRowById from './hooks/useFetchRowById';
 import ModalCreatePallet from './components/modals/ModalCreatePallet';
 import useFetchRowPallets from './hooks/useFetchRowPallets';
 import useFetchAllPoses from '../Pallets/hooks/useFetchAllPoses';
+import PalletsContainer from './components/PalletsContainer';
 
 
 export default function RowPage() {
@@ -100,7 +101,7 @@ export default function RowPage() {
 				<ContainerBlock
 					className="w-full h-full flex justify-center items-center"
 				>
-					<Spinner color="rgb(245 158 11  )" />
+					<Spinner color="#fef3c7" />
 				</ContainerBlock>
 
 			</PageBTW>
@@ -114,7 +115,7 @@ export default function RowPage() {
 			className="px-1 space-y-4"
 		>
 			<HeaderBlock
-				className=" bg-amber-500 shadow-2xl shadow-amber-500"
+				className=" bg-orange-500 shadow-lg shadow-orange-500"
 			>
 				Ряд 	{row?.title}
 			</HeaderBlock>
@@ -183,37 +184,14 @@ export default function RowPage() {
 
 
 
-			<ContainerBlock
-				className="space-y-4  "
-			>
 
+			<PalletsContainer
+				isRowPalletsLoading={isRowPalletsLoading}
+				rowPallets={rowPallets}
+				allPoses={allPoses}
+				isAllPosesLoading={isAllPosesLoading}
 
-				{isRowPalletsLoading || isAllPosesLoading
-					?
-					<Spinner color="#fef3c7" />
-					:
-					rowPallets?.length === 0
-						?
-						<TextBlock
-							className="text-2xl"
-						>Цей ряд не містить палети </TextBlock>
-						:
-						<CardBlock
-							className="space-y-4 "
-						>
-
-							{rowPallets?.map((pallet) => <PalletBage
-								pallet={pallet}
-								key={pallet._id}
-								poses={allPoses?.filter((pos) => pos.pallet === pallet._id)}
-							/>
-							)}
-						</CardBlock>}
-
-
-
-
-			</ContainerBlock>
+			/>
 
 
 

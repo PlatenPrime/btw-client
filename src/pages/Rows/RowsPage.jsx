@@ -54,7 +54,7 @@ export default function RowsPage() {
 			className="px-1"
 		>
 			<HeaderBlock
-				className="bg-orange-500  shadow-2xl shadow-orange-500"
+				className="bg-slate-500  shadow-lg shadow-slate-500"
 			>
 				Ряди
 			</HeaderBlock>

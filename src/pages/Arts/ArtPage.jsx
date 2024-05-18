@@ -63,7 +63,7 @@ export default function ArtPage() {
 		>
 
 			<HeaderBlock
-				className="bg-sky-500  shadow-2xl shadow-sky-500 "
+				className="bg-sky-500  shadow-lg shadow-sky-500 "
 			>
 				<TextBlock>Артикул</TextBlock>
 			</HeaderBlock>
