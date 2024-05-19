@@ -1,5 +1,5 @@
 import React from 'react';
-import { ModalDelete } from '../../../components';
+import { ModalDelete } from '../../../../components';
 
 function ModalDeletePos({ show, onCancel, onDelete, selectedPos, isDeletingPos }) {
 	return (

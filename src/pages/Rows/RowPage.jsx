@@ -11,7 +11,7 @@ import PalletBage from './components/PalletBage';
 
 import { useRowStore } from './stores/rowsStore';
 import usePalletStore from '../Pallets/stores/palletsStore';
-import usePosesStore from '../Pallets/stores/posesStore';
+import usePosesStore from '../Stocks/stores/posesStore';
 import useFetchRowById from './hooks/useFetchRowById';
 import ModalCreatePallet from './components/modals/ModalCreatePallet';
 import useFetchRowPallets from './hooks/useFetchRowPallets';

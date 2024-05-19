@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { ModalDelete } from '../../../components';
+import { ModalDelete } from '../../../../components';
 
 function ModalDeletePallet({ show, onCancel, onDelete, isDeletingPallet }) {
 	return (

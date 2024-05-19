@@ -1,6 +1,6 @@
 import React from 'react';
-import { ModalWrapper, InputBlock, ButtonBlock, CardBlock, TextBlock, ImageArt, Spinner } from '../../../components';
-import { CancelIcon, OkIcon } from '../../../components/UI/Icons';
+import { ModalWrapper, InputBlock, ButtonBlock, CardBlock, TextBlock, ImageArt, Spinner } from '../../../../components';
+import { CancelIcon, OkIcon } from '../../../../components/UI/Icons';
 
 function ModalCreatePos({
 	show,
@@ -183,7 +183,7 @@ function ModalCreatePos({
 							onClick={handleCreatePos}
 							disabled={!newPos.artikul || !newPos.boxes || !newPos.quant}
 						>
-						
+
 							{isCreatingPos ?
 								<Spinner color="green" />
 								:

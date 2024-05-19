@@ -1,6 +1,6 @@
 import React from 'react';
-import { ModalWrapper, InputBlock, ButtonBlock, CardBlock, TextBlock, Spinner } from '../../../components';
-import { CancelIcon, OkIcon } from '../../../components/UI/Icons';
+import { ModalWrapper, InputBlock, ButtonBlock, CardBlock, TextBlock, Spinner } from '../../../../components';
+import { CancelIcon, OkIcon } from '../../../../components/UI/Icons';
 
 function ModalMovePalletContent({
 	show,
@@ -98,7 +98,7 @@ function ModalMovePalletContent({
 							handleMovePalletContent(id, selectedPalletId);
 						}}
 					>
-					
+
 
 						{isMovingPalletContent ?
 							<Spinner color="green" />

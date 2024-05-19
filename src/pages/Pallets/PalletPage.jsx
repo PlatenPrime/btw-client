@@ -1,15 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import { Link, useNavigate, useParams } from 'react-router-dom';
-import usePalletStore from '../Pallets/stores/palletsStore';
-import usePosesStore from '../Pallets/stores/posesStore';
-import { useRowStore } from '../Rows/stores/rowsStore';
-import { ButtonBlock, CardBlock, HeaderBlock, PageBTW, Spinner, TextBlock, ContainerBlock } from '../../components';
+import usePalletStore from './stores/palletsStore.js';
+import usePosesStore from '../Stocks/stores/posesStore.js';
+import { useRowStore } from '../Rows/stores/rowsStore.js';
+import { ButtonBlock, CardBlock, HeaderBlock, PageBTW, Spinner, TextBlock, ContainerBlock } from '../../components/index.js';
 import { toast } from 'react-toastify';
-import PositionBage from './PositionBage';
+import PositionBage from '../Stocks/PositionBage.jsx';
 
-import { ModalDeletePallet, ModalRenamePallet, ModalCreatePos, ModalDeletePos, ModalEditPos, ModalClearPallet, ModalMovePalletContent, ModalChangePalletCom } from './PalletPageModals/index.js';
+import { ModalDeletePallet, ModalRenamePallet, ModalCreatePos, ModalDeletePos, ModalEditPos, ModalClearPallet, ModalMovePalletContent, ModalChangePalletCom } from './components/PalletPageModals/index.js';
 
-import { RenameIcon, MoveIcon, DeleteIcon, ClearIcon, AddIcon, BackIcon } from '../../components/UI/Icons/';
+import { RenameIcon, MoveIcon, DeleteIcon, ClearIcon, AddIcon, BackIcon } from '../../components/UI/Icons/index.js';
 import ButtonGroup from '../../components/UI/ButtonGroup.jsx';
 import useFetchArts from '../../hooks/useFetchArts.js';
 

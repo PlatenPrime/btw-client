@@ -1,9 +1,7 @@
 import Layout from "./components/Layout";
-import { Routes, Route, useNavigate } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
-
-import { useAuthStore } from './pages/Auth/authStore'
 
 
 import LoginPage from "./pages/Auth/LoginPage";
@@ -13,7 +11,7 @@ import LoginPage from "./pages/Auth/LoginPage";
 
 
 import MainPage from "./pages/MainPage";
-import PalletPage from "./pages/Stocks/PalletPage";
+import PalletPage from "./pages/Pallets/PalletPage";
 import ArtPage from "./pages/Arts/ArtPage";
 import ArtsPage from "./pages/Arts/ArtsPage";
 import StocksPage from "./pages/Stocks/StocksPage";

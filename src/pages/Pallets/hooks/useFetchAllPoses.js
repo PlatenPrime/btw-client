@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 
-import usePosesStore from '../stores/posesStore';
+import usePosesStore from '../../Stocks/stores/posesStore';
 
 const useFetchAllPoses = () => {
 
