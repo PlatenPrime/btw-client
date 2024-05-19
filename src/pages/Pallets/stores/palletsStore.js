@@ -2,8 +2,12 @@ import { create } from 'zustand';
 import axios from '../../../utils/axios';
 
 const usePalletStore = create((set) => ({
+	pallet: null,
+	selectedPallet: null,
 	pallets: [],
 	rowPallets: [],
+	selectedRowPallets: [],
+
 
 
 	createPallet: async (createData) => {
@@ -48,6 +52,8 @@ const usePalletStore = create((set) => ({
 
 			if (response.status === 200) {
 				const pallet = response.data;
+
+				set({ pallet: pallet });
 				return pallet;
 			} else {
 				throw new Error('Ошибка получения Pallet по ID');
@@ -56,6 +62,27 @@ const usePalletStore = create((set) => ({
 			console.error('Ошибка получения Pallet по ID:', error);
 		}
 	},
+
+
+	getSelectedPalletById: async (id) => {
+		try {
+			const response = await axios.get(`pallets/${id}`);
+
+			if (response.status === 200) {
+				const selectedPallet = response.data;
+
+				set({ selectedPallet: selectedPallet });
+				return selectedPallet;
+			} else {
+				throw new Error('Ошибка получения Pallet по ID');
+			}
+		} catch (error) {
+			console.error('Ошибка получения Pallet по ID:', error);
+		}
+	},
+
+
+
 	updatePalletById: async (id, updatedData) => {
 		try {
 			const response = await axios.put(`pallets/${id}`, updatedData);
@@ -67,6 +94,7 @@ const usePalletStore = create((set) => ({
 						p._id === updatedPallet._id ? updatedPallet : p
 					),
 				}));
+				set({ pallet: updatedPallet });
 				return updatedPallet;
 			} else {
 				throw new Error('Ошибка обновления Pallet по ID');
@@ -101,6 +129,20 @@ const usePalletStore = create((set) => ({
 			throw error;
 		}
 	},
+
+
+	getSelectedRowPallets: async (id) => {
+		try {
+			const response = await axios.get(`rows/pallets/${id}`);
+			set({ selectedRowPallets: [...response.data] });
+			return response.data;
+		} catch (error) {
+			throw error;
+		}
+	},
+
+
+
 
 	clearPalletById: async (id) => {
 		try {
@@ -139,12 +181,6 @@ const usePalletStore = create((set) => ({
 	},
 
 }));
-
-
-
-
-
-
 
 
 

@@ -1,17 +1,18 @@
 import React, { useEffect, useState } from 'react';
-import { Link, useNavigate, useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import usePalletStore from './stores/palletsStore.js';
 import usePosesStore from '../Stocks/stores/posesStore.js';
 import { useRowStore } from '../Rows/stores/rowsStore.js';
 import { ButtonBlock, CardBlock, HeaderBlock, PageBTW, Spinner, TextBlock, ContainerBlock } from '../../components/index.js';
 import { toast } from 'react-toastify';
-import PositionBage from '../Stocks/PositionBage.jsx';
+import PositionBage from './components/PositionBage.jsx';
 
 import { ModalDeletePallet, ModalRenamePallet, ModalCreatePos, ModalDeletePos, ModalEditPos, ModalClearPallet, ModalMovePalletContent, ModalChangePalletCom } from './components/PalletPageModals/index.js';
 
-import { RenameIcon, MoveIcon, DeleteIcon, ClearIcon, AddIcon, BackIcon } from '../../components/UI/Icons/index.js';
+import { RenameIcon, MoveIcon, DeleteIcon, ClearIcon, AddIcon } from '../../components/UI/Icons/index.js';
 import ButtonGroup from '../../components/UI/ButtonGroup.jsx';
 import useFetchArts from '../../hooks/useFetchArts.js';
+import useFetchPalletById from './hooks/useFetchPalletById.js';
 
 
 
@@ -22,45 +23,31 @@ export default function PalletPage() {
 	const { id } = useParams();
 	const navigate = useNavigate()
 
-	const { artsDB, loadingArtsDB, errorArtsDB } = useFetchArts();
+	const { artsDB } = useFetchArts();
 
-
+	const { isPalletLoading, pallet, poses } = useFetchPalletById(id);
 
 	// ROW STORE
 
-	const getRowById = useRowStore((state) => state.getRowById);
-	const getAllRows = useRowStore((state) => state.getAllRows);
-	const rows = useRowStore((state) => state.rows)
+	const { rows, getRowById, getAllRows } = useRowStore();
 
 	// PALLET STORE
 
-	const getPalletById = usePalletStore((state) => state.getPalletById);
-	const deletePalletById = usePalletStore((state) => state.deletePalletById);
-	const updatePalletById = usePalletStore((state) => state.updatePalletById);
-	const clearPalletById = usePalletStore((state) => state.clearPalletById);
-	const movePalletContent = usePalletStore((state) => state.movePalletContent);
-	const getRowPallets = usePalletStore((state) => state.getRowPallets);
+	const { getPalletById, getSelectedPalletById, deletePalletById, updatePalletById, clearPalletById, movePalletContent, getRowPallets, getSelectedRowPallets } = usePalletStore();
 
 	// POS STORE
 
 	const clearPosesStore = usePosesStore((state) => state.clearPosesStore);
 	const createPos = usePosesStore((state) => state.createPos);
 	const deletePosById = usePosesStore((state) => state.deletePosById);
-	const getPalletPoses = usePosesStore((state) => state.getPalletPoses);
-	const posesInStore = usePosesStore((state) => state.poses);
 	const updatePosById = usePosesStore((state) => state.updatePosById);
-
 
 	// STATES
 
-
-	const [pallet, setPallet] = useState(null);
 	const [row, setRow] = useState(null);
-	const [title, setTitle] = useState("");
-	const [newCom, setNewCom] = useState("");
+	const [title, setTitle] = useState(pallet?.title || "");
+	const [newCom, setNewCom] = useState(pallet?.com);
 
-
-	const [isPosesLoading, setIsPosesLoading] = useState(false);
 
 
 	const [selectedPos, setSelectedPos] = useState(null)
@@ -118,54 +105,7 @@ export default function PalletPage() {
 
 	// EFFECTS
 
-	async function fetchPallet(id) {
-		try {
-			const fetchedPallet = await getPalletById(id);
-			console.log(fetchedPallet)
 
-			if (fetchedPallet) {
-				const fetchedRow = await getRowById(fetchedPallet?.row)
-				setRow(fetchedRow)
-			}
-
-			setPallet(fetchedPallet);
-			setTitle(fetchedPallet?.title)
-			setNewCom(fetchedPallet?.com)
-		} catch (error) {
-			console.error('Ошибка при получении паллеты:', error);
-		}
-	}
-
-
-	async function fetchPoses(id) {
-
-		try {
-			setIsPosesLoading(true);
-			await getPalletPoses(id);
-		} catch (error) {
-			console.log(error)
-		} finally {
-			setIsPosesLoading(false);
-		}
-
-	}
-
-
-	useEffect(() => {
-
-
-		const fetchAllRows = async () => {
-			try {
-				const rows = await getAllRows()
-				setSelectedRowId(rows[0]._id)
-			} catch (error) {
-				console.log(error)
-			}
-		}
-
-		fetchAllRows()
-
-	}, [])
 
 
 	useEffect(() => {
@@ -189,10 +129,6 @@ export default function PalletPage() {
 
 
 
-	useEffect(() => {
-		fetchPallet(id);
-		fetchPoses(id);
-	}, [id]);
 
 
 
@@ -211,6 +147,15 @@ export default function PalletPage() {
 		fetchSelectedPallet()
 
 	}, [selectedPalletId])
+
+
+
+
+
+
+
+
+
 
 
 	// HANDLERS
@@ -289,7 +234,7 @@ export default function PalletPage() {
 
 		try {
 			setIsCreatingPos(true);
-			const existingPos = posesInStore.find(pos => pos.artikul === newPos.artikul);
+			const existingPos = poses.find(pos => pos.artikul === newPos.artikul);
 
 			if (existingPos && existingPos.sklad === newPos.sklad && existingPos.date === newPos.date && existingPos.com === newPos.com) {
 
@@ -418,40 +363,16 @@ export default function PalletPage() {
 		>
 
 			<HeaderBlock
-				className="bg-teal-500 shadow-2xl shadow-teal-500 "
-
+				className="bg-amber-500 shadow-lg shadow-amber-500 "
 			>
 
-
-				<CardBlock
-					className="w-full grid grid-cols-1 sm:grid-cols-3"
-				>
-
-					<Link
-						to={`/rows/${pallet?.row}`}
-						className="flex items-center justify-start text-xl "
-					>
-
-						<TextBlock
-							className=" rounded p-1 bg-orange-500/20 bg-teal-500 hover:bg-orange-500"
-						>
-							<BackIcon />
-							{`Ряд ${row?.title ? row?.title : ""}`}
-						</TextBlock>
-					</Link>
-
-
-					<TextBlock>{title}</TextBlock>
-
-
-
-				</CardBlock>
+				<TextBlock>Палета {title}</TextBlock>
 
 
 			</HeaderBlock>
 
 
-			{isPosesLoading ?
+			{isPalletLoading ?
 				<ContainerBlock
 					className="w-full h-full flex justify-start items-center"
 				>
@@ -656,7 +577,7 @@ export default function PalletPage() {
 							<TextBlock
 								className="text-teal-100 text-xl justify-start p-1"
 							>
-								Позицій: {posesInStore?.length}
+								Позицій: {poses?.length}
 							</TextBlock>
 
 							<ButtonBlock
@@ -671,7 +592,7 @@ export default function PalletPage() {
 							<TextBlock
 								className="text-amber-100 text-xl justify-self-end p-1"
 							>
-								Коробок всього: {posesInStore?.reduce((a, b) => a + b?.boxes, 0)}
+								Коробок всього: {poses?.reduce((a, b) => a + b?.boxes, 0)}
 							</TextBlock>
 
 
@@ -688,7 +609,7 @@ export default function PalletPage() {
 						</CardBlock>
 
 
-						{posesInStore?.length === 0 ? (
+						{poses?.length === 0 ? (
 							<TextBlock
 								className="text-teal-100 italic"
 							>
@@ -698,7 +619,7 @@ export default function PalletPage() {
 							<ul className=' space-y-2'>
 
 
-								{posesInStore?.map((pos) => {
+								{poses?.map((pos) => {
 
 									return (
 										<PositionBage

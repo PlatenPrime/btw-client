@@ -1,6 +1,5 @@
-import React, { useEffect, useState } from 'react'
-import { ButtonBlock, CardBlock, ImageArt, ImageBlock, TextBlock } from '../../components'
-import { ImMoveDown } from 'react-icons/im'
+
+import { ButtonBlock, CardBlock, ImageArt, TextBlock } from '../../../components'
 import { MdDeleteForever, MdOutlineEdit } from "react-icons/md";
 import { BsBalloon, BsBoxSeam } from "react-icons/bs";
 
