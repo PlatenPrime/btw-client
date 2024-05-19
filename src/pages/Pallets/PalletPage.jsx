@@ -366,7 +366,7 @@ export default function PalletPage() {
 				className="bg-amber-500 shadow-lg shadow-amber-500 "
 			>
 
-				<TextBlock>Палета {title}</TextBlock>
+				<TextBlock>Палета {pallet?.title}</TextBlock>
 
 
 			</HeaderBlock>
@@ -562,7 +562,7 @@ export default function PalletPage() {
 						>
 
 							<TextBlock
-								className="text-teal-100 text-center text-3xl justify-start p-1"
+								className="text-teal-100 text-center text-3xl italic "
 							>
 								{newCom}
 							</TextBlock>
@@ -571,17 +571,25 @@ export default function PalletPage() {
 
 
 						<CardBlock
-							className="grid lg:grid-cols-3"
+							className="grid lg:grid-cols-2"
 						>
 
-							<TextBlock
-								className="text-teal-100 text-xl justify-start p-1"
-							>
-								Позицій: {poses?.length}
-							</TextBlock>
+							<CardBlock>
+								<TextBlock
+									className="text-teal-100 text-xl justify-start p-1"
+								>
+									Позицій: {poses?.length}
+								</TextBlock>
+
+								<TextBlock
+									className="text-amber-100 text-xl justify-start  p-1"
+								>
+									Коробок: {poses?.reduce((a, b) => a + b?.boxes, 0)}
+								</TextBlock>
+							</CardBlock>
 
 							<ButtonBlock
-								className="teal-b bg-teal-500/10 shadow-lg p-4 flex  border-dashed "
+								className="teal-b flex  justify-self-end  "
 								onClick={() => { setShowModalCreatePos(true); }}
 							>
 								<TextBlock className="text-xl"><AddIcon /></TextBlock>
@@ -589,11 +597,7 @@ export default function PalletPage() {
 
 							</ButtonBlock>
 
-							<TextBlock
-								className="text-amber-100 text-xl justify-self-end p-1"
-							>
-								Коробок всього: {poses?.reduce((a, b) => a + b?.boxes, 0)}
-							</TextBlock>
+
 
 
 
