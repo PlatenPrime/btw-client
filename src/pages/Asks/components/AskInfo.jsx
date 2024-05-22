@@ -28,6 +28,18 @@ const options = {
     timeZone: 'Europe/Kiev'
 };
 
+
+
+
+const statusBackground = {
+    'solved': 'bg-green-500',
+    'fail': 'bg-red-500',
+    'new': 'bg-indigo-700'
+
+}
+
+
+
 export default function AskInfo({
     ask
 }) {
@@ -44,7 +56,7 @@ export default function AskInfo({
 
     return (
         <ContainerBlock
-        className="bg-gradient-to-b from-indigo-500 to-indigo-900/50"
+            className={statusBackground[ask?.status]}
         >
 
 
@@ -90,7 +102,31 @@ export default function AskInfo({
                     {users?.find(user => user._id === ask?.asker)?.fullname}
                 </TextBlock>
 
+
+
             </CardBlock>
+
+
+            {ask?.updatedAt !== ask?.createdAt &&
+                <CardBlock
+                    className="flex  gap-2 justify-center items-center  p-2"
+                >
+                    <TextBlock
+                        className="text-sm italic "
+                    >
+                        <FaRegCircleCheck size={24} />
+                        {new Date(ask?.updatedAt).toLocaleString('uk-UA', options)}
+                    </TextBlock>
+
+                    <TextBlock
+                        className="text-base items-center font-bold"
+                    >
+                        {users?.find(user => user._id === ask?.solver)?.fullname}
+                    </TextBlock>
+                </CardBlock>
+            }
+
+
 
         </ContainerBlock>
     )

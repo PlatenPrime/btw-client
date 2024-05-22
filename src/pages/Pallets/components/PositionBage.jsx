@@ -143,11 +143,11 @@ export default function PositionBage({ pos, onDelete, onEdit, artsDB }) {
 					>
 
 						<TextBlock
-							className="text-sky-100  text-xl"
+							className="  text-xl"
 						><BsBalloon /></TextBlock>
 
 						<TextBlock
-							className="text-sky-100  font-bold text-3xl  rounded"
+							className=" font-bold text-3xl  rounded"
 						>
 							{pos?.quant}
 						</TextBlock>
@@ -159,11 +159,11 @@ export default function PositionBage({ pos, onDelete, onEdit, artsDB }) {
 						className="flex justify-center items-center"
 					>
 						<TextBlock
-							className="text-amber-100  text-xl "
+							className=" text-xl "
 						><BsBoxSeam /></TextBlock>
 
 						<TextBlock
-							className="text-amber-100  font-bold text-3xl  rounded"
+							className="  font-bold text-3xl  rounded"
 						>
 							{pos?.boxes}
 						</TextBlock>
