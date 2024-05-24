@@ -54,6 +54,16 @@ const MainPage = () => {
 
 			</ContainerBlock>
 
+
+
+			<ContainerBlock>
+				<img
+					src="https://i.imgur.com/TUf7x12.jpg"
+					alt="BTW"
+					className="bg-cover w-full"
+				/>
+			</ContainerBlock>
+
 			<ContainerBlock
 				className="flex gap-4 flex-wrap"
 			>
@@ -104,10 +114,6 @@ const MainPage = () => {
 
 
 			</ContainerBlock>
-
-
-
-
 
 		</PageBTW>
 	);
