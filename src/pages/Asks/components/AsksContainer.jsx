@@ -42,17 +42,17 @@ export default function AsksContainer({
 
     return (
         <ContainerBlock
-            className="space-y-2 "
+            className="space-y-4 "
         >
 
             {Object.keys(groupedAsks).map(date => (
                 <CardBlock
-                    className="space-y-4 "
+                    className="space-y-2 "
                     key={date}>
 
 
                     <h2
-                        className="text-3xl font-bold bg-gradient-to-b from-indigo-500 to-indigo-900/50 rounded-xl"
+                        className="text-3xl font-bold bg-gradient-to-b from-slate-500 to-slate-900/50 rounded-xl"
                     >
                         {formatDateToUkrainian(date)}
                     </h2>
