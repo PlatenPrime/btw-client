@@ -2,6 +2,14 @@ import React from 'react';
 import { ModalEditOneValue } from '../../../../components';
 
 function ModalChangePalletCom({ show, onCancel, value, onConfirm, isChangingPalletCom }) {
+
+
+
+
+
+
+
+	
 	return (
 		show && (
 			<ModalEditOneValue

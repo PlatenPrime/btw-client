@@ -13,6 +13,7 @@ import { RenameIcon, MoveIcon, DeleteIcon, ClearIcon, AddIcon } from '../../comp
 import ButtonGroup from '../../components/UI/ButtonGroup.jsx';
 import useFetchArts from '../../hooks/useFetchArts.js';
 import useFetchPalletById from './hooks/useFetchPalletById.js';
+import useFetchAllRows from '../Rows/hooks/useFetchAllRows.js';
 
 
 
@@ -27,34 +28,18 @@ export default function PalletPage() {
 
 	const { isPalletLoading, pallet, poses } = useFetchPalletById(id);
 
-	// ROW STORE
+	const { rows } = useRowStore();
+	useFetchAllRows()
 
-	const { rows, getRowById, getAllRows } = useRowStore();
-
-	// PALLET STORE
-
-	const { getPalletById, getSelectedPalletById, deletePalletById, updatePalletById, clearPalletById, movePalletContent, getRowPallets, getSelectedRowPallets } = usePalletStore();
-
-	// POS STORE
-
-	const clearPosesStore = usePosesStore((state) => state.clearPosesStore);
-	const createPos = usePosesStore((state) => state.createPos);
-	const deletePosById = usePosesStore((state) => state.deletePosById);
-	const updatePosById = usePosesStore((state) => state.updatePosById);
-
-	// STATES
-
-	const [row, setRow] = useState(null);
-	const [title, setTitle] = useState(pallet?.title || "");
-	const [newCom, setNewCom] = useState(pallet?.com);
-
+	const { getSelectedPalletById, selectedPallet, deletePalletById, updatePalletById, clearPalletById, movePalletContent, getRowPallets, } = usePalletStore();
+	const { clearPosesStore, createPos, deletePosById, updatePosById } = usePosesStore();
 
 
 	const [selectedPos, setSelectedPos] = useState(null)
-	const [selectedRowId, setSelectedRowId] = useState(null)
+	const [selectedRowId, setSelectedRowId] = useState(pallet?.row)
 	const [selectedRowPallets, setSelectedRowPallets] = useState(null)
-	const [selectedPalletId, setSelectedPalletId] = useState(null)
-	const [selectedPallet, setSelectedPallet] = useState(null)
+	const [selectedPalletId, setSelectedPalletId] = useState(pallet?._id)
+	
 
 	const [updatePosQuantValue, setUpdatePosQuantValue] = useState(0)
 	const [updatePosBoxesValue, setUpdatePosBoxesValue] = useState(0)
@@ -112,6 +97,7 @@ export default function PalletPage() {
 
 		const fetchRowPallets = async () => {
 			try {
+				if (!selectedRowId) return
 				const pallets = await getRowPallets(selectedRowId)
 				console.log(pallets)
 				setSelectedRowPallets(pallets)
@@ -122,10 +108,9 @@ export default function PalletPage() {
 			}
 		}
 
-
 		fetchRowPallets()
 
-	}, [selectedRowId])
+	}, [selectedRowId, getRowPallets])
 
 
 
@@ -136,9 +121,10 @@ export default function PalletPage() {
 
 		const fetchSelectedPallet = async () => {
 			try {
-				const selectedPallet = await getPalletById(selectedPalletId)
+				if (!selectedPalletId) return
+				const selectedPallet = await getSelectedPalletById(selectedPalletId)
 				console.log(selectedPallet)
-				setSelectedPallet(selectedPallet)
+
 			} catch (error) {
 				console.log(error)
 			}
@@ -147,13 +133,6 @@ export default function PalletPage() {
 		fetchSelectedPallet()
 
 	}, [selectedPalletId])
-
-
-
-
-
-
-
 
 
 
@@ -179,18 +158,12 @@ export default function PalletPage() {
 
 
 
-
-
-
-
-
-
 	async function handleRenamePalletById(newTitle) {
 		try {
 			setIsRenamingPallet(true);
 			const updateData = { ...pallet, title: newTitle }
 			await updatePalletById(pallet._id, updateData);
-			setTitle(newTitle)
+
 
 		} catch (error) {
 			console.error('Ошибка при изменении  названия паллеты:', error);
@@ -207,7 +180,6 @@ export default function PalletPage() {
 			setIsChangingPalletCom(true);
 			const updateData = { ...pallet, com: newCom }
 			await updatePalletById(pallet._id, updateData);
-			setNewCom(newCom)
 
 		} catch (error) {
 			console.error('Ошибка при изменении  комментария паллеты:', error);
@@ -231,7 +203,6 @@ export default function PalletPage() {
 
 	// Обработчик отправки формы
 	const handleCreatePos = async () => {
-
 		try {
 			setIsCreatingPos(true);
 			const existingPos = poses.find(pos => pos.artikul === newPos.artikul);
@@ -242,15 +213,11 @@ export default function PalletPage() {
 					quant: +existingPos.quant + +newPos.quant,
 					boxes: +existingPos.boxes + +newPos.boxes
 				}
-
 				await updatePosById(existingPos._id, updatedData)
 
 			} else {
 				await createPos(pallet._id, newPos)
 			}
-
-
-
 		} catch (error) {
 			console.log(error)
 		} finally {
@@ -267,6 +234,8 @@ export default function PalletPage() {
 			});
 		}
 	};
+
+
 
 
 	async function handleDeletePosById(id) {
@@ -295,8 +264,6 @@ export default function PalletPage() {
 				sklad: updatePosSkladValue,
 				com: updatePosComValue,
 			}
-
-
 			const resUpdatePos = await updatePosById(id, updatedData)
 
 		} catch (error) {
@@ -344,17 +311,6 @@ export default function PalletPage() {
 
 
 	}
-
-
-	// BREADCRUMBS
-
-
-	const breadcrumbPaths = [
-
-		{ text: `Ряд ${row?.title ? row?.title : ""}`, link: `/rows/${pallet?.row}` },
-
-	];
-
 
 
 	return (
@@ -453,7 +409,7 @@ export default function PalletPage() {
 
 					<ModalRenamePallet
 						show={showModalRenamePallet}
-						value={title}
+						value={pallet?.title}
 						onConfirm={(title) => { handleRenamePalletById(title) }}
 						onCancel={() => { setShowModalRenamePallet(false) }}
 						isRenamingPallet={isRenamingPallet}
@@ -461,16 +417,11 @@ export default function PalletPage() {
 
 					<ModalChangePalletCom
 						show={showModalChangePalletCom}
-						value={newCom}
-						onConfirm={(newCom) => { handleChangePalletComentById(newCom) }}
+						value={pallet?.com}
+						onConfirm={(com) => { handleChangePalletComentById(com) }}
 						onCancel={() => { setShowModalChangePalletCom(false) }}
 						isChangingPalletCom={isChangingPalletCom}
 					/>
-
-
-
-
-
 
 
 					<ModalCreatePos
@@ -502,17 +453,13 @@ export default function PalletPage() {
 						setUpdatePosBoxesValue={setUpdatePosBoxesValue}
 						updatePosDateValue={updatePosDateValue}
 						setUpdatePosDateValue={setUpdatePosDateValue}
-
 						updatePosSkladValue={updatePosSkladValue}
 						setUpdatePosSkladValue={setUpdatePosSkladValue}
 						updatePosComValue={updatePosComValue}
 						setUpdatePosComValue={setUpdatePosComValue}
-
-
 						handleUpdatePosById={handleUpdatePosById}
 						onCancel={() => { setShowModalEditPos(false) }}
 						isEditingPos={isEditingPos}
-
 					/>
 
 
@@ -523,8 +470,6 @@ export default function PalletPage() {
 						onCancel={() => { setShowModalClearPallet(false) }}
 						isClearingPallet={isClearingPallet}
 					/>
-
-
 
 					<ModalMovePalletContent
 						show={showModalMovePalletContent}
@@ -544,14 +489,6 @@ export default function PalletPage() {
 					/>
 
 
-
-
-
-
-
-
-
-
 					<ContainerBlock
 						className="p-2 space-y-2 "
 					>
@@ -564,7 +501,7 @@ export default function PalletPage() {
 							<TextBlock
 								className="text-teal-100 text-center text-3xl italic "
 							>
-								{newCom}
+								{pallet?.com}
 							</TextBlock>
 
 						</CardBlock>
@@ -627,6 +564,7 @@ export default function PalletPage() {
 
 									return (
 										<PositionBage
+											key={pos?._id}
 											pos={pos}
 											onDelete={() => {
 												setShowModalDeletePos(true)
