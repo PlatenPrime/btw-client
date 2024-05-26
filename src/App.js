@@ -28,7 +28,7 @@ import ArtsUpdatingPage from "./pages/Arts/ArtsUpdatingPage";
 import useCheckAuth from "./hooks/useCheckAuth";
 import CreateUserPage from "./pages/Auth/CreateUserPage";
 import SettingsPage from "./pages/Settings/SettingsPage";
-import DefsPage from "./pages/Stocks/DefsPage";
+import DefsPage from "./pages/Defs/DefsPage";
 import InstructionsPage from "./pages/Instructions/InstructionsPage";
 import InsPage from "./pages/Instructions/InsPage";
 import InsFolderPage from "./pages/Instructions/InsFolderPage";
