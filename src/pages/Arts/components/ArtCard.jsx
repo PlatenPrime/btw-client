@@ -61,8 +61,8 @@ export default function ArtCard(
 					className="grid gap-2"
 				>
 
-					<TextBlock className="  text-xl bg-gradient-to-b from-sky-500/50 to-sky-900/50  p-1 rounded-lg justify-between" >
-						<span className="flex"><VscLocation size={24} />Зона: </span>
+					<TextBlock className="  text-xl bg-gradient-to-b from-slate-700/50 to-slate-900/50  p-1 rounded-lg justify-between" >
+						<span className="flex"><VscLocation size={24} color='orange' />Зона: </span>
 						<span>{artikul?.zone}</span>
 
 					</TextBlock>
@@ -70,17 +70,17 @@ export default function ArtCard(
 
 
 					<TextBlock
-						className=" text-xl bg-gradient-to-b from-sky-500/50 to-sky-900/50 p-1 rounded-lg justify-between">
-						<span className="flex"><PiCurrencyDollarBold size={24} />Ціна:	</span>
+						className=" text-xl bg-gradient-to-b from-slate-700/50 to-slate-900/50 rounded-lg justify-between">
+						<span className="flex"><PiCurrencyDollarBold size={24} color='lightgreen' />Ціна:	</span>
 						<span>{artPrice} грн</span>
 
 					</TextBlock>
 
 
 					<TextBlock
-						className="text-xl bg-gradient-to-b from-sky-500/50 to-sky-900/50  p-1 rounded-lg justify-between"
+						className="text-xl bg-gradient-to-b from-slate-700/50 to-slate-900/50  p-1 rounded-lg justify-between"
 					>
-						<span className="flex"><MdSunnySnowing size={24} />Ранок:	</span>
+						<span className="flex"><MdSunnySnowing size={24} color='pink' />Ранок:	</span>
 						<span>{remains ? remains[title] : ""}</span>
 					</TextBlock>
 
@@ -88,9 +88,9 @@ export default function ArtCard(
 
 
 					<TextBlock
-						className="text-xl bg-gradient-to-b from-sky-500/50 to-sky-900/50   p-1 rounded-lg justify-between"
+						className="text-xl bg-gradient-to-b from-slate-700/50 to-slate-900/50   p-1 rounded-lg justify-between"
 					>
-						<span className="flex"><MdSunny size={24} /> Залишок:	</span>
+						<span className="flex"><MdSunny size={24} color='yellow' /> Залишок:	</span>
 						<span>{ostatok}</span>
 
 					</TextBlock>

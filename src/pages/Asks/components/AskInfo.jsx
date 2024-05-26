@@ -32,9 +32,9 @@ const options = {
 
 
 const statusBackground = {
-    'solved': 'bg-green-500',
-    'fail': 'bg-red-500',
-    'new': 'bg-indigo-700'
+    'solved': 'from-green-500/50 to-green-900/50',
+    'fail': 'from-red-500/50 to-red-900/50',
+    'new': 'from-indigo-500/50 to-indigo-900/50'
 
 }
 
@@ -66,7 +66,7 @@ export default function AskInfo({
             >
                 {ask?.quant ?
                     <TextBlock
-                        className="text-xl font-bold"
+                        className="text-3xl font-bold"
                     >
                         <BsBalloon size={24} />	{ask?.quant}
                     </TextBlock>
