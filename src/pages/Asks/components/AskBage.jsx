@@ -49,16 +49,19 @@ export default function AskBage({
 
 
                 <CardBlock
-                    className="col-span-1 flex justify-center items-center bg-white shadow-md shadow-white  "
+                    className="col-span-4  lg:col-span-1 flex justify-center items-center bg-white shadow-md shadow-white  "
                 >
 
-                    <ImageArt size={100} artikul={ask?.artikul} />
+                    <ImageArt 
+                    size={100} artikul={ask?.artikul} 
+        
+                    />
                 </CardBlock>
 
 
 
                 <CardBlock
-                    className=" col-span-3 flex flex-col items-center justify-center px-2 "
+                    className="col-span-4   lg:col-span-3 flex flex-col items-center justify-center px-2 bg-sky-500/5 "
                 >
 
                     <TextBlock

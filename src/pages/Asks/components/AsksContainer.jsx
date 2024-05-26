@@ -6,6 +6,7 @@ import useFetchUsers from '../../Auth/hooks/useFetchUsers'
 import useAuthStore from '../../Auth/authStore'
 import AskBage from './AskBage'
 import { groupByDate, formatDateToUkrainian } from "../../../utils/groupByDate"
+import { FcDeployment } from 'react-icons/fc'
 
 export default function AsksContainer({
     isAsksLoading,
@@ -27,39 +28,29 @@ export default function AsksContainer({
 
 
 
-
-
-    if (isAsksLoading) {
-        return (
-            <ContainerBlock
-                className="space-y-2 "
-            >
-                <Spinner color="#6366f1" />
-            </ContainerBlock>
-        )
-    }
-
-
     return (
         <ContainerBlock
             className="space-y-4 "
         >
 
+
+
             {Object.keys(groupedAsks).map(date => (
-                <CardBlock
-                    className="space-y-2 "
-                    key={date}>
-
-
-                    <h2
-                        className="text-3xl font-bold bg-gradient-to-b from-slate-500 to-slate-900/50 rounded-xl"
-                    >
-                        {formatDateToUkrainian(date)}
-                    </h2>
-
+             
                     <CardBlock
-                        className="space-y-2"
+                        key={date}
+                        className="space-y-2 p-2  rounded-xl "
                     >
+                        <CardBlock
+                            className="text-3xl  flex flex-col lg:flex-row justify-between bg-gradient-to-b from-slate-500 to-slate-900/50 rounded-xl px-2"
+                        >
+                            <h2 className="font-bold"   >{formatDateToUkrainian(date)} </h2>
+                            <TextBlock>
+                                {groupedAsks[date].filter(ask => ask.status !== "new").length} / {groupedAsks[date].length}
+                            </TextBlock>
+                        </CardBlock>
+
+
                         {groupedAsks[date].map(ask => (
                             <AskBage
                                 key={ask?._id}
@@ -70,9 +61,6 @@ export default function AsksContainer({
                             />
                         ))}
                     </CardBlock>
-
-
-                </CardBlock>
             ))}
 
         </ContainerBlock>

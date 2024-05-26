@@ -23,7 +23,7 @@ export default function AsksPage() {
 		return (
 			<PageBTW>
 				<HeaderBlock
-					className="text-transparent"
+					className="text-transparent bg-gradient-to-b from-slate-700/50 to-slate-800/50"
 				>
 					Запити
 				</HeaderBlock>
@@ -43,7 +43,7 @@ export default function AsksPage() {
 			className="space-y-4 px-1 "
 		>
 			<HeaderBlock
-				className="bg-indigo-500 shadow-2xl shadow-indigo-500"
+				className="bg-indigo-500 shadow-lg shadow-indigo-500"
 			>
 				Запити
 			</HeaderBlock>
