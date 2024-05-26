@@ -13,8 +13,8 @@ export default function AskBage({
 
 
     const styles = {
-        "new": "border-indigo-500   hover:shadow-indigo-500 hover:bg-indigo-500  from-indigo-500/50 to-indigo-900/50",
-        "solved": "border-green-500   hover:shadow-green-500 hover:bg-green-500  from-green-500/50 to-green-900/50",
+        "solved": "border-indigo-500   hover:shadow-indigo-500 hover:bg-indigo-500  from-indigo-500/50 to-indigo-900/50",
+        "new": "border-green-500   hover:shadow-green-500 hover:bg-green-500  from-green-500/50 to-green-900/50",
         "fail": "border-rose-500  hover:shadow-rose-500 hover:bg-rose-500   from-rose-500/50 to-rose-900/50 "
     }
 
@@ -61,7 +61,7 @@ export default function AskBage({
 
 
                 <CardBlock
-                    className="col-span-4   lg:col-span-3 flex flex-col items-center justify-center px-2 bg-sky-500/5 "
+                    className="col-span-4   lg:col-span-3 flex flex-col items-center justify-center px-2 bg-sky-500/20 lg:bg-transparent p-2"
                 >
 
                     <TextBlock
@@ -94,7 +94,7 @@ export default function AskBage({
 
                 {ask?.quant ?
                     <TextBlock
-                        className="text-xl font-bold"
+                        className="text-3xl font-bold"
                     >
                         <BsBalloon size={24} />	{ask?.quant}
                     </TextBlock>

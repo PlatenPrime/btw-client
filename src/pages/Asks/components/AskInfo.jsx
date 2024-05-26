@@ -32,9 +32,9 @@ const options = {
 
 
 const statusBackground = {
-    'solved': 'from-green-500/50 to-green-900/50',
+    'new': 'from-green-500/50 to-green-900/50',
     'fail': 'from-red-500/50 to-red-900/50',
-    'new': 'from-indigo-500/50 to-indigo-900/50'
+    'solved': 'from-indigo-500/50 to-indigo-900/50'
 
 }
 
