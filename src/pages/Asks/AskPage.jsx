@@ -217,18 +217,8 @@ export default function AskPage() {
 			</HeaderBlock>
 
 
-
-
-
-
-
-
-
-
 			<ButtonGroup>
-
 				<ButtonGroup.Actions>
-
 					<ButtonBlock
 						className="green-b"
 						onClick={() => setShowModalDoAsk(true)}

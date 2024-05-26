@@ -94,7 +94,7 @@ export default function RowPage() {
 		return (
 			<PageBTW>
 				<HeaderBlock
-					className="text-transparent"
+					className="text-transparent  bg-gradient-to-b from-slate-700/50 to-slate-800/50"
 				>
 					Ряд
 				</HeaderBlock>

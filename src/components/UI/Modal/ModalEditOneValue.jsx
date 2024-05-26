@@ -50,7 +50,7 @@ export default function ModalEditOneValue({ value, onConfirm, onCancel, isUpdati
 					<ButtonBlock
 						onClick={() => onConfirm(newValue)}
 						className="green-b flex justify-center items-center"
-						disabled={newValue?.length < 1}
+					
 					>
 						{isUpdating ?
 							<Spinner color="rgb(134 239 172)" />
