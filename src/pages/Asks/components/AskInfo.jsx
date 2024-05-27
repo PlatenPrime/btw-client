@@ -31,13 +31,6 @@ const options = {
 
 
 
-const statusBackground = {
-    'new': 'from-green-500/50 to-green-900/50',
-    'fail': 'from-red-500/50 to-red-900/50',
-    'solved': 'from-indigo-500/50 to-indigo-900/50'
-
-}
-
 
 
 export default function AskInfo({
@@ -56,7 +49,7 @@ export default function AskInfo({
 
     return (
         <ContainerBlock
-            className={statusBackground[ask?.status]}
+            
         >
 
 
