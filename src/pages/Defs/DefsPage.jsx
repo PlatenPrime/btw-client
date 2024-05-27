@@ -583,7 +583,7 @@ export default function DefsPage() {
 				>
 
 					<TextBlock
-						className="flex justify-between px-2  text-lg  bg-gradient-to-b from-teal-500/50 to-teal-800/50 rounded-xl"
+						className="flex justify-between px-2  text-lg  bg-gradient-to-b from-teal-500/20 to-teal-800/10 rounded-xl"
 					>
 						<span>
 							Позиції всього:
@@ -596,7 +596,7 @@ export default function DefsPage() {
 
 
 					<TextBlock
-						className="flex justify-between px-2  text-lg  bg-gradient-to-b from-sky-500/50 to-sky-800/50 rounded-xl"
+						className="flex justify-between px-2  text-lg  bg-gradient-to-b from-sky-500/20 to-sky-800/10 rounded-xl"
 					>
 						<span>
 							Артикули:
@@ -609,7 +609,7 @@ export default function DefsPage() {
 
 
 					<TextBlock
-						className="flex justify-between px-2  text-lg  bg-gradient-to-b from-teal-500/50 to-teal-800/50 rounded-xl"
+						className="flex justify-between px-2  text-lg  bg-gradient-to-b from-teal-500/20 to-teal-800/10 rounded-xl"
 					>
 						<span>
 							Унікальні:
@@ -622,7 +622,7 @@ export default function DefsPage() {
 
 
 					<TextBlock
-						className="flex justify-between px-2  text-lg  bg-gradient-to-b from-pink-500/50 to-pink-800/50 rounded-xl"
+						className="flex justify-between px-2  text-lg  bg-gradient-to-b from-pink-500/20 to-pink-800/10 rounded-xl"
 					>
 						<span>
 							Дефіцити:
