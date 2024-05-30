@@ -545,17 +545,17 @@ export default function DefsPage() {
 			<CardBlock
 				className="grid grid-cols-1 lg:grid-cols-2 gap-2"
 			>
-				<ContainerBlock className="flex flex-wrap gap-2 ">
+				<ContainerBlock className="flex flex-wrap gap-2 text-sm ">
 
 
-					<CardBlock className="inline-flex items-center bg-gradient-to-b from-slate-700/50 to-slate-900/50 p-2 gap-1">
+					<CardBlock className="inline-flex items-center bg-gradient-to-b from-slate-500/50 to-slate-800/50 p-2 gap-1 rounded-xl">
 						<InputBlock
-							className="appearance-none h-6 w-6 checked:bg-pink-500 rounded-sm border-none cursor-pointer"
+							className="appearance-none h-6 w-6 checked:bg-pink-500 rounded-sm border-none cursor-pointer "
 							type="checkbox"
 							checked={selectedRowTitles.length === uniqueRowTitles.length}
 							onChange={handleSelectAllChange}
 						/>
-						<span className="text-pink-100 text-lg">Вибрати всі</span>
+						<span className="text-pink-100 ">Вибрати всі</span>
 					</CardBlock>
 
 					{uniqueRowTitles
@@ -563,7 +563,7 @@ export default function DefsPage() {
 
 
 						.map((title, index) => (
-							<CardBlock key={index} className="inline-flex items-center bg-gradient-to-b from-slate-700/50 to-slate-900/50 p-2 gap-1">
+							<CardBlock key={index} className="inline-flex items-center bg-gradient-to-b from-slate-500/50 to-slate-800/50 p-2 gap-1 rounded-xl">
 								<InputBlock
 									className="appearance-none  h-6 w-6 checked:bg-pink-500 rounded-xl border-none cursor-pointer"
 									type="checkbox"
@@ -571,7 +571,7 @@ export default function DefsPage() {
 									checked={selectedRowTitles.includes(title)}
 									onChange={handleRowTitleChange}
 								/>
-								<span className=" text-pink-100 text-lg">{title}</span>
+								<span className=" text-pink-100">{title}</span>
 							</CardBlock>
 						))}
 				</ContainerBlock>
@@ -583,7 +583,7 @@ export default function DefsPage() {
 				>
 
 					<TextBlock
-						className="flex justify-between px-2  text-lg  bg-gradient-to-b from-teal-500/20 to-teal-800/10 rounded-xl"
+						className="flex justify-between px-2  text-lg  bg-gradient-to-b from-teal-500/50 to-teal-800/50 rounded-xl"
 					>
 						<span>
 							Позиції всього:
@@ -596,7 +596,7 @@ export default function DefsPage() {
 
 
 					<TextBlock
-						className="flex justify-between px-2  text-lg  bg-gradient-to-b from-sky-500/20 to-sky-800/10 rounded-xl"
+						className="flex justify-between px-2  text-lg  bg-gradient-to-b from-sky-500/50 to-sky-800/50 rounded-xl"
 					>
 						<span>
 							Артикули:
@@ -609,7 +609,7 @@ export default function DefsPage() {
 
 
 					<TextBlock
-						className="flex justify-between px-2  text-lg  bg-gradient-to-b from-teal-500/20 to-teal-800/10 rounded-xl"
+						className="flex justify-between px-2  text-lg  bg-gradient-to-b from-orange-500/50 to-orange-800/50 rounded-xl"
 					>
 						<span>
 							Унікальні:
@@ -622,7 +622,7 @@ export default function DefsPage() {
 
 
 					<TextBlock
-						className="flex justify-between px-2  text-lg  bg-gradient-to-b from-pink-500/20 to-pink-800/10 rounded-xl"
+						className="flex justify-between px-2  text-lg  bg-gradient-to-b from-pink-500/50 to-pink-800/50 rounded-xl"
 					>
 						<span>
 							Дефіцити:
@@ -725,12 +725,12 @@ export default function DefsPage() {
 
 
 							<CardBlock
-								className="lg:col-span-2 justify-self-stretch flex flex-col items-start justify-around  rounded-lg "
+								className="lg:col-span-2 justify-self-stretch flex flex-col items-start justify-around  rounded-lg text-lg"
 							>
 
 
 								<CardBlock
-									className="text-lg p-2 flex justify-between w-full bg-gradient-to-b from-slate-700/50 to-slate-900/50 rounded-lg"
+									className=" p-2 flex justify-between w-full bg-gradient-to-b from-slate-700/50 to-slate-900/50 rounded-lg"
 								>
 									<TextBlock className=" " >
 										Запаси:
@@ -745,7 +745,7 @@ export default function DefsPage() {
 
 
 								<CardBlock
-									className="text-xl p-2 flex justify-between w-full bg-gradient-to-b from-slate-700/50 to-slate-900/50 rounded-lg"
+									className=" p-2 flex justify-between w-full bg-gradient-to-b from-slate-700/50 to-slate-900/50 rounded-lg"
 								>
 									<TextBlock className=" " >
 										База:
@@ -760,13 +760,13 @@ export default function DefsPage() {
 
 
 								<CardBlock
-									className="text-xl p-2 flex justify-between w-full bg-gradient-to-b from-slate-700/50 to-slate-900/50 rounded-lg"
+									className=" p-2 flex justify-between w-full bg-gradient-to-b from-slate-700/50 to-slate-900/50 rounded-lg"
 								>
 									<TextBlock className=" " >
 										Дефіцит:
 									</TextBlock>
 
-									<TextBlock className="text-red-500">-{def?.dif}</TextBlock>
+									<TextBlock className="text-red-500 font-bold">{def?.dif}</TextBlock>
 								</CardBlock>
 
 
