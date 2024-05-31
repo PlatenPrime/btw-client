@@ -412,23 +412,6 @@ export default function DefsPage() {
 
 
 
-	if (isFetchingPoses) {
-		return (
-			<PageBTW>
-				<HeaderBlock
-					className="text-transparent  bg-gradient-to-b from-slate-700/50 to-slate-800/50"
-				>
-					Дефіцити
-				</HeaderBlock>
-				<ContainerBlock
-					className="w-full h-full flex justify-center items-center"
-				>
-					<Spinner color="rgb(236 72 153)" />
-				</ContainerBlock>
-
-			</PageBTW>
-		)
-	}
 
 
 
@@ -440,6 +423,7 @@ export default function DefsPage() {
 
 	return (
 		<PageBTW
+			isLoading={isFetchingPoses || loadingArtsDB}
 			className=" "
 		>
 			<HeaderBlock

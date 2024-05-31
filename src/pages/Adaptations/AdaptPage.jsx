@@ -156,27 +156,12 @@ export default function AdaptPage() {
 
 
 
-    if (isAdaptLoading) return (
-
-        <PageBTW>
-            <HeaderBlock
-                className="text-transparent"
-            >
-                Адаптація
-            </HeaderBlock>
-
-            <AdaptSpinnerContainer />
-
-        </PageBTW>
-
-    )
-
-
-
     return (
 
 
-        <PageBTW>
+        <PageBTW
+        isLoading={isAdaptLoading}
+        >
             <HeaderBlock
                 className="bg-green-500 shadow-2xl shadow-green-500"
             >

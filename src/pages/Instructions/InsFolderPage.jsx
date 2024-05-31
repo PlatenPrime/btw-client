@@ -148,6 +148,7 @@ export default function InsFolderPage() {
   return (
     <PageBTW
       className="space-y-4"
+      isLoading={isInsFolderLoading}
 
     >
 
@@ -191,26 +192,6 @@ export default function InsFolderPage() {
       />}
 
 
-
-
-
-
-
-
-
-
-      {isInsFolderLoading ?
-
-
-        <ContainerBlock
-          className="w-full h-full flex justify-start items-center"
-        >
-          <Spinner color="rgb(234 179 8)" />
-        </ContainerBlock>
-
-        :
-
-        <>
 
 
           <ButtonGroup>
@@ -310,17 +291,6 @@ export default function InsFolderPage() {
 
           }
 
-
-
-
-
-
-
-
-
-
-        </>
-      }
 
 
     </PageBTW >

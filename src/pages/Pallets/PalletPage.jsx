@@ -316,42 +316,10 @@ export default function PalletPage() {
 
 
 
-
-
-
-	if (isPalletLoading) {
-		return (
-			<PageBTW>
-				<HeaderBlock
-					className="text-transparent  bg-gradient-to-b from-slate-700/50 to-slate-800/50"
-				>
-					Палета
-				</HeaderBlock>
-				<ContainerBlock
-					className="w-full h-full flex justify-center items-center"
-				>
-					<Spinner color="rgb(20 184 166)" />
-				</ContainerBlock>
-
-			</PageBTW>
-		)
-	}
-
-
-
-
-
-
-
-
-
-
-
-
-
 	return (
 		<PageBTW
 			className="px-1"
+			isLoading={isPalletLoading}
 		>
 
 			<HeaderBlock

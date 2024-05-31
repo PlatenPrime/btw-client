@@ -31,27 +31,12 @@ export default function RowsPage() {
 		}
 	}
 
-	if (isLoadingAllRows) {
-		return (
-			<PageBTW>
-				<HeaderBlock
-					className="text-transparent  bg-gradient-to-b from-slate-700/50 to-slate-800/50"
-				>
-					Ряди
-				</HeaderBlock>
-				<ContainerBlock
-					className="w-full h-full flex justify-center items-center"
-				>
-					<Spinner color="rgb(249 115 22 )" />
-				</ContainerBlock>
 
-			</PageBTW>
-		)
-	}
 
 	return (
 		<PageBTW
 			className="px-1"
+			isLoading={isLoadingAllRows}
 		>
 			<HeaderBlock
 				className="bg-slate-500  shadow-lg shadow-slate-500"

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { ButtonBlock, ButtonGroup, ContainerBlock, HeaderBlock,  PageBTW, Spinner } from "../../components"
+import { ButtonBlock, ButtonGroup, ContainerBlock, HeaderBlock, PageBTW, Spinner } from "../../components"
 import useAskStore from './stores/asksStore'
 
 import { AddIcon } from '../../components/UI/Icons';
@@ -19,27 +19,11 @@ export default function AsksPage() {
 	const [showModalCreateAsk, setShowModalCreateAsk] = useState(false)
 
 
-	if (isAsksLoading) {
-		return (
-			<PageBTW>
-				<HeaderBlock
-					className="text-transparent bg-gradient-to-b from-slate-700/50 to-slate-800/50"
-				>
-					Запити
-				</HeaderBlock>
-				<ContainerBlock
-					className="w-full h-full flex justify-center items-center"
-				>
-					<Spinner color="rgb(99 102 241)" />
-				</ContainerBlock>
-
-			</PageBTW>
-		)
-	}
 
 
 	return (
 		<PageBTW
+			isLoading={isAsksLoading}
 			className="space-y-4 px-1 "
 		>
 			<HeaderBlock

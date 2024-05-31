@@ -145,7 +145,12 @@ export default function InsPage() {
 
 
 	return (
-		<PageBTW className="space-y-4">
+		<PageBTW
+			isLoading={isInsFetching}
+
+			className="space-y-4"
+
+		>
 			<HeaderBlock className="bg-blue-500 shadow-2xl shadow-blue-500">Інструкція</HeaderBlock>
 
 
@@ -176,248 +181,223 @@ export default function InsPage() {
 
 
 
-			{isInsFetching
+			<ButtonGroup>
 
-				?
+				<ButtonGroup.Actions>
 
-				<ContainerBlock
-					className="w-full h-full flex justify-start items-center"
-				>
-					<Spinner color="rgb(59 130 246 )" />
-				</ContainerBlock>
+					{isInsEditing ?
 
-				:
+						<>
+							<ButtonBlock
+								className="pink-b"
+								onClick={() => setIsInsEditing(false)}
+							>
+								Скасувати
+							</ButtonBlock>
 
-				<>
+							<ButtonBlock
+								className="green-b"
+								onClick={() => setIsShowModalInsUpdating(true)}
+							>
+								Зберегти
+							</ButtonBlock>
 
-					<ButtonGroup>
+							<ButtonBlock
+								className="red-b"
+								onClick={() => setIsShowModalInsDeleting(true)}
+							>
+								Видалити
+							</ButtonBlock>
+						</>
+						:
+						<ButtonBlock
+							className="blue-b"
+							onClick={() => setIsInsEditing(true)}
+						>
+							Редагувати
+						</ButtonBlock>
 
-						<ButtonGroup.Actions>
-
-							{isInsEditing ?
-
-								<>
-									<ButtonBlock
-										className="pink-b"
-										onClick={() => setIsInsEditing(false)}
-									>
-										Скасувати
-									</ButtonBlock>
-
-									<ButtonBlock
-										className="green-b"
-										onClick={() => setIsShowModalInsUpdating(true)}
-									>
-										Зберегти
-									</ButtonBlock>
-
-									<ButtonBlock
-										className="red-b"
-										onClick={() => setIsShowModalInsDeleting(true)}
-									>
-										Видалити
-									</ButtonBlock>
-								</>
-								:
-								<ButtonBlock
-									className="blue-b"
-									onClick={() => setIsInsEditing(true)}
-								>
-									Редагувати
-								</ButtonBlock>
-
-							}
-						</ButtonGroup.Actions>
+					}
+				</ButtonGroup.Actions>
 
 
 
-					</ButtonGroup>
+			</ButtonGroup>
 
 
 
-					<ContainerBlock>
-						{isInsEditing
+			<ContainerBlock>
+				{isInsEditing
 
-							?
+					?
 
-							// EDIT
-
-
-							<CardBlock className=" flex flex-col space-y-4 ">
+					// EDIT
 
 
-								<CardBlock
-									className="flex justify-evenly items-center space-x-4 bg-blue-500/10 p-2 rounded-xl"
+					<CardBlock className=" flex flex-col space-y-4 ">
 
-								>
 
-									<label
-										className='min-w-[200px]'
-										htmlFor="">Назва інструкції:
-									</label>
+						<CardBlock
+							className="flex justify-evenly items-center space-x-4 bg-blue-500/10 p-2 rounded-xl"
 
-									<InputBlock
-										name="newTitle"
-										className="text-xl outline-none border-none p-3 px-8 bg-slate-700 focus:bg-slate-600 w-full
+						>
+
+							<label
+								className='min-w-[200px]'
+								htmlFor="">Назва інструкції:
+							</label>
+
+							<InputBlock
+								name="newTitle"
+								className="text-xl outline-none border-none p-3 px-8 bg-slate-700 focus:bg-slate-600 w-full
 								 placeholder:font-light rounded-xl rounded-l-none
 								"
-										value={newTitle}
-										onChange={(e) => setNewTitle(e.target.value)}
-										placeholder="..."
-									/>
+								value={newTitle}
+								onChange={(e) => setNewTitle(e.target.value)}
+								placeholder="..."
+							/>
 
 
-								</CardBlock>
+						</CardBlock>
 
+						<CardBlock
+							className="flex justify-start items-center space-x-4 bg-blue-500/10 p-2 rounded-xl"
 
+						>
 
-
-
-								<CardBlock
-									className="flex justify-start items-center space-x-4 bg-blue-500/10 p-2 rounded-xl"
-
-								>
-
-									<label htmlFor=""
-										className='min-w-[200px]'
-									>
-										Зображення:
-									</label>
+							<label htmlFor=""
+								className='min-w-[200px]'
+							>
+								Зображення:
+							</label>
 
 
 
-									<CardBlock
-										className="w-full flex justify-center "
-									>
-										<TitleImage newTitleImage={newTitleImage} setNewTitleImage={setNewTitleImage} />
-									</CardBlock>
-
-								</CardBlock>
-
-
-
-
-								<CardBlock
-									className="flex justify-start items-center space-x-4 bg-blue-500/10 p-2 rounded-xl"
-								>
-									<label htmlFor=""
-										className='min-w-[200px]'
-									>
-										Відео:
-									</label>
-
-
-
-									<InputBlock
-										type="text"
-										className="text-xl outline-none border-none p-3 px-8 bg-slate-700 focus:bg-slate-600 w-full
-								 placeholder:font-light rounded-xl rounded-l-none
-								"
-										placeholder="https://www.youtube.com/..."
-										value={newVideoUrl}
-										onChange={(e) => setNewVideoUrl(e.target.value)}
-									/>
-
-								</CardBlock>
-
-
-
-
-								{newVideoUrl
-									&&
-									<YoutubeCard url={newVideoUrl} />
-
-								}
-
-
-
-
-
-
-								<ContainerBlock
-									className="p-1 space-y-4 "
-								>
-
-									<Editor
-										value={newBody}
-										setValue={setNewBody}
-
-									/>
-
-
-								</ContainerBlock>
+							<CardBlock
+								className="w-full flex justify-center "
+							>
+								<TitleImage newTitleImage={newTitleImage} setNewTitleImage={setNewTitleImage} />
 							</CardBlock>
 
+						</CardBlock>
 
 
 
 
-
-							:
-
-
-							// ОТОБРАЖЕНИЕ	
-
-
-							<ContainerBlock
-								className="p-1 space-y-4 "
+						<CardBlock
+							className="flex justify-start items-center space-x-4 bg-blue-500/10 p-2 rounded-xl"
+						>
+							<label htmlFor=""
+								className='min-w-[200px]'
 							>
+								Відео:
+							</label>
 
+
+
+							<InputBlock
+								type="text"
+								className="text-xl outline-none border-none p-3 px-8 bg-slate-700 focus:bg-slate-600 w-full
+								 placeholder:font-light rounded-xl rounded-l-none
+								"
+								placeholder="https://www.youtube.com/..."
+								value={newVideoUrl}
+								onChange={(e) => setNewVideoUrl(e.target.value)}
+							/>
+
+						</CardBlock>
+
+
+
+
+						{newVideoUrl
+							&&
+							<YoutubeCard url={newVideoUrl} />
+
+						}
+
+
+						<ContainerBlock
+							className="p-1 space-y-4 "
+						>
+
+							<Editor
+								value={newBody}
+								setValue={setNewBody}
+
+							/>
+
+
+						</ContainerBlock>
+					</CardBlock>
+
+
+
+					:
+
+
+					// ОТОБРАЖЕНИЕ	
+
+
+					<ContainerBlock
+						className="p-1 space-y-4 "
+					>
+
+
+						<CardBlock
+							className="flex flex-col lg:flex-row lg:space-x-4 items-center bg-blue-500/10 p-2 rounded-xl"
+						>
+
+
+							{ins?.titleImage ?
 
 								<CardBlock
-									className="flex flex-col lg:flex-row lg:space-x-4 items-center bg-blue-500/10 p-2 rounded-xl"
+									className="flex justify-center items-center w-full lg:w-fit "
 								>
 
-
-									{ins?.titleImage ?
-
-										<CardBlock
-											className="flex justify-center items-center w-full lg:w-fit "
-										>
-
-											<img src={ins?.titleImage} alt="" className="w-[300px] rounded-xl " />
-
-										</CardBlock>
-
-										:
-
-										<CardBlock
-											className="flex justify-center items-center w-full lg:w-fit "
-										>
-											<img
-												src='https://placehold.co/600x400?text=Інструкція'
-												width={300}
-												className="rounded-xl"
-											>
-
-											</img>
-										</CardBlock>
-
-
-									}
-
-									<CardBlock>
-										<TextBlock className="text-3xl "> {ins?.title}</TextBlock>
-										{author && <TextBlock className="text-xl text-slate-400"> {author?.fullname}</TextBlock>}
-										{ins?.createdAt && <TextBlock className="text-lg text-slate-400 justify-start">Створена: {new Date(ins?.createdAt).toLocaleString()}</TextBlock>}
-										{ins?.updatedAt && <TextBlock className="text-lg text-slate-400 justify-start">Змінена: {new Date(ins?.updatedAt).toLocaleString()}</TextBlock>}
-									</CardBlock>
+									<img src={ins?.titleImage} alt="" className="w-[300px] rounded-xl " />
 
 								</CardBlock>
 
+								:
+
+								<CardBlock
+									className="flex justify-center items-center w-full lg:w-fit "
+								>
+									<img
+										src='https://placehold.co/600x400?text=Інструкція'
+										width={300}
+										className="rounded-xl"
+									>
+
+									</img>
+								</CardBlock>
+
+
+							}
+
+							<CardBlock>
+								<TextBlock className="text-3xl "> {ins?.title}</TextBlock>
+								{author && <TextBlock className="text-xl text-slate-400"> {author?.fullname}</TextBlock>}
+								{ins?.createdAt && <TextBlock className="text-lg text-slate-400 justify-start">Створена: {new Date(ins?.createdAt).toLocaleString()}</TextBlock>}
+								{ins?.updatedAt && <TextBlock className="text-lg text-slate-400 justify-start">Змінена: {new Date(ins?.updatedAt).toLocaleString()}</TextBlock>}
+							</CardBlock>
+
+						</CardBlock>
 
 
 
 
 
-								{ins?.videoUrl &&
 
-									<YoutubeCard url={ins?.videoUrl} />
+						{ins?.videoUrl &&
 
-								}
+							<YoutubeCard url={ins?.videoUrl} />
+
+						}
 
 
-								{/* 
+						{/* 
 
 								{insBody
 									?
@@ -427,37 +407,35 @@ export default function InsPage() {
 								} */}
 
 
-								{insBody
-									?
-									<InsContainer
+						{insBody
+							?
+							<InsContainer
 
-									>
-										<div
-											dangerouslySetInnerHTML={{
-												__html: insBody
-											}} >
+							>
+								<div
+									dangerouslySetInnerHTML={{
+										__html: insBody
+									}} >
 
-										</div>
-									</InsContainer>
-									:
-									<TextBlock className="text-xl italic text-slate-500"  >Текст інструкції відсутній</TextBlock>
-								}
-
-
-
-
-
-							</ContainerBlock>
-
-
+								</div>
+							</InsContainer>
+							:
+							<TextBlock className="text-xl italic text-slate-500"  >Текст інструкції відсутній</TextBlock>
 						}
+
+
+
 
 
 					</ContainerBlock>
 
 
-				</>
-			}
+				}
+
+
+			</ContainerBlock>
+
+
 
 		</PageBTW>
 	);

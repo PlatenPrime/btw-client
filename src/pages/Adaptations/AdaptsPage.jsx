@@ -68,29 +68,11 @@ export default function AdaptsPage() {
     }
 
 
-
-
-    if (isAdaptsLoading) {
-
-        return (
-            <PageBTW>
-                <HeaderBlock
-                    className="text-transparent"
-                >
-                    Адаптації
-                </HeaderBlock>
-                <AdaptSpinnerContainer />
-            </PageBTW>
-        )
-
-    }
-
-
-
-
     return (
 
-        <PageBTW>
+        <PageBTW
+            isLoading={isAdaptsLoading}
+        >
             <HeaderBlock
                 className="bg-green-500 shadow-2xl shadow-green-500"
             >
@@ -113,8 +95,6 @@ export default function AdaptsPage() {
 
 
             <ButtonGroup>
-
-
                 <ButtonGroup.Actions>
                     <ButtonBlock
                         className="green-b"
@@ -128,20 +108,13 @@ export default function AdaptsPage() {
             </ButtonGroup>
 
 
-
-            {
-                isAdaptsLoading
-                    ?
-                    <AdaptSpinnerContainer />
-
-                    :
                     <ContainerBlock className="flex flex-col gap-4">
                         {adapts?.map((adapt) => (
                             <AdaptBage adapt={adapt} />
                         ))}
                     </ContainerBlock>
 
-            }
+      
 
 
 

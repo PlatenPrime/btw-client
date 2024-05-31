@@ -38,27 +38,11 @@ export default function ArtPage() {
 
 
 
-	if (isLoadingArtikul) {
-		return (
-			<PageBTW>
-				<HeaderBlock
-					className="text-transparent bg-gradient-to-b from-slate-700/50 to-slate-800/50"
-				>
-					Артикул
-				</HeaderBlock>
-				<ContainerBlock
-					className="w-full h-full flex justify-center items-center"
-				>
-					<Spinner color="rgb(14 165 233 )" />
-				</ContainerBlock>
-
-			</PageBTW>
-		)
-	}
 
 
 	return (
 		<PageBTW
+			isLoading={isLoadingArtikul}
 			className="space-y-4 px-1"
 		>
 

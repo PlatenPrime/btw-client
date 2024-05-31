@@ -180,25 +180,6 @@ export default function AskPage() {
 	}
 
 
-	if (isAskLoading) {
-		return (
-			<PageBTW>
-				<HeaderBlock
-					className="text-transparent bg-gradient-to-b from-slate-700/50 to-slate-800/50"
-				>
-					Запит
-				</HeaderBlock>
-				<ContainerBlock
-					className="w-full h-full flex justify-center items-center"
-				>
-					<Spinner color="rgb(99 102 241 )" />
-				</ContainerBlock>
-
-			</PageBTW>
-		)
-	}
-
-
 
 
 	return (
@@ -206,6 +187,7 @@ export default function AskPage() {
 
 		<PageBTW
 			className="space-y-4 px-1"
+			isLoading={isAskLoading}
 		>
 
 			<HeaderBlock

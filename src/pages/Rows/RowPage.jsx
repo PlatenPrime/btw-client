@@ -90,28 +90,10 @@ export default function RowPage() {
 		}
 	};
 
-	if (isRowLoading) {
-		return (
-			<PageBTW>
-				<HeaderBlock
-					className="text-transparent  bg-gradient-to-b from-slate-700/50 to-slate-800/50"
-				>
-					Ряд
-				</HeaderBlock>
-				<ContainerBlock
-					className="w-full h-full flex justify-center items-center"
-				>
-					<Spinner color="#fef3c7" />
-				</ContainerBlock>
-
-			</PageBTW>
-		)
-	}
-
-
 
 	return (
 		<PageBTW
+			isLoading={isRowLoading}
 			className="px-1 space-y-4"
 		>
 			<HeaderBlock

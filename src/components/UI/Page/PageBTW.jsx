@@ -1,6 +1,9 @@
 import React from 'react';
+import HeaderBlock from '../blocks/HeaderBlock';
+import ContainerBlock from '../blocks/ContainerBlock';
+import Spinner from '../Spinner/Spinner';
 
-const PageBTW = ({ children, className }) => {
+const PageBTW = ({ children, className, isLoading }) => {
 
 
 	const style = `
@@ -11,18 +14,30 @@ const PageBTW = ({ children, className }) => {
 
 
 
-
-
-
-
+	if (isLoading) {
+		return (
+			<div className={style}>
+				<HeaderBlock
+					className="text-transparent bg-gradient-to-b from-slate-700/50 to-slate-800/50 "
+				>
+					Артикул
+				</HeaderBlock>
+				<ContainerBlock
+					className="w-full h-full flex justify-center items-center"
+				>
+					<Spinner color="rgb(148 163 184 )" />
+				</ContainerBlock>
+			</div>
+		)
+	}
 
 
 
 	return (
 
-				<div className={style}>
-					{children}
-				</div>
+		<div className={style}>
+			{children}
+		</div>
 
 	);
 };

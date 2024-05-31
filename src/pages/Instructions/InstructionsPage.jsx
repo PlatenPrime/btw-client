@@ -69,7 +69,12 @@ export default function InstructionsPage() {
   };
 
   return (
-    <PageBTW className="space-y-4">
+    <PageBTW
+      className="space-y-4"
+      isLoading={isInsFoldersLoading}
+    >
+
+
       <HeaderBlock className="bg-blue-500 shadow-2xl shadow-blue-500">
         Інструкції
       </HeaderBlock>
@@ -86,76 +91,45 @@ export default function InstructionsPage() {
       />}
 
 
+      <ButtonGroup>
+        <ButtonGroup.Actions>
+          <ButtonBlock
+            className="green-b"
+            onClick={() => setIsShowModalInsFolderCreating(true)}
+          >
+            Створити теку
+          </ButtonBlock>
+        </ButtonGroup.Actions>
+      </ButtonGroup>
 
 
-
-
-      {/* MAIN */}
-
-      {isInsFoldersLoading ? (
-        <ContainerBlock className="flex h-full w-full items-center justify-start">
-          <Spinner color="rgb(59 130 246)" />
-        </ContainerBlock>
-      ) : (
-        <>
-
-
-          <ButtonGroup>
-            <ButtonGroup.Actions>
-              <ButtonBlock
-                className="green-b"
-                onClick={() => setIsShowModalInsFolderCreating(true)}
-              >
-                Створити теку
-              </ButtonBlock>
-            </ButtonGroup.Actions>
-          </ButtonGroup>
-
-
-          {insFolders?.length > 0 && (
-            <ContainerBlock className="grid grid-cols-1 gap-2 p-4 md:grid-cols-2 
+      {insFolders?.length > 0 && (
+        <ContainerBlock className="grid grid-cols-1 gap-2 p-4 md:grid-cols-2 
             lg:grid-cols-3">
-              {insFolders.map((insFolder) => (
-                <CardBlock
-                  key={insFolder._id}
-                  onClick={() => navigate(`/insfolder/${insFolder._id}`)}
-                  className="group rounded-xl flex justify-center items-center
+          {insFolders.map((insFolder) => (
+            <CardBlock
+              key={insFolder._id}
+              onClick={() => navigate(`/insfolder/${insFolder._id}`)}
+              className="group rounded-xl flex justify-center items-center
                   bg-blue-500/10 
                       hover:bg-blue-500  hover:shadow-2xl  hover:shadow-blue-500
                       transition duration-500 ease-in-out  cursor-pointer "
-                >
+            >
 
-                  <FcFolder className="text-5xl" />
-                  <TextBlock className="  text-xl px-2 py-1 rounded-lg   w-full ">
-                    {insFolder?.title}
-                  </TextBlock>
-
-
-                </CardBlock>
-
-              ))}
-            </ContainerBlock>
-          )}
+              <FcFolder className="text-5xl" />
+              <TextBlock className="  text-xl px-2 py-1 rounded-lg   w-full ">
+                {insFolder?.title}
+              </TextBlock>
 
 
+            </CardBlock>
+
+          ))}
+        </ContainerBlock>
+      )}
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-        </>
-      )
-      }
     </PageBTW >
   );
 }

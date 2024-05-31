@@ -58,28 +58,9 @@ export default function ArtsPage() {
 
 
 
-	if (loadingArtsDB) {
-		return (
-			<PageBTW>
-				<HeaderBlock
-					className="text-transparent"
-				>
-					Артикули
-				</HeaderBlock>
-				<ContainerBlock
-					className="w-full h-full flex justify-center items-center"
-				>
-					<Spinner color="#0ea5e9" />
-				</ContainerBlock>
-
-			</PageBTW>
-		)
-	}
-
-
-
 	return (
 		<PageBTW
+		isLoading={loadingArtsDB}
 			className="space-y-4 px-1 "
 		>
 
@@ -109,9 +90,7 @@ export default function ArtsPage() {
 					</ButtonBlock>
 				</ButtonGroup.Navigation>
 			</ButtonGroup>
-
-
-
+			
 
 			<ContainerBlock>
 
