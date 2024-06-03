@@ -6,6 +6,7 @@ import useFetchDefs from './hooks/useFetchDefs'
 import useFetchAsks from '../Asks/hooks/useFetchAsks'
 import DefBage from './components/DefBage'
 import useFetchRemainsDefs from './hooks/useFetchRemainsDefs'
+import { formatDateToUkrainianFull, formatDateToUkrainianShort } from "../../utils/formatDate"
 
 
 export default function DefsPage() {
@@ -44,29 +45,36 @@ export default function DefsPage() {
 
 			<ButtonGroup>
 
-				<ButtonGroup.Actions>
-				</ButtonGroup.Actions>
+				<ButtonBlock
+					className={` ${isMorning ? 'blue-b-n' : 'blue-b'}   `}
+					onClick={() => setIsMorning(true)}
+				>
+					Ранок
+				</ButtonBlock>
 
-				<ButtonGroup.Navigation>
-					<ButtonBlock
-						className="blue-b-n  "
-						onClick={() => setIsMorning(true)}
-					>
-						Ранок
-					</ButtonBlock>
+				<ButtonBlock
+					className={` ${isMorning ? 'yellow-b' : 'yellow-b-n'}   `}
+					onClick={() => setIsMorning(false)}
+				>
+					Актуальні
+				</ButtonBlock>
 
-					<ButtonBlock
-						className="yellow-b-n"
-						onClick={() => setIsMorning(false)}
-					>
-						Актуальні
-					</ButtonBlock>
-
-				</ButtonGroup.Navigation>
 			</ButtonGroup>
 
+
+
+
 			<ContainerBlock>
-				<TextBlock>{time}</TextBlock>
+				<TextBlock
+				className="text-lg font-bold text-slate-200"
+				>
+					{isMorning
+						?
+						<>{formatDateToUkrainianShort(time)}</>
+						:
+						<>{formatDateToUkrainianFull(time)}</>
+					}
+				</TextBlock>
 			</ContainerBlock>
 
 

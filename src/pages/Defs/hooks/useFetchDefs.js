@@ -3,7 +3,6 @@
 
 import { useState, useEffect } from 'react';
 import axios from '../../../utils/axios'
-import { formatDateToUkrainian } from '../../../utils/groupByDate';
 
 
 const useFetchDefs = () => {
@@ -20,7 +19,7 @@ const useFetchDefs = () => {
                 console.log(response.data)
                 setDefs(response?.data[0]?.items);
                 if (response?.data[0]?.createdAt) {
-                    setTime(   formatDateToUkrainian(response?.data[0]?.createdAt));
+                    setTime(response?.data[0]?.createdAt);
                 }
             } catch (error) {
                 setErrorDefs(error);

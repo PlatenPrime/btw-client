@@ -3,6 +3,7 @@ import { CardBlock, ImageArt, TextBlock } from '../../../components'
 import { BsQuestionCircle } from "react-icons/bs";
 import { FaRegCircleCheck } from "react-icons/fa6";
 import { BsBalloon } from 'react-icons/bs'
+import { formatDateToUkrainianFull } from '../../../utils/formatDate';
 
 export default function AskBage({
     ask,
@@ -17,17 +18,6 @@ export default function AskBage({
         "new": "border-green-500   hover:shadow-green-500 hover:bg-green-500  from-green-500/50 to-green-900/50",
         "fail": "border-rose-500  hover:shadow-rose-500 hover:bg-rose-500   from-rose-500/50 to-rose-900/50 "
     }
-
-
-    const options = {
-        year: 'numeric',
-        month: 'long',
-        day: 'numeric',
-        hour: '2-digit',
-        minute: '2-digit',
-        second: '2-digit',
-        timeZone: 'Europe/Kiev'
-    };
 
 
     return (
@@ -52,9 +42,9 @@ export default function AskBage({
                     className="col-span-4  lg:col-span-1 flex justify-center items-center bg-white shadow-md shadow-white  "
                 >
 
-                    <ImageArt 
-                    size={100} artikul={ask?.artikul} 
-        
+                    <ImageArt
+                        size={100} artikul={ask?.artikul}
+
                     />
                 </CardBlock>
 
@@ -131,7 +121,7 @@ export default function AskBage({
                         className="text-sm italic "
                     >
                         < BsQuestionCircle size={24} />
-                        {new Date(ask?.createdAt).toLocaleString('uk-UA', options)}
+                        {formatDateToUkrainianFull(ask?.createdAt)}
                     </TextBlock>
 
                     <TextBlock
@@ -152,7 +142,7 @@ export default function AskBage({
                             className="text-sm italic "
                         >
                             <FaRegCircleCheck size={24} />
-                            {new Date(ask?.updatedAt).toLocaleString('uk-UA', options)}
+                            {formatDateToUkrainianFull(ask?.updatedAt)}
                         </TextBlock>
 
                         <TextBlock
