@@ -46,14 +46,14 @@ export default function DefsPage() {
 			<ButtonGroup>
 
 				<ButtonBlock
-					className={` ${isMorning ? 'blue-b-n' : 'blue-b'}   `}
+					className={` ${isMorning ? 'pink-b-n' : 'pink-b'}   `}
 					onClick={() => setIsMorning(true)}
 				>
 					Ранок
 				</ButtonBlock>
 
 				<ButtonBlock
-					className={` ${isMorning ? 'yellow-b' : 'yellow-b-n'}   `}
+					className={` ${isMorning ? 'pink-b' : 'pink-b-n'}   `}
 					onClick={() => setIsMorning(false)}
 				>
 					Актуальні
