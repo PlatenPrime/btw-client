@@ -63,10 +63,13 @@ export default function DefsPage() {
 
 
 
+			<ContainerBlock
+				className="space-y-2 pb-4"
+			>
 
-			<ContainerBlock>
+
 				<TextBlock
-				className="text-lg font-bold text-slate-200"
+					className="text-lg font-bold text-slate-200"
 				>
 					{isMorning
 						?
@@ -75,12 +78,7 @@ export default function DefsPage() {
 						<>{formatDateToUkrainianFull(time)}</>
 					}
 				</TextBlock>
-			</ContainerBlock>
 
-
-			<ContainerBlock
-				className="space-y-2 pb-4"
-			>
 
 				{items?.length > 0
 					?
@@ -97,7 +95,9 @@ export default function DefsPage() {
 						)}
 					</>
 					:
-					<TextBlock>
+					<TextBlock
+						className="italic"
+					>
 						Дефіцитів немає
 					</TextBlock>
 				}
