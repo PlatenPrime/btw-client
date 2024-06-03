@@ -6,7 +6,7 @@ import useAsksStore from '../stores/asksStore';
 const useFetchAsks = () => {
 
     const [isAsksLoading, setIsAsksLoading] = useState(false);
-    const { getAllAsks } = useAsksStore();
+    const { asks, getAllAsks } = useAsksStore();
 
     useEffect(() => {
         const fetchAsks = async () => {
@@ -28,7 +28,7 @@ const useFetchAsks = () => {
         };
     }, [getAllAsks]); // Empty dependency array to run effect only once
 
-    return { isAsksLoading };
+    return { asks, isAsksLoading };
 };
 
 export default useFetchAsks;
