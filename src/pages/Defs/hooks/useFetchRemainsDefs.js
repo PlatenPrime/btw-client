@@ -19,7 +19,7 @@ const useFetchRemainsDefs = () => {
                 setIsRemainsDefsLoading(true);
                 const response = await axios.get("defs/remains");
                 console.log(response.data)
-                setRemainsDefs(response?.data[0]?.items);
+                setRemainsDefs(response?.data);
 
             } catch (error) {
                 setErrorRemainsDefs(error);
