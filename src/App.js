@@ -14,7 +14,7 @@ import MainPage from "./pages/MainPage";
 import PalletPage from "./pages/Pallets/PalletPage";
 import ArtPage from "./pages/Arts/ArtPage";
 import ArtsPage from "./pages/Arts/ArtsPage";
-import StocksPage from "./pages/Stocks/StocksPage";
+import PosesPage from "./pages/Poses/PosesPage";
 import CompsPage from "./pages/Competitors/pages/CompsPage";
 import CompsEditPage from "./pages/Competitors/pages/CompsEditPage";
 import CompsListPage from "./pages/Competitors/pages/CompsListPage";
@@ -67,7 +67,7 @@ function App() {
 				<Route path="rows/:id" element={<RowPage />} />
 
 
-				<Route path="stocks" element={<StocksPage />} />
+				<Route path="poses" element={<PosesPage />} />
 
 				<Route path="arts" element={<ArtsPage />} />
 				<Route path="arts/updating" element={<ArtsUpdatingPage />} />

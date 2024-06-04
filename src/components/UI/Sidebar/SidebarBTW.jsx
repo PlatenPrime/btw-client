@@ -131,7 +131,7 @@ p-4
 
 				<TextBlock className="bg-transparent hover:bg-emerald-500/90 rounded-2xl " >
 					<NavLink
-						to={"stocks"}
+						to={"poses"}
 						style={({ isActive }) => isActive ? {
 							color: "white",
 							padding: "12px",
@@ -150,7 +150,7 @@ p-4
 								<FcLowPriority />
 							</TextBlock>
 
-							<TextBlock>Запаси</TextBlock>
+							<TextBlock>Позиції</TextBlock>
 						</CardBlock>
 
 					</NavLink>

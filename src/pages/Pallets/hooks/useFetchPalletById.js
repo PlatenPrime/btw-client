@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 
 
 import  usePalletStore  from '../stores/palletsStore'; 
-import usePosesStore from '../../Stocks/stores/posesStore'
+import usePosesStore from '../../Poses/stores/posesStore'
 
 
 

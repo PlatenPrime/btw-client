@@ -7,7 +7,7 @@ import { GoSearch } from "react-icons/go";
 
 
 import usePosesStore from "./stores/posesStore"
-import StockBage from './StockBage';
+import PosBage from './PosBage';
 import { exportToExcelPoses } from '../../utils/exportExcel';
 import { SiMicrosoftexcel } from 'react-icons/si';
 import { useDebouncedCallback } from 'use-debounce'
@@ -120,7 +120,7 @@ export default function StocksPage() {
 				className=" shadow-2xl bg-emerald-500 shadow-emerald-500 "
 			>
 				<TextBlock className="">
-					Запаси
+					Позиції
 				</TextBlock>
 
 
@@ -335,8 +335,8 @@ export default function StocksPage() {
 							<TextBlock>Нічого не знайдено</TextBlock>
 							:
 							filteredStocks?.length === allPoses.length
-								? allPoses?.slice(step * page - step, step * page).map((pos) => <StockBage key={pos._id} pos={pos} nameukr={artsDB?.find(artikul => artikul.artikul === pos.artikul)?.nameukr} />)
-								: filteredStocks?.slice(step * page - step, step * page).map((pos) => <StockBage key={pos._id} pos={pos} nameukr={artsDB?.find(artikul => artikul.artikul === pos.artikul)?.nameukr} />)}
+								? allPoses?.slice(step * page - step, step * page).map((pos) => <PosBage key={pos._id} pos={pos} nameukr={artsDB?.find(artikul => artikul.artikul === pos.artikul)?.nameukr} />)
+								: filteredStocks?.slice(step * page - step, step * page).map((pos) => <PosBage key={pos._id} pos={pos} nameukr={artsDB?.find(artikul => artikul.artikul === pos.artikul)?.nameukr} />)}
 
 					</CardBlock>
 

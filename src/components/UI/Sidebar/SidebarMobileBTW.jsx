@@ -114,7 +114,7 @@ const SidebarMobileBTW = ({ onClose }) => {
 				<TextBlock className="w-full text-xl text-center  hover:bg-emerald-500/90 rounded font-bold" >
 					<NavLink
 						onClick={onClose}
-						to={"stocks"}
+						to={"poses"}
 						style={({ isActive }) => isActive ? {
 							color: "white",
 							padding: "12px",
@@ -122,7 +122,8 @@ const SidebarMobileBTW = ({ onClose }) => {
 							background: "rgb(16 185 129)",
 						} : inActiveStyles}
 					>
-						Запаси
+						
+						Позиції
 					</NavLink>
 				</TextBlock>
 

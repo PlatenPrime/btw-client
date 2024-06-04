@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import usePosesStore from '../../Stocks/stores/posesStore';
+import usePosesStore from '../../Poses/stores/posesStore';
 
 const useFetchPosesByArtikul = (artikul) => {
     const [isLoadingPoses, setIsLoadingPoses] = useState(true);

@@ -4,7 +4,7 @@ import { ButtonBlock, ButtonGroup, CardBlock, ContainerBlock, HeaderBlock, Image
 
 import useAskStore from './stores/asksStore'
 import { useNavigate, useParams } from 'react-router-dom'
-import usePosesStore from '../Stocks/stores/posesStore'
+import usePosesStore from '../Poses/stores/posesStore'
 import useFetchRemains from '../../hooks/useFetchRemains';
 import useAuthStore from '../Auth/authStore';
 import ArtCard from '../Arts/components/ArtCard';
