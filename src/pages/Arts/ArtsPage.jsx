@@ -60,7 +60,7 @@ export default function ArtsPage() {
 
 	return (
 		<PageBTW
-		isLoading={loadingArtsDB}
+			isLoading={loadingArtsDB}
 			className="space-y-4 px-1 "
 		>
 
@@ -90,29 +90,30 @@ export default function ArtsPage() {
 					</ButtonBlock>
 				</ButtonGroup.Navigation>
 			</ButtonGroup>
-			
+
 
 			<ContainerBlock>
 
 				<InputSearch handleSearch={handleSearch} />
 
 				<PaginationBlock
-					filteredArts={filteredArts}
+					allItems={artsDB}
+					filteredItems={filteredArts}
 					page={page}
 					step={step}
 					setPage={setPage}
-					artsDB={artsDB}
+
 				/>
 
 
-					<ArtsContainer
-						filteredArts={filteredArts}
-						artsDB={artsDB}
-						step={step}
-						page={page}
-						remains={remains}
-					/>
-				
+				<ArtsContainer
+					filteredArts={filteredArts}
+					artsDB={artsDB}
+					step={step}
+					page={page}
+					remains={remains}
+				/>
+
 			</ContainerBlock>
 
 

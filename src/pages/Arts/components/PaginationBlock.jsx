@@ -3,34 +3,35 @@ import { ButtonBlock, CardBlock, TextBlock } from '../../../components'
 import { AiOutlineArrowLeft, AiOutlineArrowRight, AiOutlineDoubleLeft, AiOutlineDoubleRight } from 'react-icons/ai'
 
 export default function PaginationBlock({
-    filteredArts,
+    allItems,
+    filteredItems,
     page,
     step,
     setPage,
-    artsDB
+    
 }) {
     return (
-        <div>{filteredArts?.length === 0
+        <div>{filteredItems?.length === 0
             ?
             null
             :
-            filteredArts?.length === artsDB?.length
+            filteredItems?.length === allItems?.length
                 ?
                 <CardBlock
                     className="flex flex-wrap justify-between p-2  rounded-xl"
                 >
 
                     <TextBlock>
-                        Всього: {artsDB?.length > 0 && artsDB?.length}
+                        Всього: {allItems?.length > 0 && allItems?.length}
                     </TextBlock>
 
 
 
-                    {artsDB > 0 ?
+                    {allItems.length > 0 ?
                         <TextBlock
                             className=""
                         >
-                            {step * page - step + 1} - {step * page < artsDB?.length ? step * page : artsDB?.length}
+                            {step * page - step + 1} - {step * page < allItems?.length ? step * page : allItems?.length}
                         </TextBlock>
 
                         :
@@ -38,24 +39,17 @@ export default function PaginationBlock({
                     }
 
 
-
-
-
-
-
-
-
                     <CardBlock
                         className="space-x-3 flex flex-wrap "
                     >
 
-                        <ButtonBlock onClick={() => setPage(1)} className="sky-b border-none bg-sky-500/10 " disabled={page === 1}>
+                        <ButtonBlock onClick={() => setPage(1)} className="slate-b border-none  bg-gradient-to-b from-slate-500/50 to-slate-700/50 " disabled={page === 1}>
                             <TextBlock className="text-lg lg:text-2xl">
                                 <AiOutlineDoubleLeft />
                             </TextBlock>
                         </ButtonBlock>
 
-                        <ButtonBlock onClick={() => setPage((prev) => prev - 1)} className="sky-b border-none bg-sky-500/10" disabled={page === 1}>
+                        <ButtonBlock onClick={() => setPage((prev) => prev - 1)} className="slate-b border-none bg-gradient-to-b from-slate-500/50 to-slate-700/50 " disabled={page === 1}>
 
                             <TextBlock className="text-lg lg:text-2xl">
                                 <AiOutlineArrowLeft />
@@ -66,14 +60,14 @@ export default function PaginationBlock({
                             Сторінка: {page}
                         </TextBlock>
 
-                        <ButtonBlock onClick={() => setPage((prev) => prev + 1)} className="sky-b border-none bg-sky-500/10" disabled={artsDB?.length / step / page < 1}>
+                        <ButtonBlock onClick={() => setPage((prev) => prev + 1)} className="slate-b border-none bg-gradient-to-b from-slate-500/50 to-slate-700/50 " disabled={allItems?.length / step / page <= 1}>
 
                             <TextBlock className="text-lg lg:text-2xl">
                                 <AiOutlineArrowRight />
                             </TextBlock>
                         </ButtonBlock>
 
-                        <ButtonBlock onClick={() => setPage(Math.ceil(artsDB?.length / step))} className="sky-b border-none bg-sky-500/10 " disabled={artsDB?.length / step / page < 1}>
+                        <ButtonBlock onClick={() => setPage(Math.ceil(allItems?.length / step))} className="slate-b border-none bg-gradient-to-b from-slate-500/50 to-slate-700/50  " disabled={allItems?.length / step / page <= 1}>
 
                             <TextBlock className="text-lg lg:text-2xl">
                                 <AiOutlineDoubleRight />
@@ -96,16 +90,16 @@ export default function PaginationBlock({
 
 
                     <TextBlock>
-                        Знайдено: {filteredArts?.length}
+                        Знайдено: {filteredItems?.length}
                     </TextBlock>
 
 
 
                     <TextBlock
-                        className="text-xl"
+                        className=""
 
                     >
-                        {step * page - step + 1} - {step * page < filteredArts?.length ? step * page : filteredArts?.length}
+                        {step * page - step + 1} - {step * page < filteredItems?.length ? step * page : filteredItems?.length}
                     </TextBlock>
 
 
@@ -114,13 +108,13 @@ export default function PaginationBlock({
                         className="space-x-3 flex flex-wrap"
                     >
 
-                        <ButtonBlock onClick={() => setPage(1)} className="sky-b border-none bg-sky-500/10 " disabled={page === 1}>
+                        <ButtonBlock onClick={() => setPage(1)} className="slate-b border-none bg-gradient-to-b from-slate-500/50 to-slate-700/50  " disabled={page === 1}>
                             <TextBlock className="text-lg lg:text-2xl">
                                 <AiOutlineDoubleLeft />
                             </TextBlock>
                         </ButtonBlock>
 
-                        <ButtonBlock onClick={() => setPage((prev) => prev - 1)} className="sky-b border-none bg-sky-500/10 " disabled={page === 1}>
+                        <ButtonBlock onClick={() => setPage((prev) => prev - 1)} className="slate-b border-none bg-gradient-to-b from-slate-500/50 to-slate-700/50  " disabled={page === 1}>
                             <TextBlock className="text-lg lg:text-2xl">
                                 <AiOutlineArrowLeft />
                             </TextBlock>
@@ -131,13 +125,13 @@ export default function PaginationBlock({
                         </TextBlock>
 
 
-                        <ButtonBlock onClick={() => setPage((prev) => prev + 1)} className="sky-b border-none bg-sky-500/10 " disabled={filteredArts?.length / step / page < 1}>
+                        <ButtonBlock onClick={() => setPage((prev) => prev + 1)} className="slate-b border-none bg-gradient-to-b from-slate-500/50 to-slate-700/50  " disabled={filteredItems?.length / step / page <= 1}>
                             <TextBlock className="text-lg lg:text-2xl">
                                 <AiOutlineArrowRight />
                             </TextBlock>
                         </ButtonBlock>
 
-                        <ButtonBlock onClick={() => setPage(Math.ceil(filteredArts?.length / step))} className="sky-b border-none bg-sky-500/10 " disabled={filteredArts?.length / step / page < 1}>
+                        <ButtonBlock onClick={() => setPage(Math.ceil(filteredItems?.length / step))} className="slate-b border-none bg-gradient-to-b from-slate-500/50 to-slate-700/50  " disabled={filteredItems?.length / step / page <= 1}>
                             <TextBlock className="text-lg lg:text-2xl">
                                 <AiOutlineDoubleRight />
                             </TextBlock>

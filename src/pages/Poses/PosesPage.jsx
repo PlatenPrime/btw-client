@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { ButtonBlock, ButtonGroup, CardBlock, ContainerBlock, HeaderBlock, InputBlock, PageBTW, Spinner, TextBlock } from '../../components'
+import { ButtonBlock, ButtonGroup, CardBlock, ContainerBlock, HeaderBlock, InputBlock, InputSearch, PageBTW, Spinner, TextBlock } from '../../components'
 import { toast } from 'react-toastify';
 import { AiOutlineArrowLeft, AiOutlineArrowRight, AiOutlineDoubleLeft, AiOutlineDoubleRight, AiOutlineSearch } from "react-icons/ai";
 import { GoSearch } from "react-icons/go";
@@ -12,6 +12,7 @@ import { exportToExcelPoses } from '../../utils/exportExcel';
 import { SiMicrosoftexcel } from 'react-icons/si';
 import { useDebouncedCallback } from 'use-debounce'
 import useFetchArts from '../../hooks/useFetchArts';
+import PaginationBlock from '../Arts/components/PaginationBlock';
 
 
 
@@ -23,7 +24,6 @@ import useFetchArts from '../../hooks/useFetchArts';
 export default function StocksPage() {
 
 	const { artsDB, loadingArtsDB, errorArtsDB } = useFetchArts();
-
 
 	const { allPoses, getAllPoses } = usePosesStore()
 
@@ -105,11 +105,6 @@ export default function StocksPage() {
 
 
 
-
-
-
-
-
 	return (
 		<PageBTW
 			className="space-y-4 px-1 "
@@ -122,21 +117,11 @@ export default function StocksPage() {
 				<TextBlock className="">
 					Позиції
 				</TextBlock>
-
-
-
 			</HeaderBlock>
-
-
-
-
 
 			<ButtonGroup
 			>
-
 				<ButtonGroup.Actions>
-
-
 					<ButtonBlock
 						onClick={() => exportToExcelPoses(allPoses, artsDB)}
 						className=" green-b flex items-center space-x-1  "
@@ -146,184 +131,26 @@ export default function StocksPage() {
 							Експорт в Excel
 						</TextBlock>
 					</ButtonBlock>
-
-
 				</ButtonGroup.Actions>
-
 			</ButtonGroup>
 
 			<ContainerBlock
 				className="space-y-4 "
 			>
 
-
-
-
-
-
-				<CardBlock
-					className="flex  justify-start rounded-xl bg-slate-700 space-x-3 pl-4 "
-				>
-
-
-					<TextBlock
-						className="text-2xl font-bold"
-					><GoSearch />
-					</TextBlock>
-					<InputBlock
-						onChange={(e) => handleSearch(e.target.value)
-						}
-						placeholder="Пошук по позиції"
-						className="text-xl outline-none border-none p-3 px-8 bg-slate-700 focus:bg-slate-600 w-full
-								 placeholder:font-light rounded-xl rounded-l-none
-								"
-					/>
-
-
-
-				</CardBlock>
-
-
-
-
-
-
-
-				{filteredStocks?.length === 0 ? null : filteredStocks?.length === allPoses?.length ?
-					<CardBlock
-						className="flex flex-wrap justify-between p-2  rounded-xl bg-slate-700"
-					>
-
-						<TextBlock>
-							Всього: {allPoses?.length > 0 && allPoses?.length}
-						</TextBlock>
-
-
-
-						{allPoses.length > 0 ?
-							<TextBlock
-								className=""
-							>
-								{step * page - step + 1} - {step * page < allPoses?.length ? step * page : allPoses?.length}
-							</TextBlock>
-
-							:
-							null
-						}
-
-
-
-
-
-
-
-
-
-						<CardBlock
-							className="space-x-3 flex flex-wrap "
-						>
-
-							<ButtonBlock onClick={() => setPage(1)} className="emerald-b border-none bg-emerald-500/10 " disabled={page === 1}>
-								<TextBlock className="text-lg lg:text-2xl">
-									<AiOutlineDoubleLeft />
-								</TextBlock>
-							</ButtonBlock>
-
-							<ButtonBlock onClick={() => setPage((prev) => prev - 1)} className="emerald-b border-none bg-emerald-500/10" disabled={page === 1}>
-
-								<TextBlock className="text-lg lg:text-2xl">
-									<AiOutlineArrowLeft />
-								</TextBlock>
-							</ButtonBlock>
-
-							<TextBlock>
-								Сторінка: {page}
-							</TextBlock>
-
-							<ButtonBlock onClick={() => setPage((prev) => prev + 1)} className="emerald-b border-none bg-emerald-500/10" disabled={allPoses?.length / step / page < 1}>
-
-								<TextBlock className="text-lg lg:text-2xl">
-									<AiOutlineArrowRight />
-								</TextBlock>
-							</ButtonBlock>
-
-							<ButtonBlock onClick={() => setPage(Math.ceil(allPoses?.length / step))} className="emerald-b border-none bg-emerald-500/10 " disabled={allPoses?.length / step / page < 1}>
-
-								<TextBlock className="text-lg lg:text-2xl">
-									<AiOutlineDoubleRight />
-								</TextBlock>
-							</ButtonBlock>
-
-
-
-						</CardBlock>
-
-					</CardBlock>
-
-					:
-
-					<CardBlock
-						className="flex flex-wrap justify-between p-2 "
-					>
-
-
-
-
-						<TextBlock>
-							Знайдено: {filteredStocks?.length}
-						</TextBlock>
-
-
-
-						<TextBlock
-							className="text-xl"
-
-						>
-							{step * page - step + 1} - {step * page < filteredStocks?.length ? step * page : filteredStocks?.length}
-						</TextBlock>
-
-
-
-						<CardBlock
-							className="space-x-3 flex flex-wrap"
-						>
-
-							<ButtonBlock onClick={() => setPage(1)} className="sky-b border-none bg-emerald-500/10 " disabled={page === 1}>
-								<TextBlock className="text-lg lg:text-2xl">
-									<AiOutlineDoubleLeft />
-								</TextBlock>
-							</ButtonBlock>
-
-							<ButtonBlock onClick={() => setPage((prev) => prev - 1)} className="emerald-b border-none bg-emerald-500/10 " disabled={page === 1}>
-								<TextBlock className="text-lg lg:text-2xl">
-									<AiOutlineArrowLeft />
-								</TextBlock>
-							</ButtonBlock>
-
-							<TextBlock>
-								Сторінка: {page}
-							</TextBlock>
-
-
-							<ButtonBlock onClick={() => setPage((prev) => prev + 1)} className="emerald-b border-none bg-emerald-500/10 " disabled={filteredStocks?.length / step / page < 1}>
-								<TextBlock className="text-lg lg:text-2xl">
-									<AiOutlineArrowRight />
-								</TextBlock>
-							</ButtonBlock>
-
-							<ButtonBlock onClick={() => setPage(Math.ceil(filteredStocks?.length / step))} className="emerald-b border-none bg-emerald-500/10 " disabled={filteredStocks?.length / step / page < 1}>
-								<TextBlock className="text-lg lg:text-2xl">
-									<AiOutlineDoubleRight />
-								</TextBlock>
-
-							</ButtonBlock>
-
-						</CardBlock>
-
-					</CardBlock>
-
-
-				}
+				<InputSearch
+					handleSearch={handleSearch}
+					placeholder="Пошук по позиції"
+				/>
+
+				<PaginationBlock 
+				
+				allItems={allPoses}
+				filteredItems={filteredStocks}
+				page={page}
+				step={step}
+				setPage={setPage}
+				/>
 
 
 				{isLoadingPoses ?
@@ -339,13 +166,8 @@ export default function StocksPage() {
 								: filteredStocks?.slice(step * page - step, step * page).map((pos) => <PosBage key={pos._id} pos={pos} nameukr={artsDB?.find(artikul => artikul.artikul === pos.artikul)?.nameukr} />)}
 
 					</CardBlock>
-
 				}
-
-
 			</ContainerBlock>
-
-
 
 		</PageBTW>
 	)

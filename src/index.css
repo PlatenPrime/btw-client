@@ -133,8 +133,8 @@ h2 {
 	@apply
 	flex justify-center items-center
 	p-2 rounded-xl 
-	border border-gray-900 
-	bg-gray-300 text-gray-900
+	border border-gray-700 
+	 text-gray-700
 	hover:bg-white 
 	active:bg-gray-200 
 	  active:shadow-white
@@ -236,7 +236,7 @@ transition ease-in-out duration-300
 .disabled {
 	@apply
 	border-none
-	bg-slate-500/50
+	
 	hover:bg-transparent
 	active:bg-transparent
 	shadow-none
