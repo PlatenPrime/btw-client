@@ -2,11 +2,20 @@
 import React, { useState } from 'react';
 
 import { Link, NavLink, useNavigate } from "react-router-dom";
-import { ButtonBlock, TextBlock, CardBlock, Spinner } from "../../index";
-import { FcBinoculars, FcDeployment, FcLibrary, FcOrganization, FcSettings, FcLeave, FcLowPriority, FcRotateToLandscape, FcDocument, FcConferenceCall, FcButtingIn, FcBullish, FcList } from 'react-icons/fc';
+import { ButtonBlock, TextBlock, CardBlock, Spinner, ContainerBlock } from "../../index";
 
 import useAuthStore from '../../../pages/Auth/authStore';
-import ContainerBlock from '../blocks/ContainerBlock';
+
+import { TfiViewList } from "react-icons/tfi";
+import { GoNote } from "react-icons/go";
+import { SiAsciidoctor } from "react-icons/si";
+import { HiOutlineDocumentDownload } from "react-icons/hi";
+import { PiWarningBold } from "react-icons/pi";
+import { SiGooglelens } from "react-icons/si";
+import { GiProgression } from "react-icons/gi";
+import { SiGoogledocs } from "react-icons/si";
+import { MdSettingsSuggest } from "react-icons/md";
+import { ImExit } from "react-icons/im";
 
 
 
@@ -117,7 +126,7 @@ p-4
 							<TextBlock
 								className="text-3xl"
 							>
-								<FcDeployment />
+								<TfiViewList />
 							</TextBlock>
 
 							<TextBlock>Ряди</TextBlock>
@@ -147,7 +156,7 @@ p-4
 							<TextBlock
 								className="text-3xl"
 							>
-								<FcLowPriority />
+								<GoNote />
 							</TextBlock>
 
 							<TextBlock>Позиції</TextBlock>
@@ -178,7 +187,7 @@ p-4
 							<TextBlock
 								className="text-3xl"
 							>
-								<FcList />
+								<SiAsciidoctor />
 							</TextBlock>
 
 							<TextBlock>Артикули</TextBlock>
@@ -210,7 +219,7 @@ p-4
 							<TextBlock
 								className="text-3xl"
 							>
-								<FcRotateToLandscape />
+								<HiOutlineDocumentDownload />
 							</TextBlock>
 
 							<TextBlock>Запити</TextBlock>
@@ -243,7 +252,7 @@ p-4
 								<TextBlock
 									className="text-3xl"
 								>
-									<FcLeave />
+									<PiWarningBold />
 								</TextBlock>
 								<TextBlock>Дефіцити</TextBlock>
 							</CardBlock>
@@ -277,7 +286,8 @@ p-4
 								<TextBlock
 									className="text-3xl"
 								>
-									<FcBinoculars />
+									<SiGooglelens />
+
 								</TextBlock>
 								<TextBlock>Конкуренти</TextBlock>
 							</CardBlock>
@@ -308,7 +318,7 @@ p-4
 								<TextBlock
 									className="text-3xl"
 								>
-									<FcDocument />
+									<SiGoogledocs />
 								</TextBlock>
 
 								<TextBlock>Інструкції</TextBlock>
@@ -342,7 +352,7 @@ p-4
 								<TextBlock
 									className="text-3xl"
 								>
-									<FcBullish />
+									<GiProgression />
 								</TextBlock>
 
 								<TextBlock>Адаптації</TextBlock>
@@ -378,7 +388,7 @@ p-4
 								<TextBlock
 									className="text-3xl"
 								>
-									<FcSettings />
+									<MdSettingsSuggest />
 								</TextBlock>
 								<TextBlock>Налаштування</TextBlock>
 							</CardBlock>
@@ -395,7 +405,7 @@ p-4
 
 
 			<ContainerBlock
-				className="flex justify-center p-4"
+				className="flex justify-center p-0"
 			>
 
 				{
@@ -406,7 +416,8 @@ p-4
 							{isLogouting ?
 								< Spinner color="red" />
 								:
-								"Вийти"
+								<><ImExit />Вийти</>
+
 
 							}
 
@@ -417,6 +428,7 @@ p-4
 						<ButtonBlock
 							className="green-b px-8 text-xl "
 						>
+
 							<Link to={"/login"}>Вхід</Link>
 						</ButtonBlock>
 
