@@ -2,6 +2,7 @@
 export { default as PageBTW } from './UI/Page/PageBTW';
 export { default as InputBlock } from './UI/blocks/InputBlock';
 export { default as CardBlock } from './UI/blocks/CardBlock';
+export { default as PaginationBlock } from './UI/blocks/PaginationBlock';
 export { default as ContainerBlock } from './UI/blocks/ContainerBlock';
 export { default as CellBlock } from './UI/blocks/CellBlock';
 export { default as ButtonBlock } from './UI/blocks/ButtonBlock';

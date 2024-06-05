@@ -15,7 +15,7 @@ import usePosesStore from '../Poses/stores/posesStore';
 import useFetchRowById from './hooks/useFetchRowById';
 import ModalCreatePallet from './components/modals/ModalCreatePallet';
 import useFetchRowPallets from './hooks/useFetchRowPallets';
-import useFetchAllPoses from '../Pallets/hooks/useFetchAllPoses';
+import useFetchAllPoses from '../Poses/hooks/useFetchAllPoses';
 import PalletsContainer from './components/PalletsContainer';
 
 

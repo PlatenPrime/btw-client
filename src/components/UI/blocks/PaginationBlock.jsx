@@ -1,5 +1,5 @@
 import React from 'react'
-import { ButtonBlock, CardBlock, TextBlock } from '../../../components'
+import { ButtonBlock, CardBlock, TextBlock } from '../..'
 import { AiOutlineArrowLeft, AiOutlineArrowRight, AiOutlineDoubleLeft, AiOutlineDoubleRight } from 'react-icons/ai'
 
 export default function PaginationBlock({
@@ -8,7 +8,7 @@ export default function PaginationBlock({
     page,
     step,
     setPage,
-    
+
 }) {
     return (
         <div>{filteredItems?.length === 0

@@ -1,12 +1,12 @@
 import { useState, useEffect } from 'react';
 
-import usePosesStore from '../../Poses/stores/posesStore';
+import usePosesStore from '../stores/posesStore';
 
 const useFetchAllPoses = () => {
 
     const [isAllPosesLoading, setIsAllPosesLoading] = useState(true);
 
-    const { getAllPoses } = usePosesStore();
+    const {allPoses, getAllPoses } = usePosesStore();
 
 
     useEffect(() => {
@@ -24,7 +24,7 @@ const useFetchAllPoses = () => {
         fetchAllPoses();
     }, [getAllPoses]);
 
-    return { isAllPosesLoading };
+    return { allPoses, isAllPosesLoading };
 };
 
 export default useFetchAllPoses;

@@ -5,7 +5,7 @@ import useFetchRemains from '../../hooks/useFetchRemains';
 import { Link } from 'react-router-dom';
 import { useDebouncedCallback } from 'use-debounce'
 import useFetchArts from '../../hooks/useFetchArts';
-import PaginationBlock from './components/PaginationBlock';
+import PaginationBlock from '../../components/UI/blocks/PaginationBlock';
 import ArtsContainer from './components/ArtsContainer';
 
 
