@@ -137,7 +137,7 @@ h2 {
 	bg-gray-300 text-gray-900
 	hover:bg-white 
 	active:bg-gray-200 
-	shadow-sm  active:shadow-white
+	  active:shadow-white
 	transition ease-in-out duration-100
 }
 

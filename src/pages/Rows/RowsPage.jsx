@@ -39,7 +39,7 @@ export default function RowsPage() {
 			isLoading={isLoadingAllRows}
 		>
 			<HeaderBlock
-				className="bg-slate-500  shadow-lg shadow-slate-500"
+				className="bg-orange-500  shadow-lg shadow-orange-500"
 			>
 				Ряди
 			</HeaderBlock>
