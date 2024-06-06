@@ -7,7 +7,7 @@ const PageBTW = ({ children, className, isLoading }) => {
 
 
 	const style = `
-	PageBTW sm:container mx-auto px-1 w-full
+	PageBTW sm:container mx-auto px-1 w-full pt-0 relative
 	${className}
 `
 

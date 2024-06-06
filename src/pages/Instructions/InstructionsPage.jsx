@@ -80,11 +80,11 @@ export default function InstructionsPage() {
 
   return (
     <PageBTW
-      className="space-y-4 relative"
+      className="space-y-4 "
       isLoading={isAllInsFoldersLoading}
     >
 
-      <HeaderBlock className="bg-blue-500 shadow-2xl shadow-blue-500 sticky top-0">
+      <HeaderBlock className="bg-blue-500 shadow-2xl shadow-blue-500 ">
         Інструкції
       </HeaderBlock>
 

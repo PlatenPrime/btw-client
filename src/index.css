@@ -11,7 +11,7 @@ body {
 	background-color: rgb(15 23 42);
 color: aliceblue;
     min-height: 100vh;
-
+padding: 0;
 
   }
   
@@ -82,8 +82,8 @@ h2 {
 }
 
 ::-webkit-scrollbar {
-	width: 4px; /* Width of the scrollbar */
-	height: 8px;
+	width: 0px; /* Width of the scrollbar */
+	height: 0px;
   }
   
   ::-webkit-scrollbar-thumb {

@@ -7,7 +7,7 @@ const HeaderBlock = ({ children, className }) => {
 
 	const style = `
 
-	HeaderBlock  justify-between xl:justify-center items-center 
+	HeaderBlock  justify-between xl:justify-center items-center  sticky top-0 opacity-95
 	
 	${className}
 
@@ -28,7 +28,7 @@ const HeaderBlock = ({ children, className }) => {
 
 
 
-			<NavbarBTW  onClickSide={() => toggleMobileSidebar()} />
+			<NavbarBTW onClickSide={() => toggleMobileSidebar()} />
 
 			{children}
 			<div

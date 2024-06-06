@@ -64,33 +64,20 @@ const SidebarBTW = () => {
 		<CardBlock className='hidden  min-h-screen h-full lg:min-w-fit   xl:w-56
 		xl:flex flex-col justify-start items-stratch text-center 
 		sticky top-0 left-0
-p-4
-		space-y-4
 
 		 '>
 
 
-			<ContainerBlock>
-
-
-
-				<CardBlock
-					className=" rounded-xl   group"
-				>
-
-
+			<ContainerBlock
+			className="rounded-r-xl rounded-l-none   group"
+			>
 					<NavLink
 						to={"/"}
 					>
 						<CardBlock className='flex items-center justify-center w-full h-16 text-5xl text-sky-100 font-bold group-hover:text-sky-500
-				
 				'>
-
 							BTW
-
 						</CardBlock>
-
-
 						{user
 							?
 							<TextBlock
@@ -100,12 +87,12 @@ p-4
 							null}
 
 					</NavLink>
-				</CardBlock>
-
-
 			</ContainerBlock>
 
-			<ContainerBlock className=' p-4' >
+
+
+
+			<ContainerBlock className='rounded-r-xl rounded-l-none p-4' >
 
 
 				<TextBlock className=" bg-transparent hover:bg-orange-500/50 rounded-2xl justify-start w-full" >
@@ -405,7 +392,7 @@ p-4
 
 
 			<ContainerBlock
-				className="flex justify-center p-0"
+				className="flex justify-center p-0 rounded-r-xl rounded-l-none "
 			>
 
 				{
