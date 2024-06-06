@@ -1,9 +1,14 @@
 import React from 'react'
 import { CardBlock, TextBlock } from '../../../components'
 import { useNavigate } from 'react-router-dom'
+import { FcFolder } from 'react-icons/fc'
+import { PiFilePlus } from "react-icons/pi";
+import { LuFileEdit, LuFilePlus } from "react-icons/lu";
+import { GoPerson } from "react-icons/go";
 
 export default function InsBage({
     ins,
+    insFolder,
     users
 }) {
 
@@ -16,37 +21,70 @@ export default function InsBage({
     return (
         <CardBlock
             key={ins._id}
-            className=" flex flex-col lg:flex-row items-center space-x-4 w-full p-2 rounded-xl bg-blue-500/20 hover:bg-blue-500 cursor-pointer
+            className=" grid grid-cols-1 lg:grid-cols-4 gap-2 w-full p-2 rounded-xl cursor-pointer
+            bg-gradient-to-b from-blue-500/50 to-blue-700/50 hover:bg-blue-500 
+            hover:shadow-lg hover:shadow-blue-500
      transition duration-500 ease-in-out"
             onClick={() => navigate(`/ins/${ins._id}`)}
         >
+
+
+
             <CardBlock
-                className="flex justify-center items-center w-full lg:w-fit  rounded-xl"
+                className="flex flex-col lg:flex-row  items-center justify-center lg:justify-start gap-2"
             >
-                {ins?.titleImage ?
-                    <img src={ins?.titleImage} alt="" className="w-[300px] rounded-xl " />
 
-                    :
+                <CardBlock
+                    className="flex  justify-center  w-full lg:w-fit  rounded-xl shrink-0"
+                >
+                    {ins?.titleImage ?
+                        <img
+                            src={ins?.titleImage}
+                            alt=""
+                            className="w-[200px] rounded-xl " />
+                        :
 
-                    <img
-                        src='https://placehold.co/600x300?text=Інструкція'
-                        width={300}
-                        className="rounded-xl"
-                    ></img>}
+                        <img
+                            src='https://placehold.co/600x300?text=Інструкція'
+                            width={200}
+                            className="rounded-xl"
+                        ></img>}
+
+                </CardBlock>
+
+                <TextBlock className="text-xl font-bold justify-start "> {ins?.title}</TextBlock>
+
             </CardBlock>
 
 
-            <CardBlock>
-                <TextBlock className="text-3xl "> {ins?.title}</TextBlock>
 
-                {ins?.author && users?.find((user) => user?._id === ins?.author) &&
-                    <TextBlock className="text-xl text-slate-400">
-                        {users?.find((user) => user?._id === ins?.author)?.fullname}
-                    </TextBlock>}
 
-                {ins?.createdAt && <TextBlock className="text-lg text-slate-400 justify-start">Створена: {new Date(ins?.createdAt).toLocaleString()}</TextBlock>}
-                {ins?.updatedAt && <TextBlock className="text-lg text-slate-400 justify-start">Змінена: {new Date(ins?.updatedAt).toLocaleString()}</TextBlock>}
+            <TextBlock className="text-xl text-blue-200 "> <FcFolder className="text-xl" /> {insFolder?.title}</TextBlock>
+
+
+
+            <TextBlock className="text-xl  text-slate-200">
+                <GoPerson />  {users?.find((user) => user?._id === ins?.author)?.fullname}
+            </TextBlock>
+
+
+            <CardBlock
+                className="flex flex-col justify-center"
+            >
+
+
+                {ins?.createdAt && <TextBlock className="text-lg text-slate-200 ">
+                    <span><LuFilePlus /></span>
+                    <span>{new Date(ins?.createdAt).toLocaleString()}</span>
+                </TextBlock>}
+
+                {ins?.createdAt !== ins?.updatedAt && <TextBlock className="text-lg text-slate-200 ">
+                    <span><LuFileEdit /></span>
+                    <span>{new Date(ins?.updatedAt).toLocaleString()}</span>
+                </TextBlock>}
             </CardBlock>
+
+
         </CardBlock>
     )
 }

@@ -145,6 +145,7 @@ export default function InstructionsPage() {
                   key={ins._id}
                   ins={ins}
                   users={users}
+                  insFolder={insFolders?.find(insFolder => insFolder._id === ins?.folderId)}
                 />
               ))
           )}
