@@ -14,16 +14,10 @@ export default function ArtsPage() {
 	const { artsDB, loadingArtsDB, errorArtsDB } = useFetchArts();
 	const { remains } = useFetchRemains()
 
-	// CONSTANTS
-
-	const step = 10
-
-
-	// STATES
 
 	const [filteredArts, setFilteredArts] = useState([]);
 	const [page, setPage] = useState(1);
-
+	const step = 10
 
 	// EFFECTS 
 

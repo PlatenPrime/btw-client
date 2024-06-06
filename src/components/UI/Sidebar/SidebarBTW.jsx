@@ -75,14 +75,14 @@ p-4
 
 
 				<CardBlock
-					className=" rounded-xl hover:bg-sky-500/10  group"
+					className=" rounded-xl   group"
 				>
 
 
 					<NavLink
 						to={"/"}
 					>
-						<CardBlock className='flex items-center justify-center w-full h-16 text-5xl text-sky-500 font-bold group-hover:text-sky-100
+						<CardBlock className='flex items-center justify-center w-full h-16 text-5xl text-sky-100 font-bold group-hover:text-sky-500
 				
 				'>
 
@@ -94,7 +94,7 @@ p-4
 						{user
 							?
 							<TextBlock
-								className=" p-3 "
+								className=" p-3 text-sky-100 font-bold group-hover:text-sky-500 "
 							>{user.fullname}</TextBlock>
 							:
 							null}

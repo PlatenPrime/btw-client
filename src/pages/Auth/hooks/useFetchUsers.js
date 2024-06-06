@@ -5,7 +5,7 @@ import useAuthStore from '../authStore';
 const useFetchUsers = () => {
     const [isLoadingUsers, setIsLoadingUsers] = useState(true);
 
-    const { getUsers } = useAuthStore();
+    const { users, user, getUsers } = useAuthStore();
 
 
     useEffect(() => {
@@ -24,7 +24,7 @@ const useFetchUsers = () => {
         fetchUsers();
     }, [getUsers]);
 
-    return { isLoadingUsers };
+    return {users, user, isLoadingUsers };
 };
 
 export default useFetchUsers;

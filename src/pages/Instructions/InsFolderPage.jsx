@@ -238,17 +238,15 @@ export default function InsFolderPage() {
               className="space-y-2"
             >
               {folderInstructions?.map((ins) => (
+
+
+
                 <CardBlock
                   key={ins._id}
                   className=" flex flex-col lg:flex-row items-center space-x-4 w-full p-2 rounded-xl bg-blue-500/20 hover:bg-blue-500 cursor-pointer
      transition duration-500 ease-in-out"
                   onClick={() => navigate(`/ins/${ins._id}`)}
                 >
-
-
-
-
-
                   <CardBlock
                     className="flex justify-center items-center w-full lg:w-fit  rounded-xl"
                   >
