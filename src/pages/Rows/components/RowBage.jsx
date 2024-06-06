@@ -34,7 +34,7 @@ const RowBage = ({ row }) => {
 			flex justify-center
 		w-full p-2
 			rounded-xl
-			 text-2xl text-orange-100 hover:text-white 
+			 text-2xl  hover:text-white 
 			  
 			bg-gradient-to-b from-orange-500/80 to-orange-900/50
 			  hover:bg-orange-500
