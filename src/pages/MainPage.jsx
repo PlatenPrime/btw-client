@@ -60,7 +60,7 @@ const MainPage = () => {
 				<img
 					src="https://i.imgur.com/TUf7x12.jpg"
 					alt="BTW"
-					className="bg-cover w-full"
+					className="bg-cover w-full rounded-xl"
 				/>
 			</ContainerBlock>
 

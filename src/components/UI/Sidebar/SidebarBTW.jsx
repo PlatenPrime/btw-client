@@ -69,7 +69,7 @@ const SidebarBTW = () => {
 
 
 			<ContainerBlock
-			className="rounded-r-xl rounded-l-none   group"
+			className="rounded-b-xl rounded-tr-none rounded-l-none   group"
 			>
 					<NavLink
 						to={"/"}

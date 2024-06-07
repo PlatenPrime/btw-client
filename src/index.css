@@ -10,7 +10,7 @@ body {
 	font-family: 'Poppins', sans-serif;
 	background-color: rgb(15 23 42);
 color: aliceblue;
-    min-height: 100vh;
+    /* min-height: 100vh; */
 padding: 0;
 
   }
@@ -145,7 +145,7 @@ h2 {
 	flex justify-center
 	w-full p-4
 	text-3xl
-	rounded-xl
+	rounded-b-xl
 	
  text-white
 	transition ease-in-out duration-300		
