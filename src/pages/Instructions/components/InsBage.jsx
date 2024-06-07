@@ -31,7 +31,7 @@ export default function InsBage({
 
 
             <CardBlock
-                className="flex flex-col lg:flex-row  items-center justify-center lg:justify-start gap-2"
+                className="grid grid-cols-1 lg:grid-cols-2 gap-2"
             >
 
                 <CardBlock
@@ -41,18 +41,18 @@ export default function InsBage({
                         <img
                             src={ins?.titleImage}
                             alt=""
-                            className="w-[200px] rounded-xl " />
+                            className="w-[200px] rounded-xl object-cover " />
                         :
 
                         <img
                             src='https://placehold.co/600x300?text=Інструкція'
                             width={200}
-                            className="rounded-xl"
+                            className="rounded-xl object-cover "
                         ></img>}
 
                 </CardBlock>
 
-                <TextBlock className="text-xl font-bold justify-start "> {ins?.title}</TextBlock>
+                <TextBlock className="text-xl font-bold lg:justify-start  "> {ins?.title}</TextBlock>
 
             </CardBlock>
 

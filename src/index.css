@@ -344,7 +344,7 @@ transition ease-in-out duration-300
 	bg-transparent  hover:bg-red-500 active:bg-red-600  
 	  text-white 
 	 shadow-red-500 hover:shadow-sm hover:shadow-red-500
-	 text-red-300 hover:text-white 
+	 text-red-200 hover:text-white 
 }
 
 .red-b-n {
@@ -446,7 +446,7 @@ transition ease-in-out duration-300
 	bg-transparent  hover:bg-green-500 active:bg-green-600  
 	  text-white 
 	 shadow-green-500 hover:shadow-sm hover:shadow-green-500
-	  text-green-300 hover:text-white
+	  text-green-200 hover:text-white
 }
 
 
@@ -554,7 +554,7 @@ transition ease-in-out duration-300
 	bg-transparent  hover:bg-blue-500 active:bg-blue-600  
 	  text-white
 	 shadow-blue-500 hover:shadow-sm hover:shadow-blue-500 
-	 text-blue-300 hover:text-white
+	 text-blue-200 hover:text-white
 	 
 }
 
