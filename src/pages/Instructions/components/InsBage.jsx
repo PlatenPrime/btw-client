@@ -2,7 +2,6 @@ import React from 'react'
 import { CardBlock, TextBlock } from '../../../components'
 import { useNavigate } from 'react-router-dom'
 import { FcFolder } from 'react-icons/fc'
-import { PiFilePlus } from "react-icons/pi";
 import { LuFileEdit, LuFilePlus } from "react-icons/lu";
 import { GoPerson } from "react-icons/go";
 

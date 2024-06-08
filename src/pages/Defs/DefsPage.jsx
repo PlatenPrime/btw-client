@@ -73,7 +73,7 @@ export default function DefsPage() {
 				>
 					{isMorning
 						?
-						<>{formatDateToUkrainianShort(time)}</>
+						<>Ранок {formatDateToUkrainianShort(new Date())}</>
 						:
 						<>{formatDateToUkrainianFull(time)}</>
 					}
