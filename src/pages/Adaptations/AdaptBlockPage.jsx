@@ -7,7 +7,7 @@ import { useEffect } from 'react';
 import { useState } from 'react';
 import AdaptSpinnerContainer from './components/AdaptSpinnerContainer';
 import useInsStore from '../Instructions/stores/insStore';
-import InsContainer from '../Instructions/components/InsContainer';
+import InsBodyContainer from '../Instructions/components/InsBodyContainer';
 import YoutubeCard from '../../components/UI/YoutubeCard/YoutubeCard';
 
 
@@ -135,7 +135,7 @@ export default function AdaptBlockPage() {
 
                 {instruction?.body
                     ?
-                    <InsContainer
+                    <InsBodyContainer
 
                     >
                         <div
@@ -144,7 +144,7 @@ export default function AdaptBlockPage() {
                             }} >
 
                         </div>
-                    </InsContainer>
+                    </InsBodyContainer>
                     :
                     <TextBlock className="text-xl italic text-slate-500"  >Текст інструкції відсутній</TextBlock>
                 }

@@ -17,7 +17,6 @@ export default function InsCard({
             key={ins?._id}
             className=" grid grid-cols-1 lg:grid-cols-6 gap-2 w-full p-2 rounded-xl 
             bg-gradient-to-b from-blue-500 to-blue-700 
-            shadow-lg shadow-blue-500
      transition duration-500 ease-in-out"
 
         >
@@ -46,7 +45,7 @@ export default function InsCard({
 
                 </CardBlock>
 
-               
+
             </CardBlock>
 
 
@@ -59,22 +58,22 @@ export default function InsCard({
             <CardBlock
                 className="flex flex-col justify-center lg:items-end col-span-1 "
             >
-                <TextBlock className="text-lg  text-slate-200 ">
-            
-                     <GoPerson className="lg:order-2"/>
-                     <span>{author?.fullname} </span> 
+                <TextBlock className="text-sm  text-slate-200 ">
+
+                    <GoPerson className="lg:order-2" />
+                    <span>{author?.fullname} </span>
                 </TextBlock>
 
                 {ins?.createdAt && <TextBlock className="text-sm text-slate-200 ">
-                    <span><LuFilePlus className="lg:order-2"  /></span>
+                    <LuFilePlus className="lg:order-2" />
                     <span>{new Date(ins?.createdAt).toLocaleString()}</span>
-                   
+
                 </TextBlock>}
 
                 {ins?.createdAt !== ins?.updatedAt && <TextBlock className="text-sm text-slate-200 ">
-                    <span><LuFileEdit className="lg:order-2" /></span>
+                    <LuFileEdit className="lg:order-2" />
                     <span>{new Date(ins?.updatedAt).toLocaleString()}</span>
-                    
+
                 </TextBlock>}
             </CardBlock>
 

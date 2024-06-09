@@ -1,16 +1,49 @@
 import React from 'react'
-import styles from './styles.module.css'
-import { ContainerBlock } from '../../../components'
+import { CardBlock, TextBlock } from '../../../components'
+import InsCard from './InsCard'
+import YoutubeCard from '../../../components/UI/YoutubeCard/YoutubeCard'
+import InsBodyContainer from './InsBodyContainer'
 
 export default function InsContainer({
-	children
+    instruction,
+    author,
+    isInsEditing
 }) {
-	return (
-		<ContainerBlock
-			className="bg-blue-500/10
-		rounded-xl"
-		>
-			<div className={styles.insBodyContainer}>{children}</div>
-		</ContainerBlock>
-	)
+
+
+    if (isInsEditing) return null
+
+    return (
+
+        <CardBlock
+            className="p-1 space-y-4 "
+        >
+
+            <InsCard ins={instruction} author={author} />
+
+            {instruction?.videoUrl &&
+
+                <YoutubeCard url={instruction?.videoUrl} />
+
+            }
+
+
+            {instruction?.body
+                ?
+                <InsBodyContainer
+
+                >
+                    <div
+                        dangerouslySetInnerHTML={{
+                            __html: instruction?.body
+                        }} >
+
+                    </div>
+                </InsBodyContainer>
+                :
+                <TextBlock className="text-xl italic text-slate-500"  >Текст інструкції відсутній</TextBlock>
+            }
+
+        </CardBlock>
+    )
 }

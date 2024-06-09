@@ -59,14 +59,6 @@ const useInsStore = create((set) => ({
 	},
 
 
-
-
-
-
-
-
-
-
 	getInstructionById: async (id) => {
 		try {
 			const response = await axios.get(`ins/${id}`);
@@ -94,6 +86,7 @@ const useInsStore = create((set) => ({
 						ins._id === updatedInstruction._id ? updatedInstruction : ins
 					),
 				}));
+				set({ instruction: updatedInstruction });
 				return updatedInstruction;
 			} else {
 				throw new Error('Ошибка обновления инструкции по ID');
