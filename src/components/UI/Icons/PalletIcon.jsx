@@ -1,7 +1,7 @@
 import { LiaPalletSolid } from "react-icons/lia";
 
-export default function PalletIcon() {
+export default function PalletIcon({ size, color }) {
 	return (
-		<LiaPalletSolid />
+		<LiaPalletSolid size={size} color={color} />
 	)
 }

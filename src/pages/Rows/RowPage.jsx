@@ -111,24 +111,24 @@ export default function RowPage() {
 						className="emerald-b flex"
 						onClick={() => { setIsShowModalCreatePallet(true); }}
 					>
-						<TextBlock className="text-2xl"><AddIcon /></TextBlock>
-						<TextBlock className="">Створити палету</TextBlock>
+						<AddIcon />
+						Створити палету
 
 					</ButtonBlock>
 					<ButtonBlock
 						className="lime-b flex"
 						onClick={() => { setShowModalUpdateRow(true); }}
 					>
-						<TextBlock className="text-2xl"><RenameIcon /></TextBlock>
-						<TextBlock className="">Перейменувати</TextBlock>
+						<RenameIcon />
+						Перейменувати
 
 					</ButtonBlock>
 					<ButtonBlock
 						className="red-b flex items-center"
 						onClick={() => { setShowModalDeleteRow(true); }}
 					>
-						<TextBlock className="text-2xl"><DeleteIcon /></TextBlock>
-						<TextBlock className="">Видалити ряд</TextBlock>
+						<DeleteIcon />
+						Видалити ряд
 					</ButtonBlock>
 				</ButtonGroup.Actions>
 

@@ -1,8 +1,9 @@
 import React from 'react'
-import { FcEmptyTrash } from "react-icons/fc";
+import { MdDelete } from "react-icons/md";
+import { MdDeleteForever } from "react-icons/md";
 
-export default function DeleteIcon() {
+export default function DeleteIcon({ size, color }) {
 	return (
-		< FcEmptyTrash />
+		<  MdDeleteForever size={size} color={color} />
 	)
 }

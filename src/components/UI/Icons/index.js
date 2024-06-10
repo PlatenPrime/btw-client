@@ -9,4 +9,6 @@ export { default as SearchIcon } from './SearchIcon';
 export { default as BackIcon } from './BackIcon';
 export { default as PalletIcon } from './PalletIcon';
 export { default as BoxIcon } from './BoxIcon';
-export { default as BalloonIcon } from './BoxIcon';
+export { default as BalloonIcon } from './BalloonIcon';
+export { default as PosIcon } from './PosIcon';
+export { default as EditIcon } from './EditIcon';

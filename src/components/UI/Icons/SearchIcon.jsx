@@ -2,10 +2,10 @@ import React from 'react'
 import { FcSearch } from "react-icons/fc";
 
 
-export default function SearchIcon() {
+export default function SearchIcon({ size, color }) {
 	return (
 
-		<FcSearch />
+		<FcSearch size={size} color={color} />
 
 	)
 }

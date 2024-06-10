@@ -1,11 +1,11 @@
 import React from 'react'
-import { FcPlus } from "react-icons/fc";
+import { MdOutlineAdd } from "react-icons/md";
 
 
-export default function AddIcon() {
+export default function AddIcon({size, color}) {
 	return (
 
-		<FcPlus />
+		<MdOutlineAdd size={size} color={color} />
 
 	)
 }

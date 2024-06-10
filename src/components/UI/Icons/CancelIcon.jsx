@@ -1,8 +1,8 @@
 import React from 'react'
 import { FcCancel } from "react-icons/fc";
 
-export default function CancelIcon() {
+export default function CancelIcon({ size, color }) {
 	return (
-		< FcCancel />
+		< FcCancel size={size} color={color} />
 	)
 }

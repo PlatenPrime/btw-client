@@ -1,8 +1,9 @@
 import React from 'react'
-import { FcUpRight } from "react-icons/fc";
 
-export default function MoveIcon() {
+import { FiMove } from "react-icons/fi";
+
+export default function MoveIcon({ size, color }) {
 	return (
-		< FcUpRight />
+		< FiMove size={size} color={color} />
 	)
 }

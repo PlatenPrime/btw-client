@@ -2,6 +2,7 @@
 import { ButtonBlock, CardBlock, ImageArt, TextBlock } from '../../../components'
 import { MdDeleteForever, MdOutlineEdit } from "react-icons/md";
 import { BsBalloon, BsBoxSeam } from "react-icons/bs";
+import { BalloonIcon, BoxIcon, DeleteIcon, EditIcon } from '../../../components/UI/Icons';
 
 
 export default function PositionBage({ pos, onDelete, onEdit, artsDB }) {
@@ -142,36 +143,20 @@ export default function PositionBage({ pos, onDelete, onEdit, artsDB }) {
 					className="grid grid-cols-2 p-2 gap-2">
 
 
-					<CardBlock
-						className="flex justify-center items-center"
-					>
-
 						<TextBlock
 							className="  text-xl"
-						><BsBalloon /></TextBlock>
-
-						<TextBlock
-							className=" font-bold text-3xl  rounded"
 						>
+							<BalloonIcon />
 							{pos?.quant}
 						</TextBlock>
 
-					</CardBlock>
-
-
-					<CardBlock
-						className="flex justify-center items-center"
-					>
 						<TextBlock
 							className=" text-xl "
-						><BsBoxSeam /></TextBlock>
-
-						<TextBlock
-							className="  font-bold text-3xl  rounded"
 						>
+							<BoxIcon />
 							{pos?.boxes}
 						</TextBlock>
-					</CardBlock>
+					
 
 
 
@@ -194,14 +179,14 @@ export default function PositionBage({ pos, onDelete, onEdit, artsDB }) {
 					className="bg-transparent shadow-none blue-b-n text-2xl w-full  h-full"
 					onClick={onEdit}
 				>
-					<MdOutlineEdit size={24} />
+					<EditIcon size={24} />
 				</ButtonBlock>
 
 				<ButtonBlock
 					className="red-b-n bg-transparent shadow-none text-2xl w-full h-full "
 					onClick={onDelete}
 				>
-					<MdDeleteForever size={24} />
+					<DeleteIcon size={24} />
 				</ButtonBlock>
 
 

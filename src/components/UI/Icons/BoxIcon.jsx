@@ -1,7 +1,7 @@
 import { BsBoxSeam } from "react-icons/bs";
 
-export default function BoxIcon() {
+export default function BoxIcon({ size, color }) {
 	return (
-		<BsBoxSeam />
+		<BsBoxSeam size={size} color={color} />
 	)
 }

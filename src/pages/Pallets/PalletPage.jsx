@@ -9,7 +9,7 @@ import PositionBage from './components/PositionBage.jsx';
 
 import { ModalDeletePallet, ModalRenamePallet, ModalCreatePos, ModalDeletePos, ModalEditPos, ModalClearPallet, ModalMovePalletContent, ModalChangePalletCom } from './components/PalletPageModals/index.js';
 
-import { RenameIcon, MoveIcon, DeleteIcon, ClearIcon, AddIcon } from '../../components/UI/Icons/index.js';
+import { RenameIcon, MoveIcon, DeleteIcon, ClearIcon, AddIcon, PosIcon, BoxIcon } from '../../components/UI/Icons/index.js';
 import ButtonGroup from '../../components/UI/ButtonGroup.jsx';
 import useFetchArts from '../../hooks/useFetchArts.js';
 import useFetchPalletById from './hooks/useFetchPalletById.js';
@@ -344,8 +344,8 @@ export default function PalletPage() {
 						className="lime-b flex"
 						onClick={() => { setShowModalRenamePallet(true); }}
 					>
-						<TextBlock className="text-2xl"><RenameIcon /></TextBlock>
-						<TextBlock>Перейменувати</TextBlock>
+						<RenameIcon />
+						Перейменувати
 
 					</ButtonBlock>
 
@@ -354,8 +354,8 @@ export default function PalletPage() {
 						className="yellow-b flex"
 						onClick={() => { setShowModalChangePalletCom(true); }}
 					>
-						<TextBlock className="text-2xl"><RenameIcon /></TextBlock>
-						<TextBlock>Коментарій</TextBlock>
+						<RenameIcon />
+						Коментарій
 
 					</ButtonBlock>
 
@@ -363,8 +363,8 @@ export default function PalletPage() {
 						className="blue-b flex"
 						onClick={() => { setShowModalMovePalletContent(true); }}
 					>
-						<TextBlock className="text-2xl"><MoveIcon /></TextBlock>
-						<TextBlock>Переставити</TextBlock>
+						<MoveIcon />
+						Переставити
 
 
 					</ButtonBlock>
@@ -373,8 +373,8 @@ export default function PalletPage() {
 						onClick={() => { setShowModalClearPallet(true) }}
 						className=" rose-b flex justify-center items-center"
 					>
-						<TextBlock className="text-2xl"><ClearIcon /></TextBlock>
-						<TextBlock className="">Очистити</TextBlock>
+						<ClearIcon />
+						Очистити
 
 					</ButtonBlock>
 
@@ -383,16 +383,16 @@ export default function PalletPage() {
 						className="red-b flex"
 						onClick={() => { setShowModalDeletePallet(true) }}
 					>
-						<TextBlock className="text-2xl"><DeleteIcon /></TextBlock>
-						<TextBlock className="">Видалити</TextBlock>
+						<DeleteIcon />
+						Видалити
 					</ButtonBlock>
 
 					<ButtonBlock
 						className="teal-b flex  "
 						onClick={() => { setShowModalCreatePos(true); }}
 					>
-						<TextBlock className="text-xl"><AddIcon /></TextBlock>
-						<TextBlock className="">Додати позицію</TextBlock>
+						<AddIcon />
+						Додати позицію
 
 					</ButtonBlock>
 
@@ -504,15 +504,15 @@ export default function PalletPage() {
 				>
 					<CardBlock>
 						<TextBlock
-							className="text-teal-100 text-xl justify-start p-1"
+							className="text-teal-100 text-xl justify-start"
 						>
-							<GoNote />	Позицій: {poses?.length}
+							<PosIcon />	Позицій: {poses?.length}
 						</TextBlock>
 
 						<TextBlock
-							className="text-amber-100 text-xl justify-start  p-1"
+							className="text-amber-100 text-xl justify-start "
 						>
-							<BsBoxSeam /> Коробок: {poses?.reduce((a, b) => a + b?.boxes, 0)}
+							<BoxIcon /> Коробок: {poses?.reduce((a, b) => a + b?.boxes, 0)}
 						</TextBlock>
 					</CardBlock>
 

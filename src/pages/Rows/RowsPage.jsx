@@ -52,8 +52,7 @@ export default function RowsPage() {
 						onClick={() => { setShowModalCreateRow(true) }}
 						className="emerald-b flex items-center justify-center "
 					>
-						<TextBlock className="text-xl"><AddIcon /></TextBlock>
-						<TextBlock>Створити новий ряд</TextBlock>
+						<AddIcon />Створити новий ряд
 					</ButtonBlock>
 				</ButtonGroup.Actions>
 			</ButtonGroup>

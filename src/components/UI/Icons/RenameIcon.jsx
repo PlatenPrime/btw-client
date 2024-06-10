@@ -1,8 +1,8 @@
 import React from 'react'
 import { BiRename } from "react-icons/bi";
 
-export default function RenameIcon() {
+export default function RenameIcon({ size, color }) {
 	return (
-		<BiRename />
+		<BiRename size={size} color={color} />
 	)
 }

@@ -1,8 +1,9 @@
 import React from 'react'
-import { FcImport } from "react-icons/fc";
+import { PiEmptyBold } from "react-icons/pi";
 
-export default function ClearIcon() {
+export default function ClearIcon({ size, color }) {
 	return (
-		< FcImport />
+		< PiEmptyBold size={size} color={color}/>
+		
 	)
 }
