@@ -518,7 +518,7 @@ export default function CompListPage() {
 				:
 
 				<ContainerBlock
-					className="flex-grow overflow-auto  mb-1 relative p-0 "
+					className="flex-grow overflow-auto  mb-1 relative pt-0 px-0 rounded-t-none"
 				>
 
 					<div
