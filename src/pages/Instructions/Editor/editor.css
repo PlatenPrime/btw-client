@@ -76,7 +76,9 @@
 
 
 .ql-container img {
-	width: 80%;
+	width: 100%;
+	max-width: 728px;
+	/* width:  90%; */
 	height: auto;
 	margin: 0 auto;
 	padding: 0.5rem;
@@ -88,7 +90,7 @@
 
 
   .ql-container img:hover {
-		transform:  scale(1.01); 
+		
 	
 	  }
 

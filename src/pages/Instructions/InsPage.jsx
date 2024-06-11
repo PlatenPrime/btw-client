@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
-import { ButtonBlock, ButtonGroup,  HeaderBlock, ModalDelete, PageBTW} from '../../components';
+import { ButtonBlock, ButtonGroup, HeaderBlock, ModalDelete, PageBTW } from '../../components';
 import { useNavigate, useParams } from 'react-router-dom';
 import useInsStore from './stores/insStore';
 import useFetchInsById from './hooks/useFetchInsById';
 import InsEditContainer from './components/InsEditContainer';
 import InsContainer from './components/InsContainer';
+import { CancelIcon, DeleteIcon, DoneIcon, EditIcon } from '../../components/UI/Icons';
 
 export default function InsPage() {
 
@@ -60,6 +61,7 @@ export default function InsPage() {
 								className="pink-b"
 								onClick={() => setIsInsEditing(false)}
 							>
+								<CancelIcon />
 								Скасувати
 							</ButtonBlock>
 
@@ -67,6 +69,7 @@ export default function InsPage() {
 								className="green-b"
 								onClick={() => setIsShowModalInsUpdating(true)}
 							>
+								<DoneIcon />
 								Зберегти
 							</ButtonBlock>
 
@@ -74,6 +77,7 @@ export default function InsPage() {
 								className="red-b"
 								onClick={() => setIsShowModalInsDeleting(true)}
 							>
+								<DeleteIcon />
 								Видалити
 							</ButtonBlock>
 						</>
@@ -82,6 +86,7 @@ export default function InsPage() {
 							className="blue-b"
 							onClick={() => setIsInsEditing(true)}
 						>
+							<EditIcon />
 							Редагувати
 						</ButtonBlock>
 

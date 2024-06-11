@@ -14,3 +14,4 @@ export { default as PosIcon } from './PosIcon';
 export { default as EditIcon } from './EditIcon';
 export { default as ExcelIcon } from './ExcelIcon';
 export { default as UpdateIcon } from './UpdateIcon';
+export { default as DoneIcon } from './DoneIcon';
