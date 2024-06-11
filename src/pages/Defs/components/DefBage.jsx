@@ -1,5 +1,6 @@
 import React from 'react'
 import { ButtonBlock, CardBlock, ImageArt, TextBlock } from '../../../components';
+import { AddIcon } from '../../../components/UI/Icons';
 
 
 
@@ -29,7 +30,7 @@ export default function DefBage({
 
                 <CardBlock
                     className=" w-full flex flex-col items-center justify-center px-2 
-                bg-gradient-to-b from-sky-500/10 to-sky-800/10
+                bg-gradient-to-b from-sky-500/50 to-sky-800/20
                 hover:shadow-lg hover:shadow-sky-500
                  cursor-pointer rounded-r-xl "
 
@@ -113,7 +114,7 @@ export default function DefBage({
                 className={`
                     
                     ${asks?.find(ask => ask.artikul === def.artikul)?.status === "new" ?
-                        "bg-gradient-to-b from-indigo-500/50 to-indigo-800/50"
+                        "bg-gradient-to-b from-indigo-500/50 to-indigo-800/20"
                         :
                         ""}
                     
@@ -133,6 +134,7 @@ export default function DefBage({
                         }}
                         disabled={asks?.find(ask => ask.artikul === def.artikul)?.status === "new"}
                     >
+                        <AddIcon />
                         Створити запит
                     </ButtonBlock>
                 }

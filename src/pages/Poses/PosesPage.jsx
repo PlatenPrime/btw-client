@@ -8,6 +8,7 @@ import { useDebouncedCallback } from 'use-debounce'
 import useFetchArts from '../../hooks/useFetchArts';
 import PaginationBlock from '../../components/UI/blocks/PaginationBlock';
 import useFetchAllPoses from './hooks/useFetchAllPoses';
+import { ExcelIcon } from '../../components/UI/Icons';
 
 export default function StocksPage() {
 
@@ -40,7 +41,7 @@ export default function StocksPage() {
 			isLoading={isAllPosesLoading || loadingArtsDB}
 		>
 			<HeaderBlock
-				className=" shadow-2xl bg-emerald-500 shadow-emerald-500 "
+				className=" shadow-lg bg-emerald-500 shadow-emerald-500 "
 			>
 				<TextBlock className="">
 					Позиції
@@ -54,10 +55,8 @@ export default function StocksPage() {
 						onClick={() => exportToExcelPoses(allPoses, artsDB)}
 						className=" green-b flex items-center space-x-1  "
 					>
-						< SiMicrosoftexcel className='text-xl' />
-						<TextBlock>
-							Експорт в Excel
-						</TextBlock>
+						< ExcelIcon />
+						Експорт в Excel
 					</ButtonBlock>
 				</ButtonGroup.Actions>
 			</ButtonGroup>

@@ -7,6 +7,7 @@ import { useDebouncedCallback } from 'use-debounce'
 import useFetchArts from '../../hooks/useFetchArts';
 import PaginationBlock from '../../components/UI/blocks/PaginationBlock';
 import ArtsContainer from './components/ArtsContainer';
+import { UpdateIcon } from '../../components/UI/Icons';
 
 
 export default function ArtsPage() {
@@ -78,7 +79,9 @@ export default function ArtsPage() {
 					>
 						<Link
 							to="/arts/updating"
+							className="flex items-center space-x-2"
 						>
+							<UpdateIcon />
 							Оновлення артикулів
 						</Link>
 					</ButtonBlock>

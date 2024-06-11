@@ -21,6 +21,7 @@ import useFetchUsers from "../Auth/hooks/useFetchUsers";
 import { toast } from "react-toastify";
 import { useDebouncedCallback } from 'use-debounce'
 import InsBage from "./components/InsBage";
+import { AddIcon } from "../../components/UI/Icons";
 
 
 export default function InstructionsPage() {
@@ -101,6 +102,7 @@ export default function InstructionsPage() {
             className="green-b"
             onClick={() => setIsShowModalInsFolderCreating(true)}
           >
+            <AddIcon />
             Створити теку
           </ButtonBlock>
         </ButtonGroup.Actions>

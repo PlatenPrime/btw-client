@@ -19,6 +19,7 @@ import { prods, categoriesList, subcategoriesList, sizesList } from '../../../co
 import CheckCompLinks from '../components/CheckCompLinks';
 import SelectedCompModal from '../components/SelectedCompModal';
 import { toast } from 'react-toastify';
+import { ExcelIcon } from '../../../components/UI/Icons';
 
 
 const prodOptions = prods;
@@ -237,10 +238,9 @@ export default function CompListPage() {
 						onClick={() => exportToExcelComps(filteredComps)}
 						className=" green-b flex items-center space-x-1  "
 					>
-						< SiMicrosoftexcel className='text-2xl' />
-						<TextBlock>
-							Експорт в Excel
-						</TextBlock>
+						<ExcelIcon />
+						Експорт в Excel
+
 					</ButtonBlock>
 
 
@@ -249,7 +249,7 @@ export default function CompListPage() {
 						onClick={handleAnalyze}
 						className=" violet-b flex items-center space-x-1  "
 					>
-						< MdOutlineAnalytics className='text-2xl' />
+						< MdOutlineAnalytics  />
 						<TextBlock>
 							Аналіз (повний)
 						</TextBlock>
@@ -260,7 +260,7 @@ export default function CompListPage() {
 						onClick={() => handleAnalyzeOnFilter(filteredComps)}
 						className=" cyan-b flex items-center space-x-1  "
 					>
-						< IoAnalyticsOutline className='text-2xl ' />
+						< IoAnalyticsOutline   />
 						<TextBlock>
 							Аналіз (фільтр)
 						</TextBlock>
@@ -273,7 +273,7 @@ export default function CompListPage() {
 						className="rose-b flex  items-center space-x-1  "
 						onClick={() => { setIsFilterOpen(prev => !prev) }}
 					>
-						<LuFilter className=' text-2xl' />
+						<LuFilter />
 						<TextBlock>Фільтр</TextBlock>
 					</ButtonBlock>
 

@@ -18,6 +18,8 @@ import useFetchAsk from './hooks/useFetchAsk';
 import useFetchPosesByArtikul from '../Arts/hooks/useFetchPosesByArtikul';
 import AskActions from './components/AskActions'
 import AskInfo from './components/AskInfo'
+import DoneIcon from '../../components/UI/Icons/DoneIcon'
+import { CancelIcon, DeleteIcon } from '../../components/UI/Icons'
 
 
 
@@ -205,18 +207,21 @@ export default function AskPage() {
 						className="green-b"
 						onClick={() => setShowModalDoAsk(true)}
 					>
+						<DoneIcon />
 						Виконати
 					</ButtonBlock>
 					<ButtonBlock
 						className="rose-b"
 						onClick={() => setShowModalFailAsk(true)}
 					>
+						<CancelIcon />
 						Відмовити
 					</ButtonBlock>
 					<ButtonBlock
 						className="red-b"
 						onClick={() => setShowModalDeleteAsk(true)}
 					>
+						<DeleteIcon />
 						Видалити
 					</ButtonBlock>
 				</ButtonGroup.Actions>

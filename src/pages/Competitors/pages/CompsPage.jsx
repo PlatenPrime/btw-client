@@ -61,7 +61,7 @@ export default function CompsPage() {
 
 			<PageBTW className='max-h-screen px-1' >
 
-				<HeaderBlock className="bg-rose-500 shadow-2xl shadow-rose-500 ">
+				<HeaderBlock className="bg-rose-500 shadow-lg shadow-rose-500 ">
 
 
 					<NavLink

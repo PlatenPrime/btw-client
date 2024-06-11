@@ -15,6 +15,7 @@ import useFetchUsers from "../Auth/hooks/useFetchUsers";
 
 import ModalCreateAsk from "../Asks/components/modals/ModalCreateAsk";
 import PosesWithArtikulContainer from "./components/PosesWithArtikulContainer";
+import { AddIcon } from "../../components/UI/Icons";
 
 
 
@@ -68,6 +69,7 @@ export default function ArtPage() {
 							setShowModalCreateAsk(true)
 						}}
 					>
+						<AddIcon />
 						Створити запит
 					</ButtonBlock>
 				</ButtonGroup.Actions>

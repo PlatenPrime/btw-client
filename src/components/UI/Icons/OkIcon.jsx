@@ -1,8 +1,8 @@
 import React from 'react'
-import { FcOk } from "react-icons/fc";
+import { MdCheckCircleOutline } from "react-icons/md";
 
 export default function OkIcon({ size, color }) {
 	return (
-		< FcOk size={size} color={color} />
+		< MdCheckCircleOutline size={size} color={color} />
 	)
 }

@@ -12,3 +12,5 @@ export { default as BoxIcon } from './BoxIcon';
 export { default as BalloonIcon } from './BalloonIcon';
 export { default as PosIcon } from './PosIcon';
 export { default as EditIcon } from './EditIcon';
+export { default as ExcelIcon } from './ExcelIcon';
+export { default as UpdateIcon } from './UpdateIcon';

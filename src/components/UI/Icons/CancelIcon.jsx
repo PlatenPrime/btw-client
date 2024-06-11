@@ -1,8 +1,8 @@
 import React from 'react'
-import { FcCancel } from "react-icons/fc";
+import { MdOutlineCancel } from "react-icons/md";
 
 export default function CancelIcon({ size, color }) {
 	return (
-		< FcCancel size={size} color={color} />
+		< MdOutlineCancel size={size} color={color} />
 	)
 }

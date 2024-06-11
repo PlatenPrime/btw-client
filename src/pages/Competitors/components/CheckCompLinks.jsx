@@ -113,7 +113,7 @@ export default function CheckCompLinks() {
 				onClick={() => { setShowModalInfo(true) }}
 			>
 				<BsClipboardCheck
-					className='text-2xl'
+				
 				/>
 				<TextBlock>Перевірити посилання</TextBlock>
 			</ButtonBlock>
