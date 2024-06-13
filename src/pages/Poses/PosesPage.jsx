@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { ButtonBlock, ButtonGroup, CardBlock, ContainerBlock, HeaderBlock, InputSearch, PageBTW, TextBlock } from '../../components'
 import { toast } from 'react-toastify';
-import PosBage from './PosBage';
+import PosBage from './components/PosBage';
 import { exportToExcelPoses } from '../../utils/exportExcel';
 import { SiMicrosoftexcel } from 'react-icons/si';
 import { useDebouncedCallback } from 'use-debounce'

@@ -2,16 +2,24 @@
 @tailwind components;
 @tailwind utilities;
 
+@import url('https://fonts.googleapis.com/css2?family=Rubik+Doodle+Shadow&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Infant:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Inter:wght@100..900&family=Rubik+Doodle+Shadow&display=swap');
+
 
 @layer base {
+
+
 	
 body {
 	
-	font-family: 'Poppins', sans-serif;
+	font-family: 'Inter', sans-serif;
 	background-color: rgb(15 23 42);
 color: aliceblue;
     /* min-height: 100vh; */
 padding: 0;
+margin-bottom: 0;
+
 
   }
   

@@ -1,10 +1,12 @@
 import React, { useState } from 'react'
-import { ButtonBlock, ButtonGroup, CardBlock, ContainerBlock, HeaderBlock, ModalCreate, PageBTW, Spinner, TextBlock } from '../../components'
+import { ButtonBlock, ButtonGroup, ContainerBlock, HeaderBlock, ModalCreate, PageBTW, Spinner, TextBlock } from '../../components'
 import useAdaptsStore from './stores/adaptsStore';
 import { useNavigate } from 'react-router-dom';
 import { useEffect } from 'react';
 import AdaptBage from './components/AdaptBage';
-import AdaptSpinnerContainer from './components/AdaptSpinnerContainer';
+import useFetchAllAdapts from './hooks/useFetchAllAdapts';
+import { AddIcon } from '../../components/UI/Icons';
+
 
 export default function AdaptsPage() {
 
@@ -12,7 +14,9 @@ export default function AdaptsPage() {
 
 
 
-    const { adapts, getAllAdapts, createAdapt } = useAdaptsStore();
+    const { createAdapt } = useAdaptsStore();
+
+    const { adapts, isLoadingAllAdapts } = useFetchAllAdapts();
 
 
 
@@ -23,32 +27,6 @@ export default function AdaptsPage() {
 
     const [isShowModalAdaptCreating, setIsShowModalAdaptCreating] = useState(false);
 
-
-
-
-    useEffect(() => {
-
-
-
-
-        const fetchAdapts = async () => {
-
-
-            try {
-                setIsAdaptsLoading(true);
-                await getAllAdapts()
-            } catch (error) {
-                console.error('Помилка завантаження інтеграцій:', error);
-            } finally {
-                setIsAdaptsLoading(false);
-            }
-        }
-
-        fetchAdapts()
-
-
-
-    }, [getAllAdapts]);
 
 
 
@@ -74,10 +52,26 @@ export default function AdaptsPage() {
             isLoading={isAdaptsLoading}
         >
             <HeaderBlock
-                className="bg-green-500 shadow-2xl shadow-green-500"
+                className="bg-green-500 shadow-lg shadow-green-500"
             >
                 Адаптації
             </HeaderBlock>
+
+
+
+            <ButtonGroup>
+                <ButtonGroup.Actions>
+                    <ButtonBlock
+                        className="green-b"
+                        onClick={() => { setIsShowModalAdaptCreating(true) }}
+                    >
+                        <AddIcon />
+                        Створити адаптацію
+                    </ButtonBlock>
+                </ButtonGroup.Actions>
+
+
+            </ButtonGroup>
 
 
             {/* MODALS */}
@@ -94,27 +88,16 @@ export default function AdaptsPage() {
 
 
 
-            <ButtonGroup>
-                <ButtonGroup.Actions>
-                    <ButtonBlock
-                        className="green-b"
-                        onClick={() => { setIsShowModalAdaptCreating(true) }}
-                    >
-                        Створити адаптацію
-                    </ButtonBlock>
-                </ButtonGroup.Actions>
 
 
-            </ButtonGroup>
+
+            <ContainerBlock className="flex flex-col gap-4">
+                {adapts?.map((adapt) => (
+                    <AdaptBage adapt={adapt} />
+                ))}
+            </ContainerBlock>
 
 
-                    <ContainerBlock className="flex flex-col gap-4">
-                        {adapts?.map((adapt) => (
-                            <AdaptBage adapt={adapt} />
-                        ))}
-                    </ContainerBlock>
-
-      
 
 
 

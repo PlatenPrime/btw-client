@@ -1,10 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { CardBlock, ImageArt, TextBlock } from '../../components';
+import { CardBlock, ImageArt, TextBlock } from '../../../components';
 import { VscLocation } from "react-icons/vsc";
 
 import { BsBalloon, BsBoxSeam } from "react-icons/bs";
-import { PalletIcon } from '../../components/UI/Icons';
+import { PalletIcon } from '../../../components/UI/Icons';
 
 
 
