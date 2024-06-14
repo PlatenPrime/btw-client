@@ -17,7 +17,11 @@ const useFetchRemainsDefs = () => {
         const fetchData = async () => {
             try {
                 setIsRemainsDefsLoading(true);
-                const response = await axios.get("defs/remains");
+                const response = await axios.get("defs/remains", {
+                    headers: {
+                        'Cache-Control': 'no-cache'
+                    }
+                });
                 console.log(response.data)
                 setRemainsDefs(response?.data);
 
