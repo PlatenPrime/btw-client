@@ -221,7 +221,7 @@ const SidebarBTW = () => {
 
 
 
-				{user?.role === "PRIME" || user?.role === "ADMIN" || user?.role === "SKLAD" ?
+			
 					<TextBlock className="bg-transparent hover:bg-pink-500/90 rounded-2xl " >
 						<NavLink
 							to={"defs"}
@@ -246,8 +246,7 @@ const SidebarBTW = () => {
 
 						</NavLink>
 					</TextBlock>
-					:
-					null}
+					
 
 
 
@@ -255,7 +254,7 @@ const SidebarBTW = () => {
 
 
 
-				{user?.role === "PRIME" || user?.role === "ADMIN" ?
+			
 					<TextBlock className="bg-transparent hover:bg-rose-500/90 rounded-2xl " >
 						<NavLink
 							to={"comps"}
@@ -281,13 +280,10 @@ const SidebarBTW = () => {
 
 						</NavLink>
 					</TextBlock>
-					:
-					null}
+				
 
 
 
-
-				{user?.role === "PRIME" ?
 					<TextBlock className="bg-transparent hover:bg-blue-500/90 rounded-2xl " >
 						<NavLink
 							to={"ins"}
@@ -313,15 +309,13 @@ const SidebarBTW = () => {
 
 						</NavLink>
 					</TextBlock>
-					:
-					null}
+					
 
 
 
 
 
 
-				{user?.role === "PRIME" ?
 					<TextBlock className="bg-transparent hover:bg-green-500/90 rounded-2xl " >
 						<NavLink
 							to={"adapts"}
@@ -347,8 +341,7 @@ const SidebarBTW = () => {
 
 						</NavLink>
 					</TextBlock>
-					:
-					null}
+			
 
 
 

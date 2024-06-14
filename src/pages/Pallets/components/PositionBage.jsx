@@ -23,8 +23,8 @@ export default function PositionBage({ pos, onDelete, onEdit, artsDB }) {
 	group
 	 
 	 ${pos?.quant ?
-				"hover:bg-teal-500 hover:shadow-teal-500 bg-gradient-to-b from-teal-600 to-teal-900/50 hover:from-transparent hover:to-transparent " :
-				" hover:bg-slate-700 hover:shadow-slate-700 bg-gradient-to-b from-slate-500 to-teal-slate-900/50 hover:from-transparent hover:to-transparent "}
+				" hover:shadow-2xl hover:shadow-lg  hover:shadow-teal-500 hover:bg-teal-500   bg-gradient-to-b from-teal-500/80 to-teal-700/50 " :
+				" hover:shadow-2xl hover:shadow-lg  hover:shadow-slate-500 hover:bg-slate-500   bg-gradient-to-b from-slate-500/80 to-slate-700/50  "}
 	 
 	
 		rounded-xl

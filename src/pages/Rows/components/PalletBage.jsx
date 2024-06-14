@@ -32,9 +32,9 @@ grid grid-cols-1 lg:grid-cols-3
 				   transition ease-in-out duration-300
 				   bg-gradient-to-b 
 				   ${boxes ?
-					" from-amber-500/80 to-amber-900/80  hover:bg-amber-500 hover:shadow-lg hover:shadow-amber-500  hover:from-amber-500/50 hover:to-amber-500/50  "
+					"  hover:shadow-2xl hover:shadow-lg  hover:shadow-amber-500 hover:bg-amber-500   bg-gradient-to-b from-amber-500/80 to-amber-700/50   "
 					:
-					" from-slate-500/80 to-slate-700/50  hover:bg-slate-500 hover:shadow-lg hover:shadow-slate-500 hover:from-slate-500/50 hover:to-slate-500/50  "
+					" hover:shadow-2xl hover:shadow-lg  hover:shadow-slate-500 hover:bg-slate-500   bg-gradient-to-b from-slate-500/80 to-slate-700/50   "
 				}
 				'`}
 			to={`/pallets/${pallet._id}`}
