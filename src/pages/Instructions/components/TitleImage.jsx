@@ -43,23 +43,22 @@ export default function TitleImage({
 
 	return (
 		<ContainerBlock
-		className="flex justify-between items-center w-full"
+			className="flex flex-col gap-2 items-center w-full"
 		>
 
-			<input 
-			type="file" 
-			onChange={handleFileInputChange} 
-			className=""
-			/>
 
-			<CardBlock>
 
-				{isImageUploading ? <Spinner />
+			<CardBlock className="rounded-xl" >
+
+				{isImageUploading ?
+					<Spinner />
 
 					:
 
-					newTitleImage ?
+					newTitleImage
+						?
 						<img
+							alt='Фото инструкції'
 							src={newTitleImage}
 							width={200}
 						>
@@ -67,12 +66,18 @@ export default function TitleImage({
 						:
 
 						<img
+						className="rounded-xl"
+							alt='Фото инструкції'
 							src='https://placehold.co/600x400?text=Інструкція'
 							width={200}
 						></img>}
 			</CardBlock>
 
-
+			<input
+				type="file"
+				onChange={handleFileInputChange}
+				className=""
+			/>
 
 
 		</ContainerBlock>

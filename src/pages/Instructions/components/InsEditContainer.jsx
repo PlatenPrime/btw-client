@@ -1,14 +1,15 @@
 import React, { useState } from 'react'
-import { CardBlock, ContainerBlock, InputBlock, ModalConfirm } from '../../../components'
+import { ButtonBlock, CardBlock, ContainerBlock, InputBlock, ModalConfirm } from '../../../components'
 import TitleImage from './TitleImage'
 import Editor from '../Editor/QuillEditor'
 import YoutubeCard from '../../../components/UI/YoutubeCard/YoutubeCard';
 import useInsStore from '../stores/insStore';
+import { CancelIcon } from '../../../components/UI/Icons';
 
 export default function InsEditContainer({
     ins,
     isInsEditing,
-    setIsInsEditing, 
+    setIsInsEditing,
     isShowModalInsUpdating,
     setIsShowModalInsUpdating
 }) {
@@ -30,7 +31,7 @@ export default function InsEditContainer({
         try {
             setIsInsUpdating(true);
             const updatedInstruction = await updateInstructionById(ins?._id, updateData);
-    
+
         } catch (error) {
             console.log(error.message);
 
@@ -132,6 +133,8 @@ export default function InsEditContainer({
                     onChange={(e) => setNewVideoUrl(e.target.value)}
                 />
 
+                <ButtonBlock className="red-b" onClick={() => setNewVideoUrl("")}><CancelIcon size={24}  /></ButtonBlock>
+
             </CardBlock>
 
 
@@ -142,13 +145,13 @@ export default function InsEditContainer({
             }
 
 
-       
 
-                <Editor
-                    value={newBody}
-                    setValue={setNewBody}
 
-                />
+            <Editor
+                value={newBody}
+                setValue={setNewBody}
+
+            />
 
         </CardBlock>
     )
