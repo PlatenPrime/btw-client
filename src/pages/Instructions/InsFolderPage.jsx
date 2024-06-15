@@ -250,7 +250,7 @@ export default function InsFolderPage() {
           {folderInstructions?.map((ins) => (
 
             <InsBage
-              key={ins._id} ins={ins} users={users} />
+              key={ins?._id} ins={ins} users={users} />
           ))}
         </ContainerBlock>
         :

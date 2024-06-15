@@ -29,6 +29,7 @@ export default function InsPage() {
 			setIsInsDeleting(true);
 			await deleteInstructionById(id);
 			navigate("/ins")
+			
 		} catch (error) {
 			console.log(error.message);
 

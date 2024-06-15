@@ -19,7 +19,7 @@ export default function InsBage({
 
     return (
         <CardBlock
-            key={ins._id}
+            key={ins?._id}
             className=" grid grid-cols-1 lg:grid-cols-4 gap-2 w-full p-2 rounded-xl cursor-pointer
             bg-gradient-to-b from-blue-500/50 to-blue-700/50 hover:bg-blue-500 
             hover:shadow-lg hover:shadow-blue-500
