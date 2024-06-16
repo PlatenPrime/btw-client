@@ -1,59 +1,36 @@
 import React, { useState } from 'react'
 import { ButtonBlock, CardBlock, InputBlock, Spinner, TextBlock } from '../../../components'
 import { CancelIcon, OkIcon } from '../../../components/UI/Icons'
+import InsBage from '../../Instructions/components/InsBage';
 
 export default function AddNewBlockForm({
-  
+
     handleCreateAdaptBlock,
     insFolders,
     isAdaptBlockCreating,
     instructions,
     setIsNewAdaptBlockEditing,
     isNewAdaptBlockEditing,
-    adapt
+    adapt,
+    users
 
 }) {
 
-    const [newAdaptBlockTitle, setNewAdaptBlockTitle] = useState('')
-const [newAdaptBlockInsId, setNewAdaptBlockInsId] = useState(null)
-
-
-
-
-
+    const [newAdaptBlockInsId, setNewAdaptBlockInsId] = useState(null)
 
 
 
     return (
         <CardBlock
-            className="w-full rounded-xl bg-green-500/5  border-4 border-dashed  border-green-500/20 p-4 space-y-4 "
+            className="w-full rounded-xl  border-4 border-dashed  border-green-500/20 p-4 space-y-4 "
         >
 
 
             <TextBlock
-                className=" text-2xl bg-green-500/5"
+                className=" text-2xl font-bold "
             >
-                Форма для нового блоку
+                Створенння нового блоку адаптації
             </TextBlock>
-
-
-
-            <CardBlock
-                className="flex items-center space-x-4"
-            >
-                <label>
-                    <TextBlock className=" text-xl whitespace-nowrap">
-                        Назва блоку:
-                    </TextBlock>
-                </label>
-
-                <InputBlock
-                    onChange={(e) => setNewAdaptBlockTitle(e.target.value)}
-                    value={newAdaptBlockTitle}
-                    className="w-full"
-
-                />
-            </CardBlock>
 
 
 
@@ -70,13 +47,13 @@ const [newAdaptBlockInsId, setNewAdaptBlockInsId] = useState(null)
 
 
                 <select
-                    className="InputBlock w-full "
+                    className="InputBlock w-full text-xl "
                     name="insId"
                     onChange={(e) => setNewAdaptBlockInsId(e.target.value)}
                 >
 
                     <option
-                        className="bg-blue-500 text-white"
+                        className="bg-blue-500 text-white "
                         value=""
                         disabled
                         selected
@@ -95,7 +72,7 @@ const [newAdaptBlockInsId, setNewAdaptBlockInsId] = useState(null)
                                 <option
                                     key={ins?._id}
                                     value={ins?._id}
-                                    className="text-white"
+                                    className="text-white "
 
                                 >
 
@@ -113,51 +90,18 @@ const [newAdaptBlockInsId, setNewAdaptBlockInsId] = useState(null)
 
 
 
-            {newAdaptBlockInsId
-
-                ?
-                <CardBlock
-                    className="flex space-x-4 bg-blue-500/10 p-2 rounded-xl"
-                >
-
-                    <img
-                        src={instructions?.find((ins) => ins?._id === newAdaptBlockInsId)?.titleImage
-                            || 'https://placehold.co/600x400?text=Інструкція'
-                        }
-                        width={200}
-                        className="rounded-3xl"
-                    >
-
-                    </img>
-
-                    <TextBlock
-                        className=" text-2xl"
-                    >
-
-
-
-                        Інструкція: {instructions?.find((ins) => ins?._id === newAdaptBlockInsId)?.title}
-
-
-                    </TextBlock>
-
-
-                </CardBlock>
-                :
-                null
-            }
-
-
-
-
-
-
+            {newAdaptBlockInsId && <InsBage  
+            ins={instructions?.find((ins) => ins?._id === newAdaptBlockInsId)}
+            insFolder={insFolders?.find((insfolder) => insfolder?._id === instructions?.find((ins) => ins?._id === newAdaptBlockInsId)?.folderId)}
+            users={users}  
+            
+            />}
 
 
 
 
             <CardBlock
-                className="flex justify-around space-x-4"
+                className="grid grid-cols-2 gap-2"
             >
                 <ButtonBlock
                     className="rose-b flex justify-center items-center"
@@ -171,12 +115,11 @@ const [newAdaptBlockInsId, setNewAdaptBlockInsId] = useState(null)
 
                 <ButtonBlock
                     onClick={() => handleCreateAdaptBlock({
-                        title: newAdaptBlockTitle,
                         insId: newAdaptBlockInsId,
                         adaptId: adapt?._id
                     })}
                     className="green-b flex justify-center items-center"
-                    disabled={!newAdaptBlockTitle || !newAdaptBlockInsId}
+                    disabled={!newAdaptBlockInsId}
 
                 >
                     {isAdaptBlockCreating ?

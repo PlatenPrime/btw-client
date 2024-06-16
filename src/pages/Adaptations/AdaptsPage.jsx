@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { ButtonBlock, ButtonGroup, ContainerBlock, HeaderBlock, ModalCreate, PageBTW } from '../../components'
+import { ButtonBlock, ButtonGroup, ContainerBlock, HeaderBlock, ModalCreate, PageBTW, TextBlock } from '../../components'
 import useAdaptsStore from './stores/adaptsStore';
 import AdaptBage from './components/AdaptBage';
 import useFetchAllAdapts from './hooks/useFetchAllAdapts';
@@ -65,6 +65,9 @@ export default function AdaptsPage() {
 
 
             <ContainerBlock className="flex flex-col gap-4">
+
+{adapts?.length === 0 && <TextBlock className="text-green-100 italic">Адаптації відсутні</TextBlock>}
+
                 {adapts?.map((adapt) => (
                     <AdaptBage adapt={adapt} />
                 ))}

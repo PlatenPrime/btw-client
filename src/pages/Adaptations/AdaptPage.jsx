@@ -1,5 +1,5 @@
 import React from 'react'
-import { ButtonBlock, ButtonGroup, ContainerBlock, HeaderBlock, ModalDelete, PageBTW } from '../../components'
+import { ButtonBlock, ButtonGroup, ContainerBlock, HeaderBlock, ModalDelete, PageBTW, TextBlock } from '../../components'
 import { useNavigate, useParams } from 'react-router-dom';
 import useAdaptsStore from './stores/adaptsStore';
 import useAdaptBlocksStore from './stores/adaptBlocksStore';
@@ -9,6 +9,9 @@ import AdaptBlockBage from './components/AdaptBlockBage';
 import useFetchAdaptById from './hooks/useFetchAdaptById';
 import useFetchAllIns from '../Instructions/hooks/useFetchAllIns';
 import useFetchAllInsFolders from '../Instructions/hooks/useFetchAllInsFolders';
+import useFetchUsers from '../Auth/hooks/useFetchUsers';
+
+
 import { CancelIcon, DeleteIcon, EditIcon, OkIcon } from '../../components/UI/Icons';
 
 
@@ -22,8 +25,10 @@ export default function AdaptPage() {
 
 
     const { adapt, oneAdaptBlocks, isAdaptLoading, error } = useFetchAdaptById(id);
-    const { instructions } = useFetchAllIns();
-    const { insFolders } = useFetchAllInsFolders()
+    const { instructions, isAllInsLoading } = useFetchAllIns();
+    const { insFolders, isAllInsFoldersLoading } = useFetchAllInsFolders()
+    const {users} = useFetchUsers()
+
 
 
 
@@ -35,7 +40,7 @@ export default function AdaptPage() {
     const [isAdaptEditing, setIsAdaptEditing] = useState(false);
     const [isNewAdaptBlockEditing, setIsNewAdaptBlockEditing] = useState(false);
 
-    const [newAdaptBlockTitle, setNewAdaptBlockTitle] = useState('')
+
     const [newAdaptBlockInsId, setNewAdaptBlockInsId] = useState(null)
 
 
@@ -78,7 +83,7 @@ export default function AdaptPage() {
             setIsAdaptBlockCreating(false)
             setIsNewAdaptBlockEditing(false)
             setNewAdaptBlockInsId(null)
-            setNewAdaptBlockTitle('')
+       
         }
     }
 
@@ -183,12 +188,14 @@ export default function AdaptPage() {
 
             >
 
+{oneAdaptBlocks?.length === 0 && <TextBlock className="text-green-100 text-2xl italic">Адаптаційні блоки відсутні</TextBlock>}
+
+
 
 
 
 
                 {oneAdaptBlocks?.map((adaptBlock, i) => (
-
                     <AdaptBlockBage
                         adaptBlock={adaptBlock}
                         i={i}
@@ -212,13 +219,15 @@ export default function AdaptPage() {
                         isNewAdaptBlockEditing={isNewAdaptBlockEditing}
                         setIsNewAdaptBlockEditing={setIsNewAdaptBlockEditing}
                         handleCreateAdaptBlock={handleCreateAdaptBlock}
+                       users={users}
+
 
                     />
 
                     :
 
                     <ButtonBlock
-                        className="w-full slate-b bg-transparent hover:bg-slate-500/10 rounded-3xl border-4 border-dashed  p-4"
+                        className="w-full green-b bg-transparent  rounded-3xl border-4 border-dashed hover:border-green-500  p-4"
                         onClick={() => setIsNewAdaptBlockEditing(!isNewAdaptBlockEditing)}
                     >
                         Додати блок
