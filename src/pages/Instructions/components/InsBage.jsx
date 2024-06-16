@@ -20,8 +20,8 @@ export default function InsBage({
     return (
         <CardBlock
             key={ins?._id}
-            className=" grid grid-cols-1 lg:grid-cols-4 gap-2 w-full p-2 rounded-xl cursor-pointer
-            bg-gradient-to-b from-blue-500/50 to-blue-700/50 hover:bg-blue-500 
+            className=" grid grid-cols-1 lg:grid-cols-5 gap-2 w-full p-2 rounded-xl cursor-pointer
+            bg-gradient-to-b from-blue-500/80 to-blue-700/50 hover:bg-blue-500 
             hover:shadow-lg hover:shadow-blue-500
      transition duration-500 ease-in-out"
             onClick={() => navigate(`/ins/${ins._id}`)}
@@ -30,7 +30,7 @@ export default function InsBage({
 
 
             <CardBlock
-                className="grid grid-cols-1 lg:grid-cols-2 gap-2"
+                className="grid grid-cols-1 lg:col-span-2  lg:grid-cols-2 gap-2"
             >
 
                 <CardBlock
@@ -51,33 +51,33 @@ export default function InsBage({
 
                 </CardBlock>
 
-                <TextBlock className="text-xl font-bold lg:justify-start  "> {ins?.title}</TextBlock>
+                <TextBlock className="text-2xl font-bold lg:justify-start  "> {ins?.title}</TextBlock>
 
             </CardBlock>
 
 
 
 
-            <TextBlock className="text-xl text-blue-200 "> <FcFolder className="text-xl" /> {insFolder?.title}</TextBlock>
+            <TextBlock className="text-lg text-blue-100 "> <FcFolder className="text-xl" /> {insFolder?.title}</TextBlock>
 
 
 
-            <TextBlock className="text-xl  text-slate-200">
+            <TextBlock className="text-lg  text-slate-200 italic">
                 <GoPerson />  {users?.find((user) => user?._id === ins?.author)?.fullname}
             </TextBlock>
 
 
             <CardBlock
-                className="flex flex-col justify-center"
+                className="flex flex-col justify-center text-base"
             >
 
 
-                {ins?.createdAt && <TextBlock className="text-lg text-slate-200 ">
+                {ins?.createdAt && <TextBlock className=" text-slate-200 ">
                     <span><LuFilePlus /></span>
                     <span>{new Date(ins?.createdAt).toLocaleString()}</span>
                 </TextBlock>}
 
-                {ins?.createdAt !== ins?.updatedAt && <TextBlock className="text-lg text-slate-200 ">
+                {ins?.createdAt !== ins?.updatedAt && <TextBlock className=" text-slate-200 ">
                     <span><LuFileEdit /></span>
                     <span>{new Date(ins?.updatedAt).toLocaleString()}</span>
                 </TextBlock>}

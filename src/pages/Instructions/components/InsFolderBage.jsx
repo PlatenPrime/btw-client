@@ -15,7 +15,7 @@ export default function InsFolderBage({
             onClick={() => navigate(`/insfolder/${insFolder._id}`)}
             className="group rounded-xl flex justify-center items-center
 
-                      bg-gradient-to-b from-blue-500/80 to-blue-900/50
+                      bg-gradient-to-b from-blue-500/80 to-blue-700/50
                       hover:bg-blue-500 hover:shadow-lg hover:shadow-blue-500 
                       transition duration-500 ease-in-out  cursor-pointer "
         >

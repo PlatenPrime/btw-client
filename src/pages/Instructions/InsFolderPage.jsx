@@ -1,11 +1,13 @@
-import React, { useEffect, useState } from "react";
-import { ButtonBlock, ButtonGroup, CardBlock, ContainerBlock, HeaderBlock, ModalCreate, ModalDelete, ModalEditOneValue, ModalWrapper, PageBTW, Spinner, TextBlock } from "../../components";
+import React, {  useState } from "react";
+import { ButtonBlock, ButtonGroup,  ContainerBlock, HeaderBlock, ModalCreate, ModalDelete, ModalEditOneValue,  PageBTW,  TextBlock } from "../../components";
 import { useNavigate, useParams } from "react-router-dom";
 import useInsFoldersStore from "./stores/insFoldersStore";
 import useInsStore from "./stores/insStore";
 import useAuthStore from "../Auth/authStore";
 import { AddIcon, DeleteIcon, EditIcon } from "../../components/UI/Icons";
 import InsBage from "./components/InsBage";
+import useFetchInsFolder from "./hooks/useFetchInsFolder";
+import useFetchUsers from "../Auth/hooks/useFetchUsers";
 
 
 
@@ -15,15 +17,12 @@ export default function InsFolderPage() {
   const { id } = useParams()
   const navigate = useNavigate()
 
+  const { insFolder, folderInstructions, isInsFolderLoading } = useFetchInsFolder(id)
+  const { users, user } = useFetchUsers()
 
-  const { insFolder, getInsFolderById, updateInsFolderById, deleteInsFolderById } = useInsFoldersStore()
-  const { createInstruction, folderInstructions, getFolderInstructions } = useInsStore()
-  const { user, users, getUsers } = useAuthStore()
+  const { updateInsFolderById, deleteInsFolderById } = useInsFoldersStore()
+  const { createInstruction } = useInsStore()
 
-  console.log(users);
-
-
-  const [isInsFolderLoading, setIsInsFolderLoading] = useState(false);
   const [isInsCreating, setIsInsCreating] = useState(false);
   const [isInsFolderUpdating, setIsInsFolderUpdating] = useState(false);
   const [isInsFolderDeleting, setIsInsFolderDeleting] = useState(false);
@@ -32,70 +31,6 @@ export default function InsFolderPage() {
   const [isShowModalInsCreating, setIsShowModalInsCreating] = useState(false);
   const [isShowModalInsFolderUpdating, setIsShowModalInsFolderUpdating] = useState(false);
   const [isShowModalInsFolderDeleting, setIsShowModalInsFolderDeleting] = useState(false);
-
-
-
-
-  useEffect(() => {
-
-
-    const fetchInsFolder = async () => {
-      try {
-        setIsInsFolderLoading(true);
-        const insFolder = await getInsFolderById(id);
-        console.log("Тека завантажена: ", insFolder);
-      } catch (error) {
-        console.log(error);
-      } finally {
-        setIsInsFolderLoading(false);
-      }
-    };
-
-
-    const fetchFolderInstructions = async () => {
-      try {
-        setIsInsFolderLoading(true);
-        const folderInstructions = await getFolderInstructions(id);
-        console.log("Інструкції теки завантажені: ", folderInstructions);
-      } catch (error) {
-        console.log(error);
-      } finally {
-        setIsInsFolderLoading(false);
-        setIsShowModalInsCreating(false)
-      }
-    };
-
-
-    fetchInsFolder();
-    fetchFolderInstructions()
-
-
-
-
-  }, [getInsFolderById, getFolderInstructions, id]);
-
-
-
-
-  useEffect(() => {
-
-    const fetchUsers = async () => {
-      try {
-        await getUsers()
-
-      } catch (error) {
-        console.log(error);
-
-      }
-    }
-
-    fetchUsers()
-
-  }, [getUsers])
-
-
-
-
 
 
   const handleCreateInstruction = async (instructionData) => {
@@ -111,8 +46,6 @@ export default function InsFolderPage() {
     }
   };
 
-
-
   const handleUpdateInsFolder = async (updateData) => {
     try {
       setIsInsFolderUpdating(true)
@@ -125,8 +58,6 @@ export default function InsFolderPage() {
       setIsShowModalInsFolderUpdating(false)
     }
   }
-
-
 
   const handleDeleteInsFolder = async () => {
     try {
@@ -142,11 +73,6 @@ export default function InsFolderPage() {
     }
   }
 
-
-
-
-
-
   return (
     <PageBTW
       className="space-y-4"
@@ -154,13 +80,9 @@ export default function InsFolderPage() {
 
     >
 
-
       <HeaderBlock className="bg-yellow-500 shadow-lg shadow-yellow-500">
         {insFolder?.title || 'Тека'}
       </HeaderBlock>
-
-
-
 
 
       {/* MODALS */}
@@ -182,9 +104,6 @@ export default function InsFolderPage() {
 
       />}
 
-
-
-
       {isShowModalInsFolderDeleting && <ModalDelete
         ask="Видалити теку і всі інструкції в ній?"
         onDelete={handleDeleteInsFolder}
@@ -193,14 +112,8 @@ export default function InsFolderPage() {
 
       />}
 
-
-
-
       <ButtonGroup>
-
-
         <ButtonGroup.Actions>
-
           <ButtonBlock
             className="green-b"
             onClick={() => setIsShowModalInsCreating(true)}
@@ -214,7 +127,7 @@ export default function InsFolderPage() {
             onClick={() => setIsShowModalInsFolderUpdating(true)}
           >
             <EditIcon />
-            Редагувати
+            Змінити назву
           </ButtonBlock>
 
           <ButtonBlock
@@ -225,42 +138,28 @@ export default function InsFolderPage() {
             Видалити
           </ButtonBlock>
 
-
-
         </ButtonGroup.Actions>
-
-
         <ButtonGroup.Navigation>
-
-
         </ButtonGroup.Navigation>
-
       </ButtonGroup>
 
 
+      <ContainerBlock
+        className="space-y-2"
+      >
+        {folderInstructions?.length > 0
+          ?
+          <>
+            {folderInstructions?.map((ins) => (
 
-
-
-
-      {folderInstructions?.length > 0
-        ?
-        <ContainerBlock
-          className="space-y-2"
-        >
-          {folderInstructions?.map((ins) => (
-
-            <InsBage
-              key={ins?._id} ins={ins} users={users} />
-          ))}
-        </ContainerBlock>
-        :
-        <ContainerBlock>
+              <InsBage
+                key={ins?._id} ins={ins} users={users} insFolder={insFolder} />
+            ))}
+          </>
+          :
           <TextBlock>В цій теці інструкцій немає</TextBlock>
-        </ContainerBlock>
-
-      }
-
-
+        }
+      </ContainerBlock>
 
     </PageBTW >
   )

@@ -79,7 +79,7 @@
 	width: 100%;
 	/* width:  90%; */
 	height: auto;
-	margin: 0 auto;
+	margin: 1rem auto;
 	padding: 0.5rem;
 	border-radius: 1rem;
 	transition: transform 0.3s, box-shadow 0.3s;
