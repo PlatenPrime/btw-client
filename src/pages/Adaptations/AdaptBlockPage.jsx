@@ -9,6 +9,8 @@ import AdaptSpinnerContainer from './components/AdaptSpinnerContainer';
 import useInsStore from '../Instructions/stores/insStore';
 import InsBodyContainer from '../Instructions/components/InsBodyContainer';
 import YoutubeCard from '../../components/UI/YoutubeCard/YoutubeCard';
+import useFetchAdaptBlockById from './hooks/useFetchAdaptBlockById';
+import { CancelIcon, DeleteIcon, OkIcon } from '../../components/UI/Icons';
 
 
 
@@ -20,59 +22,17 @@ export default function AdaptBlockPage() {
     const { id } = useParams()
     const navigate = useNavigate();
 
-    const { adaptBlock, getAdaptBlockById } = useAdaptBlocksStore();
-    const { instruction, getInstructionById } = useInsStore();
-
-
-    console.log(adaptBlock, 'adaptBlock');
-
-    console.log(instruction, 'instruction');
-
-
-
-    const [isLoadingAdaptBlock, setIsLoadingAdaptBlock] = useState(true);
-
-
-
-    useEffect(() => {
-
-
-        const fetchAdaptBlockById = async () => {
-            try {
-                setIsLoadingAdaptBlock(true)
-                const fetchedAdaptBlock = await getAdaptBlockById(id)
-
-                if (fetchedAdaptBlock) {
-
-                    await getInstructionById(fetchedAdaptBlock.insId)
-                }
-
-
-            } catch (error) {
-                console.log(error);
-
-            } finally {
-                setIsLoadingAdaptBlock(false)
-            }
-        }
-
-
-
-        fetchAdaptBlockById()
-
-
-
-    }, [id, getAdaptBlockById, getInstructionById])
+    const { adaptBlock, instruction, isAdaptBlockLoading, error } = useFetchAdaptBlockById(id);
 
 
 
 
     return (
         <PageBTW
-        isLoading={isLoadingAdaptBlock}
+            isLoading={isAdaptBlockLoading}
         >
             <HeaderBlock
-                className="bg-lime-500 shadow-2xl shadow-lime-500"
+                className="bg-cyan-500 shadow-lg shadow-cyan-500"
             >
                 Блок адаптації
             </HeaderBlock>
@@ -82,22 +42,32 @@ export default function AdaptBlockPage() {
             <ButtonGroup>
 
                 <ButtonGroup.Actions>
-                    <ButtonBlock>
-                        Редагувати
+
+                    <ButtonBlock
+                        className="red-b"
+                    >
+                        <DeleteIcon /> Видалити
                     </ButtonBlock>
-                    <ButtonBlock>
-                        Видалити
+
+                    <ButtonBlock
+                        className="green-b"
+                    >
+                        <OkIcon /> Позначити пройденим
                     </ButtonBlock>
+
+                    <ButtonBlock
+                        className="rose-b"
+                    >
+                        <CancelIcon /> Позначити непройденим
+                    </ButtonBlock>
+
+
                 </ButtonGroup.Actions>
 
 
 
                 <ButtonGroup.Navigation>
-                    <ButtonBlock
-                        className="lime-b "
-                    >
-                        Перейти до наступного блоку
-                    </ButtonBlock>
+
                 </ButtonGroup.Navigation>
 
 
