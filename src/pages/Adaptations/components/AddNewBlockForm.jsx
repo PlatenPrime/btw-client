@@ -20,6 +20,19 @@ export default function AddNewBlockForm({
 
 
 
+
+    if (!isNewAdaptBlockEditing) {
+        return <ButtonBlock
+            className="w-full green-b bg-transparent  rounded-3xl border-4 border-dashed hover:border-green-500  p-4"
+            onClick={() => setIsNewAdaptBlockEditing(!isNewAdaptBlockEditing)}
+        >
+            Додати блок
+        </ButtonBlock>
+
+    }
+
+
+
     return (
         <CardBlock
             className="w-full rounded-xl  border-4 border-dashed  border-green-500/20 p-4 space-y-4 "
@@ -65,7 +78,7 @@ export default function AddNewBlockForm({
                         <optgroup
                             key={insfolder?._id}
                             label={insfolder?.title}
-                            className=" bg-slate-900 text-slate-500 "
+                            className=" bg-slate-900 text-blue-300  "
                         >
 
                             {instructions?.filter((ins) => insfolder?._id === ins?.folderId).map((ins) => (
@@ -90,11 +103,11 @@ export default function AddNewBlockForm({
 
 
 
-            {newAdaptBlockInsId && <InsBage  
-            ins={instructions?.find((ins) => ins?._id === newAdaptBlockInsId)}
-            insFolder={insFolders?.find((insfolder) => insfolder?._id === instructions?.find((ins) => ins?._id === newAdaptBlockInsId)?.folderId)}
-            users={users}  
-            
+            {newAdaptBlockInsId && <InsBage
+                ins={instructions?.find((ins) => ins?._id === newAdaptBlockInsId)}
+                insFolder={insFolders?.find((insfolder) => insfolder?._id === instructions?.find((ins) => ins?._id === newAdaptBlockInsId)?.folderId)}
+                users={users}
+
             />}
 
 
@@ -114,10 +127,13 @@ export default function AddNewBlockForm({
                 </ButtonBlock>
 
                 <ButtonBlock
-                    onClick={() => handleCreateAdaptBlock({
-                        insId: newAdaptBlockInsId,
-                        adaptId: adapt?._id
-                    })}
+                    onClick={() => {
+                        handleCreateAdaptBlock({
+                            insId: newAdaptBlockInsId,
+                            adaptId: adapt?._id
+                        })
+                        setNewAdaptBlockInsId(null)
+                    }}
                     className="green-b flex justify-center items-center"
                     disabled={!newAdaptBlockInsId}
 

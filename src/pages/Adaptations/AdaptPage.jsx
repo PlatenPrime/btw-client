@@ -1,5 +1,5 @@
-import React from 'react'
-import { ButtonBlock, ButtonGroup, ContainerBlock, HeaderBlock, ModalDelete, PageBTW, TextBlock } from '../../components'
+import React, { useEffect } from 'react'
+import { ButtonBlock, ButtonGroup, ContainerBlock, HeaderBlock, ModalConfirm, ModalDelete, PageBTW, TextBlock } from '../../components'
 import { useNavigate, useParams } from 'react-router-dom';
 import useAdaptsStore from './stores/adaptsStore';
 import useAdaptBlocksStore from './stores/adaptBlocksStore';
@@ -14,6 +14,8 @@ import useFetchUsers from '../Auth/hooks/useFetchUsers';
 
 import { CancelIcon, DeleteIcon, EditIcon, OkIcon } from '../../components/UI/Icons';
 
+import { Reorder } from 'framer-motion';
+
 
 
 
@@ -24,31 +26,38 @@ export default function AdaptPage() {
     const navigate = useNavigate();
 
 
+    console.log("Render");
+
+
+
+
+
     const { adapt, oneAdaptBlocks, isAdaptLoading, error } = useFetchAdaptById(id);
     const { instructions, isAllInsLoading } = useFetchAllIns();
     const { insFolders, isAllInsFoldersLoading } = useFetchAllInsFolders()
-    const {users} = useFetchUsers()
-
-
-
+    const { users } = useFetchUsers()
 
 
     const { updateAdaptById, deleteAdaptById } = useAdaptsStore();
     const { createAdaptBlock } = useAdaptBlocksStore();
 
-
     const [isAdaptEditing, setIsAdaptEditing] = useState(false);
     const [isNewAdaptBlockEditing, setIsNewAdaptBlockEditing] = useState(false);
-
-
-    const [newAdaptBlockInsId, setNewAdaptBlockInsId] = useState(null)
-
-
     const [isShowAdaptDeleteModal, setIsShowAdaptDeleteModal] = useState(false);
-
     const [isAdaptDeleting, setIsAdaptDeleting] = useState(false);
-
+    const [isShowAdaptUpdateModal, setIsShowAdaptUpdateModal] = useState(false);
+    const [isAdaptUpdating, setIsAdaptUpdating] = useState(false);
     const [isAdaptBlockCreating, setIsAdaptBlockCreating] = useState(false);
+
+
+
+    const [items, setItems] = useState(oneAdaptBlocks);
+    console.log(items);
+
+
+    useEffect(() => {
+        setItems(oneAdaptBlocks)
+    }, [oneAdaptBlocks])
 
 
 
@@ -82,10 +91,32 @@ export default function AdaptPage() {
         } finally {
             setIsAdaptBlockCreating(false)
             setIsNewAdaptBlockEditing(false)
-            setNewAdaptBlockInsId(null)
-       
+
         }
     }
+
+
+
+    const handleUpdateAdapt = async () => {
+        try {
+            setIsAdaptUpdating(true)
+            const updateData = {
+                blocks: items
+            }
+            await updateAdaptById(adapt?._id, updateData)
+        } catch (error) {
+            console.log(error);
+        } finally {
+            setIsAdaptUpdating(false)
+            setIsShowAdaptUpdateModal(false)
+        }
+    }
+
+
+
+
+
+
 
 
     return (
@@ -110,6 +141,19 @@ export default function AdaptPage() {
                     onDelete={() => handleDeleteAdapt()}
                     onCancel={() => setIsShowAdaptDeleteModal(false)}
                     isDeleting={isAdaptDeleting}
+                />
+            }
+
+
+            {
+
+                isShowAdaptUpdateModal &&
+                <ModalConfirm
+                    ask="Зберегти зміни?"
+                    onConfirm={() => handleUpdateAdapt()}
+                    onCancel={() => setIsShowAdaptUpdateModal(false)}
+                    isConfirming={isAdaptUpdating}
+
                 />
             }
 
@@ -140,7 +184,7 @@ export default function AdaptPage() {
 
                             <ButtonBlock
                                 className="emerald-b"
-                                onClick={() => setIsAdaptEditing(!isAdaptEditing)}
+                                onClick={() => setIsShowAdaptUpdateModal(true)}
                             >
                                 <OkIcon />
                                 Зберегти
@@ -188,30 +232,31 @@ export default function AdaptPage() {
 
             >
 
-{oneAdaptBlocks?.length === 0 && <TextBlock className="text-green-100 text-2xl italic">Адаптаційні блоки відсутні</TextBlock>}
+                {oneAdaptBlocks?.length === 0 && <TextBlock className="text-green-100 text-2xl italic">Адаптаційні блоки відсутні</TextBlock>}
 
 
 
 
 
+                <Reorder.Group values={items} onReorder={setItems}>
+                    {items?.map((adaptBlock, i) => (
+                        <AdaptBlockBage
+                            key={adaptBlock._id}
+                            adaptBlock={adaptBlock}
+                            i={i}
+                            instructions={instructions}
+                            isAdaptEditing={isAdaptEditing}
+                        />
 
-                {oneAdaptBlocks?.map((adaptBlock, i) => (
-                    <AdaptBlockBage
-                        adaptBlock={adaptBlock}
-                        i={i}
-                        instructions={instructions}
-                        isAdaptEditing={isAdaptEditing}
-                    />
-                ))}
+                    ))}
+                </Reorder.Group>
 
 
 
 
-
-                {!isAdaptEditing ? null : isNewAdaptBlockEditing
-                    ?
-
+                {isAdaptEditing &&
                     <AddNewBlockForm
+                        isAdaptEditing={isAdaptEditing}
                         adapt={adapt}
                         insFolders={insFolders}
                         instructions={instructions}
@@ -219,19 +264,13 @@ export default function AdaptPage() {
                         isNewAdaptBlockEditing={isNewAdaptBlockEditing}
                         setIsNewAdaptBlockEditing={setIsNewAdaptBlockEditing}
                         handleCreateAdaptBlock={handleCreateAdaptBlock}
-                       users={users}
+                        users={users}
 
 
                     />
 
-                    :
 
-                    <ButtonBlock
-                        className="w-full green-b bg-transparent  rounded-3xl border-4 border-dashed hover:border-green-500  p-4"
-                        onClick={() => setIsNewAdaptBlockEditing(!isNewAdaptBlockEditing)}
-                    >
-                        Додати блок
-                    </ButtonBlock>
+
                 }
 
 

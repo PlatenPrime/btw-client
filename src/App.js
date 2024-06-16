@@ -93,7 +93,7 @@ function App() {
 
 
 				<Route path="ins" element={<InstructionsPage />} />
-				<Route path="insfolder/:id" element={<InsFolderPage />} />
+				<Route path="ins/insfolder/:id" element={<InsFolderPage />} />
 				<Route path="ins/:id" element={<InsPage />} />
 
 

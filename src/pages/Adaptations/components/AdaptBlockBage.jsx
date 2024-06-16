@@ -1,6 +1,9 @@
 import React from 'react'
-import { CardBlock, TextBlock } from '../../../components'
+import { ButtonBlock, CardBlock, TextBlock } from '../../../components'
 import { useNavigate } from 'react-router-dom'
+import { MoveIcon } from '../../../components/UI/Icons'
+
+import { Reorder, useDragControls } from 'framer-motion';
 
 export default function AdaptBlockBage({
     adaptBlock,
@@ -12,49 +15,81 @@ export default function AdaptBlockBage({
 
     const navigate = useNavigate()
 
+    const controls = useDragControls()
+
 
 
     return (
-        <CardBlock
-            onClick={!isAdaptEditing ? () => navigate(`/adapts/blocks/${adaptBlock._id}`) : null}
-            key={adaptBlock._id}
-            className="  w-full rounded-3xl bg-lime-500/20 hover:bg-lime-500/50 p-2 space-y-4 cursor-pointer "
+
+        <Reorder.Item
+            value={adaptBlock}
+            dragListener={false}
+            dragControls={controls}
         >
-            <TextBlock
-                className=" text-2xl w-full bg-lime-500 rounded-xl"
-            >
-                {i + 1}. {adaptBlock?.title}
-            </TextBlock>
-
-
             <CardBlock
-                className="flex space-x-4"
+                onClick={!isAdaptEditing ? () => navigate(`/adapts/blocks/${adaptBlock._id}`) : null}
+                key={adaptBlock._id}
+                className={` w-full my-4
+            flex  justify-between items-center
+            rounded-2xl  bg-gradient-to-b from-green-500/50 to-green-700/50  p-2 space-y-4 cursor-pointer 
+            ${!isAdaptEditing && 'hover:bg-green-500 hover:shadow-lg hover:shadow-green-500'}
+            
+            `}
             >
 
-                <img
-                    src={instructions?.find((ins) => ins?._id === adaptBlock?.insId)?.titleImage
-                        || 'https://placehold.co/600x400?text=Інструкція'
+
+                <CardBlock
+                    className="flex items-center space-x-2"
+                >
+
+                    <TextBlock
+                        className=" text-2xl   rounded-full p-6 "
+                    >
+                        {i + 1}
+                    </TextBlock>
+
+
+                    <CardBlock
+                        className="flex space-x-4"
+                    >
+
+                        <img
+                            src={instructions?.find((ins) => ins?._id === adaptBlock?.insId)?.titleImage
+                                || 'https://placehold.co/600x400?text=Інструкція'
+                            }
+                            width={200}
+                            className="rounded-3xl"
+                        >
+
+                        </img>
+
+                        <TextBlock
+                            className=" text-2xl"
+                        >
+                            {instructions?.find((ins) => ins?._id === adaptBlock?.insId)?.title}
+                        </TextBlock>
+
+
+                    </CardBlock>
+                </CardBlock>
+
+                <div
+                onPointerDown={(e) => controls.start(e)}
+                >
+                    {isAdaptEditing && <ButtonBlock
+                        className="slate-b"
+
+                    >
+                        <MoveIcon  size={40} />
+                    </ButtonBlock>
                     }
-                    width={200}
-                    className="rounded-3xl"
-                >
-
-                </img>
-
-                <TextBlock
-                    className=" text-xl"
-                >
+                </div>
 
 
-
-                    Інструкція: {instructions?.find((ins) => ins?._id === adaptBlock?.insId)?.title}
-
-
-                </TextBlock>
 
 
             </CardBlock>
+        </Reorder.Item>
 
-        </CardBlock>
     )
 }

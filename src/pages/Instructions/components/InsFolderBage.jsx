@@ -12,7 +12,7 @@ export default function InsFolderBage({
     return (
         <CardBlock
             key={insFolder._id}
-            onClick={() => navigate(`/insfolder/${insFolder._id}`)}
+            onClick={() => navigate(`/ins/insfolder/${insFolder._id}`)}
             className="group rounded-xl flex justify-center items-center
 
                       bg-gradient-to-b from-blue-500/80 to-blue-700/50
