@@ -77,7 +77,6 @@
 
 .ql-container img {
 	width: 100%;
-	max-width: 728px;
 	/* width:  90%; */
 	height: auto;
 	margin: 0 auto;
@@ -87,6 +86,15 @@
 	box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); 
 
   }
+
+
+
+  @media (min-width: 728px) {
+	.ql-container img {
+	  width: 728px;
+	}
+  }
+
 
 
   .ql-container img:hover {
