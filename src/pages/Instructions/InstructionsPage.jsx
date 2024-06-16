@@ -14,7 +14,7 @@ import {
 import { useNavigate } from "react-router-dom";
 
 import useInsFoldersStore from "./stores/insFoldersStore";
-import useFetchAllInsFolders from "./hooks/useFetchInsFolders";
+import useFetchAllInsFolders from "./hooks/useFetchAllInsFolders";
 import InsFolderBage from "./components/InsFolderBage";
 import useFetchAllIns from "./hooks/useFetchAllIns";
 import useFetchUsers from "../Auth/hooks/useFetchUsers";

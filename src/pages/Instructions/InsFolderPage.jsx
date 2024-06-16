@@ -3,7 +3,6 @@ import { ButtonBlock, ButtonGroup,  ContainerBlock, HeaderBlock, ModalCreate, Mo
 import { useNavigate, useParams } from "react-router-dom";
 import useInsFoldersStore from "./stores/insFoldersStore";
 import useInsStore from "./stores/insStore";
-import useAuthStore from "../Auth/authStore";
 import { AddIcon, DeleteIcon, EditIcon } from "../../components/UI/Icons";
 import InsBage from "./components/InsBage";
 import useFetchInsFolder from "./hooks/useFetchInsFolder";

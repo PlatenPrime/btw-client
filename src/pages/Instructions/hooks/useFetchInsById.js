@@ -41,7 +41,7 @@ const useFetchInsById = (id) => {
 
         fetchInsById();
 
-    }, [getInstructionById]);
+    }, [getInstructionById, getUserById, id]);
 
     return { instruction, isInsLoading, error, author };
 };

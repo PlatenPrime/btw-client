@@ -1,16 +1,15 @@
 import React from 'react'
-import { ButtonBlock, ButtonGroup, CardBlock, ContainerBlock, HeaderBlock, InputBlock, ModalDelete, PageBTW, Spinner, TextBlock } from '../../components'
+import { ButtonBlock, ButtonGroup, ContainerBlock, HeaderBlock, ModalDelete, PageBTW } from '../../components'
 import { useNavigate, useParams } from 'react-router-dom';
 import useAdaptsStore from './stores/adaptsStore';
 import useAdaptBlocksStore from './stores/adaptBlocksStore';
-import { useEffect } from 'react';
 import { useState } from 'react';
-import useInsStore from '../Instructions/stores/insStore';
-import useInsFoldersStore from '../Instructions/stores/insFoldersStore';
-import { CancelIcon, OkIcon } from '../../components/UI/Icons';
-import AdaptSpinnerContainer from './components/AdaptSpinnerContainer';
 import AddNewBlockForm from './components/AddNewBlockForm';
 import AdaptBlockBage from './components/AdaptBlockBage';
+import useFetchAdaptById from './hooks/useFetchAdaptById';
+import useFetchAllIns from '../Instructions/hooks/useFetchAllIns';
+import useFetchAllInsFolders from '../Instructions/hooks/useFetchAllInsFolders';
+import { CancelIcon, DeleteIcon, EditIcon, OkIcon } from '../../components/UI/Icons';
 
 
 
@@ -19,19 +18,18 @@ import AdaptBlockBage from './components/AdaptBlockBage';
 export default function AdaptPage() {
 
     const { id } = useParams();
-
     const navigate = useNavigate();
 
-    const { adapt, getAdaptById, updateAdaptById, deleteAdaptById } = useAdaptsStore();
-    const { oneAdaptBlocks, getAdaptBlocksByAdaptId, createAdaptBlock } = useAdaptBlocksStore();
-    const { instructions, getAllInstructions } = useInsStore();
-    const { insFolders, getAllInsFolders } = useInsFoldersStore();
+
+    const { adapt, oneAdaptBlocks, isAdaptLoading, error } = useFetchAdaptById(id);
+    const { instructions } = useFetchAllIns();
+    const { insFolders } = useFetchAllInsFolders()
 
 
 
-    const [isAdaptLoading, setIsAdaptLoading] = useState(false);
-    const [isInstructionsLoading, setIsInstructionsLoading] = useState(false);
 
+    const { updateAdaptById, deleteAdaptById } = useAdaptsStore();
+    const { createAdaptBlock } = useAdaptBlocksStore();
 
 
     const [isAdaptEditing, setIsAdaptEditing] = useState(false);
@@ -43,65 +41,9 @@ export default function AdaptPage() {
 
     const [isShowAdaptDeleteModal, setIsShowAdaptDeleteModal] = useState(false);
 
-
     const [isAdaptDeleting, setIsAdaptDeleting] = useState(false);
 
     const [isAdaptBlockCreating, setIsAdaptBlockCreating] = useState(false);
-
-
-
-
-
-
-
-
-
-
-
-    useEffect(() => {
-
-        const fetchAdaptById = async () => {
-            try {
-                setIsAdaptLoading(true);
-                await getAdaptById(id)
-                await getAdaptBlocksByAdaptId(id)
-            } catch (error) {
-                console.error('Помилка завантаження інтеграції:', error);
-            } finally {
-                setIsAdaptLoading(false);
-            }
-        }
-
-        fetchAdaptById()
-
-    }, [getAdaptById, id, getAdaptBlocksByAdaptId]);
-
-
-
-
-    useEffect(() => {
-
-        const fetchInstructions = async () => {
-            try {
-                setIsInstructionsLoading(true);
-                await getAllInstructions()
-                await getAllInsFolders()
-            } catch (error) {
-                console.error('Помилка завантаження інтеграції:', error);
-            } finally {
-                setIsInstructionsLoading(false);
-            }
-        }
-
-        fetchInstructions()
-
-    }, [getAllInstructions, getAllInsFolders]);
-
-
-
-
-
-
 
 
 
@@ -124,23 +66,10 @@ export default function AdaptPage() {
 
 
 
-
-
-
-
-
-
-
-
-
     const handleCreateAdaptBlock = async (createData) => {
         try {
             setIsAdaptBlockCreating(true)
-
             await createAdaptBlock(createData)
-
-
-
 
         } catch (error) {
             console.log(error);
@@ -154,16 +83,14 @@ export default function AdaptPage() {
     }
 
 
-
-
     return (
 
 
         <PageBTW
-        isLoading={isAdaptLoading}
+            isLoading={isAdaptLoading}
         >
             <HeaderBlock
-                className="bg-green-500 shadow-2xl shadow-green-500"
+                className="bg-green-500 shadow-lg shadow-green-500"
             >
                 {adapt?.title}
             </HeaderBlock>
@@ -202,6 +129,7 @@ export default function AdaptPage() {
                                 className="pink-b"
                                 onClick={() => setIsAdaptEditing(!isAdaptEditing)}
                             >
+                                <CancelIcon />
                                 Скасувати
                             </ButtonBlock>
 
@@ -209,7 +137,15 @@ export default function AdaptPage() {
                                 className="emerald-b"
                                 onClick={() => setIsAdaptEditing(!isAdaptEditing)}
                             >
+                                <OkIcon />
                                 Зберегти
+                            </ButtonBlock>
+
+                            <ButtonBlock
+                                className="red-b"
+                                onClick={() => setIsShowAdaptDeleteModal(true)}
+                            >
+                                <DeleteIcon />  Видалити
                             </ButtonBlock>
 
                         </>
@@ -218,18 +154,12 @@ export default function AdaptPage() {
                             onClick={() => setIsAdaptEditing(!isAdaptEditing)}
                             className="blue-b"
                         >
-                            Редагувати
+                            <EditIcon /> Редагувати
                         </ButtonBlock>
 
                     }
 
 
-                    <ButtonBlock
-                        className="red-b"
-                        onClick={() => setIsShowAdaptDeleteModal(true)}
-                    >
-                        Видалити
-                    </ButtonBlock>
 
                 </ButtonGroup.Actions>
 
