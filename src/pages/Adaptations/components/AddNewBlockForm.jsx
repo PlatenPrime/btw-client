@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { ButtonBlock, CardBlock, InputBlock, Spinner, TextBlock } from '../../../components'
 import { CancelIcon, OkIcon } from '../../../components/UI/Icons'
 import InsBage from '../../Instructions/components/InsBage';
+import { BiFolder } from 'react-icons/bi';
 
 export default function AddNewBlockForm({
 
@@ -23,7 +24,7 @@ export default function AddNewBlockForm({
 
     if (!isNewAdaptBlockEditing) {
         return <ButtonBlock
-            className="w-full green-b bg-transparent  rounded-3xl border-4 border-dashed hover:border-green-500  p-4"
+            className="w-full cyan-b bg-transparent  rounded-3xl border-4 border-dashed hover:border-cyan-500   p-4"
             onClick={() => setIsNewAdaptBlockEditing(!isNewAdaptBlockEditing)}
         >
             Додати блок
@@ -35,7 +36,7 @@ export default function AddNewBlockForm({
 
     return (
         <CardBlock
-            className="w-full rounded-xl  border-4 border-dashed  border-green-500/20 p-4 space-y-4 "
+            className="w-full rounded-xl  border-4 border-dashed  border-cyan-500/50 p-4 space-y-4 "
         >
 
 
@@ -78,14 +79,14 @@ export default function AddNewBlockForm({
                         <optgroup
                             key={insfolder?._id}
                             label={insfolder?.title}
-                            className=" bg-slate-900 text-blue-300  "
+                            className=" bg-slate-900 text-blue-300 not-italic "
                         >
 
                             {instructions?.filter((ins) => insfolder?._id === ins?.folderId).map((ins) => (
                                 <option
                                     key={ins?._id}
                                     value={ins?._id}
-                                    className="text-white "
+                                    className="text-white italic "
 
                                 >
 

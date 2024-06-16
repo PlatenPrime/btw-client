@@ -184,7 +184,10 @@ export default function AdaptPage() {
 
                             <ButtonBlock
                                 className="emerald-b"
-                                onClick={() => setIsShowAdaptUpdateModal(true)}
+                                onClick={() => {
+                                    setIsShowAdaptUpdateModal(true)
+                                    setIsAdaptEditing(false)
+                                }}
                             >
                                 <OkIcon />
                                 Зберегти
@@ -235,6 +238,19 @@ export default function AdaptPage() {
                 {oneAdaptBlocks?.length === 0 && <TextBlock className="text-green-100 text-2xl italic">Адаптаційні блоки відсутні</TextBlock>}
 
 
+                {isAdaptEditing &&
+                    <AddNewBlockForm
+                        isAdaptEditing={isAdaptEditing}
+                        adapt={adapt}
+                        insFolders={insFolders}
+                        instructions={instructions}
+                        isAdaptBlockCreating={isAdaptBlockCreating}
+                        isNewAdaptBlockEditing={isNewAdaptBlockEditing}
+                        setIsNewAdaptBlockEditing={setIsNewAdaptBlockEditing}
+                        handleCreateAdaptBlock={handleCreateAdaptBlock}
+                        users={users}
+                    />
+                }
 
 
 
@@ -254,24 +270,6 @@ export default function AdaptPage() {
 
 
 
-                {isAdaptEditing &&
-                    <AddNewBlockForm
-                        isAdaptEditing={isAdaptEditing}
-                        adapt={adapt}
-                        insFolders={insFolders}
-                        instructions={instructions}
-                        isAdaptBlockCreating={isAdaptBlockCreating}
-                        isNewAdaptBlockEditing={isNewAdaptBlockEditing}
-                        setIsNewAdaptBlockEditing={setIsNewAdaptBlockEditing}
-                        handleCreateAdaptBlock={handleCreateAdaptBlock}
-                        users={users}
-
-
-                    />
-
-
-
-                }
 
 
             </ContainerBlock>
