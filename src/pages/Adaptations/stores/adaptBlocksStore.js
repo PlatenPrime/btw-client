@@ -120,6 +120,57 @@ const useAdaptBlocksStore = create((set) => ({
             console.error('Ошибка удаления блока интеграции по ID:', error);
         }
     },
+
+
+
+    // Новый метод для обновления состояния isDone
+    updateAdaptBlockIsDone: async (blockId, userId, isDone) => {
+        try {
+            const response = await axios.put(`adaptblocks/${blockId}/isDone`, { userId, isDone });
+
+            if (response.status === 200) {
+                const updatedAdaptBlock = response.data;
+                set((state) => ({
+                    adaptBlock: updatedAdaptBlock,
+                    adaptsBlocks: state.adaptsBlocks.map((block) =>
+                        block._id === updatedAdaptBlock._id ? updatedAdaptBlock : block
+                    ),
+                    oneAdaptBlocks: state.oneAdaptBlocks.map((block) =>
+                        block._id === updatedAdaptBlock._id ? updatedAdaptBlock : block
+                    ),
+                }));
+
+
+                return updatedAdaptBlock;
+            } else {
+                throw new Error('Ошибка обновления состояния выполнения блока');
+            }
+        } catch (error) {
+            console.error('Ошибка обновления состояния выполнения блока:', error);
+        }
+    },
+
+    // Новый метод для получения состояния isDone
+    getAdaptBlockIsDone: async (blockId, userId) => {
+        try {
+            const response = await axios.get(`adaptblocks/${blockId}/isDone/${userId}`);
+
+            if (response.status === 200) {
+                const isDone = response.data.isDone;
+                return isDone;
+            } else {
+                throw new Error('Ошибка получения состояния выполнения блока');
+            }
+        } catch (error) {
+            console.error('Ошибка получения состояния выполнения блока:', error);
+        }
+    },
+
+
+
+
+
+
 }));
 
 export default useAdaptBlocksStore;

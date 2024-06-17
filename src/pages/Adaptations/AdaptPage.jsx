@@ -35,7 +35,7 @@ export default function AdaptPage() {
     const { adapt, oneAdaptBlocks, isAdaptLoading, error } = useFetchAdaptById(id);
     const { instructions, isAllInsLoading } = useFetchAllIns();
     const { insFolders, isAllInsFoldersLoading } = useFetchAllInsFolders()
-    const { users } = useFetchUsers()
+    const {user, users } = useFetchUsers()
 
 
     const { updateAdaptById, deleteAdaptById } = useAdaptsStore();
@@ -262,6 +262,7 @@ export default function AdaptPage() {
                             i={i}
                             instructions={instructions}
                             isAdaptEditing={isAdaptEditing}
+                            user={user}
                         />
 
                     ))}

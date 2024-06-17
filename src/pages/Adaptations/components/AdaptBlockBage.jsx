@@ -1,7 +1,7 @@
 import React from 'react'
 import { ButtonBlock, CardBlock, TextBlock } from '../../../components'
 import { useNavigate } from 'react-router-dom'
-import {  MoveVertIcon } from '../../../components/UI/Icons'
+import { MoveVertIcon } from '../../../components/UI/Icons'
 
 import { Reorder, useDragControls } from 'framer-motion';
 
@@ -9,14 +9,14 @@ export default function AdaptBlockBage({
     adaptBlock,
     i,
     instructions,
-    isAdaptEditing
+    isAdaptEditing,
+    user
 }) {
 
 
     const navigate = useNavigate()
 
     const controls = useDragControls()
-
 
 
     return (
@@ -31,7 +31,7 @@ export default function AdaptBlockBage({
                 key={adaptBlock._id}
                 className={` w-full my-4
             flex  justify-between items-center
-            rounded-2xl  bg-gradient-to-b from-cyan-500/50 to-cyan-700/50  p-2 space-y-4 cursor-pointer 
+            rounded-2xl  bg-gradient-to-b from-cyan-500/70 to-cyan-700/50  p-2 space-y-4 cursor-pointer 
             ${!isAdaptEditing && 'hover:bg-cyan-500 hover:shadow-lg hover:shadow-cyan-500'}
             
             `}
@@ -73,14 +73,17 @@ export default function AdaptBlockBage({
                     </CardBlock>
                 </CardBlock>
 
+
+                <TextBlock>Пройдено: {adaptBlock?.isDone[user?._id] ? 'Так' : 'Ні'}</TextBlock>
+
                 <div
-                onPointerDown={(e) => controls.start(e)}
+                    onPointerDown={(e) => controls.start(e)}
                 >
                     {isAdaptEditing && <ButtonBlock
                         className="slate-b"
 
                     >
-                        <MoveVertIcon  size={40} />
+                        <MoveVertIcon size={40} />
                     </ButtonBlock>
                     }
                 </div>
