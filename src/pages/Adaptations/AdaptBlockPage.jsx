@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { ButtonBlock, ButtonGroup, CardBlock, HeaderBlock, ModalConfirm, ModalDelete, PageBTW } from '../../components'
+import { ButtonBlock, ButtonGroup, CardBlock, HeaderBlock, ModalConfirm, ModalDelete, PageBTW, TextBlock } from '../../components'
 import { useNavigate, useParams } from 'react-router-dom'
 import useFetchAdaptBlockById from './hooks/useFetchAdaptBlockById';
 import { BackIcon, CancelIcon, DeleteIcon, OkIcon } from '../../components/UI/Icons';
@@ -16,7 +16,7 @@ export default function AdaptBlockPage() {
     const { user } = useAuthStore()
 
     const { adaptBlock, oneAdaptBlocks, instruction, isAdaptBlockLoading, error: adaptBlockError } = useFetchAdaptBlockById(id);
-  
+
 
 
     const { deleteAdaptBlockById, updateAdaptBlockIsDone } = useAdaptBlocksStore();
@@ -29,7 +29,7 @@ export default function AdaptBlockPage() {
 
 
     console.log(oneAdaptBlocks);
-    
+
     let indexOfBlock, prev, next
 
     if (Array.isArray(oneAdaptBlocks)) {
@@ -71,7 +71,7 @@ export default function AdaptBlockPage() {
     }
 
 
-    if (adaptBlockError ) {
+    if (adaptBlockError) {
         return (
             <PageBTW>
                 <HeaderBlock
@@ -79,7 +79,7 @@ export default function AdaptBlockPage() {
                 >
                     Блок адаптації
                 </HeaderBlock>
-                <p className="text-red-500">{adaptBlockError }</p>
+                <p className="text-red-500">{adaptBlockError}</p>
             </PageBTW>
         )
     }
@@ -136,25 +136,27 @@ export default function AdaptBlockPage() {
                     </ButtonBlock>
 
 
-                    {/* <CardBlock className="flex gap-2 p-0"> */}
+                    <CardBlock className="flex gap-2 p-0">
 
-                    <ButtonBlock
-                        disabled={!prev}
-                        className="cyan-b-n"
-                        onClick={() => navigate(`/adapts/blocks/${prev?._id}`)}
-                    >
-                        Попередній
-                    </ButtonBlock>
+                        <ButtonBlock
+                            disabled={!prev}
+                            className="cyan-b-n"
+                            onClick={() => navigate(`/adapts/blocks/${prev?._id}`)}
+                        >
+                            Попередній
+                        </ButtonBlock>
 
-                    <ButtonBlock
-                        disabled={!next}
-                        className="cyan-b-n"
-                        onClick={() => navigate(`/adapts/blocks/${next?._id}`)}
-                    >
-                        Наступний
-                    </ButtonBlock>
+                        <TextBlock>{indexOfBlock + 1} / {oneAdaptBlocks?.length}</TextBlock >
 
-                    {/* </CardBlock> */}
+                        <ButtonBlock
+                            disabled={!next}
+                            className="cyan-b-n"
+                            onClick={() => navigate(`/adapts/blocks/${next?._id}`)}
+                        >
+                            Наступний
+                        </ButtonBlock>
+
+                    </CardBlock>
 
 
                 </ButtonGroup.Navigation>
