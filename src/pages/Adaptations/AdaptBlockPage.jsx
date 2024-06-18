@@ -15,8 +15,8 @@ export default function AdaptBlockPage() {
     const navigate = useNavigate();
     const { user } = useAuthStore()
 
-    const { adaptBlock, instruction, isAdaptBlockLoading, error: adaptBlockError } = useFetchAdaptBlockById(id);
-    const { adapt, oneAdaptBlocks, isAdaptLoading, error: adaptError } = useFetchAdaptById(adaptBlock?.adaptId);
+    const { adaptBlock, oneAdaptBlocks, instruction, isAdaptBlockLoading, error: adaptBlockError } = useFetchAdaptBlockById(id);
+  
 
 
     const { deleteAdaptBlockById, updateAdaptBlockIsDone } = useAdaptBlocksStore();
@@ -29,16 +29,13 @@ export default function AdaptBlockPage() {
 
 
     console.log(oneAdaptBlocks);
-
-
+    
     let indexOfBlock, prev, next
 
     if (Array.isArray(oneAdaptBlocks)) {
-
         indexOfBlock = oneAdaptBlocks?.findIndex(block => block?._id === adaptBlock?._id)
         prev = oneAdaptBlocks[indexOfBlock - 1]
         next = oneAdaptBlocks[indexOfBlock + 1]
-
     }
 
 
@@ -74,7 +71,7 @@ export default function AdaptBlockPage() {
     }
 
 
-    if (adaptBlockError || adaptError) {
+    if (adaptBlockError ) {
         return (
             <PageBTW>
                 <HeaderBlock
@@ -82,7 +79,7 @@ export default function AdaptBlockPage() {
                 >
                     Блок адаптації
                 </HeaderBlock>
-                <p className="text-red-500">{adaptBlockError || adaptError}</p>
+                <p className="text-red-500">{adaptBlockError }</p>
             </PageBTW>
         )
     }
@@ -91,7 +88,7 @@ export default function AdaptBlockPage() {
 
     return (
         <PageBTW
-            isLoading={isAdaptBlockLoading || isAdaptLoading}
+            isLoading={isAdaptBlockLoading}
         >
             <HeaderBlock
                 className="bg-cyan-500 shadow-lg shadow-cyan-500"

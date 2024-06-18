@@ -8,7 +8,7 @@ const useFetchAdaptBlockById = (id) => {
     const [error, setError] = useState(null);
 
   
-    const { adaptBlock, getAdaptBlockById } = useAdaptBlocksStore();
+    const { adaptBlock, oneAdaptBlocks, getAdaptBlocksByAdaptId, getAdaptBlockById } = useAdaptBlocksStore();
     const { instruction, getInstructionById } = useInsStore();
 
     useEffect(() => {
@@ -19,6 +19,7 @@ const useFetchAdaptBlockById = (id) => {
 
                 if (block) {
                     await getInstructionById(block.insId);
+                    await getAdaptBlocksByAdaptId(block.adaptId);
                 }
          
             } catch (error) {
@@ -30,9 +31,9 @@ const useFetchAdaptBlockById = (id) => {
         };
         fetchAdaptBlockById();
 
-    }, [getAdaptBlockById, id]);
+    }, [getAdaptBlockById, getAdaptBlocksByAdaptId, id]);
 
-    return {  adaptBlock, instruction, isAdaptBlockLoading, error };
+    return {  adaptBlock, instruction, oneAdaptBlocks, isAdaptBlockLoading, error };
 };
 
 export default useFetchAdaptBlockById;
