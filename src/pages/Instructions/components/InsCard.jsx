@@ -49,28 +49,28 @@ export default function InsCard({
             </CardBlock>
 
 
-            <TextBlock className=" md:text-xl lg:text-3xl font-bold lg:justify-center col-span-4  "> {ins?.title}</TextBlock>
+            <TextBlock className="text-lg md:text-xl lg:text-3xl font-bold lg:justify-center col-span-4  "> {ins?.title}</TextBlock>
 
 
 
 
 
             <CardBlock
-                className="flex flex-col justify-center lg:items-end col-span-1 "
+                className="flex flex-col justify-center lg:items-end col-span-1 text-дп "
             >
-                <TextBlock className="text-sm  text-slate-200 ">
+                <TextBlock className=" text-slate-200 lg:justify-between w-full ">
 
                     <GoPerson className="lg:order-2" />
                     <span>{author?.fullname} </span>
                 </TextBlock>
 
-                {ins?.createdAt && <TextBlock className="text-sm text-slate-200 ">
+                {ins?.createdAt && <TextBlock className=" text-slate-200 lg:justify-between w-full ">
                     <LuFilePlus className="lg:order-2" />
                     <span>{new Date(ins?.createdAt).toLocaleString()}</span>
 
                 </TextBlock>}
 
-                {ins?.createdAt !== ins?.updatedAt && <TextBlock className="text-sm text-slate-200 ">
+                {ins?.createdAt !== ins?.updatedAt && <TextBlock className=" text-slate-200 lg:justify-between w-full ">
                     <LuFileEdit className="lg:order-2" />
                     <span>{new Date(ins?.updatedAt).toLocaleString()}</span>
 

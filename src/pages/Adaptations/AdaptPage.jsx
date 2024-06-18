@@ -235,7 +235,7 @@ export default function AdaptPage() {
 
             >
 
-                {oneAdaptBlocks?.length === 0 && <TextBlock className="text-green-100 text-2xl italic">Адаптаційні блоки відсутні</TextBlock>}
+                {oneAdaptBlocks?.length === 0 && <TextBlock className="text-green-100 text-xl italic">Адаптаційні блоки відсутні</TextBlock>}
 
 
                 {isAdaptEditing &&
@@ -267,11 +267,6 @@ export default function AdaptPage() {
 
                     ))}
                 </Reorder.Group>
-
-
-
-
-
 
             </ContainerBlock>
 

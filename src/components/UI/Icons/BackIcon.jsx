@@ -1,11 +1,11 @@
 import React from 'react'
-import { FcUndo } from "react-icons/fc";
+import { MdOutlineKeyboardBackspace } from "react-icons/md";
 
 
-export default function BackIcon({size, color}) {
+export default function BackIcon({ size, color }) {
 	return (
 
-		<FcUndo size={size} color={color} />
+		<MdOutlineKeyboardBackspace size={size} color={color} />
 
 	)
 }

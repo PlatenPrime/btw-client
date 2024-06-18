@@ -454,7 +454,7 @@ transition ease-in-out duration-300
 	bg-transparent  hover:bg-green-500 active:bg-green-600  
 	  text-white 
 	 shadow-green-500 hover:shadow-sm hover:shadow-green-500
-	  text-green-200 hover:text-white
+	  text-green-500 hover:text-white
 }
 
 
@@ -474,7 +474,7 @@ transition ease-in-out duration-300
 	bg-transparent  hover:bg-emerald-500 active:bg-emerald-600  
 	text-white 
 	 shadow-emerald-500 hover:shadow-sm hover:shadow-emerald-500 
-	  text-emerald-300 hover:text-white
+	  text-emerald-500 hover:text-white
 }
 
 
@@ -499,7 +499,7 @@ transition ease-in-out duration-300
 	bg-transparent  hover:bg-teal-500 active:bg-teal-600  
 	text-white focus:text-white 
 	 shadow-teal-500 hover:shadow-sm hover:shadow-teal-500 
-	text-teal-300 hover:text-white
+	text-teal-500 hover:text-white
 }
 
 .teal-b-n {
@@ -518,7 +518,7 @@ transition ease-in-out duration-300
 	bg-transparent  hover:bg-cyan-500 active:bg-cyan-600  
 	text-white 
  shadow-cyan-500 hover:shadow-sm hover:shadow-cyan-500 
-	text-cyan-300 hover:text-white
+	text-cyan-500 hover:text-white
 	  
 	 
 }
@@ -542,7 +542,7 @@ transition ease-in-out duration-300
 	bg-transparent  hover:bg-sky-500 active:bg-sky-600  
 	  text-white 
 	  shadow-sky-500 hover:shadow-sm hover:shadow-sky-500 
-	  text-sky-300 hover:text-white
+	  text-sky-500 hover:text-white
 	 
 }
 
@@ -562,7 +562,7 @@ transition ease-in-out duration-300
 	bg-transparent  hover:bg-blue-500 active:bg-blue-600  
 	  text-white
 	 shadow-blue-500 hover:shadow-sm hover:shadow-blue-500 
-	 text-blue-200 hover:text-white
+	 text-blue-500 hover:text-white
 	 
 }
 
@@ -583,7 +583,7 @@ transition ease-in-out duration-300
 	bg-transparent  hover:bg-indigo-500 active:bg-indigo-600  
 	  text-white 
 	  shadow-indigo-500 hover:shadow-sm hover:shadow-indigo-500 
-	  text-indigo-300 hover:text-white
+	  text-indigo-500 hover:text-white
 	 
 }
 
@@ -604,7 +604,7 @@ transition ease-in-out duration-300
 	bg-transparent  hover:bg-violet-500 active:bg-violet-600  
 	text-white
  shadow-violet-500 hover:shadow-sm hover:shadow-violet-500 
-	 text-violet-300 hover:text-white
+	 text-violet-500 hover:text-white
 	 
 }
 
@@ -625,7 +625,7 @@ transition ease-in-out duration-300
 	bg-transparent  hover:bg-purple-500 active:bg-purple-600  
 	 text-white 
 	  shadow-purple-500 hover:shadow-sm hover:shadow-purple-500 
-	 text-purple-300 hover:text-white
+	 text-purple-500 hover:text-white
 	 
 }
 
@@ -645,7 +645,7 @@ transition ease-in-out duration-300
 	bg-transparent  hover:bg-fuchsia-500 active:bg-fuchsia-600  
 	  text-white
 	  shadow-fuchsia-500 hover:shadow-sm hover:shadow-fuchsia-500 
-	  text-fuchsia-300 hover:text-white
+	  text-fuchsia-500 hover:text-white
 	 
 }
 
@@ -665,7 +665,7 @@ transition ease-in-out duration-300
 	bg-transparent  hover:bg-pink-500 active:bg-pink-600  
 	  text-white
 	   shadow-pink-500 hover:shadow-sm hover:shadow-pink-500 
-	  text-pink-300 hover:text-white
+	  text-pink-500 hover:text-white
 	 
 }
 
@@ -685,7 +685,7 @@ transition ease-in-out duration-300
 	bg-transparent  hover:bg-rose-500 active:bg-rose-600  
 	  text-white 
 	  shadow-rose-500 hover:shadow-sm hover:shadow-rose-500 
-	  text-rose-300 hover:text-white
+	  text-rose-500 hover:text-white
 	 
 }
 

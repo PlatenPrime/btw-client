@@ -1,42 +1,47 @@
 import React, { useState } from 'react'
-import { ButtonBlock, ButtonGroup, ContainerBlock, HeaderBlock, ModalConfirm, ModalDelete, PageBTW, TextBlock } from '../../components'
-
+import { ButtonBlock, ButtonGroup, CardBlock, HeaderBlock, ModalConfirm, ModalDelete, PageBTW } from '../../components'
 import { useNavigate, useParams } from 'react-router-dom'
-import InsBodyContainer from '../Instructions/components/InsBodyContainer';
-import YoutubeCard from '../../components/UI/YoutubeCard/YoutubeCard';
 import useFetchAdaptBlockById from './hooks/useFetchAdaptBlockById';
-import { CancelIcon, DeleteIcon, OkIcon } from '../../components/UI/Icons';
+import { BackIcon, CancelIcon, DeleteIcon, OkIcon } from '../../components/UI/Icons';
 import useAdaptBlocksStore from './stores/adaptBlocksStore';
 import useAuthStore from '../Auth/authStore';
-
-
-
-
-
+import AdaptBlockIns from './components/AdaptBlockIns';
+import useFetchAdaptById from './hooks/useFetchAdaptById';
 
 
 export default function AdaptBlockPage() {
 
     const { id } = useParams()
     const navigate = useNavigate();
-
     const { user } = useAuthStore()
 
-
-
-    const { adaptBlock, instruction, isAdaptBlockLoading, error } = useFetchAdaptBlockById(id);
+    const { adaptBlock, instruction, isAdaptBlockLoading, error: adaptBlockError } = useFetchAdaptBlockById(id);
+    const { adapt, oneAdaptBlocks, isAdaptLoading, error: adaptError } = useFetchAdaptById(adaptBlock?.adaptId);
 
 
     const { deleteAdaptBlockById, updateAdaptBlockIsDone } = useAdaptBlocksStore();
 
-
-
     const [isShowModalDelete, setIsShowModalDelete] = useState(false);
     const [isAdaptBlockDeleting, setIsAdaptBlockDeleting] = useState(false);
 
-
     const [isShowModalAdaptBlockIsDoneUpdate, setIsShowModalAdaptBlockIsDoneUpdate] = useState(false);
     const [isAdaptBlockIsDoneUpdating, setIsAdaptBlockIsDoneUpdating] = useState(false);
+
+
+    console.log(oneAdaptBlocks);
+
+
+    let indexOfBlock, prev, next
+
+    if (Array.isArray(oneAdaptBlocks)) {
+
+        indexOfBlock = oneAdaptBlocks?.findIndex(block => block?._id === adaptBlock?._id)
+        prev = oneAdaptBlocks[indexOfBlock - 1]
+        next = oneAdaptBlocks[indexOfBlock + 1]
+
+    }
+
+
 
 
 
@@ -56,8 +61,6 @@ export default function AdaptBlockPage() {
         }
     }
 
-
-
     const handleAdaptBlockIsDoneUpdate = async () => {
         try {
             setIsAdaptBlockIsDoneUpdating(true);
@@ -71,11 +74,24 @@ export default function AdaptBlockPage() {
     }
 
 
+    if (adaptBlockError || adaptError) {
+        return (
+            <PageBTW>
+                <HeaderBlock
+                    className="bg-red-500 shadow-lg shadow-red-500"
+                >
+                    Блок адаптації
+                </HeaderBlock>
+                <p className="text-red-500">{adaptBlockError || adaptError}</p>
+            </PageBTW>
+        )
+    }
+
 
 
     return (
         <PageBTW
-            isLoading={isAdaptBlockLoading}
+            isLoading={isAdaptBlockLoading || isAdaptLoading}
         >
             <HeaderBlock
                 className="bg-cyan-500 shadow-lg shadow-cyan-500"
@@ -86,9 +102,7 @@ export default function AdaptBlockPage() {
 
 
             <ButtonGroup>
-
                 <ButtonGroup.Actions>
-
                     <ButtonBlock
                         className="red-b"
                         onClick={() => setIsShowModalDelete(true)}
@@ -99,7 +113,7 @@ export default function AdaptBlockPage() {
 
                     {adaptBlock?.isDone[user?._id] ?
                         <ButtonBlock
-                            className="rose-b"
+                            className="fuchsia-b"
                             onClick={() => setIsShowModalAdaptBlockIsDoneUpdate(true)}
                         >
                             <CancelIcon /> Позначити непройденим
@@ -111,15 +125,42 @@ export default function AdaptBlockPage() {
                         >
                             <OkIcon /> Позначити пройденим
                         </ButtonBlock>}
-
                 </ButtonGroup.Actions>
 
+                <ButtonGroup.Navigation
+                // className="justify-between "
+                >
+
+                    <ButtonBlock
+                        className="green-b-n"
+                        onClick={() => navigate(`/adapts/${adaptBlock?.adaptId}`)}
+                    >
+                        <BackIcon /> Адаптація
+                    </ButtonBlock>
 
 
-                <ButtonGroup.Navigation>
+                    {/* <CardBlock className="flex gap-2 p-0"> */}
+
+                    <ButtonBlock
+                        disabled={!prev}
+                        className="cyan-b-n"
+                        onClick={() => navigate(`/adapts/blocks/${prev?._id}`)}
+                    >
+                        Попередній
+                    </ButtonBlock>
+
+                    <ButtonBlock
+                        disabled={!next}
+                        className="cyan-b-n"
+                        onClick={() => navigate(`/adapts/blocks/${next?._id}`)}
+                    >
+                        Наступний
+                    </ButtonBlock>
+
+                    {/* </CardBlock> */}
+
 
                 </ButtonGroup.Navigation>
-
 
             </ButtonGroup>
 
@@ -147,42 +188,9 @@ export default function AdaptBlockPage() {
 
             {/* MODALS END */}
 
-
-            <ContainerBlock
-                className="space-y-4"
-            >
-                <TextBlock
-                    className="font-bold text-2xl w-full bg-blue-500 rounded-xl p-4"
-                >
-
-                    {instruction?.title}
-                </TextBlock>
-
-                {instruction?.videoUrl &&
-
-                    <YoutubeCard url={instruction?.videoUrl} />
-                }
-
-
-
-                {instruction?.body
-                    ?
-                    <InsBodyContainer
-
-                    >
-                        <div
-                            dangerouslySetInnerHTML={{
-                                __html: instruction?.body
-                            }} >
-
-                        </div>
-                    </InsBodyContainer>
-                    :
-                    <TextBlock className="text-xl italic text-slate-500"  >Текст інструкції відсутній</TextBlock>
-                }
-            </ContainerBlock>
-
-
+            <AdaptBlockIns
+                instruction={instruction}
+            />
 
 
         </PageBTW >

@@ -59,7 +59,7 @@ export default function InsPage() {
 					{isInsEditing ?
 						<>
 							<ButtonBlock
-								className="pink-b"
+								className="fuchsia-b"
 								onClick={() => setIsInsEditing(false)}
 							>
 								<CancelIcon />

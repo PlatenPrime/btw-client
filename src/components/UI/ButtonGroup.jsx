@@ -12,6 +12,6 @@ export default function ButtonGroup({ children }) {
 }
 
 
-ButtonGroup.Actions = ({ children }) => <div className="flex justify-start flex-wrap gap-2 ">{children}</div>
+ButtonGroup.Actions = ({ children, className }) => <div className={`flex justify-start flex-wrap gap-2 ${className}`}>{children}</div>
 
-ButtonGroup.Navigation = ({ children }) => <div className="flex justify-end flex-wrap gap-2  ">{children}</div>
+ButtonGroup.Navigation = ({ children, className }) => <div className={`flex justify-start flex-wrap gap-2 ${className}`}>{children}</div>
