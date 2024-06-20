@@ -12,7 +12,7 @@ import useFetchAllInsFolders from '../Instructions/hooks/useFetchAllInsFolders';
 import useFetchUsers from '../Auth/hooks/useFetchUsers';
 
 
-import { CancelIcon, DeleteIcon, EditIcon, OkIcon } from '../../components/UI/Icons';
+import { AddIcon, CancelIcon, DeleteIcon, EditIcon, OkIcon } from '../../components/UI/Icons';
 
 import { Reorder } from 'framer-motion';
 
@@ -35,7 +35,7 @@ export default function AdaptPage() {
     const { adapt, oneAdaptBlocks, isAdaptLoading, error } = useFetchAdaptById(id);
     const { instructions, isAllInsLoading } = useFetchAllIns();
     const { insFolders, isAllInsFoldersLoading } = useFetchAllInsFolders()
-    const {user, users } = useFetchUsers()
+    const { user, users } = useFetchUsers()
 
 
     const { updateAdaptById, deleteAdaptById } = useAdaptsStore();
@@ -212,15 +212,35 @@ export default function AdaptPage() {
                     }
 
 
+                    {!adapt?.test && <ButtonBlock
+
+                        className="purple-b"
+                        
+                    >
+                      <AddIcon />  Створити тест
+                    </ButtonBlock>
+                    }
+
+
 
                 </ButtonGroup.Actions>
 
 
                 <ButtonGroup.Navigation
                 >
-                    <ButtonBlock>
+
+                    {adapt?.test && <ButtonBlock
+                        onClick={() => navigate(`/adapts/tests/${adapt?.test}`)}
+                        className="purple-b-n"
+                        disabled={!adapt?.test}
+                    >
                         Пройти тест
-                    </ButtonBlock>
+                    </ButtonBlock>}
+
+
+
+
+
                 </ButtonGroup.Navigation>
 
 
