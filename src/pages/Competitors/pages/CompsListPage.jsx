@@ -220,7 +220,7 @@ export default function CompListPage() {
 
 
 	return (
-		<CardBlock className="flex flex-col space-y-2 relative  " >
+		<CardBlock className="flex flex-col space-y-2  " >
 
 
 			<ButtonGroup
