@@ -18,8 +18,8 @@ export default function PositionBage({ pos, onDelete, onEdit, artsDB }) {
 	return (
 
 
-		<li className={`grid grid-rows-6 lg:grid-rows-1 lg:grid-cols-6
-	 relative  shadow-lg 
+		<CardBlock className={`grid grid-rows-6 lg:grid-rows-1 lg:grid-cols-6
+	   shadow-lg 
 	group
 	 
 	 ${pos?.quant ?
@@ -34,15 +34,7 @@ export default function PositionBage({ pos, onDelete, onEdit, artsDB }) {
 			key={pos?._id}
 		>
 
-			<TextBlock
-				className={`
-					absolute top-0 left-0 z-10 bg-red-500 rounded-xl
-					${pos?.date ? "p-1" : ""}
-					
-					`}
-			>
-				{pos?.date}
-			</TextBlock>
+
 
 
 
@@ -120,9 +112,19 @@ export default function PositionBage({ pos, onDelete, onEdit, artsDB }) {
 
 
 				<CardBlock
-					className="flex flex-col  space-x-1  "
+					className="flex flex-col items-center   text-xl p-2 "
 
 				>
+
+
+					{pos?.date && <TextBlock
+						className={`
+					bg-red-500 rounded-xl p-1 
+					`}
+					>
+						{pos?.date}
+					</TextBlock>}
+
 
 					<TextBlock
 						className=" text-xl  "
@@ -136,6 +138,9 @@ export default function PositionBage({ pos, onDelete, onEdit, artsDB }) {
 						{pos?.com}
 					</TextBlock>
 
+
+
+
 				</CardBlock>
 
 
@@ -143,20 +148,20 @@ export default function PositionBage({ pos, onDelete, onEdit, artsDB }) {
 					className="grid grid-cols-2 p-2 gap-2">
 
 
-						<TextBlock
-							className="  text-xl"
-						>
-							<BalloonIcon />
-							{pos?.quant}
-						</TextBlock>
+					<TextBlock
+						className="  text-xl"
+					>
+						<BalloonIcon />
+						{pos?.quant}
+					</TextBlock>
 
-						<TextBlock
-							className=" text-xl "
-						>
-							<BoxIcon />
-							{pos?.boxes}
-						</TextBlock>
-					
+					<TextBlock
+						className=" text-xl "
+					>
+						<BoxIcon />
+						{pos?.boxes}
+					</TextBlock>
+
 
 
 
@@ -195,7 +200,7 @@ export default function PositionBage({ pos, onDelete, onEdit, artsDB }) {
 
 
 
-		</li>
+		</CardBlock>
 
 
 
