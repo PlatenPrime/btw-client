@@ -65,7 +65,7 @@ export default function PositionBage({ pos, onDelete, onEdit, artsDB }) {
 
 
 				<CardBlock
-					className="grid  col-span-2  p-2 bg-slate-500/5 cursor-pointer"
+					className="grid  col-span-2  p-2 bg-sky-500/20 cursor-pointer"
 					onClick={() => {
 						const artId = artsDB?.find(art => art.artikul === pos.artikul)?._id || "";
 						const url = `/arts/${artId}`;

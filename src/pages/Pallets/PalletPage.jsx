@@ -500,33 +500,31 @@ export default function PalletPage() {
 
 
 				<CardBlock
-					className="grid lg:grid-cols-2"
+					className=""
 				>
-					<CardBlock>
+					<CardBlock className="flex justify-center items-center gap-4">
 						<TextBlock
-							className="text-teal-100 text-xl justify-start"
+							className="text-teal-500 text-3xl justify-start "
 						>
-							<PosIcon />	Позицій: {poses?.length}
+							<PosIcon size={16} />	{poses?.length}
 						</TextBlock>
 
 						<TextBlock
-							className="text-amber-100 text-xl justify-start "
+							className="text-amber-500 text-3xl justify-start "
 						>
-							<BoxIcon /> Коробок: {poses?.reduce((a, b) => a + b?.boxes, 0)}
+							<BoxIcon size={16} /> {poses?.reduce((a, b) => a + b?.boxes, 0)}
 						</TextBlock>
 					</CardBlock>
 
-					<CardBlock
-						className="flex items-center justify-center"
-					>
+					
 
 						<TextBlock
-							className="text-teal-100 text-center text-3xl italic "
+							className="text-teal-100 text-center text-xl italic "
 						>
 							{pallet?.com}
 						</TextBlock>
 
-					</CardBlock>
+	
 
 				</CardBlock>
 

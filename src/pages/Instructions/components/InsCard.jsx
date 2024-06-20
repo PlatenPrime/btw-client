@@ -15,7 +15,8 @@ export default function InsCard({
     return (
         <CardBlock
             key={ins?._id}
-            className=" grid grid-cols-1 lg:grid-cols-6  p-2 rounded-xl 
+            className=" flex flex-col lg:flex-row lg:justify-between gap-2
+            p-2 rounded-xl 
             bg-gradient-to-b from-blue-500 to-blue-700 
      transition duration-500 ease-in-out"
 
@@ -23,8 +24,13 @@ export default function InsCard({
 
 
 
+            <TextBlock className="text-2xl  lg:text-3xl font-bold justify-center  text-center  "> {ins?.title}</TextBlock>
+
+
+
+
             <CardBlock
-                className=" gap-2 col-span-1 "
+                className=" gap-2 lg:order-first  "
             >
 
                 <CardBlock
@@ -49,28 +55,30 @@ export default function InsCard({
             </CardBlock>
 
 
-            <TextBlock className="text-xl  lg:text-3xl font-bold justify-center col-span-4 text-center  "> {ins?.title}</TextBlock>
+
 
 
 
 
 
             <CardBlock
-                className="flex flex-col justify-center lg:items-end col-span-1 p-2 text-lg bg-gradient-to-b  from-blue-700/50 to-blue-900/50 rounded-xl"
+                className="flex flex-col justify-center lg:items-end  p-2 text-sm lg:text-lg 
+                text-slate-300
+            "
             >
-                <TextBlock className=" text-slate-200 lg:justify-between w-full ">
+                <TextBlock className="  lg:justify-between w-full ">
 
                     <GoPerson className="" />
                     <span>{author?.fullname} </span>
                 </TextBlock>
 
-                {ins?.createdAt && <TextBlock className=" text-slate-200 lg:justify-between w-full ">
+                {ins?.createdAt && <TextBlock className="  lg:justify-between w-full ">
                     <LuFilePlus className="" />
                     <span>{new Date(ins?.createdAt).toLocaleString()}</span>
 
                 </TextBlock>}
 
-                {ins?.createdAt !== ins?.updatedAt && <TextBlock className=" text-slate-200 lg:justify-between w-full ">
+                {ins?.createdAt !== ins?.updatedAt && <TextBlock className="  lg:justify-between w-full ">
                     <LuFileEdit className="" />
                     <span>{new Date(ins?.updatedAt).toLocaleString()}</span>
 
