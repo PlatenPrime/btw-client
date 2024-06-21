@@ -44,6 +44,11 @@ export default function AdaptsPage() {
             </HeaderBlock>
 
             <ButtonGroup>
+
+
+            <ButtonGroup.Navigation>
+            </ButtonGroup.Navigation>
+
                 <ButtonGroup.Actions>
                     <ButtonBlock
                         className="green-b"

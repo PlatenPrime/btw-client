@@ -8,7 +8,7 @@ export default function SettingsPage() {
 			className="space-y-4"
 		>
 			<HeaderBlock
-				className="border border-slate-500 shadow-md shadow-slate-500"
+				className=" bg-slate-700 shadow-lg shadow-slate-700"
 			>
 				Налаштування
 			</HeaderBlock>
@@ -18,9 +18,7 @@ export default function SettingsPage() {
 			<CardBlock>
 				<ButtonGroup>
 
-					<ButtonGroup.Actions>
 
-					</ButtonGroup.Actions>
 					<ButtonGroup.Navigation>
 						<ButtonBlock
 							className="emerald-b-n "
@@ -33,7 +31,9 @@ export default function SettingsPage() {
 						</ButtonBlock>
 					</ButtonGroup.Navigation>
 
+					<ButtonGroup.Actions>
 
+					</ButtonGroup.Actions>
 
 
 				</ButtonGroup>

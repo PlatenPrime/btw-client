@@ -99,30 +99,6 @@ export default function AdaptBlockPage() {
 
 
             <ButtonGroup>
-                <ButtonGroup.Actions>
-                    <ButtonBlock
-                        className="red-b"
-                        onClick={() => setIsShowModalDelete(true)}
-                    >
-                        <DeleteIcon /> Видалити
-                    </ButtonBlock>
-
-
-                    {adaptBlock?.isDone[user?._id] ?
-                        <ButtonBlock
-                            className="fuchsia-b"
-                            onClick={() => setIsShowModalAdaptBlockIsDoneUpdate(true)}
-                        >
-                            <CancelIcon /> Позначити непройденим
-                        </ButtonBlock>
-                        :
-                        <ButtonBlock
-                            className="green-b"
-                            onClick={() => setIsShowModalAdaptBlockIsDoneUpdate(true)}
-                        >
-                            <OkIcon /> Позначити пройденим
-                        </ButtonBlock>}
-                </ButtonGroup.Actions>
 
                 <ButtonGroup.Navigation
                 // className="justify-between "
@@ -160,6 +136,35 @@ export default function AdaptBlockPage() {
 
 
                 </ButtonGroup.Navigation>
+
+
+
+                <ButtonGroup.Actions>
+                    <ButtonBlock
+                        className="red-b"
+                        onClick={() => setIsShowModalDelete(true)}
+                    >
+                        <DeleteIcon /> Видалити
+                    </ButtonBlock>
+
+
+                    {adaptBlock?.isDone[user?._id] ?
+                        <ButtonBlock
+                            className="fuchsia-b"
+                            onClick={() => setIsShowModalAdaptBlockIsDoneUpdate(true)}
+                        >
+                            <CancelIcon /> Позначити непройденим
+                        </ButtonBlock>
+                        :
+                        <ButtonBlock
+                            className="green-b"
+                            onClick={() => setIsShowModalAdaptBlockIsDoneUpdate(true)}
+                        >
+                            <OkIcon /> Позначити пройденим
+                        </ButtonBlock>}
+                </ButtonGroup.Actions>
+
+
 
             </ButtonGroup>
 

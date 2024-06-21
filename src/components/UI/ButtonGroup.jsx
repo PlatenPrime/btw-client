@@ -1,17 +1,19 @@
 import React from 'react'
-import ContainerBlock from './blocks/ContainerBlock'
+import CardBlock from './blocks/CardBlock'
 
 export default function ButtonGroup({ children }) {
 	return (
-		<ContainerBlock
-			className="bg-gradient-to-b from-slate-700/50 to-slate-900/50 grid grid:cols-1 lg:grid-cols-2 p-2 gap-2  rounded-xl text-sm"
+		<CardBlock
+			className=" grid grid:cols-1 lg:grid-cols-2 p-0 gap-2  rounded-xl text-sm"
 		>
 			{children}
-		</ContainerBlock>
+		</CardBlock>
 	)
 }
 
 
-ButtonGroup.Actions = ({ children, className }) => <div className={`flex justify-start flex-wrap gap-2 ${className}`}>{children}</div>
+ButtonGroup.Navigation = ({ children, className }) => <div className={`flex justify-center flex-wrap gap-2 bg-gradient-to-b from-slate-700/50 to-slate-800/50 rounded-xl ${className}`}>{children}</div>
 
-ButtonGroup.Navigation = ({ children, className }) => <div className={`flex justify-end flex-wrap gap-2 ${className}`}>{children}</div>
+ButtonGroup.Actions = ({ children, className }) => <div className={`flex justify-center flex-wrap gap-2  bg-gradient-to-b from-slate-700/50 to-slate-800/50 rounded-xl ${className}`}>{children}</div>
+
+

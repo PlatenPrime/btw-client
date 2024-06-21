@@ -112,6 +112,10 @@ export default function InsFolderPage() {
       />}
 
       <ButtonGroup>
+
+      <ButtonGroup.Navigation>
+      </ButtonGroup.Navigation>
+
         <ButtonGroup.Actions>
           <ButtonBlock
             className="green-b"
@@ -138,8 +142,7 @@ export default function InsFolderPage() {
           </ButtonBlock>
 
         </ButtonGroup.Actions>
-        <ButtonGroup.Navigation>
-        </ButtonGroup.Navigation>
+       
       </ButtonGroup>
 
 

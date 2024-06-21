@@ -169,6 +169,21 @@ export default function AdaptPage() {
 
             <ButtonGroup>
 
+
+                <ButtonGroup.Navigation
+                >
+
+                    {adapt?.test && <ButtonBlock
+                        onClick={() => navigate(`/adapts/tests/${adapt?.test}`)}
+                        className="purple-b-n"
+                        disabled={!adapt?.test}
+                    >
+                        Пройти тест
+                    </ButtonBlock>}
+
+                </ButtonGroup.Navigation>
+
+
                 <ButtonGroup.Actions
                 >
                     {isAdaptEditing
@@ -215,34 +230,15 @@ export default function AdaptPage() {
                     {!adapt?.test && <ButtonBlock
 
                         className="purple-b"
-                        
+
                     >
-                      <AddIcon />  Створити тест
+                        <AddIcon />  Створити тест
                     </ButtonBlock>
                     }
 
 
 
                 </ButtonGroup.Actions>
-
-
-                <ButtonGroup.Navigation
-                >
-
-                    {adapt?.test && <ButtonBlock
-                        onClick={() => navigate(`/adapts/tests/${adapt?.test}`)}
-                        className="purple-b-n"
-                        disabled={!adapt?.test}
-                    >
-                        Пройти тест
-                    </ButtonBlock>}
-
-
-
-
-
-                </ButtonGroup.Navigation>
-
 
             </ButtonGroup>
 

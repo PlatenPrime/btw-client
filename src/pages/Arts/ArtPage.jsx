@@ -62,6 +62,9 @@ export default function ArtPage() {
 
 			<ButtonGroup>
 
+			<ButtonGroup.Navigation></ButtonGroup.Navigation>
+
+
 				<ButtonGroup.Actions>
 					<ButtonBlock
 						className="indigo-b"

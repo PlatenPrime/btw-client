@@ -70,9 +70,7 @@ export default function ArtsPage() {
 
 			<ButtonGroup
 			>
-				<ButtonGroup.Actions>
 
-				</ButtonGroup.Actions>
 				<ButtonGroup.Navigation>
 					<ButtonBlock
 						className="emerald-b-n"
@@ -86,6 +84,10 @@ export default function ArtsPage() {
 						</Link>
 					</ButtonBlock>
 				</ButtonGroup.Navigation>
+
+				<ButtonGroup.Actions>
+
+				</ButtonGroup.Actions>
 			</ButtonGroup>
 
 

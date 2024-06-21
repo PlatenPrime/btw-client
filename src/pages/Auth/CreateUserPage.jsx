@@ -93,7 +93,7 @@ export default function CreateUserPage() {
 			className="space-y-4"
 		>
 			<HeaderBlock
-				className="border border-green-500 shadow-md shadow-green-500"
+				className=" bg-green-500 shadow-lg shadow-green-500"
 			>
 				Створення користувача
 			</HeaderBlock>
@@ -102,10 +102,15 @@ export default function CreateUserPage() {
 
 			{user?.role === "PRIME"
 				?
-				<CardBlock>
+				<CardBlock
+				className="space-y-4"
+				>
 					<ButtonGroup>
+
+						<ButtonGroup.Navigation>
+
 						<ButtonBlock
-							className="slate-b "
+							className="slate-b-n "
 						>
 							<Link
 								to="/settings"
@@ -113,6 +118,10 @@ export default function CreateUserPage() {
 								Повернутись до налаштувань
 							</Link>
 						</ButtonBlock>
+
+						</ButtonGroup.Navigation>
+
+						<ButtonGroup.Actions></ButtonGroup.Actions>
 
 
 

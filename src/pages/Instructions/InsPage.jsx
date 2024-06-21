@@ -55,6 +55,10 @@ export default function InsPage() {
 			/>}
 
 			<ButtonGroup>
+
+			<ButtonGroup.Navigation>
+			</ButtonGroup.Navigation>
+
 				<ButtonGroup.Actions>
 					{isInsEditing ?
 						<>

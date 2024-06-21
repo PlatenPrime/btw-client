@@ -337,6 +337,8 @@ export default function PalletPage() {
 
 			<ButtonGroup>
 
+			<ButtonGroup.Navigation></ButtonGroup.Navigation>
+
 				<ButtonGroup.Actions>
 
 

@@ -50,6 +50,9 @@ export default function StocksPage() {
 
 			<ButtonGroup
 			>
+
+
+				<ButtonGroup.Navigation></ButtonGroup.Navigation>
 				<ButtonGroup.Actions>
 					<ButtonBlock
 						onClick={() => exportToExcelPoses(allPoses, artsDB)}

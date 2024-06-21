@@ -97,6 +97,8 @@ export default function InstructionsPage() {
       />}
 
       <ButtonGroup>
+
+        <ButtonGroup.Navigation></ButtonGroup.Navigation>
         <ButtonGroup.Actions>
           <ButtonBlock
             className="green-b"

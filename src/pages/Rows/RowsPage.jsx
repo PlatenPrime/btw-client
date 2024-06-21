@@ -47,6 +47,10 @@ export default function RowsPage() {
 			<ButtonGroup
 				className="flex justify-start p-2"
 			>
+
+				<ButtonGroup.Navigation></ButtonGroup.Navigation>
+
+
 				<ButtonGroup.Actions>
 					<ButtonBlock
 						onClick={() => { setShowModalCreateRow(true) }}
