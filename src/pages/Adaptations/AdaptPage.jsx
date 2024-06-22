@@ -12,7 +12,7 @@ import useFetchAllInsFolders from '../Instructions/hooks/useFetchAllInsFolders';
 import useFetchUsers from '../Auth/hooks/useFetchUsers';
 
 
-import { AddIcon, CancelIcon, DeleteIcon, EditIcon, OkIcon } from '../../components/UI/Icons';
+import { AddIcon, CancelIcon, DeleteIcon, EditIcon, OkIcon, TestIcon } from '../../components/UI/Icons';
 
 import { Reorder } from 'framer-motion';
 
@@ -175,22 +175,24 @@ export default function AdaptPage() {
 
                     {adapt?.test && <ButtonBlock
                         onClick={() => navigate(`/adapts/tests/${adapt?.test}`)}
-                        className="purple-b-n"
+                        className="lime-b-n"
                         disabled={!adapt?.test}
                     >
-                        Пройти тест
+                        <TestIcon />                        Тест
                     </ButtonBlock>}
 
                 </ButtonGroup.Navigation>
 
 
-                <ButtonGroup.Actions
-                >
+                <ButtonGroup.Actions>
+
+            
+
                     {isAdaptEditing
                         ?
                         <>
                             <ButtonBlock
-                                className="pink-b"
+                                className="fuchsia-b"
                                 onClick={() => setIsAdaptEditing(!isAdaptEditing)}
                             >
                                 <CancelIcon />

@@ -16,3 +16,4 @@ export { default as EditIcon } from './EditIcon';
 export { default as ExcelIcon } from './ExcelIcon';
 export { default as UpdateIcon } from './UpdateIcon';
 export { default as DoneIcon } from './DoneIcon';
+export { default as TestIcon } from './TestIcon';
