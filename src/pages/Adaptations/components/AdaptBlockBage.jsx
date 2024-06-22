@@ -29,8 +29,13 @@ export default function AdaptBlockBage({
             <CardBlock
                 onClick={!isAdaptEditing ? () => navigate(`/adapts/blocks/${adaptBlock._id}`) : null}
                 key={adaptBlock._id}
-                className={` w-full my-4
-            flex  justify-between items-center
+                className={`
+                    
+                    
+                    w-full my-4
+         
+                    grid lg:grid-cols-4
+
             rounded-2xl  bg-gradient-to-b from-cyan-500/70 to-cyan-700/50  p-2 space-y-4 cursor-pointer 
             ${!isAdaptEditing && 'hover:bg-cyan-500 hover:shadow-lg hover:shadow-cyan-500'}
             
@@ -38,60 +43,64 @@ export default function AdaptBlockBage({
             >
 
 
+
+
                 <CardBlock
-                    className="flex items-center space-x-2"
+                    className="col-span-2 flex flex-col lg:flex-row items-center gap-2 "
                 >
 
-                    <TextBlock
-                        className=" text-2xl   rounded-full p-6 "
+                    <img
+                        src={instructions?.find((ins) => ins?._id === adaptBlock?.insId)?.titleImage
+                            || 'https://placehold.co/600x400?text=Інструкція'
+                        }
+                        width={150}
+                        className="rounded-3xl"
                     >
-                        {i + 1}
+
+                    </img>
+
+                    <TextBlock
+                        className=" text-2xl"
+                    >
+                        {i + 1}.  {instructions?.find((ins) => ins?._id === adaptBlock?.insId)?.title}
                     </TextBlock>
 
 
-                    <CardBlock
-                        className="flex space-x-4"
-                    >
-
-                        <img
-                            src={instructions?.find((ins) => ins?._id === adaptBlock?.insId)?.titleImage
-                                || 'https://placehold.co/600x400?text=Інструкція'
-                            }
-                            width={150}
-                            className="rounded-3xl"
-                        >
-
-                        </img>
-
-                        <TextBlock
-                            className=" text-2xl"
-                        >
-                            {instructions?.find((ins) => ins?._id === adaptBlock?.insId)?.title}
-                        </TextBlock>
-
-
-                    </CardBlock>
                 </CardBlock>
 
 
-                <TextBlock>Пройдено: {adaptBlock?.isDone[user?._id] ? 'Так' : 'Ні'}</TextBlock>
 
-                <div
-                    onPointerDown={(e) => controls.start(e)}
+                <CardBlock
+                    className="col-span-2 grid lg:grid-cols-2 gap-2 "
                 >
-                    {isAdaptEditing && <ButtonBlock
-                        className="slate-b"
 
+
+                    <TextBlock>Пройдено: {adaptBlock?.isDone[user?._id] ? 'Так' : 'Ні'}</TextBlock>
+
+                    <div
+                        onPointerDown={(e) => controls.start(e)}
+                        className="flex items-center justify-center"
                     >
-                        <MoveVertIcon size={40} />
-                    </ButtonBlock>
-                    }
-                </div>
+                        {isAdaptEditing && <ButtonBlock
+                            className="blue-b"
 
+                        >
+                            <MoveVertIcon size={40} color={'white'} />
+                        </ButtonBlock>
+                        }
+                    </div>
 
+                </CardBlock>
 
 
             </CardBlock>
+
+
+
+
+
+
+
         </Reorder.Item>
 
     )
