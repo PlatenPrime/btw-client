@@ -66,7 +66,7 @@ export default function LoginPage() {
 			className="space-y-4 px-1"
 		>
 			<HeaderBlock
-				className=" shadow-2xl shadow-white"
+				className=" shadow-lg  shadow-green-500 bg-green-500"
 			>
 				Авторизація
 			</HeaderBlock>
@@ -82,7 +82,7 @@ export default function LoginPage() {
 
 
 				<CardBlock
-					className="space-y-4 p-6 border border-white shadow-md shadow-white rounded-3xl"
+					className={`space-y-4 p-6   shadow-2xl  rounded-3xl   ${!formData.username || !formData.password  ? '' : 'border-4 shadow-green-500 border-green-500 '}`}
 				>
 
 					<CardBlock
@@ -117,7 +117,7 @@ export default function LoginPage() {
 
 
 							<ButtonBlock
-								className="p-2 sky-b"
+								className="p-2 green-b"
 								onClick={toggleShowPassword}>
 								{showPassword ?
 									<IoMdEye />
@@ -158,8 +158,8 @@ export default function LoginPage() {
 
 					<ButtonBlock
 						onClick={handleLogin}
-						className="green-b w-full flex items-center justify-center text-xl"
-						disabled={!formData.username}
+						className="green-b-n w-full flex items-center justify-center text-xl"
+						disabled={!formData.username || !formData.password}
 						disabledClassName="w-full text-xl "
 					>
 						{isLogining
