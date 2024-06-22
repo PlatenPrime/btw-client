@@ -39,7 +39,7 @@ export default function AdaptTestPage() {
     return (
         <PageBTW
             isLoading={isAdaptTestLoading}
-
+            error={error}
         >
 
             <HeaderBlock
@@ -105,10 +105,7 @@ export default function AdaptTestPage() {
             </ButtonGroup>
 
 
-            <ContainerBlock>
-
-
-
+       
 
                 {isTestEditing && <AdaptTestEditContainer
                     adapt={adapt}
@@ -117,17 +114,13 @@ export default function AdaptTestPage() {
                 />}
 
 
-
                 {
-                    !isTestEditing && <AdaptTestContainer />
+                    !isTestEditing && <AdaptTestContainer 
+                    
+                    
+                    
+                    />
                 }
-
-
-
-
-
-
-            </ContainerBlock>
 
 
 
