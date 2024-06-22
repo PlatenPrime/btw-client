@@ -114,9 +114,7 @@ export default function AdaptPage() {
 
 
 
-
-
-
+const isReadyForTest = adapt?.test && oneAdaptBlocks?.every(block => block?.isDone[user?._id])
 
 
     return (
@@ -176,9 +174,9 @@ export default function AdaptPage() {
                     {adapt?.test && <ButtonBlock
                         onClick={() => navigate(`/adapts/tests/${adapt?.test}`)}
                         className="lime-b-n"
-                        disabled={!adapt?.test}
+                        disabled={!isReadyForTest}
                     >
-                        <TestIcon />                        Тест
+                        <TestIcon />  Тест
                     </ButtonBlock>}
 
                 </ButtonGroup.Navigation>

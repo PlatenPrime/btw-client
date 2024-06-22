@@ -4,6 +4,8 @@ import useFetchAdaptTestById from './hooks/useFetchAdaptTestById';
 import { useNavigate, useParams } from 'react-router-dom';
 import { Container } from 'postcss';
 import { BackIcon, CancelIcon, DeleteIcon, DoneIcon, EditIcon, TestIcon } from '../../components/UI/Icons';
+import AdaptTestEditContainer from './components/AdaptTestEditContainer';
+import AdaptTestContainer from './components/AdaptTestContainer';
 
 export default function AdaptTestPage() {
 
@@ -21,6 +23,8 @@ export default function AdaptTestPage() {
 
 
     const [isTestEditing, setIsTestEditing] = useState(false);
+
+    const [isTestPassing, setIsTestPassing] = useState(false);
 
 
 
@@ -57,11 +61,9 @@ export default function AdaptTestPage() {
                 </ButtonGroup.Navigation>
 
                 <ButtonGroup.Actions>
-                    <ButtonBlock
-                        className="lime-b"
-                    >
-                        <TestIcon />  Пройти
-                    </ButtonBlock>
+
+
+
 
                     {!isTestEditing && <ButtonBlock
                         className="blue-b"
@@ -108,16 +110,22 @@ export default function AdaptTestPage() {
 
 
 
-                {test?.questions?.map((question, index) => (
-                    <CardBlock>
+                {isTestEditing && <AdaptTestEditContainer
+                    adapt={adapt}
+                    test={test}
+                    setIsTestEditing={setIsTestEditing}
+                />}
 
-                        <TextBlock className="text-2xl" >{question?.questionText}</TextBlock>
-                        {question?.options?.map((option, index) => (
-                            <TextBlock>{index + 1}. {option}</TextBlock>
-                        ))}
-                        <TextBlock>{question?.correctOption}</TextBlock>
-                    </CardBlock>
-                ))}
+
+
+                {
+                    !isTestEditing && <AdaptTestContainer />
+                }
+
+
+
+
+
 
             </ContainerBlock>
 
