@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { ButtonBlock, CardBlock, ContainerBlock } from '../../../components'
+import { ButtonBlock, CardBlock, ContainerBlock, TextBlock } from '../../../components'
 
 export default function AdaptTestContainer({
     test,
@@ -15,7 +15,7 @@ export default function AdaptTestContainer({
 
     return (
         <ContainerBlock
-        className=" flex flex-col items-center"
+            className=" flex flex-col items-center"
         >
 
 
@@ -31,17 +31,33 @@ export default function AdaptTestContainer({
 
 
 
-            <CardBlock>
-                Поля тесту
-            </CardBlock>
 
 
-            {isTestPassing && <ButtonBlock
-                className="green-b-n  text-2xl"
-                onClick={() => setIsTestPassing(false)}
-            >
-                Завершити
-            </ButtonBlock>
+
+            {isTestPassing &&
+                <CardBlock className="flex flex-col items-center">
+                    <TextBlock>Тест</TextBlock>
+                    <TextBlock>Тест</TextBlock>
+                    <TextBlock>Тест</TextBlock>
+                    <TextBlock>Тест</TextBlock>
+                    <TextBlock>Тест</TextBlock>
+                    <TextBlock>Тест</TextBlock>
+                    <TextBlock>Тест</TextBlock>
+                    <TextBlock>Тест</TextBlock>
+                    <TextBlock>Тест</TextBlock>
+                    <TextBlock>Тест</TextBlock>
+                    <TextBlock>Тест</TextBlock>
+                    <TextBlock>Тест</TextBlock>
+                    
+                
+                    <ButtonBlock
+                        className="green-b-n  text-2xl"
+                        onClick={() => setIsTestPassing(false)}
+                    >
+                        Завершити
+                    </ButtonBlock>
+
+                </CardBlock>
             }
 
 
