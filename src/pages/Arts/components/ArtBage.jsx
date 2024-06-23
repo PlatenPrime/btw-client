@@ -67,7 +67,7 @@ const ArtBage = ({ art, remains }) => {
 				<CardBlock
 					className="flex flex-wrap justify-between"
 				>
-					<TextBlock className=" text-xl font-bold  bg-orange-300 p-1 rounded" ><VscLocation />{art?.zone}</TextBlock>
+					<TextBlock className=" text-xl font-bold  text-orange-300 p-1 rounded" ><VscLocation />{art?.zone}</TextBlock>
 					<TextBlock className=" text-xl font-bold " > <BsBalloon /> {remains ? remains[title] : ""}</TextBlock>
 				</CardBlock>
 

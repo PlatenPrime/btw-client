@@ -66,10 +66,29 @@ export default function LoginPage() {
 			className="space-y-4 px-1"
 		>
 			<HeaderBlock
-				className=" shadow-lg  shadow-green-500 bg-green-500"
+				className=" shadow-lg  shadow-green-500 bg-green-500 "
 			>
 				Авторизація
 			</HeaderBlock>
+
+
+
+			<ContainerBlock
+				className="flex flex-col"
+			>
+
+
+
+				<TextBlock className="text-6xl" >
+
+					BTW App
+				</TextBlock>
+				<TextBlock className="text-lg" >
+
+					Balloon Trade Warehouse App
+				</TextBlock>
+
+			</ContainerBlock>
 
 
 
@@ -82,15 +101,15 @@ export default function LoginPage() {
 
 
 				<CardBlock
-					className={`space-y-4 p-6   shadow-2xl  rounded-3xl   ${!formData.username || !formData.password  ? '' : 'border-4 shadow-green-500 border-green-500 '}`}
+					className={`space-y-4 p-6   shadow-2xl shadow-slate-500  rounded-3xl   ${!formData.username || !formData.password ? '' : 'border-4 shadow-green-500 border-green-500 '}`}
 				>
 
 					<CardBlock
-						className=" space-y-2 items-center justify-center"
+						className="flex flex-col lg:flex-row gap-2 items-center justify-between"
 					>
 
 						<TextBlock
-							className="text-xl"
+							className="text-xl text-left"
 						>
 							Логін:
 						</TextBlock>
@@ -108,12 +127,22 @@ export default function LoginPage() {
 
 
 					<CardBlock
-						className="space-y-2  items-center justify-end"
+						className="flex flex-col lg:flex-row gap-2 items-center justify-center"
 					>
 
 						<CardBlock
 							className="flex items-center justify-center space-x-2 "
 						>
+
+
+
+
+							<TextBlock
+								className="text-xl"
+							>
+								Пароль:
+							</TextBlock>
+
 
 
 							<ButtonBlock
@@ -125,12 +154,6 @@ export default function LoginPage() {
 									<IoMdEyeOff />
 								}
 							</ButtonBlock>
-
-							<TextBlock
-								className="text-xl"
-							>
-								Пароль:
-							</TextBlock>
 
 						</CardBlock>
 

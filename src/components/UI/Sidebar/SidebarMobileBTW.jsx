@@ -3,6 +3,12 @@ import React, { useState } from 'react';
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import { ButtonBlock, TextBlock, CardBlock, Spinner } from "../../index";
 import useAuthStore from '../../../pages/Auth/authStore';
+import { TfiViewList } from 'react-icons/tfi';
+import { SiAsciidoctor, SiGoogledocs, SiGooglelens } from 'react-icons/si';
+import { GoNote } from 'react-icons/go';
+import { HiOutlineDocumentDownload } from 'react-icons/hi';
+import { PiWarningBold } from 'react-icons/pi';
+import { GiProgression } from 'react-icons/gi';
 
 
 const SidebarMobileBTW = ({ onClose }) => {
@@ -80,7 +86,7 @@ const SidebarMobileBTW = ({ onClose }) => {
 				>
 
 					<CardBlock
-						className='flex items-center justify-center w-full h-16 text-5xl text-gray-100 
+						className='flex items-center justify-center w-full h-16 text-5xl text-gray-100 font-bold
 					hover:text-sky-500
 					'>
 
@@ -93,15 +99,16 @@ const SidebarMobileBTW = ({ onClose }) => {
 
 
 
-				<TextBlock className="w-full text-xl text-center  hover:bg-orange-500/90 rounded font-bold" >
+				<TextBlock className="w-full text-xl text-center  text-orange-500 rounded font-bold" >
+				<TfiViewList size={48} />
 					<NavLink
 						onClick={onClose}
 						to={"rows"}
 						style={({ isActive }) => isActive ? {
-							color: "white",
+							color: "rgb(249 115 22)",
 							padding: "12px",
 							width: "100%",
-							background: "rgb(249 115 22)",
+							// background: "rgb(249 115 22)",
 						} : inActiveStyles}
 					>
 						Ряди
@@ -111,15 +118,16 @@ const SidebarMobileBTW = ({ onClose }) => {
 
 
 
-				<TextBlock className="w-full text-xl text-center  hover:bg-emerald-500/90 rounded font-bold" >
+				<TextBlock className="w-full text-xl text-center  text-emerald-500 rounded font-bold" >
+				<GoNote size={48} />
 					<NavLink
 						onClick={onClose}
 						to={"poses"}
 						style={({ isActive }) => isActive ? {
-							color: "white",
+							color: "rgb(16 185 129)",
 							padding: "12px",
 							width: "100%",
-							background: "rgb(16 185 129)",
+							// background: "rgb(16 185 129)",
 						} : inActiveStyles}
 					>
 						
@@ -131,15 +139,16 @@ const SidebarMobileBTW = ({ onClose }) => {
 
 
 
-				<TextBlock className="w-full text-xl text-center  hover:bg-sky-500/90  rounded font-bold" >
+				<TextBlock className="w-full text-xl text-center  text-sky-500  rounded font-bold" >
+				<SiAsciidoctor size={48} />
 					<NavLink
 						onClick={onClose}
 						to={"arts"}
 						style={({ isActive }) => isActive ? {
-							color: "white",
+							color: "rgb(14 165 233)",
 							padding: "12px",
 							width: "100%",
-							background: "rgb(14 165 233)",
+							// background: "rgb(14 165 233)",
 						} : inActiveStyles}
 					>
 						Артикули
@@ -151,15 +160,16 @@ const SidebarMobileBTW = ({ onClose }) => {
 
 
 
-				<TextBlock className="w-full text-xl text-center  hover:bg-indigo-500/90 rounded font-bold" >
+				<TextBlock className="w-full text-xl text-center  text-indigo-500 rounded font-bold" >
+				<HiOutlineDocumentDownload size={48} />
 					<NavLink
 						onClick={onClose}
 						to={"asks"}
 						style={({ isActive }) => isActive ? {
-							color: "white",
+							color: "rgb(99 102 241)",
 							padding: "12px",
 							width: "100%",
-							background: "rgb(99 102 241)",
+							// background: "rgb(99 102 241)",
 						} : inActiveStyles}
 					>
 						Запити
@@ -169,85 +179,85 @@ const SidebarMobileBTW = ({ onClose }) => {
 
 
 
-				{user?.role === "PRIME" || user?.role === "ADMIN" || user?.role === "SKLAD" ?
-					<TextBlock className="w-full text-xl text-center  hover:bg-pink-500/90 rounded font-bold " >
+				
+					<TextBlock className="w-full text-xl text-center  text-pink-500 rounded font-bold " >
+					<PiWarningBold size={48} />
 						<NavLink
 							onClick={onClose}
 							to={"defs"}
 							style={({ isActive }) => isActive ? {
-								color: "white",
+								color: "rgb(236 72 153 )",
 								padding: "12px",
 								width: "100%",
-								background: "rgb(236 72 153 )",
+								// background: "rgb(236 72 153 )",
 							} : inActiveStyles}
 						>
 							Дефіцити
 						</NavLink>
 					</TextBlock>
-					:
-					null}
+				
 
 
 
 
 
 
-				{user?.role === "PRIME" || user?.role === "ADMIN" ?
-					<TextBlock className="w-full text-xl text-center  hover:bg-rose-500/90 rounded font-bold " >
+				
+					<TextBlock className="w-full text-xl text-center  text-rose-500 rounded font-bold " >
+					<SiGooglelens size={48} />
 						<NavLink
 							onClick={onClose}
 							to={"comps"}
 							style={({ isActive }) => isActive ? {
-								color: "white",
+								color: "rgb(244 63 94 )",
 								padding: "12px",
 								width: "100%",
-								background: "rgb(244 63 94 )",
+								// background: "rgb(244 63 94 )",
 							} : inActiveStyles}
 						>
 							Конкуренти
 						</NavLink>
 					</TextBlock>
-					:
-					null}
+					
 
 
-				{user?.role === "PRIME" ?
-					<TextBlock className="w-full text-xl text-center  hover:bg-blue-500/90 rounded font-bold " >
+		
+					<TextBlock className="w-full text-xl text-center  text-blue-500 rounded font-bold " >
+									<SiGoogledocs size={48} />
 						<NavLink
 							onClick={onClose}
 							to={"ins"}
 							style={({ isActive }) => isActive ? {
-								color: "white",
+								color: "rgb(59 130 246  )",
 								padding: "12px",
 								width: "100%",
-								background: "rgb(59 130 246  )",
+								// background: "rgb(59 130 246  )",
 							} : inActiveStyles}
 						>
 							Інструкції
 						</NavLink>
 					</TextBlock>
-					:
-					null}
+				
 
 
 
-				{user?.role === "PRIME" ?
-					<TextBlock className="w-full text-xl text-center  hover:bg-green-500/90 rounded font-bold " >
+		
+					<TextBlock className="w-full text-xl text-center  text-green-500/90 rounded font-bold " >
+					<GiProgression size={48} />
 						<NavLink
 							onClick={onClose}
 							to={"adapts"}
 							style={({ isActive }) => isActive ? {
-								color: "white",
+								color: "rgb(34 197 94  )",
 								padding: "12px",
 								width: "100%",
-								background: "rgb(34 197 94  )",
+								// background: "rgb(34 197 94  )",
 							} : inActiveStyles}
 						>
 							Адаптації
 						</NavLink>
 					</TextBlock>
-					:
-					null}
+				
 
 
 

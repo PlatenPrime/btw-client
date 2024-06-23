@@ -80,7 +80,7 @@ export default function AskInfo({
 
 
             <CardBlock
-                className="flex  gap-2 justify-center items-center lg:items-end p-2"
+                className="flex flex-col lg:flex-row  gap-2 justify-center items-center lg:items-end p-2"
             >
                 <TextBlock
                     className="text-sm italic "
@@ -102,7 +102,7 @@ export default function AskInfo({
 
             {ask?.updatedAt !== ask?.createdAt &&
                 <CardBlock
-                    className="flex  gap-2 justify-center items-center  p-2"
+                    className="flex flex-col lg:flex-row  gap-2 justify-center items-center  p-2"
                 >
                     <TextBlock
                         className="text-sm italic "

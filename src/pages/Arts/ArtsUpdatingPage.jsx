@@ -105,7 +105,7 @@ export default function ArtsUpdatingPage() {
 				className="p-1  min-h-screen space-y-4"
 			>
 
-					<CardBlock className=" flex flex-col justify-center items-center space-y-2  p-6 border border-green-500 rounded bg-green-500/10 ">
+					<CardBlock className=" flex flex-col justify-center items-center space-y-2  p-6  rounded bg-green-500/10 ">
 
 						{arts && <TextBlock>
 							Файл містить {arts?.length} артикулів для оновлення
@@ -113,7 +113,7 @@ export default function ArtsUpdatingPage() {
 
 
 						<CardBlock
-							className="flex space-x-2"
+							className="flex flex-col lg:flex-row space-x-2"
 						>
 
 							<InputBlock

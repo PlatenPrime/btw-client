@@ -47,7 +47,7 @@ export default function PaginationBlock({
 
 
                         <CardBlock
-                            className="space-x-3 flex flex-wrap "
+                            className="gap-3 flex flex-wrap "
                         >
 
                             <ButtonBlock onClick={() => setPage(1)} className="slate-b border-none  bg-gradient-to-b from-slate-500/50 to-slate-700/50 " disabled={page === 1}>
@@ -112,7 +112,7 @@ export default function PaginationBlock({
 
 
                         <CardBlock
-                            className="space-x-3 flex flex-wrap"
+                            className="gap-3 flex flex-wrap"
                         >
 
                             <ButtonBlock onClick={() => setPage(1)} className="slate-b border-none bg-gradient-to-b from-slate-500/50 to-slate-700/50  " disabled={page === 1}>

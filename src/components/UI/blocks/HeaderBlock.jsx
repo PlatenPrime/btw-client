@@ -26,11 +26,12 @@ const HeaderBlock = ({ children, className }) => {
 
 		<div className={style} >
 
-
-
 			<NavbarBTW onClickSide={() => toggleMobileSidebar()} />
 
 			{children}
+
+
+			
 			<div
 				className="xl:hidden"
 			></div>
