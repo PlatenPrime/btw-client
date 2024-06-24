@@ -97,7 +97,7 @@ export default function ArtPage() {
 				{posesWithArtikul?.map((pos) =>
 					<PosesWithArtikulContainer.PosWithArtikulBage
 						pos={pos}
-						onClick={() => navigate(`/pallets/${pos?.pallet}`)}
+						onClick={() => navigate(`/rows/pallets/${pos?.pallet}`)}
 					/>
 				)}
 			</PosesWithArtikulContainer>

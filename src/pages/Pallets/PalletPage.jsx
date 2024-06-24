@@ -373,7 +373,7 @@ export default function PalletPage() {
 
 					<ButtonBlock
 						onClick={() => { setShowModalClearPallet(true) }}
-						className=" rose-b flex justify-center items-center"
+						className=" pink-b flex justify-center items-center"
 					>
 						<ClearIcon />
 						Очистити

@@ -82,7 +82,7 @@ export default function AdaptBlockBage({
                         className="flex items-center justify-center"
                     >
                         {isAdaptEditing && <ButtonBlock
-                            className="blue-b"
+                            className="blue-b  active:cursor-grabbing"
 
                         >
                             <MoveVertIcon size={40} color={'white'} />

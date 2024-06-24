@@ -62,7 +62,7 @@ ${pos.quant
 
 			<Link
 				className="grid grid-cols-3 col-span-5  "
-				to={`/pallets/${pos?.pallet}`}
+				to={`/rows/pallets/${pos?.pallet}`}
 			>
 
 				<CardBlock

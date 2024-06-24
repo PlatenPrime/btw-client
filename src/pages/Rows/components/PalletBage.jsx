@@ -37,7 +37,7 @@ grid grid-cols-1 lg:grid-cols-3
 					" hover:shadow-2xl hover:shadow-lg  hover:shadow-slate-500 hover:bg-slate-500   bg-gradient-to-b from-slate-500/80 to-slate-700/50   "
 				}
 				'`}
-			to={`/pallets/${pallet._id}`}
+			to={`/rows/pallets/${pallet._id}`}
 		>
 
 			<TextBlock

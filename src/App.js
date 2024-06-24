@@ -60,12 +60,13 @@ function App() {
 
 
 
-				<Route path="pallets/:id" element={<PalletPage />} />
+				
 
 
 
 				<Route path="rows" element={<RowsPage />} />
 				<Route path="rows/:id" element={<RowPage />} />
+				<Route path="rows/pallets/:id" element={<PalletPage />} />
 
 
 				<Route path="poses" element={<PosesPage />} />
