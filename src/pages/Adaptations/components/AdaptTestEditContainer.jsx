@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
-import { ButtonBlock, CardBlock, ContainerBlock, TextBlock } from '../../../components'
-import { AddIcon, EditIcon } from '../../../components/UI/Icons';
-import AdaptTestQuestionForm from './AdaptTestQuestionForm';
+import { ButtonBlock, CardBlock, ContainerBlock, InputBlock, TextBlock } from '../../../components'
+import { AddIcon, DeleteIcon, EditIcon } from '../../../components/UI/Icons';
 import useTestsStore from '../stores/adaptTestsStore';
 
 
@@ -15,63 +14,64 @@ export default function AdaptTestEditContainer({
 
 
 
-  const { updateTestById } = useTestsStore();
-
-  const [newTest, setNewTest] = useState(() => test);
-  const [isNewQuestionAdding, setIsNewQuestionAdding] = useState(false);
-  const [editingQuestion, setEditingQuestion] = useState(null);
-
-
-
-
-  const handleSaveQuestion = (question) => {
-    let updatedQuestions;
-    if (editingQuestion) {
-      updatedQuestions = newTest.questions.map((q) =>
-        q._id === question._id ? question : q
-      );
-    } else {
-      updatedQuestions = [...newTest.questions, { ...question, _id: new Date().getTime() }];
-    }
-    const updatedTest = { ...newTest, questions: updatedQuestions };
-    setNewTest(updatedTest);
-    setIsNewQuestionAdding(false);
-    setEditingQuestion(null);
-    updateTestById(test._id, updatedTest); // Update the test in the store
-  };
 
 
 
 
   return (
     <ContainerBlock
-      className="flex flex-col items-center"
+      className="flex flex-col items-center gap-2"
 
     >
 
+      {test?.questions?.map((question) => (
+        <CardBlock
+          key={question?.questionText}
+          className="flex flex-col items-center bg-gradient-to-b from-lime-700/50 to-lime-900/50 p-2 rounded-xl"
+        >
+          
+          <InputBlock 
+          className="w-full"
+          value={question?.questionText}
+          />
 
-      {newTest.questions.map((question) => (
-        <CardBlock className="flex " key={question._id}>
-          <TextBlock>{question.questionText}</TextBlock>
-          <ButtonBlock className="blue-b" onClick={() => setEditingQuestion(question)}><EditIcon /></ButtonBlock>
+          <CardBlock
+            className="grid gap-2"
+          >
+            {question?.options?.map((option, i) => (
+              <CardBlock
+                key={i}
+                className="flex gap-2"
+              >
+
+                <InputBlock
+                  value={option}
+                  type="text"
+                  // name={i}
+                  className=""
+                />
+
+                <ButtonBlock className="red-b" ><DeleteIcon /></ButtonBlock>
+
+
+              </CardBlock>
+            ))}
+
+
+            <ButtonBlock
+              className="lime-b"
+            >
+              <AddIcon />
+            </ButtonBlock>
+          </CardBlock>
+
         </CardBlock>
+
       ))}
 
 
-
-{isNewQuestionAdding && (
-        <AdaptTestQuestionForm onSave={handleSaveQuestion} />
-      )}
-
-      {editingQuestion && (
-        <AdaptTestQuestionForm question={editingQuestion} onSave={handleSaveQuestion} />
-      )}
-
-
-
-
       <ButtonBlock
-        className="lime-b-n  text-xl"
+        className="lime-b-n  text-xl "
       >
         <AddIcon />
       </ButtonBlock>

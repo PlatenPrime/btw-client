@@ -30,10 +30,6 @@ export default function AdaptTestContainer({
 
 
 
-
-
-
-
             {isTestPassing &&
                 <CardBlock className="flex flex-col items-center">
                     <TextBlock>Тест</TextBlock>
