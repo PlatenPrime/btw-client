@@ -24,15 +24,17 @@ export default function AdaptTestEditContainer({
 
     >
 
-      {test?.questions?.map((question) => (
+      {test?.questions?.map((question, i) => (
         <CardBlock
           key={question?.questionText}
-          className="flex flex-col items-center bg-gradient-to-b from-lime-700/50 to-lime-900/50 p-2 rounded-xl"
+          className="flex flex-col items-center gap-2 bg-gradient-to-b from-slate-700/50 to-slate-900/50 p-2 rounded-xl"
         >
-          
-          <InputBlock 
-          className="w-full"
-          value={question?.questionText}
+
+          <TextBlock className="bg-lime-500 rounded-full aspect-square">{i + 1}</TextBlock>
+
+          <InputBlock
+            className="w-full"
+            value={question?.questionText}
           />
 
           <CardBlock
@@ -71,7 +73,7 @@ export default function AdaptTestEditContainer({
 
 
       <ButtonBlock
-        className="lime-b-n  text-xl "
+        className="lime-b border-dashed  w-full text-xl "
       >
         <AddIcon />
       </ButtonBlock>
