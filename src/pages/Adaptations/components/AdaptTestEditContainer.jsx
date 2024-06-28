@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { ButtonBlock, CardBlock, ContainerBlock, InputBlock, TextBlock } from '../../../components'
-import { AddIcon, DeleteIcon, EditIcon } from '../../../components/UI/Icons';
+import { AddIcon, DeleteIcon, EditIcon, MoveVertIcon } from '../../../components/UI/Icons';
 import useTestsStore from '../stores/adaptTestsStore';
 
 
@@ -20,52 +20,51 @@ export default function AdaptTestEditContainer({
 
   return (
     <ContainerBlock
-      className="flex flex-col items-center gap-2"
+      className="flex flex-col  gap-2"
 
     >
 
       {test?.questions?.map((question, i) => (
+
+        // TODO: Перенести маппируемый блок в AdaptTestQuestionBage.jsx
+
         <CardBlock
           key={question?.questionText}
-          className="flex flex-col items-center gap-2 bg-gradient-to-b from-slate-700/50 to-slate-900/50 p-2 rounded-xl"
+          className=" flex flex-col  gap-2 bg-gradient-to-b from-slate-700/50 to-slate-900/50 p-2 rounded-xl"
         >
 
-          <TextBlock className="bg-lime-500 rounded-full aspect-square">{i + 1}</TextBlock>
+          <TextBlock className="text-2xl" >{question?.questionText}</TextBlock>
 
-          <InputBlock
-            className="w-full"
-            value={question?.questionText}
-          />
+          <CardBlock>
+            {
+              question?.options?.map((option, i) =>
+                <TextBlock
+                  key={option}>
+                  {i + 1}  {option}
+                </TextBlock>
+              )}
+          </CardBlock>
+
+          <TextBlock>Правильна відповідь: {question?.correctOption + 1}</TextBlock>
 
           <CardBlock
-            className="grid gap-2"
+            className="flex justify-center items-stretch  gap-2  w-full"
           >
-            {question?.options?.map((option, i) => (
-              <CardBlock
-                key={i}
-                className="flex gap-2"
-              >
 
-                <InputBlock
-                  value={option}
-                  type="text"
-                  // name={i}
-                  className=""
-                />
-
-                <ButtonBlock className="red-b" ><DeleteIcon /></ButtonBlock>
-
-
-              </CardBlock>
-            ))}
+            <ButtonBlock
+              className="blue-b lg:max-w-lg active:cursor-grabbing"
+            >
+              <MoveVertIcon />
+            </ButtonBlock>
 
 
             <ButtonBlock
-              className="lime-b"
+              className="blue-b lg:max-w-lg"
             >
-              <AddIcon />
+              <EditIcon />
             </ButtonBlock>
           </CardBlock>
+
 
         </CardBlock>
 
