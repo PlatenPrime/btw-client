@@ -7,9 +7,10 @@ import {
 	CardBlock,
 	TextBlock,
 	ContainerBlock,
+	ButtonGroup,
+	ButtonBlock,
 
 } from '../../../components';
-
 
 
 
@@ -42,7 +43,7 @@ export default function CompsPage() {
 		padding: "0.5rem",
 		width: "100%",
 		textAlign: 'center',
-		
+
 	}
 
 
@@ -62,84 +63,10 @@ export default function CompsPage() {
 			<PageBTW className='max-h-screen px-1' >
 
 				<HeaderBlock className="bg-rose-500 shadow-lg shadow-rose-500 ">
-
-
-					<NavLink
-						to={""}
-
-
-					>
-						Аналіз конкурентів
-					</NavLink>
-
+					Аналіз конкурентів
 				</HeaderBlock>
 
 
-				<ContainerBlock
-					className="flex justify-evenly  "
-
-				>
-
-
-					<TextBlock
-						className="w-1/4  hover:bg-rose-500 rounded-xl"
-
-					>
-						<NavLink
-							to={"list"}
-							style={({ isActive }) => isActive ? activeStyles : inActiveStyles}
-
-						>
-							Артикули
-						</NavLink>
-					</TextBlock>
-
-
-
-
-					<TextBlock
-						className="w-1/4 hover:bg-violet-500/20 rounded-b-lg"
-					>
-						<NavLink
-							to={"logs"}
-							style={({ isActive }) => isActive ? activeStyles : inActiveStyles}
-
-						>
-							Журнал змін
-						</NavLink>
-					</TextBlock>
-
-
-
-
-					<TextBlock
-						className="w-1/4 hover:bg-violet-500/20 rounded-b-lg"
-					>
-						<NavLink
-							to={"edit"}
-							style={({ isActive }) => isActive ? activeStyles : inActiveStyles}
-
-						>
-							Перевірка
-						</NavLink>
-					</TextBlock>
-
-
-					<TextBlock
-						className="w-1/4 hover:bg-violet-500/20 rounded-b-lg"
-					>
-						<NavLink
-							to={"add"}
-							style={({ isActive }) => isActive ? activeStyles : inActiveStyles}
-
-						>
-							Додавання
-						</NavLink>
-					</TextBlock>
-
-
-
-				</ContainerBlock>
 
 
 				<CardBlock
@@ -148,6 +75,10 @@ export default function CompsPage() {
 					<Outlet />
 
 				</CardBlock>
+
+
+
+
 
 
 
