@@ -67,6 +67,14 @@ export default function CompsPage() {
 				</HeaderBlock>
 
 
+<ButtonBlock
+className="fuchsia-b-n"
+onClick={() => navigate("/newcomps")}
+
+>
+	New Page
+
+</ButtonBlock>
 
 
 				<CardBlock
