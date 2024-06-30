@@ -31,7 +31,8 @@ export default function CompBage({
                 className="flex items-center "
             >
                 {comp?.nameukr
-                }</CardBlock>
+                }
+                </CardBlock>
 
         </div>
     )
