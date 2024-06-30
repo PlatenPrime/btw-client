@@ -3,12 +3,18 @@ import { ButtonBlock, ButtonGroup, CardBlock, ContainerBlock, HeaderBlock, Input
 import useFetchAllComps from '../hooks/useFetchAllComps';
 import { toast } from 'react-toastify';
 import { useDebouncedCallback } from 'use-debounce';
-import { AddIcon } from '../../../components/UI/Icons';
+import { AddIcon, ExcelIcon } from '../../../components/UI/Icons';
+import useFetchArts from '../../../hooks/useFetchArts';
+import CompBage from '../components/CompBage';
 
 export default function NewCompsPage() {
 
 
+
+
+
     const { comps, isAllCompsLoading, error } = useFetchAllComps();
+    const { artsDB, loadingArtsDB, errorArtsDB } = useFetchArts();
 
 
     const [filteredComps, setFilteredComps] = useState([]);
@@ -46,7 +52,10 @@ export default function NewCompsPage() {
 
 
     return (
-        <PageBTW>
+        <PageBTW
+            isLoading={isAllCompsLoading || loadingArtsDB}
+
+        >
 
 
             <HeaderBlock
@@ -63,9 +72,17 @@ export default function NewCompsPage() {
                 </ButtonGroup.Navigation>
 
                 <ButtonGroup.Actions>
+
+
+
                     <ButtonBlock>
                         <AddIcon /> Додати артикул
                     </ButtonBlock>
+
+                    <ButtonBlock>
+                        <ExcelIcon /> Експортувати
+                    </ButtonBlock>
+
                 </ButtonGroup.Actions>
             </ButtonGroup>
 
@@ -74,7 +91,7 @@ export default function NewCompsPage() {
             <ContainerBlock>
                 <InputSearch
                     handleSearch={handleSearch}
-                    placeholder="Пошук"
+                    placeholder="Пошук за назвою"
                 />
 
                 <PaginationBlock
@@ -90,16 +107,17 @@ export default function NewCompsPage() {
                 >
                     {
                         filteredComps?.length === 0 &&
-                        <TextBlock>Нічого не зндено</TextBlock>
+                        <TextBlock>Нічого не знайдено</TextBlock>
                     }
                     {
                         filteredComps?.length !== 0 &&
                         filteredComps?.slice(step * page - step, step * page).map(comp =>
-                            <div
-                                key={comp._id}
-                                className="bg-gradient-to-b from-fuchsia-500/50 to-fuchsia-700/50 p-2 rounded-lg">
-                                {comp.nameukr}
-                            </div>)
+
+                            <CompBage
+                            key={comp._id}
+                            comp={comp}
+                            />
+                           )
                     }
 
                 </CardBlock>

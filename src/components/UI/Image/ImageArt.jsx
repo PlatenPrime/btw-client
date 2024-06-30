@@ -4,12 +4,16 @@ import ModalInfo from '../Modal/ModalInfo';
 
 const ImageArt = ({ size, artikul, className }) => {
 
-	const defaultImageArtikul = "1102-3092"
+
+	let correctItem = `${artikul}_m1`
+
+	if (!artikul) correctItem = "1102-3092_m1"
+
+	if (artikul === "1102-3170") correctItem = "1102-3170_m1 "
+
 
 
 	const [showModalFullImage, setShowModalFullImage] = useState(false)
-
-
 
 	return (
 
@@ -18,35 +22,40 @@ const ImageArt = ({ size, artikul, className }) => {
 
 
 			<ImageBlock
-				src={`https://sharik.ua/images/elements_big/${artikul ? artikul : defaultImageArtikul}_m1.jpg`}
+				src={`https://sharik.ua/images/elements_big/${correctItem}.jpg`}
 				width={size}
 				height={size}
 				alt="Фото артикула"
-				className={`cursor-pointer ${className} `}
+				className={`cursor-zoom-in ${className} `}
 				onClick={(e) => {
+
 					e.stopPropagation()
 					setShowModalFullImage(true)
 				}}
 			/>
 
 
-			{showModalFullImage && <ModalInfo
-				onCancel={() => { setShowModalFullImage(false) }}
+			{showModalFullImage &&
+				<ModalInfo
+					onCancel={(e) => {
 
-			>
+						setShowModalFullImage(false)
+					}}
 
-				<ImageBlock
-					src={`https://sharik.ua/images/elements_big/${artikul ? artikul : defaultImageArtikul}_m1.jpg`}
-					width={500}
-					height={500}
-					alt="Фото артикула"
-					className={` ${className} `}
+				>
 
-				/>
+					<ImageBlock
+						src={`https://sharik.ua/images/elements_big/${correctItem}.jpg`}
+						width={500}
+						height={500}
+						alt="Фото артикула"
+						className={` ${className} `}
+
+					/>
 
 
 
-			</ModalInfo>}
+				</ModalInfo>}
 
 
 
