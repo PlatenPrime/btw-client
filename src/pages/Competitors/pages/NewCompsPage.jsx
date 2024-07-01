@@ -7,6 +7,7 @@ import { AddIcon, ExcelIcon } from '../../../components/UI/Icons';
 import useFetchArts from '../../../hooks/useFetchArts';
 import CompBage from '../components/CompBage';
 import useCompStore from '../stores/compStore';
+import CreateCompModal from '../components/modals/CreateCompModal';
 
 export default function NewCompsPage() {
 
@@ -86,8 +87,8 @@ export default function NewCompsPage() {
 
 
                     <ButtonBlock
-                    className="green-b"
-                    onClick={() => setIsShowModalCreateComp(true)}
+                        className="green-b"
+                        onClick={() => setIsShowModalCreateComp(true)}
                     >
                         <AddIcon /> Додати артикул
                     </ButtonBlock>
@@ -98,6 +99,17 @@ export default function NewCompsPage() {
 
                 </ButtonGroup.Actions>
             </ButtonGroup>
+
+
+            <CreateCompModal
+                isShowModalCreateComp={isShowModalCreateComp}
+                setIsShowModalCreateComp={setIsShowModalCreateComp}
+                artsDB={artsDB}
+                comps={comps}
+                isCompCreating={isCompCreating}
+            />
+
+
 
 
 

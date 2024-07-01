@@ -1,5 +1,5 @@
 import React from 'react'
-import { CardBlock, ImageArt } from '../../../components';
+import { CardBlock, ImageArt, TextBlock } from '../../../components';
 
 export default function CompBage({
 
@@ -10,7 +10,7 @@ export default function CompBage({
 
 
             className="
-            flex items-stretch gap-2
+            flex items-stretch gap-2 w-full
             lg:text-xl
         hover:shadow-2xl hover:shadow-lg  hover:shadow-fuchsia-500 hover:bg-fuchsia-500   bg-gradient-to-b from-fuchsia-500/50 to-fuchsia-700/50
          rounded-2xl cursor-pointer
@@ -24,15 +24,14 @@ export default function CompBage({
                 <ImageArt size={50} artikul={comp?.artikul} className="rounded-l-xl" />
             </CardBlock>
 
-            <CardBlock
+            <TextBlock
                 onClick={() => {
                     window.open(`/comps/${comp?._id}`, "_blank");
                 }}
-                className="flex items-center "
+                className="flex items-center justify-start w-full"
             >
-                {comp?.nameukr
-                }
-                </CardBlock>
+                {comp?.nameukr}
+                </TextBlock>
 
         </div>
     )

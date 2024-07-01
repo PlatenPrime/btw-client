@@ -151,7 +151,7 @@ export default function ModalCreateAsk({
                             className="red-b flex justify-center items-center"
                             onClick={() => setShowModalCreateAsk(false)}
                         >
-                            <TextBlock className="text-2xl"><CancelIcon /></TextBlock>
+                            <TextBlock className="text-xl"><CancelIcon /></TextBlock>
                             <TextBlock className="text-lg"> Скасувати</TextBlock>
 
                         </ButtonBlock>
@@ -177,7 +177,7 @@ export default function ModalCreateAsk({
                                 <Spinner color="green" />
                                 :
                                 <>
-                                    <TextBlock className="text-2xl"><OkIcon /></TextBlock>
+                                    <TextBlock className="text-xl"><OkIcon /></TextBlock>
                                     <TextBlock className="text-lg"> 	Створити</TextBlock>
                                 </>
 
