@@ -6,6 +6,7 @@ import { useDebouncedCallback } from 'use-debounce';
 import { AddIcon, ExcelIcon } from '../../../components/UI/Icons';
 import useFetchArts from '../../../hooks/useFetchArts';
 import CompBage from '../components/CompBage';
+import useCompStore from '../stores/compStore';
 
 export default function NewCompsPage() {
 
@@ -15,6 +16,15 @@ export default function NewCompsPage() {
 
     const { comps, isAllCompsLoading, error } = useFetchAllComps();
     const { artsDB, loadingArtsDB, errorArtsDB } = useFetchArts();
+
+
+    const { createComp } = useCompStore()
+
+
+    const [isCompCreating, setIsCompCreating] = useState(false)
+    const [isShowModalCreateComp, setIsShowModalCreateComp] = useState(false)
+
+
 
 
     const [filteredComps, setFilteredComps] = useState([]);
@@ -75,7 +85,10 @@ export default function NewCompsPage() {
 
 
 
-                    <ButtonBlock>
+                    <ButtonBlock
+                    className="green-b"
+                    onClick={() => setIsShowModalCreateComp(true)}
+                    >
                         <AddIcon /> Додати артикул
                     </ButtonBlock>
 
@@ -114,10 +127,10 @@ export default function NewCompsPage() {
                         filteredComps?.slice(step * page - step, step * page).map(comp =>
 
                             <CompBage
-                            key={comp._id}
-                            comp={comp}
+                                key={comp._id}
+                                comp={comp}
                             />
-                           )
+                        )
                     }
 
                 </CardBlock>
