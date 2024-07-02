@@ -107,6 +107,7 @@ export default function NewCompsPage() {
                 artsDB={artsDB}
                 comps={comps}
                 isCompCreating={isCompCreating}
+                setIsCompCreating={setIsCompCreating}
             />
 
 

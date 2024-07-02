@@ -3,6 +3,7 @@ import { ButtonBlock, CardBlock, ImageArt, InputBlock, ModalWrapper, Spinner, Te
 import { CancelIcon, OkIcon } from '../../../../components/UI/Icons'
 
 import { categories, subcategories, sizesList, prods } from '../../../../constants/compsData'
+import useCompStore from '../../stores/compStore'
 
 
 
@@ -14,10 +15,15 @@ export default function CreateCompModal({
     setIsShowModalCreateComp,
     artsDB,
     isCompCreating,
+    setIsCompCreating,
     comps
 
 }) {
 
+
+
+
+    const { createComp } = useCompStore()
 
 
     const [newCompArtikul, setNewCompArtikul] = useState("")
@@ -26,10 +32,39 @@ export default function CreateCompModal({
 
     const [newCompSharteLink, setNewCompSharteLink] = useState("")
     const [newCompYumiLink, setNewCompYumiLink] = useState("")
+    const [newCompAirLink, setNewCompAirLink] = useState("")
+    const [newCompBestLink, setNewCompBestLink] = useState("")
 
 
 
+    const handleCreateComp = async () => {
+        try {
 
+            setIsCompCreating(true)
+
+            const newCompData = {
+                newCompArtikul,
+                prod: newCompProd,
+                newCompSharteLink,
+                newCompYumiLink,
+                newCompAirLink,
+                newCompBestLink,
+                category: categories[newCompArtikul?.slice(0, 2)],
+                subcategory: subcategories[newCompArtikul?.slice(0, 4)],
+                newCompSize,
+            }
+
+
+            await createComp(newCompData)
+
+
+        } catch (error) {
+            console.log(error);
+
+        } finally {
+            setIsCompCreating(false)
+        }
+    }
 
 
 
@@ -81,7 +116,7 @@ export default function CreateCompModal({
                     </CardBlock>
 
                     <CardBlock
-                        className="lg:col-span-2 flex flex-col"
+                        className="lg:col-span-2 flex flex-col justify-between"
                     >
                         <TextBlock
                             className="text-xl font-bold p-2 " >
@@ -189,7 +224,7 @@ export default function CreateCompModal({
                 <CardBlock className="flex flex-col gap-2 bg-slate-500/10 p-2 rounded-xl ">
 
                     <CardBlock className="grid grid-cols-1 md:grid-cols-2 space-x-2">
-                        <label className=" justify-self-center self-center md:justify-self-start" htmlFor="sharte">Шарте:</label>
+                        <label className=" justify-self-center self-center md:justify-self-start" htmlFor="sharte">Sharte:</label>
                         <InputBlock
                             type="text"
                             id="sharte"
@@ -203,7 +238,7 @@ export default function CreateCompModal({
 
 
                     <CardBlock className="grid grid-cols-1 md:grid-cols-2 space-x-2">
-                        <label className=" justify-self-center self-center md:justify-self-start" htmlFor="yumi">Юмі:</label>
+                        <label className=" justify-self-center self-center md:justify-self-start" htmlFor="yumi">Yumi:</label>
                         <InputBlock
                             type="text"
                             id="yumi"
@@ -214,6 +249,37 @@ export default function CreateCompModal({
                             placeholder="https://yumi-market.com.ua/ua/"
                         />
                     </CardBlock>
+
+
+                    <CardBlock className="grid grid-cols-1 md:grid-cols-2 space-x-2">
+                        <label className=" justify-self-center self-center md:justify-self-start" htmlFor="air">Air:</label>
+                        <InputBlock
+                            type="text"
+                            id="air"
+                            name="air"
+                            autoComplete="off"
+                            value={newCompAirLink}
+                            onChange={(e) => setNewCompAirLink(e.target.value)}
+                            placeholder="https://airballoons.com.ua/ua/"
+                        />
+                    </CardBlock>
+
+
+
+                    <CardBlock className="grid grid-cols-1 md:grid-cols-2 space-x-2">
+                        <label className=" justify-self-center self-center md:justify-self-start" htmlFor="best">Best:</label>
+                        <InputBlock
+                            type="text"
+                            id="best"
+                            name="best"
+                            autoComplete="off"
+                            value={newCompBestLink}
+                            onChange={(e) => setNewCompBestLink(e.target.value)}
+                            placeholder="https://best-balloons.com.ua/"
+                        />
+                    </CardBlock>
+
+
 
                 </CardBlock>
 
