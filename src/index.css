@@ -123,7 +123,7 @@ h2 {
 
 	.PageBTW {
 		@apply
-		w-full  flex flex-col max-h-screen min-h-screen   gap-4 py-5  flex-grow overflow-auto  relative 
+		w-full  flex flex-col max-h-screen min-h-screen  gap-2 py-5  flex-grow overflow-auto  relative 
 	}
 
 

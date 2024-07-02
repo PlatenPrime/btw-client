@@ -81,7 +81,7 @@ export default function InstructionsPage() {
 
   return (
     <PageBTW
-      className="space-y-4 "
+      className=" "
       isLoading={isAllInsFoldersLoading}
     >
 
