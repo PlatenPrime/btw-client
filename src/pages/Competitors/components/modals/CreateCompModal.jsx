@@ -6,10 +6,6 @@ import { categories, subcategories, sizesList, prods } from '../../../../constan
 import useCompStore from '../../stores/compStore'
 
 
-
-
-
-
 export default function CreateCompModal({
     isShowModalCreateComp,
     setIsShowModalCreateComp,
@@ -21,42 +17,37 @@ export default function CreateCompModal({
 }) {
 
 
-
-
     const { createComp } = useCompStore()
 
+    const initialStateForm = {
+        artikul: "",
+        prod: "",
+        size: "",
+        sharteLink: "",
+        yumiLink: "",
+        airLink: "",
+        bestLink: "",
+    }
 
-    const [newCompArtikul, setNewCompArtikul] = useState("")
-    const [newCompProd, setNewCompProd] = useState("")
-    const [newCompSize, setNewCompSize] = useState("")
 
-    const [newCompSharteLink, setNewCompSharteLink] = useState("")
-    const [newCompYumiLink, setNewCompYumiLink] = useState("")
-    const [newCompAirLink, setNewCompAirLink] = useState("")
-    const [newCompBestLink, setNewCompBestLink] = useState("")
+    const [state, setState] = useState(initialStateForm)
 
+    console.log(state);
+    
 
+    const handleChange = (e) => {
+        setState({
+            ...state,
+            [e.target.name]: e.target.value,
+        });
+    }
 
     const handleCreateComp = async () => {
         try {
 
             setIsCompCreating(true)
 
-            const newCompData = {
-                newCompArtikul,
-                prod: newCompProd,
-                newCompSharteLink,
-                newCompYumiLink,
-                newCompAirLink,
-                newCompBestLink,
-                category: categories[newCompArtikul?.slice(0, 2)],
-                subcategory: subcategories[newCompArtikul?.slice(0, 4)],
-                newCompSize,
-            }
-
-
-            await createComp(newCompData)
-
+            await createComp(state)
 
         } catch (error) {
             console.log(error);
@@ -67,20 +58,8 @@ export default function CreateCompModal({
     }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-    const isExist = comps?.find(comp => comp.artikul === newCompArtikul)
-    const isExistInDB = artsDB?.find(art => art.artikul === newCompArtikul)
+    const isExist = comps?.find(comp => comp.artikul === state.artikul)
+    const isExistInDB = artsDB?.find(art => art.artikul === state.artikul)
 
     if (!isShowModalCreateComp) return null
     return (
@@ -94,24 +73,18 @@ export default function CreateCompModal({
                 className="flex flex-col space-y-4 min-w-fit max-w-lg text-lg "
             >
 
-
-
-
-
                 <CardBlock
                     className="grid grid-cols-1 lg:grid-cols-3 gap-1 
                 bg-gradient-to-b from-sky-500 to-sky-700/50
                 rounded-xl
                 ">
 
-
-
                     <CardBlock
                         className="grid justify-self-center w-full place-content-center bg-white"
                     >
                         <ImageArt
                             size={150}
-                            artikul={newCompArtikul?.length === 9 ? newCompArtikul : "1102-3092"}
+                            artikul={state.artikul?.length === 9 ? state.artikul : "1102-3092"}
                         />
                     </CardBlock>
 
@@ -120,64 +93,65 @@ export default function CreateCompModal({
                     >
                         <TextBlock
                             className="text-xl font-bold p-2 " >
-                            {artsDB?.find((art) => art.artikul === newCompArtikul)?.nameukr || "Назва артикулу"}
+                            {artsDB?.find((art) => art.artikul === state.artikul)?.nameukr || "Назва артикулу"}
                         </TextBlock>
 
                         <TextBlock
                             className="text-lg font-bold"
                         >
-                            {categories[newCompArtikul?.slice(0, 2)] || "Категорія"}
+                            {categories[state.artikul?.slice(0, 2)] || "Категорія"}
                         </TextBlock>
-
-
 
                         <TextBlock
                             className="text-base "
                         >
-                            {subcategories[newCompArtikul?.slice(0, 4)] || "Підкатегорія"}
+                            {subcategories[state.artikul?.slice(0, 4)] || "Підкатегорія"}
                         </TextBlock>
 
                     </CardBlock>
 
-
                 </CardBlock>
-
-
-
-
-
-
-
-
 
 
 
                 <CardBlock className="flex flex-col gap-2 bg-slate-500/10 p-2 rounded-xl ">
 
 
-                    <CardBlock className="grid grid-cols-1 md:grid-cols-2 space-x-2">
-                        <label className=" justify-self-center self-center md:justify-self-start" htmlFor="artikul">Артикул:</label>
+                    <CardBlock
+                        className="grid grid-cols-1 md:grid-cols-2 space-x-2">
+                        <label
+                            className=" justify-self-center self-center md:justify-self-start" htmlFor="artikul">
+                            Артикул:
+                        </label>
                         <InputBlock
                             type="text"
                             id="artikul"
                             name="artikul"
                             autoComplete="off"
-                            value={newCompArtikul}
-                            onChange={(e) => setNewCompArtikul(e.target.value)}
+                            value={state.artikul}
+                            onChange={handleChange}
                             placeholder="Наприклад 1102-3092"
                         />
                     </CardBlock>
 
 
-                    <CardBlock className="grid grid-cols-1 md:grid-cols-2 space-x-2">
-                        <label className=" justify-self-center self-center md:justify-self-start" htmlFor="prod">Виробник:</label>
+                    <CardBlock
+                        className="grid grid-cols-1 md:grid-cols-2 space-x-2">
+                        <label
+                            className=" justify-self-center self-center md:justify-self-start" htmlFor="prod">
+                            Виробник:
+                        </label>
                         <select
                             className="InputBlock "
                             name="prod"
                             id=""
-                            onChange={(e) => setNewCompProd(e.target.value)}
+                            onChange={handleChange}
                         >
-                            <option value="default" disabled selected className="bg-slate-900" >
+                            <option
+                                value="default"
+                                disabled
+                                selected
+                                className="bg-slate-900" >
                                 Виберіть виробника
                             </option>
                             {prods?.map((prod) => (
@@ -192,15 +166,23 @@ export default function CreateCompModal({
                     </CardBlock>
 
 
-                    <CardBlock className="grid grid-cols-1 md:grid-cols-2 space-x-2">
-                        <label className=" justify-self-center self-center md:justify-self-start" htmlFor="size">Розмір:</label>
+                    <CardBlock
+                        className="grid grid-cols-1 md:grid-cols-2 space-x-2">
+                        <label
+                            className=" justify-self-center self-center md:justify-self-start"
+                            htmlFor="size">
+                            Розмір:
+                        </label>
                         <select
                             className="InputBlock "
                             name="size"
                             id=""
-                            onChange={(e) => setNewCompSize(e.target.value)}
+                            onChange={handleChange}
                         >
-                            <option value="default" disabled selected className="bg-slate-900" >
+                            <option value="default"
+                                disabled
+                                selected
+                                className="bg-slate-900" >
                                 Виберіть розмір
                             </option>
                             {sizesList?.map((size) => (
@@ -216,65 +198,78 @@ export default function CreateCompModal({
 
                 </CardBlock>
 
+                <CardBlock
+                    className="flex flex-col gap-2 bg-slate-500/10 p-2 rounded-xl ">
 
-
-
-
-
-                <CardBlock className="flex flex-col gap-2 bg-slate-500/10 p-2 rounded-xl ">
-
-                    <CardBlock className="grid grid-cols-1 md:grid-cols-2 space-x-2">
-                        <label className=" justify-self-center self-center md:justify-self-start" htmlFor="sharte">Sharte:</label>
+                    <CardBlock
+                        className="grid grid-cols-1 md:grid-cols-2 space-x-2">
+                        <label
+                            className=" justify-self-center self-center md:justify-self-start"
+                            htmlFor="sharteLink">
+                            Sharte:
+                        </label>
                         <InputBlock
                             type="text"
-                            id="sharte"
-                            name="sharte"
+                            id="sharteLink"
+                            name="sharteLink"
                             autoComplete="off"
-                            value={newCompSharteLink}
-                            onChange={(e) => setNewCompSharteLink(e.target.value)}
+                            value={state.sharteLink}
+                            onChange={handleChange}
                             placeholder="https://sharte.net/"
                         />
                     </CardBlock>
 
 
-                    <CardBlock className="grid grid-cols-1 md:grid-cols-2 space-x-2">
-                        <label className=" justify-self-center self-center md:justify-self-start" htmlFor="yumi">Yumi:</label>
+                    <CardBlock
+                        className="grid grid-cols-1 md:grid-cols-2 space-x-2">
+                        <label
+                            className=" justify-self-center self-center md:justify-self-start" htmlFor="yumiLink">
+                            Yumi:
+                        </label>
                         <InputBlock
                             type="text"
-                            id="yumi"
-                            name="yumi"
+                            id="yumiLink"
+                            name="yumiLink"
                             autoComplete="off"
-                            value={newCompYumiLink}
-                            onChange={(e) => setNewCompYumiLink(e.target.value)}
+                            value={state.yumiLink}
+                            onChange={handleChange}
                             placeholder="https://yumi-market.com.ua/ua/"
                         />
                     </CardBlock>
 
 
-                    <CardBlock className="grid grid-cols-1 md:grid-cols-2 space-x-2">
-                        <label className=" justify-self-center self-center md:justify-self-start" htmlFor="air">Air:</label>
+                    <CardBlock
+                        className="grid grid-cols-1 md:grid-cols-2 space-x-2">
+                        <label
+                            className=" justify-self-center self-center md:justify-self-start" htmlFor="airLink">
+                            Air:
+                        </label>
                         <InputBlock
                             type="text"
-                            id="air"
-                            name="air"
+                            id="airLink"
+                            name="airLink"
                             autoComplete="off"
-                            value={newCompAirLink}
-                            onChange={(e) => setNewCompAirLink(e.target.value)}
+                            value={state.airLink}
+                            onChange={handleChange}
                             placeholder="https://airballoons.com.ua/ua/"
                         />
                     </CardBlock>
 
 
 
-                    <CardBlock className="grid grid-cols-1 md:grid-cols-2 space-x-2">
-                        <label className=" justify-self-center self-center md:justify-self-start" htmlFor="best">Best:</label>
+                    <CardBlock
+                        className="grid grid-cols-1 md:grid-cols-2 space-x-2">
+                        <label
+                            className=" justify-self-center self-center md:justify-self-start" htmlFor="bestLink">
+                            Best:
+                        </label>
                         <InputBlock
                             type="text"
-                            id="best"
-                            name="best"
+                            id="bestLink"
+                            name="bestLink"
                             autoComplete="off"
-                            value={newCompBestLink}
-                            onChange={(e) => setNewCompBestLink(e.target.value)}
+                            value={state.bestLink}
+                            onChange={handleChange}
                             placeholder="https://best-balloons.com.ua/"
                         />
                     </CardBlock>
@@ -310,9 +305,10 @@ export default function CreateCompModal({
 
 
                     <ButtonBlock
-                        disabled={!newCompArtikul || isExist || !isExistInDB || isCompCreating}
+                        disabled={!state.artikul || isExist || !isExistInDB || isCompCreating}
                         type="submit"
                         className="green-b flex justify-center items-center"
+                        onClick={handleCreateComp}
                     // onClick={() => handleCreateAsk({
                     //     artikul: newAskArtikul,
                     //     quant: newAskQuant,
