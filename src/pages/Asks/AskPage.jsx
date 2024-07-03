@@ -188,7 +188,7 @@ export default function AskPage() {
 
 
 		<PageBTW
-			className="space-y-4 px-1"
+			className=""
 			isLoading={isAskLoading}
 		>
 

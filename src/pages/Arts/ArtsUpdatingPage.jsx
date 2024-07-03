@@ -88,7 +88,7 @@ export default function ArtsUpdatingPage() {
 
 	return (
 		<PageBTW
-			className="space-y-4"
+			className=""
 		>
 
 			<HeaderBlock

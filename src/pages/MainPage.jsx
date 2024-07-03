@@ -25,7 +25,7 @@ const MainPage = () => {
 	return (
 
 
-		<PageBTW className=" space-y-4 " >
+		<PageBTW className="  " >
 
 			<HeaderBlock className='  animate-gradient' >
 

@@ -37,7 +37,7 @@ export default function StocksPage() {
 
 	return (
 		<PageBTW
-			className="space-y-4 px-1 "
+			className=" "
 			isLoading={isAllPosesLoading || loadingArtsDB}
 		>
 			<HeaderBlock

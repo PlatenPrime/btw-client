@@ -74,7 +74,7 @@ export default function InsFolderPage() {
 
   return (
     <PageBTW
-      className="space-y-4"
+      className=""
       isLoading={isInsFolderLoading}
 
     >

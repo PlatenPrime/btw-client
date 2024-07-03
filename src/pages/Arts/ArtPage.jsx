@@ -44,7 +44,7 @@ export default function ArtPage() {
 	return (
 		<PageBTW
 			isLoading={isLoadingArtikul}
-			className="space-y-4 px-1"
+			className=""
 		>
 
 			<HeaderBlock

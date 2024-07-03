@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { ButtonBlock, ButtonGroup, ContainerBlock, HeaderBlock, PageBTW, TextBlock } from '../../components'
+import { ButtonBlock, ButtonGroup, ContainerBlock, HeaderBlock, ModalConfirm, PageBTW, TextBlock } from '../../components'
 import useFetchArts from '../../hooks/useFetchArts'
 import ModalCreateAsk from './components/modals/ModalCreateAsk'
 import useFetchDefs from './hooks/useFetchDefs'
@@ -7,6 +7,9 @@ import useFetchAsks from '../Asks/hooks/useFetchAsks'
 import DefBage from './components/DefBage'
 import useFetchRemainsDefs from './hooks/useFetchRemainsDefs'
 import { formatDateToUkrainianFull, formatDateToUkrainianShort } from "../../utils/formatDate"
+import { CalculateIcon } from '../../components/UI/Icons'
+import axios from '../../utils/axios'
+import { toast } from 'react-toastify'
 
 
 export default function DefsPage() {
@@ -23,6 +26,22 @@ export default function DefsPage() {
 	const [newAskArtikul, setNewAskArtikul] = useState('')
 	const [showModalCreateAsk, setShowModalCreateAsk] = useState(false)
 
+
+	const [isShowModalCalculate, setIsShowModalCalculate] = useState(false)
+
+
+
+
+
+	const handleCalculateDefsOutOfSchedule = async () => {
+		try {
+			toast.info("Розрахунок виконується на сервері...")
+			setIsShowModalCalculate(false)
+			await axios.get("/defs/calculate")
+		} catch (error) {
+			console.log(error);
+		}
+	}
 
 
 
@@ -44,6 +63,18 @@ export default function DefsPage() {
 			/>
 
 			<ButtonGroup>
+				<ButtonGroup.Navigation></ButtonGroup.Navigation>
+				<ButtonGroup.Actions>
+					<ButtonBlock
+						className="yellow-b"
+						onClick={() => setIsShowModalCalculate(true)}
+					>
+						<CalculateIcon />	Порахувати
+					</ButtonBlock>
+				</ButtonGroup.Actions>
+			</ButtonGroup>
+
+			<ButtonGroup>
 
 				<ButtonBlock
 					className={` ${isMorning ? 'pink-b-n' : 'pink-b'}   `}
@@ -60,6 +91,25 @@ export default function DefsPage() {
 				</ButtonBlock>
 
 			</ButtonGroup>
+
+
+
+
+
+			{isShowModalCalculate &&
+				<ModalConfirm
+					ask="Порахувати дефіцити поза розписом? Це займе декілька хвилин."
+					onConfirm={handleCalculateDefsOutOfSchedule}
+					onCancel={() => setIsShowModalCalculate(false)}
+					isConfirming={false}
+				/>}
+
+
+
+
+
+
+
 
 
 

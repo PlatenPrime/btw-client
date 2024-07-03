@@ -43,7 +43,7 @@ export default function InsPage() {
 	return (
 		<PageBTW
 			isLoading={isInsLoading}
-			className="space-y-4"
+			className=""
 		>
 			<HeaderBlock className="bg-blue-500 shadow-lg  shadow-blue-500">Інструкція</HeaderBlock>
 

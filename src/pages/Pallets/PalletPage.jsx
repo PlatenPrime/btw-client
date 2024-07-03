@@ -318,7 +318,7 @@ export default function PalletPage() {
 
 	return (
 		<PageBTW
-			className="px-1"
+			className=""
 			isLoading={isPalletLoading}
 		>
 

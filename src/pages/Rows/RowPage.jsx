@@ -94,7 +94,7 @@ export default function RowPage() {
 	return (
 		<PageBTW
 			isLoading={isRowLoading}
-			className="px-1 space-y-4"
+			className=""
 		>
 			<HeaderBlock
 				className=" bg-orange-500 shadow-lg shadow-orange-500"

@@ -56,7 +56,7 @@ export default function ArtsPage() {
 	return (
 		<PageBTW
 			isLoading={loadingArtsDB}
-			className="space-y-4 px-1 "
+			className=" "
 		>
 
 			<HeaderBlock

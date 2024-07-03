@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom'
 export default function SettingsPage() {
 	return (
 		<PageBTW
-			className="space-y-4"
+			className=""
 		>
 			<HeaderBlock
 				className=" bg-slate-700 shadow-lg shadow-slate-700"

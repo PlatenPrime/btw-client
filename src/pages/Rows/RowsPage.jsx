@@ -35,7 +35,7 @@ export default function RowsPage() {
 
 	return (
 		<PageBTW
-			className="px-1"
+			className=""
 			isLoading={isLoadingAllRows}
 		>
 			<HeaderBlock

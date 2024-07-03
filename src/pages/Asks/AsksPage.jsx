@@ -24,7 +24,7 @@ export default function AsksPage() {
 	return (
 		<PageBTW
 			isLoading={isAsksLoading}
-			className="space-y-4 px-1 "
+			className="  "
 		>
 			<HeaderBlock
 				className="bg-indigo-500 shadow-lg shadow-indigo-500"
