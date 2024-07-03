@@ -17,14 +17,27 @@ const useFetchRemainsDefs = () => {
         const fetchData = async () => {
             try {
                 setIsRemainsDefsLoading(true);
-                const response = await axios.get("defs/remains", {
-                    headers: {
-                        'Cache-Control': 'no-cache'
-                    }
-                });
-                console.log(response.data)
-                setRemainsDefs(response?.data);
 
+                const today = new Date().toISOString().split('T')[0];
+                const cachedData = JSON.parse(localStorage.getItem('remainsDefs'));
+
+                if (cachedData && cachedData.date === today) {
+                    setRemainsDefs(cachedData.data);
+                } else {
+                    const response = await axios.get("defs/remains", {
+                        headers: {
+                            'Cache-Control': 'no-cache'
+                        }
+                    });
+
+                    const newCache = {
+                        date: today,
+                        data: response?.data
+                    };
+
+                    localStorage.setItem('remainsDefs', JSON.stringify(newCache));
+                    setRemainsDefs(response?.data);
+                }
             } catch (error) {
                 setErrorRemainsDefs(error);
             } finally {
