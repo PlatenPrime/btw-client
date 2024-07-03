@@ -5,6 +5,9 @@ import { Link, useParams } from 'react-router-dom'
 import useFetchCompById from '../hooks/useFetchCompById'
 import { DeleteIcon, EditIcon, UpdateIcon } from '../../../components/UI/Icons'
 import CompInfo from '../components/CompInfo'
+import { MdOutlineCategory, MdOutlinePrecisionManufacturing } from 'react-icons/md'
+import { BiCategory } from 'react-icons/bi'
+import { TbResize } from 'react-icons/tb'
 
 export default function NewCompPage() {
 
@@ -80,11 +83,48 @@ export default function NewCompPage() {
             </ContainerBlock>
 
 
-            <ContainerBlock>
-                <TextBlock>Виробник: {comp?.prod}</TextBlock>
-                <TextBlock>Категорія: {comp?.category}</TextBlock>
-                <TextBlock>Підкатегорія: {comp?.subcategory}</TextBlock>
-                <TextBlock>Розмір: {comp?.size}</TextBlock>
+            <ContainerBlock
+                className="flex justify-center"
+            >
+
+                <CardBlock
+                    className="grid gap-2 "
+                >
+
+
+                    <CardBlock
+                        className="flex justify-between gap-4 min-w-fit max-w-lg"
+                    >
+                        <TextBlock> <MdOutlinePrecisionManufacturing />Виробник: </TextBlock>
+                        <TextBlock> {comp?.prod}</TextBlock>
+                    </CardBlock>
+
+                    <CardBlock
+                        className="flex justify-between gap-4 min-w-fit max-w-lg"
+                    >
+                        <TextBlock> <MdOutlineCategory /> Категорія:  </TextBlock>
+                        <TextBlock> {comp?.category}</TextBlock>
+                    </CardBlock>
+
+                    <CardBlock
+                        className="flex justify-between gap-4 min-w-fit max-w-lg"
+                    >
+                        <TextBlock> <BiCategory /> Підкатегорія:  </TextBlock>
+                        <TextBlock> {comp?.subcategory}</TextBlock>
+                    </CardBlock>
+
+
+
+                    <CardBlock
+                        className="flex justify-between gap-4 min-w-fit max-w-lg"
+                    >
+                        <TextBlock> <TbResize /> Розмір:  </TextBlock>
+                        <TextBlock> {comp?.size}</TextBlock>
+                    </CardBlock>
+
+
+                </CardBlock>
+
             </ContainerBlock>
 
 
