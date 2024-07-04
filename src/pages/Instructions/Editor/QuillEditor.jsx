@@ -1,5 +1,5 @@
 // Importing helper modules
-import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import React, { useCallback, useEffect, useMemo, useRef, useState } from "react";
 
 // Importing core components
 import QuillEditor, { Quill } from "react-quill";
@@ -21,7 +21,7 @@ import { toast } from "react-toastify";
 
 
 
-const Editor = ({
+const Editor = React.memo(({
 	value, setValue
 }) => {
 
@@ -141,7 +141,22 @@ const Editor = ({
 	];
 
 
+	useEffect(() => {
+		if (quill.current) {
+		  const editor = quill.current.getEditor();
+		  const currentContent = editor.root.innerHTML;
+		  if (currentContent !== value) {
+			editor.root.innerHTML = value;
+		  }
+		}
+	  }, [value]);
 
+
+
+	const handleChange = (value) => {
+		const cleanedValue = value.replace(/<p><br><\/p>/g, ""); // Удаление лишних пустых блоков
+		setValue(cleanedValue);
+	};
 
 
 	return (
@@ -154,13 +169,13 @@ const Editor = ({
 				value={value}
 				formats={formats}
 				modules={modules}
-				onChange={(value) => setValue(value)}
+				onChange={handleChange}
 
 
 			/>
 
 		</div>
 	);
-};
+});
 
 export default Editor;
