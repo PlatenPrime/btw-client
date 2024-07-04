@@ -54,13 +54,13 @@ export default function AdaptBlockBage({
                             || 'https://placehold.co/600x400?text=Інструкція'
                         }
                         width={150}
-                        className="rounded-3xl"
+                        className="rounded-xl"
                     >
 
                     </img>
 
                     <TextBlock
-                        className=" text-2xl"
+                        className=" text-2xl text-left"
                     >
                         {i + 1}.  {instructions?.find((ins) => ins?._id === adaptBlock?.insId)?.title}
                     </TextBlock>
