@@ -30,7 +30,7 @@ export default function InsCard({
 
 
             <CardBlock
-                className=" gap-2 lg:order-first  "
+                className=" gap-2 lg:order-first  min-w-[300px] "
             >
 
                 <CardBlock
@@ -40,12 +40,12 @@ export default function InsCard({
                         <img
                             src={ins?.titleImage}
                             alt=""
-                            className="w-[200px] rounded-xl object-cover " />
+                            className="w-[300px] rounded-xl object-cover " />
                         :
 
                         <img
                             src='https://placehold.co/600x300?text=Інструкція'
-                            width={200}
+                            width={300}
                             className="rounded-xl object-cover "
                         ></img>}
 
@@ -62,24 +62,24 @@ export default function InsCard({
 
 
             <CardBlock
-                className="flex flex-col justify-center lg:items-end  p-2 text-sm lg:text-lg 
+                className=" min-w-fit flex flex-col justify-center items-center p-2 text-sm lg:text-base 
                 text-slate-300
             "
             >
-                <TextBlock className="  lg:justify-between w-full ">
+                <TextBlock className="  lg:justify-end gap-2 w-full ">
 
-                    <GoPerson className="" />
+                    <GoPerson className="lg:order-2" />
                     <span>{author?.fullname} </span>
                 </TextBlock>
 
-                {ins?.createdAt && <TextBlock className="  lg:justify-between w-full ">
-                    <LuFilePlus className="" />
+                {ins?.createdAt && <TextBlock className="  lg:justify-end gap-2 w-full ">
+                    <LuFilePlus className="lg:order-2" />
                     <span>{new Date(ins?.createdAt).toLocaleString()}</span>
 
                 </TextBlock>}
 
-                {ins?.createdAt !== ins?.updatedAt && <TextBlock className="  lg:justify-between w-full ">
-                    <LuFileEdit className="" />
+                {ins?.createdAt !== ins?.updatedAt && <TextBlock className=" lg:justify-end gap-2 w-full ">
+                    <LuFileEdit className="lg:order-2" />
                     <span>{new Date(ins?.updatedAt).toLocaleString()}</span>
 
                 </TextBlock>}

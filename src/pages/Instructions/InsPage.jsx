@@ -45,7 +45,7 @@ export default function InsPage() {
 			isLoading={isInsLoading}
 			className=""
 		>
-			<HeaderBlock className="bg-blue-500 shadow-lg  shadow-blue-500">Інструкція</HeaderBlock>
+			<HeaderBlock className="bg-blue-500 shadow-sm shadow-blue-500 z-50">Інструкція</HeaderBlock>
 
 			{isShowModalInsDeleting && <ModalDelete
 				ask="Видалити інструкцію?"
