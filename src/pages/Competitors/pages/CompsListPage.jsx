@@ -249,7 +249,7 @@ export default function CompListPage() {
 						onClick={handleAnalyze}
 						className=" violet-b flex items-center space-x-1  "
 					>
-						< MdOutlineAnalytics  />
+						< MdOutlineAnalytics />
 						<TextBlock>
 							Аналіз (повний)
 						</TextBlock>
@@ -260,7 +260,7 @@ export default function CompListPage() {
 						onClick={() => handleAnalyzeOnFilter(filteredComps)}
 						className=" cyan-b flex items-center space-x-1  "
 					>
-						< IoAnalyticsOutline   />
+						< IoAnalyticsOutline />
 						<TextBlock>
 							Аналіз (фільтр)
 						</TextBlock>
@@ -527,7 +527,7 @@ export default function CompListPage() {
 
 
 
-						<table className="min-w-full  "  >
+						<table className="min-w-full text-sm "  >
 
 							<thead className="  sticky top-0">
 								<tr className=''>
@@ -610,7 +610,8 @@ export default function CompListPage() {
 										<tr
 											className="bg-slate-900 
 										odd:bg-opacity-100 even:bg-sky-900/20 
-										hover:bg-gray-800 transition duration-300 ease-in-out 			"
+										hover:bg-gray-800 transition duration-300 ease-in-out 	
+										text-sm		"
 											key={comp._id.$oid}
 
 										>
@@ -678,29 +679,38 @@ export default function CompListPage() {
 											>
 												{comp?.avail?.btrade ?? "-"}
 											</td>
+
+
 											<td
 												className={` 
 										w-1/12 
-										${comp?.avail?.yumi ? "bg-sky-500/20 " : "bg-rose-500/50"}
+										${comp?.avail?.yumi  === "N/A" ? "bg-gray-500/20" : comp?.avail?.yumi === 0 ? "bg-red-500/50" : "bg-green-500/20"}
 									 `}
 											>
-												{comp?.avail?.yumi === 0 ? "0" : comp?.avail?.yumi ? comp?.avail?.yumi : "-"}
-											</td>
-
-											<td className={` w-1/12 ${comp?.avail?.sharte ? "bg-green-500/20" : "bg-red-500/50"} `} >
-												{comp?.avail?.sharte ? "Є" : (comp?.avail?.sharte === false) ? "Немає" : "-"}
+												{comp?.avail?.yumi}
 											</td>
 
 
 
-
-
-											<td className={` w-1/12 ${comp?.avail?.air ? "bg-green-500/20" : "bg-red-500/50"} `} >
-												{comp?.avail?.air ? "Є" : (comp?.avail?.air === false) ? "Немає" : "-"}
+											<td className={` w-1/12 ${comp?.avail?.sharte  === "N/A" ? "bg-gray-500/20" : comp?.avail?.sharte === false ? "bg-red-500/50" : "bg-green-500/20"} `} >
+											{comp?.avail?.sharte   === "N/A" ? comp?.avail?.sharte   : comp?.avail?.sharte   === false ? "Немає" : "Є"}
 											</td>
 
-											<td className={` w-1/12 ${comp?.avail?.best ? "bg-green-500/20" : "bg-red-500/50"} `} >
-												{comp?.avail?.best ? "Є" : (comp?.avail?.best === false) ? "Немає" : "-"}
+
+
+
+
+											<td className={` w-1/12 ${comp?.avail?.air === "N/A" ? "bg-gray-500/20" : comp?.avail?.air=== false ? "bg-red-500/50" : "bg-green-500/20"} `} >
+											{comp?.avail?.air  === "N/A" ? comp?.avail?.air  : comp?.avail?.air  === false ? "Немає" : "Є"}
+											</td>
+
+											<td className={` w-1/12 
+
+											${comp?.avail?.best === "N/A" ? "bg-gray-500/20" : comp?.avail?.best === false ? "bg-red-500/50" : "bg-green-500/20"}
+											
+											 `}
+											>
+												{comp?.avail?.best === "N/A" ? comp?.avail?.best : comp?.avail?.best === false ? "Немає" : "Є"}
 											</td>
 
 											<td className='text-green-500 w-1/12  bg-slate-900/50 ' >
