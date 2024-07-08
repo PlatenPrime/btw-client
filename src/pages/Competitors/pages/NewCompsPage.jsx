@@ -64,7 +64,7 @@ export default function NewCompsPage() {
 
 
 
-    
+
 
 
 
@@ -85,6 +85,9 @@ export default function NewCompsPage() {
             <ButtonGroup>
 
                 <ButtonGroup.Navigation>
+
+                    <ButtonBlock>Список</ButtonBlock>
+                    <ButtonBlock>Таблиця</ButtonBlock>
 
                 </ButtonGroup.Navigation>
 
