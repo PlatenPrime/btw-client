@@ -112,6 +112,41 @@ const useCompStore = create((set) => ({
             console.error('Ошибка удаления всех Comps:', error);
         }
     },
+
+    getUpdatedCompByArtikul: async (artikul) => {
+        try {
+            const response = await axios.get(`comps/updated/${artikul}`);
+            if (response.status === 200) {
+                const updatedComp = response.data;
+                set((state) => ({
+                    comps: state.comps.map((c) =>
+                        c.artikul === artikul ? updatedComp : c
+                    ),
+                }));
+                set({ comp: updatedComp });
+                return updatedComp;
+            } else {
+                throw new Error('Ошибка получения обновленного Comp по артикулу');
+            }
+        } catch (error) {
+            console.error('Ошибка получения обновленного Comp по артикулу:', error);
+        }
+    },
+
+    getUpdatedAllComps: async () => {
+        try {
+            const response = await axios.get('comps/updated');
+            if (response.status === 200) {
+                const updatedComps = response.data;
+                set({ comps: updatedComps });
+                return updatedComps;
+            } else {
+                throw new Error('Ошибка получения всех обновленных Comps');
+            }
+        } catch (error) {
+            console.error('Ошибка получения всех обновленных Comps:', error);
+        }
+    },
 }));
 
 export default useCompStore;

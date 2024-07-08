@@ -62,6 +62,12 @@ export default function NewCompsPage() {
 
 
 
+
+
+    
+
+
+
     return (
         <PageBTW
             isLoading={isAllCompsLoading || loadingArtsDB}
