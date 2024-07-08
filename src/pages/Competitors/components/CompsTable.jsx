@@ -26,7 +26,7 @@ export default function CompsTable({
                         <tr className=''>
                             {/* Заголовки таблицы */}
                             <th
-                                className=" lg:w-1/4  bg-slate-900/95   hover:bg-sky-500 border-0 transition ease-in-out duration-300 cursor-pointer	 "
+                                className=" lg:w-1/4  bg-gradient-to-b from-slate-700/95 to-slate-900/95  hover:bg-sky-500 border-0 transition ease-in-out duration-300 cursor-pointer	 "
                                 rowSpan="2"
                                 colSpan="2"
                                 onClick={handleSortCompsByArtikul}
@@ -50,7 +50,7 @@ export default function CompsTable({
 
                             </th>
                             <th
-                                className="  bg-slate-900/95   hover:bg-green-500 border-0 transition ease-in-out duration-300	cursor-pointer	 "
+                                className="  bg-gradient-to-b from-slate-700/95 to-slate-900/95    hover:bg-green-500 border-0 transition ease-in-out duration-300	cursor-pointer	 "
                                 rowSpan="2"
                                 onClick={handleSortCompsByABC}
                             >
@@ -71,26 +71,26 @@ export default function CompsTable({
 
                                 </TextBlock>
                             </th>
-                            <th className=" bg-slate-900/95   " colSpan="5">
+                            <th className=" bg-gradient-to-b from-slate-700/95 to-slate-900/95  " colSpan="5">
                                 Наявність
                             </th>
-                            <th className=" bg-slate-900/95  " colSpan="5">
+                            <th className=" bg-gradient-to-b from-slate-700/95 to-slate-900/95  " colSpan="5">
                                 Ціна
                             </th>
                         </tr>
                         <tr>
                             {/* Заголовки для данных */}
-                            <th className=" bg-blue-900/95">Btrade</th>
-                            <th className=" bg-amber-900/95">Yumi</th>
-                            <th className=" bg-sky-900/95">Sharte</th>
-                            <th className=" bg-lime-900/95">Air</th>
-                            <th className=" bg-pink-900/95">Best</th>
+                            <th className="  bg-gradient-to-b from-blue-500/90 to-blue-700/90">Btrade</th>
+                            <th className="  bg-gradient-to-b from-amber-500/90 to-amber-700/90 ">Yumi</th>
+                            <th className="  bg-gradient-to-b from-sky-500/90 to-sky-700/90">Sharte</th>
+                            <th className="  bg-gradient-to-b from-lime-500/90 to-lime-700/90">Air</th>
+                            <th className="  bg-gradient-to-b from-pink-500/90 to-pink-700/90">Best</th>
 
-                            <th className=" bg-blue-900/95">Btrade</th>
-                            <th className=" bg-amber-900/95">Yumi</th>
-                            <th className=" bg-sky-900/95">Sharte</th>
-                            <th className=" bg-lime-900/95">Air</th>
-                            <th className=" bg-pink-900/95">Best</th>
+                            <th className="  bg-gradient-to-b from-blue-500/90 to-blue-700/90">Btrade</th>
+                            <th className="  bg-gradient-to-b from-amber-500/90 to-amber-700/90 ">Yumi</th>
+                            <th className="  bg-gradient-to-b from-sky-500/90 to-sky-700/90">Sharte</th>
+                            <th className="  bg-gradient-to-b from-lime-500/90 to-lime-700/90">Air</th>
+                            <th className="  bg-gradient-to-b from-pink-500/90 to-pink-700/90">Best</th>
                         </tr>
                     </thead>
 
@@ -102,7 +102,7 @@ export default function CompsTable({
                             filteredComps?.map((comp) => (
                                 <tr
                                     className="bg-slate-900 
-										odd:bg-opacity-100 even:bg-sky-900/20 
+										
 										hover:bg-gray-800 transition duration-300 ease-in-out 	
 										text-sm		"
                                     key={comp._id.$oid}
@@ -115,7 +115,7 @@ export default function CompsTable({
                                     >
 
                                         <CardBlock
-                                            className="flex p-0 items-center "
+                                            className="flex p-0 items-stretch "
                                         >
 
 
@@ -137,10 +137,8 @@ export default function CompsTable({
 
                                             >
 
-
-
                                                 <TextBlock
-                                                    className="text-left text-sm py-2  "
+                                                    className="text-left text-sm  "
 
 
                                                 >
@@ -156,50 +154,60 @@ export default function CompsTable({
 
 
 
-                                    <td>
+                                    <td
+                                        className="text-emerald-200 bg-emerald-500/10"
+                                    >
                                         {comp?.abc}
                                     </td>
 
                                     <td
-                                        className={` 
-										w-1/12 
-										${comp?.avail?.btrade ? "bg-blue-500/20 " : "bg-rose-500/50"}
-									 `}
+                                        className={` w-1/12 `}
                                     >
-                                        {comp?.avail?.btrade ?? "-"}
+                                        <span className={`p-2 rounded-xl shadow-md  ${comp?.avail?.btrade ? "text-blue-200 bg-blue-500/20 shadow-blue-500/20 " : "text-rose-200 bg-rose-500/20"} `}>
+                                            {comp?.avail?.btrade ?? "-"}
+                                        </span>
                                     </td>
 
 
                                     <td
-                                        className={` 
-										w-1/12 
-										${comp?.avail?.yumi === "N/A" ? "bg-gray-500/20" : comp?.avail?.yumi === 0 ? "bg-red-500/50" : "bg-green-500/20"}
-									 `}
+                                        className={` w-1/12  `}
                                     >
-                                        {comp?.avail?.yumi}
+                                        <span className={`p-2 rounded-xl shadow-md  ${comp?.avail?.yumi === "N/A" ? "text-gray-200 bg-gray-500/20 shadow-gray-500/20 " : comp?.avail?.yumi === 0 ? "text-red-200 bg-red-500/20 shadow-red-500/20 " : "text-blue-200 bg-blue-500/20 shadow-blue-500/20 "} `}>
+                                            {comp?.avail?.yumi}
+                                        </span>
                                     </td>
 
 
 
-                                    <td className={` w-1/12 ${comp?.avail?.sharte === "N/A" ? "bg-gray-500/20" : comp?.avail?.sharte === false ? "bg-red-500/50" : "bg-green-500/20"} `} >
-                                        {comp?.avail?.sharte === "N/A" ? comp?.avail?.sharte : comp?.avail?.sharte === false ? "Немає" : "Є"}
+                                    <td className={` w-1/12  `} >
+                                        <span
+                                            className={`p-2 rounded-xl shadow-md   ${comp?.avail?.sharte === "N/A" ? "text-gray-200 bg-gray-500/20 shadow-gray-500/20 " : comp?.avail?.sharte === false ? "text-red-200 bg-red-500/20 shadow-red-500/20 " : "text-green-200 bg-green-500/20 shadow-green-500/20"} `}
+                                        >
+                                            {comp?.avail?.sharte === "N/A" ? comp?.avail?.sharte : comp?.avail?.sharte === false ? "Немає" : "Є"}
+                                        </span>
                                     </td>
 
 
 
 
 
-                                    <td className={` w-1/12 ${comp?.avail?.air === "N/A" ? "bg-gray-500/20" : comp?.avail?.air === false ? "bg-red-500/50" : "bg-green-500/20"} `} >
-                                        {comp?.avail?.air === "N/A" ? comp?.avail?.air : comp?.avail?.air === false ? "Немає" : "Є"}
+                                    <td className={` w-1/12  `} >
+                                        <span
+                                            className={`p-2 rounded-xl shadow-md  ${comp?.avail?.air === "N/A" ? "text-gray-200 bg-gray-500/20 shadow-gray-500/20" : comp?.avail?.air === false ? "text-red-200 bg-red-500/20 shadow-red-500/20" : "text-green-200 bg-green-500/20 shadow-green-500/20"} `}
+                                        >
+                                            {comp?.avail?.air === "N/A" ? comp?.avail?.air : comp?.avail?.air === false ? "Немає" : "Є"}
+                                        </span>
+
                                     </td>
 
-                                    <td className={` w-1/12 
-
-											${comp?.avail?.best === "N/A" ? "bg-gray-500/20" : comp?.avail?.best === false ? "bg-red-500/50" : "bg-green-500/20"}
-											
-											 `}
+                                    <td className={` w-1/12  `}
                                     >
-                                        {comp?.avail?.best === "N/A" ? comp?.avail?.best : comp?.avail?.best === false ? "Немає" : "Є"}
+                                        <span
+                                            className={` p-2 rounded-xl shadow-md  ${comp?.avail?.best === "N/A" ? "text-gray-200 bg-gray-500/20 shadow-gray-500/20" : comp?.avail?.best === false ? "text-red-200 bg-red-500/20 shadow-red-500/20" : "text-green-200 bg-green-500/20 shadow-green-500/20"} `}
+                                        >
+                                            {comp?.avail?.best === "N/A" ? comp?.avail?.best : comp?.avail?.best === false ? "Немає" : "Є"}
+                                        </span>
+
                                     </td>
 
                                     <td className='text-green-500 w-1/12  bg-slate-900/50 ' >

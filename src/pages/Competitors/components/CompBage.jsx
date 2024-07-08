@@ -10,7 +10,7 @@ export default function CompBage({
 
 
             className="
-            flex items-stretch gap-2 w-full
+            flex flex-col md:flex-row items-stretch gap-2 w-full
             lg:text-xl
         hover:shadow-2xl hover:shadow-lg  hover:shadow-fuchsia-500 hover:bg-fuchsia-500   bg-gradient-to-b from-fuchsia-500/50 to-fuchsia-700/50
          rounded-2xl cursor-pointer
@@ -19,19 +19,25 @@ export default function CompBage({
 
 
             <CardBlock
-            className="bg-white rounded-l-xl flex items-center justify-center shrink-0 p-2"
+                className="bg-white rounded-l-xl flex items-center justify-center shrink-0 p-2"
             >
                 <ImageArt size={50} artikul={comp?.artikul} className="rounded-l-xl" />
             </CardBlock>
 
-            <TextBlock
-                onClick={() => {
-                    window.open(`/comps/${comp?._id}`, "_blank");
-                }}
-                className="flex items-center justify-start w-full"
-            >
-                {comp?.nameukr}
+
+            <CardBlock>
+
+                <TextBlock
+                    onClick={() => {
+                        window.open(`/comps/${comp?._id}`, "_blank");
+                    }}
+                    className="flex items-center justify-start w-full"
+                >
+                    {comp?.nameukr}
                 </TextBlock>
+
+
+            </CardBlock>
 
         </div>
     )
