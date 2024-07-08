@@ -3,12 +3,10 @@ import { Routes, Route } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 
+import { Analytics } from "@vercel/analytics/react"
+
 
 import LoginPage from "./pages/Auth/LoginPage";
-
-
-
-
 
 import MainPage from "./pages/MainPage";
 import PalletPage from "./pages/Pallets/PalletPage";
@@ -128,6 +126,8 @@ function App() {
 				pauseOnHover
 				theme="colored"
 			/>
+
+			<Analytics />
 
 		</Layout>
 
