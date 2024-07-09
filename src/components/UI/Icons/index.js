@@ -18,3 +18,4 @@ export { default as UpdateIcon } from './UpdateIcon';
 export { default as DoneIcon } from './DoneIcon';
 export { default as TestIcon } from './TestIcon';
 export { default as CalculateIcon } from './CalculateIcon';
+export { default as FilterIcon } from './FilterIcon';
