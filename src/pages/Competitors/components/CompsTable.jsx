@@ -187,7 +187,7 @@ export default function CompsTable({
                                     colSpan="1"
                                 >
                                     <ButtonBlock
-                                        className="pink-b h-full"
+                                        className="fuchsia-b h-full"
                                         onClick={() => setIsShowFilterModal(true)}
                                     >
                                         <FilterIcon size={24} />

@@ -1,102 +1,104 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
+import { ButtonBlock, ButtonGroup, HeaderBlock, PageBTW, } from '../../../components'
+import useFetchAllComps from '../hooks/useFetchAllComps';
 
+import { AddIcon, ExcelIcon } from '../../../components/UI/Icons';
+import useFetchArts from '../../../hooks/useFetchArts';
+import useCompStore from '../stores/compStore';
+import CreateCompModal from '../components/modals/CreateCompModal';
+import CompsList from '../components/CompsList';
+import CompsTable from '../components/CompsTable';
 
-import {
-	PageBTW,
-	HeaderBlock,
-	CardBlock,
-	TextBlock,
-	ContainerBlock,
-	ButtonGroup,
-	ButtonBlock,
-
-} from '../../../components';
-
-
-
-import { CompContextProvider } from '../contexts/compContextProvider'
-
-import { Link, NavLink, Outlet, useNavigate } from 'react-router-dom';
+export default function NewCompsPage() {
 
 
 
+    const { comps, isAllCompsLoading, error } = useFetchAllComps();
+    const { artsDB, loadingArtsDB, errorArtsDB } = useFetchArts();
+
+
+    const { createComp } = useCompStore()
+
+
+    const [isCompCreating, setIsCompCreating] = useState(false)
+    const [isShowModalCreateComp, setIsShowModalCreateComp] = useState(false)
 
 
 
+    const [isList, setIsList] = useState(true)
 
-export default function CompsPage() {
+    return (
+        <PageBTW
+            isLoading={isAllCompsLoading || loadingArtsDB}
+        >
 
-	const navigate = useNavigate()
-
-
-	useEffect(() => {
-		navigate("/comps/list")
-		return () => { }
-	}, [])
-
-
-
-
-	const activeStyles = {
-		backgroundColor: "rgb(244 63 94 )",
-		color: "white",
-		padding: "0.5rem",
-		width: "100%",
-		textAlign: 'center',
-
-	}
+            <HeaderBlock
+                className="bg-fuchsia-500 shadow-sm shadow-fuchsia-500"
+            >
+                Конкуренти
+            </HeaderBlock>
 
 
-	const inActiveStyles = {
-		padding: "0.5rem",
-		width: "100%",
-		textAlign: 'center',
-	}
+            <ButtonGroup>
 
+                <ButtonGroup.Navigation>
 
-	return (
+                    {!isList && <ButtonBlock
+                        className="fuchsia-b-n"
+                        onClick={() => setIsList(true)}
+                    >
+                        Список
+                    </ButtonBlock>}
 
+                    {isList && <ButtonBlock
+                        className="fuchsia-b-n"
+                        onClick={() => setIsList(false)}
+                    >
+                        Таблиця
+                    </ButtonBlock>}
 
-		<CompContextProvider>
+                </ButtonGroup.Navigation>
 
-
-			<PageBTW className='max-h-screen px-1' >
-
-				<HeaderBlock className="bg-rose-500 shadow-lg shadow-rose-500 ">
-					Аналіз конкурентів
-				</HeaderBlock>
-
-
-<ButtonBlock
-className="fuchsia-b-n"
-onClick={() => navigate("/newcomps")}
-
->
-	New Page
-
-</ButtonBlock>
-
-
-				<CardBlock
-					className="p-4">
-
-					<Outlet />
-
-				</CardBlock>
+                <ButtonGroup.Actions>
 
 
 
+                    <ButtonBlock
+                        className="green-b"
+                        onClick={() => setIsShowModalCreateComp(true)}
+                    >
+                        <AddIcon /> Додати артикул
+                    </ButtonBlock>
+
+                    <ButtonBlock>
+                        <ExcelIcon /> Експортувати
+                    </ButtonBlock>
+
+                </ButtonGroup.Actions>
+            </ButtonGroup>
+
+
+            <CreateCompModal
+                isShowModalCreateComp={isShowModalCreateComp}
+                setIsShowModalCreateComp={setIsShowModalCreateComp}
+                artsDB={artsDB}
+                comps={comps}
+                isCompCreating={isCompCreating}
+                setIsCompCreating={setIsCompCreating}
+            />
+
+
+            {isList && <CompsList
+                comps={comps}
+            />}
+
+
+            {!isList && <CompsTable
+                comps={comps}
+            />}
 
 
 
-
-
-
-
-
-
-			</PageBTW>
-
-		</CompContextProvider>
-	)
+        </PageBTW>
+    )
 }

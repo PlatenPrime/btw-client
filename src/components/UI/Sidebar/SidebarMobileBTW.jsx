@@ -100,7 +100,7 @@ const SidebarMobileBTW = ({ onClose }) => {
 
 
 				<TextBlock className="w-full text-xl text-center  text-orange-500 rounded font-bold" >
-				<TfiViewList size={48} />
+					<TfiViewList size={48} />
 					<NavLink
 						onClick={onClose}
 						to={"rows"}
@@ -119,7 +119,7 @@ const SidebarMobileBTW = ({ onClose }) => {
 
 
 				<TextBlock className="w-full text-xl text-center  text-emerald-500 rounded font-bold" >
-				<GoNote size={48} />
+					<GoNote size={48} />
 					<NavLink
 						onClick={onClose}
 						to={"poses"}
@@ -130,7 +130,7 @@ const SidebarMobileBTW = ({ onClose }) => {
 							// background: "rgb(16 185 129)",
 						} : inActiveStyles}
 					>
-						
+
 						Позиції
 					</NavLink>
 				</TextBlock>
@@ -140,7 +140,7 @@ const SidebarMobileBTW = ({ onClose }) => {
 
 
 				<TextBlock className="w-full text-xl text-center  text-sky-500  rounded font-bold" >
-				<SiAsciidoctor size={48} />
+					<SiAsciidoctor size={48} />
 					<NavLink
 						onClick={onClose}
 						to={"arts"}
@@ -161,7 +161,7 @@ const SidebarMobileBTW = ({ onClose }) => {
 
 
 				<TextBlock className="w-full text-xl text-center  text-indigo-500 rounded font-bold" >
-				<HiOutlineDocumentDownload size={48} />
+					<HiOutlineDocumentDownload size={48} />
 					<NavLink
 						onClick={onClose}
 						to={"asks"}
@@ -179,85 +179,85 @@ const SidebarMobileBTW = ({ onClose }) => {
 
 
 
-				
-					<TextBlock className="w-full text-xl text-center  text-pink-500 rounded font-bold " >
+
+				<TextBlock className="w-full text-xl text-center  text-pink-500 rounded font-bold " >
 					<PiWarningBold size={48} />
-						<NavLink
-							onClick={onClose}
-							to={"defs"}
-							style={({ isActive }) => isActive ? {
-								color: "rgb(236 72 153 )",
-								padding: "12px",
-								width: "100%",
-								// background: "rgb(236 72 153 )",
-							} : inActiveStyles}
-						>
-							Дефіцити
-						</NavLink>
-					</TextBlock>
-				
+					<NavLink
+						onClick={onClose}
+						to={"defs"}
+						style={({ isActive }) => isActive ? {
+							color: "rgb(236 72 153 )",
+							padding: "12px",
+							width: "100%",
+							// background: "rgb(236 72 153 )",
+						} : inActiveStyles}
+					>
+						Дефіцити
+					</NavLink>
+				</TextBlock>
 
 
 
 
 
 
-				
-					<TextBlock className="w-full text-xl text-center  text-rose-500 rounded font-bold " >
+
+
+				<TextBlock className="w-full text-xl text-center  text-fuchsia-500 rounded font-bold " >
 					<SiGooglelens size={48} />
-						<NavLink
-							onClick={onClose}
-							to={"comps"}
-							style={({ isActive }) => isActive ? {
-								color: "rgb(244 63 94 )",
-								padding: "12px",
-								width: "100%",
-								// background: "rgb(244 63 94 )",
-							} : inActiveStyles}
-						>
-							Конкуренти
-						</NavLink>
-					</TextBlock>
-					
+					<NavLink
+						onClick={onClose}
+						to={"comps"}
+						style={({ isActive }) => isActive ? {
+							color: "rgb(217 70 239 )",
+							padding: "12px",
+							width: "100%",
 
-
-		
-					<TextBlock className="w-full text-xl text-center  text-blue-500 rounded font-bold " >
-									<SiGoogledocs size={48} />
-						<NavLink
-							onClick={onClose}
-							to={"ins"}
-							style={({ isActive }) => isActive ? {
-								color: "rgb(59 130 246  )",
-								padding: "12px",
-								width: "100%",
-								// background: "rgb(59 130 246  )",
-							} : inActiveStyles}
-						>
-							Інструкції
-						</NavLink>
-					</TextBlock>
-				
+						} : inActiveStyles}
+					>
+						Конкуренти
+					</NavLink>
+				</TextBlock>
 
 
 
-		
-					<TextBlock className="w-full text-xl text-center  text-green-500/90 rounded font-bold " >
+
+				<TextBlock className="w-full text-xl text-center  text-blue-500 rounded font-bold " >
+					<SiGoogledocs size={48} />
+					<NavLink
+						onClick={onClose}
+						to={"ins"}
+						style={({ isActive }) => isActive ? {
+							color: "rgb(59 130 246  )",
+							padding: "12px",
+							width: "100%",
+							// background: "rgb(59 130 246  )",
+						} : inActiveStyles}
+					>
+						Інструкції
+					</NavLink>
+				</TextBlock>
+
+
+
+
+
+				<TextBlock className="w-full text-xl text-center  text-green-500/90 rounded font-bold " >
 					<GiProgression size={48} />
-						<NavLink
-							onClick={onClose}
-							to={"adapts"}
-							style={({ isActive }) => isActive ? {
-								color: "rgb(34 197 94  )",
-								padding: "12px",
-								width: "100%",
-								// background: "rgb(34 197 94  )",
-							} : inActiveStyles}
-						>
-							Адаптації
-						</NavLink>
-					</TextBlock>
-				
+					<NavLink
+						onClick={onClose}
+						to={"adapts"}
+						style={({ isActive }) => isActive ? {
+							color: "rgb(34 197 94  )",
+							padding: "12px",
+							width: "100%",
+							// background: "rgb(34 197 94  )",
+						} : inActiveStyles}
+					>
+						Адаптації
+					</NavLink>
+				</TextBlock>
+
 
 
 

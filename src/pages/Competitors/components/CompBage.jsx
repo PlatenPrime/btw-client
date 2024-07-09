@@ -25,19 +25,19 @@ export default function CompBage({
             </CardBlock>
 
 
-            <CardBlock>
-
-                <TextBlock
-                    onClick={() => {
-                        window.open(`/comps/${comp?._id}`, "_blank");
-                    }}
-                    className="flex items-center justify-start w-full"
-                >
-                    {comp?.nameukr}
-                </TextBlock>
 
 
-            </CardBlock>
+            <TextBlock
+                onClick={() => {
+                    window.open(`/comps/${comp?._id}`, "_blank");
+                }}
+                className="flex items-center justify-start w-full"
+            >
+                {comp?.nameukr}
+            </TextBlock>
+
+
+
 
         </div>
     )

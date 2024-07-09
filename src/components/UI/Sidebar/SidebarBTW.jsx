@@ -255,14 +255,14 @@ const SidebarBTW = () => {
 
 
 			
-					<TextBlock className="bg-transparent hover:bg-rose-500/90 rounded-2xl " >
+					<TextBlock className="bg-transparent hover:bg-fuchsia-500/90 rounded-2xl " >
 						<NavLink
 							to={"comps"}
 							style={({ isActive }) => isActive ? {
 								color: "white",
 								padding: "12px",
 								width: "100%",
-								background: "rgb(244 63 94 )",
+								background: "rgb(217 70 239 )",
 								borderRadius: "1rem"
 							} : inActiveStyles}
 						>

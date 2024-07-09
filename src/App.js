@@ -14,9 +14,7 @@ import ArtPage from "./pages/Arts/ArtPage";
 import ArtsPage from "./pages/Arts/ArtsPage";
 import PosesPage from "./pages/Poses/PosesPage";
 import CompsPage from "./pages/Competitors/pages/CompsPage";
-import CompsEditPage from "./pages/Competitors/pages/CompsEditPage";
-import CompsListPage from "./pages/Competitors/pages/CompsListPage";
-import CompsLogsPage from "./pages/Competitors/pages/CompsLogsPage";
+
 
 import RowsPage from "./pages/Rows/RowsPage";
 import RowPage from "./pages/Rows/RowPage";
@@ -34,8 +32,7 @@ import AdaptsPage from "./pages/Adaptations/AdaptsPage";
 import AdaptPage from "./pages/Adaptations/AdaptPage";
 import AdaptBlockPage from "./pages/Adaptations/AdaptBlockPage";
 import AdaptTestPage from "./pages/Adaptations/AdaptTestPage";
-import NewCompsPage from "./pages/Competitors/pages/NewCompsPage";
-import NewCompPage from "./pages/Competitors/pages/NewCompPage";
+import CompPage from "./pages/Competitors/pages/CompPage";
 
 
 
@@ -81,15 +78,8 @@ function App() {
 				<Route path="defs" element={<DefsPage />} />
 
 
-				<Route path="comps" element={<CompsPage />} >
-					<Route path="edit" element={<CompsEditPage />} />
-					<Route path="list" element={<CompsListPage />} />
-					<Route path="logs" element={<CompsLogsPage />} />
-				</Route>
-
-				<Route path="newcomps" element={<NewCompsPage />} />
-				<Route path="comps/:id" element={<NewCompPage />} />
-
+				<Route path="comps" element={<CompsPage />} />
+				<Route path="comps/:id" element={<CompPage />} />
 
 
 				<Route path="settings" element={<SettingsPage />} />
