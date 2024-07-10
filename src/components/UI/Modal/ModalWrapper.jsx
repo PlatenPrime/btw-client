@@ -34,21 +34,21 @@ export default function ModalWrapper({ children, onCancel, title }) {
 				>
 
 					<RowBlock
-						className="flex justify-center  px-6 bg-slate-700 rounded-xl "
+						className="flex justify-center  px-6  "
 					>
 
 
 						<TextBlock
-							className="text-white  text-2xl  rounded p-1  "
+							className="text-white bg-slate-700  text-2xl  rounded-xl p-1  "
 						>
 							{title}
 						</TextBlock>
 
 						<ButtonBlock
 							onClick={() => onCancel()}
-							className="red-b px-2 text-xl rounded-full absolute top-1 right-1"
+							className="red-b  text-xl rounded-full absolute  right-0"
 						>
-							<CancelIcon />
+							<CancelIcon size={24} />
 						</ButtonBlock>
 					</RowBlock>
 

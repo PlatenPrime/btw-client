@@ -1,14 +1,59 @@
 import React from 'react'
-import { CardBlock, ContainerBlock, TextBlock } from '../../../components'
+import { CardBlock, ContainerBlock, Spinner, TextBlock } from '../../../components'
+import { MdOutlineCategory, MdOutlinePrecisionManufacturing } from 'react-icons/md'
+import { BiCategory } from 'react-icons/bi'
+import { TbResize } from 'react-icons/tb'
 
 export default function CompInfo({
 
-    comp
+    comp, 
+    isGettingUpdateCompByArtikul
 }) {
     return (
         <ContainerBlock
             className="grid gap-2"
         >
+
+
+            <CardBlock
+                className="flex flex-col lg:flex-row  items-center justify-between gap-2 w-full p-2 rounded-xl
+                bg-gradient-to-b from-fuchsia-500/80 to-fuchsia-700/50 font-bold text-xl
+                "
+            >
+
+
+                <CardBlock
+                    className="flex justify-between gap-2 min-w-fit max-w-lg "
+                >
+                    <TextBlock> <MdOutlinePrecisionManufacturing /></TextBlock>
+                    <TextBlock> {comp?.prod}</TextBlock>
+                </CardBlock>
+
+                <CardBlock
+                    className="flex justify-between gap-2 min-w-fit max-w-lg"
+                >
+                    <TextBlock> <MdOutlineCategory />  </TextBlock>
+                    <TextBlock> {comp?.category}</TextBlock>
+                </CardBlock>
+
+                <CardBlock
+                    className="flex justify-between gap-2 min-w-fit max-w-lg"
+                >
+                    <TextBlock> <BiCategory />   </TextBlock>
+                    <TextBlock> {comp?.subcategory}</TextBlock>
+                </CardBlock>
+
+
+
+                <CardBlock
+                    className="flex justify-between gap-2 min-w-fit max-w-lg"
+                >
+                    <TextBlock> <TbResize />   </TextBlock>
+                    <TextBlock> {comp?.size}</TextBlock>
+                </CardBlock>
+
+
+            </CardBlock>
 
 
 
@@ -35,8 +80,6 @@ export default function CompInfo({
 
 
 
-
-
             <CardBlock
                 className="grid grid-cols-3  gap-2 bg-slate-500/20 rounded-xl"
             >
@@ -51,12 +94,12 @@ export default function CompInfo({
                 <TextBlock
                     className="text-sky-300"
                 >
-                    {comp?.avail?.btrade}
+                    {isGettingUpdateCompByArtikul ? <Spinner color='rgb(217 70 239)'/> : comp?.avail?.btrade}
                 </TextBlock>
                 <TextBlock
                     className="text-green-500"
                 >
-                    {comp?.price?.btrade}
+                    {isGettingUpdateCompByArtikul ? <Spinner color='rgb(217 70 239)'/> : comp?.price?.btrade}
                 </TextBlock>
             </CardBlock>
 
@@ -75,12 +118,12 @@ export default function CompInfo({
                 <TextBlock
                     className="text-sky-300"
                 >
-                    {comp?.avail?.yumi}
+                    {isGettingUpdateCompByArtikul ? <Spinner color='rgb(217 70 239)'/> : comp?.avail?.yumi}
                 </TextBlock>
                 <TextBlock
                     className="text-green-500"
                 >
-                    {comp?.price?.yumi}
+                    {isGettingUpdateCompByArtikul ? <Spinner color='rgb(217 70 239)'/> :  comp?.price?.yumi}
                 </TextBlock>
             </CardBlock>
 
@@ -100,7 +143,7 @@ export default function CompInfo({
                 <TextBlock
                     className="text-sky-300"
                 >
-                    {comp?.avail?.sharte ? '✅' : '❌'}
+                    {isGettingUpdateCompByArtikul ? <Spinner color='rgb(217 70 239)'/> : comp?.avail?.sharte ? '✅' : '❌'}
                 </TextBlock>
 
 
@@ -108,7 +151,7 @@ export default function CompInfo({
                 <TextBlock
                     className="text-green-500"
                 >
-                    {comp?.price?.sharte}
+                    {isGettingUpdateCompByArtikul ? <Spinner color='rgb(217 70 239)'/> :  comp?.price?.sharte}
                 </TextBlock>
             </CardBlock>
 
@@ -130,7 +173,7 @@ export default function CompInfo({
                 <TextBlock
                     className="text-sky-300"
                 >
-                    {comp?.avail?.air ? '✅' : '❌'}
+                    {isGettingUpdateCompByArtikul ? <Spinner color='rgb(217 70 239)'/> :  comp?.avail?.air ? '✅' : '❌'}
                 </TextBlock>
 
 
@@ -138,7 +181,7 @@ export default function CompInfo({
                 <TextBlock
                     className="text-green-500"
                 >
-                    {comp?.price?.air}
+                    {isGettingUpdateCompByArtikul ? <Spinner color='rgb(217 70 239)'/> :  comp?.price?.air}
                 </TextBlock>
             </CardBlock>
 
@@ -157,7 +200,7 @@ export default function CompInfo({
                 <TextBlock
                     className="text-sky-300"
                 >
-                    {comp?.avail?.best ? '✅' : '❌'}
+                    {isGettingUpdateCompByArtikul ? <Spinner color='rgb(217 70 239)'/> :  comp?.avail?.best ? '✅' : '❌'}
                 </TextBlock>
 
 
@@ -165,7 +208,7 @@ export default function CompInfo({
                 <TextBlock
                     className="text-green-500"
                 >
-                    {comp?.price?.best}
+                    {isGettingUpdateCompByArtikul ? <Spinner color='rgb(217 70 239)'/> :  comp?.price?.best}
                 </TextBlock>
             </CardBlock>
 

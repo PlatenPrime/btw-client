@@ -33,7 +33,7 @@ export default function CreateCompModal({
     const [state, setState] = useState(initialStateForm)
 
     console.log(state);
-    
+
 
     const handleChange = (e) => {
         setState({
@@ -93,20 +93,26 @@ export default function CreateCompModal({
                     >
                         <TextBlock
                             className="text-xl font-bold p-2 " >
-                            {artsDB?.find((art) => art.artikul === state.artikul)?.nameukr || "Назва артикулу"}
+                            {artsDB?.find((art) => art.artikul === state.artikul)?.nameukr }
                         </TextBlock>
 
-                        <TextBlock
-                            className="text-lg font-bold"
-                        >
-                            {categories[state.artikul?.slice(0, 2)] || "Категорія"}
-                        </TextBlock>
 
-                        <TextBlock
-                            className="text-base "
-                        >
-                            {subcategories[state.artikul?.slice(0, 4)] || "Підкатегорія"}
-                        </TextBlock>
+
+                        <CardBlock>
+
+                            <TextBlock
+                                className="text-lg font-bold"
+                            >
+                                {categories[state.artikul?.slice(0, 2)] }
+                            </TextBlock>
+
+                            <TextBlock
+                                className="text-base "
+                            >
+                                {subcategories[state.artikul?.slice(0, 4)] }
+                            </TextBlock>
+
+                        </CardBlock>
 
                     </CardBlock>
 
