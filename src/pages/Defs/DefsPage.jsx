@@ -51,7 +51,7 @@ export default function DefsPage() {
 			className=" "
 		>
 			<HeaderBlock
-				className="bg-pink-500 shadow-lg shadow-pink-500"
+				className="bg-pink-500 shadow-sm shadow-pink-500"
 			>
 				Дефіцити
 			</HeaderBlock>
@@ -63,7 +63,24 @@ export default function DefsPage() {
 			/>
 
 			<ButtonGroup>
-				<ButtonGroup.Navigation></ButtonGroup.Navigation>
+				<ButtonGroup.Navigation
+				className="grid grid-cols-2 gap-2"
+				>
+
+					<ButtonBlock
+						className={` ${isMorning ? 'pink-b-n' : 'pink-b'}   `}
+						onClick={() => setIsMorning(true)}
+					>
+						Ранок
+					</ButtonBlock>
+
+					<ButtonBlock
+						className={` ${isMorning ? 'pink-b' : 'pink-b-n'}   `}
+						onClick={() => setIsMorning(false)}
+					>
+						Актуальні
+					</ButtonBlock>
+				</ButtonGroup.Navigation>
 				<ButtonGroup.Actions>
 					<ButtonBlock
 						className="yellow-b"
@@ -74,23 +91,7 @@ export default function DefsPage() {
 				</ButtonGroup.Actions>
 			</ButtonGroup>
 
-			<ButtonGroup>
 
-				<ButtonBlock
-					className={` ${isMorning ? 'pink-b-n' : 'pink-b'}   `}
-					onClick={() => setIsMorning(true)}
-				>
-					Ранок
-				</ButtonBlock>
-
-				<ButtonBlock
-					className={` ${isMorning ? 'pink-b' : 'pink-b-n'}   `}
-					onClick={() => setIsMorning(false)}
-				>
-					Актуальні
-				</ButtonBlock>
-
-			</ButtonGroup>
 
 
 
