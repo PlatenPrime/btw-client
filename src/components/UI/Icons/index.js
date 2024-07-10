@@ -19,3 +19,5 @@ export { default as DoneIcon } from './DoneIcon';
 export { default as TestIcon } from './TestIcon';
 export { default as CalculateIcon } from './CalculateIcon';
 export { default as FilterIcon } from './FilterIcon';
+export { default as ListIcon } from './ListIcon';
+export { default as TableIcon } from './TableIcon';

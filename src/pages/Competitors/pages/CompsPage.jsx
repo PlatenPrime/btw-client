@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { ButtonBlock, ButtonGroup, HeaderBlock, PageBTW, } from '../../../components'
 import useFetchAllComps from '../hooks/useFetchAllComps';
 
-import { AddIcon, ExcelIcon } from '../../../components/UI/Icons';
+import { AddIcon, ExcelIcon, ListIcon, TableIcon } from '../../../components/UI/Icons';
 import useFetchArts from '../../../hooks/useFetchArts';
 import useCompStore from '../stores/compStore';
 import CreateCompModal from '../components/modals/CreateCompModal';
@@ -41,21 +41,23 @@ export default function NewCompsPage() {
 
             <ButtonGroup>
 
-                <ButtonGroup.Navigation>
+                <ButtonGroup.Navigation
+                    className="grid grid-cols-2 gap-2"
+                >
 
-                    {!isList && <ButtonBlock
-                        className="fuchsia-b-n"
+                    <ButtonBlock
+                        className={` ${isList ? "fuchsia-b-n" : "fuchsia-b"} gap-2 `}
                         onClick={() => setIsList(true)}
                     >
-                        Список
-                    </ButtonBlock>}
+                        <ListIcon size={24}/> <span>Список</span>  
+                    </ButtonBlock>
 
-                    {isList && <ButtonBlock
-                        className="fuchsia-b-n"
+                    <ButtonBlock
+                        className={` ${!isList ? "fuchsia-b-n" : "fuchsia-b"} gap-2`}
                         onClick={() => setIsList(false)}
                     >
-                        Таблиця
-                    </ButtonBlock>}
+                        <TableIcon size={20}/> <span>Таблиця</span> 
+                    </ButtonBlock>
 
                 </ButtonGroup.Navigation>
 
