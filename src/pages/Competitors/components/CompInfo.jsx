@@ -143,7 +143,7 @@ export default function CompInfo({
                 <TextBlock
                     className="text-sky-300"
                 >
-                    {isGettingUpdateCompByArtikul ? <Spinner color='rgb(217 70 239)'/> : comp?.avail?.sharte ? '✅' : '❌'}
+                    {isGettingUpdateCompByArtikul ? <Spinner color='rgb(217 70 239)'/> : comp?.avail?.sharte === "N/A" ? "N/A": comp?.avail?.sharte ? '✅' : '❌'}
                 </TextBlock>
 
 
@@ -173,7 +173,7 @@ export default function CompInfo({
                 <TextBlock
                     className="text-sky-300"
                 >
-                    {isGettingUpdateCompByArtikul ? <Spinner color='rgb(217 70 239)'/> :  comp?.avail?.air ? '✅' : '❌'}
+                    {isGettingUpdateCompByArtikul ? <Spinner color='rgb(217 70 239)'/> :comp?.avail?.air === "N/A" ? "N/A":  comp?.avail?.air ? '✅' : '❌'}
                 </TextBlock>
 
 
@@ -200,7 +200,7 @@ export default function CompInfo({
                 <TextBlock
                     className="text-sky-300"
                 >
-                    {isGettingUpdateCompByArtikul ? <Spinner color='rgb(217 70 239)'/> :  comp?.avail?.best ? '✅' : '❌'}
+                    {isGettingUpdateCompByArtikul ? <Spinner color='rgb(217 70 239)'/> : comp?.avail?.best === "N/A" ? "N/A":  comp?.avail?.best ? '✅' : '❌'}
                 </TextBlock>
 
 
