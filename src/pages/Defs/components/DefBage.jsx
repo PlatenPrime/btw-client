@@ -52,7 +52,7 @@ export default function DefBage({
                         className=" justify-center items-center w-full text-center text-base italic"
                     >
 
-                        {def?.nameukr}
+                        {def?.nameukr?.slice(10)}
                     </TextBlock>
 
                 </CardBlock>

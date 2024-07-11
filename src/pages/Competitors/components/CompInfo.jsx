@@ -58,7 +58,7 @@ export default function CompInfo({
 
 
             <CardBlock
-                className="grid grid-cols-3  gap-2 bg-gradient-to-b from-slate-500/50 to-slate-700/50  rounded-xl p-2"
+                className="grid grid-cols-3  gap-2 bg-gradient-to-b from-slate-700/50 to-slate-900/50  rounded-xl p-2"
             >
                 <TextBlock
                     className="font-bold"

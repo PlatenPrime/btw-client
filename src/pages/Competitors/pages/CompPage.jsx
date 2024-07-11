@@ -10,6 +10,7 @@ import { BiCategory } from 'react-icons/bi'
 import { TbResize } from 'react-icons/tb'
 import useCompStore from '../stores/compStore'
 import { toast } from 'react-toastify'
+import useFetchArts from '../../../hooks/useFetchArts'
 
 export default function CompPage() {
 
@@ -18,6 +19,7 @@ export default function CompPage() {
     const navigate = useNavigate()
 
     const { comp, isCompLoading, error } = useFetchCompById(id)
+    const {artsDB} = useFetchArts()
 
     const { updateCompById, deleteCompById, getUpdatedCompByArtikul } = useCompStore()
 
@@ -77,7 +79,7 @@ export default function CompPage() {
         >
 
             <HeaderBlock
-                className="bg-fuchsia-500 shadow-lg shadow-fuchsia-500"
+                className="bg-fuchsia-500 shadow-sm shadow-fuchsia-500"
             >
                 Конкуренти {comp?.artikul}
             </HeaderBlock>
@@ -139,7 +141,7 @@ export default function CompPage() {
                 <CardBlock
                     className="
 					 lg:w-fit flex justify-center items-center 
-						bg-white rounded-xl shadow-lg shadow-white 
+						bg-white rounded-xl shadow-sm shadow-white 
 						"
                 >
                     <ImageArt size={100} artikul={comp?.artikul} className="rounded-xl" />
@@ -148,7 +150,16 @@ export default function CompPage() {
 
 
                 <TextBlock
-                    className="text-3xl text-center   p-1 bg-gradient-to-b  from-sky-500/50 to-sky-900/50  rounded-xl w-full"
+                    className=" w-full flex flex-col items-center justify-center px-2 
+                   bg-gradient-to-b from-sky-500/50 to-sky-800/20
+                   hover:shadow-sm hover:shadow-sky-500 hover:bg-sky-500
+                    cursor-pointer rounded-xl text-2xl "
+
+                    onClick={() => {
+                        const artId = artsDB?.find(art => art.artikul === comp?.artikul)?._id || "";
+                        const url = `/arts/${artId}`;
+                        window.open(url, "_blank");
+                    }}
                 >
                     {comp?.nameukr}
                 </TextBlock>
