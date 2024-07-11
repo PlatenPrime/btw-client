@@ -10,7 +10,7 @@ export default function CompBage({
 
 
             className="
-            flex flex-col md:flex-row items-stretch gap-2 w-full
+            flex flex-row items-stretch gap-2 w-full
             lg:text-xl
         hover:shadow-2xl hover:shadow-lg  hover:shadow-fuchsia-500 hover:bg-fuchsia-500   bg-gradient-to-b from-fuchsia-500/50 to-fuchsia-700/50
          rounded-2xl cursor-pointer
@@ -31,7 +31,7 @@ export default function CompBage({
                 onClick={() => {
                     window.open(`/comps/${comp?._id}`, "_blank");
                 }}
-                className="flex items-center justify-start w-full"
+                className="flex items-center justify-start w-full text-left"
             >
                 {comp?.nameukr}
             </TextBlock>

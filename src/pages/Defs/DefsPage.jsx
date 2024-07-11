@@ -10,6 +10,7 @@ import { formatDateToUkrainianFull, formatDateToUkrainianShort } from "../../uti
 import { CalculateIcon } from '../../components/UI/Icons'
 import axios from '../../utils/axios'
 import { toast } from 'react-toastify'
+import { MdSunny, MdSunnySnowing } from 'react-icons/md'
 
 
 export default function DefsPage() {
@@ -71,22 +72,22 @@ export default function DefsPage() {
 						className={` ${isMorning ? 'pink-b-n' : 'pink-b'}   `}
 						onClick={() => setIsMorning(true)}
 					>
-						Ранок
+					<MdSunnySnowing size={24} color='' />	Ранок
 					</ButtonBlock>
 
 					<ButtonBlock
 						className={` ${isMorning ? 'pink-b' : 'pink-b-n'}   `}
 						onClick={() => setIsMorning(false)}
 					>
-						Актуальні
+						<MdSunny size={24} color='' />Актуальні
 					</ButtonBlock>
 				</ButtonGroup.Navigation>
 				<ButtonGroup.Actions>
 					<ButtonBlock
-						className="yellow-b"
+						className="sky-b"
 						onClick={() => setIsShowModalCalculate(true)}
 					>
-						<CalculateIcon />	Порахувати
+						<CalculateIcon size={24} />	Порахувати
 					</ButtonBlock>
 				</ButtonGroup.Actions>
 			</ButtonGroup>
@@ -99,7 +100,8 @@ export default function DefsPage() {
 
 			{isShowModalCalculate &&
 				<ModalConfirm
-					ask="Порахувати дефіцити поза розписом? Це займе декілька хвилин."
+					ask={`Порахувати дефіцити поза розписом?
+						Це займе декілька хвилин. `}
 					onConfirm={handleCalculateDefsOutOfSchedule}
 					onCancel={() => setIsShowModalCalculate(false)}
 					isConfirming={false}

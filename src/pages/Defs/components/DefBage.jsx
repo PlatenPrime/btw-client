@@ -31,7 +31,7 @@ export default function DefBage({
                 <CardBlock
                     className=" w-full flex flex-col items-center justify-center px-2 
                 bg-gradient-to-b from-sky-500/50 to-sky-800/20
-                hover:shadow-lg hover:shadow-sky-500
+                hover:shadow-lg hover:shadow-sky-500 hover:bg-sky-500
                  cursor-pointer rounded-r-xl "
 
                     onClick={() => {
@@ -70,7 +70,7 @@ export default function DefBage({
 
 
                 <CardBlock
-                    className=" p-2 flex justify-between w-full bg-gradient-to-b from-slate-700/50 to-slate-900/50 rounded-lg"
+                    className=" p-2 flex justify-between w-full bg-gradient-to-b from-slate-500/50 to-slate-900/50 rounded-lg"
                 >
                     <TextBlock className=" " >
                         Запаси:
@@ -85,7 +85,7 @@ export default function DefBage({
 
 
                 <CardBlock
-                    className=" p-2 flex justify-between w-full bg-gradient-to-b from-slate-700/50 to-slate-900/50 rounded-lg"
+                    className=" p-2 flex justify-between w-full bg-gradient-to-b from-slate-500/50 to-slate-900/50 rounded-lg"
                 >
                     <TextBlock className=" " >
                         База:
@@ -100,7 +100,7 @@ export default function DefBage({
 
 
                 <CardBlock
-                    className=" p-2 flex justify-between w-full bg-gradient-to-b from-slate-700/50 to-slate-900/50 rounded-lg"
+                    className=" p-2 flex justify-between w-full bg-gradient-to-b from-slate-500/50 to-slate-900/50 rounded-lg"
                 >
                     <TextBlock className=" " >
                         Дефіцит:
@@ -122,7 +122,7 @@ export default function DefBage({
             >
 
                 {asks?.find(ask => ask.artikul === def.artikul)?.status === "new" ?
-                    <TextBlock className="text-xl text-center text-white">
+                    <TextBlock className="text-xl text-center text-white p-2">
                         Запит в роботі
                     </TextBlock>
                     :

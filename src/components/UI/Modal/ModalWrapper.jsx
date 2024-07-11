@@ -26,7 +26,7 @@ export default function ModalWrapper({ children, onCancel, title }) {
 
 
 
-			<div className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 overflow-y-auto max-h-full  w-full lg:w-fit  ">
+			<div className=" overflow-y-auto max-h-full   w-fit  ">
 
 
 				<div className="relative space-y-8 bg-slate-900 backdrop-blur backdrop-filter bg-opacity-90 min-w-fit  max-w-3xl p-4 rounded-lg shadow-lg  "

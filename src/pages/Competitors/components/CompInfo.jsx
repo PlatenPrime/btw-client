@@ -6,7 +6,7 @@ import { TbResize } from 'react-icons/tb'
 
 export default function CompInfo({
 
-    comp, 
+    comp,
     isGettingUpdateCompByArtikul
 }) {
     return (
@@ -58,7 +58,7 @@ export default function CompInfo({
 
 
             <CardBlock
-                className="grid grid-cols-3  gap-2  rounded-xl"
+                className="grid grid-cols-3  gap-2 bg-gradient-to-b from-slate-500/50 to-slate-700/50  rounded-xl p-2"
             >
                 <TextBlock
                     className="font-bold"
@@ -81,7 +81,7 @@ export default function CompInfo({
 
 
             <CardBlock
-                className="grid grid-cols-3  gap-2 bg-slate-500/20 rounded-xl"
+                className="grid grid-cols-3  gap-2 bg-gradient-to-b from-slate-500/50 to-slate-700/50  rounded-xl"
             >
                 <TextBlock
                     onClick={() => window.open(`https://sharik.ua/search/?q=${comp?.artikul}`)}
@@ -92,58 +92,58 @@ export default function CompInfo({
                     BTrade
                 </TextBlock>
                 <TextBlock
-                    className="text-sky-300"
+                    className="text-sky-200"
                 >
-                    {isGettingUpdateCompByArtikul ? <Spinner color='rgb(217 70 239)'/> : comp?.avail?.btrade}
+                    {isGettingUpdateCompByArtikul ? <Spinner color='rgb(217 70 239)' /> : comp?.avail?.btrade}
                 </TextBlock>
                 <TextBlock
                     className="text-green-500"
                 >
-                    {isGettingUpdateCompByArtikul ? <Spinner color='rgb(217 70 239)'/> : comp?.price?.btrade}
+                    {isGettingUpdateCompByArtikul ? <Spinner color='rgb(217 70 239)' /> : comp?.price?.btrade}
                 </TextBlock>
             </CardBlock>
 
 
             <CardBlock
-                className="grid grid-cols-3  gap-2 bg-slate-500/20 rounded-xl"
+                className="grid grid-cols-3  gap-2 bg-gradient-to-b from-slate-500/50 to-slate-700/50  rounded-xl"
             >
                 <TextBlock
                     onClick={() => { if (comp?.competitorsLinks?.yumiLink) window.open(comp?.competitorsLinks?.yumiLink) }}
-                    className="cursor-pointer hover:bg-amber-500 rounded-xl p-2 
-                        bg-gradient-to-b from-amber-500/50 to-amber-900/50
-                        "
+                    className={`cursor-pointer  rounded-xl p-2 
+                      ${comp?.competitorsLinks?.yumiLink ? "hover:bg-amber-500 bg-gradient-to-b from-amber-500/50 to-amber-900/50" : "text-gray-400"} 
+                        `}
                 >
                     Yumi
                 </TextBlock>
                 <TextBlock
-                    className="text-sky-300"
+                    className="text-sky-200"
                 >
-                    {isGettingUpdateCompByArtikul ? <Spinner color='rgb(217 70 239)'/> : comp?.avail?.yumi}
+                    {isGettingUpdateCompByArtikul ? <Spinner color='rgb(217 70 239)' /> : comp?.avail?.yumi}
                 </TextBlock>
                 <TextBlock
                     className="text-green-500"
                 >
-                    {isGettingUpdateCompByArtikul ? <Spinner color='rgb(217 70 239)'/> :  comp?.price?.yumi}
+                    {isGettingUpdateCompByArtikul ? <Spinner color='rgb(217 70 239)' /> : comp?.price?.yumi}
                 </TextBlock>
             </CardBlock>
 
 
             <CardBlock
-                className="grid grid-cols-3  gap-2 bg-slate-500/20 rounded-xl"
+                className="grid grid-cols-3  gap-2 bg-gradient-to-b from-slate-500/50 to-slate-700/50  rounded-xl"
             >
                 <TextBlock
                     onClick={() => { if (comp?.competitorsLinks?.sharteLink) window.open(comp?.competitorsLinks?.sharteLink) }}
-                    className="cursor-pointer hover:bg-blue-500 rounded-xl p-2 
-                        bg-gradient-to-b from-blue-500/50 to-blue-900/50
-                        "
+                    className={` rounded-xl p-2 
+                     ${comp?.competitorsLinks?.sharteLink ? "cursor-pointer  bg-gradient-to-b from-blue-500/50 to-blue-900/50 hover:bg-blue-500" : "text-gray-400"}  
+                        `}
                 >
                     Sharte
                 </TextBlock>
 
                 <TextBlock
-                    className="text-sky-300"
+                    className="text-sky-200"
                 >
-                    {isGettingUpdateCompByArtikul ? <Spinner color='rgb(217 70 239)'/> : comp?.avail?.sharte === "N/A" ? "N/A": comp?.avail?.sharte ? '✅' : '❌'}
+                    {isGettingUpdateCompByArtikul ? <Spinner color='rgb(217 70 239)' /> : comp?.avail?.sharte === "N/A" ? "N/A" : comp?.avail?.sharte ? '✅' : '❌'}
                 </TextBlock>
 
 
@@ -151,7 +151,7 @@ export default function CompInfo({
                 <TextBlock
                     className="text-green-500"
                 >
-                    {isGettingUpdateCompByArtikul ? <Spinner color='rgb(217 70 239)'/> :  comp?.price?.sharte}
+                    {isGettingUpdateCompByArtikul ? <Spinner color='rgb(217 70 239)' /> : comp?.price?.sharte}
                 </TextBlock>
             </CardBlock>
 
@@ -159,21 +159,21 @@ export default function CompInfo({
 
 
             <CardBlock
-                className="grid grid-cols-3  gap-2 bg-slate-500/20 rounded-xl"
+                className="grid grid-cols-3  gap-2 bg-gradient-to-b from-slate-500/50 to-slate-700/50  rounded-xl"
             >
                 <TextBlock
                     onClick={() => { if (comp?.competitorsLinks?.airLink) window.open(comp?.competitorsLinks?.airLink) }}
-                    className="cursor-pointer hover:bg-green-500 rounded-xl p-2 
-                        bg-gradient-to-b from-green-500/50 to-green-900/50
-                        "
+                    className={`  rounded-xl p-2 
+                     ${comp?.competitorsLinks?.airLink ? "cursor-pointer bg-gradient-to-b from-green-500/50 to-green-900/50 hover:bg-green-500" : "text-gray-400"}   
+                        `}
                 >
                     Air
                 </TextBlock>
 
                 <TextBlock
-                    className="text-sky-300"
+                    className="text-sky-200"
                 >
-                    {isGettingUpdateCompByArtikul ? <Spinner color='rgb(217 70 239)'/> :comp?.avail?.air === "N/A" ? "N/A":  comp?.avail?.air ? '✅' : '❌'}
+                    {isGettingUpdateCompByArtikul ? <Spinner color='rgb(217 70 239)' /> : comp?.avail?.air === "N/A" ? "N/A" : comp?.avail?.air ? '✅' : '❌'}
                 </TextBlock>
 
 
@@ -181,26 +181,26 @@ export default function CompInfo({
                 <TextBlock
                     className="text-green-500"
                 >
-                    {isGettingUpdateCompByArtikul ? <Spinner color='rgb(217 70 239)'/> :  comp?.price?.air}
+                    {isGettingUpdateCompByArtikul ? <Spinner color='rgb(217 70 239)' /> : comp?.price?.air}
                 </TextBlock>
             </CardBlock>
 
             <CardBlock
-                className="grid grid-cols-3  gap-2 bg-slate-500/20 rounded-xl"
+                className="grid grid-cols-3  gap-2 bg-gradient-to-b from-slate-500/50 to-slate-700/50  rounded-xl"
             >
                 <TextBlock
                     onClick={() => { if (comp?.competitorsLinks?.bestLink) window.open(comp?.competitorsLinks?.bestLink) }}
-                    className="cursor-pointer hover:bg-pink-500 rounded-xl p-2 
-                        bg-gradient-to-b from-pink-500/50 to-pink-900/50
-                        "
+                    className={`  rounded-xl p-2 
+                      ${comp?.competitorsLinks?.bestLink ? "cursor-pointer bg-gradient-to-b from-pink-500/50 to-pink-900/50 hover:bg-pink-500" : "text-gray-400"}  
+                        `}
                 >
                     Best
                 </TextBlock>
 
                 <TextBlock
-                    className="text-sky-300"
+                    className="text-sky-200"
                 >
-                    {isGettingUpdateCompByArtikul ? <Spinner color='rgb(217 70 239)'/> : comp?.avail?.best === "N/A" ? "N/A":  comp?.avail?.best ? '✅' : '❌'}
+                    {isGettingUpdateCompByArtikul ? <Spinner color='rgb(217 70 239)' /> : comp?.avail?.best === "N/A" ? "N/A" : comp?.avail?.best ? '✅' : '❌'}
                 </TextBlock>
 
 
@@ -208,7 +208,7 @@ export default function CompInfo({
                 <TextBlock
                     className="text-green-500"
                 >
-                    {isGettingUpdateCompByArtikul ? <Spinner color='rgb(217 70 239)'/> :  comp?.price?.best}
+                    {isGettingUpdateCompByArtikul ? <Spinner color='rgb(217 70 239)' /> : comp?.price?.best}
                 </TextBlock>
             </CardBlock>
 
