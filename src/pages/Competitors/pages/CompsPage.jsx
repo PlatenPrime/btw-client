@@ -20,7 +20,6 @@ export default function NewCompsPage() {
     const { createComp } = useCompStore()
 
 
-    const [isCompCreating, setIsCompCreating] = useState(false)
     const [isShowModalCreateComp, setIsShowModalCreateComp] = useState(false)
 
 
@@ -85,8 +84,7 @@ export default function NewCompsPage() {
                 setIsShowModalCreateComp={setIsShowModalCreateComp}
                 artsDB={artsDB}
                 comps={comps}
-                isCompCreating={isCompCreating}
-                setIsCompCreating={setIsCompCreating}
+
             />
 
 

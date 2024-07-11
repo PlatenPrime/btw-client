@@ -23,8 +23,8 @@ export default function CompsList({
 
 
     function handleFilterComps(searchValue) {
-        const filtered = comps.filter((comp) =>
-            comp.nameukr.toLowerCase().includes(searchValue.toLowerCase().trim())
+        const filtered = comps?.filter((comp) =>
+            comp?.nameukr?.toLowerCase().includes(searchValue.toLowerCase().trim())
         );
 
         if (filtered.length === 0) {

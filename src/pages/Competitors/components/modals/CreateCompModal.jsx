@@ -10,8 +10,6 @@ export default function CreateCompModal({
     isShowModalCreateComp,
     setIsShowModalCreateComp,
     artsDB,
-    isCompCreating,
-    setIsCompCreating,
     comps
 
 }) {
@@ -31,8 +29,9 @@ export default function CreateCompModal({
 
 
     const [state, setState] = useState(initialStateForm)
+    const [isCompCreating, setIsCompCreating] = useState(false)
 
-    console.log(state);
+
 
 
     const handleChange = (e) => {
@@ -42,18 +41,19 @@ export default function CreateCompModal({
         });
     }
 
-    const handleCreateComp = async () => {
+    const handleCreateComp = async (compData) => {
         try {
 
             setIsCompCreating(true)
 
-            await createComp(state)
+            await createComp(compData)
 
         } catch (error) {
             console.log(error);
 
         } finally {
             setIsCompCreating(false)
+            setIsShowModalCreateComp(false)
         }
     }
 
@@ -93,7 +93,7 @@ export default function CreateCompModal({
                     >
                         <TextBlock
                             className="text-xl font-bold p-2 " >
-                            {artsDB?.find((art) => art.artikul === state.artikul)?.nameukr }
+                            {artsDB?.find((art) => art.artikul === state.artikul)?.nameukr}
                         </TextBlock>
 
 
@@ -103,13 +103,13 @@ export default function CreateCompModal({
                             <TextBlock
                                 className="text-lg font-bold"
                             >
-                                {categories[state.artikul?.slice(0, 2)] }
+                                {categories[state.artikul?.slice(0, 2)]}
                             </TextBlock>
 
                             <TextBlock
                                 className="text-base "
                             >
-                                {subcategories[state.artikul?.slice(0, 4)] }
+                                {subcategories[state.artikul?.slice(0, 4)]}
                             </TextBlock>
 
                         </CardBlock>
@@ -204,8 +204,39 @@ export default function CreateCompModal({
 
                 </CardBlock>
 
+
+
+
+
+
+
+
                 <CardBlock
                     className="flex flex-col gap-2 bg-slate-500/10 p-2 rounded-xl ">
+
+
+
+
+
+                    <CardBlock
+                        className="grid grid-cols-1 md:grid-cols-2 space-x-2">
+                        <label
+                            className=" justify-self-center self-center md:justify-self-start" htmlFor="yumiLink">
+                            Yumi:
+                        </label>
+                        <InputBlock
+                            type="text"
+                            id="yumiLink"
+                            name="yumiLink"
+                            autoComplete="off"
+                            value={state.yumiLink}
+                            onChange={handleChange}
+                            placeholder="https://yumi-market.com.ua/ua/"
+                        />
+                    </CardBlock>
+
+
+
 
                     <CardBlock
                         className="grid grid-cols-1 md:grid-cols-2 space-x-2">
@@ -226,22 +257,7 @@ export default function CreateCompModal({
                     </CardBlock>
 
 
-                    <CardBlock
-                        className="grid grid-cols-1 md:grid-cols-2 space-x-2">
-                        <label
-                            className=" justify-self-center self-center md:justify-self-start" htmlFor="yumiLink">
-                            Yumi:
-                        </label>
-                        <InputBlock
-                            type="text"
-                            id="yumiLink"
-                            name="yumiLink"
-                            autoComplete="off"
-                            value={state.yumiLink}
-                            onChange={handleChange}
-                            placeholder="https://yumi-market.com.ua/ua/"
-                        />
-                    </CardBlock>
+
 
 
                     <CardBlock
@@ -314,14 +330,25 @@ export default function CreateCompModal({
                         disabled={!state.artikul || isExist || !isExistInDB || isCompCreating}
                         type="submit"
                         className="green-b flex justify-center items-center"
-                        onClick={handleCreateComp}
-                    // onClick={() => handleCreateAsk({
-                    //     artikul: newAskArtikul,
-                    //     quant: newAskQuant,
-                    //     status: "new",
-                    //     com: newAskCom,
-                    //     asker: user?._id
-                    // })}
+
+                        onClick={() =>
+                            handleCreateComp({
+                                artikul: state.artikul,
+                                prod: state.prod,
+                                size: state.size,
+                                category: categories[state.artikul?.slice(0, 2)],
+                                subcategory: subcategories[state.artikul?.slice(0, 4)],
+                                nameukr: artsDB?.find((art) => art.artikul === state.artikul)?.nameukr,
+                                competitorsLinks: {
+                                    sharteLink: state.sharteLink,
+                                    yumiLink: state.yumiLink,
+                                    airLink: state.airLink,
+                                    bestLink: state.bestLink
+                                }
+                            })
+
+
+                        }
                     >
 
 
