@@ -141,67 +141,49 @@ export default function CreateCompModal({
                     </CardBlock>
 
 
-                    <CardBlock
-                        className="grid grid-cols-1 md:grid-cols-2 space-x-2">
-                        <label
-                            className=" justify-self-center self-center md:justify-self-start" htmlFor="prod">
+                    <CardBlock className="grid grid-cols-1 md:grid-cols-2 space-x-2">
+                        <label className="justify-self-center self-center md:justify-self-start" htmlFor="prod">
                             Виробник:
                         </label>
                         <select
-                            className="InputBlock "
+                            className="InputBlock"
                             name="prod"
                             id=""
+                            value={state.prod || "default"}
                             onChange={handleChange}
                         >
-                            <option
-                                value="default"
-                                disabled
-                                selected
-                                className="bg-slate-900" >
+                            <option value="default" disabled className="bg-slate-900">
                                 Виберіть виробника
                             </option>
                             {prods?.map((prod) => (
-                                <option
-                                    className="InputBlock bg-slate-900"
-                                    key={prod}
-                                    value={prod} >
+                                <option className="InputBlock bg-slate-900" key={prod} value={prod}>
                                     {prod}
                                 </option>
                             ))}
                         </select>
                     </CardBlock>
 
-
-                    <CardBlock
-                        className="grid grid-cols-1 md:grid-cols-2 space-x-2">
-                        <label
-                            className=" justify-self-center self-center md:justify-self-start"
-                            htmlFor="size">
+                    <CardBlock className="grid grid-cols-1 md:grid-cols-2 space-x-2">
+                        <label className="justify-self-center self-center md:justify-self-start" htmlFor="size">
                             Розмір:
                         </label>
                         <select
-                            className="InputBlock "
+                            className="InputBlock"
                             name="size"
                             id=""
+                            value={state.size || "default"}
                             onChange={handleChange}
                         >
-                            <option value="default"
-                                disabled
-                                selected
-                                className="bg-slate-900" >
+                            <option value="default" disabled className="bg-slate-900">
                                 Виберіть розмір
                             </option>
                             {sizesList?.map((size) => (
-                                <option
-                                    className="InputBlock bg-slate-900"
-                                    key={size}
-                                    value={size} >
+                                <option className="InputBlock bg-slate-900" key={size} value={size}>
                                     {size}
                                 </option>
                             ))}
                         </select>
                     </CardBlock>
-
                 </CardBlock>
 
 

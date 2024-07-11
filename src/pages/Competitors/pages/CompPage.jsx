@@ -1,7 +1,7 @@
 
 import React, { useState } from 'react'
-import { ButtonBlock, ButtonGroup, CardBlock, ContainerBlock, HeaderBlock, ImageArt, PageBTW, TextBlock } from '../../../components'
-import { Link, useParams } from 'react-router-dom'
+import { ButtonBlock, ButtonGroup, CardBlock, ContainerBlock, HeaderBlock, ImageArt, ModalDelete, PageBTW, TextBlock } from '../../../components'
+import { Link, useNavigate, useParams } from 'react-router-dom'
 import useFetchCompById from '../hooks/useFetchCompById'
 import { DeleteIcon, EditIcon, UpdateIcon } from '../../../components/UI/Icons'
 import CompInfo from '../components/CompInfo'
@@ -15,6 +15,7 @@ export default function CompPage() {
 
 
     const { id } = useParams()
+    const navigate = useNavigate()
 
     const { comp, isCompLoading, error } = useFetchCompById(id)
 
@@ -23,6 +24,12 @@ export default function CompPage() {
 
 
     const [isGettingUpdateCompByArtikul, setGettingUpdateCompByArtikul] = useState(false)
+
+    const [isShowModalDeleteComp, setIsShowModalDeleteComp] = useState(false)
+
+
+
+    const [isCompDeleting, setIsCompDeleting] = useState(false)
 
 
 
@@ -38,8 +45,23 @@ export default function CompPage() {
         } finally {
             setGettingUpdateCompByArtikul(false)
         }
+    }
 
 
+
+    const handleDeleteCompById = async () => {
+        try {
+
+            setIsCompDeleting(true)
+            await deleteCompById(id)
+            navigate("/comps")
+            toast.success(`Видалено артикул ${comp?.artikul}`);
+        } catch (error) {
+            console.log(error);
+        } finally {
+            setIsCompDeleting(false)
+            setIsShowModalDeleteComp(false)
+        }
     }
 
 
@@ -78,7 +100,8 @@ export default function CompPage() {
                     </ButtonBlock>
 
                     <ButtonBlock
-                        className=""
+                        className="red-b"
+                        onClick={() => setIsShowModalDeleteComp(true)}
                     >
                         <DeleteIcon /> Видалити
                     </ButtonBlock>
@@ -86,6 +109,28 @@ export default function CompPage() {
 
                 </ButtonGroup.Actions>
             </ButtonGroup>
+
+
+
+
+            {isShowModalDeleteComp && <ModalDelete
+                ask={`Видалити артикул ${comp?.artikul} ?`}
+                onDelete={handleDeleteCompById}
+                onCancel={() => setIsShowModalDeleteComp(false)}
+                isDeleting={isCompDeleting}
+            />}
+
+
+
+
+
+
+
+
+
+
+
+
 
             <ContainerBlock
                 className="flex   gap-2 "
@@ -110,7 +155,7 @@ export default function CompPage() {
             </ContainerBlock>
 
 
-    
+
 
 
             <CompInfo
