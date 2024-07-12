@@ -4,13 +4,15 @@ import { ButtonBlock, ButtonGroup, CardBlock, ContainerBlock, HeaderBlock, Image
 import { Link, useNavigate, useParams } from 'react-router-dom'
 import useFetchCompById from '../hooks/useFetchCompById'
 import { DeleteIcon, EditIcon, UpdateIcon } from '../../../components/UI/Icons'
-import CompInfo from '../components/CompInfo'
+import CompInfo from '../components/CompData'
 import { MdOutlineCategory, MdOutlinePrecisionManufacturing } from 'react-icons/md'
 import { BiCategory } from 'react-icons/bi'
 import { TbResize } from 'react-icons/tb'
 import useCompStore from '../stores/compStore'
 import { toast } from 'react-toastify'
 import useFetchArts from '../../../hooks/useFetchArts'
+import CompData from '../components/CompData'
+import CompCard from '../components/CompCard'
 
 export default function CompPage() {
 
@@ -19,7 +21,7 @@ export default function CompPage() {
     const navigate = useNavigate()
 
     const { comp, isCompLoading, error } = useFetchCompById(id)
-    const {artsDB} = useFetchArts()
+    const { artsDB } = useFetchArts()
 
     const { updateCompById, deleteCompById, getUpdatedCompByArtikul } = useCompStore()
 
@@ -123,53 +125,11 @@ export default function CompPage() {
             />}
 
 
+            <CompCard
+                comp={comp}
+            />
 
-
-
-
-
-
-
-
-
-
-
-            <ContainerBlock
-                className="flex   gap-2 "
-            >
-
-                <CardBlock
-                    className="
-					 lg:w-fit flex justify-center items-center 
-						bg-white rounded-xl shadow-sm shadow-white 
-						"
-                >
-                    <ImageArt size={100} artikul={comp?.artikul} className="rounded-xl" />
-
-                </CardBlock>
-
-
-                <TextBlock
-                    className=" w-full flex flex-col items-center justify-center px-2 
-                   bg-gradient-to-b from-sky-500/50 to-sky-800/20
-                   hover:shadow-sm hover:shadow-sky-500 hover:bg-sky-500
-                    cursor-pointer rounded-xl text-2xl "
-
-                    onClick={() => {
-                        const artId = artsDB?.find(art => art.artikul === comp?.artikul)?._id || "";
-                        const url = `/arts/${artId}`;
-                        window.open(url, "_blank");
-                    }}
-                >
-                    {comp?.nameukr}
-                </TextBlock>
-            </ContainerBlock>
-
-
-
-
-
-            <CompInfo
+            <CompData
                 comp={comp}
                 isGettingUpdateCompByArtikul={isGettingUpdateCompByArtikul}
             />

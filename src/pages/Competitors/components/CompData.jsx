@@ -1,15 +1,6 @@
 import React from 'react'
 import { CardBlock, ContainerBlock, Spinner, TextBlock } from '../../../components'
-import { MdOutlineCategory, MdOutlinePrecisionManufacturing } from 'react-icons/md'
-import { BiCategory } from 'react-icons/bi'
-import { TbResize } from 'react-icons/tb'
 
-const InfoItem = ({ icon: Icon, text, className }) => (
-  <CardBlock className={`flex justify-between gap-2 min-w-fit max-w-lg ${className}`}>
-    <TextBlock> <Icon /> </TextBlock>
-    <TextBlock> {text} </TextBlock>
-  </CardBlock>
-);
 
 const CompetitorItem = ({ name, link, availability, price, isGettingUpdateCompByArtikul, linkClasses, availabilityClasses, priceClasses, isNumericAvailability }) => (
   <CardBlock className="grid grid-cols-3 gap-2 bg-gradient-to-b from-slate-500/50 to-slate-700/50 rounded-xl">
@@ -28,15 +19,10 @@ const CompetitorItem = ({ name, link, availability, price, isGettingUpdateCompBy
   </CardBlock>
 );
 
-export default function CompInfo({ comp, isGettingUpdateCompByArtikul }) {
+export default function CompData({ comp, isGettingUpdateCompByArtikul }) {
   return (
     <ContainerBlock className="grid gap-2">
-      <CardBlock className="flex flex-col lg:flex-row items-center justify-between gap-2 w-full p-2 rounded-xl bg-gradient-to-b from-fuchsia-500/80 to-fuchsia-700/50 font-bold text-xl">
-        <InfoItem icon={MdOutlinePrecisionManufacturing} text={comp?.prod} />
-        <InfoItem icon={MdOutlineCategory} text={comp?.category} />
-        <InfoItem icon={BiCategory} text={comp?.subcategory} />
-        <InfoItem icon={TbResize} text={comp?.size} />
-      </CardBlock>
+  
 
       <CardBlock className="grid grid-cols-3 gap-2 bg-gradient-to-b from-slate-700/50 to-slate-900/50 rounded-xl p-2">
         <TextBlock className="font-bold">Конкурент</TextBlock>
