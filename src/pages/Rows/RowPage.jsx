@@ -97,7 +97,7 @@ export default function RowPage() {
 			className=""
 		>
 			<HeaderBlock
-				className=" bg-orange-500 shadow-lg shadow-orange-500"
+				className=" bg-orange-500 shadow-sm shadow-orange-500"
 			>
 				Ряд 	{row?.title}
 			</HeaderBlock>

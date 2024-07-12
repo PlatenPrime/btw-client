@@ -26,7 +26,7 @@ export default function PalletsContainer({
 
     return (
         <ContainerBlock
-            className="space-y-4  "
+            className="flex flex-col gap-2  "
         >
 
             {

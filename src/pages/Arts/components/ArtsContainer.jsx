@@ -11,7 +11,7 @@ export default function ArtsContainer({
 
 }) {
     return (
-        <CardBlock className="space-y-2">
+        <CardBlock className="flex flex-col gap-2">
             {filteredArts?.length === 0 
             ?
                 <TextBlock>Нічого не знайдено</TextBlock>

@@ -37,7 +37,7 @@ const ArtBage = ({ art, remains }) => {
 		rounded-xl
 		 text-sky-100 hover:text-white 
 	 
-		bg-gradient-to-b from-sky-500/50 to-sky-700/50 hover:bg-sky-500 
+		bg-gradient-to-b from-sky-500/70 to-sky-700/50 hover:bg-sky-500 
 		 hover:shadow-lg hover:shadow-sky-500 
 		 transition ease-in-out duration-500
 	

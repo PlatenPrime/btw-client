@@ -31,7 +31,7 @@ export default function AsksContainer({
 
     return (
         <ContainerBlock
-            className="space-y-4 "
+            className="grid gap-2 "
         >
 
 
@@ -40,10 +40,10 @@ export default function AsksContainer({
              
                     <CardBlock
                         key={date}
-                        className="space-y-2 p-2  rounded-xl "
+                        className="grid gap-2   rounded-xl "
                     >
                         <CardBlock
-                            className="text-3xl  flex flex-col lg:flex-row justify-between bg-gradient-to-b from-slate-500 to-slate-900/50 rounded-xl px-2"
+                            className="text-3xl  flex flex-col lg:flex-row justify-between bg-gradient-to-b from-slate-500/50 to-slate-700/50 rounded-xl p-2"
                         >
                             <h2 className="font-bold"   >{formatDateToUkrainianShort(date)} </h2>
                             <TextBlock>

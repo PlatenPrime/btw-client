@@ -39,7 +39,7 @@ export default function RowsPage() {
 			isLoading={isLoadingAllRows}
 		>
 			<HeaderBlock
-				className="bg-orange-500  shadow-lg shadow-orange-500"
+				className="bg-orange-500  shadow-sm shadow-orange-500"
 			>
 				Ряди
 			</HeaderBlock>
@@ -70,7 +70,7 @@ export default function RowsPage() {
 			/>}
 
 			<ContainerBlock
-				className="space-y-4"
+				className="flex flex-col gap-2"
 			>
 				{rows?.map((row) => <RowBage row={row} key={row._id} />)}
 			</ContainerBlock>

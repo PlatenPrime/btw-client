@@ -27,7 +27,7 @@ export default function AsksPage() {
 			className="  "
 		>
 			<HeaderBlock
-				className="bg-indigo-500 shadow-lg shadow-indigo-500"
+				className="bg-indigo-500 shadow-sm shadow-indigo-500"
 			>
 				Запити
 			</HeaderBlock>

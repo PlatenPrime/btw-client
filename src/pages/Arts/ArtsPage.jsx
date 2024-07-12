@@ -60,7 +60,7 @@ export default function ArtsPage() {
 		>
 
 			<HeaderBlock
-				className="bg-sky-500  shadow-lg shadow-sky-500 "
+				className="bg-sky-500  shadow-sm shadow-sky-500 "
 			>
 				<TextBlock className="">
 					Артикули
