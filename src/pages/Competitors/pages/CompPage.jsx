@@ -13,6 +13,7 @@ import { toast } from 'react-toastify'
 import useFetchArts from '../../../hooks/useFetchArts'
 import CompData from '../components/CompData'
 import CompCard from '../components/CompCard'
+import UpdateCompModal from '../components/modals/UpdateCompModal'
 
 export default function CompPage() {
 
@@ -30,10 +31,13 @@ export default function CompPage() {
     const [isGettingUpdateCompByArtikul, setGettingUpdateCompByArtikul] = useState(false)
 
     const [isShowModalDeleteComp, setIsShowModalDeleteComp] = useState(false)
+    const [isShowModalCompUpdate, setIsShowModalCompUpdate] = useState(false)
 
 
 
     const [isCompDeleting, setIsCompDeleting] = useState(false)
+
+
 
 
 
@@ -69,9 +73,6 @@ export default function CompPage() {
     }
 
 
-
-
-
     return (
         <PageBTW
 
@@ -83,7 +84,7 @@ export default function CompPage() {
             <HeaderBlock
                 className="bg-fuchsia-500 shadow-sm shadow-fuchsia-500"
             >
-                Конкуренти {comp?.artikul}
+                Конкуренти {comp?.artikul} 
             </HeaderBlock>
 
 
@@ -94,11 +95,12 @@ export default function CompPage() {
                         onClick={handleGetUpdatedCompByArtikul}
                         className="emerald-b "
                     >
-                        <UpdateIcon />   Оновити
+                        <UpdateIcon size={12} />   Оновити
                     </ButtonBlock>
 
                     <ButtonBlock
-                        className=""
+                        onClick={() => setIsShowModalCompUpdate(true)}
+                        className="blue-b"
                     >
                         <EditIcon /> Редагувати
                     </ButtonBlock>
@@ -118,11 +120,19 @@ export default function CompPage() {
 
 
             {isShowModalDeleteComp && <ModalDelete
-                ask={`Видалити артикул ${comp?.artikul} ?`}
+                ask={`Видалити артикул ${comp?.artikul}  з конкурентів?`}
                 onDelete={handleDeleteCompById}
                 onCancel={() => setIsShowModalDeleteComp(false)}
                 isDeleting={isCompDeleting}
             />}
+
+
+            {isShowModalCompUpdate &&
+                <UpdateCompModal
+                    comp={comp}
+                    isShowModalCompUpdate={isShowModalCompUpdate}
+                    setIsShowModalCompUpdate={setIsShowModalCompUpdate}
+                />}
 
 
             <CompCard

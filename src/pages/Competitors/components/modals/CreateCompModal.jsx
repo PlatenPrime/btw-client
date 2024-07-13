@@ -62,6 +62,8 @@ export default function CreateCompModal({
     const isExistInDB = artsDB?.find(art => art.artikul === state.artikul)
 
     if (!isShowModalCreateComp) return null
+
+
     return (
 
         <ModalWrapper
@@ -290,9 +292,7 @@ export default function CreateCompModal({
                     Цей артикул вже аналізується
                 </TextBlock>}
 
-                <TextBlock></TextBlock>
-
-
+               
 
                 <CardBlock className="grid grid-cols-2 space-x-2 text-lg">
 

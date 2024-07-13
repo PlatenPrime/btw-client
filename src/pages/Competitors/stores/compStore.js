@@ -22,7 +22,7 @@ const useCompStore = create((set) => ({
 
     updateOrCreateComp: async (compData) => {
         try {
-            const response = await axios.put('comps', compData);
+            const response = await axios.post('comps', compData);
             if (response.status === 200) {
                 const updatedComp = response.data;
                 set((state) => ({

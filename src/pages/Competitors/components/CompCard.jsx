@@ -27,7 +27,7 @@ export default function CompCard({
                 bg-white rounded-xl shadow-sm shadow-white 
                 "
             >
-                <CardBlock className="flex justify-center items-center  max-h-[100px]">
+                <CardBlock className="flex justify-center items-center  ">
                     <ImageArt size={100} artikul={comp?.artikul} className="rounded-xl  " />
                 </CardBlock>
 
@@ -51,7 +51,7 @@ export default function CompCard({
                 {comp?.nameukr}
             </TextBlock>
 
-            <CardBlock className=" col-span-3 lg:col-span-1 flex flex-col  items-center justify-between gap-2 w-full p-2 rounded-xl bg-gradient-to-b from-fuchsia-500/50 to-fuchsia-700/50  text-base  lg:text-lg">
+            <CardBlock className=" col-span-3 lg:col-span-1 flex flex-col  items-center justify-between gap-2 w-full rounded-xl   text-sm  ">
                 <InfoItem icon={MdOutlinePrecisionManufacturing} text={comp?.prod} />
                 <InfoItem icon={MdOutlineCategory} text={comp?.category} />
                 <InfoItem icon={BiCategory} text={comp?.subcategory} />
@@ -68,7 +68,7 @@ export default function CompCard({
 
 function InfoItem({ icon: Icon, text, className }) {
     return (
-        <CardBlock className={`flex justify-between gap-2 min-w-fit w-full max-w-lg ${className}`}>
+        <CardBlock className={`flex justify-between gap-1 min-w-fit w-full  bg-gradient-to-b from-fuchsia-500/50 to-fuchsia-900/50 px-1   ${className}  `}>
             <TextBlock> <Icon /> </TextBlock>
             <TextBlock className="text-right" > {text} </TextBlock>
         </CardBlock>

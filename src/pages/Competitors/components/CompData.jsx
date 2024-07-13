@@ -3,7 +3,7 @@ import { CardBlock, ContainerBlock, Spinner, TextBlock } from '../../../componen
 
 
 const CompetitorItem = ({ name, link, availability, price, isGettingUpdateCompByArtikul, linkClasses, availabilityClasses, priceClasses, isNumericAvailability }) => (
-  <CardBlock className="grid grid-cols-3 gap-2 bg-gradient-to-b from-slate-500/50 to-slate-700/50 rounded-xl">
+  <CardBlock className="grid grid-cols-3 gap-2 bg-gradient-to-b from-slate-600/50 to-slate-900/50 rounded-xl">
     <TextBlock
       onClick={() => { if (link) window.open(link) }}
       className={`rounded-xl p-2 ${link ? linkClasses : "text-gray-400"}`}
@@ -11,10 +11,10 @@ const CompetitorItem = ({ name, link, availability, price, isGettingUpdateCompBy
       {name}
     </TextBlock>
     <TextBlock className={`text-sky-200 ${availabilityClasses}`}>
-      {isGettingUpdateCompByArtikul ? <Spinner color='rgb(217 70 239)' /> : isNumericAvailability ? availability : (availability === "N/A" ? "N/A" : availability ? '✅' : '❌')}
+      {isGettingUpdateCompByArtikul ? <Spinner color='rgb(156 163 175)' /> : isNumericAvailability ? availability : (availability === "N/A" ? "N/A" : availability ? '✅' : '❌')}
     </TextBlock>
     <TextBlock className={`text-green-500 ${priceClasses}`}>
-      {isGettingUpdateCompByArtikul ? <Spinner color='rgb(217 70 239)' /> : price}
+      {isGettingUpdateCompByArtikul ? <Spinner color='rgb(156 163 175)' /> : price}
     </TextBlock>
   </CardBlock>
 );
