@@ -29,7 +29,7 @@ export default function ModalWrapper({ children, onCancel, title }) {
 			<div className=" overflow-y-auto max-h-full   w-fit  ">
 
 
-				<div className="relative space-y-8 bg-slate-900 backdrop-blur backdrop-filter bg-opacity-90 min-w-fit  max-w-3xl p-4 rounded-lg shadow-lg  "
+				<div className="relative  space-y-8 bg-slate-900 backdrop-blur backdrop-filter bg-opacity-90 min-w-fit  max-w-3xl p-4 rounded-lg shadow-lg  "
 					ref={modalRef}
 				>
 

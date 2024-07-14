@@ -20,6 +20,27 @@ const useCompStore = create((set) => ({
         }
     },
 
+
+    updateCompById: async (id, compData) => {
+        try {
+            const response = await axios.put(`comps/${id}`, compData);
+            if (response.status === 200) {
+                const updatedComp = response.data;
+                set((state) => ({
+                    comps: state.comps.map((c) =>
+                        c._id === updatedComp._id ? updatedComp : c
+                    ),
+                }));
+                set({ comp: updatedComp });
+                return updatedComp;
+            } else {
+                throw new Error('Ошибка обновления Comp');
+            }
+        } catch (error) {
+            console.error('Ошибка обновления Comp:', error);
+        }
+    },
+
     updateOrCreateComp: async (compData) => {
         try {
             const response = await axios.post('comps', compData);

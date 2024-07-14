@@ -12,7 +12,7 @@ export default function UpdateCompModal({
 }) {
 
 
-    const { updateOrCreateComp } = useCompStore()
+    const { updateCompById } = useCompStore()
 
     const initialStateForm = {
         prod: comp?.prod || "",
@@ -40,7 +40,7 @@ export default function UpdateCompModal({
 
             setIsCompUpdating(true)
 
-            await updateOrCreateComp(compData)
+            await updateCompById(comp?._id, compData)
 
         } catch (error) {
             console.log(error);
@@ -62,7 +62,7 @@ export default function UpdateCompModal({
             onCancel={() => setIsShowModalCompUpdate(false)}
         >
             <CardBlock
-                className="flex flex-col space-y-4 min-w-fit max-w-lg text-lg "
+                className="flex flex-col space-y-4 min-w-fit max-w-lg text-lg  "
             >
 
                 <CardBlock className="grid grid-cols-1 md:grid-cols-2 space-x-2">
