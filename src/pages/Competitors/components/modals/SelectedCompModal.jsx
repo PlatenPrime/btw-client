@@ -15,27 +15,29 @@ export default function SelectedCompModal({ comp, isShowModalComp, setIsShowModa
 
 		<ModalWrapper
 			onCancel={() => { setIsShowModalComp(false) }}
-			title={comp?.artikul}
+			title="Дані по артикулу"
 
 		>
 			<CardBlock
-				className="space-y-2"
+				className=""
 			>
 
 				<CardBlock
-					className="flex space-x-6 bg-gray-700/10 p-2"
+					className="flex gap-2 bg-gray-700/10 "
 				>
 
 
 					<ImageArt
 						artikul={comp.artikul}
 						size={100}
-						className="rounded"
+						className="rounded-xl"
 					/>
 
 					<TextBlock
-						className="text-xl text-slate-100"
-					>{comp.nameukr}</TextBlock>
+						className="text-xl w-full text-slate-100 bg-gradient-to-b from-sky-500/50 to-sky-700/50 p-2 rounded-xl"
+					>
+						{comp.nameukr}
+					</TextBlock>
 
 				</CardBlock>
 
@@ -60,7 +62,9 @@ export default function SelectedCompModal({ comp, isShowModalComp, setIsShowModa
 							>
 								Категорія:
 							</td>
-							<td>
+							<td 
+							className="text-right"
+							>
 								{comp.category}
 							</td>
 						</tr>
@@ -72,7 +76,9 @@ export default function SelectedCompModal({ comp, isShowModalComp, setIsShowModa
 							>
 								Підкатегорія:
 							</td>
-							<td>
+							<td
+							className="text-right"
+							>
 								{comp.subcategory}
 							</td>
 						</tr>
@@ -84,7 +90,9 @@ export default function SelectedCompModal({ comp, isShowModalComp, setIsShowModa
 							>
 								Розмір:
 							</td>
-							<td>
+							<td
+							className="text-right"
+							>
 								{comp.size}
 							</td>
 						</tr>
@@ -142,7 +150,7 @@ export default function SelectedCompModal({ comp, isShowModalComp, setIsShowModa
 								<a href={comp.competitorsLinks.yumiLink} target='blanked'
 									className='hover:text-blue-600'
 								>
-									{comp.competitorsLinks.yumiLink ? comp.competitorsLinks.yumiLink.slice(0, 50)  : "-"}
+									{comp.competitorsLinks.yumiLink ? comp.competitorsLinks.yumiLink.slice(0, 50) : "-"}
 								</a>
 							</td>
 						</tr>
@@ -159,7 +167,7 @@ export default function SelectedCompModal({ comp, isShowModalComp, setIsShowModa
 								<a href={comp.competitorsLinks.airLink} target='blanked'
 									className='hover:text-blue-600'
 								>
-									{comp.competitorsLinks.airLink ? comp.competitorsLinks.airLink.slice(0, 50)  : "-"}
+									{comp.competitorsLinks.airLink ? comp.competitorsLinks.airLink.slice(0, 50) : "-"}
 								</a>
 							</td>
 						</tr>
@@ -177,7 +185,7 @@ export default function SelectedCompModal({ comp, isShowModalComp, setIsShowModa
 								<a href={comp.competitorsLinks.bestLink} target='blanked'
 									className='hover:text-blue-600'
 								>
-									{comp.competitorsLinks.bestLink ? comp.competitorsLinks.bestLink.slice(0, 50)  : "-"}
+									{comp.competitorsLinks.bestLink ? comp.competitorsLinks.bestLink.slice(0, 50) : "-"}
 								</a>
 							</td>
 						</tr>

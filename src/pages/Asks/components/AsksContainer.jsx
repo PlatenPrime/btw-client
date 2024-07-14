@@ -31,7 +31,7 @@ export default function AsksContainer({
 
     return (
         <ContainerBlock
-            className="grid gap-2 "
+            className="grid gap-4 "
         >
 
 

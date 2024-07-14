@@ -14,9 +14,9 @@ export default function AskBage({
 
 
     const styles = {
-        "solved": "border-indigo-500   hover:shadow-indigo-500 hover:bg-indigo-500  from-indigo-500/50 to-indigo-900/50",
-        "new": "border-green-500   hover:shadow-green-500 hover:bg-green-500  from-green-500/50 to-green-900/50",
-        "fail": "border-rose-500  hover:shadow-rose-500 hover:bg-rose-500   from-rose-500/50 to-rose-900/50 "
+        "solved": "border-indigo-500   hover:shadow-indigo-500 hover:bg-indigo-500  from-indigo-500/50 to-indigo-700/50",
+        "new": "border-green-500   hover:shadow-green-500 hover:bg-green-500  from-green-500/50 to-green-700/50",
+        "fail": "border-rose-500  hover:shadow-rose-500 hover:bg-rose-500   from-rose-500/50 to-rose-700/50 "
     }
 
 
@@ -39,7 +39,7 @@ export default function AskBage({
 
 
                 <CardBlock
-                    className="col-span-4  lg:col-span-1 flex justify-center items-center bg-white shadow-md shadow-white  "
+                    className="col-span-1 flex justify-center items-center bg-white shadow-md shadow-white  "
                 >
 
                     <ImageArt
@@ -51,7 +51,7 @@ export default function AskBage({
 
 
                 <CardBlock
-                    className="col-span-4   lg:col-span-3 flex flex-col items-center justify-center px-2 bg-sky-500/20 lg:bg-transparent p-2"
+                    className="col-span-3 flex flex-col items-center justify-center  p-2"
                 >
 
                     <TextBlock
@@ -109,11 +109,11 @@ export default function AskBage({
 
 
 
-            <CardBlock>
+           
 
 
                 <CardBlock
-                    className="flex flex-col gap-2 justify-center items-center lg:items-end p-2"
+                    className="grid grid-cols-2  p-2  place-content-center"
                 >
 
 
@@ -134,27 +134,6 @@ export default function AskBage({
                 </CardBlock>
 
 
-                {ask?.updatedAt !== ask?.createdAt &&
-                    <CardBlock
-                        className="flex flex-col gap-2 justify-center items-center lg:items-end p-2"
-                    >
-                        <TextBlock
-                            className="text-sm italic "
-                        >
-                            <FaRegCircleCheck size={24} />
-                            {formatDateToUkrainianFull(ask?.updatedAt)}
-                        </TextBlock>
-
-                        <TextBlock
-                            className="text-base items-center font-bold"
-                        >
-                            {users?.find(user => user._id === ask?.solver)?.fullname}
-                        </TextBlock>
-                    </CardBlock>
-                }
-
-
-            </CardBlock>
 
 
 
