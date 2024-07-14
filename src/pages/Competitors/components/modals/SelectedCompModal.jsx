@@ -125,7 +125,7 @@ export default function SelectedCompModal({ comp, isShowModalComp, setIsShowModa
 									className='hover:text-blue-600'
 
 								>
-									{comp.competitorsLinks.sharteLink.slice(0, 50)}...
+									{comp.competitorsLinks.sharteLink.slice(0, 50)}
 								</a>
 							</td>
 						</tr>
@@ -142,7 +142,7 @@ export default function SelectedCompModal({ comp, isShowModalComp, setIsShowModa
 								<a href={comp.competitorsLinks.yumiLink} target='blanked'
 									className='hover:text-blue-600'
 								>
-									{comp.competitorsLinks.yumiLink ? comp.competitorsLinks.yumiLink.slice(0, 50) + "..." : "-"}
+									{comp.competitorsLinks.yumiLink ? comp.competitorsLinks.yumiLink.slice(0, 50)  : "-"}
 								</a>
 							</td>
 						</tr>
@@ -159,7 +159,7 @@ export default function SelectedCompModal({ comp, isShowModalComp, setIsShowModa
 								<a href={comp.competitorsLinks.airLink} target='blanked'
 									className='hover:text-blue-600'
 								>
-									{comp.competitorsLinks.airLink ? comp.competitorsLinks.airLink.slice(0, 50) + "..." : "-"}
+									{comp.competitorsLinks.airLink ? comp.competitorsLinks.airLink.slice(0, 50)  : "-"}
 								</a>
 							</td>
 						</tr>
@@ -177,7 +177,7 @@ export default function SelectedCompModal({ comp, isShowModalComp, setIsShowModa
 								<a href={comp.competitorsLinks.bestLink} target='blanked'
 									className='hover:text-blue-600'
 								>
-									{comp.competitorsLinks.bestLink ? comp.competitorsLinks.bestLink.slice(0, 50) + "..." : "-"}
+									{comp.competitorsLinks.bestLink ? comp.competitorsLinks.bestLink.slice(0, 50)  : "-"}
 								</a>
 							</td>
 						</tr>

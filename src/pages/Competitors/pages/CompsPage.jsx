@@ -9,7 +9,11 @@ import CreateCompModal from '../components/modals/CreateCompModal';
 import CompsList from '../components/CompsList';
 import CompsTable from '../components/CompsTable';
 
-export default function NewCompsPage() {
+import {exportToExcelComps} from "../../../utils/exportExcel";
+
+
+
+export default function CompsPage() {
 
 
 
@@ -71,7 +75,10 @@ export default function NewCompsPage() {
                         <AddIcon /> Додати артикул
                     </ButtonBlock>
 
-                    <ButtonBlock>
+                    <ButtonBlock
+                    className="emerald-b"
+                    onClick={() => exportToExcelComps(comps)}
+                    >
                         <ExcelIcon /> Експортувати
                     </ButtonBlock>
 
