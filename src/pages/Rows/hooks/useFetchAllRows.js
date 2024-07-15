@@ -3,28 +3,30 @@ import { useState, useEffect } from 'react';
 import {useRowStore} from '../stores/rowsStore';
 
 const useFetchAllRows = () => {
-    const [isLoadingAllRows, setIsLoadingAllRows] = useState(true);
+    const [isAllRowsLoading, setIsAllRowsLoading] = useState(true);
+    const [error, setError] = useState(null);
 
-    const { getAllRows } = useRowStore();
+    const { rows, getAllRows } = useRowStore();
 
 
     useEffect(() => {
         const fetchAllRows = async () => {
             try {
-                setIsLoadingAllRows(true);
+                setIsAllRowsLoading(true);
                 await getAllRows();
 
             } catch (error) {
                 console.log(error);
+                setError(error);
             } finally {
-                setIsLoadingAllRows(false);
+                setIsAllRowsLoading(false);
             }
         };
 
         fetchAllRows();
     }, [getAllRows]);
 
-    return { isLoadingAllRows };
+    return {rows,  isAllRowsLoading, error };
 };
 
 export default useFetchAllRows;

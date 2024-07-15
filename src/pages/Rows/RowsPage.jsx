@@ -13,7 +13,7 @@ import RowBage from './components/RowBage';
 
 export default function RowsPage() {
 
-	const { isLoadingAllRows } = useFetchAllRows()
+	const { isAllRowsLoading } = useFetchAllRows()
 	const { rows, createRow } = useRowStore()
 
 	const [showModalCreateRow, setShowModalCreateRow] = useState(false)
@@ -36,7 +36,7 @@ export default function RowsPage() {
 	return (
 		<PageBTW
 			className=""
-			isLoading={isLoadingAllRows}
+			isLoading={isAllRowsLoading}
 		>
 			<HeaderBlock
 				className="bg-orange-500  shadow-sm shadow-orange-500"

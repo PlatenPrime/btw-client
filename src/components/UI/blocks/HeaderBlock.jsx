@@ -34,7 +34,9 @@ const HeaderBlock = ({ children, className }) => {
 			
 			<div
 				className="xl:hidden"
-			></div>
+			>
+				
+			</div>
 		</div>
 	);
 };

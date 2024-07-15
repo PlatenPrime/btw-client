@@ -182,15 +182,15 @@ export default function CompsTable({
 
 
                                 <th
-                                    className=" p-0 bg-gradient-to-b from-slate-700/95 to-slate-900/95  "
+                                    className=" p-0 bg-gradient-to-b from-slate-700/95 to-slate-900/95  min-w-[50px]"
                                     rowSpan="2"
                                     colSpan="1"
                                 >
                                     <ButtonBlock
-                                        className="fuchsia-b h-full"
+                                        className={` ${filteredComps?.length === comps?.length ? "slate-b" : "fuchsia-b" }  h-full  mx-auto`}
                                         onClick={() => setIsShowFilterModal(true)}
                                     >
-                                        <FilterIcon size={24} />
+                                        <FilterIcon size={24}   />
                                     </ButtonBlock>
 
                                 </th>
@@ -211,7 +211,7 @@ export default function CompsTable({
                                         </TextBlock>
 
                                         <TextBlock
-                                            className={`text-3xl  ${sortWord === "artikul" && "text-green-500"}`}
+                                            className={`text-3xl  ${sortWord === "artikul" && "text-sky-500"}`}
                                         >
                                             <BsSortAlphaDown />
                                         </TextBlock>
@@ -274,7 +274,7 @@ export default function CompsTable({
                                 filteredComps?.map((comp) => (
                                     <tr
                                         className="bg-slate-900 
-										
+										border-b border-slate-500/40
 										hover:bg-gray-800 transition duration-300 ease-in-out 	
 										text-sm		"
                                         key={comp._id.$oid}
