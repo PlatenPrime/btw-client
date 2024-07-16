@@ -4,7 +4,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 import useAdaptsStore from './stores/adaptsStore';
 import useAdaptBlocksStore from './stores/adaptBlocksStore';
 import { useState } from 'react';
-import AddNewBlockForm from './components/AddNewBlockForm';
+import AddNewBlockForm from './components/AddNewBlockForm/AddNewBlockForm';
 import AdaptBlockBage from './components/AdaptBlockBage';
 import useFetchAdaptById from './hooks/useFetchAdaptById';
 import useFetchAllIns from '../Instructions/hooks/useFetchAllIns';
@@ -39,15 +39,13 @@ export default function AdaptPage() {
 
 
     const { updateAdaptById, deleteAdaptById } = useAdaptsStore();
-    const { createAdaptBlock } = useAdaptBlocksStore();
-
     const [isAdaptEditing, setIsAdaptEditing] = useState(false);
-    const [isNewAdaptBlockEditing, setIsNewAdaptBlockEditing] = useState(false);
+
     const [isShowAdaptDeleteModal, setIsShowAdaptDeleteModal] = useState(false);
     const [isAdaptDeleting, setIsAdaptDeleting] = useState(false);
     const [isShowAdaptUpdateModal, setIsShowAdaptUpdateModal] = useState(false);
     const [isAdaptUpdating, setIsAdaptUpdating] = useState(false);
-    const [isAdaptBlockCreating, setIsAdaptBlockCreating] = useState(false);
+
 
 
 
@@ -80,23 +78,6 @@ export default function AdaptPage() {
 
 
 
-    const handleCreateAdaptBlock = async (createData) => {
-        try {
-            setIsAdaptBlockCreating(true)
-            await createAdaptBlock(createData)
-
-        } catch (error) {
-            console.log(error);
-
-        } finally {
-            setIsAdaptBlockCreating(false)
-            setIsNewAdaptBlockEditing(false)
-
-        }
-    }
-
-
-
     const handleUpdateAdapt = async () => {
         try {
             setIsAdaptUpdating(true)
@@ -114,7 +95,7 @@ export default function AdaptPage() {
 
 
 
-const isReadyForTest = adapt?.test && oneAdaptBlocks?.every(block => block?.isDone[user?._id])
+    const isReadyForTest = adapt?.test && oneAdaptBlocks?.every(block => block?.isDone[user?._id])
 
 
     return (
@@ -124,7 +105,7 @@ const isReadyForTest = adapt?.test && oneAdaptBlocks?.every(block => block?.isDo
             isLoading={isAdaptLoading}
         >
             <HeaderBlock
-                className="bg-green-500 shadow-lg shadow-green-500"
+                className="bg-green-500 shadow-md shadow-green-500"
             >
                 {adapt?.title}
             </HeaderBlock>
@@ -184,7 +165,7 @@ const isReadyForTest = adapt?.test && oneAdaptBlocks?.every(block => block?.isDo
 
                 <ButtonGroup.Actions>
 
-            
+
 
                     {isAdaptEditing
                         ?
@@ -256,14 +237,9 @@ const isReadyForTest = adapt?.test && oneAdaptBlocks?.every(block => block?.isDo
 
                 {isAdaptEditing &&
                     <AddNewBlockForm
-                        isAdaptEditing={isAdaptEditing}
                         adapt={adapt}
                         insFolders={insFolders}
                         instructions={instructions}
-                        isAdaptBlockCreating={isAdaptBlockCreating}
-                        isNewAdaptBlockEditing={isNewAdaptBlockEditing}
-                        setIsNewAdaptBlockEditing={setIsNewAdaptBlockEditing}
-                        handleCreateAdaptBlock={handleCreateAdaptBlock}
                         users={users}
                     />
                 }

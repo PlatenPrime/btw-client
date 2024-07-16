@@ -1,23 +1,58 @@
 import React, { useState } from 'react'
-import { ButtonBlock, CardBlock, InputBlock, Spinner, TextBlock } from '../../../components'
-import { CancelIcon, OkIcon } from '../../../components/UI/Icons'
-import InsBage from '../../Instructions/components/InsBage';
+import { ButtonBlock, CardBlock, InputBlock, Spinner, TextBlock } from '../../../../components'
+import { CancelIcon, OkIcon } from '../../../../components/UI/Icons'
+import InsBage from '../../../Instructions/components/InsBage';
 import { BiFolder } from 'react-icons/bi';
+import useAdaptBlocksStore from '../../stores/adaptBlocksStore';
+import InsFolderBage from '../../../Instructions/components/InsFolderBage';
+import ChooseInsFromFolderModal from './ChooseInsFromFolderModal';
 
 export default function AddNewBlockForm({
 
-    handleCreateAdaptBlock,
     insFolders,
-    isAdaptBlockCreating,
     instructions,
-    setIsNewAdaptBlockEditing,
-    isNewAdaptBlockEditing,
     adapt,
     users
 
 }) {
 
+
+    const { createAdaptBlock } = useAdaptBlocksStore();
+
     const [newAdaptBlockInsId, setNewAdaptBlockInsId] = useState(null)
+    const [isShowChooseInsFromFolderModal, setIsShowChooseInsFromFolderModal] = useState(false)
+
+
+
+    const [isNewAdaptBlockEditing, setIsNewAdaptBlockEditing] = useState(false);
+    const [isAdaptBlockCreating, setIsAdaptBlockCreating] = useState(false);
+
+    console.log(insFolders);
+
+
+
+
+
+    const handleCreateAdaptBlock = async (createData) => {
+        try {
+            setIsAdaptBlockCreating(true)
+            await createAdaptBlock(createData)
+
+        } catch (error) {
+            console.log(error);
+
+        } finally {
+            setIsAdaptBlockCreating(false)
+            setIsNewAdaptBlockEditing(false)
+
+        }
+    }
+
+
+
+
+
+
 
 
 
@@ -47,60 +82,26 @@ export default function AddNewBlockForm({
             </TextBlock>
 
 
-
-
             <CardBlock
-                className="flex items-center space-x-4"
+                className="grid grid-cols-1 lg:grid-cols-3 gap-2"
             >
+                {insFolders?.map((insFolder) =>
 
-                <label>
-                    <TextBlock className=" text-xl">
-                        Інструкція:
-                    </TextBlock>
-                </label>
-
-
-                <select
-                    className="InputBlock w-full text-xl "
-                    name="insId"
-                    onChange={(e) => setNewAdaptBlockInsId(e.target.value)}
-                >
-
-                    <option
-                        className="bg-blue-500 text-white "
-                        value=""
-                        disabled
-                        selected
+                    <TextBlock
+                        key={insFolder?._id}
+                        className=""
+                        onClick={() => setIsShowChooseInsFromFolderModal(true)}
                     >
-                        Вибери інструкцію
-                    </option>
-
-                    {insFolders?.map((insfolder) => (
-                        <optgroup
-                            key={insfolder?._id}
-                            label={insfolder?.title}
-                            className=" bg-slate-900 text-blue-300 not-italic "
-                        >
-
-                            {instructions?.filter((ins) => insfolder?._id === ins?.folderId).map((ins) => (
-                                <option
-                                    key={ins?._id}
-                                    value={ins?._id}
-                                    className="text-white italic "
-
-                                >
-
-                                    {ins?.title}
-                                </option>
-                            ))}
-
-                        </optgroup>
-                    ))}
-
-
-                </select>
+                        {insFolder?.title}
+                    </TextBlock>
+                )}
             </CardBlock>
 
+
+            <ChooseInsFromFolderModal
+                isShowChooseInsFromFolderModal={isShowChooseInsFromFolderModal}
+                setIsShowChooseInsFromFolderModal={setIsShowChooseInsFromFolderModal}
+            />
 
 
 
