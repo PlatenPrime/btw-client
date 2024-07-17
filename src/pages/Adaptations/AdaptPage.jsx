@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import { ButtonBlock, ButtonGroup, ContainerBlock, HeaderBlock, ModalConfirm, ModalDelete, PageBTW, TextBlock } from '../../components'
+import { ButtonBlock, ButtonGroup, ContainerBlock, HeaderBlock, ModalConfirm, ModalCreate, ModalDelete, PageBTW, TextBlock } from '../../components'
 import { useNavigate, useParams } from 'react-router-dom';
 import useAdaptsStore from './stores/adaptsStore';
 import useAdaptBlocksStore from './stores/adaptBlocksStore';
@@ -15,6 +15,7 @@ import useFetchUsers from '../Auth/hooks/useFetchUsers';
 import { AddIcon, CancelIcon, DeleteIcon, EditIcon, OkIcon, TestIcon } from '../../components/UI/Icons';
 
 import { Reorder } from 'framer-motion';
+import useTestsStore from './stores/adaptTestsStore';
 
 
 
@@ -39,12 +40,17 @@ export default function AdaptPage() {
 
 
     const { updateAdaptById, deleteAdaptById } = useAdaptsStore();
+    const { createTest } = useTestsStore();
+
     const [isAdaptEditing, setIsAdaptEditing] = useState(false);
 
     const [isShowAdaptDeleteModal, setIsShowAdaptDeleteModal] = useState(false);
     const [isAdaptDeleting, setIsAdaptDeleting] = useState(false);
     const [isShowAdaptUpdateModal, setIsShowAdaptUpdateModal] = useState(false);
     const [isAdaptUpdating, setIsAdaptUpdating] = useState(false);
+
+    const [isShowTestCreateModal, setIsShowTestCreateModal] = useState(false);
+    const [isTestCreating, setIsTestCreating] = useState(false);
 
 
 
@@ -62,7 +68,10 @@ export default function AdaptPage() {
     const handleDeleteAdapt = async () => {
         try {
             setIsAdaptDeleting(true)
-            await deleteAdaptById(adapt?._id)
+            await deleteAdaptById({
+                adaptId: adapt?._id,
+                questions: []
+            })
             navigate("/adapts")
 
         } catch (error) {
@@ -94,6 +103,27 @@ export default function AdaptPage() {
     }
 
 
+    const handleCreateTest = async () => {
+        try {
+            setIsTestCreating(true)
+            const test = await createTest(adapt?._id)
+            console.log(test);
+
+        } catch (error) {
+            console.log(error);
+
+        } finally {
+            setIsTestCreating(false)
+            setIsShowTestCreateModal(false)
+        }
+    }
+
+
+
+
+
+
+
 
     const isReadyForTest = adapt?.test && oneAdaptBlocks?.every(block => block?.isDone[user?._id])
 
@@ -112,7 +142,7 @@ export default function AdaptPage() {
 
 
 
-            {/* MODALS */}
+
 
             {isShowAdaptDeleteModal &&
                 <ModalDelete
@@ -138,11 +168,18 @@ export default function AdaptPage() {
 
 
 
-            {/* MODALS END */}
+
+            {isShowTestCreateModal && <ModalConfirm
+                ask="Створити тест?"
+                onConfirm={handleCreateTest}
+                onCancel={() => setIsShowTestCreateModal(false)}
+                isConfirming={isTestCreating}
 
 
 
-            {/* BUTTON GROUP*/}
+            />}
+
+
 
 
 
@@ -211,6 +248,7 @@ export default function AdaptPage() {
                     {!adapt?.test && <ButtonBlock
 
                         className="purple-b"
+                        onClick={() => setIsShowTestCreateModal(true)}
 
                     >
                         <AddIcon />  Створити тест
@@ -223,7 +261,7 @@ export default function AdaptPage() {
 
             </ButtonGroup>
 
-            {/* BUTTON GROUP  END*/}
+
 
 
 

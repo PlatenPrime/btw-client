@@ -44,7 +44,7 @@ export default  function PageBTW  ({ children, className, isLoading, error }) {
 					className="w-full h-full flex justify-center items-center  bg-gradient-to-b from-slate-700/50 to-slate-900/50"
 				>
 					<TextBlock className="text-3xl text-rose-500">
-						{error}
+						{error.message}
 					</TextBlock>
 				</ContainerBlock>
 			</div>

@@ -13,8 +13,8 @@ import RowBage from './components/RowBage';
 
 export default function RowsPage() {
 
-	const { isAllRowsLoading } = useFetchAllRows()
-	const { rows, createRow } = useRowStore()
+	const { rows,  isAllRowsLoading, error} = useFetchAllRows()
+	const {  createRow } = useRowStore()
 
 	const [showModalCreateRow, setShowModalCreateRow] = useState(false)
 	const [isRowCreating, setIsRowCreating] = useState(false)
@@ -31,15 +31,17 @@ export default function RowsPage() {
 		}
 	}
 
+console.log("Error:", error);
 
 
 	return (
 		<PageBTW
 			className=""
 			isLoading={isAllRowsLoading}
+			error={error}
 		>
 			<HeaderBlock
-				className="bg-orange-500  shadow-sm shadow-orange-500"
+				className="bg-orange-500  shadow-md shadow-orange-500"
 			>
 				Ряди
 			</HeaderBlock>
