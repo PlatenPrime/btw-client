@@ -5,7 +5,7 @@ import InsBage from '../../../Instructions/components/InsBage';
 import { BiFolder } from 'react-icons/bi';
 import useAdaptBlocksStore from '../../stores/adaptBlocksStore';
 import InsFolderBage from '../../../Instructions/components/InsFolderBage';
-import ChooseInsFromFolderModal from './ChooseInsFromFolderModal';
+import SelectInsFromFolderModal from './SelectInsFromFolderModal';
 
 export default function AddNewBlockForm({
 
@@ -20,8 +20,8 @@ export default function AddNewBlockForm({
     const { createAdaptBlock } = useAdaptBlocksStore();
 
     const [newAdaptBlockInsId, setNewAdaptBlockInsId] = useState(null)
-    const [isShowChooseInsFromFolderModal, setIsShowChooseInsFromFolderModal] = useState(false)
-
+    const [isShowSelectInsFromFolderModal, setIsShowSelectInsFromFolderModal] = useState(false)
+    const [selectedInsFolder, setSelectedInsFolder] = useState(null)
 
 
     const [isNewAdaptBlockEditing, setIsNewAdaptBlockEditing] = useState(false);
@@ -89,8 +89,11 @@ export default function AddNewBlockForm({
 
                     <TextBlock
                         key={insFolder?._id}
-                        className=""
-                        onClick={() => setIsShowChooseInsFromFolderModal(true)}
+                        className="border-2 border-gray-300/50 rounded-xl p-2 flex justify-center items-center cursor-pointer hover:bg-gray-300/50"
+                        onClick={() => {
+                            setIsShowSelectInsFromFolderModal(true);
+                            setSelectedInsFolder(insFolder);
+                        }}
                     >
                         {insFolder?.title}
                     </TextBlock>
@@ -98,9 +101,12 @@ export default function AddNewBlockForm({
             </CardBlock>
 
 
-            <ChooseInsFromFolderModal
-                isShowChooseInsFromFolderModal={isShowChooseInsFromFolderModal}
-                setIsShowChooseInsFromFolderModal={setIsShowChooseInsFromFolderModal}
+            <SelectInsFromFolderModal
+                isShowSelectInsFromFolderModal={isShowSelectInsFromFolderModal}
+                setIsShowSelectInsFromFolderModal={setIsShowSelectInsFromFolderModal}
+                selectedInsFolder={selectedInsFolder}
+                instructions={instructions}
+                setNewAdaptBlockInsId={setNewAdaptBlockInsId}
             />
 
 
