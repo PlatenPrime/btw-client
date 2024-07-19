@@ -24,11 +24,11 @@ export default function RowPage() {
 	const { id } = useParams()
 	const navigate = useNavigate()
 
-	const { row, updateRowById, deleteRowById } = useRowStore();
+	const {updateRowById, deleteRowById } = useRowStore();
 	const { rowPallets, createPallet } = usePalletStore();
 	const { allPoses } = usePosesStore()
 
-	const { isRowLoading } = useFetchRowById(id)
+	const { row, error, isRowLoading } = useFetchRowById(id)
 	const { isRowPalletsLoading } = useFetchRowPallets(id)
 	const { isAllPosesLoading } = useFetchAllPoses()
 
@@ -95,6 +95,7 @@ export default function RowPage() {
 		<PageBTW
 			isLoading={isRowLoading}
 			className=""
+			error={error}
 		>
 			<HeaderBlock
 				className=" bg-orange-500 shadow-sm shadow-orange-500"

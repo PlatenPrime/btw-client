@@ -7,7 +7,8 @@ import {useRowStore} from '../stores/rowsStore';
 const useFetchRow = (id) => {
 
     const [isRowLoading, setIsRowLoading] = useState(false);
-    const { getRowById } = useRowStore();
+    const [error, setError] = useState(null);
+    const {row, getRowById } = useRowStore();
 
     useEffect(() => {
         const fetchRow = async () => {
@@ -17,19 +18,18 @@ const useFetchRow = (id) => {
 
             } catch (error) {
                 console.log(error);
+                setError(error);
             } finally {
                 setIsRowLoading(false);
             }
         };
 
         fetchRow();
-        return () => {
-            // Cleanup function if needed
-        };
+       
 
     }, [id, getRowById]);
 
-    return { isRowLoading };
+    return {row, error, isRowLoading };
 };
 
 export default useFetchRow;
