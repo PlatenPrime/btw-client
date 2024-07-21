@@ -7,7 +7,7 @@ const useFetchCompById = (id) => {
     const [isCompLoading, setIsCompLoading] = useState(true);
     const [error, setError] = useState(null);
 
-    const { comp, getCompById } = useCompStore();
+    const { comp, compStamp, getCompById, getCompStampByArtikul } = useCompStore();
 
 
 
@@ -16,21 +16,26 @@ const useFetchCompById = (id) => {
         const fetchComp = async () => {
             try {
                 setIsCompLoading(true);
-                await getCompById(id);
+                const comp = await getCompById(id);
+                if (comp) {
+                    await getCompStampByArtikul(comp.artikul)
+                }
 
             } catch (error) {
                 console.log(error);
                 setError(error);
             } finally {
                 setIsCompLoading(false);
+                console.log(comp);
+                console.log(compStamp);
             }
         };
 
         fetchComp();
 
-    }, [getCompById, id]);
+    }, [getCompById, id, getCompStampByArtikul]);
 
-    return { comp, isCompLoading, error };
+    return { comp, compStamp, isCompLoading, error };
 };
 
 export default useFetchCompById;

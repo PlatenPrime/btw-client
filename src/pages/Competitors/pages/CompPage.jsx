@@ -21,8 +21,12 @@ export default function CompPage() {
     const { id } = useParams()
     const navigate = useNavigate()
 
-    const { comp, isCompLoading, error } = useFetchCompById(id)
+    const { comp, compStamp, isCompLoading, error } = useFetchCompById(id)
     const { artsDB } = useFetchArts()
+
+ 
+    
+    
 
     const { updateCompById, deleteCompById, getUpdatedCompByArtikul } = useCompStore()
 
@@ -84,7 +88,7 @@ export default function CompPage() {
             <HeaderBlock
                 className="bg-fuchsia-500 shadow-sm shadow-fuchsia-500"
             >
-                Конкуренти {comp?.artikul} 
+                Конкуренти {comp?.artikul}
             </HeaderBlock>
 
 

@@ -4,6 +4,8 @@ import axios from '../../../utils/axios';
 const useCompStore = create((set) => ({
     comps: [],
     comp: null,
+    compStamps: [],
+    compStamp: null,
 
     createComp: async (compData) => {
         try {
@@ -168,6 +170,40 @@ const useCompStore = create((set) => ({
             console.error('Ошибка получения всех обновленных Comps:', error);
         }
     },
+
+
+    getCompStampByArtikul: async (artikul) => {
+        try {
+            const response = await axios.get(`comps/compStamp/${artikul}`);
+            if (response.status === 200) {
+                const compStamp = response.data;
+                set({ compStamp });
+                return compStamp;
+            } else {
+                throw new Error('Ошибка получения CompStamp по артикулу');
+            }
+        } catch (error) {
+            console.error('Ошибка получения CompStamp по артикулу:', error);
+        }
+    },
+
+    getAllCompStamps: async () => {
+        try {
+            const response = await axios.get('compStamp');
+            if (response.status === 200) {
+                const data = response.data;
+                set({ compStamps: data });
+                return data;
+            } else {
+                throw new Error('Ошибка получения всех CompStamps');
+            }
+        } catch (error) {
+            console.error('Ошибка получения всех CompStamps:', error);
+        }
+    }
+
+
+
 }));
 
 export default useCompStore;
