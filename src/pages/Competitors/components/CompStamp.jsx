@@ -34,7 +34,7 @@ export default function CompStamp({
 
 
                 <CardBlock
-                className="flex justify-start gap-2 text-xl"
+                className="flex justify-center lg:justify-start  gap-2 text-sm  lg:text-lg"
                 >
                     <TextBlock>
                         <LuCalendarDays /> : {compStamp?.dates?.length}
@@ -50,7 +50,7 @@ export default function CompStamp({
 
 
                 <CardBlock
-                    className="flex justify-center items-center gap-2"
+                    className="flex justify-center lg:justify-end items-center gap-2 text-sm lg:text-lg "
                 >
                     <CardBlock>
                         <ButtonBlock
@@ -75,7 +75,7 @@ export default function CompStamp({
                     </CardBlock>
 
                     <TextBlock
-                        className="font-bold text-2xl"
+                        className="font-bold "
                     >
                         {formatDateToUkrainianShort(compStamp?.dates?.[currentIndex].date)}
                     </TextBlock>
@@ -109,6 +109,8 @@ export default function CompStamp({
 
 
             </CardBlock>
+
+
 
 
 
