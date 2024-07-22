@@ -14,6 +14,7 @@ import useFetchArts from '../../../hooks/useFetchArts'
 import CompData from '../components/CompData'
 import CompCard from '../components/CompCard'
 import UpdateCompModal from '../components/modals/UpdateCompModal'
+import CompStamp from '../components/CompStamp'
 
 export default function CompPage() {
 
@@ -24,9 +25,9 @@ export default function CompPage() {
     const { comp, compStamp, isCompLoading, error } = useFetchCompById(id)
     const { artsDB } = useFetchArts()
 
- 
-    
-    
+
+
+
 
     const { updateCompById, deleteCompById, getUpdatedCompByArtikul } = useCompStore()
 
@@ -146,6 +147,12 @@ export default function CompPage() {
             <CompData
                 comp={comp}
                 isGettingUpdateCompByArtikul={isGettingUpdateCompByArtikul}
+            />
+
+
+
+            <CompStamp
+                compStamp={compStamp}
             />
 
 

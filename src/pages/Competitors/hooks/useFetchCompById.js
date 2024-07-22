@@ -26,8 +26,7 @@ const useFetchCompById = (id) => {
                 setError(error);
             } finally {
                 setIsCompLoading(false);
-                console.log(comp);
-                console.log(compStamp);
+                
             }
         };
 
