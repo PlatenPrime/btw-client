@@ -15,6 +15,7 @@ import CompData from '../components/CompData'
 import CompCard from '../components/CompCard'
 import UpdateCompModal from '../components/modals/UpdateCompModal'
 import CompStamp from '../components/CompStamp'
+import useFetchUsers from '../../Auth/hooks/useFetchUsers'
 
 export default function CompPage() {
 
@@ -24,6 +25,8 @@ export default function CompPage() {
 
     const { comp, compStamp, isCompLoading, error } = useFetchCompById(id)
     const { artsDB } = useFetchArts()
+
+    const { user } = useFetchUsers()
 
 
 
@@ -93,33 +96,35 @@ export default function CompPage() {
             </HeaderBlock>
 
 
-            <ButtonGroup>
-                <ButtonGroup.Navigation></ButtonGroup.Navigation>
-                <ButtonGroup.Actions>
-                    <ButtonBlock
-                        onClick={handleGetUpdatedCompByArtikul}
-                        className="emerald-b "
-                    >
-                        <UpdateIcon size={12} />   Оновити
-                    </ButtonBlock>
+            {(user?.role === "ADMIN" || user?.role === "PRIME") &&
+                <ButtonGroup>
+                    <ButtonGroup.Navigation></ButtonGroup.Navigation>
+                    <ButtonGroup.Actions>
+                        <ButtonBlock
+                            onClick={handleGetUpdatedCompByArtikul}
+                            className="emerald-b "
+                        >
+                            <UpdateIcon size={12} />   Оновити
+                        </ButtonBlock>
 
-                    <ButtonBlock
-                        onClick={() => setIsShowModalCompUpdate(true)}
-                        className="blue-b"
-                    >
-                        <EditIcon /> Редагувати
-                    </ButtonBlock>
+                        <ButtonBlock
+                            onClick={() => setIsShowModalCompUpdate(true)}
+                            className="blue-b"
+                        >
+                            <EditIcon /> Редагувати
+                        </ButtonBlock>
 
-                    <ButtonBlock
-                        className="red-b"
-                        onClick={() => setIsShowModalDeleteComp(true)}
-                    >
-                        <DeleteIcon /> Видалити
-                    </ButtonBlock>
+                        <ButtonBlock
+                            className="red-b"
+                            onClick={() => setIsShowModalDeleteComp(true)}
+                        >
+                            <DeleteIcon /> Видалити
+                        </ButtonBlock>
 
 
-                </ButtonGroup.Actions>
-            </ButtonGroup>
+                    </ButtonGroup.Actions>
+                </ButtonGroup>
+            }
 
 
 

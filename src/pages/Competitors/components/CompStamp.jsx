@@ -2,6 +2,8 @@ import React, { useState } from 'react'
 import { ButtonBlock, CardBlock, ContainerBlock, TextBlock } from '../../../components'
 import { formatDateToUkrainianShort } from '../../../utils/formatDate'
 import { AiOutlineArrowLeft, AiOutlineArrowRight, AiOutlineDoubleLeft, AiOutlineDoubleRight } from 'react-icons/ai';
+import { LuCalendarDays } from 'react-icons/lu';
+import { ExcelIcon } from '../../../components/UI/Icons';
 
 export default function CompStamp({
     compStamp
@@ -26,66 +28,91 @@ export default function CompStamp({
         >
 
             <CardBlock
-                className="flex justify-between"
+                className="grid lg:grid-cols-2"
             >
-                <TextBlock>Хронологія днів: {compStamp?.dates?.length}</TextBlock>
-                <TextBlock>Експорт в ексель</TextBlock>
-            </CardBlock>
 
-            <CardBlock
-                className="flex justify-center gap-2"
-            >
-                <CardBlock>
-                    <ButtonBlock
-                        disabled={currentIndex === start}
-                        onClick={() => setCurrentIndex(start)}
-                        className="slate-b border-none  bg-gradient-to-b from-slate-500/50 to-slate-700/50  "
-                    >
-                        <AiOutlineDoubleLeft />
-                    </ButtonBlock>
 
-                </CardBlock>
 
-                <CardBlock>
-                    <ButtonBlock
-                        disabled={currentIndex === start}
-                        onClick={() => setCurrentIndex(prev => prev - 1)}
-                        className="slate-b border-none  bg-gradient-to-b from-slate-500/50 to-slate-700/50  "
-                    >
-                        <AiOutlineArrowLeft />
-                    </ButtonBlock>
-
-                </CardBlock>
-
-                <TextBlock
-                    className="font-bold text-2xl"
+                <CardBlock
+                className="flex justify-start gap-2 text-xl"
                 >
-                    {formatDateToUkrainianShort(compStamp?.dates?.[currentIndex].date)}
-                </TextBlock>
+                    <TextBlock>
+                        <LuCalendarDays /> : {compStamp?.dates?.length}
+                    </TextBlock>
 
-
-                <CardBlock>
-                    <ButtonBlock
-                        disabled={currentIndex === end}
-                        onClick={() => setCurrentIndex(prev => prev + 1)}
-                        className="slate-b border-none  bg-gradient-to-b from-slate-500/50 to-slate-700/50  "
-                    >
-                        <AiOutlineArrowRight />
+                    <ButtonBlock>
+                        <ExcelIcon /> Експорт
                     </ButtonBlock>
+
                 </CardBlock>
 
-                <CardBlock>
-                    <ButtonBlock
-                        disabled={currentIndex === end}
-                        onClick={() => setCurrentIndex(end)}
-                        className="slate-b border-none  bg-gradient-to-b from-slate-500/50 to-slate-700/50  "
+
+
+
+                <CardBlock
+                    className="flex justify-center items-center gap-2"
+                >
+                    <CardBlock>
+                        <ButtonBlock
+                            disabled={currentIndex === start}
+                            onClick={() => setCurrentIndex(start)}
+                            className="slate-b border-none  bg-gradient-to-b from-slate-500/50 to-slate-700/50  "
+                        >
+                            <AiOutlineDoubleLeft />
+                        </ButtonBlock>
+
+                    </CardBlock>
+
+                    <CardBlock>
+                        <ButtonBlock
+                            disabled={currentIndex === start}
+                            onClick={() => setCurrentIndex(prev => prev - 1)}
+                            className="slate-b border-none  bg-gradient-to-b from-slate-500/50 to-slate-700/50  "
+                        >
+                            <AiOutlineArrowLeft />
+                        </ButtonBlock>
+
+                    </CardBlock>
+
+                    <TextBlock
+                        className="font-bold text-2xl"
                     >
-                        <AiOutlineDoubleRight />
-                    </ButtonBlock>
+                        {formatDateToUkrainianShort(compStamp?.dates?.[currentIndex].date)}
+                    </TextBlock>
+
+
+                    <CardBlock>
+                        <ButtonBlock
+                            disabled={currentIndex === end}
+                            onClick={() => setCurrentIndex(prev => prev + 1)}
+                            className="slate-b border-none  bg-gradient-to-b from-slate-500/50 to-slate-700/50  "
+                        >
+                            <AiOutlineArrowRight />
+                        </ButtonBlock>
+                    </CardBlock>
+
+                    <CardBlock>
+                        <ButtonBlock
+                            disabled={currentIndex === end}
+                            onClick={() => setCurrentIndex(end)}
+                            className="slate-b border-none  bg-gradient-to-b from-slate-500/50 to-slate-700/50  "
+                        >
+                            <AiOutlineDoubleRight />
+                        </ButtonBlock>
+                    </CardBlock>
+
+
                 </CardBlock>
+
+
+
 
 
             </CardBlock>
+
+
+
+
 
 
 
@@ -141,7 +168,7 @@ export default function CompStamp({
 
             </CardBlock>
 
-            
+
         </ContainerBlock>
     )
 }
