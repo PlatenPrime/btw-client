@@ -17,113 +17,52 @@ export default function CompStamp({
     const end = compStamp?.dates?.length - 1;
 
 
-    const availObj = {
-        true: 'Є',
-        false: 'Немає',
-        "N/A": "N/A",
-    }
-
     return (
         <ContainerBlock
             className="grid gap-2"
         >
 
             <CardBlock
-                className="grid lg:grid-cols-2"
+                className="grid gap-2 lg:grid-cols-3"
             >
 
 
 
-                <CardBlock
-                    className="flex justify-center lg:justify-start  gap-2 text-sm  lg:text-lg"
+                <TextBlock
+                    className="text-sm  lg:text-lg  rounded-xl"
                 >
-                    <TextBlock>
-                        <LuCalendarDays /> : {compStamp?.dates?.length}
-                    </TextBlock>
+                    <LuCalendarDays color='rgb(96 165 250)' /> {compStamp?.dates?.length}
+                </TextBlock>
 
+
+
+                <DateControlPanel
+                    currentIndex={currentIndex}
+                    setCurrentIndex={setCurrentIndex}
+                    end={end}
+                    compStamp={compStamp}
+                    start={start}
+                />
+
+
+
+                <CardBlock
+                className="grid place-content-center"
+                >
                     <ButtonBlock
                         className="emerald-b"
                         onClick={() => exportCompStampToExcel(compStamp)}
                     >
-                        <ExcelIcon /> Експорт
+                        <ExcelIcon /> Хронологія
                     </ButtonBlock>
-
                 </CardBlock>
-
-
-
-
-                <CardBlock
-                    className="flex justify-center lg:justify-end items-center gap-2 text-sm lg:text-lg "
-                >
-                    <CardBlock>
-                        <ButtonBlock
-                            disabled={currentIndex === start}
-                            onClick={() => setCurrentIndex(start)}
-                            className="slate-b border-none  bg-gradient-to-b from-slate-500/50 to-slate-700/50  "
-                        >
-                            <AiOutlineDoubleLeft />
-                        </ButtonBlock>
-
-                    </CardBlock>
-
-                    <CardBlock>
-                        <ButtonBlock
-                            disabled={currentIndex === start}
-                            onClick={() => setCurrentIndex(prev => prev - 1)}
-                            className="slate-b border-none  bg-gradient-to-b from-slate-500/50 to-slate-700/50  "
-                        >
-                            <AiOutlineArrowLeft />
-                        </ButtonBlock>
-
-                    </CardBlock>
-
-                    <TextBlock
-                        className="font-bold "
-                    >
-                        {formatDateToUkrainianShort(compStamp?.dates?.[currentIndex].date)}
-                    </TextBlock>
-
-
-                    <CardBlock>
-                        <ButtonBlock
-                            disabled={currentIndex === end}
-                            onClick={() => setCurrentIndex(prev => prev + 1)}
-                            className="slate-b border-none  bg-gradient-to-b from-slate-500/50 to-slate-700/50  "
-                        >
-                            <AiOutlineArrowRight />
-                        </ButtonBlock>
-                    </CardBlock>
-
-                    <CardBlock>
-                        <ButtonBlock
-                            disabled={currentIndex === end}
-                            onClick={() => setCurrentIndex(end)}
-                            className="slate-b border-none  bg-gradient-to-b from-slate-500/50 to-slate-700/50  "
-                        >
-                            <AiOutlineDoubleRight />
-                        </ButtonBlock>
-                    </CardBlock>
-
-
-                </CardBlock>
-
-
-
-
 
             </CardBlock>
 
 
 
-
-
-
-
-
-
             <CardBlock
-                className="grid gap-2"
+                className="grid "
             >
 
                 <CompetitorItem
@@ -141,8 +80,6 @@ export default function CompStamp({
                 />
 
 
-
-
                 <CompetitorItem
                     name="Sharte"
                     availability={compStamp?.dates?.[currentIndex].avail?.sharte}
@@ -151,8 +88,6 @@ export default function CompStamp({
                     priceClasses={compStamp?.dates?.[currentIndex].price?.sharte ? "text-green-500" : ""}
                 />
 
-
-
                 <CompetitorItem
                     name="Air"
                     availability={compStamp?.dates?.[currentIndex].avail?.air}
@@ -160,8 +95,6 @@ export default function CompStamp({
                     availabilityClasses={compStamp?.dates?.[currentIndex].avail?.air === "N/A" ? "" : "text-sky-200"}
                     priceClasses={compStamp?.dates?.[currentIndex].price?.air ? "text-green-500" : ""}
                 />
-
-
 
                 <CompetitorItem
                     name="Best"
@@ -174,14 +107,9 @@ export default function CompStamp({
 
             </CardBlock>
 
-
         </ContainerBlock>
     )
 }
-
-
-
-
 
 function CompetitorItem({ name, availability, price, availabilityClasses, priceClasses, isNumericAvailability }) {
     return (
@@ -200,3 +128,64 @@ function CompetitorItem({ name, availability, price, availabilityClasses, priceC
     )
 }
 
+
+function DateControlPanel({ currentIndex, setCurrentIndex, end, compStamp, start }) {
+    return (
+        <CardBlock
+            className="flex justify-center  items-center gap-2 text-sm lg:text-lg "
+        >
+            <CardBlock>
+                <ButtonBlock
+                    disabled={currentIndex === start}
+                    onClick={() => setCurrentIndex(start)}
+                    className="slate-b border-none  bg-gradient-to-b from-slate-500/50 to-slate-700/50  "
+                >
+                    <AiOutlineDoubleLeft />
+                </ButtonBlock>
+
+            </CardBlock>
+
+            <CardBlock>
+                <ButtonBlock
+                    disabled={currentIndex === start}
+                    onClick={() => setCurrentIndex(prev => prev - 1)}
+                    className="slate-b border-none  bg-gradient-to-b from-slate-500/50 to-slate-700/50  "
+                >
+                    <AiOutlineArrowLeft />
+                </ButtonBlock>
+
+            </CardBlock>
+
+            <TextBlock
+                className="font-bold "
+            >
+                {formatDateToUkrainianShort(compStamp?.dates?.[currentIndex].date)}
+            </TextBlock>
+
+
+            <CardBlock>
+                <ButtonBlock
+                    disabled={currentIndex === end}
+                    onClick={() => setCurrentIndex(prev => prev + 1)}
+                    className="slate-b border-none  bg-gradient-to-b from-slate-500/50 to-slate-700/50  "
+                >
+                    <AiOutlineArrowRight />
+                </ButtonBlock>
+            </CardBlock>
+
+            <CardBlock>
+                <ButtonBlock
+                    disabled={currentIndex === end}
+                    onClick={() => setCurrentIndex(end)}
+                    className="slate-b border-none  bg-gradient-to-b from-slate-500/50 to-slate-700/50  "
+                >
+                    <AiOutlineDoubleRight />
+                </ButtonBlock>
+            </CardBlock>
+
+
+        </CardBlock>
+    )
+
+
+}

@@ -6,9 +6,9 @@ const CompetitorItem = ({ name, link, availability, price, isGettingUpdateCompBy
   <CardBlock className="grid grid-cols-3 gap-2 bg-gradient-to-b from-slate-600/50 to-slate-900/50 rounded-xl">
     <TextBlock
       onClick={() => { if (link) window.open(link) }}
-      className={`rounded-xl p-2 ${link ? linkClasses : "text-gray-400"}`}
+      className={`group  rounded-xl p-2 ${link ? linkClasses : "text-gray-400"} overflow-hidden  `}
     >
-      {name}
+      <span className="hidden group-hover:flex justify-center w-full" >{link?.slice(0, 20)}...</span> <span className="flex group-hover:hidden" >{name}</span>  
     </TextBlock>
     <TextBlock className={`text-sky-200 ${availabilityClasses}`}>
       {isGettingUpdateCompByArtikul ? <Spinner color='rgb(156 163 175)' /> : isNumericAvailability ? availability : (availability === "N/A" ? "N/A" : availability ? '✅' : '❌')}
