@@ -168,23 +168,23 @@ export async function exportCompStampToExcel(data) {
 	const artikul = data.artikul;
 
 	// Заголовки столбцов
-	const headers = ['Дата', 'BTrade наявність', 'Sharte наявність', 'Yumi наявність', 'Air наявність', 'Best наявність', 'BTrade ціна', 'Sharte ціна', 'Yumi ціна', 'Air ціна', 'Best ціна'];
+	const headers = ['Дата', 'BTrade', 'Yumi', 'Sharte',  'Air', 'Best', 'BTrade $', 'Yumi $',  'Sharte $', 'Air $', 'Best $'];
 
 	// Формируем данные для экспорта
 	const exportData = data.dates.map(dateEntry => {
 		const date = new Date(dateEntry.date);
 		return {
 			'Дата': formatDateToUkrainianShort(date),
-			'BTrade наявність': dateEntry.avail.btrade,
-			'Sharte наявність': dateEntry.avail.sharte,
-			'Yumi наявність': dateEntry.avail.yumi,
-			'Air наявність': dateEntry.avail.air,
-			'Best наявність': dateEntry.avail.best,
-			'BTrade ціна': dateEntry.price.btrade,
-			'Sharte ціна': dateEntry.price.sharte,
-			'Yumi ціна': dateEntry.price.yumi,
-			'Air ціна': dateEntry.price.air,
-			'Best ціна': dateEntry.price.best
+			'BTrade': dateEntry.avail.btrade,
+			'Yumi': dateEntry.avail.yumi,
+			'Sharte': dateEntry.avail.sharte,
+			'Air': dateEntry.avail.air,
+			'Best': dateEntry.avail.best,
+			'BTrade $': dateEntry.price.btrade,
+			'Yumi $': dateEntry.price.yumi,
+			'Sharte $': dateEntry.price.sharte,		
+			'Air $': dateEntry.price.air,
+			'Best $': dateEntry.price.best
 		};
 	});
 
