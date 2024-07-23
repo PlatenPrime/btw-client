@@ -4,6 +4,7 @@ import { formatDateToUkrainianShort } from '../../../utils/formatDate'
 import { AiOutlineArrowLeft, AiOutlineArrowRight, AiOutlineDoubleLeft, AiOutlineDoubleRight } from 'react-icons/ai';
 import { LuCalendarDays } from 'react-icons/lu';
 import { ExcelIcon } from '../../../components/UI/Icons';
+import { exportCompStampToExcel } from '../../../utils/exportExcel';
 
 export default function CompStamp({
     compStamp
@@ -34,13 +35,16 @@ export default function CompStamp({
 
 
                 <CardBlock
-                className="flex justify-center lg:justify-start  gap-2 text-sm  lg:text-lg"
+                    className="flex justify-center lg:justify-start  gap-2 text-sm  lg:text-lg"
                 >
                     <TextBlock>
                         <LuCalendarDays /> : {compStamp?.dates?.length}
                     </TextBlock>
 
-                    <ButtonBlock>
+                    <ButtonBlock
+                        className="emerald-b"
+                        onClick={() => exportCompStampToExcel(compStamp)}
+                    >
                         <ExcelIcon /> Експорт
                     </ButtonBlock>
 
