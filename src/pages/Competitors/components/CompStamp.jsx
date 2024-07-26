@@ -29,10 +29,22 @@ export default function CompStamp({
 
 
                 <TextBlock
-                    className="text-sm  lg:text-lg  rounded-xl"
+                    className=" lg:-order-1  rounded-xl"
                 >
-                    <LuCalendarDays color='rgb(96 165 250)' /> {compStamp?.dates?.length}
+                    <LuCalendarDays size={20} color='rgb(96 165 250)' /> {compStamp?.dates?.length}
                 </TextBlock>
+
+
+                <CardBlock
+                    className="grid place-content-center lg:order-1 "
+                >
+                    <ButtonBlock
+                        className="emerald-b"
+                        onClick={() => exportCompStampToExcel(compStamp)}
+                    >
+                        <ExcelIcon /> Хронологія
+                    </ButtonBlock>
+                </CardBlock>
 
 
 
@@ -46,16 +58,7 @@ export default function CompStamp({
 
 
 
-                <CardBlock
-                className="grid place-content-center"
-                >
-                    <ButtonBlock
-                        className="emerald-b"
-                        onClick={() => exportCompStampToExcel(compStamp)}
-                    >
-                        <ExcelIcon /> Хронологія
-                    </ButtonBlock>
-                </CardBlock>
+
 
             </CardBlock>
 
