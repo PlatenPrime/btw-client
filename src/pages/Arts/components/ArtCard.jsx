@@ -58,10 +58,10 @@ export default function ArtCard(
 
 
 				<CardBlock
-					className="grid gap-2"
+					className="grid gap-2 text-lg"
 				>
 
-					<TextBlock className="  text-xl bg-gradient-to-b from-slate-700/50 to-slate-900/50  p-1 rounded-lg justify-between" >
+					<TextBlock className="   bg-gradient-to-b from-slate-700/50 to-slate-900/50  p-1 rounded-lg justify-between" >
 						<span className="flex"><VscLocation size={24} color='orange' />Зона: </span>
 						<span>{artikul?.zone}</span>
 
@@ -70,7 +70,7 @@ export default function ArtCard(
 
 
 					<TextBlock
-						className=" text-xl bg-gradient-to-b from-slate-700/50 to-slate-900/50 rounded-lg justify-between">
+						className="  bg-gradient-to-b from-slate-700/50 to-slate-900/50 rounded-lg justify-between">
 						<span className="flex"><PiCurrencyDollarBold size={24} color='lightgreen' />Ціна:	</span>
 						<span>{artPrice} грн</span>
 
@@ -78,7 +78,7 @@ export default function ArtCard(
 
 
 					<TextBlock
-						className="text-xl bg-gradient-to-b from-slate-700/50 to-slate-900/50  p-1 rounded-lg justify-between"
+						className=" bg-gradient-to-b from-slate-700/50 to-slate-900/50  p-1 rounded-lg justify-between"
 					>
 						<span className="flex"><MdSunnySnowing size={24} color='pink' />Ранок:	</span>
 						<span>{remains ? remains[title] : ""}</span>
@@ -88,7 +88,7 @@ export default function ArtCard(
 
 
 					<TextBlock
-						className="text-xl bg-gradient-to-b from-slate-700/50 to-slate-900/50   p-1 rounded-lg justify-between"
+						className=" bg-gradient-to-b from-slate-700/50 to-slate-900/50   p-1 rounded-lg justify-between"
 					>
 						<span className="flex"><MdSunny size={24} color='yellow' /> Залишок:	</span>
 						<span>{ostatok}</span>
@@ -105,20 +105,20 @@ export default function ArtCard(
 
 
 				<TextBlock
-					className=" row-span-2 space-x-2 text-xl bg-gradient-to-b from-teal-500/50 to-teal-900/50   p-1 rounded-lg items-center justify-between">
+					className=" row-span-2 space-x-2  bg-gradient-to-b from-teal-500/50 to-teal-900/50   p-1 rounded-lg items-center justify-between">
 
 					<span className="flex"><FaWarehouse size={24} />Склад: </span>
 					<span> {posesWithArtikul?.reduce((a, b) => a + parseInt(b.quant), 0)}</span>
 				</TextBlock>
 
 				<TextBlock
-					className="space-x-2 text-xl bg-gradient-to-b from-teal-500/50 to-teal-900/50    p-1 rounded-lg items-center justify-between ">
+					className="space-x-2  bg-gradient-to-b from-teal-500/50 to-teal-900/50    p-1 rounded-lg items-center justify-between ">
 					<span className="flex"><FaWarehouse size={24} />Погреби: </span>
 					<span> {posesWithArtikul?.filter((pos) => pos.sklad === "pogrebi").reduce((a, b) => a + parseInt(b.quant), 0)}</span>
 				</TextBlock>
 
 				<TextBlock
-					className="space-x-2 text-xl bg-gradient-to-b from-teal-500/50 to-teal-900/50    p-1 rounded-lg items-center justify-between ">
+					className="space-x-2  bg-gradient-to-b from-teal-500/50 to-teal-900/50    p-1 rounded-lg items-center justify-between ">
 					<span className="flex"><FaWarehouse size={24} />Мережі:  </span>
 					<span>  {posesWithArtikul?.filter((pos) => pos.sklad === "merezhi").reduce((a, b) => a + parseInt(b.quant), 0)}</span>
 				</TextBlock>

@@ -22,7 +22,7 @@ export default function DefsPage() {
 	const items = isMorning ? remainsDefs : defs
 
 	const { asks, isAsksLoading } = useFetchAsks()
-	const { artsDB, loadingArtsDB, errorArtsDB } = useFetchArts()
+
 
 	const [newAskArtikul, setNewAskArtikul] = useState('')
 	const [showModalCreateAsk, setShowModalCreateAsk] = useState(false)
@@ -48,7 +48,7 @@ export default function DefsPage() {
 
 	return (
 		<PageBTW
-			isLoading={isDefsLoading || isAsksLoading || loadingArtsDB || isRemainsDefsLoading}
+			isLoading={isDefsLoading || isAsksLoading  || isRemainsDefsLoading}
 			className=" "
 		>
 			<HeaderBlock
@@ -140,7 +140,6 @@ export default function DefsPage() {
 							<DefBage
 								key={i}
 								def={def}
-								artsDB={artsDB}
 								asks={asks}
 								setShowModalCreateAsk={setShowModalCreateAsk}
 								setNewAskArtikul={setNewAskArtikul}

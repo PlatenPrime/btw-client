@@ -1,19 +1,13 @@
 import React from 'react'
-import { CardBlock, ContainerBlock, ImageArt, TextBlock } from '../../../components'
-import useFetchArts from '../../../hooks/useFetchArts';
+import { CardBlock, ContainerBlock,  TextBlock } from '../../../components'
 import { MdOutlineCategory, MdOutlinePrecisionManufacturing } from 'react-icons/md';
 import { BiCategory } from 'react-icons/bi';
 import { TbResize } from 'react-icons/tb';
+import ArtBlock from '../../../components/UI/ArtBlock/ArtBlock';
 
 export default function CompCard({
     comp
 }) {
-
-
-    const { artsDB } = useFetchArts()
-
-
-
 
 
     return (
@@ -22,34 +16,11 @@ export default function CompCard({
         >
 
             <CardBlock
-                className=" col-span-1
-              lg:min-w-[100px] flex justify-center items-center 
-                bg-white rounded-xl shadow-sm shadow-white 
-                "
+                className=" grid col-span-3 lg:col-span-5"
             >
-                <CardBlock className="flex justify-center items-center  ">
-                    <ImageArt size={100} artikul={comp?.artikul} className="rounded-xl  " />
-                </CardBlock>
-
-
+                <ArtBlock artikul={comp?.artikul} />
             </CardBlock>
 
-
-            <TextBlock
-                className=" col-span-2 lg:col-span-4
-                w-full flex flex-col items-center justify-center px-2 
-           bg-gradient-to-b from-sky-500/50 to-sky-700/50
-           hover:shadow-sm hover:shadow-sky-500 hover:bg-sky-500
-            cursor-pointer rounded-xl text-sm xs:text-xl sm:text-2xl  lg:text-3xl xl:text-4xl "
-
-                onClick={() => {
-                    const artId = artsDB?.find(art => art.artikul === comp?.artikul)?._id || "";
-                    const url = `/arts/${artId}`;
-                    window.open(url, "_blank");
-                }}
-            >
-                {comp?.nameukr}
-            </TextBlock>
 
             <CardBlock className=" col-span-3 lg:col-span-1 
             bg-gradient-to-b from-fuchsia-500/50 to-fuchsia-900/50 
@@ -67,11 +38,10 @@ export default function CompCard({
 
 
 
-
 function InfoItem({ icon: Icon, text, className }) {
     return (
         <CardBlock className={`flex justify-between gap-1 min-w-fit w-full   px-1   ${className}  `}>
-            <TextBlock> <Icon /> </TextBlock>
+            <TextBlock className="text-xl" > <Icon /> </TextBlock>
             <TextBlock className="text-right" > {text} </TextBlock>
         </CardBlock>
     )

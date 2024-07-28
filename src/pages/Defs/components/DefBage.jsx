@@ -1,12 +1,12 @@
 import React from 'react'
 import { ButtonBlock, CardBlock, ImageArt, TextBlock } from '../../../components';
 import { AddIcon } from '../../../components/UI/Icons';
+import ArtBlock from '../../../components/UI/ArtBlock/ArtBlock';
 
 
 
 export default function DefBage({
     def,
-    artsDB,
     asks,
     setShowModalCreateAsk,
     setNewAskArtikul
@@ -17,50 +17,9 @@ export default function DefBage({
         <CardBlock
             className="grid text-sm  lg:grid-cols-6 gap-2 p-2 bg-gradient-to-b from-slate-700/50 to-slate-900/50   rounded-xl"
         >
-            <CardBlock
-                className="lg:col-span-3 flex "
-            >
-                <CardBlock
-                    className="lg:col-span-1 bg-white flex justify-center items-center rounded-l-lg"
-                >
-                    <ImageArt size={100} artikul={def.artikul} className="rounded-l-lg" />
+          
 
-                </CardBlock>
-
-
-                <CardBlock
-                    className=" w-full flex flex-col items-center justify-center px-2 
-                bg-gradient-to-b from-sky-500/50 to-sky-800/20
-                hover:shadow-lg hover:shadow-sky-500 hover:bg-sky-500
-                 cursor-pointer rounded-r-xl "
-
-                    onClick={() => {
-                        const artId = artsDB?.find(art => art.artikul === def.artikul)?._id || "";
-                        const url = `/arts/${artId}`;
-                        window.open(url, "_blank");
-                    }}
-                >
-
-                    <TextBlock
-                        className=" justify-center text-3xl"
-                    >
-
-                        {def?.artikul}
-                    </TextBlock>
-
-                    <TextBlock
-                        className=" justify-center items-center w-full text-center text-base italic"
-                    >
-
-                        {def?.nameukr?.slice(10)}
-                    </TextBlock>
-
-                </CardBlock>
-
-
-            </CardBlock>
-
-
+            <ArtBlock artikul={def?.artikul} />
 
 
 
