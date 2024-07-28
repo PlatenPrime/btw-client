@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import ImageBlock from '../blocks/ImageBlock';
 import ModalInfo from '../Modal/ModalInfo';
 
-const ImageArt = ({ size, artikul, className }) => {
+const ImageArt = ({ size, artikul, className, srcLink }) => {
 
 
 	let correctItem = `${artikul}_m1`
@@ -11,7 +11,7 @@ const ImageArt = ({ size, artikul, className }) => {
 
 	if (artikul === "1102-3170") correctItem = "1102-3170_m1 "
 
-
+	const src = `https://sharik.ua/images/elements_big/${correctItem}.jpg`
 
 	const [showModalFullImage, setShowModalFullImage] = useState(false)
 
@@ -22,7 +22,7 @@ const ImageArt = ({ size, artikul, className }) => {
 
 
 			<ImageBlock
-				src={`https://sharik.ua/images/elements_big/${correctItem}.jpg`}
+				src={srcLink || src}
 				width={size}
 				height={size}
 				alt="Фото артикула"
@@ -45,7 +45,7 @@ const ImageArt = ({ size, artikul, className }) => {
 				>
 
 					<ImageBlock
-						src={`https://sharik.ua/images/elements_big/${correctItem}.jpg`}
+						src={srcLink || src}
 						width={500}
 						height={500}
 						alt="Фото артикула"

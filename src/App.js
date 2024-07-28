@@ -33,6 +33,7 @@ import AdaptPage from "./pages/Adaptations/AdaptPage";
 import AdaptBlockPage from "./pages/Adaptations/AdaptBlockPage";
 import AdaptTestPage from "./pages/Adaptations/AdaptTestPage";
 import CompPage from "./pages/Competitors/pages/CompPage";
+import CompVariantPage from "./pages/Competitors/pages/CompVariantPage";
 
 
 
@@ -79,6 +80,7 @@ function App() {
 
 
 				<Route path="comps" element={<CompsPage />} />
+				<Route path="comps/variants/:id" element={<CompVariantPage />} />
 				<Route path="comps/:id" element={<CompPage />} />
 
 

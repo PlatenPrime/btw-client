@@ -9,7 +9,10 @@ import CreateCompModal from '../components/modals/CreateCompModal';
 import CompsList from '../components/CompsList';
 import CompsTable from '../components/CompsTable';
 
-import {exportToExcelComps} from "../../../utils/exportExcel";
+import { exportToExcelComps } from "../../../utils/exportExcel";
+import useFetchAllCompVariants from '../hooks/useFetchAllCompVariants';
+import CompsVariants from '../components/CompVariants';
+import { BsQuestionSquare } from 'react-icons/bs';
 
 
 
@@ -18,21 +21,27 @@ export default function CompsPage() {
 
 
     const { comps, isAllCompsLoading, error } = useFetchAllComps();
+    const { compVariants, isAllCompVariantsLoading, error: errorCompVariants } = useFetchAllCompVariants();
     const { artsDB, loadingArtsDB, errorArtsDB } = useFetchArts();
 
 
-    const { createComp } = useCompStore()
+    const { createComp, createCompVariant } = useCompStore()
 
 
     const [isShowModalCreateComp, setIsShowModalCreateComp] = useState(false)
 
 
 
-    const [isList, setIsList] = useState(true)
+    const [tab, setTab] = useState("list")
+
+
+
+
 
     return (
         <PageBTW
             isLoading={isAllCompsLoading || loadingArtsDB}
+            error={error || errorArtsDB || errorCompVariants}
         >
 
             <HeaderBlock
@@ -45,22 +54,31 @@ export default function CompsPage() {
             <ButtonGroup>
 
                 <ButtonGroup.Navigation
-                    className="grid grid-cols-2 gap-2"
+                    className="grid lg:grid-cols-3 gap-2"
                 >
 
                     <ButtonBlock
-                        className={` ${isList ? "fuchsia-b-n" : "fuchsia-b"} gap-2 `}
-                        onClick={() => setIsList(true)}
+                        className={` ${tab === "list" ? "fuchsia-b-n" : "fuchsia-b"} gap-2 `}
+                        onClick={() => setTab("list")}
                     >
-                        <ListIcon size={24}/> <span>Список</span>  
+                        <ListIcon size={24} /> <span>Список</span>
                     </ButtonBlock>
 
                     <ButtonBlock
-                        className={` ${!isList ? "fuchsia-b-n" : "fuchsia-b"} gap-2`}
-                        onClick={() => setIsList(false)}
+                        className={` ${tab === "table" ? "fuchsia-b-n" : "fuchsia-b"} gap-2`}
+                        onClick={() => setTab("table")}
                     >
-                        <TableIcon size={20}/> <span>Таблиця</span> 
+                        <TableIcon size={20} /> <span>Таблиця</span>
                     </ButtonBlock>
+
+                    <ButtonBlock
+                        className={` ${tab === "variants" ? "fuchsia-b-n" : "fuchsia-b"} gap-2`}
+                        onClick={() => setTab("variants")}
+                    >
+                        <BsQuestionSquare size={20} /> <span>Варіанти</span>
+                    </ButtonBlock>
+
+
 
                 </ButtonGroup.Navigation>
 
@@ -76,8 +94,8 @@ export default function CompsPage() {
                     </ButtonBlock>
 
                     <ButtonBlock
-                    className="emerald-b"
-                    onClick={() => exportToExcelComps(comps)}
+                        className="emerald-b"
+                        onClick={() => exportToExcelComps(comps)}
                     >
                         <ExcelIcon /> Експортувати
                     </ButtonBlock>
@@ -95,13 +113,17 @@ export default function CompsPage() {
             />
 
 
-            {isList && <CompsList
+            {tab === "list" && <CompsList
                 comps={comps}
             />}
 
 
-            {!isList && <CompsTable
+            {tab === "table" && <CompsTable
                 comps={comps}
+            />}
+
+            {tab === "variants" && <CompsVariants
+                compVariants={compVariants}
             />}
 
 

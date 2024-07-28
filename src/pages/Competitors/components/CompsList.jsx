@@ -60,7 +60,7 @@ export default function CompsList({
             />
 
             <CardBlock
-                className="space-y-2"
+                className="grid gap-2"
             >
                 {
                     filteredComps?.length === 0 &&
