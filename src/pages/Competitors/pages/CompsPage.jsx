@@ -113,6 +113,11 @@ export default function CompsPage() {
             />
 
 
+
+
+            
+
+
             {tab === "list" && <CompsList
                 comps={comps}
             />}

@@ -28,7 +28,7 @@ export default function CompVariantBage({
 
             <TextBlock
                 onClick={() => {
-                    window.open(`/comps/${compVariant?._id}`, "_blank");
+                    window.open(`/comps/variants/${compVariant?._id}`, "_blank");
                 }}
                 className="flex items-center justify-start w-full text-left"
             >
