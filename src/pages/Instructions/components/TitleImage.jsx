@@ -33,9 +33,6 @@ export default function TitleImage({
 			} finally {
 				setIsImageUploading(false)
 			}
-
-
-
 		}
 	};
 

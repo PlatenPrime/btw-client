@@ -72,7 +72,7 @@ export default function CreateCompModal({
 
         >
             <CardBlock
-                className="flex flex-col space-y-4 min-w-fit max-w-lg text-lg "
+                className="flex flex-col gap-4 min-w-fit max-w-lg text-lg "
             >
 
                 <CardBlock

@@ -13,6 +13,7 @@ import { exportToExcelComps } from "../../../utils/exportExcel";
 import useFetchAllCompVariants from '../hooks/useFetchAllCompVariants';
 import CompsVariants from '../components/CompVariants';
 import { BsQuestionSquare } from 'react-icons/bs';
+import CreateCompVariantModal from '../components/modals/CreateCompVariantModal';
 
 
 
@@ -25,10 +26,11 @@ export default function CompsPage() {
     const { artsDB, loadingArtsDB, errorArtsDB } = useFetchArts();
 
 
-    const { createComp, createCompVariant } = useCompStore()
+
 
 
     const [isShowModalCreateComp, setIsShowModalCreateComp] = useState(false)
+    const [isShowModalCreateCompVariant, setIsShowModalCreateCompVariant] = useState(false)
 
 
 
@@ -87,10 +89,17 @@ export default function CompsPage() {
 
 
                     <ButtonBlock
-                        className="green-b"
+                        className="sky-b"
                         onClick={() => setIsShowModalCreateComp(true)}
                     >
-                        <AddIcon /> Додати артикул
+                        <AddIcon /> Артикул
+                    </ButtonBlock>
+
+                    <ButtonBlock
+                        className="violet-b"
+                        onClick={() => setIsShowModalCreateCompVariant(true)}
+                    >
+                        <AddIcon /> Варіант
                     </ButtonBlock>
 
                     <ButtonBlock
@@ -112,10 +121,14 @@ export default function CompsPage() {
 
             />
 
+            <CreateCompVariantModal 
+            isShowModalCreateCompVariant={isShowModalCreateCompVariant}
+            setIsShowModalCreateCompVariant={setIsShowModalCreateCompVariant}
+            compVariants={compVariants}   
+            />
 
 
 
-            
 
 
             {tab === "list" && <CompsList

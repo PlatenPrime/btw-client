@@ -39,7 +39,7 @@ export default function ModalWrapper({ children, onCancel, title }) {
 
 
 						<TextBlock
-							className="text-white bg-slate-700  text-2xl  rounded-xl p-1  "
+							className="text-white   text-2xl  rounded-xl p-1  "
 						>
 							{title}
 						</TextBlock>
