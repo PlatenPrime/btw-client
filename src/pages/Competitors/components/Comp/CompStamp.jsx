@@ -17,6 +17,21 @@ export default function CompStamp({
     const end = compStamp?.dates?.length - 1;
 
 
+
+
+
+    if (!compStamp) return <ContainerBlock
+        className="grid gap-2"
+    >
+        <TextBlock
+        className="text-center "
+        >
+            Хронологія відсутня
+        </TextBlock>
+    </ContainerBlock>
+
+
+
     return (
         <ContainerBlock
             className="grid gap-2"
@@ -162,7 +177,7 @@ function DateControlPanel({ currentIndex, setCurrentIndex, end, compStamp, start
             <TextBlock
                 className="font-bold "
             >
-                {formatDateToUkrainianShort(compStamp?.dates?.[currentIndex].date)}
+                {compStamp?.dates?.[currentIndex].date && formatDateToUkrainianShort(compStamp?.dates?.[currentIndex].date)}
             </TextBlock>
 
 
