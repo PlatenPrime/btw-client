@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
-import { CardBlock, ContainerBlock, InputSearch, PaginationBlock, TextBlock } from '../../../components'
-import CompBage from './CompBage'
+import { CardBlock, ContainerBlock, InputSearch, PaginationBlock, TextBlock } from '../../../../components'
+import CompBage from '../Comp/CompBage'
 import { toast } from 'react-toastify'
 import { useDebouncedCallback } from 'use-debounce'
 

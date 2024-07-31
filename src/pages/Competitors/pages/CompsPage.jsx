@@ -6,12 +6,12 @@ import { AddIcon, ExcelIcon, ListIcon, TableIcon } from '../../../components/UI/
 import useFetchArts from '../../../hooks/useFetchArts';
 import useCompStore from '../stores/compStore';
 import CreateCompModal from '../components/modals/CreateCompModal';
-import CompsList from '../components/CompsList';
-import CompsTable from '../components/CompsTable';
+import CompsList from '../components/Comps/CompsList';
+import CompsTable from '../components/Comps/CompsTable';
 
 import { exportToExcelComps } from "../../../utils/exportExcel";
 import useFetchAllCompVariants from '../hooks/useFetchAllCompVariants';
-import CompsVariants from '../components/CompVariants';
+import CompVariants from '../components/CompVariants/CompVariants';
 import { BsQuestionSquare } from 'react-icons/bs';
 import CreateCompVariantModal from '../components/modals/CreateCompVariantModal';
 
@@ -140,7 +140,7 @@ export default function CompsPage() {
                 comps={comps}
             />}
 
-            {tab === "variants" && <CompsVariants
+            {tab === "variants" && <CompVariants
                 compVariants={compVariants}
             />}
 

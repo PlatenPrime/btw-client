@@ -1,9 +1,9 @@
 import React from 'react'
-import { CardBlock, ContainerBlock,  TextBlock } from '../../../components'
+import { CardBlock, ContainerBlock,  TextBlock } from '../../../../components'
 import { MdOutlineCategory, MdOutlinePrecisionManufacturing } from 'react-icons/md';
 import { BiCategory } from 'react-icons/bi';
 import { TbResize } from 'react-icons/tb';
-import ArtBlock from '../../../components/UI/ArtBlock/ArtBlock';
+import ArtBlock from '../../../../components/UI/ArtBlock/ArtBlock';
 
 export default function CompCard({
     comp

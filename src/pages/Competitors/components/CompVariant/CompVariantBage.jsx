@@ -1,5 +1,5 @@
 import React from 'react'
-import { CardBlock, ImageArt, TextBlock } from '../../../components';
+import { CardBlock, ImageArt, TextBlock } from '../../../../components';
 
 export default function CompVariantBage({
     compVariant

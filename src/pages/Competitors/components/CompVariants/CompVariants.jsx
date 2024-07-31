@@ -1,6 +1,6 @@
 import React from 'react'
-import { ContainerBlock, TextBlock } from '../../../components'
-import CompVariantBage from './CompVariantBage'
+import { ContainerBlock, TextBlock } from '../../../../components'
+import CompVariantBage from '../CompVariant/CompVariantBage'
 
 export default function CompVariants({
     compVariants

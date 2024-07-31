@@ -1,13 +1,13 @@
 import React, { useState } from 'react'
-import { ButtonBlock, CardBlock, ContainerBlock, ImageArt, TextBlock } from '../../../components';
+import { ButtonBlock, CardBlock, ContainerBlock, ImageArt, TextBlock } from '../../../../components';
 import { BsSortAlphaDown } from 'react-icons/bs';
 
 
-import { prods, categoriesList, subcategoriesList, sizesList } from '../../../constants/compsData';
+import { prods, categoriesList, subcategoriesList, sizesList } from '../../../../constants/compsData';
 
-import { FilterIcon } from '../../../components/UI/Icons';
-import SelectedCompModal from './modals/SelectedCompModal';
-import FilterCompsModal from './modals/FilterCompsModal';
+import { FilterIcon } from '../../../../components/UI/Icons';
+import SelectedCompModal from '../modals/SelectedCompModal';
+import FilterCompsModal from '../modals/FilterCompsModal';
 
 
 

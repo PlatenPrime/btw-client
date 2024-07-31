@@ -1,5 +1,5 @@
 import React from 'react'
-import { CardBlock, ContainerBlock, Spinner, TextBlock } from '../../../components'
+import { CardBlock, ContainerBlock, Spinner, TextBlock } from '../../../../components'
 
 
 const CompetitorItem = ({ name, link, availability, price, isGettingUpdateCompByArtikul, linkClasses, availabilityClasses, priceClasses, isNumericAvailability }) => (
@@ -20,6 +20,12 @@ const CompetitorItem = ({ name, link, availability, price, isGettingUpdateCompBy
 );
 
 export default function CompData({ comp, isGettingUpdateCompByArtikul }) {
+
+
+
+
+
+  
   return (
     <ContainerBlock className="grid gap-2">
   

@@ -1,10 +1,10 @@
 import React, { useState } from 'react'
-import { ButtonBlock, CardBlock, ContainerBlock, TextBlock } from '../../../components'
-import { formatDateToUkrainianShort } from '../../../utils/formatDate'
+import { ButtonBlock, CardBlock, ContainerBlock, TextBlock } from '../../../../components'
+import { formatDateToUkrainianShort } from '../../../../utils/formatDate'
 import { AiOutlineArrowLeft, AiOutlineArrowRight, AiOutlineDoubleLeft, AiOutlineDoubleRight } from 'react-icons/ai';
 import { LuCalendarDays } from 'react-icons/lu';
-import { ExcelIcon } from '../../../components/UI/Icons';
-import { exportCompStampToExcel } from '../../../utils/exportExcel';
+import { ExcelIcon } from '../../../../components/UI/Icons';
+import { exportCompStampToExcel } from '../../../../utils/exportExcel';
 
 export default function CompStamp({
     compStamp

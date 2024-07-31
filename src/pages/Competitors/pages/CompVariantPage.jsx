@@ -1,12 +1,14 @@
 import React, { useState } from 'react'
 import useFetchAllCompVariants from '../hooks/useFetchAllCompVariants';
 import useCompStore from '../stores/compStore';
-import { ButtonBlock, ButtonGroup, HeaderBlock, PageBTW } from '../../../components';
+import { ButtonBlock, ButtonGroup, HeaderBlock, ModalDelete, PageBTW } from '../../../components';
 import useFetchCompVariantById from '../hooks/useFetchCompVariantById';
 import { useNavigate, useParams } from 'react-router-dom';
 import useFetchUsers from '../../Auth/hooks/useFetchUsers';
 import { DeleteIcon, EditIcon, UpdateIcon } from '../../../components/UI/Icons';
 import { toast } from 'react-toastify';
+import CompVariantCard from '../components/CompVariant/CompVariantCard';
+import CompStamp from '../components/Comp/CompStamp';
 
 export default function CompVariantPage() {
 
@@ -76,7 +78,7 @@ export default function CompVariantPage() {
 
                         <ButtonBlock
                             className="red-b"
-                        // onClick={() => setIsShowModalDeleteComp(true)}
+                            onClick={() => setIsShowModalDeleteCompVariant(true)}
                         >
                             <DeleteIcon /> Видалити
                         </ButtonBlock>
@@ -88,14 +90,28 @@ export default function CompVariantPage() {
 
 
 
+            {isShowModalDeleteCompVariant && <ModalDelete
+                ask={"Ви впевнені, що хочете видалити варіант? "}
+                onDelete={handleDeleteCompVariantById}
+                isDeleting={isCompVariantDeleting}
+                onCancel={() => setIsShowModalDeleteCompVariant(false)}
+            />}
+
+
+
+
+            <CompVariantCard
+                compVariant={compVariant}
+            />
 
 
 
 
 
 
-
-
+            <CompStamp
+                compStamp={compStamp}
+            />
 
 
         </PageBTW>
