@@ -44,7 +44,7 @@ export default function CompVariantCard({
 
             <CardBlock className=" col-span-3 lg:col-span-1 
             bg-gradient-to-b from-violet-500/50 to-violet-900/50 
-            flex flex-col  items-center justify-between gap-2 w-full rounded-xl   text-sm p-2 ">
+            flex flex-col  items-center justify-center gap-2 w-full rounded-xl   text-sm p-2 ">
                 <InfoItem icon={MdOutlinePrecisionManufacturing} text={compVariant?.prod} />
                 <InfoItem icon={TbResize} text={compVariant?.size} />
             </CardBlock>

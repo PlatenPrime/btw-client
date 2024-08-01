@@ -9,6 +9,7 @@ import { toast } from 'react-toastify';
 import CompVariantCard from '../components/CompVariant/CompVariantCard';
 import CompStamp from '../components/Comp/CompStamp';
 import CompData from '../components/Comp/CompData';
+import UpdateCompVariantModal from '../components/modals/UpdateCompVariantModal';
 
 export default function CompVariantPage() {
 
@@ -26,11 +27,7 @@ export default function CompVariantPage() {
     const [isCompVariantDeleting, setIsCompVariantDeleting] = useState(false)
 
     const [isShowModalDeleteCompVariant, setIsShowModalDeleteCompVariant] = useState(false)
-
-
-
-
-
+    const [isShowModalCompVariantUpdate, setIsShowModalCompVariantUpdate] = useState(false)
 
 
 
@@ -51,10 +48,6 @@ export default function CompVariantPage() {
 
 
 
-
-
-
-
     const handleDeleteCompVariantById = async () => {
         try {
 
@@ -69,10 +62,6 @@ export default function CompVariantPage() {
             setIsShowModalDeleteCompVariant(false)
         }
     }
-
-
-
-
 
 
 
@@ -100,7 +89,7 @@ export default function CompVariantPage() {
                         </ButtonBlock>
 
                         <ButtonBlock
-                            // onClick={() => setIsShowModalCompUpdate(true)}
+                            onClick={() => setIsShowModalCompVariantUpdate(true)}
                             className="blue-b"
                         >
                             <EditIcon /> Редагувати
@@ -119,7 +108,6 @@ export default function CompVariantPage() {
             }
 
 
-
             {isShowModalDeleteCompVariant && <ModalDelete
                 ask={"Ви впевнені, що хочете видалити варіант? "}
                 onDelete={handleDeleteCompVariantById}
@@ -128,6 +116,11 @@ export default function CompVariantPage() {
             />}
 
 
+            {isShowModalCompVariantUpdate && <UpdateCompVariantModal
+                compVariant={compVariant}
+                isShowModalCompVariantUpdate={isShowModalCompVariantUpdate}
+                setIsShowModalCompVariantUpdate={setIsShowModalCompVariantUpdate}
+            />}
 
 
             <CompVariantCard

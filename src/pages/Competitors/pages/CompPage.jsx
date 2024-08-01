@@ -28,7 +28,7 @@ export default function CompPage() {
 
 
 
-    const { updateCompById, deleteCompById, getUpdatedCompByArtikul } = useCompStore()
+    const { deleteCompById, getUpdatedCompByArtikul } = useCompStore()
 
 
 
@@ -40,8 +40,6 @@ export default function CompPage() {
 
 
     const [isCompDeleting, setIsCompDeleting] = useState(false)
-
-
 
 
 

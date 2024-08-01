@@ -28,15 +28,16 @@ export default function SelectedCompModal({ comp, isShowModalComp, setIsShowModa
 
 
 					<ImageArt
-						artikul={comp.artikul}
+						artikul={comp?.artikul}
 						size={100}
 						className="rounded-xl"
 					/>
 
 					<TextBlock
-						className="text-xl w-full text-slate-100 bg-gradient-to-b from-sky-500/50 to-sky-700/50 p-2 rounded-xl"
+						className="text-xl w-full text-slate-100 bg-gradient-to-b from-fuchsia-500/50 to-fuchsia-500/50 p-2 rounded-xl cursor-pointer"
+						onClick={() => { window.open(`/comps/${comp?._id}`, "_blank");}}
 					>
-						{comp.nameukr}
+						{comp?.nameukr}
 					</TextBlock>
 
 				</CardBlock>
@@ -65,7 +66,7 @@ export default function SelectedCompModal({ comp, isShowModalComp, setIsShowModa
 							<td 
 							className="text-right"
 							>
-								{comp.category}
+								{comp?.category}
 							</td>
 						</tr>
 						<tr
@@ -79,7 +80,7 @@ export default function SelectedCompModal({ comp, isShowModalComp, setIsShowModa
 							<td
 							className="text-right"
 							>
-								{comp.subcategory}
+								{comp?.subcategory}
 							</td>
 						</tr>
 						<tr
@@ -93,7 +94,7 @@ export default function SelectedCompModal({ comp, isShowModalComp, setIsShowModa
 							<td
 							className="text-right"
 							>
-								{comp.size}
+								{comp?.size}
 							</td>
 						</tr>
 					</tbody>
@@ -129,11 +130,11 @@ export default function SelectedCompModal({ comp, isShowModalComp, setIsShowModa
 							>
 								<a
 
-									href={comp.competitorsLinks.sharteLink} target='blanked'
+									href={comp?.competitorsLinks.sharteLink} target='blanked'
 									className='hover:text-blue-600'
 
 								>
-									{comp.competitorsLinks.sharteLink.slice(0, 50)}
+									{comp?.competitorsLinks.sharteLink.slice(0, 50)}
 								</a>
 							</td>
 						</tr>
@@ -147,10 +148,10 @@ export default function SelectedCompModal({ comp, isShowModalComp, setIsShowModa
 							<td
 								className='text-left'
 							>
-								<a href={comp.competitorsLinks.yumiLink} target='blanked'
+								<a href={comp?.competitorsLinks.yumiLink} target='blanked'
 									className='hover:text-blue-600'
 								>
-									{comp.competitorsLinks.yumiLink ? comp.competitorsLinks.yumiLink.slice(0, 50) : "-"}
+									{comp?.competitorsLinks.yumiLink ? comp.competitorsLinks.yumiLink.slice(0, 50) : "-"}
 								</a>
 							</td>
 						</tr>
@@ -164,10 +165,10 @@ export default function SelectedCompModal({ comp, isShowModalComp, setIsShowModa
 							<td
 								className='text-left'
 							>
-								<a href={comp.competitorsLinks.airLink} target='blanked'
+								<a href={comp?.competitorsLinks.airLink} target='blanked'
 									className='hover:text-blue-600'
 								>
-									{comp.competitorsLinks.airLink ? comp.competitorsLinks.airLink.slice(0, 50) : "-"}
+									{comp?.competitorsLinks.airLink ? comp?.competitorsLinks.airLink.slice(0, 50) : "-"}
 								</a>
 							</td>
 						</tr>
@@ -182,10 +183,10 @@ export default function SelectedCompModal({ comp, isShowModalComp, setIsShowModa
 							<td
 								className='text-left'
 							>
-								<a href={comp.competitorsLinks.bestLink} target='blanked'
+								<a href={comp?.competitorsLinks.bestLink} target='blanked'
 									className='hover:text-blue-600'
 								>
-									{comp.competitorsLinks.bestLink ? comp.competitorsLinks.bestLink.slice(0, 50) : "-"}
+									{comp?.competitorsLinks.bestLink ? comp?.competitorsLinks.bestLink.slice(0, 50) : "-"}
 								</a>
 							</td>
 						</tr>

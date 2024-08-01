@@ -283,7 +283,7 @@ export default function CompsTable({
 
                                         <td
                                             colSpan="2"
-                                            className='p-0 bg-sky-800/50  '
+                                            className='p-0 bg-fuchsia-800/50  '
                                         >
 
                                             <CardBlock
@@ -300,7 +300,7 @@ export default function CompsTable({
 
                                                 <CardBlock
                                                     className="flex items-center justify-start w-full cursor-pointer 
-														hover:bg-sky-500 hover:shadow-lg hover:shadow-sky-500 p-0 rounded-none px-1"
+														hover:bg-fuchsia-500 hover:shadow-lg hover:shadow-fuchsia-500 p-0 rounded-none px-1"
                                                     onClick={(e) => {
                                                         e.stopPropagation()
                                                         setIsShowModalComp(true);
@@ -327,7 +327,7 @@ export default function CompsTable({
 
 
                                         <td
-                                            className="text-emerald-200 bg-emerald-500/10"
+                                            className="text-emerald-200 bg-emerald-800/10"
                                         >
                                             {comp?.abc}
                                         </td>
