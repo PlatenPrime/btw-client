@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-import useFetchAllCompVariants from '../hooks/useFetchAllCompVariants';
 import useCompStore from '../stores/compStore';
 import { ButtonBlock, ButtonGroup, HeaderBlock, ModalDelete, PageBTW } from '../../../components';
 import useFetchCompVariantById from '../hooks/useFetchCompVariantById';
@@ -9,6 +8,7 @@ import { DeleteIcon, EditIcon, UpdateIcon } from '../../../components/UI/Icons';
 import { toast } from 'react-toastify';
 import CompVariantCard from '../components/CompVariant/CompVariantCard';
 import CompStamp from '../components/Comp/CompStamp';
+import CompData from '../components/Comp/CompData';
 
 export default function CompVariantPage() {
 
@@ -19,11 +19,36 @@ export default function CompVariantPage() {
 
     const { compVariant, compStamp, isCompVariantLoading, error } = useFetchCompVariantById(id);
 
-    const { updateCompVariantById, deleteCompVariantById } = useCompStore()
+    const { updateCompVariantById, deleteCompVariantById, getUpdatedCompVariantByArtikul } = useCompStore()
 
+    const [isGettingUpdateCompVariantByArtikul, setGettingUpdateCompVariantByArtikul] = useState(false)
 
     const [isCompVariantDeleting, setIsCompVariantDeleting] = useState(false)
+
     const [isShowModalDeleteCompVariant, setIsShowModalDeleteCompVariant] = useState(false)
+
+
+
+
+
+
+
+
+
+    const handleGetUpdatedCompVariantByArtikul = async () => {
+
+        try {
+
+            setGettingUpdateCompVariantByArtikul(true)
+            await getUpdatedCompVariantByArtikul(compVariant?.artikul)
+            toast.success(`Оновлено дані варіанту ${compVariant?.artikul}`);
+        } catch (error) {
+            console.log(error);
+        } finally {
+            setGettingUpdateCompVariantByArtikul(false)
+        }
+    }
+
 
 
 
@@ -46,6 +71,11 @@ export default function CompVariantPage() {
     }
 
 
+
+
+
+
+
     return (
         <PageBTW
             isLoading={isCompVariantLoading}
@@ -63,7 +93,7 @@ export default function CompVariantPage() {
                     <ButtonGroup.Navigation></ButtonGroup.Navigation>
                     <ButtonGroup.Actions>
                         <ButtonBlock
-                            // onClick={handleGetUpdatedCompByArtikul}
+                            onClick={handleGetUpdatedCompVariantByArtikul}
                             className="emerald-b "
                         >
                             <UpdateIcon size={12} />   Оновити
@@ -106,11 +136,16 @@ export default function CompVariantPage() {
 
 
 
-
+            <CompData
+                comp={compVariant}
+                isGettingUpdateCompByArtikul={isGettingUpdateCompVariantByArtikul}
+                isVariant
+            />
 
 
             <CompStamp
                 compStamp={compStamp}
+                isVariant
             />
 
 

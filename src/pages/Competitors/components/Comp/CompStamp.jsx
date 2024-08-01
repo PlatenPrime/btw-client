@@ -7,7 +7,8 @@ import { ExcelIcon } from '../../../../components/UI/Icons';
 import { exportCompStampToExcel } from '../../../../utils/exportExcel';
 
 export default function CompStamp({
-    compStamp
+    compStamp,
+    isVariant
 }) {
 
 
@@ -83,12 +84,14 @@ export default function CompStamp({
                 className="grid "
             >
 
-                <CompetitorItem
+                {!isVariant &&   <CompetitorItem
                     name="BTrade"
                     availability={compStamp?.dates?.[currentIndex].avail?.btrade}
                     price={compStamp?.dates?.[currentIndex].price?.btrade}
                     isNumericAvailability
-                />
+                /> }
+
+              
 
                 <CompetitorItem
                     name="Yumi"

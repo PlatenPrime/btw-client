@@ -254,6 +254,29 @@ const useCompStore = create((set) => ({
         }
     },
 
+
+    getUpdatedCompVariantByArtikul: async (artikul) => {
+        try {
+            const response = await axios.get(`comps/updatedvariant/${artikul}`);
+            if (response.status === 200) {
+                const updatedCompVariant = response.data;
+                set((state) => ({
+                    compVariants: state.compVariants.map((v) =>
+                        v.artikul === artikul ? updatedCompVariant : v
+                    ),
+                }));
+                set({ compVariant: updatedCompVariant });
+                return updatedCompVariant;
+            } else {
+                throw new Error('Ошибка получения обновленного варианта по артикулу');
+            }
+        } catch (error) {
+            console.error('Ошибка получения обновленного варианта по артикулу:', error);
+        }
+    },
+
+
+
     updateCompVariantById: async (id, variantData) => {
         try {
             const response = await axios.put(`comps/variant/${id}`, variantData);

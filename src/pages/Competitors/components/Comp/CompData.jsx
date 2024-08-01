@@ -8,7 +8,7 @@ const CompetitorItem = ({ name, link, availability, price, isGettingUpdateCompBy
       onClick={() => { if (link) window.open(link) }}
       className={`group  rounded-xl p-2 ${link ? linkClasses : "text-gray-400"} overflow-hidden  `}
     >
-      <span className="hidden group-hover:flex justify-center w-full" >{link?.slice(0, 20)}...</span> <span className="flex group-hover:hidden" >{name}</span>  
+      <span className="hidden group-hover:flex justify-center w-full" >{link?.slice(0, 20)}...</span> <span className="flex group-hover:hidden" >{name}</span>
     </TextBlock>
     <TextBlock className={`text-sky-200 ${availabilityClasses}`}>
       {isGettingUpdateCompByArtikul ? <Spinner color='rgb(156 163 175)' /> : isNumericAvailability ? availability : (availability === "N/A" ? "N/A" : availability ? '✅' : '❌')}
@@ -19,16 +19,20 @@ const CompetitorItem = ({ name, link, availability, price, isGettingUpdateCompBy
   </CardBlock>
 );
 
-export default function CompData({ comp, isGettingUpdateCompByArtikul }) {
+export default function CompData({
+  comp,
+  isGettingUpdateCompByArtikul,
+  isVariant
+}) {
 
 
 
 
 
-  
+
   return (
     <ContainerBlock className="grid gap-2">
-  
+
 
       <CardBlock className="grid grid-cols-3 gap-2 bg-gradient-to-b from-slate-700/50 to-slate-900/50 rounded-xl p-2">
         <TextBlock className="font-bold">Конкурент</TextBlock>
@@ -36,15 +40,24 @@ export default function CompData({ comp, isGettingUpdateCompByArtikul }) {
         <TextBlock className="font-bold">Ціна</TextBlock>
       </CardBlock>
 
-      <CompetitorItem
-        name="BTrade"
-        link={`https://sharik.ua/search/?q=${comp?.artikul}`}
-        availability={comp?.avail?.btrade}
-        price={comp?.price?.btrade}
-        isGettingUpdateCompByArtikul={isGettingUpdateCompByArtikul}
-        linkClasses="cursor-pointer hover:bg-sky-500 rounded-xl p-2 bg-gradient-to-b from-sky-500/50 to-sky-900/50"
-        isNumericAvailability
-      />
+
+      {
+        !isVariant &&
+        <CompetitorItem
+          name="BTrade"
+          link={`https://sharik.ua/search/?q=${comp?.artikul}`}
+          availability={comp?.avail?.btrade}
+          price={comp?.price?.btrade}
+          isGettingUpdateCompByArtikul={isGettingUpdateCompByArtikul}
+          linkClasses="cursor-pointer hover:bg-sky-500 rounded-xl p-2 bg-gradient-to-b from-sky-500/50 to-sky-900/50"
+          isNumericAvailability
+        />
+      }
+
+
+
+
+
       <CompetitorItem
         name="Yumi"
         link={comp?.competitorsLinks?.yumiLink}
