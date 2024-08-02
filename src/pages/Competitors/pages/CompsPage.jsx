@@ -104,7 +104,10 @@ export default function CompsPage() {
 
                     <ButtonBlock
                         className="emerald-b"
-                        onClick={() => exportToExcelComps(comps)}
+                        onClick={() => exportToExcelComps(
+                            {comps,
+                        compVariants}
+                        )}
                     >
                         <ExcelIcon /> Експортувати
                     </ButtonBlock>

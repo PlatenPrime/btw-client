@@ -13,9 +13,10 @@ export function exportToExcel(data) {
 
 
 
-export function exportToExcelComps(data) {
+export function exportToExcelComps({comps,
+	compVariants}) {
 	// Преобразование данных для экспорта
-	const transformedData = data.map(item => ({
+	const transformedDataComps = comps?.map(item => ({
 		artikul: item?.artikul,
 		nameukr: item?.nameukr,
 		prod: item?.prod,
@@ -23,28 +24,52 @@ export function exportToExcelComps(data) {
 		subcategory: item?.subcategory,
 		size: item?.size,
 		abc: item?.abc,
-		"competitorsLinks.sharteLink": item?.competitorsLinks?.sharteLink,
-		"competitorsLinks.airLink": item?.competitorsLinks?.airLink,
-		"competitorsLinks.yumiLink": item?.competitorsLinks?.yumiLink,
-		"competitorsLinks.bestLink": item?.competitorsLinks?.bestLink,
-		"avail.btrade": item?.avail?.btrade,
-		"avail.sharte": item?.avail?.sharte,
-		"avail.yumi": item?.avail?.yumi,
-		"avail.air": item?.avail?.air,
-		"avail.best": item?.avail?.best,
-		"price.btrade": item?.price?.btrade,
-		"price.sharte": item?.price?.sharte,
-		"price.yumi": item?.price?.yumi,
-		"price.air": item?.price?.air,
-		"price.best": item?.price?.best,
+		"sharteLink": item?.competitorsLinks?.sharteLink,
+		"airLink": item?.competitorsLinks?.airLink,
+		"yumiLink": item?.competitorsLinks?.yumiLink,
+		"bestLink": item?.competitorsLinks?.bestLink,
+		"btrade": item?.avail?.btrade,
+		"sharte": item?.avail?.sharte,
+		"yumi": item?.avail?.yumi,
+		"air": item?.avail?.air,
+		"best": item?.avail?.best,
+		"$btrade": item?.price?.btrade,
+		"$sharte": item?.price?.sharte,
+		"$yumi": item?.price?.yumi,
+		"$air": item?.price?.air,
+		"$best": item?.price?.best,
+	}));
+
+
+	const transformedDataCompVariants = compVariants?.map(item => ({
+		artikul: item?.artikul,
+		title: item?.title,
+		prod: item?.prod,
+		size: item?.size,
+		"sharteLink": item?.competitorsLinks?.sharteLink,
+		"airLink": item?.competitorsLinks?.airLink,
+		"yumiLink": item?.competitorsLinks?.yumiLink,
+		"bestLink": item?.competitorsLinks?.bestLink,
+		"sharte": item?.avail?.sharte,
+		"yumi": item?.avail?.yumi,
+		"air": item?.avail?.air,
+		"best": item?.avail?.best,
+		"$sharte": item?.price?.sharte,
+		"$yumi": item?.price?.yumi,
+		"$air": item?.price?.air,
+		"$best": item?.price?.best,
 	}));
 
 
 
 
-	const ws = XLSX.utils.json_to_sheet(transformedData);
+
+	const wsc = XLSX.utils.json_to_sheet(transformedDataComps);
+	const wscv = XLSX.utils.json_to_sheet(transformedDataCompVariants);
+
 	const wb = XLSX.utils.book_new();
-	XLSX.utils.book_append_sheet(wb, ws, 'Sheet1');
+	XLSX.utils.book_append_sheet(wb, wsc, 'Артикули');
+	XLSX.utils.book_append_sheet(wb, wscv, 'Варіанти');
 
 
 
@@ -52,7 +77,7 @@ export function exportToExcelComps(data) {
 	const currentDate = new Date().toISOString().slice(0, 10);
 
 	// Создаем название файла, объединяя "konkurenty" и текущую дату
-	const fileName = `konkurenty_${currentDate}.xlsx`;
+	const fileName = `Конкуренти_${currentDate}.xlsx`;
 	// Записываем файл с новым названием
 	XLSX.writeFile(wb, fileName);
 }
