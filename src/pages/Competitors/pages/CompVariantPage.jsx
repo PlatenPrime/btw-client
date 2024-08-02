@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import useCompStore from '../stores/compStore';
-import { ButtonBlock, ButtonGroup, HeaderBlock, ModalDelete, PageBTW } from '../../../components';
+import { ButtonBlock, ButtonGroup, ContainerBlock, HeaderBlock, ModalDelete, PageBTW, TextBlock } from '../../../components';
 import useFetchCompVariantById from '../hooks/useFetchCompVariantById';
 import { useNavigate, useParams } from 'react-router-dom';
 import useFetchUsers from '../../Auth/hooks/useFetchUsers';
@@ -10,6 +10,7 @@ import CompVariantCard from '../components/CompVariant/CompVariantCard';
 import CompStamp from '../components/Comp/CompStamp';
 import CompData from '../components/Comp/CompData';
 import UpdateCompVariantModal from '../components/modals/UpdateCompVariantModal';
+import { TbArrowMoveRight } from 'react-icons/tb';
 
 export default function CompVariantPage() {
 
@@ -27,6 +28,8 @@ export default function CompVariantPage() {
     const [isCompVariantDeleting, setIsCompVariantDeleting] = useState(false)
 
     const [isShowModalDeleteCompVariant, setIsShowModalDeleteCompVariant] = useState(false)
+    const [isShowModalTransferCompVariant, setIsShowModalTransferCompVariant] = useState(false)
+
     const [isShowModalCompVariantUpdate, setIsShowModalCompVariantUpdate] = useState(false)
 
 
@@ -95,6 +98,14 @@ export default function CompVariantPage() {
                             <EditIcon /> Редагувати
                         </ButtonBlock>
 
+
+                        <ButtonBlock
+                            // onClick={() => setIsShowModalCompVariantUpdate(true)}
+                            className="fuchsia-b"
+                        >
+                            <TbArrowMoveRight size={20} /> Перенести
+                        </ButtonBlock>
+
                         <ButtonBlock
                             className="red-b"
                             onClick={() => setIsShowModalDeleteCompVariant(true)}
@@ -121,6 +132,24 @@ export default function CompVariantPage() {
                 isShowModalCompVariantUpdate={isShowModalCompVariantUpdate}
                 setIsShowModalCompVariantUpdate={setIsShowModalCompVariantUpdate}
             />}
+
+
+
+
+            {compVariant?.connect && <ContainerBlock
+            className=""
+            >
+
+                <TextBlock
+                className="font-bold text-xl text-rose-500"
+                >
+Цей варіант уже є на залишку під артикулом {compVariant?.connect}. Його можна видалити.
+                </TextBlock>
+            </ContainerBlock>}
+
+
+
+
 
 
             <CompVariantCard

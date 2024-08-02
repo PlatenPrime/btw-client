@@ -110,12 +110,13 @@ export default function CreateCompVariantModal({
 
 
                 <CardBlock
-                    className="grid grid-cols-1 md:grid-cols-2 gap-2"
+                    className="grid  gap-2  "
                 >
 
 
 
-                    <CardBlock className="rounded-xl" >
+                    <CardBlock className="rounded-xl grid justify-center
+                    " >
 
                         {isImageUploading ?
                             <Spinner />
@@ -128,12 +129,13 @@ export default function CreateCompVariantModal({
                                     alt='Фото инструкції'
                                     src={state.imageUrl}
                                     width={200}
+                                    className="rounded-xl "
                                 >
                                 </img>
                                 :
 
                                 <img
-                                    className="rounded-xl"
+                                    className="rounded-xl "
                                     alt='Фото варіанта'
                                     src='https://placehold.co/600x400?text=Варіант'
                                     width={200}
@@ -143,13 +145,13 @@ export default function CreateCompVariantModal({
                     <input
                         type="file"
                         onChange={handleFileInputChange}
-                        className=""
+                        className=" mx-auto rounded-2xl"
                     />
 
                 </CardBlock>
 
 
-                <CardBlock className="flex flex-col gap-2 bg-slate-500/10 p-2 rounded-xl ">
+                <CardBlock className="flex flex-col gap-2 bg-slate-500/10 p-2  ">
 
 
                     <CardBlock

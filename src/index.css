@@ -24,7 +24,12 @@ margin-bottom: 0;
   }
   
 
+  input[type="file" i] {
+   display: flex;
+   align-items: center;
+   justify-content: center;
 
+}
 
   
 
