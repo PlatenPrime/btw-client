@@ -54,7 +54,7 @@ export default function InsBage({
 
                 </CardBlock>
 
-                <TextBlock className="text-xl font-bold lg:justify-start text-left  "> {ins?.title}  </TextBlock>
+                <TextBlock className="text-xl font-bold lg:justify-start lg:text-left  "> {ins?.title}  </TextBlock>
 
             </CardBlock>
 

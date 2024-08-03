@@ -11,6 +11,7 @@ import CompStamp from '../components/Comp/CompStamp';
 import CompData from '../components/Comp/CompData';
 import UpdateCompVariantModal from '../components/modals/UpdateCompVariantModal';
 import { TbArrowMoveRight } from 'react-icons/tb';
+import TransferCompVariantModal from '../components/modals/TransferCompVariantModal';
 
 export default function CompVariantPage() {
 
@@ -100,7 +101,7 @@ export default function CompVariantPage() {
 
 
                         <ButtonBlock
-                            // onClick={() => setIsShowModalCompVariantUpdate(true)}
+                            onClick={() => setIsShowModalTransferCompVariant(true)}
                             className="fuchsia-b"
                         >
                             <TbArrowMoveRight size={20} /> Перенести
@@ -127,23 +128,31 @@ export default function CompVariantPage() {
             />}
 
 
-            {isShowModalCompVariantUpdate && <UpdateCompVariantModal
+           <UpdateCompVariantModal
                 compVariant={compVariant}
                 isShowModalCompVariantUpdate={isShowModalCompVariantUpdate}
                 setIsShowModalCompVariantUpdate={setIsShowModalCompVariantUpdate}
-            />}
+            />
 
+
+            <TransferCompVariantModal
+                isShowModalTransferCompVariant={isShowModalTransferCompVariant}
+                setIsShowModalTransferCompVariant={setIsShowModalTransferCompVariant}
+                compVariant={compVariant}
+                compStamp={compStamp}
+            />
 
 
 
             {compVariant?.connect && <ContainerBlock
-            className=""
+                className=""
             >
 
                 <TextBlock
-                className="font-bold text-xl text-rose-500"
+                    className="font-bold text-xl text-rose-500"
                 >
-Цей варіант уже є на залишку під артикулом {compVariant?.connect}. Його можна видалити.
+                    Цей варіант уже перенесено на артикул {compVariant?.connect}.
+                    Його можна видалити.
                 </TextBlock>
             </ContainerBlock>}
 

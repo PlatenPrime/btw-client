@@ -1,5 +1,5 @@
 import React from 'react'
-import { CardBlock, TextBlock } from '../../../components'
+import { CardBlock, ImageArt, ImageBlock, TextBlock } from '../../../components'
 import { FcFolder } from 'react-icons/fc'
 import { LuFileEdit, LuFilePlus } from "react-icons/lu";
 import { GoPerson } from "react-icons/go";
@@ -37,15 +37,15 @@ export default function InsCard({
                     className="flex items-center h-full  justify-center  w-full lg:w-fit  rounded-xl shrink-0 grow-0"
                 >
                     {ins?.titleImage ?
-                        <img
-                            src={ins?.titleImage}
-                            alt=""
-                            className="w-[300px] rounded-xl object-cover " />
+                        <ImageArt
+                            srcLink={ins?.titleImage}
+                           size={200}
+                            className=" rounded-xl object-cover " />
                         :
 
                         <img
                             src='https://placehold.co/600x300?text=Інструкція'
-                            width={300}
+                            width={200}
                             className="rounded-xl object-cover "
                         ></img>}
 
