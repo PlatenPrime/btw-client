@@ -17,7 +17,9 @@ const useFetchCompVariantById = (id) => {
             try {
                 setIsCompVariantLoading(true);
                 const compVariant = await getCompVariantById(id);
-                if (compVariant) {
+                if (compVariant?.connect) {
+                    await getCompStampByArtikul(compVariant.connect)
+                } else if (compVariant) {
                     await getCompStampByArtikul(compVariant.artikul)
                 }
 

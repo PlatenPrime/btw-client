@@ -1,5 +1,5 @@
 import React from 'react'
-import { ContainerBlock, TextBlock } from '../../../../components'
+import { ContainerBlock} from '../../../../components'
 import CompVariantBage from '../CompVariant/CompVariantBage'
 
 export default function CompVariants({
@@ -17,10 +17,6 @@ export default function CompVariants({
         <ContainerBlock
             className="grid gap-2"
         >
-
-            <TextBlock
-            className="text-5xl text-rose-600"
-            >У РОЗРОБЦІ</TextBlock>
 
             {compVariants?.map(compVariant => (
                 <CompVariantBage

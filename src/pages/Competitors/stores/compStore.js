@@ -191,7 +191,7 @@ const useCompStore = create((set) => ({
 
     getAllCompStamps: async () => {
         try {
-            const response = await axios.get('compStamp');
+            const response = await axios.get('comps/compStamp');
             if (response.status === 200) {
                 const data = response.data;
                 set({ compStamps: data });
@@ -204,6 +204,27 @@ const useCompStore = create((set) => ({
         }
     } ,
 
+
+
+    updateCompStampById: async (id, compStampData) => {
+        try {
+            const response = await axios.put(`comps/compStamp/${id}`, compStampData);
+            if (response.status === 200) {
+                const updatedCompStamp = response.data;
+                set((state) => ({
+                    compStamps: state.compStamps.map((cs) =>
+                        cs._id === id ? updatedCompStamp : cs
+                    ),
+                    compStamp : updatedCompStamp,
+                }));
+                return updatedCompStamp;
+            } else {
+                throw new Error('Ошибка обновления CompStamp по ID');
+            }
+        } catch (error) {
+            console.error('Ошибка обновления CompStamp по ID:', error);
+        }
+    },
 
 
 
