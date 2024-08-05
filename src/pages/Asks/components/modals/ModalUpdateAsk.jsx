@@ -2,6 +2,7 @@ import React from 'react'
 import { CardBlock, InputBlock, ModalWrapper, TextBlock, ButtonBlock, Spinner } from '../../../../components'
 
 import { BsBalloon, BsBoxSeam } from 'react-icons/bs'
+import { CancelIcon, DoneIcon } from '../../../../components/UI/Icons'
 
 export default function ModalUpdateAsk(
 
@@ -26,13 +27,6 @@ export default function ModalUpdateAsk(
 
 
 
-
-
-
-
-
-
-
 	return (
 		<>
 			{showModalUpdateAsk && <ModalWrapper
@@ -41,7 +35,7 @@ export default function ModalUpdateAsk(
 
 			>
 				<CardBlock
-					className="space-y-4  p-3 w-full flex flex-col justify-center  "
+					className="gap-2  p-2 grid  "
 				>
 
 
@@ -51,7 +45,7 @@ export default function ModalUpdateAsk(
 
 
 					<CardBlock
-						className="flex space-x-8 w-full"
+						className="grid grid-cols-3 border border-yellow-500 rounded-xl"
 					>
 						<TextBlock
 							className="text-2xl"
@@ -64,7 +58,7 @@ export default function ModalUpdateAsk(
 						>
 							<TextBlock
 								className="text-sky-300  text-xl">
-								<BsBalloon />
+								<BsBalloon size={12} />
 							</TextBlock>
 							<TextBlock
 								className="text-sky-300  font-bold text-3xl  rounded"
@@ -80,7 +74,7 @@ export default function ModalUpdateAsk(
 						>
 							<TextBlock
 								className="text-amber-300  text-xl">
-								<BsBoxSeam />
+								<BsBoxSeam size={12} />
 							</TextBlock>
 							<TextBlock
 								className="text-amber-300 font-bold text-3xl rounded"
@@ -94,7 +88,7 @@ export default function ModalUpdateAsk(
 
 
 					<CardBlock
-						className="flex space-x-8 space-between w-full"
+						className="grid grid-cols-3 border border-green-500 rounded-xl"
 					>
 
 
@@ -111,7 +105,7 @@ export default function ModalUpdateAsk(
 						>
 							<TextBlock
 								className={finalValuePosQuant < 0 ? "text-red-500  text-xl" : "text-teal-300  text-xl"}>
-								<BsBalloon />
+								<BsBalloon size={12} />
 							</TextBlock>
 							<TextBlock
 								className={finalValuePosQuant < 0 ? "text-red-500  text-3xl" : "text-teal-300  text-3xl"}
@@ -129,7 +123,7 @@ export default function ModalUpdateAsk(
 								className={finalValuePosBoxes < 0 ? "text-red-500  text-xl" : "text-teal-300  text-xl"}>
 
 
-								<BsBoxSeam />
+								<BsBoxSeam size={12} />
 							</TextBlock>
 							<TextBlock
 
@@ -146,25 +140,25 @@ export default function ModalUpdateAsk(
 					</CardBlock>
 
 
-					<CardBlock>
 
-						{finalValuePosBoxes < 0 && <TextBlock
-							className="border border-red-600 text-red-600 p-2 rounded"
-						>
-							Коробки в мінусі
-						</TextBlock>}
 
-					</CardBlock>
+					{finalValuePosBoxes < 0 && <TextBlock
+						className="border border-red-600 text-red-600 p-2 rounded"
+					>
+						Коробки в мінусі
+					</TextBlock>}
 
-					<CardBlock>
 
-						{finalValuePosQuant < 0 && <TextBlock
-							className="border border-red-500 text-red-500 p-2 rounded"
-						>
-							Недостатньо позиції
-						</TextBlock>}
 
-					</CardBlock>
+
+
+					{finalValuePosQuant < 0 && <TextBlock
+						className="border border-red-500 text-red-500 p-2 rounded"
+					>
+						Недостатньо позиції
+					</TextBlock>}
+
+
 
 
 
@@ -174,12 +168,13 @@ export default function ModalUpdateAsk(
 					>
 
 
-						<CardBlock className="flex justify-between items-center space-x-4">
+						<CardBlock className="flex justify-between items-center gap-2">
 							<TextBlock
 								className="text-sky-100   text-3xl">
 								<BsBalloon />
 							</TextBlock>
 							<InputBlock
+							className="text-xl"
 								type="number"
 								id="quant"
 								name="quant"
@@ -192,12 +187,13 @@ export default function ModalUpdateAsk(
 							/>
 						</CardBlock>
 
-						<CardBlock className="flex justify-between items-center space-x-4">
+						<CardBlock className="flex justify-between items-center gap-2">
 							<TextBlock
 								className="text-amber-100  text-3xl">
 								<BsBoxSeam />
 							</TextBlock>
 							<InputBlock
+							className="text-xl"
 								type="number"
 								id="quant"
 								name="quant"
@@ -236,18 +232,18 @@ export default function ModalUpdateAsk(
 
 
 					<CardBlock
-						className="grid grid-cols-2 space-x-2"
+						className="grid grid-cols-2 "
 					>
 
 						<ButtonBlock
-							className="red-b"
+							className="red-b "
 							onClick={() => setShowModalUpdateAsk(false)}
 						>
-							Скасувати
+							<CancelIcon />	Скасувати
 						</ButtonBlock>
 
 						<ButtonBlock
-							className="green-b"
+							className="green-b "
 							disabled={finalValuePosQuant < 0 ||
 								finalValuePosBoxes < 0 ||
 								askValuePosQuant <= 0 ||
@@ -263,7 +259,7 @@ export default function ModalUpdateAsk(
 								</CardBlock>
 								:
 								<TextBlock>
-									Зняти
+									<DoneIcon />	Зняти
 								</TextBlock>}
 
 
