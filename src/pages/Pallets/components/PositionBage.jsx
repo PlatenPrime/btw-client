@@ -65,7 +65,7 @@ export default function PositionBage({ pos, onDelete, onEdit, artsDB }) {
 
 
 				<CardBlock
-					className="grid  col-span-2  p-2  cursor-pointer hover:bg-sky-500"
+					className="grid  col-span-2  p-1  cursor-pointer  hover:bg-sky-500"
 					onClick={() => {
 						const artId = artsDB?.find(art => art.artikul === pos.artikul)?._id || "";
 						const url = `/arts/${artId}`;
@@ -112,19 +112,9 @@ export default function PositionBage({ pos, onDelete, onEdit, artsDB }) {
 
 
 				<CardBlock
-					className="flex flex-col items-center   text-base p-2 "
+					className="grid grid-cols-2 p-2 gap-2 text-base  "
 
 				>
-
-
-					{pos?.date && <TextBlock
-						className={`
-					bg-red-500 rounded-xl p-1 
-					`}
-					>
-						{pos?.date}
-					</TextBlock>}
-
 
 					<TextBlock
 						className=" text-base  "
@@ -132,12 +122,25 @@ export default function PositionBage({ pos, onDelete, onEdit, artsDB }) {
 						{pos?.sklad === "pogrebi" ? "Погреби" : pos?.sklad === "merezhi" ? "Мережі" : null}
 					</TextBlock>
 
-					<TextBlock
-						className=" text-base  "
+					{pos?.date && <TextBlock
+						className={`
+					 
+					`}
 					>
-						{pos?.com}
-					</TextBlock>
+						<span className="bg-rose-500 rounded-xl p-1 ">{pos?.date}</span>
+					</TextBlock>}
 
+
+
+
+
+					{pos?.com &&
+						<TextBlock
+							className=" text-base col-span-2  "
+						>
+							{pos?.com}
+						</TextBlock>
+					}
 
 
 

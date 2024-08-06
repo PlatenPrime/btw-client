@@ -15,7 +15,7 @@ export default function DefBage({
 
     return (
         <CardBlock
-            className="grid text-sm  lg:grid-cols-6 gap-2 p-2 bg-gradient-to-b from-slate-700 to-slate-900   rounded-xl
+            className="grid text-sm  lg:grid-cols-6 gap-2  bg-gradient-to-b from-slate-700 to-slate-900   rounded-xl
             hover:shadow-md hover:shadow-white/50
             transition ease-in-out duration-500
             
