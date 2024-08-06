@@ -40,10 +40,12 @@ export default function AskBage({
 
                 <CardBlock
                     className="col-span-1 flex justify-center items-center bg-white shadow-md shadow-white  "
+                    onClick={(e) => e.stopPropagation()}
                 >
 
                     <ImageArt
-                        size={100} artikul={ask?.artikul}
+                        size={50} artikul={ask?.artikul}
+
 
                     />
                 </CardBlock>
@@ -55,7 +57,7 @@ export default function AskBage({
                 >
 
                     <TextBlock
-                        className=" justify-center text-3xl"
+                        className=" justify-center text-xl font-bold"
                     >
 
                         {ask?.artikul}
@@ -78,15 +80,15 @@ export default function AskBage({
 
 
             <CardBlock
-                className="flex flex-col justify-center items-center"
+                className="flex flex-wrap gap-2 justify-center items-center"
             >
 
 
                 {ask?.quant ?
                     <TextBlock
-                        className="text-3xl font-bold"
+                        className="text-lg font-bold"
                     >
-                        <BsBalloon size={24} />	{ask?.quant}
+                        <BsBalloon size={12} />	{ask?.quant}
                     </TextBlock>
                     :
                     null
@@ -109,29 +111,29 @@ export default function AskBage({
 
 
 
-           
 
 
-                <CardBlock
-                    className="grid grid-cols-2  p-2  place-content-center"
+
+            <CardBlock
+                className="grid grid-cols-2  p-2  place-content-center"
+            >
+
+
+                <TextBlock
+                    className="text-sm italic "
+                >
+                    < BsQuestionCircle size={12} />
+                    {formatDateToUkrainianFull(ask?.createdAt)}
+                </TextBlock>
+
+                <TextBlock
+                    className="text-sm items-center font-bold"
                 >
 
+                    {users?.find(user => user._id === ask?.asker)?.fullname}
+                </TextBlock>
 
-                    <TextBlock
-                        className="text-sm italic "
-                    >
-                        < BsQuestionCircle size={24} />
-                        {formatDateToUkrainianFull(ask?.createdAt)}
-                    </TextBlock>
-
-                    <TextBlock
-                        className="text-base items-center font-bold"
-                    >
-
-                        {users?.find(user => user._id === ask?.asker)?.fullname}
-                    </TextBlock>
-
-                </CardBlock>
+            </CardBlock>
 
 
 

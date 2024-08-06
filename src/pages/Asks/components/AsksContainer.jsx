@@ -43,7 +43,7 @@ export default function AsksContainer({
                         className="grid gap-2   rounded-xl "
                     >
                         <CardBlock
-                            className="text-3xl  flex flex-col lg:flex-row justify-between bg-gradient-to-b from-slate-500/50 to-slate-700/50 rounded-xl p-2"
+                            className="text-xl  flex flex-col lg:flex-row justify-between bg-gradient-to-b from-slate-500/50 to-slate-700/50 rounded-xl p-2"
                         >
                             <h2 className="font-bold"   >{formatDateToUkrainianShort(date)} </h2>
                             <TextBlock>
