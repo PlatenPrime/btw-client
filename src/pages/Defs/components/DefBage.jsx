@@ -15,7 +15,11 @@ export default function DefBage({
 
     return (
         <CardBlock
-            className="grid text-sm  lg:grid-cols-6 gap-2 p-2 bg-gradient-to-b from-slate-700/50 to-slate-900/50   rounded-xl"
+            className="grid text-sm  lg:grid-cols-6 gap-2 p-2 bg-gradient-to-b from-slate-700 to-slate-900   rounded-xl
+            hover:shadow-md hover:shadow-white/50
+            transition ease-in-out duration-500
+            
+            "
         >
           
 
@@ -24,12 +28,12 @@ export default function DefBage({
 
 
             <CardBlock
-                className="lg:col-span-2 justify-self-stretch flex flex-col items-start justify-around  rounded-lg text-lg"
+                className="lg:col-span-2 justify-self-stretch flex flex-col items-start justify-around  rounded-lg "
             >
 
 
                 <CardBlock
-                    className=" p-2 flex justify-between w-full bg-gradient-to-b from-slate-500/50 to-slate-900/50 rounded-lg"
+                    className=" p-2 flex justify-between w-full "
                 >
                     <TextBlock className=" " >
                         Запаси:
@@ -44,7 +48,7 @@ export default function DefBage({
 
 
                 <CardBlock
-                    className=" p-2 flex justify-between w-full bg-gradient-to-b from-slate-500/50 to-slate-900/50 rounded-lg"
+                    className=" p-2 flex justify-between w-full "
                 >
                     <TextBlock className=" " >
                         База:
@@ -59,7 +63,7 @@ export default function DefBage({
 
 
                 <CardBlock
-                    className=" p-2 flex justify-between w-full bg-gradient-to-b from-slate-500/50 to-slate-900/50 rounded-lg"
+                    className=" p-2 flex justify-between w-full  "
                 >
                     <TextBlock className=" " >
                         Дефіцит:
@@ -73,7 +77,7 @@ export default function DefBage({
                 className={`
                     
                     ${asks?.find(ask => ask.artikul === def.artikul)?.status === "new" ?
-                        "bg-gradient-to-b from-indigo-500/50 to-indigo-800/20"
+                        "bg-gradient-to-b from-indigo-500 to-indigo-800"
                         :
                         ""}
                     
@@ -81,7 +85,7 @@ export default function DefBage({
             >
 
                 {asks?.find(ask => ask.artikul === def.artikul)?.status === "new" ?
-                    <TextBlock className="text-xl text-center text-white p-2">
+                    <TextBlock className=" text-center text-white p-2">
                         Запит в роботі
                     </TextBlock>
                     :
