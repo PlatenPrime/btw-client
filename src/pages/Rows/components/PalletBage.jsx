@@ -41,7 +41,7 @@ grid grid-cols-1 lg:grid-cols-3
 		>
 
 			<TextBlock
-				className="p-3 text-3xl   lg:justify-start rounded-xl "
+				className="p-3 text-xl   lg:justify-start rounded-xl "
 			>
 				<LiaPalletSolid size={24} />
 				{pallet.title}
@@ -59,9 +59,9 @@ grid grid-cols-1 lg:grid-cols-3
 				<TextBlock
 					className="text-white  "
 				>
-					<VscNote />
+					<VscNote size={12} />
 					<TextBlock
-						className="text-2xl"
+						className="text-base"
 					>
 						{poses?.length}
 					</TextBlock>
@@ -70,10 +70,10 @@ grid grid-cols-1 lg:grid-cols-3
 				<TextBlock
 					className="text-white "
 				>
-					<LuBox />
+					<LuBox size={12} />
 
 					<TextBlock
-						className="text-2xl"
+						className="text-base"
 					>
 						{boxes}
 					</TextBlock>

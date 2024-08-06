@@ -53,7 +53,7 @@ ${pos.quant
 				className="flex items-center justify-center bg-white rounded-xl  p-1 col-span-1"
 			>
 
-				<ImageArt size={80} artikul={pos?.artikul} className="rounded-xl" />
+				<ImageArt size={50} artikul={pos?.artikul} className="rounded-xl" />
 
 			</CardBlock>
 
@@ -78,7 +78,7 @@ ${pos.quant
 
 
 				<TextBlock
-					className="col-span-3 lg:col-span-1 px-8 justify-self-center text-2xl"
+					className="col-span-3 lg:col-span-1 px-8 justify-self-center text-lg"
 				>
 					<PalletIcon />
 					{pos?.palletTitle}
@@ -94,16 +94,16 @@ ${pos.quant
 					<CardBlock
 						className="flex items-center space-x-2 justify-self-center"
 					>
-						<BsBoxSeam />
-						<TextBlock className=" text-2xl  " >{pos?.boxes}</TextBlock>
+						<BsBoxSeam size={12} />
+						<TextBlock className=" text-lg  " >{pos?.boxes}</TextBlock>
 
 					</CardBlock>
 
 					<CardBlock
 						className="flex items-center space-x-2 justify-self-center"
 					>
-						<BsBalloon />
-						<TextBlock className=" text-2xl  " >{pos?.quant}</TextBlock>
+						<BsBalloon size={12} />
+						<TextBlock className=" text-lg  " >{pos?.quant}</TextBlock>
 					</CardBlock>
 
 
