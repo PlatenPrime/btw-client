@@ -38,7 +38,7 @@ export default function ArtCard(
 						"
 			>
 
-				<ImageArt size={200} artikul={artikul?.artikul} className="rounded-xl" />
+				<ImageArt size={100} artikul={artikul?.artikul} className="rounded-xl" />
 			</CardBlock>
 
 
@@ -51,7 +51,7 @@ export default function ArtCard(
 			>
 
 				<TextBlock
-					className="text-3xl text-center w-full  p-1 bg-gradient-to-b  from-sky-500/50 to-sky-900/50  rounded-xl"
+					className="text-lg lg:text-3xl text-center w-full  p-1 bg-gradient-to-b  from-sky-500/50 to-sky-900/50  rounded-xl"
 				>
 					{artikul?.nameukr}
 				</TextBlock>
