@@ -102,7 +102,7 @@ export default function CreateCompVariantModal({
             onCancel={() => setIsShowModalCreateCompVariant(false)}
         >
             <CardBlock
-                className="flex flex-col gap-4 min-w-fit max-w-lg text-base "
+                className="flex flex-col gap-4 min-w-fit max-w-lg text-base   "
             >
 
 
@@ -332,7 +332,7 @@ export default function CreateCompVariantModal({
 
 
 
-                <CardBlock className="grid grid-cols-2 space-x-2 text-lg">
+                <CardBlock className="grid grid-cols-2 ">
 
 
                     <ButtonBlock

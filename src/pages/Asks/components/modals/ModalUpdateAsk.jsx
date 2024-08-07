@@ -45,96 +45,63 @@ export default function ModalUpdateAsk(
 
 
 					<CardBlock
-						className="grid grid-cols-3 border border-yellow-500 rounded-xl"
+						className="grid grid-cols-3 bg-yellow-500/10 rounded-xl text-lg"
 					>
 						<TextBlock
-							className="text-2xl"
+							className="text-xl"
 						>
 							Зараз:
 						</TextBlock>
 
-						<CardBlock
-							className="flex justify-center  space-x-2"
-						>
+						
+							
 							<TextBlock
-								className="text-sky-300  text-xl">
-								<BsBalloon size={12} />
-							</TextBlock>
-							<TextBlock
-								className="text-sky-300  font-bold text-3xl  rounded"
+								className="text-sky-300  font-bold  rounded"
 							>
 
 								{selectedPos?.quant}
 							</TextBlock>
-						</CardBlock>
+						
 
 
-						<CardBlock
-							className="flex justify-center  space-x-2"
-						>
+					
 							<TextBlock
-								className="text-amber-300  text-xl">
-								<BsBoxSeam size={12} />
-							</TextBlock>
-							<TextBlock
-								className="text-amber-300 font-bold text-3xl rounded"
+								className="text-amber-300 font-bold  rounded"
 							>
 								{selectedPos?.boxes}
 							</TextBlock>
-						</CardBlock>
+						
 
 
 					</CardBlock>
 
 
 					<CardBlock
-						className="grid grid-cols-3 border border-green-500 rounded-xl"
+						className="grid grid-cols-3  bg-green-500/10 rounded-xl text-lg"
 					>
 
 
 						<TextBlock
-							className="text-2xl "
+							className="text-xl "
 						>
 							Стане:
 						</TextBlock>
 
 
-
-						<CardBlock
-							className="flex justify-center  space-x-2"
-						>
 							<TextBlock
-								className={finalValuePosQuant < 0 ? "text-red-500  text-xl" : "text-teal-300  text-xl"}>
-								<BsBalloon size={12} />
-							</TextBlock>
-							<TextBlock
-								className={finalValuePosQuant < 0 ? "text-red-500  text-3xl" : "text-teal-300  text-3xl"}
+								className={finalValuePosQuant < 0 ? "text-red-500  " : "text-sky-300   "}
 							>
 
 								{finalValuePosQuant}
 							</TextBlock>
-						</CardBlock>
-
-
-						<CardBlock
-							className="flex justify-center  space-x-2"
-						>
-							<TextBlock
-								className={finalValuePosBoxes < 0 ? "text-red-500  text-xl" : "text-teal-300  text-xl"}>
-
-
-								<BsBoxSeam size={12} />
-							</TextBlock>
+					
 							<TextBlock
 
-								className={finalValuePosBoxes < 0 ? "text-red-500  text-3xl" : "text-teal-300  text-3xl"}>
+								className={finalValuePosBoxes < 0 ? "text-red-500  " : "text-amber-300  "}>
 
 								{finalValuePosBoxes}
 							</TextBlock>
-						</CardBlock>
-
-
-
+			
 
 
 					</CardBlock>
@@ -170,8 +137,8 @@ export default function ModalUpdateAsk(
 
 						<CardBlock className="flex justify-between items-center gap-2">
 							<TextBlock
-								className="text-sky-100   text-3xl">
-								<BsBalloon />
+								className="text-sky-100  ">
+								<BsBalloon  size={24}/>
 							</TextBlock>
 							<InputBlock
 							className="text-xl"
@@ -180,6 +147,7 @@ export default function ModalUpdateAsk(
 								name="quant"
 								autoComplete="off"
 								value={askValuePosQuant}
+								placeholder="Кульки"
 								onChange={(e) => {
 									setAskValuePosQuant(e.target.value)
 									setFinalValuePosQuant(selectedPos?.quant - e.target.value)
@@ -189,8 +157,8 @@ export default function ModalUpdateAsk(
 
 						<CardBlock className="flex justify-between items-center gap-2">
 							<TextBlock
-								className="text-amber-100  text-3xl">
-								<BsBoxSeam />
+								className="text-amber-100  ">
+								<BsBoxSeam size={24} />
 							</TextBlock>
 							<InputBlock
 							className="text-xl"
@@ -199,6 +167,7 @@ export default function ModalUpdateAsk(
 								name="quant"
 								autoComplete="off"
 								value={askValuePosBoxes}
+								placeholder="Коробки"
 								onChange={(e) => {
 									setAskValuePosBoxes(e.target.value)
 									setFinalValuePosBoxes(selectedPos?.boxes - e.target.value)

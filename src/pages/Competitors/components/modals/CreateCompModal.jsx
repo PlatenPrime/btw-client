@@ -294,7 +294,7 @@ export default function CreateCompModal({
 
                
 
-                <CardBlock className="grid grid-cols-2 space-x-2 text-lg">
+                <CardBlock className="grid grid-cols-2 ">
 
 
                     <ButtonBlock

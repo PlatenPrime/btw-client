@@ -20,7 +20,7 @@ export default function ModalWrapper({ children, onCancel, title }) {
 	return (
 		<div
 			className="fixed  overflow-auto p-2 bg-sky-500/10 inset-0 z-40 flex items-center justify-center backdrop-blur backdrop-filter "
-			onClick={handleModalClick}
+			// onClick={handleModalClick}
 		>
 
 
@@ -29,7 +29,7 @@ export default function ModalWrapper({ children, onCancel, title }) {
 			<div className=" overflow-y-auto max-h-full   w-fit  ">
 
 
-				<div className="relative  space-y-8 bg-slate-900 backdrop-blur backdrop-filter bg-opacity-90 min-w-fit  max-w-3xl p-4 rounded-lg shadow-lg  "
+				<div className="relative  space-y-8 bg-slate-900 backdrop-blur backdrop-filter bg-opacity-90 min-w-fit  max-w-3xl p-4 lg:px-32 rounded-lg shadow-lg  "
 					ref={modalRef}
 				>
 
