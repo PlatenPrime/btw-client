@@ -13,13 +13,13 @@ export default function ArtPalletBage({
     return (
         <CardBlock
             className={`
-        grid grid-cols-1 lg:grid-cols-3 space-y-2 lg:space-y-0 cursor-pointer p-4 lg:gap-8 justify-center rounded-xl
+        grid grid-cols-1 lg:grid-cols-3 gap-2  cursor-pointer p-2  justify-center rounded-xl
          
         transition ease-in-out duration-500
     
         ${pos?.quant === 0
                     ?
-                    "bg-gradient-to-b from-gray-500/80 to-gray-700/50 hover:bg-gray-900/50  hover:shadow-lg hover:shadow-gray-500   "
+                    "bg-gradient-to-b from-gray-500/20 to-gray-700/20 hover:bg-gray-900/20     "
                     :
                     pos.sklad === "merezhi" ? "bg-gradient-to-b from-yellow-500/80 to-yellow-900/50 hover:bg-yellow-500 hover:shadow-lg hover:shadow-yellow-500  " :
                         pos.sklad === "pogrebi" ? "bg-gradient-to-b from-emerald-500/80 to-emerald-900/50 hover:bg-emerald-500/50  hover:shadow-lg hover:shadow-emerald-500  " :
@@ -33,7 +33,7 @@ export default function ArtPalletBage({
 
 
             <TextBlock
-                className="flex lg:justify-start   text-2xl"
+                className="flex lg:justify-start   text-xl"
             >
                 <PalletIcon />
                 <TextBlock>
@@ -49,9 +49,9 @@ export default function ArtPalletBage({
             >
 
                 <TextBlock
-                    className=" space-x-2"
+                    className=" gap-1"
                 >
-                    <FaWarehouse size={24} />
+                    <FaWarehouse size={16} />
                     <span>{pos?.sklad === "pogrebi" ? "Погреби" : pos?.sklad === "merezhi" ? "Мережі" : ""}</span>
                 </TextBlock>
 
@@ -73,18 +73,18 @@ export default function ArtPalletBage({
 
 
             <CardBlock
-                className="  w-full flex justify-between "
+                className="  grid grid-cols-2 text-base  "
             >
 
                 <CardBlock
-                    className="flex justify-center w-1/2 space-x-2"
+                    className="flex justify-center  gap-1"
                 >
                     <TextBlock
-                        className="  text-xl">
+                        className="  text-base">
                         <BsBoxSeam size={12} />
                     </TextBlock>
                     <TextBlock
-                        className=" font-bold text-xl rounded"
+                        className=" font-bold text-base rounded"
                     >
                         {pos?.boxes}
                     </TextBlock>
@@ -92,14 +92,14 @@ export default function ArtPalletBage({
 
 
                 <CardBlock
-                    className="flex justify-center w-1/2 space-x-2"
+                    className="flex justify-center  gap-1"
                 >
                     <TextBlock
-                        className="  text-xl">
+                        className="  text-base">
                         <BsBalloon size={12} />
                     </TextBlock>
                     <TextBlock
-                        className="  font-bold text-xl  rounded"
+                        className="  font-bold text-base  rounded"
                     >
 
                         {pos?.quant}

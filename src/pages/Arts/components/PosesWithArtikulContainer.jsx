@@ -11,7 +11,7 @@ export default function PosesWithArtikulContainer({
 
 
     if (isLoadingPoses) return <ContainerBlock
-        className=" space-y-2"
+        className=" "
     >
         <Spinner color="rgb(16 185 129)" />
     </ContainerBlock>
@@ -20,7 +20,7 @@ export default function PosesWithArtikulContainer({
 
 
     if (posesWithArtikul?.length < 1) return <ContainerBlock
-        className=" space-y-2"
+        className=" "
     >
         <TextBlock
             className=" text-xl italic"
@@ -34,10 +34,10 @@ export default function PosesWithArtikulContainer({
 
     return (
         <ContainerBlock
-            className=" space-y-2"
+            className=" gap-2"
         >
             <CardBlock
-                className="flex flex-col space-y-4 w-full"
+                className="grid gap-2 "
             >
                 {children}
             </CardBlock>
