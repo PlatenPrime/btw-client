@@ -8,7 +8,7 @@ export default function SettingsPage() {
 			className=""
 		>
 			<HeaderBlock
-				className=" bg-slate-700 shadow-lg shadow-slate-700"
+				className="bg-gradient-to-b  from-slate-700/50  to-slate-400 shadow-md shadow-slate-500 "
 			>
 				Налаштування
 			</HeaderBlock>

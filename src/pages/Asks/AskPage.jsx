@@ -193,7 +193,7 @@ export default function AskPage() {
 		>
 
 			<HeaderBlock
-				className="bg-indigo-500 shadow-sm shadow-indigo-500"
+				className="bg-gradient-to-b  from-indigo-700/50  to-indigo-400 shadow-md shadow-indigo-500 "
 			>
 
 				<TextBlock>Запит на  {ask?.artikul}</TextBlock>

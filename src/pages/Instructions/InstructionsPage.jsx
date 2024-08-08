@@ -85,7 +85,9 @@ export default function InstructionsPage() {
       isLoading={isAllInsFoldersLoading}
     >
 
-      <HeaderBlock className="bg-blue-500 shadow-lg shadow-blue-500 ">
+      <HeaderBlock 
+      className="bg-gradient-to-b  from-blue-700/50  to-blue-400 shadow-md shadow-blue-500 "
+      >
         Інструкції
       </HeaderBlock>
 

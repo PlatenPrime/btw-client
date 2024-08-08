@@ -41,7 +41,7 @@ export default function StocksPage() {
 			isLoading={isAllPosesLoading || loadingArtsDB}
 		>
 			<HeaderBlock
-				className=" shadow-lg bg-emerald-500 shadow-emerald-500 "
+				className="bg-gradient-to-b  from-emerald-700/50  to-emerald-400 shadow-md shadow-emerald-500 "
 			>
 				<TextBlock className="">
 					Позиції

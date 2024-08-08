@@ -93,7 +93,7 @@ export default function CreateUserPage() {
 			className="space-y-4"
 		>
 			<HeaderBlock
-				className=" bg-green-500 shadow-lg shadow-green-500"
+				className="bg-gradient-to-b  from-green-700/50  to-green-400 shadow-md shadow-green-500 "
 			>
 				Створення користувача
 			</HeaderBlock>

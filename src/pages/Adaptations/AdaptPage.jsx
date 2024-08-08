@@ -135,7 +135,7 @@ export default function AdaptPage() {
             isLoading={isAdaptLoading}
         >
             <HeaderBlock
-                className="bg-green-500 shadow-md shadow-green-500"
+                 className="bg-gradient-to-b  from-green-700/50  to-green-400 shadow-md shadow-green-500 "
             >
                 {adapt?.title}
             </HeaderBlock>

@@ -43,7 +43,7 @@ export default function AdaptTestPage() {
         >
 
             <HeaderBlock
-                className="bg-lime-500 shadow-lg shadow-lime-500 "
+                 className="bg-gradient-to-b  from-lime-700/50  to-lime-400 shadow-md shadow-lime-500 "
             >
                 Тест "{adapt?.title}"
             </HeaderBlock>

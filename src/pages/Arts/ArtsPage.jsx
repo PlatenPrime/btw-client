@@ -60,7 +60,7 @@ export default function ArtsPage() {
 		>
 
 			<HeaderBlock
-				className="bg-sky-500  shadow-sm shadow-sky-500 "
+			className="bg-gradient-to-b  from-sky-700/50  to-sky-400 shadow-md shadow-sky-500 "
 			>
 				<TextBlock className="">
 					Артикули

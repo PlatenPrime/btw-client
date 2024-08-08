@@ -79,7 +79,9 @@ export default function InsFolderPage() {
 
     >
 
-      <HeaderBlock className="bg-yellow-500 shadow-lg shadow-yellow-500">
+      <HeaderBlock 
+      className="bg-gradient-to-b  from-yellow-700/50  to-yellow-400 shadow-md shadow-yellow-500 "
+      >
         {insFolder?.title || 'Тека'}
       </HeaderBlock>
 

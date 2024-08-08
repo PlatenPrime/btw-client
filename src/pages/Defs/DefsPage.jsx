@@ -52,7 +52,7 @@ export default function DefsPage() {
 			className=" "
 		>
 			<HeaderBlock
-				className="bg-pink-500 shadow-sm shadow-pink-500"
+				className="bg-gradient-to-b  from-pink-700/50  to-pink-400 shadow-md shadow-pink-500 "
 			>
 				Дефіцити
 			</HeaderBlock>

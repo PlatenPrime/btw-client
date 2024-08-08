@@ -91,7 +91,7 @@ export default function AdaptBlockPage() {
             isLoading={isAdaptBlockLoading}
         >
             <HeaderBlock
-                className="bg-cyan-500 shadow-lg shadow-cyan-500"
+                 className="bg-gradient-to-b  from-cyan-700/50  to-cyan-400 shadow-md shadow-cyan-500 "
             >
                 Блок адаптації
             </HeaderBlock>

@@ -84,7 +84,7 @@ export default function CompPage() {
         >
 
             <HeaderBlock
-                className="bg-fuchsia-500 shadow-sm shadow-fuchsia-500"
+                 className="bg-gradient-to-b  from-fuchsia-700/50  to-fuchsia-400 shadow-md shadow-fuchsia-500 "
             >
                 Конкуренти {comp?.artikul}
             </HeaderBlock>

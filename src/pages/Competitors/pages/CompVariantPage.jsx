@@ -75,7 +75,7 @@ export default function CompVariantPage() {
             error={error}
         >
             <HeaderBlock
-                className="bg-violet-500 shadow-sm shadow-violet-500"
+                className="bg-gradient-to-b  from-violet-700/50  to-violet-400 shadow-md shadow-violet-500 "
             >
                 Варіант {compVariant?.artikul}
             </HeaderBlock>

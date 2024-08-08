@@ -323,7 +323,7 @@ export default function PalletPage() {
 		>
 
 			<HeaderBlock
-				className="bg-amber-500 shadow-lg shadow-amber-500 "
+				className="bg-gradient-to-b  from-amber-700/50  to-amber-400 shadow-md shadow-amber-500 "
 			>
 
 				<TextBlock>Палета {pallet?.title}</TextBlock>

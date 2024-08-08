@@ -66,7 +66,7 @@ export default function LoginPage() {
 			className="space-y-4 px-1"
 		>
 			<HeaderBlock
-				className=" shadow-lg  shadow-green-500 bg-green-500 "
+				className="bg-gradient-to-b  from-green-700/50  to-green-400 shadow-md shadow-green-500 "
 			>
 				Авторизація
 			</HeaderBlock>
