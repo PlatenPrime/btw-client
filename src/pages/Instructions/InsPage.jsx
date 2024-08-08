@@ -58,7 +58,9 @@ export default function InsPage() {
 				isDeleting={isInsDeleting}
 			/>}
 
-			<ButtonGroup>
+			<ButtonGroup
+			className="relative sticky top-16 z-50"
+			>
 
 			<ButtonGroup.Navigation>
 			</ButtonGroup.Navigation>
