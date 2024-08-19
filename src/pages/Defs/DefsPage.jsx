@@ -18,7 +18,7 @@ export default function DefsPage() {
 	const { defs, time, isDefsLoading, errorDefs } = useFetchDefs()
 	const { remainsDefs, isRemainsDefsLoading, errorRemainsDefs } = useFetchRemainsDefs()
 
-	const [isMorning, setIsMorning] = useState(true)
+	const [isMorning, setIsMorning] = useState(false)
 	const items = isMorning ? remainsDefs : defs
 
 	const { asks, isAsksLoading } = useFetchAsks()

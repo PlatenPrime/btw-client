@@ -66,7 +66,7 @@ const SidebarMobileBTW = ({ onClose }) => {
 		<CardBlock
 			onClick={onClose}
 
-			className='fixed z-50 xl:hidden  min-h-screen w-full 
+			className='fixed z-[100] xl:hidden  min-h-screen w-full 
 		
 		 bg-gray-600/50 '>
 

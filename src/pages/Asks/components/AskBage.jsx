@@ -115,22 +115,22 @@ export default function AskBage({
 
 
             <CardBlock
-                className="grid grid-cols-2  p-2  place-content-center"
+                className="grid grid-cols-2  p-2 place-content-center"
             >
 
 
                 <TextBlock
-                    className="text-sm italic "
+                    className="text-sm italic  place-content-start  lg:place-content-center"
                 >
-                    < BsQuestionCircle size={12} />
+
                     {formatDateToUkrainianFull(ask?.createdAt)}
                 </TextBlock>
 
                 <TextBlock
-                    className="text-sm items-center font-bold"
+                    className="text-sm items-center font-bold place-content-end  lg:place-content-center "
                 >
 
-                    {users?.find(user => user._id === ask?.asker)?.fullname}
+                  {users?.find(user => user._id === ask?.asker)?.fullname}
                 </TextBlock>
 
             </CardBlock>
