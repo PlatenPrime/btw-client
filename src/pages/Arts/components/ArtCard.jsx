@@ -54,7 +54,7 @@ export default function ArtCard(
 
 
 				<CardBlock
-					className="grid gap-1  bg-gradient-to-b  from-slate-500/80 to-slate-800/50 rounded-xl"
+					className="grid gap-1  bg-gradient-to-b  from-slate-700/80 to-slate-700/50 rounded-xl"
 				>
 					<TextBlock className="items-center justify-between   px-4  " >
 						<span className="flex"><VscLocation size={24} color='orange' />Зона: </span>
@@ -89,7 +89,7 @@ export default function ArtCard(
 
 
 				<CardBlock
-					className="grid bg-gradient-to-b  bg-gradient-to-b  from-slate-500/80 to-slate-800/50  rounded-xl overflow-hidden"
+					className="grid bg-gradient-to-b  bg-gradient-to-b  from-slate-700/80 to-slate-700/50  rounded-xl overflow-hidden"
 
 				>
 					<TextBlock
