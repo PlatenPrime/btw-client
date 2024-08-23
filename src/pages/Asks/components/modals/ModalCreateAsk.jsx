@@ -6,6 +6,7 @@ import useFetchUsers from '../../../Auth/hooks/useFetchUsers'
 import { ButtonBlock, CardBlock, ImageArt, InputBlock, ModalWrapper, Spinner, TextBlock } from '../../../../components'
 import useFetchArts from '../../../../hooks/useFetchArts'
 import { CancelIcon, OkIcon } from '../../../../components/UI/Icons'
+import useFetchAllPoses from '../../../Poses/hooks/useFetchAllPoses'
 
 export default function ModalCreateAsk({
     artikul,
@@ -17,11 +18,23 @@ export default function ModalCreateAsk({
     const { user, users } = useAuthStore()
     const { createAsk } = useAskStore()
 
+    const { allPoses, isAllPosesLoading } = useFetchAllPoses()
+
+
+    
+
 
     const [newAskArtikul, setNewAskArtikul] = useState(artikul)
     const [newAskQuant, setNewAskQuant] = useState('')
     const [newAskCom, setNewAskCom] = useState('')
     const [isAskCreating, setIsAskCreating] = useState(false)
+
+
+
+    const isExistOnAllPoses =  allPoses?.some(pos => pos.artikul === newAskArtikul)
+    const isShowEmptyWarning = newAskArtikul?.length === 9  && !isExistOnAllPoses
+ 
+
 
 
 
@@ -142,6 +155,12 @@ export default function ModalCreateAsk({
 
                     </CardBlock>
 
+                    {isShowEmptyWarning && <CardBlock
+                        className="border-2 border-red-500 rounded-xl"
+                    >
+                        <TextBlock className="text-red-500 text-center">Увага! Цього артикулу може не бути на запасах. Уточни у комірника.</TextBlock>
+                    </CardBlock>
+                    }
 
 
                     <CardBlock className="grid grid-cols-2 space-x-2">

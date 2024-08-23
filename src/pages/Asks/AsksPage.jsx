@@ -1,20 +1,23 @@
 import React, { useEffect, useState } from 'react'
 import { ButtonBlock, ButtonGroup, ContainerBlock, HeaderBlock, PageBTW, Spinner } from "../../components"
-import useAskStore from './stores/asksStore'
 
 import { AddIcon } from '../../components/UI/Icons';
 
 import ModalCreateAsk from './components/modals/ModalCreateAsk';
 
 import useFetchAsks from './hooks/useFetchAsks';
+
+import useFetchAllPoses from '../Poses/hooks/useFetchAllPoses'
+
+
 import AsksContainer from './components/AsksContainer';
 
 
 export default function AsksPage() {
 
-	const { isAsksLoading } = useFetchAsks()
+	const {asks, isAsksLoading } = useFetchAsks()
 
-	const { asks } = useAskStore()
+
 
 	const [showModalCreateAsk, setShowModalCreateAsk] = useState(false)
 
