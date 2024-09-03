@@ -21,6 +21,11 @@ export default function UpdateCompModal({
         yumiLink: comp?.competitorsLinks?.yumiLink || "",
         airLink: comp?.competitorsLinks?.airLink || "",
         bestLink: comp?.competitorsLinks?.bestLink || "",
+
+        aeroLink: comp?.competitorsLinks?.aeroLink || "",
+        balunLink: comp?.competitorsLinks?.balunLink || "",
+        svyatoLink: comp?.competitorsLinks?.svyatoLink || "",
+        ideaLink: comp?.competitorsLinks?.ideaLink || "",
     }
 
     const [state, setState] = useState(initialStateForm)
@@ -114,7 +119,7 @@ export default function UpdateCompModal({
                     className="flex flex-col gap-2 bg-slate-500/10 p-2 rounded-xl ">
 
                     <CardBlock
-                        className="grid grid-cols-1 md:grid-cols-2 space-x-2">
+                        className="grid grid-cols-1 md:grid-cols-2 gap-2">
                         <label
                             className=" justify-self-center self-center md:justify-self-start" htmlFor="yumiLink">
                             Yumi:
@@ -131,7 +136,7 @@ export default function UpdateCompModal({
                     </CardBlock>
 
                     <CardBlock
-                        className="grid grid-cols-1 md:grid-cols-2 space-x-2">
+                        className="grid grid-cols-1 md:grid-cols-2 gap-2">
                         <label
                             className=" justify-self-center self-center md:justify-self-start"
                             htmlFor="sharteLink">
@@ -149,7 +154,7 @@ export default function UpdateCompModal({
                     </CardBlock>
 
                     <CardBlock
-                        className="grid grid-cols-1 md:grid-cols-2 space-x-2">
+                        className="grid grid-cols-1 md:grid-cols-2 gap-2">
                         <label
                             className=" justify-self-center self-center md:justify-self-start" htmlFor="airLink">
                             Air:
@@ -166,7 +171,7 @@ export default function UpdateCompModal({
                     </CardBlock>
 
                     <CardBlock
-                        className="grid grid-cols-1 md:grid-cols-2 space-x-2">
+                        className="grid grid-cols-1 md:grid-cols-2 gap-2">
                         <label
                             className=" justify-self-center self-center md:justify-self-start" htmlFor="bestLink">
                             Best:
@@ -181,6 +186,88 @@ export default function UpdateCompModal({
                             placeholder="https://best-balloons.com.ua/"
                         />
                     </CardBlock>
+
+
+
+
+
+                    <CardBlock
+                        className="grid grid-cols-1 md:grid-cols-2 gap-2">
+                        <label
+                            className=" justify-self-center self-center md:justify-self-start" htmlFor="aeroLink">
+                            Aero:
+                        </label>
+                        <InputBlock
+                            type="text"
+                            id="aeroLink"
+                            name="aeroLink"
+                            autoComplete="off"
+                            value={state.aeroLink}
+                            onChange={handleChange}
+                            placeholder="https://aero-boom.com.ua/ua/"
+                        />
+                    </CardBlock>
+
+
+
+                    <CardBlock
+                        className="grid grid-cols-1 md:grid-cols-2 gap-2">
+                        <label
+                            className=" justify-self-center self-center md:justify-self-start" htmlFor="balunLink">
+                            Balun:
+                        </label>
+                        <InputBlock
+                            type="text"
+                            id="balunLink"
+                            name="balunLink"
+                            autoComplete="off"
+                            value={state.balunLink}
+                            onChange={handleChange}
+                            placeholder="https://balun.com.ua/ua/"
+                        />
+                    </CardBlock>
+
+
+                    <CardBlock
+                        className="grid grid-cols-1 md:grid-cols-2 gap-2">
+                        <label
+                            className=" justify-self-center self-center md:justify-self-start" htmlFor="svyatoLink">
+                            Svyato:
+                        </label>
+                        <InputBlock
+                            type="text"
+                            id="svyatoLink"
+                            name="svyatoLink"
+                            autoComplete="off"
+                            value={state.svyatoLink}
+                            onChange={handleChange}
+                            placeholder="https://svyatoopt.com.ua/ua/"
+                        />
+                    </CardBlock>
+
+
+                    <CardBlock
+                        className="grid grid-cols-1 md:grid-cols-2 gap-2">
+                        <label
+                            className=" justify-self-center self-center md:justify-self-start" htmlFor="ideaLink">
+                            Idea:
+                        </label>
+                        <InputBlock
+                            type="text"
+                            id="ideaLink"
+                            name="ideaLink"
+                            autoComplete="off"
+                            value={state.ideaLink}
+                            onChange={handleChange}
+                            placeholder="https://ideaopt.com.ua/ua/"
+                        />
+                    </CardBlock>
+
+
+
+
+
+
 
                 </CardBlock>
 
