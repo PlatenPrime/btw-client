@@ -246,7 +246,9 @@ export default function CreateCompVariantModal({
                     className="flex flex-col gap-2 bg-slate-500/10 p-2 rounded-xl ">
 
 
-
+                    <TextBlock className="text-base text-yellow-500 italic">
+                        Посилання на українські сторінки сайтів
+                    </TextBlock>
 
 
                     <CardBlock

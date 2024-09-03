@@ -204,7 +204,9 @@ export default function CreateCompModal({
                     className="flex flex-col gap-2 bg-slate-500/10 p-2 rounded-xl ">
 
 
-
+                    <TextBlock className="text-base text-yellow-500 italic">
+                        Посилання на українські сторінки сайтів
+                    </TextBlock>
 
 
                     <CardBlock
@@ -368,7 +370,7 @@ export default function CreateCompModal({
                     Цей артикул вже аналізується
                 </TextBlock>}
 
-               
+
 
                 <CardBlock className="grid grid-cols-2 ">
 
@@ -402,7 +404,7 @@ export default function CreateCompModal({
                                     yumiLink: state.yumiLink,
                                     airLink: state.airLink,
                                     bestLink: state.bestLink,
-                                    
+
                                     aeroLink: state.aeroLink,
                                     balunLink: state.balunLink,
                                     svyatoLink: state.svyatoLink,
