@@ -34,7 +34,7 @@ export default function SelectedCompModal({ comp, isShowModalComp, setIsShowModa
 					/>
 
 					<TextBlock
-						className="text-xl w-full text-slate-100 bg-gradient-to-b from-fuchsia-500/50 to-fuchsia-500/50 p-2 rounded-xl cursor-pointer"
+						className="text-xl w-full text-slate-100 bg-fuchsia-500/50 hover:bg-fuchsia-500/80 p-2 rounded-xl cursor-pointer"
 						onClick={() => { window.open(`/comps/${comp?._id}`, "_blank");}}
 					>
 						{comp?.nameukr}
@@ -190,6 +190,79 @@ export default function SelectedCompModal({ comp, isShowModalComp, setIsShowModa
 								</a>
 							</td>
 						</tr>
+
+
+						<tr
+							className="border border-slate-500 "
+						>
+							<td
+								className='text-left'
+							> Aero:</td>
+							<td
+								className='text-left'
+							>
+								<a href={comp?.competitorsLinks.aeroLink} target='blanked'
+									className='hover:text-blue-600'
+								>
+									{comp?.competitorsLinks.aeroLink ? comp?.competitorsLinks.aeroLink.slice(0, 50) : "-"}
+								</a>
+							</td>
+						</tr>
+
+						<tr
+							className="border border-slate-500 "
+						>
+							<td
+								className='text-left'
+							> Balun:</td>
+							<td
+								className='text-left'
+							>
+								<a href={comp?.competitorsLinks.balunLink} target='blanked'
+									className='hover:text-blue-600'
+								>
+									{comp?.competitorsLinks.balunLink ? comp?.competitorsLinks.balunLink.slice(0, 50) : "-"}
+								</a>
+							</td>
+						</tr>
+
+						<tr
+							className="border border-slate-500 "
+						>
+							<td
+								className='text-left'
+							> Svyato:</td>
+							<td
+								className='text-left'
+							>
+								<a href={comp?.competitorsLinks.svyatoLink} target='blanked'
+									className='hover:text-blue-600'
+								>
+									{comp?.competitorsLinks.svyatoLink ? comp?.competitorsLinks.svyatoLink.slice(0, 50) : "-"}
+								</a>
+							</td>
+						</tr>
+
+
+
+						<tr
+							className="border border-slate-500 "
+						>
+							<td
+								className='text-left'
+							> Idea:</td>
+							<td
+								className='text-left'
+							>
+								<a href={comp?.competitorsLinks.ideaLink} target='blanked'
+									className='hover:text-blue-600'
+								>
+									{comp?.competitorsLinks.ideaLink ? comp?.competitorsLinks.ideaLink.slice(0, 50) : "-"}
+								</a>
+							</td>
+						</tr>
+
+
 					</tbody>
 
 				</table>

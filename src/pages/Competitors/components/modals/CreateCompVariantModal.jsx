@@ -26,6 +26,11 @@ export default function CreateCompVariantModal({
         yumiLink: "",
         airLink: "",
         bestLink: "",
+
+        aeroLink: "",
+        balunLink: "",
+        svyatoLink: "",
+        ideaLink: "",
     }
 
 
@@ -126,7 +131,7 @@ export default function CreateCompVariantModal({
                             state.imageUrl
                                 ?
                                 <img
-                                    alt='Фото инструкції'
+                                    alt='Фото варіанта'
                                     src={state.imageUrl}
                                     width={200}
                                     className="rounded-xl "
@@ -245,7 +250,7 @@ export default function CreateCompVariantModal({
 
 
                     <CardBlock
-                        className="grid grid-cols-1 md:grid-cols-2 space-x-2">
+                        className="grid grid-cols-1 md:grid-cols-2 gap-2">
                         <label
                             className=" justify-self-center self-center md:justify-self-start" htmlFor="yumiLink">
                             Yumi:
@@ -265,7 +270,7 @@ export default function CreateCompVariantModal({
 
 
                     <CardBlock
-                        className="grid grid-cols-1 md:grid-cols-2 space-x-2">
+                        className="grid grid-cols-1 md:grid-cols-2 gap-2">
                         <label
                             className=" justify-self-center self-center md:justify-self-start"
                             htmlFor="sharteLink">
@@ -287,7 +292,7 @@ export default function CreateCompVariantModal({
 
 
                     <CardBlock
-                        className="grid grid-cols-1 md:grid-cols-2 space-x-2">
+                        className="grid grid-cols-1 md:grid-cols-2 gap-2">
                         <label
                             className=" justify-self-center self-center md:justify-self-start" htmlFor="airLink">
                             Air:
@@ -306,7 +311,7 @@ export default function CreateCompVariantModal({
 
 
                     <CardBlock
-                        className="grid grid-cols-1 md:grid-cols-2 space-x-2">
+                        className="grid grid-cols-1 md:grid-cols-2 gap-2">
                         <label
                             className=" justify-self-center self-center md:justify-self-start" htmlFor="bestLink">
                             Best:
@@ -321,6 +326,83 @@ export default function CreateCompVariantModal({
                             placeholder="https://best-balloons.com.ua/"
                         />
                     </CardBlock>
+
+
+                    <CardBlock
+                        className="grid grid-cols-1 md:grid-cols-2 gap-2">
+                        <label
+                            className=" justify-self-center self-center md:justify-self-start" htmlFor="aeroLink">
+                            Aero:
+                        </label>
+                        <InputBlock
+                            type="text"
+                            id="aeroLink"
+                            name="aeroLink"
+                            autoComplete="off"
+                            value={state.aeroLink}
+                            onChange={handleChange}
+                            placeholder="https://aero-boom.com.ua/ua/"
+                        />
+                    </CardBlock>
+
+
+
+                    <CardBlock
+                        className="grid grid-cols-1 md:grid-cols-2 gap-2">
+                        <label
+                            className=" justify-self-center self-center md:justify-self-start" htmlFor="balunLink">
+                            Balun:
+                        </label>
+                        <InputBlock
+                            type="text"
+                            id="balunLink"
+                            name="balunLink"
+                            autoComplete="off"
+                            value={state.balunLink}
+                            onChange={handleChange}
+                            placeholder="https://balun.com.ua/ua/"
+                        />
+                    </CardBlock>
+
+
+                    <CardBlock
+                        className="grid grid-cols-1 md:grid-cols-2 gap-2">
+                        <label
+                            className=" justify-self-center self-center md:justify-self-start" htmlFor="svyatoLink">
+                            Svyato:
+                        </label>
+                        <InputBlock
+                            type="text"
+                            id="svyatoLink"
+                            name="svyatoLink"
+                            autoComplete="off"
+                            value={state.svyatoLink}
+                            onChange={handleChange}
+                            placeholder="https://svyatoopt.com.ua/ua/"
+                        />
+                    </CardBlock>
+
+
+                    <CardBlock
+                        className="grid grid-cols-1 md:grid-cols-2 gap-2">
+                        <label
+                            className=" justify-self-center self-center md:justify-self-start" htmlFor="ideaLink">
+                            Idea:
+                        </label>
+                        <InputBlock
+                            type="text"
+                            id="ideaLink"
+                            name="ideaLink"
+                            autoComplete="off"
+                            value={state.ideaLink}
+                            onChange={handleChange}
+                            placeholder="https://ideaopt.com.ua/ua/"
+                        />
+                    </CardBlock>
+
+
+
+
                 </CardBlock>
 
 
@@ -362,7 +444,12 @@ export default function CreateCompVariantModal({
                                     sharteLink: state.sharteLink,
                                     yumiLink: state.yumiLink,
                                     airLink: state.airLink,
-                                    bestLink: state.bestLink
+                                    bestLink: state.bestLink,
+
+                                    aeroLink: state.aeroLink,
+                                    balunLink: state.balunLink,
+                                    svyatoLink: state.svyatoLink,
+                                    ideaLink: state.ideaLink
                                 }
                             })
 
