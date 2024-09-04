@@ -8,9 +8,14 @@ const CompetitorItem = ({ name, link, imageLink, availability, price, isGettingU
 
     <TextBlock
       onClick={() => { if (link) window.open(link) }}
-      className={`group lg:text-left lg:justify-start rounded-xl p-2 ${link ? linkClasses : "text-gray-400"} overflow-hidden hover:bg-fuchsia-500/20  `}
+      className={`group lg:text-left justify-start rounded-xl p-2 ${link ? linkClasses : "text-gray-400"} overflow-hidden hover:bg-fuchsia-500/20  `}
     >
-      <span className="flex items-center " > <img src={imageLink} alt={name} className=" h-4 object-cover mx-2" />{name}</span>
+      <span className="flex items-center " >
+        {name}
+        <img src={imageLink} alt={name} className=" h-4 object-cover mx-2" />
+
+      </span>
+
       <span className="hidden group-hover:flex   px-2 rounded-2xl" ><FiExternalLink /> </span>
     </TextBlock>
 
@@ -37,7 +42,7 @@ export default function CompData({
 
 
   return (
-    <ContainerBlock className="grid gap-2">
+    <ContainerBlock className="grid gap-1">
 
 
       <CardBlock className="grid grid-cols-3 gap-2  rounded-xl p-2">

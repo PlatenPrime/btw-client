@@ -25,7 +25,7 @@ export default function CompStamp({
         className="grid gap-2"
     >
         <TextBlock
-        className="text-center "
+            className="text-center "
         >
             Хронологія відсутня
         </TextBlock>
@@ -39,30 +39,8 @@ export default function CompStamp({
         >
 
             <CardBlock
-                className="grid gap-2 lg:grid-cols-3"
+                className="grid gap-2 lg:grid-cols-2 "
             >
-
-
-
-                <TextBlock
-                    className=" lg:-order-1  rounded-xl"
-                >
-                    <LuCalendarDays size={20} color='rgb(96 165 250)' /> {compStamp?.dates?.length}
-                </TextBlock>
-
-
-                <CardBlock
-                    className="grid place-content-center lg:order-1 "
-                >
-                    <ButtonBlock
-                        className="emerald-b"
-                        onClick={() => exportCompStampToExcel(compStamp)}
-                    >
-                        <ExcelIcon /> Хронологія
-                    </ButtonBlock>
-                </CardBlock>
-
-
 
                 <DateControlPanel
                     currentIndex={currentIndex}
@@ -73,6 +51,23 @@ export default function CompStamp({
                 />
 
 
+                <CardBlock
+                    className="grid grid-cols-2 place-content-center  "
+                >
+
+                    <ButtonBlock
+                        className="emerald-b"
+                        onClick={() => exportCompStampToExcel(compStamp)}
+                    >
+                        <ExcelIcon /> Хронологія
+                    </ButtonBlock>
+
+                    <TextBlock
+                        className="   rounded-xl"
+                    >
+                        <LuCalendarDays size={20} color='rgb(96 165 250)' /> {compStamp?.dates?.length}
+                    </TextBlock>
+                </CardBlock>
 
 
 
@@ -81,28 +76,39 @@ export default function CompStamp({
 
 
             <CardBlock
-                className="grid "
+                className="grid gap-1 "
             >
 
-                {!isVariant &&   <CompetitorItem
+                {!isVariant && <CompetitorItem
                     name="BTrade"
+                    imageLink="https://sharik.ua/local/templates/main/images/ua-logo.png"
                     availability={compStamp?.dates?.[currentIndex].avail?.btrade}
                     price={compStamp?.dates?.[currentIndex].price?.btrade}
                     isNumericAvailability
-                /> }
+                />}
 
-              
+
 
                 <CompetitorItem
                     name="Yumi"
+                    imageLink="https://images.prom.ua/2620988838_w350_h100_yumi-optovij.jpg"
                     availability={compStamp?.dates?.[currentIndex].avail?.yumi}
                     price={compStamp?.dates?.[currentIndex].price?.yumi}
+                    isNumericAvailability
+                />
+
+                <CompetitorItem
+                    name="IdeaOpt"
+                    imageLink="https://ideaopt.com.ua/image/catalog/logo-idea.png"
+                    availability={compStamp?.dates?.[currentIndex].avail?.idea}
+                    price={compStamp?.dates?.[currentIndex].price?.idea}
                     isNumericAvailability
                 />
 
 
                 <CompetitorItem
                     name="Sharte"
+                    imageLink="https://sharte.net/local/templates/dresscodeV2/images/logo_shartico2.png"
                     availability={compStamp?.dates?.[currentIndex].avail?.sharte}
                     price={compStamp?.dates?.[currentIndex].price?.sharte}
                     availabilityClasses={compStamp?.dates?.[currentIndex].avail?.sharte === "N/A" ? "" : "text-sky-200"}
@@ -111,6 +117,7 @@ export default function CompStamp({
 
                 <CompetitorItem
                     name="Air"
+                    imageLink="https://airballoons.com.ua/image/catalog/logo_IVVO11.png"
                     availability={compStamp?.dates?.[currentIndex].avail?.air}
                     price={compStamp?.dates?.[currentIndex].price?.air}
                     availabilityClasses={compStamp?.dates?.[currentIndex].avail?.air === "N/A" ? "" : "text-sky-200"}
@@ -119,10 +126,38 @@ export default function CompStamp({
 
                 <CompetitorItem
                     name="Best"
+                    imageLink="https://best-balloons.com.ua/wp-content/uploads/2019/05/wood-logo-dark.jpg"
                     availability={compStamp?.dates?.[currentIndex].avail?.best}
                     price={compStamp?.dates?.[currentIndex].price?.best}
                     availabilityClasses={compStamp?.dates?.[currentIndex].avail?.best === "N/A" ? "" : "text-sky-200"}
                     priceClasses={compStamp?.dates?.[currentIndex].price?.best ? "text-green-500" : ""}
+                />
+
+                <CompetitorItem
+                    name="Aero"
+                    imageLink="https://images.prom.ua/4361922127_w350_h100_aero-bum.jpg"
+                    availability={compStamp?.dates?.[currentIndex].avail?.aero}
+                    price={compStamp?.dates?.[currentIndex].price?.aero}
+                    availabilityClasses={compStamp?.dates?.[currentIndex].avail?.aero === "N/A" ? "" : "text-sky-200"}
+                    priceClasses={compStamp?.dates?.[currentIndex].price?.aero ? "text-green-500" : ""}
+                />
+
+                <CompetitorItem
+                    name="Balun"
+                    imageLink="https://images.prom.ua/2069861087_w250_h120_balun-optovij.jpg"
+                    availability={compStamp?.dates?.[currentIndex].avail?.balun}
+                    price={compStamp?.dates?.[currentIndex].price?.balun}
+                    availabilityClasses={compStamp?.dates?.[currentIndex].avail?.balun === "N/A" ? "" : "text-sky-200"}
+                    priceClasses={compStamp?.dates?.[currentIndex].price?.balun ? "text-green-500" : ""}
+                />
+
+                <CompetitorItem
+                    name="Svyato"
+                    imageLink="https://svyatoopt.com.ua/content/images/2/200x100l90nn0/52579472314969.webp"
+                    availability={compStamp?.dates?.[currentIndex].avail?.svyato}
+                    price={compStamp?.dates?.[currentIndex].price?.svyato}
+                    availabilityClasses={compStamp?.dates?.[currentIndex].avail?.svyato === "N/A" ? "" : "text-sky-200"}
+                    priceClasses={compStamp?.dates?.[currentIndex].price?.svyato ? "text-green-500" : ""}
                 />
 
 
@@ -132,12 +167,14 @@ export default function CompStamp({
     )
 }
 
-function CompetitorItem({ name, availability, price, availabilityClasses, priceClasses, isNumericAvailability }) {
+function CompetitorItem({ name, imageLink, availability, price, availabilityClasses, priceClasses, isNumericAvailability }) {
     return (
-        <CardBlock className="grid grid-cols-3 gap-2 bg-gradient-to-b from-slate-600/50 to-slate-900/50 rounded-xl p-2">
+        <CardBlock className="grid grid-cols-3 gap-2 bg-slate-500/20 hover:bg-slate-400/20 rounded-xl p-2">
             <TextBlock
+                className="justify-start"
             >
-                {name}
+                <span>{name}</span>
+                <img src={imageLink} alt={name} className=" h-4 object-cover mx-2" />
             </TextBlock>
             <TextBlock className={`text-sky-200 ${availabilityClasses}`}>
                 {isNumericAvailability ? availability : (availability === "N/A" ? "N/A" : availability ? '✅' : '❌')}

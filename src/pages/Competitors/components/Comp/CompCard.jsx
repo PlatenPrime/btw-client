@@ -23,7 +23,6 @@ export default function CompCard({
 
 
             <CardBlock className=" col-span-3 lg:col-span-1 
-            bg-gradient-to-b from-fuchsia-500/50 to-fuchsia-900/50 
             flex flex-col  items-center justify-between gap-2 w-full rounded-xl   text-sm p-2 ">
                 <InfoItem icon={MdOutlinePrecisionManufacturing} text={comp?.prod} />
                 <InfoItem icon={MdOutlineCategory} text={comp?.category} />
@@ -40,8 +39,8 @@ export default function CompCard({
 
 function InfoItem({ icon: Icon, text, className }) {
     return (
-        <CardBlock className={`flex justify-between gap-1 min-w-fit w-full   px-1   ${className}  `}>
-            <TextBlock className="text-xl" > <Icon /> </TextBlock>
+        <CardBlock className={`flex justify-between gap-1 min-w-fit w-full border-b  border-fuchsia-500  px-1 rounded-none   ${className}  `}>
+            <TextBlock className="text-xl text-fuchsia-500" > <Icon /> </TextBlock>
             <TextBlock className="text-right" > {text} </TextBlock>
         </CardBlock>
     )

@@ -10,10 +10,10 @@ export default function ArtBlock({
 }) {
 
 
-const {artsDB, loadingArtsDB, errorArtsDB} = useFetchArts()
+    const { artsDB, loadingArtsDB, errorArtsDB } = useFetchArts()
 
 
-const art = artsDB?.find(art => art.artikul === artikul)
+    const art = artsDB?.find(art => art.artikul === artikul)
 
 
     return (
@@ -30,30 +30,31 @@ const art = artsDB?.find(art => art.artikul === artikul)
 
             <CardBlock
                 className=" w-full flex flex-col items-center justify-center px-2 
-        bg-gradient-to-b from-sky-500/50 to-sky-700/50
-        hover:shadow-lg hover:shadow-sky-500 hover:bg-sky-500
-         cursor-pointer rounded-r-xl rounded-l-none "
+      
+          rounded-r-xl rounded-l-none "
 
-                onClick={() => {
-                    const artId = artsDB?.find(art => art.artikul === artikul)?._id || "";
-                    const url = `/arts/${artId}`;
-                    window.open(url, "_blank");
-                }}
+
             >
 
                 <TextBlock
-                    className=" justify-center text-3xl"
+                    className="flex-col items-center justify-center text-3xl cursor-pointer
+                 hover:text-sky-400
+                    "
+                    onClick={() => {
+                        const artId = artsDB?.find(art => art.artikul === artikul)?._id || "";
+                        const url = `/arts/${artId}`;
+                        window.open(url, "_blank");
+                    }}
                 >
-
                     {artikul}
+                    <span
+                        className=" justify-center items-center w-full text-center text-base italic"
+                    >
+                        {art?.nameukr?.slice(10)}
+                    </span>
                 </TextBlock>
 
-                <TextBlock
-                    className=" justify-center items-center w-full text-center text-base italic"
-                >
 
-                    {art?.nameukr?.slice(10)}
-                </TextBlock>
 
             </CardBlock>
 
