@@ -21,7 +21,7 @@ export default function ArtBlock({
             className="lg:col-span-3 flex "
         >
             <CardBlock
-                className="lg:col-span-1 bg-white flex justify-center items-center rounded-l-lg rounded-r-none"
+                className="lg:col-span-1 bg-white flex justify-center items-center rounded-lg "
             >
                 <ImageArt size={100} artikul={artikul} className="rounded-l-lg" />
 
