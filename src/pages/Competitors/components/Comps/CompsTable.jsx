@@ -19,6 +19,8 @@ export default function CompsTable({
 }) {
 
 
+    const [showData, setShowData] = useState("price");
+
 
     const [isShowFilterModal, setIsShowFilterModal] = useState(false)
     const [selectedCategory, setSelectedCategory] = useState("");
@@ -335,8 +337,8 @@ export default function CompsTable({
                                         <td
                                             className={` w-1/12 `}
                                         >
-                                            <span className={`p-2 rounded-xl shadow-md  ${comp?.avail?.btrade ? "text-blue-200 bg-blue-500/20 shadow-blue-500/20 " : "text-rose-200 bg-rose-500/20"} `}>
-                                                {comp?.avail?.btrade ?? "-"}
+                                            <span className={`p-2 rounded-xl shadow-md  ${ showData=== "avail" ? "text-blue-200 bg-blue-500/20 shadow-blue-500/20 " : "text-green-200 bg-green-500/20"} `}>
+                                                {comp[showData]?.btrade ?? "-"}
                                             </span>
                                         </td>
 
@@ -344,8 +346,8 @@ export default function CompsTable({
                                         <td
                                             className={` w-1/12  `}
                                         >
-                                            <span className={`p-2 rounded-xl shadow-md  ${comp?.avail?.yumi === "N/A" ? "text-gray-200 bg-gray-500/20 shadow-gray-500/20 " : comp?.avail?.yumi === 0 ? "text-red-200 bg-red-500/20 shadow-red-500/20 " : "text-blue-200 bg-blue-500/20 shadow-blue-500/20 "} `}>
-                                                {comp?.avail?.yumi}
+                                            <span className={`p-2 rounded-xl shadow-md  ${comp[showData]?.yumi === "N/A" ? "text-gray-200 bg-gray-500/20 shadow-gray-500/20 " : comp?.avail?.yumi === 0 ? "text-red-200 bg-red-500/20 shadow-red-500/20 " : "text-blue-200 bg-blue-500/20 shadow-blue-500/20 "} `}>
+                                                {comp[showData]?.yumi}
                                             </span>
                                         </td>
 
@@ -353,9 +355,9 @@ export default function CompsTable({
 
                                         <td className={` w-1/12  `} >
                                             <span
-                                                className={`p-2 rounded-xl shadow-md   ${comp?.avail?.sharte === "N/A" ? "text-gray-200 bg-gray-500/20 shadow-gray-500/20 " : comp?.avail?.sharte === false ? "text-red-200 bg-red-500/20 shadow-red-500/20 " : "text-green-200 bg-green-500/20 shadow-green-500/20"} `}
+                                                className={`p-2 rounded-xl shadow-md   ${comp[showData]?.sharte === "N/A" ? "text-gray-200 bg-gray-500/20 shadow-gray-500/20 " : comp?.avail?.sharte === false ? "text-red-200 bg-red-500/20 shadow-red-500/20 " : "text-green-200 bg-green-500/20 shadow-green-500/20"} `}
                                             >
-                                                {comp?.avail?.sharte === "N/A" ? comp?.avail?.sharte : comp?.avail?.sharte === false ? "Немає" : "Є"}
+                                                {comp[showData]?.sharte === "N/A" ? comp[showData]?.sharte : comp[showData]?.sharte === false ? "Немає" : "Є"}
                                             </span>
                                         </td>
 
@@ -365,9 +367,9 @@ export default function CompsTable({
 
                                         <td className={` w-1/12  `} >
                                             <span
-                                                className={`p-2 rounded-xl shadow-md  ${comp?.avail?.air === "N/A" ? "text-gray-200 bg-gray-500/20 shadow-gray-500/20" : comp?.avail?.air === false ? "text-red-200 bg-red-500/20 shadow-red-500/20" : "text-green-200 bg-green-500/20 shadow-green-500/20"} `}
+                                                className={`p-2 rounded-xl shadow-md  ${comp[showData]?.air === "N/A" ? "text-gray-200 bg-gray-500/20 shadow-gray-500/20" : comp?.avail?.air === false ? "text-red-200 bg-red-500/20 shadow-red-500/20" : "text-green-200 bg-green-500/20 shadow-green-500/20"} `}
                                             >
-                                                {comp?.avail?.air === "N/A" ? comp?.avail?.air : comp?.avail?.air === false ? "Немає" : "Є"}
+                                                {comp[showData]?.air === "N/A" ? comp[showData]?.air : comp[showData]?.air === false ? "Немає" : "Є"}
                                             </span>
 
                                         </td>
@@ -375,30 +377,30 @@ export default function CompsTable({
                                         <td className={` w-1/12  `}
                                         >
                                             <span
-                                                className={` p-2 rounded-xl shadow-md  ${comp?.avail?.best === "N/A" ? "text-gray-200 bg-gray-500/20 shadow-gray-500/20" : comp?.avail?.best === false ? "text-red-200 bg-red-500/20 shadow-red-500/20" : "text-green-200 bg-green-500/20 shadow-green-500/20"} `}
+                                                className={` p-2 rounded-xl shadow-md  ${comp[showData]?.best === "N/A" ? "text-gray-200 bg-gray-500/20 shadow-gray-500/20" : comp?.avail?.best === false ? "text-red-200 bg-red-500/20 shadow-red-500/20" : "text-green-200 bg-green-500/20 shadow-green-500/20"} `}
                                             >
-                                                {comp?.avail?.best === "N/A" ? comp?.avail?.best : comp?.avail?.best === false ? "Немає" : "Є"}
+                                                {comp[showData]?.best === "N/A" ? comp[showData]?.best : comp[showData]?.best === false ? "Немає" : "Є"}
                                             </span>
 
                                         </td>
 
                                         <td className='text-green-500 w-1/12  bg-slate-900/50 ' >
-                                            {comp?.price?.btrade}
+                                            {comp[showData]?.btrade}
                                         </td>
                                         <td className='text-yellow-400 w-1/12  bg-slate-900/50' >
-                                            {comp?.price?.yumi ? comp?.price?.yumi : "-"}
-                                        </td>
-
-                                        <td className='text-yellow-400 w-1/12  bg-slate-900/50' >
-                                            {comp?.price?.sharte}
+                                            {comp[showData]?.yumi ? comp[showData]?.yumi : "-"}
                                         </td>
 
+                                        <td className='text-yellow-400 w-1/12  bg-slate-900/50' >
+                                            {comp[showData]?.sharte}
+                                        </td>
+
 
                                         <td className='text-yellow-400 w-1/12  bg-slate-900/50' >
-                                            {comp?.price?.air ? comp?.price?.air : "-"}
+                                            {comp[showData]?.air ? comp?.price?.air : "-"}
                                         </td>
                                         <td className='text-yellow-400 w-1/12  bg-slate-900/50' >
-                                            {comp?.price?.best ? comp?.price?.best : "-"}
+                                            {comp[showData]?.best ? comp[showData]?.best : "-"}
                                         </td>
 
 
