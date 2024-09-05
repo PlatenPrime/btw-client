@@ -19,7 +19,7 @@ export default function CompsTable({
 }) {
 
 
-    const [showData, setShowData] = useState("price");
+    const [showData, setShowData] = useState("avail");
 
 
     const [isShowFilterModal, setIsShowFilterModal] = useState(false)
@@ -170,7 +170,7 @@ export default function CompsTable({
 
 
             <ContainerBlock
-                className="flex-grow overflow-auto  mb-1 relative pt-0 px-0 rounded-t-none"
+                className="flex-grow overflow-auto  mb-1 relative p-0 rounded-t-none"
             >
 
                 <div
@@ -189,10 +189,10 @@ export default function CompsTable({
                                     colSpan="1"
                                 >
                                     <ButtonBlock
-                                        className={` ${filteredComps?.length === comps?.length ? "slate-b" : "fuchsia-b" }  h-full  mx-auto`}
+                                        className={` ${filteredComps?.length === comps?.length ? "slate-b" : "fuchsia-b"}  h-full  mx-auto`}
                                         onClick={() => setIsShowFilterModal(true)}
                                     >
-                                        <FilterIcon size={24}   />
+                                        <FilterIcon size={24} />
                                     </ButtonBlock>
 
                                 </th>
@@ -254,17 +254,17 @@ export default function CompsTable({
                             </tr>
                             <tr>
                                 {/* Заголовки для данных */}
-                                <th className="  bg-gradient-to-b from-blue-500/90 to-blue-700/90">Btrade</th>
-                                <th className="  bg-gradient-to-b from-amber-500/90 to-amber-700/90 ">Yumi</th>
-                                <th className="  bg-gradient-to-b from-sky-500/90 to-sky-700/90">Sharte</th>
-                                <th className="  bg-gradient-to-b from-lime-500/90 to-lime-700/90">Air</th>
-                                <th className="  bg-gradient-to-b from-pink-500/90 to-pink-700/90">Best</th>
+                                <th className="  bg-slate-800/90">Btrade</th>
+                                <th className="  bg-slate-800/90 ">Yumi</th>
+                                <th className="  bg-slate-800/90  ">Idea</th>
 
-                                <th className="  bg-gradient-to-b from-blue-500/90 to-blue-700/90">Btrade</th>
-                                <th className="  bg-gradient-to-b from-amber-500/90 to-amber-700/90 ">Yumi</th>
-                                <th className="  bg-gradient-to-b from-sky-500/90 to-sky-700/90">Sharte</th>
-                                <th className="  bg-gradient-to-b from-lime-500/90 to-lime-700/90">Air</th>
-                                <th className="  bg-gradient-to-b from-pink-500/90 to-pink-700/90">Best</th>
+                                <th className="  bg-slate-800/90 ">Sharte</th>
+                                <th className="  bg-slate-800/90 ">Air</th>
+                                <th className="  bg-slate-800/90 ">Best</th>
+
+                                <th className="  bg-slate-800/90 ">Aero</th>
+                                <th className="  bg-slate-800/90 ">Balun</th>
+                                <th className="  bg-slate-800/90 ">Svyato</th>
                             </tr>
                         </thead>
 
@@ -337,7 +337,10 @@ export default function CompsTable({
                                         <td
                                             className={` w-1/12 `}
                                         >
-                                            <span className={`p-2 rounded-xl shadow-md  ${ showData=== "avail" ? "text-blue-200 bg-blue-500/20 shadow-blue-500/20 " : "text-green-200 bg-green-500/20"} `}>
+                                            <span className={`p-2 rounded-xl shadow-md  
+                                                ${showData === "avail" ?
+                                                    "text-blue-300  "
+                                                    : "text-green-500 "} `}>
                                                 {comp[showData]?.btrade ?? "-"}
                                             </span>
                                         </td>
@@ -346,10 +349,29 @@ export default function CompsTable({
                                         <td
                                             className={` w-1/12  `}
                                         >
-                                            <span className={`p-2 rounded-xl shadow-md  ${comp[showData]?.yumi === "N/A" ? "text-gray-200 bg-gray-500/20 shadow-gray-500/20 " : comp?.avail?.yumi === 0 ? "text-red-200 bg-red-500/20 shadow-red-500/20 " : "text-blue-200 bg-blue-500/20 shadow-blue-500/20 "} `}>
+                                            <span className={`p-2 rounded-xl shadow-md  ${comp[showData]?.yumi === "N/A"
+                                                ? "text-gray-400 bg-gray-500/20  "
+                                                : showData === "avail"
+                                                    ? "text-blue-300 "
+                                                    : "text-green-500 "} `}>
                                                 {comp[showData]?.yumi}
                                             </span>
                                         </td>
+
+
+
+                                        <td
+                                            className={` w-1/12  `}
+                                        >
+                                            <span className={`p-2 rounded-xl shadow-md  ${comp[showData]?.idea === "N/A"
+                                                ? "text-gray-400 bg-gray-500/20  "
+                                                : showData === "avail"
+                                                    ? "text-blue-300 "
+                                                    : "text-green-500 "} `}>
+                                                {comp[showData]?.idea}
+                                            </span>
+                                        </td>
+
 
 
 
@@ -399,9 +421,7 @@ export default function CompsTable({
                                         <td className='text-yellow-400 w-1/12  bg-slate-900/50' >
                                             {comp[showData]?.air ? comp?.price?.air : "-"}
                                         </td>
-                                        <td className='text-yellow-400 w-1/12  bg-slate-900/50' >
-                                            {comp[showData]?.best ? comp[showData]?.best : "-"}
-                                        </td>
+
 
 
                                     </tr>
