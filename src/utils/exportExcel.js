@@ -13,8 +13,8 @@ export function exportToExcel(data) {
 
 
 
-export function exportToExcelComps({comps,
-	compVariants}) {
+export function exportToExcelComps({ comps,
+	compVariants }) {
 	// Преобразование данных для экспорта
 	const transformedDataComps = comps?.map(item => ({
 		artikul: item?.artikul,
@@ -28,16 +28,33 @@ export function exportToExcelComps({comps,
 		"airLink": item?.competitorsLinks?.airLink,
 		"yumiLink": item?.competitorsLinks?.yumiLink,
 		"bestLink": item?.competitorsLinks?.bestLink,
+
+		"aeroLink": item?.competitorsLinks?.aeroLink,
+		"balunLink": item?.competitorsLinks?.balunLink,
+		"svyatoLink": item?.competitorsLinks?.svyatoLink,
+		"ideaLink": item?.competitorsLinks?.ideaLink,
+
 		"btrade": item?.avail?.btrade,
 		"sharte": item?.avail?.sharte,
 		"yumi": item?.avail?.yumi,
 		"air": item?.avail?.air,
 		"best": item?.avail?.best,
+
+		"aero": item?.avail?.aero,
+		"balun": item?.avail?.balun,
+		"svyato": item?.avail?.svyato,
+		"idea": item?.avail?.idea,
+
 		"$btrade": item?.price?.btrade,
 		"$sharte": item?.price?.sharte,
 		"$yumi": item?.price?.yumi,
 		"$air": item?.price?.air,
 		"$best": item?.price?.best,
+
+		"$aero": item?.price?.aero,
+		"$balun": item?.price?.balun,
+		"$svyato": item?.price?.svyato,
+		"$idea": item?.price?.idea,
 	}));
 
 
@@ -50,14 +67,31 @@ export function exportToExcelComps({comps,
 		"airLink": item?.competitorsLinks?.airLink,
 		"yumiLink": item?.competitorsLinks?.yumiLink,
 		"bestLink": item?.competitorsLinks?.bestLink,
+
+		"aeroLink": item?.competitorsLinks?.aeroLink,
+		"balunLink": item?.competitorsLinks?.balunLink,
+		"svyatoLink": item?.competitorsLinks?.svyatoLink,
+		"ideaLink": item?.competitorsLinks?.ideaLink,
+
 		"sharte": item?.avail?.sharte,
 		"yumi": item?.avail?.yumi,
 		"air": item?.avail?.air,
 		"best": item?.avail?.best,
+
+		"aero": item?.avail?.aero,
+		"balun": item?.avail?.balun,
+		"svyato": item?.avail?.svyato,
+		"idea": item?.avail?.idea,
+
 		"$sharte": item?.price?.sharte,
 		"$yumi": item?.price?.yumi,
 		"$air": item?.price?.air,
 		"$best": item?.price?.best,
+
+		"$aero": item?.price?.aero,
+		"$balun": item?.price?.balun,
+		"$svyato": item?.price?.svyato,
+		"$idea": item?.price?.idea,
 	}));
 
 
@@ -193,7 +227,11 @@ export async function exportCompStampToExcel(data) {
 	const artikul = data.artikul;
 
 	// Заголовки столбцов
-	const headers = ['Дата', 'BTrade', 'Yumi', 'Sharte',  'Air', 'Best', 'BTrade $', 'Yumi $',  'Sharte $', 'Air $', 'Best $'];
+	const headers = ['Дата',
+		'BTrade', 'Yumi', 'Sharte', 'Air', 'Best',
+		'Aero', 'Balun', 'Svyato', 'Idea',
+		'BTrade $', 'Yumi $', 'Sharte $', 'Air $', 'Best $',
+		'Aero $', 'Balun $', 'Svyato $', 'Idea $'];
 
 	// Формируем данные для экспорта
 	const exportData = data.dates.map(dateEntry => {
@@ -205,11 +243,22 @@ export async function exportCompStampToExcel(data) {
 			'Sharte': dateEntry.avail.sharte,
 			'Air': dateEntry.avail.air,
 			'Best': dateEntry.avail.best,
+
+			'Aero': dateEntry.avail.aero,
+			'Balun': dateEntry.avail.balun,
+			'Svyato': dateEntry.avail.svyato,
+			'Idea': dateEntry.avail.idea,
+
 			'BTrade $': dateEntry.price.btrade,
 			'Yumi $': dateEntry.price.yumi,
-			'Sharte $': dateEntry.price.sharte,		
+			'Sharte $': dateEntry.price.sharte,
 			'Air $': dateEntry.price.air,
-			'Best $': dateEntry.price.best
+			'Best $': dateEntry.price.best,
+
+			'Aero $': dateEntry.price.aero,
+			'Balun $': dateEntry.price.balun,
+			'Svyato $': dateEntry.price.svyato,
+			'Idea $': dateEntry.price.idea,
 		};
 	});
 
