@@ -169,8 +169,8 @@ export default function CompsTable({
 
 
 
-            <ContainerBlock
-                className="flex-grow overflow-auto  mb-1 relative lg:p-0 rounded-t-none"
+            <CardBlock
+                className="flex-grow overflow-auto  mb-1 relative  rounded-t-none"
             >
 
                 <div
@@ -546,7 +546,7 @@ export default function CompsTable({
                         </tbody>
                     </table>
                 </div>
-            </ContainerBlock>
+            </CardBlock>
         </>
     )
 }
