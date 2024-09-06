@@ -170,7 +170,7 @@ export default function CompsTable({
 
 
             <ContainerBlock
-                className="flex-grow overflow-auto  mb-1 relative p-0 rounded-t-none"
+                className="flex-grow overflow-auto  mb-1 relative lg:p-0 rounded-t-none"
             >
 
                 <div
@@ -245,12 +245,19 @@ export default function CompsTable({
 
                                     </TextBlock>
                                 </th>
-                                <th className=" bg-gradient-to-b from-slate-700/95 to-slate-900/95  " colSpan="5">
-                                    Наявність
+                                <th className=
+                                    "cursor-pointer bg-slate-800/90 hover:bg-slate-700/90 transition duration-300 ease-in-out "
+                                    colSpan="9"
+                                    onClick={() => setShowData(showData === "avail" ? "price" : "avail")}
+                                >
+                                    <span
+                                        className={`${showData === "avail" && "text-fuchsia-300"}`}
+                                    >Наявність</span>
+                                    <span
+                                        className={`${showData === "price" && "text-fuchsia-300"}`}
+                                    > Ціна</span>
                                 </th>
-                                <th className=" bg-gradient-to-b from-slate-700/95 to-slate-900/95  " colSpan="5">
-                                    Ціна
-                                </th>
+
                             </tr>
                             <tr>
                                 {/* Заголовки для данных */}
@@ -333,15 +340,15 @@ export default function CompsTable({
                                         >
                                             {comp?.abc}
                                         </td>
-
                                         <td
-                                            className={` w-1/12 `}
+                                            className={` w-1/12  `}
                                         >
-                                            <span className={`p-2 rounded-xl shadow-md  
-                                                ${showData === "avail" ?
-                                                    "text-blue-300  "
+                                            <span className={`p-2 rounded-xl shadow-md  ${comp[showData]?.btrade === "N/A"
+                                                ? "text-gray-400 bg-gray-500/20  "
+                                                : showData === "avail"
+                                                    ? "text-blue-300 "
                                                     : "text-green-500 "} `}>
-                                                {comp[showData]?.btrade ?? "-"}
+                                                {comp[showData]?.btrade}
                                             </span>
                                         </td>
 
@@ -377,50 +384,101 @@ export default function CompsTable({
 
                                         <td className={` w-1/12  `} >
                                             <span
-                                                className={`p-2 rounded-xl shadow-md   ${comp[showData]?.sharte === "N/A" ? "text-gray-200 bg-gray-500/20 shadow-gray-500/20 " : comp?.avail?.sharte === false ? "text-red-200 bg-red-500/20 shadow-red-500/20 " : "text-green-200 bg-green-500/20 shadow-green-500/20"} `}
-                                            >
-                                                {comp[showData]?.sharte === "N/A" ? comp[showData]?.sharte : comp[showData]?.sharte === false ? "Немає" : "Є"}
+                                                className={`p-2 rounded-xl shadow-md   ${comp[showData]?.sharte === "N/A"
+                                                    ? "text-gray-400 bg-gray-500/20 "
+                                                    : showData === "avail"
+                                                        ? "text-blue-300 "
+                                                        : "text-green-500 "} `}>
+                                                {showData === "price" || comp[showData]?.sharte === "N/A"
+                                                    ? comp[showData]?.sharte
+                                                    : comp[showData]?.sharte === false
+                                                        ? "Немає"
+                                                        : "Є"}
                                             </span>
                                         </td>
 
 
+                                        <td className={` w-1/12  `} >
+                                            <span
+                                                className={`p-2 rounded-xl shadow-md   ${comp[showData]?.air === "N/A"
+                                                    ? "text-gray-400 bg-gray-500/20 "
+                                                    : showData === "avail"
+                                                        ? "text-blue-300 "
+                                                        : "text-green-500 "} `}>
+                                                {showData === "price" || comp[showData]?.air === "N/A"
+                                                    ? comp[showData]?.air
+                                                    : comp[showData]?.air === false
+                                                        ? "Немає"
+                                                        : "Є"}
+                                            </span>
+                                        </td>
+
+
+                                        <td className={` w-1/12  `} >
+                                            <span
+                                                className={`p-2 rounded-xl shadow-md   ${comp[showData]?.best === "N/A"
+                                                    ? "text-gray-400 bg-gray-500/20 "
+                                                    : showData === "avail"
+                                                        ? "text-blue-300 "
+                                                        : "text-green-500 "} `}>
+                                                {showData === "price" || comp[showData]?.best === "N/A"
+                                                    ? comp[showData]?.best
+                                                    : comp[showData]?.best === false
+                                                        ? "Немає"
+                                                        : "Є"}
+                                            </span>
+                                        </td>
 
 
 
                                         <td className={` w-1/12  `} >
                                             <span
-                                                className={`p-2 rounded-xl shadow-md  ${comp[showData]?.air === "N/A" ? "text-gray-200 bg-gray-500/20 shadow-gray-500/20" : comp?.avail?.air === false ? "text-red-200 bg-red-500/20 shadow-red-500/20" : "text-green-200 bg-green-500/20 shadow-green-500/20"} `}
-                                            >
-                                                {comp[showData]?.air === "N/A" ? comp[showData]?.air : comp[showData]?.air === false ? "Немає" : "Є"}
+                                                className={`p-2 rounded-xl shadow-md   ${comp[showData]?.aero === "N/A"
+                                                    ? "text-gray-400 bg-gray-500/20 "
+                                                    : showData === "avail"
+                                                        ? "text-blue-300 "
+                                                        : "text-green-500 "} `}>
+                                                {showData === "price" || comp[showData]?.aero === "N/A"
+                                                    ? comp[showData]?.aero
+                                                    : comp[showData]?.aero === false
+                                                        ? "Немає"
+                                                        : "Є"}
                                             </span>
-
                                         </td>
 
-                                        <td className={` w-1/12  `}
-                                        >
+
+                                        <td className={` w-1/12  `} >
                                             <span
-                                                className={` p-2 rounded-xl shadow-md  ${comp[showData]?.best === "N/A" ? "text-gray-200 bg-gray-500/20 shadow-gray-500/20" : comp?.avail?.best === false ? "text-red-200 bg-red-500/20 shadow-red-500/20" : "text-green-200 bg-green-500/20 shadow-green-500/20"} `}
-                                            >
-                                                {comp[showData]?.best === "N/A" ? comp[showData]?.best : comp[showData]?.best === false ? "Немає" : "Є"}
+                                                className={`p-2 rounded-xl shadow-md   ${comp[showData]?.balun === "N/A"
+                                                    ? "text-gray-400 bg-gray-500/20 "
+                                                    : showData === "avail"
+                                                        ? "text-blue-300 "
+                                                        : "text-green-500 "} `}>
+                                                {showData === "price" || comp[showData]?.balun === "N/A"
+                                                    ? comp[showData]?.balun
+                                                    : comp[showData]?.balun === false
+                                                        ? "Немає"
+                                                        : "Є"}
                                             </span>
-
-                                        </td>
-
-                                        <td className='text-green-500 w-1/12  bg-slate-900/50 ' >
-                                            {comp[showData]?.btrade}
-                                        </td>
-                                        <td className='text-yellow-400 w-1/12  bg-slate-900/50' >
-                                            {comp[showData]?.yumi ? comp[showData]?.yumi : "-"}
-                                        </td>
-
-                                        <td className='text-yellow-400 w-1/12  bg-slate-900/50' >
-                                            {comp[showData]?.sharte}
                                         </td>
 
 
-                                        <td className='text-yellow-400 w-1/12  bg-slate-900/50' >
-                                            {comp[showData]?.air ? comp?.price?.air : "-"}
+                                        <td className={` w-1/12  `} >
+                                            <span
+                                                className={`p-2 rounded-xl shadow-md   ${comp[showData]?.svyato === "N/A"
+                                                    ? "text-gray-400 bg-gray-500/20 "
+                                                    : showData === "avail"
+                                                        ? "text-blue-300 "
+                                                        : "text-green-500 "} `}>
+                                                {showData === "price" || comp[showData]?.svyato === "N/A"
+                                                    ? comp[showData]?.svyato
+                                                    : comp[showData]?.svyato === false
+                                                        ? "Немає"
+                                                        : "Є"}
+                                            </span>
                                         </td>
+
+
 
 
 
