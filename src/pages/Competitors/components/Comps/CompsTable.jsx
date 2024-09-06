@@ -261,17 +261,76 @@ export default function CompsTable({
                             </tr>
                             <tr>
                                 {/* Заголовки для данных */}
-                                <th className="  bg-slate-800/90">Btrade</th>
-                                <th className="  bg-slate-800/90 ">Yumi</th>
-                                <th className="  bg-slate-800/90  ">Idea</th>
+                                <th className="  bg-slate-800/90 ">
+                                    <img src="https://sharik.ua/local/templates/main/images/ua-logo.png"
+                                        alt="Btrade"
+                                        className="object-contain h-6 mx-auto"
+                                    />
+                                </th>
 
-                                <th className="  bg-slate-800/90 ">Sharte</th>
-                                <th className="  bg-slate-800/90 ">Air</th>
-                                <th className="  bg-slate-800/90 ">Best</th>
+                                <th className="  bg-slate-800/90 ">
+                                    <img src="https://images.prom.ua/2620988838_w350_h100_yumi-optovij.jpg"
+                                        alt="Yumi"
+                                        className="object-contain h-6 mx-auto"
+                                    />
+                                </th>
 
-                                <th className="  bg-slate-800/90 ">Aero</th>
-                                <th className="  bg-slate-800/90 ">Balun</th>
-                                <th className="  bg-slate-800/90 ">Svyato</th>
+
+                                <th className="  bg-slate-800/90 ">
+                                    <img src="https://ideaopt.com.ua/image/catalog/logo-idea.png"
+                                        alt="Idea"
+                                        className="object-contain h-6 mx-auto"
+                                    />
+                                </th>
+
+
+                                <th className="  bg-slate-800/90 ">
+                                    <img src="https://sharte.net/local/templates/dresscodeV2/images/logo_shartico2.png"
+                                        alt="Sharte"
+                                        className="object-contain h-6 mx-auto"
+                                    />
+                                </th>
+
+
+                                <th className="  bg-slate-800/90 ">
+                                    <img src="https://airballoons.com.ua/image/catalog/logo_IVVO11.png"
+                                        alt="Air"
+                                        className="object-contain h-6 mx-auto"
+                                    />
+                                </th>
+
+
+                                <th className="  bg-slate-800/90 ">
+                                    <img src="https://best-balloons.com.ua/wp-content/uploads/2019/05/wood-logo-dark.jpg"
+                                        alt="Best"
+                                        className="object-contain h-6 mx-auto"
+                                    />
+                                </th>
+
+
+                                <th className="  bg-slate-800/90 ">
+                                    <img src="https://images.prom.ua/4361922127_w350_h100_aero-bum.jpg"
+                                        alt="Aero"
+                                        className="object-contain h-6 mx-auto"
+                                    />
+                                </th>
+
+
+                                <th className="  bg-slate-800/90 ">
+                                    <img src="https://images.prom.ua/2069861087_w250_h120_balun-optovij.jpg"
+                                        alt="Balun"
+                                        className="object-contain h-6 mx-auto"
+                                    />
+                                </th>
+
+
+                                <th className="  bg-slate-800/90 ">
+                                    <img src="https://svyatoopt.com.ua/content/images/2/200x100l90nn0/52579472314969.webp"
+                                        alt="Svyato"
+                                        className="object-contain h-6 mx-auto"
+                                    />
+                                </th>
+
                             </tr>
                         </thead>
 
