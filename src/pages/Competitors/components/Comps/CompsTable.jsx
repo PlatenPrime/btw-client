@@ -251,24 +251,26 @@ export default function CompsTable({
                                     onClick={() => setShowData(showData === "avail" ? "price" : "avail")}
                                 >
                                     <span
-                                        className={`${showData === "avail" && "text-fuchsia-300"}`}
+                                        className={`${showData === "avail" && "text-blue-300 "}  hover:text-blue-300 `}
                                     >Наявність</span>
                                     <span
-                                        className={`${showData === "price" && "text-fuchsia-300"}`}
+                                        className={`  ${showData === "price" && "text-green-500 "}  hover:text-green-500`}
                                     > Ціна</span>
                                 </th>
 
                             </tr>
-                            <tr>
+                            <tr
+                            className="bg-gradient-to-b from-slate-700/95 to-slate-900/95"
+                            >
                                 {/* Заголовки для данных */}
-                                <th className="  bg-slate-800/90 ">
+                                <th className="   ">
                                     <img src="https://sharik.ua/local/templates/main/images/ua-logo.png"
                                         alt="Btrade"
                                         className="object-contain h-6 mx-auto"
                                     />
                                 </th>
 
-                                <th className="  bg-slate-800/90 ">
+                                <th className="  ">
                                     <img src="https://images.prom.ua/2620988838_w350_h100_yumi-optovij.jpg"
                                         alt="Yumi"
                                         className="object-contain h-6 mx-auto"
@@ -276,7 +278,7 @@ export default function CompsTable({
                                 </th>
 
 
-                                <th className="  bg-slate-800/90 ">
+                                <th className="  ">
                                     <img src="https://ideaopt.com.ua/image/catalog/logo-idea.png"
                                         alt="Idea"
                                         className="object-contain h-6 mx-auto"
@@ -284,7 +286,7 @@ export default function CompsTable({
                                 </th>
 
 
-                                <th className="  bg-slate-800/90 ">
+                                <th className="  ">
                                     <img src="https://sharte.net/local/templates/dresscodeV2/images/logo_shartico2.png"
                                         alt="Sharte"
                                         className="object-contain h-6 mx-auto"
@@ -292,7 +294,7 @@ export default function CompsTable({
                                 </th>
 
 
-                                <th className="  bg-slate-800/90 ">
+                                <th className="  ">
                                     <img src="https://airballoons.com.ua/image/catalog/logo_IVVO11.png"
                                         alt="Air"
                                         className="object-contain h-6 mx-auto"
@@ -300,7 +302,7 @@ export default function CompsTable({
                                 </th>
 
 
-                                <th className="  bg-slate-800/90 ">
+                                <th className="  ">
                                     <img src="https://best-balloons.com.ua/wp-content/uploads/2019/05/wood-logo-dark.jpg"
                                         alt="Best"
                                         className="object-contain h-6 mx-auto"
@@ -308,7 +310,7 @@ export default function CompsTable({
                                 </th>
 
 
-                                <th className="  bg-slate-800/90 ">
+                                <th className="  ">
                                     <img src="https://images.prom.ua/4361922127_w350_h100_aero-bum.jpg"
                                         alt="Aero"
                                         className="object-contain h-6 mx-auto"
@@ -316,7 +318,7 @@ export default function CompsTable({
                                 </th>
 
 
-                                <th className="  bg-slate-800/90 ">
+                                <th className="  ">
                                     <img src="https://images.prom.ua/2069861087_w250_h120_balun-optovij.jpg"
                                         alt="Balun"
                                         className="object-contain h-6 mx-auto"
@@ -324,7 +326,7 @@ export default function CompsTable({
                                 </th>
 
 
-                                <th className="  bg-slate-800/90 ">
+                                <th className="  ">
                                     <img src="https://svyatoopt.com.ua/content/images/2/200x100l90nn0/52579472314969.webp"
                                         alt="Svyato"
                                         className="object-contain h-6 mx-auto"
@@ -351,7 +353,7 @@ export default function CompsTable({
 
                                         <td
                                             colSpan="2"
-                                            className='p-0 bg-fuchsia-800/50  '
+                                            className='p-0   '
                                         >
 
                                             <CardBlock
@@ -395,7 +397,7 @@ export default function CompsTable({
 
 
                                         <td
-                                            className="text-emerald-200 bg-emerald-800/10"
+                                            className=""
                                         >
                                             {comp?.abc}
                                         </td>
