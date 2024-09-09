@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { ButtonBlock, ButtonGroup, ContainerBlock, HeaderBlock, ModalConfirm, PageBTW, TextBlock } from '../../components'
+import { ButtonBlock, ButtonGroup, CardBlock, ContainerBlock, HeaderBlock, ModalConfirm, PageBTW, TextBlock } from '../../components'
 import useFetchArts from '../../hooks/useFetchArts'
 import ModalCreateAsk from './components/modals/ModalCreateAsk'
 import useFetchDefs from './hooks/useFetchDefs'
@@ -48,7 +48,7 @@ export default function DefsPage() {
 
 	return (
 		<PageBTW
-			isLoading={isDefsLoading || isAsksLoading  || isRemainsDefsLoading}
+			isLoading={isDefsLoading || isAsksLoading || isRemainsDefsLoading}
 			className=" "
 		>
 			<HeaderBlock
@@ -65,14 +65,14 @@ export default function DefsPage() {
 
 			<ButtonGroup>
 				<ButtonGroup.Navigation
-				className="grid grid-cols-2 gap-2"
+					className="grid grid-cols-2 gap-2"
 				>
 
 					<ButtonBlock
 						className={` ${isMorning ? 'pink-b-n' : 'pink-b'}   `}
 						onClick={() => setIsMorning(true)}
 					>
-					<MdSunnySnowing size={24} color='' />	Ранок
+						<MdSunnySnowing size={24} color='' />	Ранок
 					</ButtonBlock>
 
 					<ButtonBlock
@@ -119,18 +119,30 @@ export default function DefsPage() {
 			<ContainerBlock
 				className="space-y-2 pb-4"
 			>
-
-
-				<TextBlock
-					className="text-lg font-bold text-slate-200"
+				<CardBlock
+					className="flex flex-col lg:flex-row justify-center  lg:justify-between items-center gap-2"
 				>
-					{isMorning
-						?
-						<>Ранок {formatDateToUkrainianShort(new Date())}</>
-						:
-						<>{formatDateToUkrainianFull(time)}</>
-					}
-				</TextBlock>
+
+					<TextBlock
+						className="text-lg font-bold text-slate-200 border-b"
+					>
+						{isMorning
+							?
+							<>Ранок {formatDateToUkrainianShort(new Date())}</>
+							:
+							<>{formatDateToUkrainianFull(time)}</>
+						}
+					</TextBlock>
+
+
+					<TextBlock
+						className="text-lg font-bold text-slate-200 border-b"
+					>
+						{items?.length}
+					</TextBlock>
+
+
+				</CardBlock>
 
 
 				{items?.length > 0
