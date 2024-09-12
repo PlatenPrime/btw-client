@@ -110,10 +110,6 @@ export default function CreateCompVariantModal({
                 className="flex flex-col gap-4 min-w-fit max-w-lg text-base   "
             >
 
-
-
-
-
                 <CardBlock
                     className="grid  gap-2  "
                 >
@@ -153,7 +149,16 @@ export default function CreateCompVariantModal({
                         className=" mx-auto rounded-2xl"
                     />
 
+                    <CardBlock
+                        className="flex gap-2"
+                    >
+                        {/* <CancelIcon size={24} /> */}
+                        <TextBlock>{state?.imageUrl}</TextBlock>
+                    </CardBlock>
+
                 </CardBlock>
+
+
 
 
                 <CardBlock className="flex flex-col gap-2 bg-slate-500/10 p-2  ">
