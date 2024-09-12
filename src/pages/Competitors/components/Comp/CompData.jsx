@@ -4,7 +4,9 @@ import { FiExternalLink } from 'react-icons/fi';
 
 
 const CompetitorItem = ({ name, link, imageLink, availability, price, isGettingUpdateCompByArtikul, linkClasses, availabilityClasses, priceClasses, isNumericAvailability }) => (
-  <CardBlock className="grid grid-cols-3 gap-2  rounded-xl bg-slate-500/20 hover:bg-slate-400/20  transition duration-300 ease-in-out ">
+  <CardBlock className={` 
+  grid grid-cols-3 gap-2  rounded-xl  transition duration-300 ease-in-out 
+  ${link ? "bg-slate-500/20 hover:bg-slate-400/20" : "grayscale"}   `}>
 
     <TextBlock
       onClick={() => { if (link) window.open(link) }}

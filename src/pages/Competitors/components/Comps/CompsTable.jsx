@@ -287,7 +287,7 @@ export default function CompsTable({
 
                             </tr>
                             <tr
-                                className="bg-gradient-to-b from-slate-700/95 to-slate-900/95"
+                                className="bg-gradient-to-b from-slate-500/95 to-slate-900/95"
                             >
                                 {/* Заголовки для данных */}
                                 <th className="   ">

@@ -169,17 +169,17 @@ export default function CompStamp({
 
 function CompetitorItem({ name, imageLink, availability, price, availabilityClasses, priceClasses, isNumericAvailability }) {
     return (
-        <CardBlock className="grid grid-cols-3 gap-2 bg-slate-500/20 hover:bg-slate-400/20 rounded-xl p-2">
+        <CardBlock className={`bg-slate-500/20 hover:bg-slate-400/20  grid grid-cols-3 gap-2  rounded-xl p-2`}>
             <TextBlock
                 className="justify-start"
             >
                 <span>{name}</span>
                 <img src={imageLink} alt={name} className=" h-4 object-cover mx-2" />
             </TextBlock>
-            <TextBlock className={`text-sky-200 ${availabilityClasses}`}>
+            <TextBlock className={`text-sky-200 ${availabilityClasses}  ${availability === "N/A" && "grayscale"}  `}>
                 {isNumericAvailability ? availability : (availability === "N/A" ? "N/A" : availability ? '✅' : '❌')}
             </TextBlock>
-            <TextBlock className={`text-green-500 ${priceClasses}`}>
+            <TextBlock className={`text-green-500 ${priceClasses} ${price === "N/A" && "grayscale"}  `}>
                 {price}
             </TextBlock>
         </CardBlock>
