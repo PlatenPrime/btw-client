@@ -303,7 +303,12 @@ export default function UpdateCompModal({
                                     sharteLink: state.sharteLink,
                                     yumiLink: state.yumiLink,
                                     airLink: state.airLink,
-                                    bestLink: state.bestLink
+                                    bestLink: state.bestLink,
+
+                                    aeroLink: state.aeroLink,
+                                    balunLink: state.balunLink,
+                                    svyatoLink: state.svyatoLink,
+                                    ideaLink: state.ideaLink,
                                 }
                             })
                         }

@@ -13,6 +13,50 @@ import UpdateFilteredCompsModal from '../modals/UpdateFilteredCompsModal';
 
 
 
+const availOptions = {
+    true: "✅",
+    false: "❌",
+    "N/A": "N/A",
+}
+
+
+const showDataStyleOptions = {
+    avail: "text-blue-300",
+    price: "text-green-500",
+    "N/A": "text-gray-400 bg-gray-500/20 ",
+}
+
+
+
+function TableData({
+    comp,
+    competitor,
+    showData,
+    numeric
+
+}) {
+
+    return (
+        <td
+            className={` w-1/12  `}
+
+        >
+            <span
+                className={`
+                    p-2 rounded-xl shadow-md 
+                ${comp?.[showData]?.[competitor] === "N/A" ? showDataStyleOptions["N/A"] : showDataStyleOptions[showData]}
+                `}
+            >
+                {showData === "price" && comp?.[showData]?.[competitor]}
+                {showData === "avail" && numeric && comp?.[showData]?.[competitor]}
+                {showData === "avail" && !numeric && availOptions[comp?.[showData]?.[competitor]]}
+            </span>
+        </td>
+    )
+}
+
+
+
 
 export default function CompsTable({
 
@@ -428,144 +472,77 @@ export default function CompsTable({
                                         >
                                             {comp?.abc}
                                         </td>
-                                        <td
-                                            className={` w-1/12  `}
-                                        >
-                                            <span className={`p-2 rounded-xl shadow-md  ${comp[showData]?.btrade === "N/A"
-                                                ? "text-gray-400 bg-gray-500/20  "
-                                                : showData === "avail"
-                                                    ? "text-blue-300 "
-                                                    : "text-green-500 "} `}>
-                                                {comp[showData]?.btrade}
-                                            </span>
-                                        </td>
-
-
-                                        <td
-                                            className={` w-1/12  `}
-                                        >
-                                            <span className={`p-2 rounded-xl shadow-md  ${comp[showData]?.yumi === "N/A"
-                                                ? "text-gray-400 bg-gray-500/20  "
-                                                : showData === "avail"
-                                                    ? "text-blue-300 "
-                                                    : "text-green-500 "} `}>
-                                                {comp[showData]?.yumi}
-                                            </span>
-                                        </td>
 
 
 
-                                        <td
-                                            className={` w-1/12  `}
-                                        >
-                                            <span className={`p-2 rounded-xl shadow-md  ${comp[showData]?.idea === "N/A"
-                                                ? "text-gray-400 bg-gray-500/20  "
-                                                : showData === "avail"
-                                                    ? "text-blue-300 "
-                                                    : "text-green-500 "} `}>
-                                                {comp[showData]?.idea}
-                                            </span>
-                                        </td>
+                                        <TableData
+                                            comp={comp}
+                                            competitor="btrade"
+                                            showData={showData}
+                                            numeric
+                                        />
 
 
+                                        <TableData
+                                            comp={comp}
+                                            competitor="yumi"
+                                            showData={showData}
+                                            numeric
+                                        />
 
 
-                                        <td className={` w-1/12  `} >
-                                            <span
-                                                className={`p-2 rounded-xl shadow-md   ${comp[showData]?.sharte === "N/A"
-                                                    ? "text-gray-400 bg-gray-500/20 "
-                                                    : showData === "avail"
-                                                        ? "text-blue-300 "
-                                                        : "text-green-500 "} `}>
-                                                {showData === "price" || comp[showData]?.sharte === "N/A"
-                                                    ? comp[showData]?.sharte
-                                                    : comp[showData]?.sharte === false
-                                                        ? "Немає"
-                                                        : "Є"}
-                                            </span>
-                                        </td>
+                                        <TableData
+                                            comp={comp}
+                                            competitor="idea"
+                                            showData={showData}
+                                            numeric
+                                        />
 
 
-                                        <td className={` w-1/12  `} >
-                                            <span
-                                                className={`p-2 rounded-xl shadow-md   ${comp[showData]?.air === "N/A"
-                                                    ? "text-gray-400 bg-gray-500/20 "
-                                                    : showData === "avail"
-                                                        ? "text-blue-300 "
-                                                        : "text-green-500 "} `}>
-                                                {showData === "price" || comp[showData]?.air === "N/A"
-                                                    ? comp[showData]?.air
-                                                    : comp[showData]?.air === false
-                                                        ? "Немає"
-                                                        : "Є"}
-                                            </span>
-                                        </td>
+                                        <TableData
+                                            comp={comp}
+                                            competitor="sharte"
+                                            showData={showData}
+
+                                        />
+
+                                        <TableData
+                                            comp={comp}
+                                            competitor="air"
+                                            showData={showData}
+
+                                        />
+
+                                        <TableData
+                                            comp={comp}
+                                            competitor="best"
+                                            showData={showData}
+
+                                        />
 
 
-                                        <td className={` w-1/12  `} >
-                                            <span
-                                                className={`p-2 rounded-xl shadow-md   ${comp[showData]?.best === "N/A"
-                                                    ? "text-gray-400 bg-gray-500/20 "
-                                                    : showData === "avail"
-                                                        ? "text-blue-300 "
-                                                        : "text-green-500 "} `}>
-                                                {showData === "price" || comp[showData]?.best === "N/A"
-                                                    ? comp[showData]?.best
-                                                    : comp[showData]?.best === false
-                                                        ? "Немає"
-                                                        : "Є"}
-                                            </span>
-                                        </td>
+                                        <TableData
+                                            comp={comp}
+                                            competitor="aero"
+                                            showData={showData}
+
+                                        />
 
 
+                                        <TableData
+                                            comp={comp}
+                                            competitor="balun"
+                                            showData={showData}
 
-                                        <td className={` w-1/12  `} >
-                                            <span
-                                                className={`p-2 rounded-xl shadow-md   ${comp[showData]?.aero === "N/A"
-                                                    ? "text-gray-400 bg-gray-500/20 "
-                                                    : showData === "avail"
-                                                        ? "text-blue-300 "
-                                                        : "text-green-500 "} `}>
-                                                {showData === "price" || comp[showData]?.aero === "N/A"
-                                                    ? comp[showData]?.aero
-                                                    : comp[showData]?.aero === false
-                                                        ? "Немає"
-                                                        : "Є"}
-                                            </span>
-                                        </td>
+                                        />
 
 
-                                        <td className={` w-1/12  `} >
-                                            <span
-                                                className={`p-2 rounded-xl shadow-md   ${comp[showData]?.balun === "N/A"
-                                                    ? "text-gray-400 bg-gray-500/20 "
-                                                    : showData === "avail"
-                                                        ? "text-blue-300 "
-                                                        : "text-green-500 "} `}>
-                                                {showData === "price" || comp[showData]?.balun === "N/A"
-                                                    ? comp[showData]?.balun
-                                                    : comp[showData]?.balun === false
-                                                        ? "Немає"
-                                                        : "Є"}
-                                            </span>
-                                        </td>
+                                        <TableData
+                                            comp={comp}
+                                            competitor="svyato"
+                                            showData={showData}
 
-
-                                        <td className={` w-1/12  `} >
-                                            <span
-                                                className={`p-2 rounded-xl shadow-md   ${comp[showData]?.svyato === "N/A"
-                                                    ? "text-gray-400 bg-gray-500/20 "
-                                                    : showData === "avail"
-                                                        ? "text-blue-300 "
-                                                        : "text-green-500 "} `}>
-                                                {showData === "price" || comp[showData]?.svyato === "N/A"
-                                                    ? comp[showData]?.svyato
-                                                    : comp[showData]?.svyato === false
-                                                        ? "Немає"
-                                                        : "Є"}
-                                            </span>
-                                        </td>
-
+                                        />
 
 
 

@@ -173,7 +173,7 @@ const useCompStore = create((set) => ({
 
     getUpdatedFilteredComps: async (comps) => {
         try {
-            const response = await axios.put('comps/updated-filtered', comps);
+            const response = await axios.put('comps/updated-filtered', {comps});
             if (response.status === 200) {
             } else {
                 throw new Error('Ошибка обновления отфильтрованных Comps');

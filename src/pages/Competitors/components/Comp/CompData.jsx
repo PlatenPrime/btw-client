@@ -3,6 +3,15 @@ import { CardBlock, ContainerBlock, Spinner, TextBlock } from '../../../../compo
 import { FiExternalLink } from 'react-icons/fi';
 
 
+
+const availOptions = {
+  true: "✅",
+  false: "❌",
+  "N/A": "N/A",
+
+}
+
+
 const CompetitorItem = ({ name, link, imageLink, availability, price, isGettingUpdateCompByArtikul, linkClasses, availabilityClasses, priceClasses, isNumericAvailability }) => (
   <CardBlock className={` 
   grid grid-cols-3 gap-2  rounded-xl  transition duration-300 ease-in-out 
@@ -22,7 +31,7 @@ const CompetitorItem = ({ name, link, imageLink, availability, price, isGettingU
     </TextBlock>
 
     <TextBlock className={`text-sky-200 ${availabilityClasses}`}>
-      {isGettingUpdateCompByArtikul ? <Spinner color='rgb(156 163 175)' /> : isNumericAvailability ? availability : (availability === "N/A" ? "N/A" : availability ? '✅' : '❌')}
+      {isGettingUpdateCompByArtikul ? <Spinner color='rgb(156 163 175)' /> : isNumericAvailability ? availability : availOptions[availability]}
     </TextBlock>
 
     <TextBlock className={`text-green-500 ${priceClasses}`}>
