@@ -5,9 +5,10 @@ import { BsSortAlphaDown } from 'react-icons/bs';
 
 import { prods, categoriesList, subcategoriesList, sizesList } from '../../../../constants/compsData';
 
-import { FilterIcon } from '../../../../components/UI/Icons';
+import { CalculateIcon, FilterIcon } from '../../../../components/UI/Icons';
 import SelectedCompModal from '../modals/SelectedCompModal';
 import FilterCompsModal from '../modals/FilterCompsModal';
+import UpdateFilteredCompsModal from '../modals/UpdateFilteredCompsModal';
 
 
 
@@ -20,6 +21,8 @@ export default function CompsTable({
 
 
     const [showData, setShowData] = useState("avail");
+
+    const [isShowModalUpdateFilteredComps, setIsShowModalUpdateFilteredComps] = useState(false)
 
 
     const [isShowFilterModal, setIsShowFilterModal] = useState(false)
@@ -247,7 +250,7 @@ export default function CompsTable({
                                 </th>
                                 <th className=
                                     "cursor-pointer bg-slate-800/90 hover:bg-slate-700/90 transition duration-300 ease-in-out "
-                                    colSpan="9"
+                                    colSpan="6"
                                     onClick={() => setShowData(showData === "avail" ? "price" : "avail")}
                                 >
                                     <span
@@ -258,9 +261,33 @@ export default function CompsTable({
                                     > Ціна</span>
                                 </th>
 
+                                <th
+                                    className=
+                                    " cursor-pointer bg-slate-800/90 hover:bg-slate-700/90 transition duration-300 ease-in-out"
+                                    colSpan="3"
+                                // onClick={() => setShowData(showData === "avail" ? "price" : "avail")}
+                                >
+
+                                    {filteredComps?.length !== comps?.length && <ButtonBlock
+                                        onClick={() => setIsShowModalUpdateFilteredComps(true)}
+                                        className="fuchsia-b mx-auto"
+                                    >
+                                        <CalculateIcon size={24} />   Проаналізувати
+                                    </ButtonBlock>}
+
+                                    <UpdateFilteredCompsModal
+                                        filteredComps={filteredComps}
+                                        isShowModalUpdateFilteredComps={isShowModalUpdateFilteredComps}
+                                        setIsShowModalUpdateFilteredComps={setIsShowModalUpdateFilteredComps}
+                                    />
+
+
+                                </th>
+
+
                             </tr>
                             <tr
-                            className="bg-gradient-to-b from-slate-700/95 to-slate-900/95"
+                                className="bg-gradient-to-b from-slate-700/95 to-slate-900/95"
                             >
                                 {/* Заголовки для данных */}
                                 <th className="   ">

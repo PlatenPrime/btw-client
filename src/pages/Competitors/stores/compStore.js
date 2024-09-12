@@ -160,18 +160,29 @@ const useCompStore = create((set) => ({
 
     getUpdatedAllComps: async () => {
         try {
-            const response = await axios.get('comps/updated');
+            const response = await axios.put('comps/updated');
             if (response.status === 200) {
-                const updatedComps = response.data;
-                set({ comps: updatedComps });
-                return updatedComps;
             } else {
-                throw new Error('Ошибка получения всех обновленных Comps');
+                throw new Error('Ошибка обновления всех Comps');
             }
         } catch (error) {
-            console.error('Ошибка получения всех обновленных Comps:', error);
+            console.error('Ошибка обновления всех Comps:', error);
         }
     },
+
+
+    getUpdatedFilteredComps: async (comps) => {
+        try {
+            const response = await axios.put('comps/updated-filtered', comps);
+            if (response.status === 200) {
+            } else {
+                throw new Error('Ошибка обновления отфильтрованных Comps');
+            }
+        } catch (error) {
+            console.error('Ошибка обновления отфильтрованных Comps:', error);
+        }
+    },
+
 
 
     getCompStampByArtikul: async (artikul) => {
