@@ -9,7 +9,8 @@ export default function CompVariantBage({
             className="
             flex flex-row items-stretch gap-2 w-full
             lg:text-xl
-        hover:shadow-2xl hover:shadow-lg  hover:shadow-violet-500 hover:bg-violet-500   bg-gradient-to-b from-violet-500/50 to-violet-700/50
+        hover:shadow-2xl  hover:shadow-violet-500  
+         bg-slate-600/30  hover:bg-violet-500 
          rounded-2xl cursor-pointer
         transition-all ease-in-out duration-500	
         ">
@@ -30,9 +31,12 @@ export default function CompVariantBage({
                 onClick={() => {
                     window.open(`/comps/variants/${compVariant?._id}`, "_blank");
                 }}
-                className="flex items-center justify-start w-full text-left"
+                className="flex items-center justify-start w-full text-left gap-2"
             >
-                {compVariant?.artikul}   {compVariant?.title}
+
+                <span className="font-bold" >{compVariant?.artikul}</span>
+                <span>{compVariant?.title}</span>
+
             </TextBlock>
 
 
