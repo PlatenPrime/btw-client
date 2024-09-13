@@ -4,20 +4,20 @@ import { LuFilterX } from 'react-icons/lu';
 
 export default function FilterCompsModal({
 
-    isShowFilterModal,
-    setIsShowFilterModal,
-    filteredComps, 
-    comps,
-    setFilter,
-    filter,
-    resetFilter, 
-    prodOptions,
-    categoryOptions,
-    sizesOptions,
-    setSelectedCategory,
-    setSelectedSubcategory,
-    subcategoriesList, 
-    selectedCategory
+	isShowFilterModal,
+	setIsShowFilterModal,
+	filteredComps,
+	comps,
+	setFilter,
+	filter,
+	resetFilter,
+	prodOptions,
+	categoryOptions,
+	sizesOptions,
+	setSelectedCategory,
+	setSelectedSubcategory,
+	subcategoriesList,
+	selectedCategory
 
 }) {
 
@@ -27,17 +27,17 @@ export default function FilterCompsModal({
 
 
 
-    if (!isShowFilterModal) return null
+	if (!isShowFilterModal) return null
 
 
-    return (
-        <ModalWrapper
-            title="Фільтр"
-            onCancel={() =>  setIsShowFilterModal(false) }
+	return (
+		<ModalWrapper
+			title="Фільтр"
+			onCancel={() => setIsShowFilterModal(false)}
 
-        >
-            <CardBlock
-				className="flex flex-col items-center justify-between space-y-2  p-2 "
+		>
+			<CardBlock
+				className="flex flex-col items-center justify-between gap-2 p-2  bg-slate-700/50 rounded-xl"
 			>
 
 
@@ -159,17 +159,19 @@ export default function FilterCompsModal({
 						))}
 					</select>
 
-
-
-
-
 				</CardBlock>
 
 
-
+				<CardBlock className="w-full">
+					<ButtonBlock
+						className="green-b w-full"
+					>
+						OK
+					</ButtonBlock>
+				</CardBlock>
 
 
 			</CardBlock>
-        </ModalWrapper>
-    )
+		</ModalWrapper>
+	)
 }

@@ -31,10 +31,16 @@ export default function CreateCompVariantModal({
         balunLink: "",
         svyatoLink: "",
         ideaLink: "",
+
+
+        isFileInput: false,
+
     }
 
 
     const [state, setState] = useState(initialStateForm)
+
+
 
 
     const [isImageUploading, setIsImageUploading] = useState(false)
@@ -51,28 +57,36 @@ export default function CreateCompVariantModal({
     }
 
 
+    const handleUrlInputChange = (e) => {
+        setState({
+            ...state,
+            imageUrl: e.target.value,
+            isFileInput: false, // Переключаемся на ввод ссылки
+        });
+    };
+
+
+
 
     const handleFileInputChange = async (event) => {
         const file = event.target.files[0];
         if (file) {
-
             try {
-                setIsImageUploading(true)
-
+                setIsImageUploading(true);
                 const imageUrl = await uploadImage(file);
                 console.log(imageUrl);
                 setState({
                     ...state,
                     imageUrl: imageUrl,
+                    isFileInput: true, // Переключаемся на загрузку файла
                 });
             } catch (error) {
-
+                console.log(error);
             } finally {
-                setIsImageUploading(false)
+                setIsImageUploading(false);
             }
         }
     };
-
 
 
 
@@ -111,50 +125,87 @@ export default function CreateCompVariantModal({
             >
 
                 <CardBlock
-                    className="grid  gap-2  "
+                    className="grid  gap-2 p-2 rounded-xl border border-violet-500  "
                 >
 
-
-
-                    <CardBlock className="rounded-xl grid justify-center
-                    " >
-
-                        {isImageUploading ?
-                            <Spinner />
-
-                            :
-
-                            state.imageUrl
-                                ?
-                                <img
-                                    alt='Фото варіанта'
-                                    src={state.imageUrl}
-                                    width={200}
-                                    className="rounded-xl "
-                                >
-                                </img>
-                                :
-
-                                <img
-                                    className="rounded-xl "
-                                    alt='Фото варіанта'
-                                    src='https://placehold.co/600x400?text=Варіант'
-                                    width={200}
-                                ></img>}
+                    <CardBlock className="grid grid-cols-1 md:grid-cols-2 gap-2">
+                        <label className="justify-self-center self-center md:justify-self-start" htmlFor="imageFile">
+                            Завантажити файл:
+                        </label>
+                        <InputBlock
+                            type="file"
+                            id="imageFile"
+                            name="imageFile"
+                            autoComplete="off"
+                            onChange={handleFileInputChange}
+                            disabled={state.isFileInput === false && state.imageUrl !== ''} // Отключаем, если выбрана ссылка
+                        />
                     </CardBlock>
 
-                    <input
-                        type="file"
-                        onChange={handleFileInputChange}
-                        className=" mx-auto rounded-2xl"
-                    />
+                    <CardBlock className="grid grid-cols-1 md:grid-cols-2 gap-2">
+                        <label className="justify-self-center self-center md:justify-self-start" htmlFor="imageUrl">
+                            Посилання:
+                        </label>
+                        <InputBlock
+                            type="text"
+                            id="imageUrl"
+                            name="imageUrl"
+                            autoComplete="off"
+                            value={state.isFileInput ? '' : state.imageUrl} // Очищаем текст, если выбран файл
+                            onChange={handleUrlInputChange}
+                            placeholder="Посилання на зображення"
+                            disabled={state.isFileInput} // Отключаем, если выбран файл
+                        />
+                    </CardBlock>
+
+
 
                     <CardBlock
-                        className="flex gap-2"
+                        className="flex gap-2 bg-slate-800 justify-between overflow-hidden"
+
                     >
-                        {/* <CancelIcon size={24} /> */}
-                        <TextBlock>{state?.imageUrl}</TextBlock>
+
+                        <CardBlock className="rounded-xl grid justify-center 
+                    " >
+
+                            {isImageUploading ?
+                                <Spinner />
+                                :
+                                state.imageUrl
+                                    ?
+                                    <img
+                                        alt='Фото варіанта'
+                                        src={state.imageUrl}
+                                        width={100}
+                                        className="rounded-xl "
+                                    >
+                                    </img>
+                                    :
+
+                                    <img
+                                        className="rounded-xl "
+                                        alt='Фото варіанта'
+                                        src='https://placehold.co/600x400?text=Варіант'
+                                        width={100}
+                                    ></img>}
+                        </CardBlock>
+
+                        {state.imageUrl && <CardBlock
+                            className="grid gap-2 "
+                        >
+                            <TextBlock
+                            className=""
+                            >{state?.imageUrl}</TextBlock>
+                            <CancelIcon size={24} />
+                        </CardBlock>
+                        }
+
                     </CardBlock>
+
+
+
+
+
 
                 </CardBlock>
 
