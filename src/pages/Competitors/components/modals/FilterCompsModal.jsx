@@ -165,6 +165,7 @@ export default function FilterCompsModal({
 				<CardBlock className="w-full">
 					<ButtonBlock
 						className="green-b w-full"
+						onClick={() => setIsShowFilterModal(false)}
 					>
 						OK
 					</ButtonBlock>
