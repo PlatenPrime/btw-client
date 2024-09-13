@@ -142,7 +142,7 @@ export default function CreateCompVariantModal({
                         />
                     </CardBlock>
 
-                    {/* <CardBlock className="grid grid-cols-1 md:grid-cols-2 gap-2">
+                    <CardBlock className="grid grid-cols-1 md:grid-cols-2 gap-2">
                         <label className="justify-self-center self-center md:justify-self-start" htmlFor="imageUrl">
                             Посилання:
                         </label>
@@ -156,16 +156,16 @@ export default function CreateCompVariantModal({
                             placeholder="Посилання на зображення"
                             disabled={state.isFileInput} // Отключаем, если выбран файл
                         />
-                    </CardBlock> */}
+                    </CardBlock>
 
 
 
                     <CardBlock
-                        className="flex gap-2 bg-slate-800 justify-between overflow-hidden"
+                        className="grid grid-cols-2 gap-2 bg-slate-800 justify-between rounded-xl "
 
                     >
 
-                        <CardBlock className="rounded-xl grid justify-center 
+                        <CardBlock className="rounded-xl flex justify-start 
                     " >
 
                             {isImageUploading ?
@@ -176,7 +176,7 @@ export default function CreateCompVariantModal({
                                     <img
                                         alt='Фото варіанта'
                                         src={state.imageUrl}
-                                        width={100}
+                                        width={150}
                                         className="rounded-xl "
                                     >
                                     </img>
@@ -186,19 +186,26 @@ export default function CreateCompVariantModal({
                                         className="rounded-xl "
                                         alt='Фото варіанта'
                                         src='https://placehold.co/600x400?text=Варіант'
-                                        width={100}
+                                        width={150}
                                     ></img>}
                         </CardBlock>
 
-                        {/* {state.imageUrl && <CardBlock
+                        {state.imageUrl && <CardBlock
                             className="grid gap-2 "
                         >
                             <TextBlock
-                            className=""
-                            >{state?.imageUrl}</TextBlock>
-                            <CancelIcon size={24} />
+                                className=""
+                            >{state?.imageUrl?.slice(0, 20)}...</TextBlock>
+
+                            <ButtonBlock
+                            className="red-b"
+                            onClick={() => setState({ ...state, imageUrl: '' })}
+                            >
+                                <CancelIcon size={24} /> Очистити
+                            </ButtonBlock>
+
                         </CardBlock>
-                        } */}
+                        }
 
                     </CardBlock>
 
@@ -487,7 +494,7 @@ export default function CreateCompVariantModal({
 
 
                     <ButtonBlock
-                        disabled={!state.artikul || isExist || isCompVariantCreating}
+                        disabled={!state.artikul || !state.title || isExist || isCompVariantCreating}
                         type="submit"
                         className="green-b flex justify-center items-center"
 
