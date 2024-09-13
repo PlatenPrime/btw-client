@@ -36,7 +36,7 @@ const RowBage = ({ row }) => {
 			rounded-xl
 			 text-2xl  hover:text-white 
 			  
-			bg-gradient-to-b from-orange-500/50 to-orange-700/50
+			bg-slate-600/30
 			  hover:bg-orange-500
 			 hover:shadow-lg hover:shadow-orange-500 
 			 transition ease-in-out duration-500

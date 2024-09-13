@@ -24,7 +24,7 @@ export default function InsBage({
             className=" grid grid-cols-1 
             lg:grid-cols-[minmax(400px,_1fr)_minmax(200px,_1fr)_minmax(200px,_1fr)_1fr]
             gap-2 w-full p-2 rounded-xl cursor-pointer
-            bg-gradient-to-b from-blue-500/80 to-blue-700/50 hover:bg-blue-500 
+            bg-slate-600/30 hover:bg-blue-500 
             hover:shadow-lg hover:shadow-blue-500
      transition duration-500 ease-in-out"
             onClick={() => window.open(`/ins/${ins._id}`, "_blank")}

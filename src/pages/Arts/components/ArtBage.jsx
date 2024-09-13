@@ -37,10 +37,10 @@ const ArtBage = ({ art, remains }) => {
 		rounded-xl
 		 text-sky-100 hover:text-white 
 	 
-		bg-gradient-to-b from-sky-500/70 to-sky-700/50 hover:bg-sky-500 
+		bg-slate-600/30 hover:bg-sky-500
 		 hover:shadow-lg hover:shadow-sky-500 
 		 transition ease-in-out duration-500
-	
+	text-base
 		'
 
 		>
@@ -58,7 +58,7 @@ const ArtBage = ({ art, remains }) => {
 
 
 			<Link
-				className="  w-full flex flex-col lg:hidden  space-y-4 p-2"
+				className="  w-full flex flex-col lg:hidden  gap-4 p-2"
 				to={`/arts/${art?._id}`}
 			>
 
@@ -81,13 +81,13 @@ const ArtBage = ({ art, remains }) => {
 				to={`/arts/${art?._id}`}
 			>
 
-				<TextBlock className=" justify-start text-xl " >{art?.nameukr}</TextBlock>
+				<TextBlock className=" justify-start  " >{art?.nameukr}</TextBlock>
 
 				<CardBlock
 					className="flex w-1/3 justify-between px-2"
 				>
-					<TextBlock className="  text-xl font-bold  p-1 rounded text-orange-300" ><VscLocation />{art?.zone}</TextBlock>
-					<TextBlock className=" text-xl font-bold " ><BsBalloon />  {remains ? remains[title] : ""}</TextBlock>
+					<TextBlock className="   font-bold  p-1 rounded text-orange-300" ><VscLocation />{art?.zone}</TextBlock>
+					<TextBlock className="  font-bold " ><BsBalloon />  {remains ? remains[title] : ""}</TextBlock>
 				</CardBlock>
 
 			</Link>

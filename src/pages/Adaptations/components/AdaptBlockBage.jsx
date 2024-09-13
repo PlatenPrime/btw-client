@@ -35,12 +35,11 @@ export default function AdaptBlockBage({
                     
                     
                     w-full my-4
-         
                     grid lg:grid-cols-4 gap-2
 
-            rounded-2xl  bg-gradient-to-b from-cyan-500/70 to-cyan-700/50  p-2 space-y-4 cursor-pointer 
+            rounded-2xl  bg-slate-600/30  p-2 space-y-4 cursor-pointer 
             ${!isAdaptEditing && 'hover:bg-cyan-500 hover:shadow-lg hover:shadow-cyan-500'}
-            
+            transition duration-500 ease-in-out
             `}
             >
 
