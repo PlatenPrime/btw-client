@@ -142,7 +142,7 @@ export default function CreateCompVariantModal({
                         />
                     </CardBlock>
 
-                    <CardBlock className="grid grid-cols-1 md:grid-cols-2 gap-2">
+                    {/* <CardBlock className="grid grid-cols-1 md:grid-cols-2 gap-2">
                         <label className="justify-self-center self-center md:justify-self-start" htmlFor="imageUrl">
                             Посилання:
                         </label>
@@ -156,7 +156,7 @@ export default function CreateCompVariantModal({
                             placeholder="Посилання на зображення"
                             disabled={state.isFileInput} // Отключаем, если выбран файл
                         />
-                    </CardBlock>
+                    </CardBlock> */}
 
 
 
@@ -190,7 +190,7 @@ export default function CreateCompVariantModal({
                                     ></img>}
                         </CardBlock>
 
-                        {state.imageUrl && <CardBlock
+                        {/* {state.imageUrl && <CardBlock
                             className="grid gap-2 "
                         >
                             <TextBlock
@@ -198,7 +198,7 @@ export default function CreateCompVariantModal({
                             >{state?.imageUrl}</TextBlock>
                             <CancelIcon size={24} />
                         </CardBlock>
-                        }
+                        } */}
 
                     </CardBlock>
 
