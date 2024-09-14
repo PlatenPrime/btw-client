@@ -187,8 +187,8 @@ export default function UpdateCompVariantModal({
                             className="grid gap-2 "
                         >
                             <TextBlock
-                                className=""
-                            >{state?.imageUrl?.slice(0, 20)}...</TextBlock>
+                                className="break-all"
+                            >{state?.imageUrl}</TextBlock>
 
                             <ButtonBlock
                                 className="red-b"
