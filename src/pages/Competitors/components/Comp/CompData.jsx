@@ -19,7 +19,7 @@ const CompetitorItem = ({ name, link, imageLink, availability, price, isGettingU
 
     <TextBlock
       onClick={() => { if (link) window.open(link) }}
-      className={`group lg:text-left justify-start rounded-xl p-2 ${link ? linkClasses : "text-gray-400"} overflow-hidden hover:bg-fuchsia-500/20  `}
+      className={`group lg:text-left justify-between rounded-xl p-2 ${link ? linkClasses : "text-gray-400"} overflow-hidden hover:bg-fuchsia-500  hover:shadow-md hover:shadow-fuchsia-500`}
     >
       <span className="flex items-center " >
         {name}

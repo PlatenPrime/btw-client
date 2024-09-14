@@ -39,7 +39,11 @@ export default function CompStamp({
         >
 
             <CardBlock
-                className="grid gap-2 lg:grid-cols-2 "
+                className="flex  flex-col      lg:flex-row   lg:justify-between 
+                bg-slate-700/30 rounded-xl
+                
+                
+                "
             >
 
                 <DateControlPanel
@@ -55,6 +59,11 @@ export default function CompStamp({
                     className="grid grid-cols-2 place-content-center  "
                 >
 
+                    <TextBlock
+                        className="   rounded-xl"
+                    >
+                        <LuCalendarDays size={20} color='rgb(96 165 250)' /> {compStamp?.dates?.length}
+                    </TextBlock>
                     <ButtonBlock
                         className="emerald-b"
                         onClick={() => exportCompStampToExcel(compStamp)}
@@ -62,11 +71,7 @@ export default function CompStamp({
                         <ExcelIcon /> Хронологія
                     </ButtonBlock>
 
-                    <TextBlock
-                        className="   rounded-xl"
-                    >
-                        <LuCalendarDays size={20} color='rgb(96 165 250)' /> {compStamp?.dates?.length}
-                    </TextBlock>
+
                 </CardBlock>
 
 
@@ -179,7 +184,7 @@ function CompetitorItem({ name, imageLink, availability, price, availabilityClas
 
 
     return (
-        <CardBlock className={`bg-slate-500/20 hover:bg-slate-400/20  grid grid-cols-3 gap-2  rounded-xl p-2`}>
+        <CardBlock className={`border-b border-slate-500  hover:bg-slate-400/20  grid grid-cols-3 gap-2  rounded-none p-2`}>
             <TextBlock
                 className="justify-start"
             >

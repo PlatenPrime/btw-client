@@ -48,7 +48,7 @@ export default function CompVariantBage({
                     className="flex items-center justify-start w-full text-left gap-2"
                 >
                     <span className="italic" >{compVariant?.prod}</span>
-                    <span className="italic" >compVariant?.prodArtikul</span>
+            
                     <span>{compVariant?.size}</span>
                 </TextBlock>
 
