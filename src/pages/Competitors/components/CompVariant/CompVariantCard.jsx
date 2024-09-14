@@ -43,7 +43,7 @@ export default function CompVariantCard({
 
 
             <CardBlock className=" col-span-3 lg:col-span-1 
-            bg-gradient-to-b from-violet-500/50 to-violet-900/50 
+        
             flex flex-col  items-center justify-center gap-2 w-full rounded-xl   text-sm p-2 ">
                 <InfoItem icon={MdOutlinePrecisionManufacturing} text={compVariant?.prod} />
                 <InfoItem icon={TbResize} text={compVariant?.size} />
@@ -58,10 +58,10 @@ export default function CompVariantCard({
 
 function InfoItem({ icon: Icon, text, className }) {
     return (
-        <CardBlock className={`flex justify-between gap-1 min-w-fit w-full   px-1   ${className}  `}>
-            <TextBlock className="text-xl" > <Icon /> </TextBlock>
-            <TextBlock className="text-right" > {text} </TextBlock>
-        </CardBlock>
+        <CardBlock className={`flex justify-between gap-1 min-w-fit w-full border-b  border-violet-500  px-1 rounded-none   ${className}  `}>
+        <TextBlock className="text-xl text-violet-500" > <Icon /> </TextBlock>
+        <TextBlock className="text-right" > {text} </TextBlock>
+    </CardBlock>
     )
 
 };

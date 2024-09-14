@@ -219,7 +219,7 @@ export default function CreateCompVariantModal({
 
 
 
-                <CardBlock className="flex flex-col gap-2 bg-slate-500/10 p-2  ">
+                <CardBlock className="flex flex-col gap-2 bg-slate-500/10 p-2 rounded-xl ">
 
 
                     <CardBlock

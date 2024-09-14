@@ -56,7 +56,7 @@ export default function CompsPage() {
             <ButtonGroup>
 
                 <ButtonGroup.Navigation
-                    className="grid lg:grid-cols-3 gap-2"
+                    className="grid grid-cols-3 gap-2"
                 >
 
                     <ButtonBlock
