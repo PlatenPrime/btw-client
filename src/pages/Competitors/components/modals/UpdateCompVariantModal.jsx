@@ -118,7 +118,7 @@ export default function UpdateCompVariantModal({
 
 
                 <CardBlock
-                    className="grid  gap-2 p-2 rounded-xl border border-violet-500  "
+                    className="grid  gap-2 bg-slate-500/10 p-2 rounded-xl "
                 >
 
                     <CardBlock className="grid grid-cols-1 md:grid-cols-2 gap-2">

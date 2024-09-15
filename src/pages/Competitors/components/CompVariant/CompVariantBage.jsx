@@ -39,17 +39,17 @@ export default function CompVariantBage({
                     className="flex flex-col items-start justify-center w-full text-left gap-2"
                 >
 
-                    <span className="font-bold" >{compVariant?.artikul}</span>
+                    <span className="font-bold  text-violet-100 " >{compVariant?.artikul}</span>
                     <span>{compVariant?.title}</span>
 
                 </TextBlock>
 
                 <TextBlock
-                    className="flex items-center justify-start w-full text-left gap-2"
+                    className="flex items-center justify-start w-full text-left text-xs gap-2"
                 >
-                    <span className="italic" >{compVariant?.prod}</span>
+                    <span className="italic bg-slate-600/30 rounded-xl p-1 " >{compVariant?.prod}</span>
             
-                    <span>{compVariant?.size}</span>
+                    <span className="bg-slate-600/30 rounded-full p-1" >{compVariant?.size}</span>
                 </TextBlock>
 
             </CardBlock>

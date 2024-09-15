@@ -125,7 +125,7 @@ export default function CreateCompVariantModal({
             >
 
                 <CardBlock
-                    className="grid  gap-2 p-2 rounded-xl border border-violet-500  "
+                    className="grid  gap-2 bg-slate-500/10 p-2 rounded-xl  "
                 >
 
                     <CardBlock className="grid grid-cols-1 md:grid-cols-2 gap-2">
@@ -236,6 +236,7 @@ export default function CreateCompVariantModal({
                             value={state.artikul}
                             onChange={handleChange}
                             placeholder="Наприклад 9999-0000"
+                            className={`${isExist && 'border-red-500 focus:border-red-500 '}`}
                         />
                     </CardBlock>
 

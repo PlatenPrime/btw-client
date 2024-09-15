@@ -15,7 +15,7 @@ export default function CompVariants({
 
     return (
         <ContainerBlock
-            className="grid gap-2"
+            className="grid md:grid-cols-2  xl:grid-cols-3  2xl:grid-cols-4  gap-2"
         >
 
             {compVariants?.length < 1 && (
@@ -25,6 +25,9 @@ export default function CompVariants({
                     Варіантів немає
                 </TextBlock>
             )}
+
+
+          
 
             {compVariants?.map(compVariant => (
                 <CompVariantBage
