@@ -319,8 +319,8 @@ export default function AskPage() {
 							setSelectedPos(pos)
 							setFinalValuePosBoxes(pos?.boxes)
 							setFinalValuePosQuant(pos?.quant)
-							setAskValuePosBoxes(0);
-							setAskValuePosQuant(0);
+							setAskValuePosBoxes("");
+							setAskValuePosQuant("");
 
 						}}
 					/>

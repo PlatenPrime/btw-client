@@ -10,6 +10,19 @@ export default function ArtPalletBage({
 }) {
 
 
+    const skladStyleOptions = {
+        "merezhi": "bg-gradient-to-b from-yellow-500/80 to-yellow-900/50 hover:bg-yellow-500 hover:shadow-lg hover:shadow-yellow-500  ",
+        "pogrebi": "bg-gradient-to-b from-emerald-500/80 to-emerald-900/50 hover:bg-emerald-500/50  hover:shadow-lg hover:shadow-emerald-500",
+    }
+
+    const skladOptions = {
+        "merezhi": "Мережі",
+        "pogrebi": "Погреби",
+    }
+
+
+
+
     return (
         <CardBlock
             className={`
@@ -19,55 +32,65 @@ export default function ArtPalletBage({
     
         ${pos?.quant === 0
                     ?
-                    "bg-gradient-to-b from-gray-500/20 to-gray-700/20 hover:bg-gray-900/20     "
+                    "bg-gradient-to-b from-gray-500/20 to-gray-700/20 hover:bg-gray-900/20"
                     :
-                    pos.sklad === "merezhi" ? "bg-gradient-to-b from-yellow-500/80 to-yellow-900/50 hover:bg-yellow-500 hover:shadow-lg hover:shadow-yellow-500  " :
-                        pos.sklad === "pogrebi" ? "bg-gradient-to-b from-emerald-500/80 to-emerald-900/50 hover:bg-emerald-500/50  hover:shadow-lg hover:shadow-emerald-500  " :
-                            ""
+                    skladStyleOptions[pos?.sklad]
                 }
     `}
 
             onClick={onClick}
-            key={pos._id}
+            key={pos?._id}
         >
 
 
-            <TextBlock
-                className="flex lg:justify-start   text-xl"
-            >
-                <PalletIcon />
-                <TextBlock>
-                    {pos?.palletTitle}
-                </TextBlock>
-            </TextBlock>
-
-
-
-
             <CardBlock
-                className=" grid grid-cols-2"
+                className="grid grid-cols-2"
             >
+
+                <TextBlock
+                    className="flex lg:justify-start   text-lg"
+                >
+                    <PalletIcon />
+                    <TextBlock>
+                        {pos?.palletTitle}
+                    </TextBlock>
+                </TextBlock>
+
+
 
                 <TextBlock
                     className=" gap-1"
                 >
                     <FaWarehouse size={16} />
-                    <span>{pos?.sklad === "pogrebi" ? "Погреби" : pos?.sklad === "merezhi" ? "Мережі" : ""}</span>
+                    <span>{skladOptions[pos?.sklad]}</span>
                 </TextBlock>
-
-                <TextBlock>
-                    {pos?.date}
-
-                </TextBlock>
-
-                {pos?.com && <TextBlock
-                    className="col-span-2 italic"
-                >
-                    {pos?.com}
-                </TextBlock>
-                }
 
             </CardBlock>
+
+
+
+          
+
+                <CardBlock
+                    className=" grid grid-cols-2 text-base"
+                >
+                    <TextBlock>
+                        {pos?.date}
+
+                    </TextBlock>
+
+                    {pos?.com && <TextBlock
+                        className="col-span-2 italic"
+                    >
+                        {pos?.com}
+                    </TextBlock>
+                    }
+
+                </CardBlock>
+
+        
+
+
 
 
 
@@ -80,11 +103,11 @@ export default function ArtPalletBage({
                     className="flex justify-center  gap-1"
                 >
                     <TextBlock
-                        className="  text-base">
+                        className="  ">
                         <BsBoxSeam size={12} />
                     </TextBlock>
                     <TextBlock
-                        className=" font-bold text-base rounded"
+                        className=" font-bold  rounded"
                     >
                         {pos?.boxes}
                     </TextBlock>
@@ -95,11 +118,11 @@ export default function ArtPalletBage({
                     className="flex justify-center  gap-1"
                 >
                     <TextBlock
-                        className="  text-base">
+                        className="  ">
                         <BsBalloon size={12} />
                     </TextBlock>
                     <TextBlock
-                        className="  font-bold text-base  rounded"
+                        className="  font-bold  rounded"
                     >
 
                         {pos?.quant}
