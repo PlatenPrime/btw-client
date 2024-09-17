@@ -1,16 +1,20 @@
 import axios from "./axios"
 
 
+const TIMEOUT_DURATION = 5000;
 
 
 
+const fetchWithTimeout = (url, timeout = TIMEOUT_DURATION) => {
+	return Promise.race([
+		axios.get(url),
+		new Promise((_, reject) =>
+			setTimeout(() => reject(new Error('Request timed out')), timeout)
+		)
+	]);
+};
 
-class NetworkError extends Error {
-	constructor(message) {
-		super(message);
-		this.name = "NetworkError";
-	}
-}
+
 
 const regex = /(\d+(\.\d+)?)/;
 
@@ -58,47 +62,35 @@ function extractPriceFromString(valueString) {
 	return extractedPrice ? parseFloat(extractedPrice).toFixed(2) : null;
 }
 
-export async function getArtDataBtrade(art) {
 
 
 
+	export async function getArtDataBtrade(art) {
+		try {
+			console.log("До запроса");
 
+			const link = `https://sharik.ua/ua/search/?q=${art}`;
+			console.log(encodeURIComponent(link));
 
-	try {
-		console.log("До запроса");
+			const response = await fetchWithTimeout(`comps/linkpage/${encodeURIComponent(link)}`);
 
-	
-		const link = `https://sharik.ua/ua/search/?q=${art}`
+			const responseString = response?.data?.html;
+			console.log("После запроса");
 
-		console.log(encodeURIComponent(link))
+			const quant = extractQuantFromString(responseString);
+			const price = extractPriceFromString(responseString);
 
-		const response = await axios.get(`comps/linkpage/${encodeURIComponent(link)}`)
+			console.log("Цена Btrade", price);
+			console.log("Наличие Btrade", quant);
 
-		const responseString = response?.data?.html
-
-
-		console.log("После запроса");
-
-		
-
-		// const responseString = await response.text();
-		// console.log(responseString);
-
-
-		const quant = extractQuantFromString(responseString);
-		const price = extractPriceFromString(responseString);
-
-		console.log("Цена Btrade", price);
-		console.log("Наличие Btrade", quant);
-
-
-		return { price, quant };
-	} catch (error) {
-		if (error instanceof NetworkError) {
-			console.error("Network error:", error.message);
-		} else {
-			console.error("Unknown error:", error);
+			return { price, quant };
+		} catch (error) {
+			if (error.message === 'Request timed out') {
+				console.error("Запрос превысил время ожидания");
+			} else {
+				console.error("Ошибка запроса:", error.message);
+			}
+			// Возвращаем дефолтные значения в случае ошибки
+			return { price: null, quant: 0 };
 		}
-		
 	}
-}
