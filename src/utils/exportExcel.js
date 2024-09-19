@@ -275,3 +275,11 @@ export async function exportCompStampToExcel(data) {
 	// Экспортируем данные в файл Excel
 	XLSX.writeFile(wb, fileName);
 }
+
+
+
+export async function exportCompStampByProdToExcel(filteredComps, prod, value) {
+
+	
+
+}
