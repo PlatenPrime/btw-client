@@ -278,8 +278,34 @@ export async function exportCompStampToExcel(data) {
 
 
 
-export async function exportCompStampByProdToExcel(filteredComps, prod, value) {
+export async function exportCompStampByProdToExcel(filteredComps, compStamps, prod, dateRange) {
+    // Заголовки столбцов: первый столбец - артикул, остальные - даты из dateRange
+    const headers = ['Артикул', ...dateRange.map(date => formatDateToUkrainianShort(new Date(date)))];
 
-	
+    // Формируем данные для экспорта
+    const exportData = filteredComps.map(comp => {
 
+        const rowData = { 'Артикул': comp.artikul }; // Первый столбец - артикул
+        dateRange.forEach(date => {
+            const compStamp = compStamps.find(stamp => stamp.artikul === comp.artikul && stamp.date === date);
+
+            rowData[formatDateToUkrainianShort(new Date(date))] = compStamp 
+                ? (prod === 'avail' ? compStamp.avail : compStamp.price) 
+                : 'N/A'; // Если данных нет, записываем 'Н/Д' (нет данных)
+        });
+        return rowData;
+    });
+
+    // Создаем рабочий лист
+    const ws = XLSX.utils.json_to_sheet(exportData, { header: headers });
+
+    // Создаем рабочую книгу
+    const wb = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(wb, ws, 'Sheet1');
+
+    // Формируем название файла
+    const fileName = `товары_по_дате_${prod}.xlsx`;
+
+    // Экспортируем данные в файл Excel
+    XLSX.writeFile(wb, fileName);
 }
