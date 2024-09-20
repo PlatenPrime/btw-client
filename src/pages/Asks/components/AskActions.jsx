@@ -13,13 +13,13 @@ if (!ask || !ask?.actions || ask?.actions?.length < 1 ) return null
 
     return (
         <ContainerBlock
-        className="space-y-2 "
+        className="text-xs "
         >
     
           
                 {ask?.actions?.map((action, i) => <TextBlock
                     key={i}
-                    className="bg-gradient-to-b from-slate-700/50 to-slate-900/50 p-2 text-white rounded-xl italic justify-start"
+                    className=" p-2 text-white rounded-xl italic justify-start"
 
                 >
                     {i + 1 + ". "}{action}

@@ -11,8 +11,8 @@ export default function ArtPalletBage({
 
 
     const skladStyleOptions = {
-        "merezhi": "bg-gradient-to-b from-yellow-500/80 to-yellow-900/50 hover:bg-yellow-500 hover:shadow-lg hover:shadow-yellow-500  ",
-        "pogrebi": "bg-gradient-to-b from-emerald-500/80 to-emerald-900/50 hover:bg-emerald-500/50  hover:shadow-lg hover:shadow-emerald-500",
+        "merezhi": "text-yellow-500",
+        "pogrebi": "text-emerald-500",
     }
 
     const skladOptions = {
@@ -27,14 +27,11 @@ export default function ArtPalletBage({
         <CardBlock
             className={`
         grid grid-cols-1 lg:grid-cols-3 gap-2  cursor-pointer p-2  justify-center rounded-xl
-         
+        bg-slate-600/10    hover:bg-slate-600/30
         transition ease-in-out duration-500
     
-        ${pos?.quant === 0
-                    ?
-                    "bg-gradient-to-b from-gray-500/20 to-gray-700/20 hover:bg-gray-900/20"
-                    :
-                    skladStyleOptions[pos?.sklad]
+        ${pos?.quant === 0 && "grayscale" }
+                    
                 }
     `}
 
@@ -51,7 +48,9 @@ export default function ArtPalletBage({
                     className="flex lg:justify-start   text-lg"
                 >
                     <PalletIcon />
-                    <TextBlock>
+                    <TextBlock
+                    className={skladStyleOptions[pos?.sklad]}
+                    >
                         {pos?.palletTitle}
                     </TextBlock>
                 </TextBlock>
@@ -59,7 +58,7 @@ export default function ArtPalletBage({
 
 
                 <TextBlock
-                    className=" gap-1"
+                    className={` gap-1 ${skladStyleOptions[pos?.sklad]}`}
                 >
                     <FaWarehouse size={16} />
                     <span>{skladOptions[pos?.sklad]}</span>

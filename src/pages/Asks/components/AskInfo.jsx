@@ -49,17 +49,17 @@ export default function AskInfo({
 
     return (
         <ContainerBlock
-            
+            className="grid lg:grid-cols-2  gap-2"
         >
 
 
 
             <CardBlock
-                className="flex flex-col justify-center items-center"
+                className="grid"
             >
                 {ask?.quant ?
                     <TextBlock
-                        className="text-3xl font-bold"
+                        className="text-xl font-bold"
                     >
                         <BsBalloon size={24} />	{ask?.quant}
                     </TextBlock>
@@ -79,46 +79,51 @@ export default function AskInfo({
             </CardBlock>
 
 
+
             <CardBlock
-                className="flex flex-col lg:flex-row  gap-2 justify-center items-center lg:items-end p-2"
+            
             >
-                <TextBlock
-                    className="text-sm italic "
-                >
-                    < BsQuestionCircle size={24} />
-                    {new Date(ask?.createdAt).toLocaleString('uk-UA', options)}
-                </TextBlock>
 
-                <TextBlock
-                    className="text-base items-center font-bold"
-                >
-                    {users?.find(user => user._id === ask?.asker)?.fullname}
-                </TextBlock>
-
-
-
-            </CardBlock>
-
-
-            {ask?.updatedAt !== ask?.createdAt &&
                 <CardBlock
-                    className="flex flex-col lg:flex-row  gap-2 justify-center items-center  p-2"
+                    className="flex flex-col lg:flex-row  gap-2 justify-center items-center lg:items-end p-2"
                 >
                     <TextBlock
-                        className="text-sm italic "
+                        className="text-xs italic "
                     >
-                        <FaRegCircleCheck size={24} />
-                        {new Date(ask?.updatedAt).toLocaleString('uk-UA', options)}
+                        < BsQuestionCircle size={12} />
+                        {new Date(ask?.createdAt).toLocaleString('uk-UA', options)}
                     </TextBlock>
 
                     <TextBlock
-                        className="text-base items-center font-bold"
+                        className="text-xs items-center font-bold"
                     >
-                        {users?.find(user => user._id === ask?.solver)?.fullname}
+                        {users?.find(user => user._id === ask?.asker)?.fullname}
                     </TextBlock>
-                </CardBlock>
-            }
 
+
+
+                </CardBlock>
+
+
+                {ask?.updatedAt !== ask?.createdAt &&
+                    <CardBlock
+                        className="flex flex-col lg:flex-row  gap-2 justify-center items-center  p-2"
+                    >
+                        <TextBlock
+                            className="text-xs italic "
+                        >
+                            <FaRegCircleCheck size={12} />
+                            {new Date(ask?.updatedAt).toLocaleString('uk-UA', options)}
+                        </TextBlock>
+
+                        <TextBlock
+                            className="text-xs items-center font-bold"
+                        >
+                            {users?.find(user => user._id === ask?.solver)?.fullname}
+                        </TextBlock>
+                    </CardBlock>
+                }
+            </CardBlock>
 
 
         </ContainerBlock>
