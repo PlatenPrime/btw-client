@@ -19,7 +19,7 @@ if (!ask || !ask?.actions || ask?.actions?.length < 1 ) return null
           
                 {ask?.actions?.map((action, i) => <TextBlock
                     key={i}
-                    className=" p-2 text-white rounded-xl italic justify-start"
+                    className=" p-2 text-white rounded-xl italic justify-start text-left"
 
                 >
                     {i + 1 + ". "}{action}
