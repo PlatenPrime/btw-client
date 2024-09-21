@@ -59,8 +59,9 @@ function TableData({
 
 
 export default function CompsTable({
-
     comps,
+    compStamps,
+    compVariants
 }) {
 
 

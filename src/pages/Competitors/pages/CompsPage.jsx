@@ -14,6 +14,7 @@ import useFetchAllCompVariants from '../hooks/useFetchAllCompVariants';
 import CompVariants from '../components/CompVariants/CompVariants';
 import { BsQuestionSquare } from 'react-icons/bs';
 import CreateCompVariantModal from '../components/modals/CreateCompVariantModal';
+import useFetchAllCompStamps from '../hooks/useFetchAllCompStamps';
 
 
 
@@ -23,6 +24,7 @@ export default function CompsPage() {
 
     const { comps, isAllCompsLoading, error } = useFetchAllComps();
     const { compVariants, isAllCompVariantsLoading, error: errorCompVariants } = useFetchAllCompVariants();
+    const { compStamps, isAllCompStampsLoading, error: errorCompStamps } = useFetchAllCompStamps()
     const { artsDB, loadingArtsDB, errorArtsDB } = useFetchArts();
 
 
@@ -105,8 +107,10 @@ export default function CompsPage() {
                     <ButtonBlock
                         className="emerald-b"
                         onClick={() => exportToExcelComps(
-                            {comps,
-                        compVariants}
+                            {
+                                comps,
+                                compVariants
+                            }
                         )}
                     >
                         <ExcelIcon /> Експортувати
@@ -124,10 +128,10 @@ export default function CompsPage() {
 
             />
 
-            <CreateCompVariantModal 
-            isShowModalCreateCompVariant={isShowModalCreateCompVariant}
-            setIsShowModalCreateCompVariant={setIsShowModalCreateCompVariant}
-            compVariants={compVariants}   
+            <CreateCompVariantModal
+                isShowModalCreateCompVariant={isShowModalCreateCompVariant}
+                setIsShowModalCreateCompVariant={setIsShowModalCreateCompVariant}
+                compVariants={compVariants}
             />
 
 
@@ -141,6 +145,8 @@ export default function CompsPage() {
 
             {tab === "table" && <CompsTable
                 comps={comps}
+                compStamps={compStamps}
+                compVariants={compVariants}
             />}
 
             {tab === "variants" && <CompVariants
