@@ -40,7 +40,7 @@ export default function ArtCard(
 
 
 				<TextBlock
-					className="text-lg lg:text-3xl text-center w-full  p-1 bg-gradient-to-b  from-sky-500/80 to-sky-700/50  rounded-xl"
+					className="text-lg lg:text-3xl text-center w-full  p-1   rounded-xl"
 				>
 					{artikul?.nameukr}
 				</TextBlock>

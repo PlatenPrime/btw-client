@@ -283,11 +283,6 @@ export default function AskPage() {
 				isUpdatingPos={isUpdatingPos}
 			/>
 
-
-			<AskInfo
-				ask={ask}
-			/>
-
 			<ArtCard
 				artikul={artikul}
 				remains={remains}
@@ -299,9 +294,20 @@ export default function AskPage() {
 			/>
 
 
-			<AskActions
-				ask={ask}
-			/>
+
+			<CardBlock
+			className="grid gap-2 lg:grid-cols-2"
+			>
+				<AskInfo
+					ask={ask}
+				/>
+
+				<AskActions
+					ask={ask}
+				/>
+
+			</CardBlock>
+
 
 
 
