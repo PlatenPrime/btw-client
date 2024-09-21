@@ -1,6 +1,7 @@
 import React from 'react'
 import { ButtonBlock, CardBlock, ModalWrapper, TextBlock } from '../../../../components'
 import { LuFilterX } from 'react-icons/lu';
+import { exportCompStampByProdToExcel } from '../../../../utils/exportExcel';
 
 export default function FilterCompsModal({
 
@@ -8,6 +9,7 @@ export default function FilterCompsModal({
 	setIsShowFilterModal,
 	filteredComps,
 	comps,
+	compStamps,
 	setFilter,
 	filter,
 	resetFilter,
@@ -168,6 +170,16 @@ export default function FilterCompsModal({
 						onClick={() => setIsShowFilterModal(false)}
 					>
 						OK
+					</ButtonBlock>
+				</CardBlock>
+
+
+				<CardBlock className="w-full">
+					<ButtonBlock
+						className="blue-b w-full"
+						onClick={() => exportCompStampByProdToExcel(filteredComps,  compStamps,  ) }
+					>
+						Console
 					</ButtonBlock>
 				</CardBlock>
 

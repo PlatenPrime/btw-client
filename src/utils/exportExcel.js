@@ -279,15 +279,47 @@ export async function exportCompStampToExcel(data) {
 
 
 export async function exportCompStampByProdToExcel(filteredComps, compStamps, shop, availOrPrice) {
-    
 
-
-	const filteredCompStamps = compStamps?.filter(compStamp => filteredComps?.includes(compStamp.artikul));
-
-	const headers = ['Дата', 
+	console.log(filteredComps);
+	console.log(compStamps);
 
 
 
-	]
-   
+
+	const filteredCompStamps = compStamps?.filter(compStamp => filteredComps?.find(
+		fc => fc.artikul === compStamp.artikul
+	));
+
+	console.log(filteredCompStamps);
+
+	const headers = ['Дата', ...filteredCompStamps?.map(compStamp => compStamp.artikul)];
+
+	console.log(headers);
+
+
+
+
+	const exportData = filteredCompStamps?.map(fcs => {
+		const date = new Date(fcs.date);
+
+		
+
+		return {
+			'Дата': formatDateToUkrainianShort(date),
+			
+		};
+
+
+	})
+
+
+	const ws = XLSX.utils.json_to_sheet(exportData, { header: headers });
+
+	const wb = XLSX.utils.book_new();
+	XLSX.utils.book_append_sheet(wb, ws, 'Sheet1');
+
+	const fileName = `${shop}_хронологія.xlsx`;
+
+	XLSX.writeFile(wb, fileName);
+
 }

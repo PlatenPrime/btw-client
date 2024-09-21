@@ -194,6 +194,7 @@ export default function CompsTable({
                 setIsShowFilterModal={setIsShowFilterModal}
                 filteredComps={filteredComps}
                 comps={comps}
+                compStamps={compStamps}
                 setFilter={setFilter}
                 filter={filter}
                 resetFilter={resetFilter}
