@@ -278,13 +278,10 @@ export async function exportCompStampToExcel(data) {
 
 
 
-export async function exportCompStampByProdToExcel(filteredComps, compStamps, shop, availOrPrice) {
+export async function exportCompStampByProdToExcel(filteredComps, compStamps, shop = "yumi", availOrPrice = "avail") {
 
 	console.log(filteredComps);
 	console.log(compStamps);
-
-
-
 
 	const filteredCompStamps = compStamps?.filter(compStamp => filteredComps?.find(
 		fc => fc.artikul === compStamp.artikul
@@ -296,20 +293,33 @@ export async function exportCompStampByProdToExcel(filteredComps, compStamps, sh
 
 	console.log(headers);
 
+	const dataList = new Set()
 
+	filteredCompStamps.forEach(fcs => {
+		fcs.dates.forEach(date => {
+			dataList.add(formatDateToUkrainianShort(date.date))
+		})
+	})
 
+	console.log(dataList);
 
-	const exportData = filteredCompStamps?.map(fcs => {
-		const date = new Date(fcs.date);
+	const exportData = Array.from(dataList).map(date => {
 
-		
+		let artikulsData = {}
+
+		filteredCompStamps.forEach(fcs => {
+			artikulsData = {
+				...artikulsData,
+				[fcs.artikul]: fcs.dates.find(d => formatDateToUkrainianShort(d.date) === date)[availOrPrice][shop]
+			}
+		})
+
+		console.log(artikulsData);
 
 		return {
-			'Дата': formatDateToUkrainianShort(date),
-			
-		};
-
-
+			'Дата': date,
+			...artikulsData
+		}
 	})
 
 

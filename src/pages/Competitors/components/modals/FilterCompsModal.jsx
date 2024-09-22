@@ -174,14 +174,14 @@ export default function FilterCompsModal({
 				</CardBlock>
 
 
-				<CardBlock className="w-full">
+				{/* <CardBlock className="w-full">
 					<ButtonBlock
 						className="blue-b w-full"
 						onClick={() => exportCompStampByProdToExcel(filteredComps,  compStamps,  ) }
 					>
 						Console
 					</ButtonBlock>
-				</CardBlock>
+				</CardBlock> */}
 
 
 			</CardBlock>
