@@ -272,7 +272,7 @@ export default function CompsTable({
                                 </th>
 
 
-                                <th
+                                {/* <th
                                     className="  bg-gradient-to-b from-slate-700/95 to-slate-900/95    hover:bg-green-500 border-0 transition ease-in-out duration-300	cursor-pointer	 "
                                     rowSpan="2"
                                     onClick={handleSortCompsByABC}
@@ -293,7 +293,11 @@ export default function CompsTable({
                                         </TextBlock>
 
                                     </TextBlock>
-                                </th>
+                                </th> */}
+
+
+
+
                                 <th className=
                                     "cursor-pointer bg-slate-800/90 hover:bg-slate-700/90 transition duration-300 ease-in-out "
                                     colSpan="6"
@@ -420,7 +424,7 @@ export default function CompsTable({
 										border-b border-slate-500/40
 										hover:bg-gray-800 transition duration-300 ease-in-out 	
 										text-sm		"
-                                        key={comp._id.$oid}
+                                        key={comp._id}
 
                                     >
 
@@ -469,11 +473,11 @@ export default function CompsTable({
 
 
 
-                                        <td
+                                        {/* <td
                                             className=""
                                         >
                                             {comp?.abc}
-                                        </td>
+                                        </td> */}
 
 
 

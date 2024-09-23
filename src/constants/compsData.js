@@ -168,3 +168,17 @@ export const subcategories = {
 }
 
 
+export const shops = {
+	"Yumi" :  "yumi",
+	"IdeaOPT" : "idea",
+	"Sharte" : "sharte",
+	"Ivvo" : "air",
+	"Best" : "best",
+	"Aero" : "aero",
+	"Balun" : "balun",
+	"СвятоОПТ" : "svyato",
+	"BTrade" : "btrade",
+}
+
+export const shopsList = ["Yumi", "IdeaOPT", "Sharte", "Ivvo", "Best", "Aero", "Balun", "СвятоОПТ", "BTrade"]
+

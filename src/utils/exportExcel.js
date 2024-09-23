@@ -278,18 +278,22 @@ export async function exportCompStampToExcel(data) {
 
 
 
-export async function exportCompStampByProdToExcel(filteredComps, compStamps, shop = "yumi", availOrPrice = "avail") {
+export async function exportCompStampByProdToExcel(filteredComps, compStamps, shop = "yumi", availOrPrice = "avail", setIsExporting = false) {
 
-	console.log(filteredComps);
-	console.log(compStamps);
 
 	const filteredCompStamps = compStamps?.filter(compStamp => filteredComps?.find(
 		fc => fc.artikul === compStamp.artikul
-	));
+	))	
 
 	console.log(filteredCompStamps);
 
-	const headers = ['Дата', ...filteredCompStamps?.map(compStamp => compStamp.artikul)];
+	const headers = ['Дата', ...filteredCompStamps?.map(compStamp => compStamp.artikul)
+		.sort((a, b) => {
+		const numA = parseInt(a.replace('-', ''), 10); // Убираем тире и преобразуем в число
+		const numB = parseInt(b.replace('-', ''), 10);
+		return numA - numB; // Сравниваем как числа
+	  })
+	];
 
 	console.log(headers);
 
@@ -301,7 +305,6 @@ export async function exportCompStampByProdToExcel(filteredComps, compStamps, sh
 		})
 	})
 
-	console.log(dataList);
 
 	const exportData = Array.from(dataList).map(date => {
 
@@ -331,5 +334,7 @@ export async function exportCompStampByProdToExcel(filteredComps, compStamps, sh
 	const fileName = `${shop}_хронологія.xlsx`;
 
 	XLSX.writeFile(wb, fileName);
+
+	
 
 }
