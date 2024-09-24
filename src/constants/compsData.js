@@ -182,3 +182,9 @@ export const shops = {
 
 export const shopsList = ["Yumi", "IdeaOPT", "Sharte", "Ivvo", "Best", "Aero", "Balun", "СвятоОПТ", "BTrade"]
 
+export const availOrPriceOptions = {
+	"Наявність" : "avail",
+	"Ціна" : "price",
+}
+
+export const availOrPriceList = ["Наявність", "Ціна"]

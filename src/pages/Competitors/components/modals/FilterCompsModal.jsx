@@ -3,7 +3,7 @@ import { ButtonBlock, CardBlock, ModalWrapper, Spinner, TextBlock } from '../../
 import { LuFilterX } from 'react-icons/lu';
 import { exportCompStampByProdToExcel } from '../../../../utils/exportExcel';
 import { ExcelIcon } from '../../../../components/UI/Icons';
-import { shops, shopsList } from '../../../../constants/compsData';
+import { shops, shopsList, availOrPriceOptions, availOrPriceList } from '../../../../constants/compsData';
 
 export default function FilterCompsModal({
 
@@ -29,8 +29,8 @@ export default function FilterCompsModal({
 
 
 
-	const [shop, setShop] = useState("yumi")
-	const [availOrPrice, setAvailOrPrice] = useState("avail")
+	const [shop, setShop] = useState("")
+	const [availOrPrice, setAvailOrPrice] = useState("")
 
 		;
 
@@ -55,7 +55,7 @@ export default function FilterCompsModal({
 
 		>
 			<CardBlock
-				className="flex flex-col items-center justify-between gap-2 p-2  bg-slate-700/50 rounded-xl"
+				className="flex flex-col items-center justify-between gap-2 p-2  bg-slate-600/30 rounded-xl"
 			>
 
 
@@ -195,17 +195,26 @@ export default function FilterCompsModal({
 					</ButtonBlock>
 				</CardBlock>
 
-{/* 
-				<CardBlock className="">
 
 
+
+
+			</CardBlock>
+
+
+
+			<CardBlock
+				className="flex flex-col items-center justify-between gap-2 p-2  bg-slate-600/30 rounded-xl"
+			>
+
+				<CardBlock
+					className="flex flex-col gap-2">
 
 					<select
 						className="InputBlock focus:bg-slate-900 text-base "
-						value={shop}
+						value={shopsList.find((key) => shops[key] === shop) || ""}
 						onChange={(e) => {
 							setShop(shops[e.target.value])
-							console.log(shop)
 						}}
 					>
 						<option
@@ -214,29 +223,46 @@ export default function FilterCompsModal({
 						</option>
 						{shopsList?.map((option) => (
 							<option key={option} value={option}>
-								{shops[option]}
+								{option}
 							</option>
 						))}
 					</select>
 
 
-
-
-					<ButtonBlock
-						className="green-b w-full"
-						onClick={exportToExcel}
+					<select
+						className="InputBlock focus:bg-slate-900 text-base "
+						value={availOrPriceList.find((key) => availOrPriceOptions[key] === availOrPrice) || ""}
+						onChange={(e) => {
+							setAvailOrPrice(availOrPriceOptions[e.target.value])
+						}}
 					>
-						<ExcelIcon />Export
-					</ButtonBlock>
+						<option
+							value="">
+							В наявності / Ціна
+						</option>
+						{availOrPriceList?.map((option) => (
+							<option key={option} value={option}>
+								{option}
+							</option>
+						))}
+					</select>
+
+				</CardBlock>
 
 
-
-
-
-				</CardBlock> */}
+				<ButtonBlock
+					className="green-b w-full"
+					onClick={exportToExcel}
+					disabled={!shop || !availOrPrice}
+				>
+					<ExcelIcon />Export
+				</ButtonBlock>
 
 
 			</CardBlock>
+
+
+
 		</ModalWrapper>
 	)
 }

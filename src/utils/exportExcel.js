@@ -278,16 +278,16 @@ export async function exportCompStampToExcel(data) {
 
 
 
-export async function exportCompStampByProdToExcel(filteredComps, compStamps, shop = "yumi", availOrPrice = "avail", setIsExporting = false) {
+export async function exportCompStampByProdToExcel(filteredComps, compStamps, shop = "yumi", availOrPrice = "avail",) {
 
 
 	const filteredCompStamps = compStamps?.filter(compStamp => filteredComps?.find(
-		fc => fc.artikul === compStamp.artikul
+		fc => fc?.artikul === compStamp?.artikul
 	))	
 
 	console.log(filteredCompStamps);
 
-	const headers = ['Дата', ...filteredCompStamps?.map(compStamp => compStamp.artikul)
+	const headers = ['Дата', ...filteredCompStamps?.map(compStamp => compStamp?.artikul)
 		.sort((a, b) => {
 		const numA = parseInt(a.replace('-', ''), 10); // Убираем тире и преобразуем в число
 		const numB = parseInt(b.replace('-', ''), 10);
@@ -300,8 +300,8 @@ export async function exportCompStampByProdToExcel(filteredComps, compStamps, sh
 	const dataList = new Set()
 
 	filteredCompStamps.forEach(fcs => {
-		fcs.dates.forEach(date => {
-			dataList.add(formatDateToUkrainianShort(date.date))
+		fcs?.dates.forEach(date => {
+			dataList.add(formatDateToUkrainianShort(date?.date))
 		})
 	})
 
@@ -313,7 +313,7 @@ export async function exportCompStampByProdToExcel(filteredComps, compStamps, sh
 		filteredCompStamps.forEach(fcs => {
 			artikulsData = {
 				...artikulsData,
-				[fcs.artikul]: fcs.dates.find(d => formatDateToUkrainianShort(d.date) === date)[availOrPrice][shop]
+				[fcs.artikul]: fcs?.dates?.find(d => formatDateToUkrainianShort(d.date) === date)?.[availOrPrice]?.[shop]
 			}
 		})
 
