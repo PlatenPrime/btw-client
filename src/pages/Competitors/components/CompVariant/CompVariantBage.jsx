@@ -33,13 +33,13 @@ export default function CompVariantBage({
 
 
             <CardBlock
-                className="grid gap-2"
+                className="grid gap-2 group "
             >
                 <TextBlock
-                    className="flex flex-col items-start justify-center w-full text-left gap-2"
+                    className="flex flex-col items-start justify-center w-full text-left gap-2  "
                 >
 
-                    <span className="font-bold  text-violet-100 " >{compVariant?.artikul}</span>
+                    <span className="font-bold  text-violet-300  group-hover:text-violet-100 transition-all ease-in-out duration-500" >{compVariant?.artikul}</span>
                     <span>{compVariant?.title}</span>
 
                 </TextBlock>
