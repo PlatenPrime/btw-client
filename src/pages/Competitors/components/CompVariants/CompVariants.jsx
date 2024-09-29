@@ -1,17 +1,23 @@
 import React, { useEffect, useState } from 'react'
-import { ContainerBlock, InputSearch, TextBlock } from '../../../../components'
+import { ButtonBlock, CardBlock, ContainerBlock, InputSearch, TextBlock } from '../../../../components'
 import CompVariantBage from '../CompVariant/CompVariantBage'
 import { toast } from 'react-toastify';
 import { useDebouncedCallback } from 'use-debounce';
+import { FilterIcon } from '../../../../components/UI/Icons';
+import FilterCompVariantsModal from '../modals/FilterCompVariantsModal';
 
 export default function CompVariants({
-    compVariants
+    compVariants,
+    compStamps,
 }) {
 
-
-
-
     const [filteredCompVariants, setFilteredCompVariants] = useState([]);
+    const [isShowFilterModal, setIsShowFilterModal] = useState(false)
+
+    const [filter, setFilter] = useState({
+        prod: '',
+        size: "",
+    });
 
 
 
@@ -20,20 +26,14 @@ export default function CompVariants({
     }, [compVariants])
 
 
-
-
     function handleFilterCompVariants(searchValue) {
         const filtered = compVariants?.filter((cv) =>
             cv?.title?.toLowerCase().includes(searchValue.toLowerCase().trim())
         );
-
         if (filtered.length === 0) {
             toast.info("По запиту нічого не знайдено")
         }
-
         setFilteredCompVariants(filtered);
-
-
     }
 
 
@@ -42,39 +42,83 @@ export default function CompVariants({
     }, 500);
 
 
+    const fullFilteredCompVariants = filteredCompVariants?.filter((cv) => {
+        return (
+            (filter?.prod === '' || cv?.prod === filter?.prod) &&
+            (filter?.size === '' || cv?.size === filter?.size)
+        );
+    })
+
+    const resetFilter = () => {
+        setFilter({
+            prod: '',
+            size: '',
+        });
+    };
+
+
+
 
     return (
 
-        <ContainerBlock
-            className="grid gap-2"
-        >
-            <InputSearch
-                handleSearch={handleSearch}
-                placeholder="Пошук за назвою"
+        <>
+
+            <FilterCompVariantsModal
+                isShowFilterModal={isShowFilterModal}
+                setIsShowFilterModal={setIsShowFilterModal}
+                fullFilteredCompVariants={fullFilteredCompVariants}
+                compVariants={compVariants}
+                compStamps={compStamps}
+                setFilter={setFilter}
+                filter={filter}
+                resetFilter={resetFilter}
+
             />
 
-
             <ContainerBlock
-                className="grid md:grid-cols-2  xl:grid-cols-3  2xl:grid-cols-4  gap-2 "
+                className="grid gap-2"
             >
 
-                {compVariants?.length < 1 && (
-                    <TextBlock
-                        className="  italic"
-                    >
-                        Варіантів немає
-                    </TextBlock>
-                )}
+                <CardBlock
+                    className="flex justify-center items-center gap-2"
+                >
+                    <InputSearch
+                        handleSearch={handleSearch}
+                        placeholder="Пошук за назвою"
+                    />
 
-                {filteredCompVariants.length !== 0 &&
-                    filteredCompVariants.map(compVariant => (
+
+                    <ButtonBlock
+                        className="violet-b"
+                        onClick={() => setIsShowFilterModal(true)}
+                        
+                    >
+                        <FilterIcon size={20} />
+                    </ButtonBlock>
+                </CardBlock>
+
+                <ContainerBlock
+                    className="grid md:grid-cols-2  xl:grid-cols-3  2xl:grid-cols-4  gap-2 "
+                >
+
+                    {!compVariants?.length && (
+                        <TextBlock
+                            className="  italic"
+                        >
+                            Варіантів немає
+                        </TextBlock>
+                    )}
+
+                    {fullFilteredCompVariants?.length !== 0 &&
+                        fullFilteredCompVariants?.map(compVariant => (
                             <CompVariantBage
                                 key={compVariant?._id}
                                 compVariant={compVariant}
                             />
                         ))}
 
+                </ContainerBlock>
             </ContainerBlock>
-        </ContainerBlock>
+        </>
     )
 }

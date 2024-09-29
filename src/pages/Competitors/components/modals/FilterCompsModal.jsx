@@ -32,7 +32,6 @@ export default function FilterCompsModal({
 	const [shop, setShop] = useState("")
 	const [availOrPrice, setAvailOrPrice] = useState("")
 
-		;
 
 
 	const exportToExcel = async () => {

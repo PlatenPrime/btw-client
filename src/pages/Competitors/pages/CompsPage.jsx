@@ -151,6 +151,7 @@ export default function CompsPage() {
 
             {tab === "variants" && <CompVariants
                 compVariants={compVariants}
+                compStamps={compStamps}
             />}
 
 
