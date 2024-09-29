@@ -198,8 +198,8 @@ export default function CreateCompVariantModal({
                             >{state?.imageUrl?.slice(0, 20)}...</TextBlock>
 
                             <ButtonBlock
-                            className="red-b"
-                            onClick={() => setState({ ...state, imageUrl: '' })}
+                                className="red-b"
+                                onClick={() => setState({ ...state, imageUrl: '' })}
                             >
                                 <CancelIcon size={24} /> Очистити
                             </ButtonBlock>
@@ -220,6 +220,12 @@ export default function CreateCompVariantModal({
 
 
                 <CardBlock className="flex flex-col gap-2 bg-slate-500/10 p-2 rounded-xl ">
+
+                    <TextBlock
+                    className="text-center text-xs"
+                    >
+                       Артикул має бути більшим за {compVariants?.at(-1).artikul}
+                    </TextBlock>
 
 
                     <CardBlock
@@ -310,7 +316,7 @@ export default function CreateCompVariantModal({
                     className="flex flex-col gap-2 bg-slate-500/10 p-2 rounded-xl ">
 
 
-                    <TextBlock className="text-base text-yellow-500 italic">
+                    <TextBlock className="text-xs text-yellow-500 italic">
                         Посилання на українські сторінки сайтів
                     </TextBlock>
 
