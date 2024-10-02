@@ -59,6 +59,23 @@ export default function CreateCompModal({
         } finally {
             setIsCompCreating(false)
             setIsShowModalCreateComp(false)
+            setState(
+                {
+                    ...state,
+                    sharteLink: "",
+                    yumiLink: "",
+                    airLink: "",
+                    bestLink: "",
+
+                    aeroLink: "",
+                    balunLink: "",
+                    svyatoLink: "",
+                    ideaLink: "",
+
+                }
+            )
+
+
         }
     }
 
