@@ -6,7 +6,7 @@ export default function CompVariantBage({
     compVariant
 }) {
     return (
-        <Link
+        <CardBlock
             className="
            grid grid-cols-[100px_1fr] gap-2
 
@@ -17,11 +17,12 @@ export default function CompVariantBage({
          rounded-2xl cursor-pointer
         transition-all ease-in-out duration-500	
         "
-            to={`/comps/variants/${compVariant?._id}`}
+
 
         >
             <CardBlock
                 className="bg-white rounded-l-xl flex items-center justify-center shrink-0 p-2 "
+                onClick={(e) => e.stopPropagation()}
             >
                 <ImageArt
                     size={100}
@@ -32,8 +33,9 @@ export default function CompVariantBage({
             </CardBlock>
 
 
-            <CardBlock
+            <Link
                 className="grid gap-2 group "
+                to={`/comps/variants/${compVariant?._id}`}
             >
                 <TextBlock
                     className="flex flex-col items-start justify-center w-full text-left gap-2  "
@@ -48,12 +50,12 @@ export default function CompVariantBage({
                     className="flex items-center justify-start w-full text-left text-xs gap-2"
                 >
                     <span className="italic bg-slate-600/30 rounded-xl p-1 " >{compVariant?.prod}</span>
-            
+
                     <span className="bg-slate-600/30 rounded-full p-1" >{compVariant?.size}</span>
                 </TextBlock>
 
-            </CardBlock>
+            </Link>
 
-        </Link>
+        </CardBlock>
     )
 }

@@ -28,7 +28,8 @@ export default function CompVariants({
 
     function handleFilterCompVariants(searchValue) {
         const filtered = compVariants?.filter((cv) =>
-            cv?.title?.toLowerCase().includes(searchValue.toLowerCase().trim())
+            cv?.title?.toLowerCase().includes(searchValue.toLowerCase().trim()) ||
+        cv?.artikul?.toLowerCase().includes(searchValue.toLowerCase().trim())
         );
         if (filtered.length === 0) {
             toast.info("По запиту нічого не знайдено")
@@ -97,7 +98,7 @@ export default function CompVariants({
                     </ButtonBlock>
                 </CardBlock>
 
-                <ContainerBlock
+                <CardBlock
                     className="grid md:grid-cols-2  xl:grid-cols-3  2xl:grid-cols-4  gap-2 "
                 >
 
@@ -117,7 +118,7 @@ export default function CompVariants({
                             />
                         ))}
 
-                </ContainerBlock>
+                </CardBlock>
             </ContainerBlock>
         </>
     )
