@@ -1,5 +1,5 @@
 export const prods = [
-	"Anagram", "Belbal", "Everts", "Flex", "Gemar", "Grabo", "PD", "Qualatex", "ВОСТПАК"
+	"Anagram", "Belbal", "Everts", "Flex", "Gemar", "Grabo", "PD", "Qualatex", "ВОСТПАК", "Halloween", "Грузики"
 ]
 
 export const categoriesList = ["1 Латекс", "2 Фольга", "3 Гелій та інше", "4 Гірлянди", "5 Аксесуари для свята",]
