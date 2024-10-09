@@ -104,6 +104,24 @@ export default function CreateCompVariantModal({
         } finally {
             setIsCompVariantCreating(false)
             setIsShowModalCreateCompVariant(false)
+            setState(
+                {
+                    ...state,
+
+                    imageUrl: "",
+
+                    sharteLink: "",
+                    yumiLink: "",
+                    airLink: "",
+                    bestLink: "",
+
+                    aeroLink: "",
+                    balunLink: "",
+                    svyatoLink: "",
+                    ideaLink: "",
+
+                }
+            )
         }
     }
 
@@ -222,9 +240,9 @@ export default function CreateCompVariantModal({
                 <CardBlock className="flex flex-col gap-2 bg-slate-500/10 p-2 rounded-xl ">
 
                     <TextBlock
-                    className="text-center text-xs"
+                        className="text-center text-xs"
                     >
-                       Артикул має бути більшим за {compVariants?.at(-1).artikul}
+                        Артикул має бути більшим за {compVariants?.at(-1).artikul}
                     </TextBlock>
 
 
