@@ -31,82 +31,95 @@ export default function DefBage({
 
             <ArtBlock
                 artikul={def?.artikul}
-               
+
             />
 
 
 
-
             <CardBlock
-                className={` 
-                    lg:col-span-1 flex justify-center items-center `}
+                className="lg:col-span-3  grid grid-cols-2  gap-2"
             >
 
-                {status === "new" ?
-                    <TextBlock className=" text-center text-white p-2 bg-gradient-to-b from-indigo-500 to-indigo-800 rounded-xl">
-                        Запит в роботі
-                    </TextBlock>
-                    :
-                    <ButtonBlock
-                        className="indigo-b"
-                        onClick={() => {
-                            setShowModalCreateAsk(true)
-                            setNewAskArtikul(def.artikul)
-                        }}
-                        disabled={status === "new"}
+
+
+
+                <CardBlock
+                    className={` 
+                     flex justify-center items-center `}
+                >
+
+                    {status === "new" ?
+                        <TextBlock className=" text-center text-white p-2 bg-gradient-to-b from-indigo-500 to-indigo-800 rounded-xl">
+                            Запит в роботі
+                        </TextBlock>
+                        :
+                        <ButtonBlock
+                            className="indigo-b"
+                            onClick={() => {
+                                setShowModalCreateAsk(true)
+                                setNewAskArtikul(def.artikul)
+                            }}
+                            disabled={status === "new"}
+                        >
+                            <AddIcon />
+                            Запит
+                        </ButtonBlock>
+                    }
+
+                </CardBlock>
+
+
+                <CardBlock
+                    className=" justify-self-stretch flex flex-col items-start justify-around  rounded-lg "
+                >
+                    <CardBlock
+                        className=" p-2 flex justify-between w-full "
                     >
-                        <AddIcon />
-                        Запит
-                    </ButtonBlock>
-                }
+                        <TextBlock className=" " >
+                            <GoNote color='rgb(110 231 183)' />   Запаси:
+                        </TextBlock>
+
+                        <TextBlock
+                            className="text-emerald-300"
+                        >
+                            {def?.stockQuant}
+                        </TextBlock>
+                    </CardBlock>
+
+
+                    <CardBlock
+                        className=" p-2 flex justify-between w-full "
+                    >
+                        <TextBlock className=" " >
+                            <GoGlobe color='rgb(147 197 253)' />  База:
+                        </TextBlock>
+
+                        <TextBlock
+                            className="text-blue-300"
+                        >
+                            {def?.btradeQuant}
+                        </TextBlock>
+                    </CardBlock>
+
+
+                    <CardBlock
+                        className=" p-2 flex justify-between w-full  "
+                    >
+                        <TextBlock className=" " >
+                            <GoDiff color='rgb(239 68 68)' />
+                            Дефіцит:
+                        </TextBlock>
+
+                        <TextBlock className="text-red-500 font-bold">{def?.btradeQuant - def?.stockQuant}</TextBlock>
+                    </CardBlock>
+                </CardBlock>
+
+
 
             </CardBlock>
 
 
-            <CardBlock
-                className="lg:col-span-2 justify-self-stretch flex flex-col items-start justify-around  rounded-lg "
-            >
-                <CardBlock
-                    className=" p-2 flex justify-between w-full "
-                >
-                    <TextBlock className=" " >
-                        <GoNote  color='rgb(110 231 183)' />   Запаси:
-                    </TextBlock>
 
-                    <TextBlock
-                        className="text-emerald-300"
-                    >
-                        {def?.stockQuant}
-                    </TextBlock>
-                </CardBlock>
-
-
-                <CardBlock
-                    className=" p-2 flex justify-between w-full "
-                >
-                    <TextBlock className=" " >
-                    <GoGlobe color='rgb(147 197 253)' />  База:
-                    </TextBlock>
-
-                    <TextBlock
-                        className="text-blue-300"
-                    >
-                        {def?.btradeQuant}
-                    </TextBlock>
-                </CardBlock>
-
-
-                <CardBlock
-                    className=" p-2 flex justify-between w-full  "
-                >
-                    <TextBlock className=" " >
-                        <GoDiff color='rgb(239 68 68)' />
-                        Дефіцит:
-                    </TextBlock>
-
-                    <TextBlock className="text-red-500 font-bold">{def?.btradeQuant - def?.stockQuant}</TextBlock>
-                </CardBlock>
-            </CardBlock>
 
 
 
