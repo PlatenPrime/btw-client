@@ -10,6 +10,7 @@ export const prods = [
   "ВОСТПАК",
   "Halloween",
   "Грузики",
+  "Fungram"
 ];
 
 export const categoriesList = [
