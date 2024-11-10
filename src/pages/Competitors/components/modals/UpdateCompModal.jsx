@@ -26,6 +26,7 @@ export default function UpdateCompModal({
         balunLink: comp?.competitorsLinks?.balunLink || "",
         svyatoLink: comp?.competitorsLinks?.svyatoLink || "",
         ideaLink: comp?.competitorsLinks?.ideaLink || "",
+        chudoLink: comp?.competitorsLinks?.chudoLink || "",
     }
 
     const [state, setState] = useState(initialStateForm)
@@ -269,7 +270,22 @@ export default function UpdateCompModal({
                     </CardBlock>
 
 
-
+                    <CardBlock
+                        className="grid grid-cols-1 md:grid-cols-2 gap-2">
+                        <label
+                            className=" justify-self-center self-center md:justify-self-start" htmlFor="chudoLink">
+                            Чудо:
+                        </label>
+                        <InputBlock
+                            type="text"
+                            id="chudoLink"
+                            name="chudoLink"
+                            autoComplete="off"
+                            value={state.chudoLink}
+                            onChange={handleChange}
+                            placeholder="https://chudomesto.com/uk/"
+                        />
+                    </CardBlock>
 
 
 
@@ -309,6 +325,7 @@ export default function UpdateCompModal({
                                     balunLink: state.balunLink,
                                     svyatoLink: state.svyatoLink,
                                     ideaLink: state.ideaLink,
+                                    chudoLink: state.chudoLink,
                                 }
                             })
                         }

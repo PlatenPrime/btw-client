@@ -314,7 +314,7 @@ export default function CompsTable({
                                 <th
                                     className=
                                     " cursor-pointer bg-slate-800/90 hover:bg-slate-700/90 transition duration-300 ease-in-out"
-                                    colSpan="3"
+                                    colSpan="4"
                                 // onClick={() => setShowData(showData === "avail" ? "price" : "avail")}
                                 >
 
@@ -337,20 +337,20 @@ export default function CompsTable({
 
                             </tr>
                             <tr
-                                className="bg-gradient-to-b from-slate-500/95 to-slate-900/95"
+                                className="bg-gradient-to-b from-slate-500/95 to-slate-900/95 p-0"
                             >
                                 {/* Заголовки для данных */}
-                                <th className="   ">
+                                <th className=" p-0  ">
                                     <img src="https://sharik.ua/local/templates/main/images/ua-logo.png"
                                         alt="Btrade"
-                                        className="object-contain h-6 mx-auto"
+                                        className="object-contain h-6 mx-auto bg-white "
                                     />
                                 </th>
 
                                 <th className="  ">
                                     <img src="https://images.prom.ua/2620988838_w350_h100_yumi-optovij.jpg"
                                         alt="Yumi"
-                                        className="object-contain h-6 mx-auto"
+                                        className="object-contain h-6 mx-auto bg-white"
                                     />
                                 </th>
 
@@ -359,6 +359,13 @@ export default function CompsTable({
                                     <img src="https://ideaopt.com.ua/image/catalog/logo-idea.png"
                                         alt="Idea"
                                         className="object-contain h-6 mx-auto"
+                                    />
+                                </th>
+
+                                <th className=" ">
+                                    <img src="https://chudomesto.com/img/logo-1680691450.svg"
+                                        alt="Chudo"
+                                        className="object-contain h-6 mx-auto bg-white"
                                     />
                                 </th>
 
@@ -409,6 +416,10 @@ export default function CompsTable({
                                         className="object-contain h-6 mx-auto"
                                     />
                                 </th>
+
+
+
+
 
                             </tr>
                         </thead>
@@ -505,6 +516,15 @@ export default function CompsTable({
                                         />
 
 
+
+                                        <TableData
+                                            comp={comp}
+                                            competitor="chudo"
+                                            showData={showData}
+
+                                        />
+
+
                                         <TableData
                                             comp={comp}
                                             competitor="sharte"
@@ -549,6 +569,8 @@ export default function CompsTable({
                                             showData={showData}
 
                                         />
+
+
 
 
 

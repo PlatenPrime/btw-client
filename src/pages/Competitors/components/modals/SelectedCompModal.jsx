@@ -263,6 +263,24 @@ export default function SelectedCompModal({ comp, isShowModalComp, setIsShowModa
 						</tr>
 
 
+						<tr
+							className="border border-slate-500 "
+						>
+							<td
+								className='text-left'
+							> Чудо:</td>
+							<td
+								className='text-left'
+							>
+								<a href={comp?.competitorsLinks.chudoLink} target='blanked'
+									className='hover:text-blue-600'
+								>
+									{comp?.competitorsLinks.chudoLink ? comp?.competitorsLinks.chudoLink.slice(0, 50) : "-"}
+								</a>
+							</td>
+						</tr>
+
+
 					</tbody>
 
 				</table>

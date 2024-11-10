@@ -21,9 +21,11 @@ const CompetitorItem = ({ name, link, imageLink, availability, price, isGettingU
       onClick={() => { if (link) window.open(link) }}
       className={`group lg:text-left justify-between rounded-xl p-2 ${link ? linkClasses : "text-gray-400"} overflow-hidden hover:bg-fuchsia-500  hover:shadow-md hover:shadow-fuchsia-500`}
     >
-      <span className="flex items-center " >
-        {name}
-        <img src={imageLink} alt={name} className=" h-4 object-cover mx-2" />
+      <span className="flex items-center gap-2 " >
+
+        <span> {name}</span>
+
+        <img src={imageLink} alt={name} className=" h-4  " />
 
       </span>
 
@@ -103,6 +105,19 @@ export default function CompData({
         linkClasses="cursor-pointer rounded-xl p-2 "
         isNumericAvailability
       />
+
+
+      <CompetitorItem
+        name="Чудо-місце"
+        link={comp?.competitorsLinks?.chudoLink}
+        imageLink="https://chudomesto.com/img/logo-1680691450.svg"
+        availability={comp?.avail?.chudo}
+        price={comp?.price?.chudo}
+        isGettingUpdateCompByArtikul={isGettingUpdateCompByArtikul}
+        linkClasses="cursor-pointer rounded-xl p-2 "
+        isNumericAvailability
+      />
+
 
 
 

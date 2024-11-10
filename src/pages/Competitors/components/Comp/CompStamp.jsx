@@ -112,6 +112,15 @@ export default function CompStamp({
 
 
                 <CompetitorItem
+                    name="Чудо-місце"
+                    imageLink="https://chudomesto.com/img/logo-1680691450.svg"
+                    availability={compStamp?.dates?.[currentIndex].avail?.chudo}
+                    price={compStamp?.dates?.[currentIndex].price?.chudo}
+                    isNumericAvailability
+                />
+
+
+                <CompetitorItem
                     name="Sharte"
                     imageLink="https://sharte.net/local/templates/dresscodeV2/images/logo_shartico2.png"
                     availability={compStamp?.dates?.[currentIndex].avail?.sharte}

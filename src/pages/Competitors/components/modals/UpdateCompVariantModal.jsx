@@ -29,6 +29,7 @@ export default function UpdateCompVariantModal({
         balunLink: compVariant?.competitorsLinks?.balunLink || "",
         svyatoLink: compVariant?.competitorsLinks?.svyatoLink || "",
         ideaLink: compVariant?.competitorsLinks?.ideaLink || "",
+        chudoLink: compVariant?.competitorsLinks?.chudoLink || "",
 
 
         isFileInput: false,
@@ -425,6 +426,22 @@ export default function UpdateCompVariantModal({
                     </CardBlock>
 
 
+                    <CardBlock
+                        className="grid grid-cols-1 md:grid-cols-2 gap-2">
+                        <label
+                            className=" justify-self-center self-center md:justify-self-start" htmlFor="chudoLink">
+                            Чудо:
+                        </label>
+                        <InputBlock
+                            type="text"
+                            id="chudoLink"
+                            name="chudoLink"
+                            autoComplete="off"
+                            value={state.chudoLink}
+                            onChange={handleChange}
+                       placeholder="https://chudomesto.com/uk/"
+                        />
+                    </CardBlock>
 
 
 
@@ -465,7 +482,8 @@ export default function UpdateCompVariantModal({
                                     aeroLink: state.aeroLink,
                                     balunLink: state.balunLink,
                                     svyatoLink: state.svyatoLink,
-                                    ideaLink: state.ideaLink
+                                    ideaLink: state.ideaLink,
+                                    chudoLink: state.chudoLink
                                 }
                             })
                         }

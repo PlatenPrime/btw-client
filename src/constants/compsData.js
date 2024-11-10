@@ -210,6 +210,7 @@ export const shops = {
   Balun: "balun",
   СвятоОПТ: "svyato",
   BTrade: "btrade",
+  "Чудо-місце": "chudo",
 };
 
 export const shopsList = [
@@ -222,6 +223,7 @@ export const shopsList = [
   "Balun",
   "СвятоОПТ",
   "BTrade",
+  "Чудо-місце",
 ];
 
 export const availOrPriceOptions = {
