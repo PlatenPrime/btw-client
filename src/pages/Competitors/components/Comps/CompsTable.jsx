@@ -521,7 +521,7 @@ export default function CompsTable({
                                             comp={comp}
                                             competitor="chudo"
                                             showData={showData}
-
+                                            numeric
                                         />
 
 
