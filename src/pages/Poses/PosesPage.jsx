@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { ButtonBlock, ButtonGroup, CardBlock, ContainerBlock, HeaderBlock, InputSearch, PageBTW, TextBlock } from '../../components'
 import { toast } from 'react-toastify';
 import PosBage from './components/PosBage';
-import { exportToExcelPoses } from '../../utils/exportExcel';
+import { exportToExcelPoses, exportToExcelStocks } from '../../utils/exportExcel';
 import { SiMicrosoftexcel } from 'react-icons/si';
 import { useDebouncedCallback } from 'use-debounce'
 import useFetchArts from '../../hooks/useFetchArts';
@@ -59,7 +59,14 @@ export default function StocksPage() {
 						className=" green-b flex items-center space-x-1  "
 					>
 						< ExcelIcon />
-						Експорт в Excel
+						Експорт позицій
+					</ButtonBlock>
+					<ButtonBlock
+						onClick={() => exportToExcelStocks({ allPoses, artsDB })}
+						className=" green-b flex items-center space-x-1  "
+					>
+						< ExcelIcon />
+						Експорт залишків
 					</ButtonBlock>
 				</ButtonGroup.Actions>
 			</ButtonGroup>
