@@ -1,20 +1,20 @@
-import React, { useState } from 'react'
-import { ButtonBlock, HeaderBlock, PageBTW, TextBlock, ButtonGroup, Spinner } from '../../components'
+import React, { useState } from 'react';
+import { ButtonBlock, ButtonGroup, HeaderBlock, PageBTW, Spinner } from '../../components';
 
-import { useRowStore } from './stores/rowsStore';
-import ModalCreate from '../../components/UI/Modal/ModalCreate';
 import { AddIcon } from '../../components/UI/Icons';
+import ModalCreate from '../../components/UI/Modal/ModalCreate';
+import { useRowStore } from './stores/rowsStore';
 
 import ContainerBlock from '../../components/UI/blocks/ContainerBlock';
 
-import useFetchAllRows from './hooks/useFetchAllRows';
 import RowBage from './components/RowBage';
+import useFetchAllRows from './hooks/useFetchAllRows';
 
 
 export default function RowsPage() {
 
-	const { rows,  isAllRowsLoading, error} = useFetchAllRows()
-	const {  createRow } = useRowStore()
+	const { rows, isAllRowsLoading, error } = useFetchAllRows()
+	const { createRow } = useRowStore()
 
 	const [showModalCreateRow, setShowModalCreateRow] = useState(false)
 	const [isRowCreating, setIsRowCreating] = useState(false)
@@ -31,17 +31,17 @@ export default function RowsPage() {
 		}
 	}
 
-console.log("Error:", error);
+
 
 
 	return (
 		<PageBTW
 			className=""
-			isLoading={isAllRowsLoading}
+			// isLoading={isAllRowsLoading}
 			error={error}
 		>
 			<HeaderBlock
-			className=" text-orange-300 font-bold "
+				className=" text-orange-300 font-bold "
 			>
 				Ряди
 			</HeaderBlock>
@@ -71,11 +71,13 @@ console.log("Error:", error);
 
 			/>}
 
-			<ContainerBlock
+
+			{isAllRowsLoading ? <Spinner color="rgb(253 186 116)"/> : <ContainerBlock
 				className="grid gap-2 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6"
 			>
 				{rows?.map((row) => <RowBage row={row} key={row._id} />)}
-			</ContainerBlock>
+			</ContainerBlock>}
+
 
 		</PageBTW>
 	)

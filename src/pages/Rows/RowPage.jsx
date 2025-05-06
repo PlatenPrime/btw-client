@@ -98,7 +98,7 @@ export default function RowPage() {
 			error={error}
 		>
 			<HeaderBlock
-				className="bg-gradient-to-b  from-orange-700/50  to-orange-400 shadow-md shadow-orange-500 "
+				className="text-orange-300 font-bold "
 			>
 				Ряд 	{row?.title}
 			</HeaderBlock>
