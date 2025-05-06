@@ -34,7 +34,7 @@ const RowBage = ({ row }) => {
 			flex justify-center
 		w-full p-2
 			rounded-xl
-			 text-2xl  hover:text-white 
+			 text-xl  hover:text-white 
 			  
 			bg-slate-600/30
 			  hover:bg-orange-500
@@ -45,7 +45,7 @@ const RowBage = ({ row }) => {
 			>
 
 				<TextBlock
-					className="text-black bg-white text-4xl  p-1 rounded-xl"
+					className="text-black bg-white text-xl  p-2 px-4 rounded-xl "
 				>
 					{row.title}
 				</TextBlock>

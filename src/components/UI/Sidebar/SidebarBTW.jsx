@@ -64,7 +64,7 @@ const SidebarBTW = () => {
 		<CardBlock className='hidden  min-h-screen h-full lg:min-w-fit   xl:w-56
 		xl:flex flex-col justify-start items-stratch text-center 
 		sticky top-0 left-0
-
+		gap-2
 		 '>
 
 
@@ -74,14 +74,14 @@ const SidebarBTW = () => {
 					<NavLink
 						to={"/"}
 					>
-						<CardBlock className='flex items-center justify-center w-full h-16 text-5xl text-sky-100 font-bold group-hover:text-sky-500
+						<CardBlock className='flex items-center justify-center w-full h-16 text-5xl text-sky-100 font-bold group-hover:text-sky-300
 				'>
 							BTW
 						</CardBlock>
 						{user
 							?
 							<TextBlock
-								className=" p-3 text-sky-100 font-bold group-hover:text-sky-500 "
+								className=" p-3 text-sky-100 font-bold group-hover:text-sky-300 "
 							>{user.fullname}</TextBlock>
 							:
 							null}
@@ -95,7 +95,7 @@ const SidebarBTW = () => {
 			<ContainerBlock className='rounded-r-xl rounded-l-none p-4' >
 
 
-				<TextBlock className=" bg-transparent hover:bg-orange-500/50 rounded-2xl justify-start w-full" >
+				<TextBlock className=" bg-transparent hover:bg-orange-500/90 hover:shadow-lg hover:shadow-orange-500 rounded-2xl justify-start w-full" >
 					<NavLink
 						to={"rows"}
 						style={({ isActive }) => isActive ? {
@@ -113,7 +113,7 @@ const SidebarBTW = () => {
 							<TextBlock
 								className="text-3xl"
 							>
-								<TfiViewList />
+								<TfiViewList size={24} />
 							</TextBlock>
 
 							<TextBlock>Ряди</TextBlock>
@@ -125,7 +125,7 @@ const SidebarBTW = () => {
 
 
 
-				<TextBlock className="bg-transparent hover:bg-emerald-500/90 rounded-2xl " >
+				<TextBlock className="bg-transparent hover:bg-emerald-500/90 hover:shadow-lg hover:shadow-emerald-500 rounded-2xl " >
 					<NavLink
 						to={"poses"}
 						style={({ isActive }) => isActive ? {
@@ -143,7 +143,7 @@ const SidebarBTW = () => {
 							<TextBlock
 								className="text-3xl"
 							>
-								<GoNote />
+								<GoNote size={24} />
 							</TextBlock>
 
 							<TextBlock>Позиції</TextBlock>
@@ -157,7 +157,7 @@ const SidebarBTW = () => {
 
 
 
-				<TextBlock className="bg-transparent hover:bg-sky-500/90 rounded-2xl" >
+				<TextBlock className="bg-transparent hover:bg-sky-500/90 hover:shadow-lg hover:shadow-sky-500 rounded-2xl" >
 					<NavLink
 						to={"arts"}
 						style={({ isActive }) => isActive ? {
@@ -174,7 +174,7 @@ const SidebarBTW = () => {
 							<TextBlock
 								className="text-3xl"
 							>
-								<SiAsciidoctor />
+								<SiAsciidoctor size={24} />
 							</TextBlock>
 
 							<TextBlock>Артикули</TextBlock>
@@ -189,7 +189,7 @@ const SidebarBTW = () => {
 
 
 
-				<TextBlock className="bg-transparent hover:bg-indigo-500/90 rounded-2xl" >
+				<TextBlock className="bg-transparent hover:bg-indigo-500/90 hover:shadow-lg hover:shadow-indigo-500 rounded-2xl" >
 					<NavLink
 						to={"asks"}
 						style={({ isActive }) => isActive ? {
@@ -206,7 +206,7 @@ const SidebarBTW = () => {
 							<TextBlock
 								className="text-3xl"
 							>
-								<HiOutlineDocumentDownload />
+								<HiOutlineDocumentDownload size={24} />
 							</TextBlock>
 
 							<TextBlock>Запити</TextBlock>
@@ -222,7 +222,7 @@ const SidebarBTW = () => {
 
 
 			
-					<TextBlock className="bg-transparent hover:bg-pink-500/90 rounded-2xl " >
+					<TextBlock className="bg-transparent hover:bg-pink-500/90 hover:shadow-lg hover:shadow-pink-500 rounded-2xl " >
 						<NavLink
 							to={"defs"}
 							style={({ isActive }) => isActive ? {
@@ -239,7 +239,7 @@ const SidebarBTW = () => {
 								<TextBlock
 									className="text-3xl"
 								>
-									<PiWarningBold />
+									<PiWarningBold size={24} />
 								</TextBlock>
 								<TextBlock>Дефіцити</TextBlock>
 							</CardBlock>
@@ -255,7 +255,7 @@ const SidebarBTW = () => {
 
 
 			
-					<TextBlock className="bg-transparent hover:bg-fuchsia-500/90 rounded-2xl " >
+					<TextBlock className="bg-transparent hover:bg-fuchsia-500/90 hover:shadow-lg hover:shadow-fuchsia-500 rounded-2xl " >
 						<NavLink
 							to={"comps"}
 							style={({ isActive }) => isActive ? {
@@ -272,7 +272,7 @@ const SidebarBTW = () => {
 								<TextBlock
 									className="text-3xl"
 								>
-									<SiGooglelens />
+									<SiGooglelens size={24} />
 
 								</TextBlock>
 								<TextBlock>Конкуренти</TextBlock>
@@ -284,7 +284,7 @@ const SidebarBTW = () => {
 
 
 
-					<TextBlock className="bg-transparent hover:bg-blue-500/90 rounded-2xl " >
+					<TextBlock className="bg-transparent hover:bg-blue-500/90 hover:shadow-lg hover:shadow-blue-500 rounded-2xl " >
 						<NavLink
 							to={"ins"}
 							style={({ isActive }) => isActive ? {
@@ -301,7 +301,7 @@ const SidebarBTW = () => {
 								<TextBlock
 									className="text-3xl"
 								>
-									<SiGoogledocs />
+									<SiGoogledocs size={24} />
 								</TextBlock>
 
 								<TextBlock>Інструкції</TextBlock>
@@ -316,7 +316,7 @@ const SidebarBTW = () => {
 
 
 
-					<TextBlock className="bg-transparent hover:bg-green-500/90 rounded-2xl " >
+					<TextBlock className="bg-transparent hover:bg-green-500/90 hover:shadow-lg hover:shadow-green-500 rounded-2xl " >
 						<NavLink
 							to={"adapts"}
 							style={({ isActive }) => isActive ? {
@@ -333,7 +333,7 @@ const SidebarBTW = () => {
 								<TextBlock
 									className="text-3xl"
 								>
-									<GiProgression />
+									<GiProgression size={24} />
 								</TextBlock>
 
 								<TextBlock>Адаптації</TextBlock>
@@ -351,7 +351,7 @@ const SidebarBTW = () => {
 
 
 				{user?.role === "PRIME" ?
-					<TextBlock className="bg-transparent hover:bg-slate-500/90 rounded-2xl " >
+					<TextBlock className="bg-transparent hover:bg-slate-500/90 hover:shadow-lg hover:shadow-slate-500 rounded-2xl " >
 						<NavLink
 							to={"settings"}
 							style={({ isActive }) => isActive ? {
@@ -368,7 +368,7 @@ const SidebarBTW = () => {
 								<TextBlock
 									className="text-3xl"
 								>
-									<MdSettingsSuggest />
+									<MdSettingsSuggest size={24} />
 								</TextBlock>
 								<TextBlock>Налаштування</TextBlock>
 							</CardBlock>

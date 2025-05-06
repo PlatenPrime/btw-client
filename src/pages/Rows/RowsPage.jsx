@@ -41,7 +41,7 @@ console.log("Error:", error);
 			error={error}
 		>
 			<HeaderBlock
-			className="bg-gradient-to-b  from-orange-700/50  to-orange-400 shadow-md shadow-orange-500 "
+			className=" text-orange-300 font-bold "
 			>
 				Ряди
 			</HeaderBlock>
@@ -58,7 +58,7 @@ console.log("Error:", error);
 						onClick={() => { setShowModalCreateRow(true) }}
 						className="emerald-b flex items-center justify-center "
 					>
-						<AddIcon />Створити новий ряд
+						<AddIcon />Ряд
 					</ButtonBlock>
 				</ButtonGroup.Actions>
 			</ButtonGroup>
@@ -72,7 +72,7 @@ console.log("Error:", error);
 			/>}
 
 			<ContainerBlock
-				className="flex flex-col gap-2"
+				className="grid gap-2 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6"
 			>
 				{rows?.map((row) => <RowBage row={row} key={row._id} />)}
 			</ContainerBlock>
