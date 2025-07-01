@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 
-const BOT_API_TOKEN = '6777916786:AAEHbVOZvb0cuA9zyby3caPIfTk5OzzRsOY'
+const BOT_API_TOKEN = '6777916786:AAG1HB5d9spnsqlYM3zIV8C5SFa4JA7GV-E'
 
 
 export const sendMessageToTelegram = async (message) => {
