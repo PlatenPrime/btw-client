@@ -11,7 +11,8 @@ export const prods = [
   "Halloween",
   "Грузики",
   "Fungram",
-  "MAXSEM"
+  "MAXSEM",
+  "Hi-Float"
 ];
 
 export const categoriesList = [
